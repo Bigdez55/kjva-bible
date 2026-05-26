@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.env.local
+
+# Model weights — gitignored, tracked via provenance.json sha256
+models/kjva/weights.safetensors
+*.safetensors
+*.gguf
+*.bin
+*.pt
+*.pth
+*.onnx
+
+# Node
+node_modules/
+frontend/dist/
+frontend/.vite/
+
+# macOS
+.DS_Store
+.AppleDouble
+._*
+Icon?
+
+# Editor
+.idea/
+.vscode/
+*.swp
+*~
+
+# Runtime
+*.log
+*.pid
+*.tmp
+.pytest_cache/
+
+# AI runtime state — excluded per do_not_import_global_claude_codex_state policy
+**/.claude/
+**/.codex/
+**/.gemini/

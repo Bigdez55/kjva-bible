@@ -1,0 +1,8 @@
+{
+  "kind": "utf8_byte",
+  "pad_id": 0,
+  "bos_id": 1,
+  "eos_id": 2,
+  "byte_offset": 3,
+  "vocab_size": 259
+}

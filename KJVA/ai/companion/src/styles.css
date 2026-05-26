@@ -1,0 +1,182 @@
+/*
+ * Tokenless Companion - design-system token layer
+ * Source of truth: design-system/src/tokens.ts
+ */
+
+:root {
+  color-scheme: dark;
+
+  --color-primary:       #ff7518;
+  --color-primary-muted: #cc5f14;
+  --color-secondary:     #1aa7ec;
+  --color-neutral-0:     #0d1115;
+  --color-neutral-100:   #151b22;
+  --color-neutral-200:   #202a34;
+  --color-neutral-300:   #334152;
+  --color-neutral-900:   #f7fbff;
+  --color-success:       #17b978;
+
+  --font-sans:   "Inter", "Noto Sans", sans-serif;
+  --text-xs:     12px;
+  --text-sm:     14px;
+  --text-md:     16px;
+
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+
+  --motion-fast:   120ms cubic-bezier(0.2, 0, 0.2, 1);
+  --motion-normal: 220ms cubic-bezier(0.2, 0, 0.2, 1);
+  --motion-slow:   340ms cubic-bezier(0.2, 0, 0.2, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--text-md);
+  color: var(--color-neutral-900);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-secondary);
+  outline-offset: 2px;
+}
+
+/* ── Companion shell ── */
+.companion {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 160px 1fr;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  background: radial-gradient(
+    circle at top right,
+    color-mix(in srgb, var(--color-primary) 30%, transparent),
+    rgba(13, 17, 21, 0.9)
+  );
+}
+
+/* ── Mood transitions ── */
+.companion.listening .head { transform: scale(1.1); }
+.companion.thinking .head  { animation: thinking-pulse 0.8s ease-in-out infinite; }
+.companion.acting .head    { animation: breathe 0.6s ease-in-out infinite; border: 3px solid var(--color-secondary); }
+.companion.celebrating .head { animation: celebrate 0.5s ease-in-out 3; }
+.companion.confused .head  { border: 3px solid var(--color-primary-muted); opacity: 0.7; }
+
+/* ── Avatar ── */
+.avatar {
+  display: grid;
+  place-items: center;
+}
+
+.head {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, var(--color-primary), var(--color-primary-muted));
+  box-shadow: 0 0 24px color-mix(in srgb, var(--color-primary) 40%, transparent);
+  animation: breathe 2s ease-in-out infinite;
+  transition: transform var(--motion-normal), border var(--motion-fast);
+}
+
+.label {
+  margin-top: var(--space-1);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-primary);
+  opacity: 0.85;
+}
+
+/* ── Command panel ── */
+.panel {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--color-neutral-100) 80%, transparent);
+  backdrop-filter: blur(16px);
+  padding: var(--space-3);
+  display: grid;
+  grid-template-rows: auto auto auto 1fr;
+  gap: var(--space-2);
+}
+
+/* ── Inputs and buttons ── */
+button,
+textarea {
+  min-height: 44px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-neutral-300);
+  background: color-mix(in srgb, var(--color-neutral-900) 8%, transparent);
+  color: var(--color-neutral-900);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  transition: background var(--motion-fast), border-color var(--motion-fast);
+}
+
+button {
+  cursor: pointer;
+  padding: var(--space-2) var(--space-3);
+}
+
+button:hover {
+  background: color-mix(in srgb, var(--color-neutral-900) 14%, transparent);
+  border-color: var(--color-primary);
+}
+
+textarea {
+  resize: vertical;
+  padding: var(--space-2) var(--space-3);
+  line-height: 1.5;
+}
+
+/* ── Button row ── */
+.row {
+  display:   flex;
+  gap:       var(--space-1);
+  flex-wrap: wrap;
+}
+
+/* ── Action trace list ── */
+ul {
+  list-style: none;
+  padding:    0;
+  margin:     0;
+  overflow:   auto;
+  display:    grid;
+  gap:        var(--space-1);
+}
+
+ul li {
+  font-size:     var(--text-sm);
+  padding:       var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  background:    color-mix(in srgb, var(--color-neutral-900) 5%, transparent);
+  border-left:   3px solid var(--color-primary);
+  line-height:   1.4;
+}
+
+/* ── Keyframe animations ── */
+@keyframes breathe {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.06); }
+}
+
+@keyframes thinking-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.55; }
+}
+
+@keyframes celebrate {
+  0%   { transform: scale(1) rotate(0deg); }
+  25%  { transform: scale(1.15) rotate(-5deg); }
+  75%  { transform: scale(1.15) rotate(5deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}

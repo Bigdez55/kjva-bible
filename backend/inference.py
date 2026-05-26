@@ -20,11 +20,11 @@ import mlx.nn as nn
 
 from model import ModelConfig, TokenlessLM
 
-# Weights are gitignored (72 MB .safetensors). Expected layout after setup:
-#   models/kjva/weights.safetensors
-#   models/kjva/model_config.json
-#   models/kjva/byte_vocab.json
-_MODELS_DIR = Path(__file__).parent.parent / "models" / "kjva"
+# Weights are gitignored (72 MB .safetensors). Layout:
+#   KJVA/training/weights.safetensors   ← gitignored
+#   KJVA/training/model_config.json
+#   KJVA/training/byte_vocab.json
+_MODELS_DIR = Path(__file__).parent.parent / "KJVA" / "training"
 
 PAD_ID = 0
 BOS_ID = 1
@@ -58,8 +58,8 @@ class KJVAInference:
         if not weights_path.exists():
             raise RuntimeError(
                 f"KJVA weights not found at {weights_path}.\n"
-                "Run: cp <Tokenless Models>/KJVA/training/weights.safetensors "
-                f"{weights_path}"
+                "Expected: KJVA/training/weights.safetensors (gitignored, 72 MB).\n"
+                "This file ships with the KJVA directory that was moved from Tokenless Models."
             )
         with open(config_path) as f:
             cfg_dict = json.load(f)

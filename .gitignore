@@ -6,8 +6,8 @@ venv/
 .env
 .env.local
 
-# Model weights — gitignored, tracked via provenance.json sha256
-models/kjva/weights.safetensors
+# Model weights — gitignored; sha256 tracked in KJVA/PROVENANCE.md
+KJVA/training/weights.safetensors
 *.safetensors
 *.gguf
 *.bin

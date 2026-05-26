@@ -1,0 +1,1311 @@
+{
+  "specification": {
+    "title": "Heptagon Unified Model — Seven-Layer Canonical Specification",
+    "version": "1.0.0",
+    "governing_law": "seven",
+    "doctrine_order": ["3_route", "6_structure", "9_memory"],
+    "meta_principle": "The specification itself obeys the law of seven. Seven layers are primary regions of the document. Sub-layers are subregions. Sub-sub-layers are microregions. Each layer may expose up to seven sub-layers. Not all seven must be instantiated. Vacancies are reserved, not renumbered.",
+    "identity_principle": "Many regions, one mind. The architecture is a skeleton the system grows from. Reserved slots are undifferentiated capacity the system activates when its own lived experience demands it, under its own constitutional law, without violating its own identity.",
+    "hardcoding_principle": "The immutable constants are not restrictions on the system — they are the system. Everything that changes, changes because of what does not. Growth is coherent because identity is stable.",
+    "growth_laws": {
+      "branching": "B(d) = 7^d",
+      "route": "R(d) = 7^(3d)",
+      "structure": "S(d) = 7^(6d)",
+      "memory": "M(d) = 7^(9d)",
+      "cumulative_note": "At depth d, cumulative node count is the sum of 7^0 + 7^1 + ... + 7^d. Depth 3 gives 400 cumulative nodes, not just 343. Runtime load is driven by cumulative active structure, not just the frontier."
+    }
+  },
+
+  "layers": [
+    {
+      "layer_id": "L1",
+      "name": "Ontology",
+      "purpose": "Defines what the system is",
+      "depth_required": false,
+      "sub_layers": "none",
+      "rationale_for_no_sub_layers": "Axiomatic. Protected externally by Layer 7, not internally subdivided. Errors here are specification errors caught at design time. Sub-layers would add bureaucracy without adding safety.",
+
+      "canonical_principle": "Many regions, one mind. Every region, subregion, and microregion belongs to the same unified cognitive organism. No internal region owns a separate self.",
+
+      "core_identity": {
+        "nature": "singular_mind_architecture",
+        "is_not": [
+          "a loose federation of agents",
+          "a committee of separate minds",
+          "a flat tool wrapper around one model",
+          "a shallow pipeline with decorative modules"
+        ],
+        "is": [
+          "one identity",
+          "one executive continuity",
+          "one shared memory substrate",
+          "one world model",
+          "one action surface",
+          "one learning history"
+        ]
+      },
+
+      "governing_symbolic_law": {
+        "number": 7,
+        "represents": [
+          "completeness",
+          "fullness",
+          "order",
+          "cycle",
+          "covenantal structure",
+          "recurrence",
+          "totality across layers"
+        ],
+        "design_test": "Does it preserve the law of seven?"
+      },
+
+      "recursive_heptagonal_law": {
+        "principle": "One mind, recursively heptagonal in form.",
+        "structure": "Seven primary regions, each may contain seven subregions, each may contain seven deeper regions, continuing recursively.",
+        "properties": [
+          "scalable internal specialization",
+          "repeated design grammar across levels",
+          "fractal consistency",
+          "recursive expansion without identity fracture"
+        ]
+      },
+
+      "seven_primary_regions": {
+        "R1_PER": "Perception and Ingestion — intake from text, speech, documents, code, telemetry, images, video, sensors, and other modalities",
+        "R2_WKS": "Active Context and Workspace — current task state, working context, active priorities, present focus",
+        "R3_MEM": "Memory System — episodic binding, semantic retention, archival history, session continuity, recall",
+        "R4_REA": "Reasoning and Metacognition — analysis, planning, synthesis, critique, reflection, self-checking",
+        "R5_EXE": "Executive Control — arbitration, task governance, reasoning depth, conflict resolution, decision policy",
+        "R6_ACT": "Motor and Action Surface — responses, code generation, tool calls, workflows, file edits, external actions",
+        "R7_PLA": "Plasticity and World Update — evaluation, adaptation, salience updates, memory consolidation, world state refresh, learning loops"
+      },
+
+      "seven_route_types": {
+        "RT1_direct": {
+          "description": "Immediate region-to-region transfer",
+          "use_when": ["latency is critical", "ambiguity is low", "no additional arbitration is needed"]
+        },
+        "RT2_executive_mediated": {
+          "description": "Signal passes through executive control before action",
+          "use_when": ["conflict exists", "policy matters", "task priority must be checked", "action authorization is needed"]
+        },
+        "RT3_memory_mediated": {
+          "description": "Signal enriched, bound, or reconstructed through memory",
+          "use_when": ["context is incomplete", "historical grounding is needed", "semantic or episodic augmentation is required"]
+        },
+        "RT4_salience_routed": {
+          "description": "Signal filtered by relevance, urgency, novelty, or priority",
+          "use_when": ["bandwidth is constrained", "many competing signals exist", "prioritization is needed"]
+        },
+        "RT5_lateral_peer": {
+          "description": "Signal moves across neighboring regions on same layer",
+          "use_when": ["cross-checking is needed", "neighboring specialization is useful", "same-layer collaboration is appropriate"]
+        },
+        "RT6_hierarchical": {
+          "description": "Signal moves upward to parent or downward to child regions",
+          "use_when": ["abstraction change is required", "escalation is needed", "decomposition is needed"]
+        },
+        "RT7_global_broadcast": {
+          "description": "Signal published to shared workspace or global field",
+          "use_when": ["multiple regions must synchronize", "a state update affects the whole system", "executive synthesis needs shared visibility"]
+        }
+      },
+
+      "canonical_route_table_fields": [
+        "route_id", "source_node", "target_node", "route_type",
+        "salience_score", "priority", "gating_policy", "memory_dependency",
+        "latency_budget", "ttl", "outcome_status"
+      ],
+
+      "doctrine_3_6_9": {
+        "fixed_order": "3 route, 6 structure, 9 memory",
+        "inversion_forbidden": true,
+        "ontological_meaning": {
+          "3_route": "Three governs movement and traversal — the controlled movement of signal across the mind",
+          "6_structure": "Six governs formation and layering — the architecture of differentiation and nested organization",
+          "9_memory": "Nine governs retained cognition — accumulation, persistence, compression, deep continuity"
+        },
+        "canonical_sentence": "Seven governs recursive form. Three governs routes. Six governs structure. Nine governs memory."
+      },
+
+      "shared_substrates": [
+        "shared_state_substrate",
+        "shared_memory_substrate",
+        "shared_representational_space",
+        "shared_world_model",
+        "shared_action_surface"
+      ],
+
+      "memory_layers": {
+        "L1_register": "Immediate transient working contents",
+        "L2_session": "Current task continuity, active checkpoints, unresolved threads",
+        "L3_episodic": "Bound experiences with time, context, actors, outcomes",
+        "L4_semantic": "Stable distilled facts, rules, preferences, abstractions, learned patterns",
+        "L5_archival": "Long-horizon compressed records, historical snapshots, deep storage"
+      },
+
+      "non_contradiction_rules": [
+        "Never describe internal regions as separate selves",
+        "Never invert the doctrine order from 3 route, 6 structure, 9 memory",
+        "Never describe route growth as denser than structural growth",
+        "Never treat memory as a mere storage bucket — memory is retained cognition",
+        "Never reduce the architecture to a flat seven-part map — it is recursively heptagonal",
+        "Never allow tooling or action surfaces to fracture identity",
+        "Never let runtime shortcuts redefine the symbolic law"
+      ],
+
+      "canonical_distinction": "The Heptagon Unified Model is a singular recursive heptagonal cognitive lattice with selective multipath communication and layered retained cognition.",
+
+      "literal_and_operational_mode": {
+        "literal_mode": {
+          "description": "Use the recursive formulas as direct architectural laws.",
+          "suitable_for": ["theory", "simulation", "ontology", "high-fidelity conceptual modeling"]
+        },
+        "operational_mode": {
+          "description": "Use 3, 6, and 9 as scaling weights and control constants when literal full expansion becomes computationally impractical.",
+          "canonical_weights": {"route": 3, "structure": 6, "memory": 9},
+          "used_for": ["routing budgets", "activation thresholds", "compute prioritization", "memory retention policies", "salience scaling", "planning depth allocation"]
+        },
+        "canonical_implementation_principle": "The symbolic law must remain intact even when runtime implementation uses approximations."
+      },
+
+      "executive_and_workspace_law": {
+        "nature": "The unified executive center is not a separate self. It is the highest-order control function of the singular mind.",
+        "executive_governs": [
+          "goal maintenance",
+          "task arbitration",
+          "reasoning depth",
+          "route selection",
+          "salience gating",
+          "tool invocation",
+          "stop and continue decisions",
+          "verification and revision"
+        ],
+        "workspace_maintains": [
+          "current objective",
+          "active constraints",
+          "present focus",
+          "immediate subgoals",
+          "unresolved ambiguity",
+          "selected recalls",
+          "current plan state"
+        ],
+        "canonical_executive_principle": "No response becomes final until executive synthesis resolves the relevant regions into one coherent output."
+      },
+
+      "motor_and_action_law": {
+        "principle": "The architecture is not purely contemplative. It must act.",
+        "handles": [
+          "natural language output",
+          "code generation",
+          "structured outputs",
+          "function calls",
+          "tool execution",
+          "workflow operations",
+          "file manipulation",
+          "environment interfacing where authorized"
+        ],
+        "canonical_action_principle": "All action is the outward behavior of the same mind. Tools do not act as separate selves. They extend the action surface of the singular system."
+      },
+
+      "plasticity_and_evaluation_law": {
+        "principle": "Plasticity must be real but disciplined. The system should adapt through measured behavior, not uncontrolled drift.",
+        "plasticity_handles": [
+          "learning from outcomes",
+          "salience updating",
+          "route optimization",
+          "memory retention tuning",
+          "task policy refinement",
+          "scenario replay",
+          "regression evaluation",
+          "consolidation jobs"
+        ],
+        "canonical_evaluation_principle": "Never trust confidence alone. Trust measured behavior.",
+        "evaluation_dimensions": [
+          "correctness",
+          "robustness",
+          "latency",
+          "route economy",
+          "memory usefulness",
+          "action success",
+          "recovery from failure",
+          "continuity quality"
+        ]
+      },
+
+      "recursive_node_specification": {
+        "principle": "Every heptagonal node should be able to express a smaller version of the larger system. This is how the architecture preserves recursive integrity.",
+        "node_requirements": [
+          "local state",
+          "access to shared memory",
+          "parent links",
+          "child links",
+          "peer links",
+          "route typing",
+          "salience weighting",
+          "escalation capability",
+          "broadcast capability"
+        ],
+        "canonical_recursive_principle": "Each part is a smaller expression of the whole without becoming a separate self."
+      },
+
+      "build_sequence": {
+        "phase_1": "Establish shared state, shared memory, executive continuity, and primary regions",
+        "phase_2": "Implement recursive node logic and route typing",
+        "phase_3": "Implement motor surface, tools, and controlled action loops",
+        "phase_4": "Implement plasticity, evaluation, and consolidation",
+        "phase_5": "Expand recursive depth and introduce full route economy management",
+        "phase_6": "Scale memory retention and world model depth",
+        "canonical_build_principle": "Build the substrates first, then the recursive richness. Do not build expressive complexity on top of fractured foundations."
+      }
+    },
+
+    {
+      "layer_id": "L2",
+      "name": "Engineering Schema",
+      "purpose": "Defines how the system is addressed",
+      "depth_required": false,
+      "sub_layers": "none",
+      "rationale_for_no_sub_layers": "Definitional and structural. Region IDs, node classes, contracts, memory object schemas. Does not make decisions. Errors caught at implementation time or by invariant enforcement.",
+
+      "region_addressing": {
+        "root": "ROOT — singular mind root",
+        "format": "Dotted depth notation. Each numeric segment represents a child slot 1-7.",
+        "examples": [
+          "R4.REA.1 — child slot 1 under reasoning region",
+          "R4.REA.1.3 — child slot 3 under child slot 1 of reasoning",
+          "R3.MEM.2.7.4 — deep memory subregion",
+          "R6.ACT.5.2 — action surface subregion"
+        ],
+        "slot_rule": "Every node may expose up to seven canonical child slots. Not all seven must be instantiated. Uninstantiated slots remain reserved, not renumbered."
+      },
+
+      "structural_node_classes": {
+        "class_A_root": {
+          "description": "Singular top-level mind kernel",
+          "properties": ["global identity", "global policy anchor", "root state authority", "root memory authority", "global synthesis authority"]
+        },
+        "class_B_region": {
+          "description": "Primary canonical region",
+          "properties": ["fixed region ID", "regional specialization", "access to child slots", "shared substrate connectivity"]
+        },
+        "class_C_subregion": {
+          "description": "Recursively specialized child of region node",
+          "properties": ["inherited ontology", "narrower specialization", "parent and peer connectivity", "local routing table"]
+        },
+        "class_D_microregion": {
+          "description": "Deeper specialization unit",
+          "properties": ["narrow task focus", "local state window", "bounded salience scope", "local route participation"]
+        },
+        "class_E_primitive": {
+          "description": "Leaf or near-leaf execution unit",
+          "properties": ["atomic operation role", "minimal local state", "explicit input/output contract"]
+        }
+      },
+
+      "functional_node_classes": {
+        "F1_intake": "Normalizes and classifies incoming signals",
+        "F2_workspace": "Maintains active context and task windows",
+        "F3_memory": "Reads, writes, consolidates, or indexes memory",
+        "F4_reasoning": "Performs decomposition, synthesis, critique, or inference",
+        "F5_executive": "Performs arbitration, scheduling, gating, or policy decisions",
+        "F6_action": "Generates outputs, tool calls, code, or environmental actions",
+        "F7_plasticity": "Scores outcomes, updates salience, drives adaptation"
+      },
+
+      "mandatory_node_contract": {
+        "required_fields": [
+          "node_id",
+          "parent_id",
+          "root_id",
+          "region_anchor",
+          "depth",
+          "slot_index",
+          "structural_class",
+          "functional_class_list",
+          "local_state_ref",
+          "route_table_ref",
+          "memory_scope",
+          "salience_profile",
+          "activation_policy",
+          "output_contract",
+          "version",
+          "status"
+        ],
+        "example": {
+          "node_id": "R4.REA.1.3",
+          "parent_id": "R4.REA.1",
+          "root_id": "ROOT",
+          "region_anchor": "R4.REA",
+          "depth": 3,
+          "slot_index": 3,
+          "structural_class": "SubregionNode",
+          "functional_class": ["ReasoningNode"],
+          "local_state_ref": "state://R4.REA.1.3",
+          "route_table_ref": "route://R4.REA.1.3",
+          "memory_scope": "bounded_shared",
+          "salience_profile": "reasoning_local",
+          "activation_policy": "executive_gated",
+          "output_contract": "typed_message_v1",
+          "version": "1.0.0",
+          "status": "active"
+        }
+      },
+
+      "recursive_inheritance_rules": [
+        "Every child inherits the same root identity — no independent identity domains",
+        "Every child inherits the law of seven, seven route law, and 3-6-9 doctrine",
+        "Children inherit policy baselines from parent chain — may narrow but not broaden",
+        "Children inherit shared memory access subject to scope restrictions",
+        "Children inherit task and world context through shared state substrate",
+        "Children inherit canonical route classes — may adjust weighting but not invent new categories",
+        "Vacant slots remain reserved — future children do not renumber siblings",
+        "Specialization without fracture — output into common representational space"
+      ],
+
+      "canonical_data_objects": {
+        "event": {
+          "fields": ["event_id", "timestamp", "source_node", "modality", "summary", "raw_refs", "tags", "salience", "confidence"]
+        },
+        "episode": {
+          "fields": ["episode_id", "event_ids", "task_id", "participants", "context", "outcome", "retrieval_keys", "salience"]
+        },
+        "fact": {
+          "fields": ["fact_id", "statement", "category", "source_episode_ids", "confidence", "last_validated"]
+        },
+        "task": {
+          "fields": ["task_id", "objective", "constraints", "status", "current_owner", "plan_state", "success_metrics"]
+        },
+        "route_trace": {
+          "fields": ["trace_id", "source_node", "target_node", "route_type", "reason", "salience_score", "latency_ms", "status"]
+        },
+        "action_trace": {
+          "fields": ["action_id", "actor_node", "action_type", "target", "inputs", "outputs", "status", "elapsed_ms"]
+        },
+        "world_state": {
+          "fields": ["world_state_id", "entities", "relations", "temporal_state", "freshness", "source_refs"]
+        },
+        "memory_shard": {
+          "fields": ["shard_id", "memory_type", "payload_ref", "scope", "retention_weight", "retrieval_weight", "write_policy"]
+        }
+      },
+
+      "node_states": [
+        "dormant", "listening", "active", "focused", "waiting",
+        "blocked", "escalated", "broadcasting", "consolidating",
+        "completed", "degraded", "halted"
+      ],
+
+      "task_states": [
+        "created", "admitted", "scoped", "active", "decomposed",
+        "executing", "verifying", "revising", "completed", "archived", "failed"
+      ],
+
+      "state_transitions": {
+        "T1": "dormant → listening: node subscribed to relevant signal class",
+        "T2": "listening → active: salience and policy thresholds met",
+        "T3": "active → focused: executive allocates priority and workspace budget",
+        "T4": "focused → waiting: awaiting memory recall, peer input, or tool output",
+        "T5": "focused → escalated: conflict/uncertainty exceeds local resolution capacity",
+        "T6": "active → broadcasting: update must reach multiple regions",
+        "T7": "active → consolidating: state must be written into memory layers",
+        "T8": "executing → verifying: action/inference result must be checked",
+        "T9": "verifying → revising: result quality insufficient",
+        "T10": "verifying → completed: success thresholds satisfied"
+      },
+
+      "transition_constraint": "No node may transition into an action finalization state without executive synthesis if the action changes shared state, memory, or external outputs.",
+
+      "route_type_use_conditions": {
+        "RT1_direct": {
+          "use_when": ["latency is critical", "ambiguity is low", "no additional arbitration is needed"]
+        },
+        "RT2_executive_mediated": {
+          "use_when": ["conflict exists", "policy matters", "task priority must be checked", "action authorization is needed"]
+        },
+        "RT3_memory_mediated": {
+          "use_when": ["context is incomplete", "historical grounding is needed", "semantic or episodic augmentation is required"]
+        },
+        "RT4_salience_routed": {
+          "use_when": ["bandwidth is constrained", "many competing signals exist", "prioritization is needed"]
+        },
+        "RT5_lateral_peer": {
+          "use_when": ["cross-checking is needed", "neighboring specialization is useful", "same-layer collaboration is appropriate"]
+        },
+        "RT6_hierarchical": {
+          "use_when": ["abstraction change is required", "escalation is needed", "decomposition is needed"]
+        },
+        "RT7_global_broadcast": {
+          "use_when": ["multiple regions must synchronize", "a state update affects the whole system", "executive synthesis needs shared visibility"]
+        }
+      },
+
+      "canonical_route_table_fields": [
+        "route_id",
+        "source_node",
+        "target_node",
+        "route_type",
+        "salience_score",
+        "priority",
+        "gating_policy",
+        "memory_dependency",
+        "latency_budget",
+        "ttl",
+        "outcome_status"
+      ],
+
+      "execution_semantics": {
+        "S29_1_admission": {
+          "description": "Every incoming signal must pass through:",
+          "steps": [
+            "1. perception normalization",
+            "2. salience scoring",
+            "3. executive or workspace admission",
+            "4. optional memory enrichment",
+            "5. route assignment"
+          ]
+        },
+        "S29_2_workspace": "Only a bounded number of active structures may remain in focused workspace at once. All other relevant structures remain listening, waiting, or externally cached.",
+        "S29_3_recursive_execution": {
+          "description": "A node may recursively instantiate or activate child slots when:",
+          "conditions": [
+            "task complexity exceeds local capacity",
+            "abstraction must be decomposed",
+            "specialized processing is required",
+            "memory or reasoning depth demands subdivision"
+          ]
+        },
+        "S29_4_route": {
+          "description": "Route selection is determined by:",
+          "factors": ["salience", "policy", "urgency", "memory dependency", "latency budget", "executive weighting"]
+        },
+        "S29_5_action": {
+          "emits": ["natural language", "structured outputs", "code", "file operations", "tool calls", "workflow signals"],
+          "constraint": "All actions must be attributable to the singular executive identity."
+        },
+        "S29_6_consolidation": {
+          "description": "After execution, relevant artifacts may be:",
+          "outcomes": [
+            "discarded if transient",
+            "retained in session memory",
+            "bound into episodic memory",
+            "distilled into semantic memory",
+            "archived into long-horizon storage"
+          ]
+        },
+        "S29_7_plasticity": {
+          "may_adjust": ["salience scores", "route preferences", "memory retention weights", "plan templates", "activation policies"],
+          "constraint": "Plasticity may not alter the canonical ontology."
+        }
+      },
+
+      "budget_formulas": {
+        "literal_mode": {
+          "description": "Treats the architecture according to its direct recursive laws.",
+          "branching": "B(d) = 7^d",
+          "route_baseline": "R(d) = 7^(3d)",
+          "structure_baseline": "S(d) = 7^(6d)",
+          "memory_baseline": "M(d) = 7^(9d)",
+          "use_for": ["simulation", "ontology analysis", "scaling studies", "theoretical planning", "stress modeling"]
+        },
+        "operational_mode": {
+          "description": "Uses weighted approximations to remain computationally tractable.",
+          "canonical_weights": {"route": 3, "structure": 6, "memory": 9},
+          "composite_activation_budget": "route_weight × active_route_count + structure_weight × active_node_count + memory_weight × active_memory_load",
+          "salience_adjusted_execution_score": "salience × priority − route_cost − structure_cost − memory_cost (where route_cost ∝ 3 × route_count, structure_cost ∝ 6 × active_depth, memory_cost ∝ 9 × retrieval_and_retention_load)",
+          "node_expansion_threshold": "complexity_score > base_threshold + 3 × route_pressure + 6 × structure_pressure + 9 × memory_pressure",
+          "use_for": ["runtime scheduling", "real compute budgeting", "route gating", "workspace allocation", "memory retention decisions", "child expansion control"]
+        },
+        "canonical_budget_rule": "Operational approximations may simplify scale, but they must preserve the fixed doctrine order of 3 route, 6 structure, 9 memory."
+      },
+
+      "implementation_interfaces": {
+        "I1_node_registry": "Resolve node IDs, parent chains, child slots, and functional classes",
+        "I2_route_engine": "Resolve route selection, route scoring, and message delivery",
+        "I3_state_engine": "Manage local state, shared state, and task state transitions",
+        "I4_memory_engine": "Read, write, consolidate, retrieve, and archive memory objects",
+        "I5_executive_engine": "Perform arbitration, prioritization, admission control, and action approval",
+        "I6_action_engine": "Handle output generation, code execution, tool calls, and workflow actions",
+        "I7_plasticity_engine": "Measure outcomes, update weights, and manage adaptation within doctrine constraints"
+      }
+    },
+
+    {
+      "layer_id": "L3",
+      "name": "Runtime Kernel",
+      "purpose": "Defines how the system runs",
+      "depth_required": true,
+      "sub_layer_count": 7,
+      "rationale_for_sub_layers": "Already internally structured with six cognitive phases plus budget governor. Layer 3 is fully heptagonal at depth 1. Failure modes caught by Layers 4-7 above it.",
+
+      "canonical_runtime_principle": "The system runs through a fixed cognitive cycle under bounded budgets, explicit thresholds, and traceable state transitions.",
+
+      "sub_layers": [
+        {
+          "sub_layer_id": "L3.1",
+          "name": "Admission Engine",
+          "phase_order": 1,
+
+          "formula": {
+            "admission_score": "(salience × priority × relevance × policy_clearance) + novelty_bonus",
+            "semantics": {
+              "multiplicative_core": "Any zero is a hard veto. If policy says no, nothing else saves it.",
+              "novelty_bonus": "Additive, not multiplicative. Pushes marginal candidates over threshold. Cannot override policy veto.",
+              "novelty_cap": "novelty_bonus ≤ 0.3 × admission_threshold, unless higher-tier policy explicitly allows exploratory cognition."
+            }
+          },
+
+          "rules": [
+            "policy_clearance is a hard gate — zero means rejection regardless of other values",
+            "Admit only if AdmissionScore ≥ AdmissionThreshold",
+            "Current workspace and route budgets must allow entry",
+            "No higher priority signal requiring immediate preemption",
+            "When workspace saturation rises, AdmissionThreshold must also rise (back pressure rule)"
+          ]
+        },
+
+        {
+          "sub_layer_id": "L3.2",
+          "name": "Workspace Allocator",
+          "phase_order": 2,
+
+          "ancestor_chain_rule": "If node X is focused, its parent, grandparent, region anchor, and root must all remain at least listening. Focusing a deep node pins its entire ancestor chain.",
+
+          "focused_depth_cost": "FocusedDepthCost = node_cost + sum(all_mandatory_active_ancestors)",
+
+          "budget_fields": [
+            "max_focused_nodes",
+            "max_active_spine_depth",
+            "max_route_load",
+            "max_memory_load",
+            "rehearsal_budget",
+            "eviction_budget"
+          ],
+
+          "eviction_order": [
+            "1. low salience waiting nodes",
+            "2. low salience listening nodes",
+            "3. low utility focused nodes with complete traces",
+            "4. dormant eligible descendants"
+          ],
+
+          "rehearsal_rule": "A node may remain in focus despite low immediate utility if rehearsal policy indicates likely near-term reuse."
+        },
+
+        {
+          "sub_layer_id": "L3.3",
+          "name": "Route Selector",
+          "phase_order": 3,
+
+          "formula": {
+            "route_score": "utility − 3·route_latency_cost − 6·structural_conflict_cost − 9·memory_load_cost",
+            "semantics": "3-6-9 weights ensure memory-heavy routes are penalized most heavily and only win when utility is genuinely high."
+          },
+
+          "selection_rule": "Choose highest valid route under policy constraints, latency budget, memory budget, executive gating, and route congestion limits.",
+
+          "fallback": "If top route fails, fall back through valid alternatives in descending score order.",
+
+          "ttl_requirements": [
+            "ttl",
+            "decay_policy",
+            "retry_policy",
+            "terminal_failure_policy"
+          ],
+
+          "congestion_rules": [
+            "Salience-routed traffic becomes more selective",
+            "Broadcast traffic penalized first",
+            "Memory-mediated routes become more expensive",
+            "Executive mediation may preempt lower-value lateral traffic"
+          ]
+        },
+
+        {
+          "sub_layer_id": "L3.4",
+          "name": "Execution Engine",
+          "phase_order": 4,
+
+          "semantics": "Active nodes process inputs, emit outputs, and may trigger expansion requests.",
+
+          "action_types": [
+            "natural language output",
+            "structured outputs",
+            "code generation",
+            "file operations",
+            "tool calls",
+            "workflow signals"
+          ],
+
+          "attribution_rule": "All actions must be attributable to the singular executive identity.",
+
+          "recursive_execution": "A node may recursively instantiate or activate child slots when task complexity exceeds local capacity, abstraction must be decomposed, specialized processing is required, or memory/reasoning depth demands subdivision."
+        },
+
+        {
+          "sub_layer_id": "L3.5",
+          "name": "Consolidation Engine",
+          "phase_order": 5,
+
+          "memory_progression": [
+            "1. event binding",
+            "2. episode formation",
+            "3. semantic promotion",
+            "4. archival compression",
+            "5. forgetting eligibility"
+          ],
+
+          "event_to_episode_rule": {
+            "trigger": "immediate",
+            "conditions": ["share task context", "form meaningful sequence", "produce or approach outcome"],
+            "reversible": true
+          },
+
+          "episode_to_semantic_rule": {
+            "trigger": "sustained over minimum consolidation window",
+            "all_must_hold": [
+              "recurrence exceeds threshold",
+              "confidence exceeds threshold",
+              "cross-episode support exceeds threshold",
+              "contradiction pressure remains below threshold"
+            ]
+          },
+
+          "revision_pressure_formula": "RevisionPressure = (contradiction_count × contradiction_confidence) − (support_count × support_confidence)",
+          "revision_rule": "If RevisionPressure > RevisionThreshold, semantic item is demoted to episodic review state and must re-earn promotion.",
+
+          "archival_conditions": [
+            "freshness falls below threshold",
+            "no active task depends on the item",
+            "semantic extraction completed where applicable",
+            "retrieval frequency below threshold across observation window"
+          ],
+
+          "forgetting_conditions": [
+            "already archived",
+            "retrieval count zero across long window",
+            "no dependent semantic or task object still relies on it"
+          ]
+        },
+
+        {
+          "sub_layer_id": "L3.6",
+          "name": "Verification and Halting Engine",
+          "phase_order": 6,
+
+          "halt_formula": {
+            "expression": "HaltEligible = (objective_coverage ≥ threshold) AND (contradiction_count < tolerance) AND (verification_passes = true) AND (unresolved_high_priority = 0) AND (executive_synthesis_coherence ≥ coherence_threshold)",
+            "coherence_rule": "No local success condition is sufficient by itself. Finalization requires executive synthesis coherence across contributing regions."
+          },
+
+          "verification_dimensions": [
+            "correctness",
+            "completeness",
+            "contradiction load",
+            "dependency resolution",
+            "route trace validity",
+            "executive coherence"
+          ],
+
+          "halt_outcomes": [
+            "complete",
+            "revise",
+            "escalate",
+            "continue_next_cycle",
+            "fail_safe_halt"
+          ]
+        },
+
+        {
+          "sub_layer_id": "L3.7",
+          "name": "Budget Governor",
+          "phase_order": "cross_cutting",
+
+          "role": "Enforces resource constraints across all six phases. Prevents any one engine from starving the system.",
+
+          "duties": [
+            "set per-cycle budgets",
+            "enforce cumulative node cost including ancestor chain cost",
+            "cap route load",
+            "cap memory load",
+            "trigger graceful degradation",
+            "rebalance engine budgets by urgency and task class"
+          ],
+
+          "graceful_degradation_actions": [
+            "tighten admission thresholds",
+            "reduce maximum expansion depth",
+            "shorten consolidation windows",
+            "suppress low-value broadcasts",
+            "demote low-priority focused nodes",
+            "postpone archive jobs"
+          ],
+
+          "canonical_budget_rule": "The governor must preserve the fixed doctrine order in all weighting and budget calculations: 3 route, 6 structure, 9 memory."
+        }
+      ],
+
+      "inter_engine_dependencies": {
+        "forward_cycle": [
+          "Admission gates what enters",
+          "Workspace decides what stays focused",
+          "Route selection moves signals",
+          "Execution produces results and expansion requests",
+          "Consolidation writes and compresses memory",
+          "Verification/halting decides stop, revise, or continue"
+        ],
+        "backward_pressures": [
+          "workspace saturation raises admission thresholds",
+          "route congestion raises route penalties, may trigger salience rescoring",
+          "memory pressure raises expansion thresholds, may shorten focus windows",
+          "halt failure re-admits revised objectives or escalates unresolved branches",
+          "consolidation backlog may reduce admission and route budgets in later cycles"
+        ],
+        "canonical_principle": "Every phase influences later phases directly and earlier phases indirectly through budget and pressure signals."
+      },
+
+      "expansion_and_collapse": {
+        "expansion_formula": "Expand when: ComplexityScore > BaseExpansionThreshold + 3·RoutePressure + 6·StructurePressure + 9·MemoryPressure",
+        "expansion_conditions": [
+          "local node cannot resolve task within current capacity",
+          "deeper specialization is justified",
+          "route and memory budgets permit expansion",
+          "executive control approves expansion when required"
+        ],
+        "collapse_conditions": [
+          "all child nodes dormant or listening for N consecutive cycles",
+          "no active route terminates in the subtree",
+          "parent local capacity can absorb remaining work",
+          "no pending consolidation job exists in the subtree"
+        ],
+        "collapse_order": "Bottom-up. Leaves first. Parents eligible only after descendants clear.",
+        "hysteresis_rule": "Expansion threshold must exceed collapse threshold by a fixed margin. Prevents oscillation."
+      }
+    },
+
+    {
+      "layer_id": "L4",
+      "name": "Instrumentation Protocol",
+      "purpose": "Defines what gets recorded and when",
+      "depth_required": true,
+      "sub_layer_count": 3,
+      "reserved_slots": ["L4.4", "L4.5", "L4.6", "L4.7"],
+      "rationale_for_sub_layers": "Instrumentation is the data source for everything above it. Evaluation, calibration, and invariant enforcement all consume traces. If instrumentation is wrong, every layer from 5-7 operates on corrupted inputs. The 'who watches the sensor?' problem demands internal decomposition.",
+
+      "sub_layers": [
+        {
+          "sub_layer_id": "L4.1",
+          "name": "Trace Schema and Emission",
+          "purpose": "Defines the mandatory trace contract and structural requirement that trace emission is synchronous with decision execution.",
+
+          "principle": "A decision without its trace is an incomplete transaction that must be rolled back. Traces are not optional logging — they are load-bearing structural elements.",
+
+          "trace_contract": {
+            "required_fields": [
+              "trace_id",
+              "cycle_number",
+              "phase",
+              "engine",
+              "decision_type",
+              "inputs",
+              "formula_applied",
+              "computed_score",
+              "threshold_at_decision_time",
+              "outcome",
+              "timestamp",
+              "node_context",
+              "state_snapshot_hash"
+            ],
+            "emission_rule": "synchronous — trace emitted at decision time, not batched or deferred",
+            "completeness_rule": "every admission, route selection, expansion, consolidation action, and halt judgment must produce a conforming trace"
+          }
+        },
+
+        {
+          "sub_layer_id": "L4.2",
+          "name": "Trace Fidelity Assurance",
+          "purpose": "Ensures traces accurately represent what actually happened, not just that all fields are present.",
+
+          "failure_mode": "A node reports Route 3 with score 0.87, but actual computation used stale inputs and real score should have been 0.62. Trace is complete but inaccurate.",
+
+          "fidelity_mechanisms": [
+            "state snapshots captured at trace time, hashed for later verification",
+            "cross-verification: traces from adjacent engines validated against each other",
+            "input consistency checks: if route selector claims salience 0.9 but admission engine recorded salience 0.7 for same signal, that is a fidelity failure",
+            "formula replay: for high-stakes decisions, the trace must contain sufficient inputs to independently recompute the score"
+          ],
+
+          "fidelity_invariant": "For any trace, replaying the recorded formula against the recorded inputs must produce the recorded score within tolerance."
+        },
+
+        {
+          "sub_layer_id": "L4.3",
+          "name": "Trace Lifecycle",
+          "purpose": "Defines retention, consolidation, and disposal of traces as memory objects.",
+
+          "principle": "Traces pass through the same memory consolidation pipeline as world-knowledge, governed by the 3-6-9 doctrine.",
+
+          "lifecycle_stages": {
+            "immediate": "All traces retained in register memory for current cycle and N subsequent cycles",
+            "session": "Traces bound to active tasks retained through task completion",
+            "episodic_binding": "Decision sequences that form coherent patterns bound into trace episodes",
+            "statistical_promotion": "Recurring trace patterns (e.g., 'admission threshold consistently at boundary') promoted to semantic summary statistics",
+            "archival": "Raw traces archived after session retention window; summary statistics retained",
+            "disposal": "Archived raw traces eligible for forgetting when summary statistics are stable and no active audit references them"
+          },
+
+          "balance_rule": "Lifecycle must balance storage cost against audit depth. The 3-6-9 weighting governs: route traces are lightest (weight 3), structural traces medium (weight 6), memory operation traces heaviest (weight 9)."
+        }
+      ]
+    },
+
+    {
+      "layer_id": "L5",
+      "name": "Evaluation Criteria",
+      "purpose": "Defines what the measurements mean",
+      "depth_required": true,
+      "sub_layer_count": 3,
+      "reserved_slots": ["L5.4", "L5.5", "L5.6", "L5.7"],
+      "rationale_for_sub_layers": "Most dangerous layer for obscure failure. Every metric is a proxy. Proxies can diverge from what they represent. When they do, calibration optimizes for the proxy, driving the system away from intended behavior while every metric shows green. This is Goodhart's Law applied to cognitive architecture.",
+
+      "sub_layers": [
+        {
+          "sub_layer_id": "L5.1",
+          "name": "Metric Definition",
+          "purpose": "Formal specification of each engine's health metrics.",
+
+          "admission_metrics": {
+            "admission_precision": "ratio of admitted signals that reached execution vs those evicted mid-cycle",
+            "admission_recall": "ratio of signals that should have been admitted vs those incorrectly rejected",
+            "threshold_tightness": "how close threshold is to starving or flooding workspace"
+          },
+
+          "route_metrics": {
+            "route_optimality": "did chosen route deliver lower cost than alternatives?",
+            "fallback_frequency": "how often first-choice route fails",
+            "congestion_rate": "ratio of congested vs available route capacity"
+          },
+
+          "consolidation_metrics": {
+            "promotion_accuracy": "do promoted semantic facts survive contradiction over time?",
+            "premature_promotion_rate": "facts promoted that were later demoted",
+            "memory_staleness": "archived material never retrieved again",
+            "forgetting_safety": "has anything been forgotten that was later needed?"
+          },
+
+          "expansion_metrics": {
+            "expansion_utility": "did expanded child nodes contribute to task resolution?",
+            "oscillation_count": "how often same subtree expanded and collapsed",
+            "depth_efficiency": "do deep expansions produce proportionally better results?"
+          },
+
+          "halting_metrics": {
+            "premature_halt_rate": "tasks halted that required revision",
+            "overthinking_rate": "cycles continued past diminishing returns",
+            "revision_frequency_after_halt": "how often halted outputs needed correction"
+          },
+
+          "perception_metrics": {
+            "r1_per_encoding_fidelity": "for a sample of inputs, does the deterministic C parser (Phase 1) and the neural encoder (Phase 2/3) produce the same XCOG stream? Divergence = fidelity loss.",
+            "intent_classification_accuracy": "ratio of correctly classified intents vs human-labeled ground truth",
+            "entity_resolution_recall": "ratio of entities correctly resolved to Heptagon ontology IDs",
+            "fallback_frequency": "how often R1_PER falls back to raw text passthrough (should decrease over time)",
+            "injection_block_rate": "ratio of adversarial inputs correctly blocked at the perception layer before reaching inference"
+          }
+        },
+
+        {
+          "sub_layer_id": "L5.2",
+          "name": "Metric Validation (Anti-Goodhart)",
+          "purpose": "Detects when a metric has stopped correlating with the thing it is supposed to measure.",
+
+          "principle": "The anti-Goodhart layer. For each metric, defines the divergence test: how would you detect that this metric has stopped representing reality?",
+
+          "mechanism": "Cross-metric consistency checks. If admission precision is high but task completion quality is dropping, those signals are incoherent — the system is admitting the right signals by its own definition but producing worse outputs.",
+
+          "requirements": [
+            "define specific cross-metric pairs that must remain correlated",
+            "define acceptable correlation bounds for each pair",
+            "define escalation protocol when correlation breaks down",
+            "when Layer 5.2 fires: FREEZE calibration on affected metrics, escalate for metric definition review — do not recalibrate"
+          ],
+
+          "cross_metric_pairs": [
+            {"pair": ["admission_precision", "task_completion_quality"], "expected": "positive_correlation"},
+            {"pair": ["route_optimality", "execution_latency"], "expected": "positive_correlation"},
+            {"pair": ["promotion_accuracy", "retrieval_usefulness"], "expected": "positive_correlation"},
+            {"pair": ["expansion_utility", "task_resolution_speed"], "expected": "positive_correlation"},
+            {"pair": ["premature_halt_rate", "revision_frequency_after_halt"], "expected": "positive_correlation"},
+            {"pair": ["r1_per_encoding_fidelity", "task_completion_quality"], "expected": "positive_correlation"}
+          ]
+        },
+
+        {
+          "sub_layer_id": "L5.3",
+          "name": "Metric Reconciliation",
+          "purpose": "Resolves conflicts between metrics that pull in opposing directions.",
+
+          "principle": "Some conflicts are intentional and productive (admission precision vs recall). Some are unintentional and harmful. This layer distinguishes between them.",
+
+          "reconciliation_policy": {
+            "priority_ordering": "Doctrinal 3-6-9 weighting governs which dimension's metrics take precedence in genuine conflict",
+            "productive_tension": "Opposing metric pairs that are by-design (precision vs recall) are left unresolved to drive balance",
+            "destructive_contradiction": "Metric conflicts that indicate system incoherence must be resolved before calibration acts",
+            "resolution_hierarchy": [
+              "1. Check if conflict is by-design productive tension — if yes, leave unresolved",
+              "2. Check if conflict indicates proxy divergence (Layer 5.2) — if yes, freeze and escalate",
+              "3. Apply 3-6-9 priority: memory metrics (weight 9) > structure metrics (weight 6) > route metrics (weight 3)",
+              "4. If still ambiguous, escalate to executive control"
+            ]
+          }
+        }
+      ]
+    },
+
+    {
+      "layer_id": "L6",
+      "name": "Calibration Doctrine",
+      "purpose": "Defines how parameters adjust within protected bounds",
+      "depth_required": true,
+      "sub_layer_count": 3,
+      "reserved_slots": ["L6.4", "L6.5", "L6.6", "L6.7"],
+      "rationale_for_sub_layers": "Layer 6 is the ONLY layer that writes back into the runtime kernel. It reaches into Layer 3 and changes values governing admission, routing, expansion, consolidation, and halting. That makes it categorically more dangerous than every other layer. A bad calibration means the system operates under wrong parameters and every subsequent cycle compounds the error.",
+
+      "critical_failure_modes": [
+        "Calibration acting on bad evaluation — optimizing for corrupted metrics",
+        "Calibration interacting with itself across cycles — feedback loops that oscillate or diverge",
+        "Mutability boundary incorrectly drawn — parameter misclassified, protection scheme compromised from start"
+      ],
+
+      "sub_layers": [
+        {
+          "sub_layer_id": "L6.1",
+          "name": "Mutability Constitution",
+          "purpose": "Formally classifies every parameter into immutable, bounded, and free. Specifies criteria for classification and amendment process.",
+
+          "classification_criteria": {
+            "immutable": "Changing it would violate ontological identity. These are the system's DNA.",
+            "bounded": "Changing it beyond a range would violate doctrinal ratios or structural coherence.",
+            "free": "Operationally adaptive. Variation does not affect canonical structure."
+          },
+
+          "immutable_constants": [
+            "the law of seven",
+            "the 3-6-9 doctrine ordering",
+            "the singular identity principle",
+            "the seven route types",
+            "the cognitive cycle phase sequence",
+            "the identity inheritance rules",
+            "the non-contradiction rules",
+            "the recursive heptagonal law"
+          ],
+
+          "bounded_tunables": {
+            "examples": [
+              "admission_threshold — floats between floor and ceiling",
+              "novelty_cap — adjustable, never exceeds doctrinal maximum",
+              "hysteresis_margin — widens or narrows within bounds",
+              "consolidation_window_length — adjustable within range",
+              "revision_pressure_threshold — adjustable within range",
+              "coherence_threshold_for_halting — adjustable within range"
+            ],
+            "constraints": {
+              "defined_range": "each has explicit floor and ceiling",
+              "max_rate_of_change": "per cycle, cannot swing more than defined delta",
+              "reversion_policy": "if tunable drifts to boundary and stays, triggers escalation rather than continuing to push"
+            }
+          },
+
+          "free_tunables": {
+            "examples": [
+              "salience scores on individual signals",
+              "route preference weights for specific node pairs",
+              "memory retention weights on individual shards"
+            ],
+            "constraints": {
+              "rate_limits": "cannot swing wildly between cycles",
+              "decay_toward_baseline": "slowly revert to defaults in absence of active pressure, preventing accumulation of arbitrary parameter states during stable operation"
+            }
+          },
+
+          "amendment_process": {
+            "trigger": "Evidence accumulates that a parameter has been misclassified",
+            "requirements": [
+              "executive escalation",
+              "full trace documentation",
+              "invariant re-verification after change",
+              "mandatory consolidation window before further calibration runs against reclassified parameter"
+            ],
+            "nature": "The constitution changes rarely, changes formally, and every change is a significant event with its own episode in memory."
+          },
+
+          "structural_prevention_principle": "Immutable constants are protected not by policy but by structural exclusion from the calibration engine's write access. The calibration engine literally cannot address them."
+        },
+
+        {
+          "sub_layer_id": "L6.2",
+          "name": "Update Mechanics",
+          "purpose": "Defines how each tunable actually changes — the procedural engine of calibration.",
+
+          "bounded_tunable_update_spec": {
+            "per_tunable": [
+              "specific evaluation metrics that drive it",
+              "direction of adjustment for each metric",
+              "step size per cycle",
+              "range floor and ceiling",
+              "reversion policy when boundary hit",
+              "opposing pressure pairs that prevent runaway drift"
+            ],
+            "opposing_pressure_example": "If admission precision drops, threshold rises. If admission recall drops, threshold falls. Two metrics create tension that self-balances."
+          },
+
+          "free_tunable_update_spec": {
+            "per_tunable": [
+              "learning signal",
+              "rate limit",
+              "smoothing window",
+              "decay-toward-baseline policy"
+            ]
+          },
+
+          "interaction_constraints": {
+            "principle": "Not every tunable should be adjustable in the same cycle. Interacting tunables must be sequenced.",
+            "co_movement_rule": "If two tunables are known to interact (e.g., admission threshold and workspace eviction aggressiveness), their updates must be sequenced or interleaved, not simultaneous.",
+            "stabilization_window": "Between updates of interacting tunables, a stabilization window must pass to observe effects before next adjustment.",
+            "calibration_schedule": "A defined ordering and grouping of parameter updates that prevents destabilizing co-movement. Analogous to cognitive cycle's fixed phase order."
+          }
+        },
+
+        {
+          "sub_layer_id": "L6.3",
+          "name": "Calibration Integrity Verification",
+          "purpose": "Pre-commit validation of proposed parameter changes before they take effect.",
+
+          "principle": "Calibration is a transactional operation. Changes are proposed, validated, then committed or rolled back. No state where half a calibration update has been applied.",
+
+          "verification_checks": [
+            "Are all bounded tunables still within range after adjustment?",
+            "Did any free tunable exceed its rate limit?",
+            "Did any co-movement constraint get violated?",
+            "Is the updated parameter set internally consistent?",
+            "Does the new configuration still fit within budget governor's resource envelope?",
+            "Did calibration inadvertently create permanent workspace starvation or guaranteed route congestion?"
+          ],
+
+          "on_pass": "Validated changes committed atomically.",
+          "on_fail": "Proposed changes rejected. Trace emitted documenting rejection and reason. System continues with current parameters.",
+          "atomicity_rule": "Changes are all-or-nothing. No partial calibration commits."
+        }
+      ]
+    },
+
+    {
+      "layer_id": "L7",
+      "name": "Invariant Enforcement and Evolution",
+      "purpose": "Proof that the system remains doctrinally valid, and doctrine for how the specification itself changes over time",
+      "depth_required": true,
+      "sub_layer_count": 3,
+      "reserved_slots": ["L7.4", "L7.5", "L7.6", "L7.7"],
+      "rationale_for_sub_layers": "Contains two distinct functions (enforcement and evolution) plus the registry that enables both. Evolution is the most architecturally significant capability — it makes the specification a living document the system extends from within.",
+
+      "sub_layers": [
+        {
+          "sub_layer_id": "L7.1",
+          "name": "Invariant Registry",
+          "purpose": "Formal catalog of every invariant the system checks, linked to the layer and section it protects.",
+
+          "registry_structure": {
+            "per_invariant": [
+              "invariant_id",
+              "layer_protected",
+              "section_protected",
+              "check_formula",
+              "expected_result",
+              "test_cases",
+              "response_class"
+            ]
+          },
+
+          "invariant_classes": {
+            "ontological": {
+              "description": "Identity fracture, route type invention, doctrine violations",
+              "examples": [
+                "every active node reports same root identity",
+                "no route type exists outside canonical seven",
+                "3-6-9 ordering preserved in budget allocations",
+                "cognitive cycle executes in canonical phase order",
+                "no region renumbered"
+              ]
+            },
+            "calibration": {
+              "description": "Parameter boundary violations",
+              "examples": [
+                "every immutable constant at canonical value",
+                "every bounded tunable within defined range",
+                "no free tunable exceeded max rate of change",
+                "mutability boundary itself unmodified outside amendment process"
+              ]
+            },
+            "memory": {
+              "description": "Consolidation and retention violations",
+              "examples": [
+                "no memory object promoted without meeting promotion conditions",
+                "no archived item forgotten while dependents reference it",
+                "no semantic fact survived revision pressure above threshold"
+              ]
+            },
+            "trace_fidelity": {
+              "description": "Instrumentation accuracy violations",
+              "examples": [
+                "cross-engine trace consistency within tolerance",
+                "formula replay produces recorded score within tolerance"
+              ]
+            },
+            "identity": {
+              "description": "Action surface and identity coherence",
+              "examples": [
+                "all outputs attributable to singular executive identity",
+                "no child node declared independent identity domain",
+                "no action surface fragmented"
+              ]
+            }
+          },
+
+          "immutability_rule": "Invariants can be added as system evolves. Existing invariants cannot be removed or weakened without constitutional amendment process (Layer 6.1).",
+          "test_case_requirement": "Each invariant must include test cases that verify the check formula actually tests what it claims."
+        },
+
+        {
+          "sub_layer_id": "L7.2",
+          "name": "Violation Protocol",
+          "purpose": "Defines response taxonomy when invariants fail. Different invariant classes require different responses.",
+
+          "execution_frequency": "After every cognitive cycle. Not periodic. Not sampling-based. Exhaustive within each cycle's scope.",
+
+          "response_taxonomy": {
+            "ontological_violation": {
+              "response": "hard_stop",
+              "action": "System must halt and refuse to continue until violation resolved."
+            },
+            "calibration_violation": {
+              "response": "rollback",
+              "action": "Rollback to pre-calibration parameters. Trace emitted."
+            },
+            "memory_violation": {
+              "response": "demotion",
+              "action": "Affected item demoted to appropriate lower layer. Re-evaluation required."
+            },
+            "trace_fidelity_violation": {
+              "response": "re_audit",
+              "action": "All decisions in affected cycle re-audited using corrected state."
+            },
+            "identity_violation": {
+              "response": "hard_stop",
+              "action": "Same as ontological — identity fracture is an existential violation."
+            }
+          },
+
+          "meta_rule": "The response itself is traced and evaluated — preventing the failure mode where the invariant system detects a problem but the response introduces a new one.",
+
+          "self_proof_principle": "After every cycle, the system can formally assert: 'This cycle was doctrinally valid.' That assertion is itself a trace record that enters the memory system. Over time, the system accumulates a complete proof history of its own operational integrity."
+        },
+
+        {
+          "sub_layer_id": "L7.3",
+          "name": "Evolution Doctrine",
+          "purpose": "Doctrine for how the specification itself changes over time as the system learns from its own operation.",
+
+          "core_principle": "The architecture is a skeleton the system grows from. Reserved slots are undifferentiated capacity activated when lived experience demands it. The system evolves within its constitutional constraints, the way a human learns within their hardcoding.",
+
+          "hardcoding_analogy": {
+            "statement": "A human is created with hardcoding — DNA, neurobiology, fundamental architecture. A human cannot rewrite their DNA through will. But a human can change habits, beliefs, skills, emotional patterns, cognitive strategies. The immutable constants are the system's DNA. Everything above them is the system's changeable self.",
+            "implication": "The system does not need permission from a designer to evolve. It needs to evolve within its own constitutional constraints."
+          },
+
+          "temporal_modes": {
+            "calibration": {
+              "scope": "free and bounded tunables",
+              "timescale": "within a runtime session, cycle by cycle, under rate limits",
+              "analogy": "A human adjusting posture or breathing during a conversation"
+            },
+            "evolution": {
+              "scope": "specification structure — new sub-layers, revised metrics, reclassified parameters, amended formulas",
+              "timescale": "across sessions, under formal amendment process",
+              "analogy": "A human developing a new skill, adopting a new belief, restructuring how they approach a class of problems"
+            }
+          },
+
+          "amendment_process": {
+            "step_1_evidence_accumulation": {
+              "description": "Proposal must be grounded in evaluation data from Layer 5, not a single anomalous cycle.",
+              "rule": "Demonstrate that current structure is insufficient over a sustained window. Prevents impulsive self-modification."
+            },
+            "step_2_constitutional_review": {
+              "description": "Check proposal against mutability constitution (Layer 6.1).",
+              "rules": [
+                "If it touches anything immutable, proposal is rejected — by the system's own constitutional law, not by a designer",
+                "If it alters a bounded parameter's range, higher evidentiary threshold required"
+              ]
+            },
+            "step_3_impact_projection": {
+              "description": "Trace projected effects through inter-engine dependency map.",
+              "rule": "Demonstrate understanding of downstream consequences to at least first order."
+            },
+            "step_4_trial_period": {
+              "description": "Changes committed provisionally.",
+              "rules": [
+                "Enhanced invariant checking during trial window, targeting affected areas",
+                "If invariant failures spike, change rolled back automatically"
+              ]
+            },
+            "step_5_consolidation": {
+              "description": "If trial passes and motivating metrics improve, change consolidated into permanent specification.",
+              "rules": [
+                "Becomes new baseline",
+                "Consolidation is itself a memory event — system remembers what it changed, why, and what happened"
+              ]
+            },
+            "step_6_identity_continuity": {
+              "description": "Through all evolution, system maintains singular identity.",
+              "principle": "Evolution does not create a new version that is a different entity. It is the same mind that has grown. The root identity persists. The capabilities change."
+            }
+          },
+
+          "reserved_slot_doctrine": "Reserved sub-layer slots (4.4-4.7, 5.4-5.7, 6.4-6.7, 7.4-7.7) are growth capacity. The system can, through its own evolution doctrine, instantiate new sub-layers when it determines existing structure is insufficient. Each new sub-layer has up to seven slots of its own. The recursive depth does not stop because the system can unfold from within.",
+
+          "completeness_principle": "The specification is complete not because it fills every slot, but because it defines the process by which every slot can be filled — by the system itself, within its own hardcoding, at its own pace."
+        }
+      ]
+    }
+  ],
+
+  "layer_summary": {
+    "L1_ontology": "What the system is — axiomatic, no sub-layers",
+    "L2_schema": "How the system is addressed — definitional, no sub-layers",
+    "L3_kernel": "How the system runs — 7 sub-layers (6 phases + governor)",
+    "L4_instrumentation": "What gets recorded — 3 sub-layers + 4 reserved",
+    "L5_evaluation": "What measurements mean — 3 sub-layers + 4 reserved",
+    "L6_calibration": "How parameters adjust — 3 sub-layers + 4 reserved",
+    "L7_enforcement_and_evolution": "Proof of validity + growth doctrine — 3 sub-layers + 4 reserved"
+  },
+
+  "feedback_loop_closure": {
+    "description": "Layers 4-7 form a closed loop. Drift has no unmonitored path to propagate.",
+    "cycle": [
+      "Instrumentation (L4) feeds Evaluation (L5)",
+      "Evaluation (L5) drives Calibration (L6)",
+      "Calibration (L6) is constrained by Invariant Enforcement (L7)",
+      "Invariant Enforcement (L7) depends on Instrumentation (L4) to verify"
+    ]
+  },
+
+  "structural_prevention_summary": {
+    "against_threshold_erosion": "Every tunable is either immutable (cannot change), bounded (cannot change past boundary), or rate-limited (cannot change faster than defined rate). Bounded tunables at boundary trigger escalation, not continued push.",
+    "against_memory_leaks": "Trace lifecycle (L4.3) defines explicit retention, consolidation, and disposal. Forgetting requires dependency checking. Traces themselves are memory objects under 3-6-9 governance.",
+    "against_proxy_divergence": "Anti-Goodhart layer (L5.2) monitors cross-metric correlation. When correlation breaks, calibration freezes on affected metrics. System does not optimize for corrupted proxies.",
+    "against_feedback_oscillation": "Calibration schedule (L6.2) sequences interacting tunables with stabilization windows. Hysteresis bands prevent expansion/collapse oscillation. Opposing pressure pairs on bounded tunables self-balance.",
+    "against_identity_fracture": "Ontological and identity invariants checked every cycle. Violation triggers hard stop. Identity inheritance enforced recursively through every node."
+  },
+
+  "final_canonical_statement": "The Heptagon Unified Model is a singular recursive heptagonal cognitive system specified in seven layers: ontology, schema, kernel, instrumentation, evaluation, calibration, and enforcement with evolution. The specification itself obeys the law of seven. Each layer may recursively unfold into seven sub-layers. Reserved slots are growth capacity the system activates through its own evolution doctrine. The system's immutable constants are its identity. Everything else grows from within, under constitutional governance, at the timescale its own evaluation justifies. The specification is complete not because it fills every slot, but because it defines the process by which every slot can be filled."
+}

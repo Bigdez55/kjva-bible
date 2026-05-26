@@ -1,0 +1,532 @@
+/**
+ * avatar-animations.css -- Tokenless Companion Avatar Animations
+ *
+ * Four avatar states, each with dedicated @keyframes:
+ *   1. idle     -- gentle pulse (scale breathing, 2s ease-in-out)
+ *   2. listening -- ring ripple (expanding concentric circles)
+ *   3. thinking  -- orbital dots (3 dots rotating around center)
+ *   4. acting    -- glow burst (scale + opacity flash)
+ *
+ * Design system alignment:
+ *   --genos-primary   = #ff7518 (orange, from tokens.ts colors.primary)
+ *   --genos-accent    = #1aa7ec (blue, from tokens.ts colors.secondary)
+ *   --genos-surface   = #151b22 (neutral100, from tokens.ts colors.neutral100)
+ *   --genos-success   = #17b978 (from tokens.ts colors.success)
+ *   --genos-danger    = #ef476f (from tokens.ts colors.danger)
+ *   --genos-text      = #f7fbff (neutral900, from tokens.ts colors.neutral900)
+ *
+ * Respects prefers-reduced-motion: all animations collapse to static states.
+ * Transition between states: 300ms ease-out.
+ */
+
+/* ------------------------------------------------------------------ */
+/* CSS Custom Properties (design system tokens)                        */
+/* ------------------------------------------------------------------ */
+
+:root {
+  --genos-primary: #ff7518;
+  --genos-primary-muted: #cc5f14;
+  --genos-accent: #1aa7ec;
+  --genos-surface: #151b22;
+  --genos-surface-elevated: #202a34;
+  --genos-success: #17b978;
+  --genos-danger: #ef476f;
+  --genos-warning: #ffbe0b;
+  --genos-text: #f7fbff;
+  --genos-neutral-dark: #0d1115;
+
+  /* Animation timing tokens */
+  --genos-transition-state: 300ms ease-out;
+  --genos-pulse-duration: 2s;
+  --genos-ripple-duration: 1.6s;
+  --genos-orbit-duration: 1.4s;
+  --genos-burst-duration: 0.6s;
+}
+
+/* ------------------------------------------------------------------ */
+/* Avatar Container                                                     */
+/* ------------------------------------------------------------------ */
+
+.avatar-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 96px;
+  height: 96px;
+}
+
+/* The main avatar circle */
+.avatar-core {
+  position: relative;
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: var(--genos-primary);
+  transition:
+    background var(--genos-transition-state),
+    transform var(--genos-transition-state),
+    box-shadow var(--genos-transition-state);
+  z-index: 2;
+}
+
+/* State label beneath the avatar */
+.avatar-state-label {
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--genos-text);
+  opacity: 0.7;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* ------------------------------------------------------------------ */
+/* State 1: IDLE -- Gentle Pulse                                       */
+/* ------------------------------------------------------------------ */
+
+@keyframes avatar-pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 117, 24, 0.3);
+  }
+  50% {
+    transform: scale(1.04);
+    box-shadow: 0 0 16px 4px rgba(255, 117, 24, 0.15);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 117, 24, 0.3);
+  }
+}
+
+.avatar-container.state-idle .avatar-core {
+  animation: avatar-pulse var(--genos-pulse-duration) ease-in-out infinite;
+  background: var(--genos-primary);
+}
+
+/* ------------------------------------------------------------------ */
+/* State 2: LISTENING -- Ring Ripple                                    */
+/* ------------------------------------------------------------------ */
+
+@keyframes avatar-ripple {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+.avatar-container.state-listening .avatar-core {
+  background: var(--genos-accent);
+  animation: none;
+  box-shadow: 0 0 20px 4px rgba(26, 167, 236, 0.3);
+}
+
+/* Ripple rings -- pseudo-elements on the container */
+.avatar-container.state-listening::before,
+.avatar-container.state-listening::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 76px;
+  height: 76px;
+  margin-top: -38px;
+  margin-left: -38px;
+  border-radius: 50%;
+  border: 2px solid var(--genos-accent);
+  opacity: 0;
+  animation: avatar-ripple var(--genos-ripple-duration) ease-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.avatar-container.state-listening::after {
+  animation-delay: 0.5s;
+}
+
+/* Third ripple ring via a child element */
+.avatar-ripple-ring {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 76px;
+  height: 76px;
+  margin-top: -38px;
+  margin-left: -38px;
+  border-radius: 50%;
+  border: 2px solid var(--genos-accent);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.avatar-container.state-listening .avatar-ripple-ring {
+  display: block;
+  animation: avatar-ripple var(--genos-ripple-duration) ease-out infinite;
+  animation-delay: 1s;
+}
+
+/* ------------------------------------------------------------------ */
+/* State 3: THINKING -- Orbital Dots                                   */
+/* ------------------------------------------------------------------ */
+
+@keyframes avatar-orbit {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes avatar-think-pulse {
+  0%, 100% {
+    opacity: 0.85;
+    box-shadow: 0 0 12px 2px rgba(255, 190, 11, 0.2);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 20px 6px rgba(255, 190, 11, 0.35);
+  }
+}
+
+.avatar-container.state-thinking .avatar-core {
+  background: var(--genos-warning);
+  animation: avatar-think-pulse 1.2s ease-in-out infinite;
+}
+
+/* Orbital track */
+.avatar-orbit-track {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 88px;
+  height: 88px;
+  margin-top: -44px;
+  margin-left: -44px;
+  animation: avatar-orbit var(--genos-orbit-duration) linear infinite;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.avatar-container.state-thinking .avatar-orbit-track {
+  display: block;
+}
+
+/* Individual orbital dots */
+.avatar-orbit-dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--genos-text);
+  box-shadow: 0 0 6px rgba(247, 251, 255, 0.6);
+}
+
+.avatar-orbit-dot:nth-child(1) {
+  top: 0;
+  left: 50%;
+  margin-left: -4px;
+}
+
+.avatar-orbit-dot:nth-child(2) {
+  bottom: 12px;
+  right: 2px;
+}
+
+.avatar-orbit-dot:nth-child(3) {
+  bottom: 12px;
+  left: 2px;
+}
+
+/* ------------------------------------------------------------------ */
+/* State 4: ACTING -- Glow Burst                                       */
+/* ------------------------------------------------------------------ */
+
+@keyframes avatar-burst {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(23, 185, 120, 0.5);
+    opacity: 1;
+  }
+  40% {
+    transform: scale(1.15);
+    box-shadow: 0 0 30px 10px rgba(23, 185, 120, 0.4);
+    opacity: 0.9;
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 14px 4px rgba(23, 185, 120, 0.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 8px 2px rgba(23, 185, 120, 0.15);
+    opacity: 1;
+  }
+}
+
+.avatar-container.state-acting .avatar-core {
+  background: var(--genos-success);
+  animation: avatar-burst var(--genos-burst-duration) ease-out infinite;
+}
+
+/* ------------------------------------------------------------------ */
+/* Error state (optional, for when bridge loses connection)            */
+/* ------------------------------------------------------------------ */
+
+@keyframes avatar-error-blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.avatar-container.state-error .avatar-core {
+  background: var(--genos-danger);
+  animation: avatar-error-blink 1s ease-in-out infinite;
+}
+
+/* ------------------------------------------------------------------ */
+/* Prefers Reduced Motion                                              */
+/* ------------------------------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  .avatar-core {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .avatar-container.state-idle .avatar-core {
+    animation: none;
+    box-shadow: 0 0 8px 2px rgba(255, 117, 24, 0.2);
+  }
+
+  .avatar-container.state-listening .avatar-core {
+    box-shadow: 0 0 8px 2px rgba(26, 167, 236, 0.3);
+  }
+
+  .avatar-container.state-listening::before,
+  .avatar-container.state-listening::after {
+    animation: none;
+    display: none;
+  }
+
+  .avatar-container.state-listening .avatar-ripple-ring {
+    animation: none;
+    display: none;
+  }
+
+  .avatar-container.state-thinking .avatar-orbit-track {
+    animation: none;
+    /* Show dots in a static position instead of orbiting */
+  }
+
+  .avatar-container.state-thinking .avatar-core {
+    animation: none;
+    box-shadow: 0 0 12px 4px rgba(255, 190, 11, 0.25);
+  }
+
+  .avatar-container.state-acting .avatar-core {
+    animation: none;
+    box-shadow: 0 0 12px 4px rgba(23, 185, 120, 0.25);
+  }
+
+  .avatar-container.state-error .avatar-core {
+    animation: none;
+    box-shadow: 0 0 12px 4px rgba(239, 71, 111, 0.25);
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Action Trace Panel Styles                                           */
+/* ------------------------------------------------------------------ */
+
+.action-trace-panel {
+  display: flex;
+  flex-direction: column;
+  max-height: 320px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  background: var(--genos-surface);
+  font-family: "Inter", "Noto Sans", sans-serif;
+}
+
+.action-trace-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--genos-text);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.action-trace-header button {
+  all: unset;
+  cursor: pointer;
+  font-size: 11px;
+  color: var(--genos-primary);
+  opacity: 0.8;
+  transition: opacity 150ms ease;
+}
+
+.action-trace-header button:hover {
+  opacity: 1;
+}
+
+.action-trace-header button:focus-visible {
+  outline: 2px solid var(--genos-accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.action-trace-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex: 1;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+}
+
+.action-trace-entry {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 8px;
+  padding: 8px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  font-size: 13px;
+  color: var(--genos-text);
+  opacity: 0;
+  transform: translateY(8px);
+  animation: trace-entry-appear 250ms ease-out forwards;
+}
+
+@keyframes trace-entry-appear {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.action-trace-entry:last-child {
+  border-bottom: none;
+}
+
+/* Type badge */
+.trace-type-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 72px;
+  height: 22px;
+  padding: 0 6px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+.trace-type-badge.type-intent {
+  background: rgba(26, 167, 236, 0.15);
+  color: var(--genos-accent);
+}
+
+.trace-type-badge.type-context {
+  background: rgba(255, 190, 11, 0.15);
+  color: var(--genos-warning);
+}
+
+.trace-type-badge.type-inference {
+  background: rgba(255, 117, 24, 0.15);
+  color: var(--genos-primary);
+}
+
+.trace-type-badge.type-tool_call {
+  background: rgba(23, 185, 120, 0.15);
+  color: var(--genos-success);
+}
+
+.trace-type-badge.type-result {
+  background: rgba(247, 251, 255, 0.1);
+  color: var(--genos-text);
+}
+
+/* Description text */
+.trace-description {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: rgba(247, 251, 255, 0.85);
+}
+
+/* Status + duration */
+.trace-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: rgba(247, 251, 255, 0.5);
+  white-space: nowrap;
+}
+
+.trace-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.trace-status-dot.status-pending {
+  background: var(--genos-warning);
+  animation: trace-pending-blink 1s ease-in-out infinite;
+}
+
+@keyframes trace-pending-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.trace-status-dot.status-success {
+  background: var(--genos-success);
+}
+
+.trace-status-dot.status-error {
+  background: var(--genos-danger);
+}
+
+/* Reduced motion for trace entries */
+@media (prefers-reduced-motion: reduce) {
+  .action-trace-entry {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .trace-status-dot.status-pending {
+    animation: none;
+  }
+}

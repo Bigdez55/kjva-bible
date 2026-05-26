@@ -26,7 +26,7 @@ def complete(req: CompleteRequest):
             503,
             detail={
                 "error": "KJVA weights not installed",
-                "fix": "cp <Tokenless Models>/KJVA/training/weights.safetensors models/kjva/weights.safetensors",
+                "fix": "Weights are gitignored (72 MB). Place weights.safetensors at KJVA/training/weights.safetensors",
             },
         )
     completion = engine.complete(

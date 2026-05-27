@@ -1,0 +1,28 @@
+---
+title: KJVA Bible — Cross-Repo Dependency
+status: verified
+tier: T1
+last_updated: 2026-05-26
+---
+graph LR
+    KJVA_Bible["kjva-bible\n(this repo)"]
+
+    TM["Tokenless-Models\n[consumes_from]\nKJVA weights, corpus,\nAI governance KJVA/ dir"]
+
+    GEN["GENESYS\n[UNWIRED]\nheptagon/soul_manager\npattern origin"]
+
+    SC["desmond-super-c\n[UNWIRED]\n.sc artifacts in KJVA/"]
+
+    NX["Nexus\n[UNWIRED]\nnexus_engine.sc reference"]
+
+    DS["Development_Skills\n[platform]\nonboarding, skills,\nregistries, diagrams"]
+
+    KJVA_Bible -->|"static import of KJVA/ dir\n+ manual weight copy"| TM
+    KJVA_Bible -.->|"governance conventions\n[UNWIRED]"| GEN
+    KJVA_Bible -.->|"Super C .sc files\n[UNWIRED]"| SC
+    KJVA_Bible -.->|"nexus_engine reference\n[UNWIRED]"| NX
+    DS -->|"onboarding T1"| KJVA_Bible
+
+    style GEN stroke:#f66,stroke-dasharray:5
+    style SC stroke:#f66,stroke-dasharray:5
+    style NX stroke:#f66,stroke-dasharray:5

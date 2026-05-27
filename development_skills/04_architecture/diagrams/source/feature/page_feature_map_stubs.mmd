@@ -1,0 +1,30 @@
+---
+title: KJVA Bible — Page Feature Map: Stub Tabs (Search / Q&A / Cross-Reference)
+status: verified
+tier: T1
+last_updated: 2026-05-26
+---
+graph TD
+    SP["StubPanel.jsx\n(shared across 3 tabs)"]
+
+    subgraph Search["Search Tab (Phase 2)"]
+        S_Title["Feature: Semantic Search\n⏳ stub — 501"]
+        S_Desc["Description: Find verses by meaning, not keywords"]
+        S_Req["Requires: sentence-embedding adapter\n(train in Tokenless-Models)"]
+    end
+
+    subgraph QA["Q&A Tab (Phase 3)"]
+        Q_Title["Feature: Q&A / Commentary\n⏳ stub — 501"]
+        Q_Desc["Description: Ask scripture-grounded questions"]
+        Q_Req["Requires: SFT instruction-tuning adapter\n(train in Tokenless-Models)"]
+    end
+
+    subgraph XRef["Cross-Reference Tab (Phase 4)"]
+        X_Title["Feature: Cross-Reference\n⏳ stub — 501"]
+        X_Desc["Description: Related passages and thematic connections"]
+        X_Req["Requires: embedding similarity index or precomputed graph"]
+    end
+
+    SP -->|"prop: feature=Semantic Search, phase=2"| Search
+    SP -->|"prop: feature=Q&A / Commentary, phase=3"| QA
+    SP -->|"prop: feature=Cross-Reference, phase=4"| XRef

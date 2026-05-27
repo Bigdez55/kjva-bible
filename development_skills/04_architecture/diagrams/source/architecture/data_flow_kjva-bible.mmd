@@ -1,0 +1,36 @@
+---
+title: KJVA Bible — Data Flow
+status: verified
+tier: T1
+last_updated: 2026-05-26
+---
+flowchart TD
+    subgraph Sources["Data Sources"]
+        KJV_Corpus["KJV Corpus\neng-kjv_vpl, browserBible, html\n(Tokenless-Models origin)"]
+        Weights72["weights.safetensors\n72MB gitignored\n(Tokenless-Models origin)"]
+        Config_JSON["model_config.json\nbyte_vocab.json\n(gittracked)"]
+    end
+
+    subgraph Ingest["Ingest / Pre-process"]
+        Verses_JSONL["data/verses.jsonl\n36,822 structured verse records"]
+    end
+
+    subgraph Runtime["Runtime (FastAPI startup)"]
+        VerseIndex["VerseIndex singleton\nloaded once — O(1) dict lookup\nbook/chapter/verse keys"]
+        KJVAModel["KJVAInference singleton\nlazy-loaded on first /api/complete\nTokenlessLM (MLX, frozen)"]
+    end
+
+    subgraph API_Out["API Outputs"]
+        VerseData["Verse JSON\n{ref, text, book, chapter, verse,\n canon_category, Strongs, footnotes}"]
+        Completion["Completion JSON\n{prompt, completion, model: kjva-18m}"]
+        Stub501["HTTP 501 JSON\n{error, requires_adapter, phase}"]
+    end
+
+    KJV_Corpus -->|"pre-processed offline"| Verses_JSONL
+    Weights72 -->|"mx.load() at first request"| KJVAModel
+    Config_JSON -->|"ModelConfig parse"| KJVAModel
+    Verses_JSONL -->|"load() at startup"| VerseIndex
+
+    VerseIndex -->|"books/chapters/verses/verse"| VerseData
+    KJVAModel -->|"byte-encode → forward → nucleus sample → decode"| Completion
+    Stub501 -->|"search/qa/xref routes"| Stub501

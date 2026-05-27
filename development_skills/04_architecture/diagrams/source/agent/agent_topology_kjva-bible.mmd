@@ -1,0 +1,56 @@
+---
+title: KJVA Bible — Agent Topology (KJVA Governance System)
+status: verified
+tier: T1
+last_updated: 2026-05-26
+---
+graph TD
+    subgraph KJVA_Dir["KJVA/ (inherited from Tokenless-Models)"]
+        subgraph Heptagon["heptagon/"]
+            Harness["harness.py\n7-layer eval harness"]
+            Layers["layers.py\nheptagon layer definitions"]
+            Registry["registry.py\ncomponent registry"]
+            Attestation["attestation.py\nidentity attestation"]
+            MemberGuard["member_guard.py\nmember protection"]
+        end
+
+        subgraph SoulMgr["soul_manager/"]
+            Consolidation["consolidation.py\nstate consolidation"]
+            MsgFraming["message_framing.py\nmessage envelope builder"]
+            DaemonClient["daemon_client.py\n⚠️ new — daemon comms"]
+            AESBridge["aes_gcm_bridge.py\nencrypted state storage"]
+        end
+
+        subgraph Governance_Pkg["governance/"]
+            CovenantEnf["covenant_enforcer.py\npolicy gate enforcement"]
+            GateEval["gate_evaluators.py\ngate pass/fail logic"]
+            Interceptors["interceptors.py\nrequest interception"]
+            DecEnv["decision_envelope.py\naudit decision wrapping"]
+        end
+
+        subgraph AI_Pkg["ai/tokenless-agent/"]
+            AgentSrc["src/agent.py\nCognitive pipeline agent"]
+            API_Agent["src/api.py\nAgent REST API"]
+            CogPipeline["src/cognitive_pipeline.py\nreasoning pipeline"]
+            HeptEval["src/heptagon/evaluation.py"]
+            HeptWrite["src/heptagon/writeback.py"]
+        end
+    end
+
+    subgraph App_Integration["App Integration (current)"]
+        style App_Integration fill:#2a1a00,stroke:#fa0
+        Note["⚠️ KJVA governance system is\nIN TREE but NOT integrated\nwith FastAPI app or inference.\nHarness, soul_manager, governance\nare passive (documentation/substrate)."]
+    end
+
+    Harness --> Layers
+    Harness --> Registry
+    Harness --> Attestation
+    Harness --> MemberGuard
+    CovenantEnf --> GateEval
+    CovenantEnf --> Interceptors
+    CovenantEnf --> DecEnv
+    AgentSrc --> CogPipeline
+    AgentSrc --> HeptEval
+    HeptEval --> HeptWrite
+    SoulMgr -.->|"not wired to app"| App_Integration
+    Governance_Pkg -.->|"not wired to app"| App_Integration

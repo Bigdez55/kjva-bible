@@ -1,0 +1,28 @@
+---
+title: KJVA Bible — System Context
+status: verified
+tier: T1
+last_updated: 2026-05-26
+---
+C4Context
+    title KJVA Bible — System Context
+
+    Person(user, "Reader / User", "Browses KJV scripture, runs AI verse completions")
+
+    System_Boundary(kjva_bible, "KJVA Bible App") {
+        System(frontend, "React Frontend", "Tab UI: Browse, Completion, Stubs (Search/Q&A/Xref)")
+        System(backend, "FastAPI Backend", "Verse index, AI inference, REST API")
+    }
+
+    System_Ext(tokenless_models, "Tokenless-Models [consumes_from]", "KJVA 18M weights, corpus, AI governance system (KJVA/ dir)")
+    System_Ext(kjva_weights, "KJVA/training/weights.safetensors", "72MB gitignored — copied manually from Tokenless-Models")
+
+    System_Ext(genesys, "GENESYS [UNWIRED]", "Heptagon/soul_manager pattern origin — not wired")
+    System_Ext(super_c, "desmond-super-c [UNWIRED]", "Super C .sc artifacts in KJVA/ — not wired")
+    System_Ext(nexus, "Nexus [UNWIRED]", "nexus_engine.sc referenced in KJVA/ — not wired")
+
+    Rel(user, frontend, "Browses verses, submits completion prompts", "HTTPS/browser")
+    Rel(frontend, backend, "API calls /api/*", "HTTP/JSON, Vite proxy :8000")
+    Rel(backend, kjva_weights, "Loads weights at first /api/complete call", "local file read")
+    Rel(tokenless_models, kjva_weights, "Source of weights + corpus (manual copy)")
+    Rel(backend, tokenless_models, "KJVA/ dir imported from here", "static import")

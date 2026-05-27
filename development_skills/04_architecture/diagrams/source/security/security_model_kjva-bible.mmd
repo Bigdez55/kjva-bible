@@ -1,0 +1,32 @@
+---
+title: KJVA Bible — Security Model
+status: verified
+tier: T1
+last_updated: 2026-05-26
+---
+graph TD
+    subgraph Protected["Protected Assets"]
+        W["weights.safetensors\n72MB — gitignored\n(not served via API)"]
+        Corpus["data/verses.jsonl\npublic domain KJV text\n(low sensitivity)"]
+    end
+
+    subgraph Exposure["Current Exposure Surface"]
+        API_Open["REST API\n/api/* — NO auth\nopen to any caller with network access"]
+        CORS["CORS: localhost:5173 + localhost:8000\n(dev — restrictive)\nproduction: open *"]
+        Static["Static files served\n(React dist/ — no secrets)"]
+    end
+
+    subgraph Risks["Current Security Risks"]
+        style Risks fill:#4a1010,stroke:#f66
+        No_Auth["NO authentication\nAny caller can hit /api/complete\n→ model abuse / compute exhaustion"]
+        No_Rate["NO rate limiting\nUnbounded /api/complete requests\n→ DoS on inference engine"]
+        No_HTTPS["HTTPS only if hosting layer provides it\n(no TLS termination in-app)"]
+        Prompt_Inject["Prompt injection risk\n(user-controlled bytes → model input)\nlow risk for text-only KJV model"]
+        KJVA_Gov["KJVA governance system in tree\n(heptagon, soul_manager, governance)\nnot guarded — any local process can import"]
+    end
+
+    subgraph Mitigations["Existing Mitigations"]
+        Gitignore["weights.safetensors gitignored\n(never committed)"]
+        Pydantic_Val["Pydantic input validation\n(prompt max 2000 chars, token limits)"]
+        No_Sensitive["No PII, no payment data,\nno user accounts — low attack value"]
+    end

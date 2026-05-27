@@ -1,0 +1,41 @@
+---
+title: KJVA Bible — UI State Machine
+status: verified
+tier: T1
+last_updated: 2026-05-26
+---
+stateDiagram-v2
+    [*] --> BrowseTab : app load (default tab: browse)
+
+    state BrowseTab {
+        [*] --> LoadingBooks
+        LoadingBooks --> BooksLoaded : GET /api/books 200
+        LoadingBooks --> BooksError : network error
+        BooksLoaded --> LoadingChapters : select book
+        LoadingChapters --> ChaptersLoaded : GET /api/chapters 200
+        ChaptersLoaded --> LoadingVerses : select chapter
+        LoadingVerses --> VersesLoaded : GET /api/verses 200
+        VersesLoaded --> VerseDisplayed : select verse → GET /api/verse 200
+    }
+
+    state CompletionTab {
+        [*] --> PromptEmpty
+        PromptEmpty --> PromptTyped : user types prompt
+        PromptTyped --> Generating : submit (POST /api/complete)
+        Generating --> CompletionReady : 200 response
+        Generating --> CompletionError : 503 (weights missing) or network error
+        CompletionReady --> PromptTyped : edit prompt
+    }
+
+    state StubTab {
+        [*] --> StubRendered : StubPanel mounts
+        StubRendered --> StubError501 : user clicks action (POST → 501)
+        note right of StubError501 : Search, Q&A, Xref tabs
+    }
+
+    BrowseTab --> CompletionTab : tab click
+    BrowseTab --> StubTab : tab click (Search/Q&A/Xref)
+    CompletionTab --> BrowseTab : tab click
+    CompletionTab --> StubTab : tab click
+    StubTab --> BrowseTab : tab click
+    StubTab --> CompletionTab : tab click

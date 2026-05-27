@@ -1,0 +1,32 @@
+---
+title: KJVA Bible — Test Coverage
+status: verified
+tier: T1
+last_updated: 2026-05-26
+---
+graph TD
+    subgraph Untested["UNTESTED (0 test files)"]
+        style Untested fill:#4a1010,stroke:#f66
+        corpus_t["corpus.py\nVerseIndex load, lookup, search"]
+        inference_t["inference.py\nbyte encode/decode, completion, top-p sampling"]
+        model_t["model.py\nTokenlessLM forward pass"]
+        verse_r["routes/verse.py\n/api/books /chapters /verses /verse"]
+        complete_r["routes/complete.py\nPOST /api/complete"]
+        stubs_r["routes/stubs.py\nHTTP 501 response shape"]
+        app_t["App.jsx — tab switching"]
+        vb_t["VerseBrowser.jsx — nav interactions"]
+        cp_t["CompletionPanel.jsx — submit + render"]
+        sp_t["StubPanel.jsx — stub render"]
+    end
+
+    subgraph Covered["COVERED"]
+        style Covered fill:#102a10,stroke:#6f6
+        kjva_agent_tests["KJVA/ai/tokenless-agent/tests/\n(inherited — covers AI agent,\nnot the app itself)"]
+    end
+
+    subgraph Gap["CRITICAL GAPS"]
+        style Gap fill:#2a1a00,stroke:#fa0
+        no_int["No integration tests\n(API round-trip)"]
+        no_e2e["No E2E tests\n(browser flow)"]
+        no_ci["No CI/CD pipeline\n(no automated test run)"]
+    end

@@ -1,0 +1,28 @@
+---
+title: KJVA Bible — Trust Boundary
+status: verified
+tier: T1
+last_updated: 2026-05-26
+---
+graph LR
+    subgraph Untrusted["Untrusted (user-controlled)"]
+        Browser["Browser\n(user input: prompt text,\nmax_tokens, temperature, top_p)"]
+    end
+
+    subgraph Boundary["Trust Boundary\n(Pydantic validation)"]
+        Val["CompleteRequest validation\n- prompt: str max 2000 chars\n- max_new_tokens: 1–512\n- temperature: 0–2\n- top_p: 0–1"]
+    end
+
+    subgraph Trusted["Trusted (server-controlled)"]
+        VerseIdx["VerseIndex\n(loaded from gittracked JSONL)"]
+        KJVAInf["KJVAInference\n(weights from gitignored safetensors)"]
+        FS["Filesystem\n(weights, config, verses)"]
+    end
+
+    Browser -->|"POST /api/complete\nHTTP JSON"| Val
+    Val -->|"validated CompleteRequest\nobject"| KJVAInf
+    KJVAInf --> FS
+    Browser -->|"GET /api/verse\n(book/chapter/verse path params)"| VerseIdx
+    VerseIdx --> FS
+
+    Note["⚠️ No auth — trust boundary is\nvalidation only, not identity"]

@@ -1,0 +1,33 @@
+---
+title: KJVA Bible — Ecosystem Map
+status: verified
+tier: T1
+last_updated: 2026-05-26
+---
+graph TD
+    subgraph Consumer_Apps["Consumer Apps"]
+        KJVA_B["kjva-bible\nKJV Bible app + AI completion\n(React + FastAPI + MLX)"]
+        Nexus["Nexus\ncognitive research interface\n(4 modes, 6-agent mesh)"]
+        IPOS["IPOS\nparatransit OS"]
+    end
+
+    subgraph AI_Platform["AI / Model Platform"]
+        TM["Tokenless-Models\nbyte-level LM substrate\nKJVA 18M, training infra,\nMLX-native"]
+        GENESYS["GENESYS\nGEN.OS kernel\nheptagon/soul_manager runtime"]
+    end
+
+    subgraph Language_Platform["Language Platform"]
+        SC["desmond-super-c\nSuper C language lab\n.sc compiler / runtime"]
+    end
+
+    subgraph Intelligence["Central Intelligence"]
+        DS["Development_Skills\nSDLC platform\nskills, registries, onboarding"]
+    end
+
+    TM -->|"provides KJVA weights + corpus + KJVA/ governance"| KJVA_B
+    GENESYS -.->|"governance patterns [UNWIRED]"| KJVA_B
+    SC -.->|".sc artifacts [UNWIRED]"| KJVA_B
+    DS -->|"onboarding, drift, diagrams"| KJVA_B
+
+    style GENESYS stroke:#f66,stroke-dasharray:5
+    style SC stroke:#f66,stroke-dasharray:5

@@ -1,0 +1,25 @@
+---
+title: KJVA Bible — Threat Model
+status: verified
+tier: T1
+last_updated: 2026-05-26
+---
+graph TD
+    subgraph Actors["Threat Actors"]
+        Anon["Anonymous internet user\n(if publicly hosted)"]
+        LocalDev["Local developer\n(legitimate)"]
+    end
+
+    subgraph Threats["Threats"]
+        T1["T1: Compute exhaustion\nSpam /api/complete with max tokens\n→ MLX inference saturates CPU/GPU\nLikelihood: HIGH if public\nMitigation: add rate limiting"]
+        T2["T2: Model output abuse\nGenerate misleading KJV-style text\nat scale (fake scripture)\nLikelihood: LOW (niche model)\nMitigation: add rate limiting + attribution"]
+        T3["T3: Data exfil (low value)\nDump all verses via /api/verse iteration\nLikelihood: LOW (KJV is public domain)\nMitigation: none required"]
+        T4["T4: Weights theft\nweights.safetensors not served via API,\nnot in git — LOW risk\nMitigation: gitignore in place"]
+        T5["T5: Prompt injection → unexpected output\nUser crafts prompt to manipulate generation\nLikelihood: LOW (byte-level model, no tool use)\nMitigation: Pydantic length limits"]
+    end
+
+    Anon -->|"internet access"| T1
+    Anon -->|"internet access"| T2
+    Anon -->|"internet access"| T3
+    LocalDev -->|"local file access"| T4
+    Anon -->|"crafted prompt"| T5

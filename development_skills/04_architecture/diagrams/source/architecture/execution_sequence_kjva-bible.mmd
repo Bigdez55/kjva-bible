@@ -1,0 +1,54 @@
+---
+title: KJVA Bible — Execution Sequence (Primary Paths)
+status: verified
+tier: T1
+last_updated: 2026-05-26
+---
+sequenceDiagram
+    participant U as User (Browser)
+    participant FE as React Frontend
+    participant BE as FastAPI Backend
+    participant CI as VerseIndex
+    participant INF as KJVAInference
+    participant FS as Filesystem
+
+    Note over BE,FS: Startup (lifespan)
+    BE->>CI: get_index().load()
+    CI->>FS: open data/verses.jsonl
+    FS-->>CI: 36,822 lines
+    CI-->>BE: ready
+
+    Note over U,FE: Path A — Verse Browse
+    U->>FE: select book / chapter / verse
+    FE->>BE: GET /api/books
+    BE->>CI: books()
+    CI-->>BE: ordered book list
+    BE-->>FE: [{code, name, full_name, canon_category, order}]
+    FE-->>U: render book list
+
+    FE->>BE: GET /api/verse/{book}/{chapter}/{verse}
+    BE->>CI: get_verse(book, chapter, verse)
+    CI-->>BE: verse record (O(1) dict lookup)
+    BE-->>FE: {ref, text, book, chapter, verse, Strongs, footnotes}
+    FE-->>U: render verse text
+
+    Note over U,FE: Path B — AI Completion (lazy model load)
+    U->>FE: type prompt, click Complete
+    FE->>BE: POST /api/complete {prompt, max_new_tokens, temperature, top_p}
+    BE->>INF: engine.is_ready() → True
+    BE->>INF: engine.complete(prompt, ...)
+    INF->>FS: mx.load(weights.safetensors) [first call only]
+    FS-->>INF: 18M params
+    INF->>INF: byte-encode(prompt) → [BOS, b0+3, b1+3, ...]
+    loop max_new_tokens
+        INF->>INF: model(ctx) → logits → nucleus sample → next_token
+    end
+    INF-->>BE: decoded string
+    BE-->>FE: {prompt, completion, model: "kjva-18m"}
+    FE-->>U: render completion text
+
+    Note over U,FE: Path C — Stub (Phase 2-4)
+    U->>FE: click Search/Q&A/Xref tab
+    FE->>BE: POST /api/search | /api/qa | /api/xref
+    BE-->>FE: HTTP 501 {error, requires_adapter, phase}
+    FE-->>U: StubPanel placeholder

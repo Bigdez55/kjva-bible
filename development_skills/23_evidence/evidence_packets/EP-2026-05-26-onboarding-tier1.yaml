@@ -1,0 +1,140 @@
+evidence_packet_id: EP-2026-05-26-onboarding-tier1
+repo: kjva-bible
+tier: 1
+date: '2026-05-26'
+author: apex-onboard
+
+summary: >
+  Tier 1 onboarding for kjva-bible. Full discovery protocol executed across all 8 steps.
+  Reality model derived mechanically from git history, source code, and directory structure.
+  All mandatory T1 artifacts produced.
+
+discovery_protocol:
+  step1_git_history:
+    commits: 3
+    branches: [main, claude/onboarding-tier1]
+    remote: https://github.com/Bigdez55/kjva-bible.git
+    age_days: recent
+    primary_language_signal: Python (FastAPI + MLX) + JavaScript (React)
+  step2_language_artifacts:
+    python:
+      framework: fastapi>=0.111.0
+      inference: mlx>=0.16.0
+      model_format: safetensors>=0.4.3
+    javascript:
+      framework: react@^18.3.1
+      build_tool: vite@^5.3.1
+  step3_directory_tree:
+    top_level: [backend, frontend, data, KJVA, development_skills]
+    test_dirs_found: [KJVA/ai/tokenless-agent/tests]
+    deployment_artifacts: [frontend/dist]
+  step4_documentation:
+    readme_read: true
+    agents_md_read: true
+    kjva_docs_read: true
+    stated_facts_verified_against_code: true
+  step5_source_structure:
+    backend_entry: backend/main.py
+    key_modules: [corpus.py, inference.py, model.py]
+    routes: [verse.py, complete.py, stubs.py]
+    frontend_entry: frontend/src/App.jsx
+    components: [VerseBrowser.jsx, CompletionPanel.jsx, StubPanel.jsx]
+  step6_deployment_signals:
+    dockerfile: false
+    github_actions: false
+    vercel_json: false
+    fly_toml: false
+    vite_config: true
+    production_mode: FastAPI serves React dist/ as StaticFiles
+  step7_test_surface:
+    test_count_app: 0
+    test_count_kjva_governance: present (KJVA/ai/tokenless-agent/tests/)
+    test_framework: none for app
+    coverage: none
+  step8_cross_repo:
+    tokenless_models: consumes_from (weights + corpus + KJVA/ dir)
+    genesys: gap UNWIRED (governance conventions)
+    desmond_super_c: gap UNWIRED (.sc artifacts)
+    nexus: gap UNWIRED (nexus_engine.sc reference)
+
+artifacts_produced:
+  current_truth_yaml:
+    path: development_skills/19_truth_state/current.truth.yaml
+    status: written
+  diagrams:
+    - path: development_skills/04_architecture/diagrams/source/architecture/system_context_kjva-bible.mmd
+      status: verified
+    - path: development_skills/04_architecture/diagrams/source/architecture/component_map_kjva-bible.mmd
+      status: verified
+    - path: development_skills/04_architecture/diagrams/source/architecture/data_flow_kjva-bible.mmd
+      status: verified
+    - path: development_skills/04_architecture/diagrams/source/architecture/execution_sequence_kjva-bible.mmd
+      status: verified
+    - path: development_skills/04_architecture/diagrams/source/architecture/dependency_impact_kjva-bible.mmd
+      status: verified
+    - path: development_skills/04_architecture/diagrams/source/architecture/test_coverage_kjva-bible.mmd
+      status: verified
+    - path: development_skills/04_architecture/diagrams/source/architecture/deployment_impact_kjva-bible.mmd
+      status: verified
+    - path: development_skills/04_architecture/diagrams/source/feature/feature_map_kjva-bible.mmd
+      status: verified
+    - path: development_skills/04_architecture/diagrams/source/feature/ui_navigation_kjva-bible.mmd
+      status: verified
+    - path: development_skills/04_architecture/diagrams/source/feature/ui_state_kjva-bible.mmd
+      status: verified
+    - path: development_skills/04_architecture/diagrams/source/feature/user_journey_kjva-bible.mmd
+      status: verified
+    - path: development_skills/04_architecture/diagrams/source/feature/page_feature_map_browse.mmd
+      status: verified
+    - path: development_skills/04_architecture/diagrams/source/feature/page_feature_map_completion.mmd
+      status: verified
+    - path: development_skills/04_architecture/diagrams/source/feature/page_feature_map_stubs.mmd
+      status: verified
+    - path: development_skills/04_architecture/diagrams/source/security/security_model_kjva-bible.mmd
+      status: verified
+    - path: development_skills/04_architecture/diagrams/source/security/threat_model_kjva-bible.mmd
+      status: verified
+    - path: development_skills/04_architecture/diagrams/source/security/trust_boundary_kjva-bible.mmd
+      status: verified
+    - path: development_skills/04_architecture/diagrams/source/security/auth_flow_kjva-bible.mmd
+      status: stub
+    - path: development_skills/04_architecture/diagrams/source/agent/agent_topology_kjva-bible.mmd
+      status: verified
+    - path: development_skills/04_architecture/diagrams/source/agent/agent_workflow_kjva-bible.mmd
+      status: stub
+    - path: development_skills/04_architecture/diagrams/source/agent/skill_graph_kjva-bible.mmd
+      status: stub
+    - path: development_skills/04_architecture/diagrams/source/agent/knowledge_mesh_kjva-bible.mmd
+      status: verified
+    - path: development_skills/04_architecture/diagrams/source/api/api_surface_kjva-bible.mmd
+      status: verified
+    - path: development_skills/04_architecture/diagrams/source/api/schema_map_kjva-bible.mmd
+      status: verified
+    - path: development_skills/04_architecture/diagrams/source/ecosystem/cross_repo_dependency_kjva-bible.mmd
+      status: verified
+    - path: development_skills/04_architecture/diagrams/source/ecosystem/ecosystem_map_kjva-bible.mmd
+      status: verified
+
+drift_check_results:
+  truth_drift: 0 findings
+  skill_drift: 0 findings
+  registry_sync: 37 registries synced (upstream Development_Skills)
+
+critical_findings:
+  - finding: No test suite (0 test files for backend or frontend)
+    severity: high
+    recommendation: Add pytest for backend routes + corpus; add Playwright or Vitest for frontend
+  - finding: No CI/CD pipeline (no GitHub Actions, no Dockerfile)
+    severity: high
+    recommendation: Add GHA workflow for lint + test on push
+  - finding: No rate limiting on /api/complete
+    severity: medium
+    recommendation: Add slowapi or token-bucket middleware before public deployment
+  - finding: KJVA governance system in tree but not wired to app runtime
+    severity: info
+    recommendation: Decide in Tier 2 whether to integrate or keep as documentation substrate
+  - finding: 3 UNWIRED cross-repo gaps (GENESYS, desmond-super-c, Nexus)
+    severity: info
+    recommendation: Clarify governance integration path in Tier 2 ADRs
+
+twin_status: pending (see T1 step 5 — twin to be populated in upstream Development_Skills branch)

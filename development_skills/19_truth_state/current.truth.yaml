@@ -1,0 +1,159 @@
+truth_id: TRUTH-KJVA-BIBLE-001
+repo: kjva-bible
+remote: https://github.com/Bigdez55/kjva-bible.git
+last_verified: '2026-05-26'
+last_verified_by: apex-onboard-tier1
+
+summary: >
+  Full-stack King James Bible web app powered by the KJVA AI model — an 18M-parameter
+  byte-level transformer (val_ppl=3.21) trained on KJV + Apocrypha. Phase 1 features
+  (verse browser + AI completion) are live. Phases 2–4 (semantic search, Q&A,
+  cross-reference) are stub endpoints returning HTTP 501.
+
+primary_language: Python
+secondary_language: JavaScript (JSX)
+framework:
+  backend: FastAPI + uvicorn
+  frontend: React 18 + Vite
+  inference: MLX (Apple Silicon, unified memory)
+  model_format: safetensors
+
+runtime:
+  python: "3.11+"
+  node: "18+"
+  platform: macOS (Apple Silicon, MLX required)
+
+deployment_target:
+  dev: uvicorn port 8000 + Vite dev server port 5173 (proxy)
+  prod: FastAPI serves React dist/ as StaticFiles on port 8000 (single process)
+  ci_cd: none_configured
+  containerized: false
+
+repo_type:
+  - web_app
+  - api_service
+  - agent_system
+  - ml_inference
+
+component_count: 12
+components:
+  backend:
+    - name: main.py
+      role: FastAPI app entry point, lifespan startup, CORS, static serving
+    - name: corpus.py
+      role: In-memory verse index (36,822 records, O(1) lookup)
+    - name: inference.py
+      role: KJVA model loader, byte-level tokenizer, nucleus sampling completion
+    - name: model.py
+      role: TokenlessLM architecture definition (inference copy, frozen)
+    - name: routes/verse.py
+      role: REST endpoints /api/books, /api/chapters, /api/verses, /api/verse
+    - name: routes/complete.py
+      role: POST /api/complete — live AI completion
+    - name: routes/stubs.py
+      role: POST /api/search, /api/qa, /api/xref — HTTP 501 stubs
+  frontend:
+    - name: App.jsx
+      role: Tab shell (Browse, Completion, Search, Q&A, Cross-Reference)
+    - name: VerseBrowser.jsx
+      role: Book/chapter/verse navigation UI
+    - name: CompletionPanel.jsx
+      role: AI text generation UI
+    - name: StubPanel.jsx
+      role: Placeholder for Phase 2–4 features
+  data:
+    - name: data/verses.jsonl
+      role: 36,822 structured verse records (gittracked)
+
+test_count: 0
+test_framework: none
+test_surface: >
+  No backend or frontend tests. KJVA/ai/tokenless-agent/tests/ exists for the
+  inherited AI governance module but does not cover the app itself.
+
+data:
+  primary_dataset: data/verses.jsonl
+  record_count: 36822
+  format: JSONL (book, chapter, verse, text, Strongs, footnotes, ref, id)
+  corpus_sources:
+    - data/corpus/eng-kjv_browserBible
+    - data/corpus/eng-kjv_html
+    - data/corpus/eng-kjv_vpl
+
+model:
+  name: KJVA
+  params: 18M
+  architecture: byte-level transformer (8 layers, d_model=384, 6 heads, vocab=259)
+  val_ppl: 3.21
+  weights_path: KJVA/training/weights.safetensors
+  weights_gitignored: true
+  weights_size_mb: 72
+
+api_endpoints:
+  live:
+    - GET /api/health
+    - GET /api/books
+    - GET /api/chapters/{book}
+    - GET /api/verses/{book}/{chapter}
+    - GET /api/verse/{book}/{chapter}/{verse}
+    - POST /api/complete
+  stubs_501:
+    - POST /api/search
+    - POST /api/qa
+    - POST /api/xref
+
+feature_status:
+  - feature: verse_browser
+    phase: 1
+    status: live
+  - feature: ai_completion
+    phase: 1
+    status: live
+  - feature: semantic_search
+    phase: 2
+    status: stub_501
+    requires: sentence-embedding adapter
+  - feature: qa_commentary
+    phase: 3
+    status: stub_501
+    requires: SFT instruction-tuning adapter
+  - feature: cross_reference
+    phase: 4
+    status: stub_501
+    requires: embedding similarity index
+
+cross_repo_relationships:
+  - repo: Tokenless-Models
+    type: consumes_from
+    detail: KJVA model weights, corpus data, AI governance system (KJVA/ directory imported)
+  - repo: GENESYS
+    type: gap
+    label: "[UNWIRED]"
+    detail: KJVA heptagon/soul_manager patterns share GENESYS ecosystem conventions; no wired API
+  - repo: desmond-super-c
+    type: gap
+    label: "[UNWIRED]"
+    detail: KJVA/ contains .sc Super C language artifacts; no active dependency wired
+  - repo: Nexus
+    type: gap
+    label: "[UNWIRED]"
+    detail: nexus_engine.sc pattern in KJVA/ references Nexus; no wired dependency
+
+git:
+  default_branch: main
+  active_branch: claude/onboarding-tier1
+  commits: 3
+  authors:
+    - Bigdez55
+
+open_questions:
+  - Is the KJVA/ AI governance system (heptagon, soul_manager) active at runtime or documentation only?
+  - Are Phase 2–4 adapters in development in Tokenless-Models?
+  - Is production deployment planned (Vercel, Fly.io, bare VPS)?
+  - Should authentication be added before exposing publicly?
+
+onboarding:
+  tier1_completed: '2026-05-26'
+  tier2_completed: null
+  tier3_completed: null
+  tier4_last_run: null

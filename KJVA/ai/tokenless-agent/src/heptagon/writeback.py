@@ -8,7 +8,7 @@ that learning and executes the write operation.
 Three persistence targets:
   SoulManager  (port 18610) — live soul state; ephemeral, fast, hot path.
                                Written on every accepted cycle regardless of target.
-  EventJournal (port 18611) — append-only event log; written for all non-NONE targets.
+  EventJournal (port 18612) — append-only event log; written for all non-NONE targets.
   Archives     (Tokenless)    — durable long-term store; written only when target
                                includes "archive_only" or "both".
 
@@ -21,25 +21,17 @@ Wire format uses stdlib socket + JSON — no third-party dependencies.
 from __future__ import annotations
 
 import hashlib
-import json
 import logging
-import socket
 import time
 import uuid
 from dataclasses import dataclass, field
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List
+
+from soul_manager.daemon_client import CouncilDaemonSyncClient
 
 from .mastery import MasteryLevel
 
 logger = logging.getLogger("tokenless.heptagon.writeback")
-
-# ── Persistence targets ───────────────────────────────────────────────────────
-
-_SOUL_MANAGER_HOST: str = "127.0.0.1"
-_SOUL_MANAGER_PORT: int = 18610
-_EVENT_JOURNAL_HOST: str = "127.0.0.1"
-_EVENT_JOURNAL_PORT: int = 18611
-_ARCHIVE_PATH_PREFIX: str = "/var/tokenless/archives/mastery"
 
 _SOUL_TIMEOUT_S: float = 0.5
 _JOURNAL_TIMEOUT_S: float = 0.5
@@ -143,6 +135,11 @@ class WriteBackEngine:
     def __init__(self, entity_id: str) -> None:
         self.entity_id = entity_id
         self._generation_counter: int = 0
+        self._daemon = CouncilDaemonSyncClient(
+            source_agent=f"{entity_id}.l6",
+            namespace=entity_id,
+            timeout=max(_SOUL_TIMEOUT_S, _JOURNAL_TIMEOUT_S),
+        )
         logger.debug("WriteBackEngine: initialised for entity '%s'", entity_id)
 
     # ── Main orchestration ────────────────────────────────────────────────────
@@ -237,30 +234,11 @@ class WriteBackEngine:
         On any socket error the failure is logged and False is returned —
         the system continues without hard-failing.
         """
-        key = f"mastery:{request.entity_id}:{request.domain_id}"
-        payload = {
-            "session_id": request.session_id,
-            "domain_id": request.domain_id,
-            "mastery_level": int(request.mastery_reached),
-            "improvement_score": round(request.improvement_score, 4),
-            "evidence_count": request.evidence_count,
-            "input_hash": request.input_hash,
-            "event_id": event_id,
-            "generation_index": gen_idx,
-            "timestamp": time.time(),
-        }
-        message = json.dumps({
-            "action": "put",
-            "key": key,
-            "value": json.dumps(payload),
-        }).encode("utf-8")
-
-        return self._send_to_daemon(
-            host=_SOUL_MANAGER_HOST,
-            port=_SOUL_MANAGER_PORT,
-            message=message,
-            timeout=_SOUL_TIMEOUT_S,
-            label="SoulManager",
+        return self._daemon.put(
+            "persistent",
+            f"mastery:{request.domain_id}",
+            self._build_payload(request, event_id, gen_idx),
+            namespace=request.entity_id,
         )
 
     # ── Archive persistence ───────────────────────────────────────────────────
@@ -277,50 +255,9 @@ class WriteBackEngine:
         named by entity_id + domain_id + generation_index.
         Falls back gracefully on filesystem errors.
         """
-        import os
-
-        archive_dir = os.path.join(
-            _ARCHIVE_PATH_PREFIX,
-            request.entity_id,
-            request.domain_id,
-        )
-        record = {
-            "event_id": event_id,
-            "generation_index": gen_idx,
-            "session_id": request.session_id,
-            "entity_id": request.entity_id,
-            "domain_id": request.domain_id,
-            "mastery_reached": int(request.mastery_reached),
-            "mastery_label": request.mastery_reached.label(),
-            "improvement_score": round(request.improvement_score, 4),
-            "evidence_count": request.evidence_count,
-            "input_hash": request.input_hash,
-            "timestamp": time.time(),
-            "delta_data_hash": (
-                hashlib.sha256(request.delta_data).hexdigest()
-                if request.delta_data
-                else None
-            ),
-        }
-
-        try:
-            os.makedirs(archive_dir, exist_ok=True)
-            fname = os.path.join(
-                archive_dir, f"gen_{gen_idx:06d}_{event_id[:8]}.json"
-            )
-            with open(fname, "w", encoding="utf-8") as fh:
-                json.dump(record, fh, indent=2)
-            logger.debug(
-                "WriteBackEngine[%s]: archive written — %s",
-                self.entity_id, fname,
-            )
-            return True
-        except OSError as exc:
-            logger.warning(
-                "WriteBackEngine[%s]: archive write failed for '%s' — %s",
-                self.entity_id, request.domain_id, exc,
-            )
-            return False
+        payload = self._build_payload(request, event_id, gen_idx)
+        payload["accepted"] = True
+        return self._daemon.archive(payload, event_type="mastery_archive")
 
     # ── EventJournal persistence ──────────────────────────────────────────────
 
@@ -330,104 +267,40 @@ class WriteBackEngine:
         event_id: str,
         gen_idx: int,
     ) -> bool:
-        """Record in EventJournal (port 18611).
+        """Record in EventJournal (port 18612).
 
         Wire format: {"action": "append", "event_type": ..., "payload": ...}
         Returns True if accepted, False on any socket error.
         """
-        payload = {
-            "event_id": event_id,
-            "generation_index": gen_idx,
+        payload = self._build_payload(request, event_id, gen_idx)
+        payload["target"] = request.target
+        payload["accepted"] = True
+        return self._daemon.journal(payload, event_type="mastery_writeback")
+
+    def _build_payload(
+        self,
+        request: WriteBackRequest,
+        event_id: str,
+        gen_idx: int,
+    ) -> Dict[str, Any]:
+        return {
+            "session_id": request.session_id,
             "entity_id": request.entity_id,
             "domain_id": request.domain_id,
             "mastery_reached": int(request.mastery_reached),
+            "mastery_label": request.mastery_reached.label(),
             "improvement_score": round(request.improvement_score, 4),
             "evidence_count": request.evidence_count,
             "input_hash": request.input_hash,
-            "session_id": request.session_id,
-            "target": request.target,
+            "event_id": event_id,
+            "generation_index": gen_idx,
+            "delta_data_hash": (
+                hashlib.sha256(request.delta_data).hexdigest()
+                if request.delta_data
+                else None
+            ),
             "timestamp": time.time(),
         }
-        message = json.dumps({
-            "action": "append",
-            "event_type": "mastery_writeback",
-            "payload": payload,
-        }).encode("utf-8")
-
-        return self._send_to_daemon(
-            host=_EVENT_JOURNAL_HOST,
-            port=_EVENT_JOURNAL_PORT,
-            message=message,
-            timeout=_JOURNAL_TIMEOUT_S,
-            label="EventJournal",
-        )
-
-    # ── Socket helper ─────────────────────────────────────────────────────────
-
-    def _send_to_daemon(
-        self,
-        host: str,
-        port: int,
-        message: bytes,
-        timeout: float,
-        label: str,
-    ) -> bool:
-        """Send a length-prefixed JSON message to a daemon socket.
-
-        Protocol: 4-byte big-endian length prefix followed by UTF-8 JSON body.
-        Returns True on success, False on any error (connection refused,
-        timeout, malformed response).  Never raises.
-        """
-        try:
-            with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
-                sock.settimeout(timeout)
-                sock.connect((host, port))
-                # Length-prefix framing
-                length_prefix = len(message).to_bytes(4, "big")
-                sock.sendall(length_prefix + message)
-                # Read 4-byte response length
-                raw_len = self._recvexactly(sock, 4)
-                if raw_len is None:
-                    logger.debug(
-                        "WriteBackEngine[%s]: %s — no response header",
-                        self.entity_id, label,
-                    )
-                    return False
-                resp_len = int.from_bytes(raw_len, "big")
-                if resp_len == 0 or resp_len > 4096:
-                    return False
-                raw_resp = self._recvexactly(sock, resp_len)
-                if raw_resp is None:
-                    return False
-                resp = json.loads(raw_resp.decode("utf-8"))
-                accepted = resp.get("ok", False) or resp.get("accepted", False)
-                return bool(accepted)
-        except (ConnectionRefusedError, socket.timeout, OSError) as exc:
-            logger.debug(
-                "WriteBackEngine[%s]: %s unavailable — %s",
-                self.entity_id, label, exc,
-            )
-            return False
-        except Exception as exc:
-            logger.warning(
-                "WriteBackEngine[%s]: %s unexpected error — %s",
-                self.entity_id, label, exc,
-            )
-            return False
-
-    @staticmethod
-    def _recvexactly(sock: socket.socket, n: int) -> Optional[bytes]:
-        """Receive exactly n bytes from sock.  Returns None on EOF or error."""
-        buf = bytearray()
-        while len(buf) < n:
-            try:
-                chunk = sock.recv(n - len(buf))
-            except OSError:
-                return None
-            if not chunk:
-                return None
-            buf.extend(chunk)
-        return bytes(buf)
 
     def generation_index(self) -> int:
         """Return the current (last used) generation index."""

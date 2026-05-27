@@ -41,10 +41,18 @@ import json
 import logging
 import os
 import struct
+import sys
 import time
 import uuid
 from dataclasses import dataclass, field
 from typing import List, Optional
+
+_THIS_DIR = os.path.dirname(os.path.abspath(__file__))
+_REPO_ROOT = os.path.abspath(os.path.join(_THIS_DIR, "..", "..", ".."))
+if _REPO_ROOT not in sys.path:
+    sys.path.append(_REPO_ROOT)
+
+from soul_manager.daemon_client import CouncilDaemonAsyncClient
 
 logger = logging.getLogger("tokenless.cognitive_pipeline")
 
@@ -59,7 +67,7 @@ _SOULMGR_HOST: str = os.environ.get("SOULMGR_HOST", "127.0.0.1")
 _SOULMGR_PORT: int = int(os.environ.get("SOULMGR_PORT", "18610"))
 
 _EVENTJOURNAL_HOST: str = os.environ.get("EVENTJOURNAL_HOST", "127.0.0.1")
-_EVENTJOURNAL_PORT: int = int(os.environ.get("EVENTJOURNAL_PORT", "18611"))
+_EVENTJOURNAL_PORT: int = int(os.environ.get("EVENTJOURNAL_PORT", "18612"))
 
 _TELEMETRY_HOST: str = os.environ.get("TELEMETRY_HOST", "127.0.0.1")
 _TELEMETRY_PORT: int = int(os.environ.get("TELEMETRY_PORT", "18614"))
@@ -75,6 +83,11 @@ _SHARD_THRESHOLD: float = 0.3
 # Maximum characters from context shards injected into the prompt prefix.
 # Keeps token budget under 512 tokens (≈2048 chars) for the XMIND context window.
 _MAX_CONTEXT_CHARS: int = 1800
+
+_JOURNAL_CLIENT = CouncilDaemonAsyncClient(
+    source_agent="tokenless-agent",
+    timeout=_IPC_TIMEOUT,
+)
 
 
 # ---------------------------------------------------------------------------
@@ -337,32 +350,25 @@ async def _stage_emit_journal_event(
     response_length: int,
     council_available: bool,
 ) -> None:
-    """Stage 5: Append a structured event to eventjournald (port 18611).
+    """Stage 5: Append a structured event to eventjournald (port 18612).
 
     Uses the Council length-prefixed JSON framing.
     The journal record contains NO user message content and NO raw session ID.
     It records system-level observability data only: turn_id, timing, shard counts,
     response length, and pipeline health flags.
     """
-    event = {
-        "msg_type": "APPEND",
-        "source_agent": "tokenless-agent",
-        "target_agent": "eventjournald",
-        "payload": {
-            "event_type": "tokenless.chat.turn_complete",
-            "task_id": turn_id,
-            "session_hash": session_hash,
-            "latency_ms": latency_ms,
-            "shard_count": shard_count,
-            "response_length": response_length,
-            "council_available": council_available,
-            "pipeline": "cognitive_loop_v1",
-        },
-        "msg_id": str(uuid.uuid4()),
+    payload = {
+        "event_id": str(uuid.uuid4()),
+        "task_id": turn_id,
+        "session_hash": session_hash,
+        "latency_ms": latency_ms,
+        "shard_count": shard_count,
+        "response_length": response_length,
+        "council_available": council_available,
+        "pipeline": "cognitive_loop_v1",
         "timestamp": time.time(),
     }
-    # Best-effort — do not await the result or block on failure
-    await _lp_call(_EVENTJOURNAL_HOST, _EVENTJOURNAL_PORT, event)
+    await _JOURNAL_CLIENT.journal(payload, event_type="tokenless.chat.turn_complete")
 
 
 # ---------------------------------------------------------------------------

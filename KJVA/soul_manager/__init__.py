@@ -9,6 +9,7 @@ types. All soul data is AES-256-GCM encrypted at rest. Nothing is ever deleted
 from .soul_manager import SoulManager, SoulManagerError, SoulManagerCryptoError
 from .consolidation import ConsolidationEngine, MemoryRecord, compute_activation
 from .message_framing import CouncilMessage, COUNCIL_PORTS
+from .daemon_client import CouncilDaemonAsyncClient, CouncilDaemonSyncClient
 from .aes_gcm_bridge import aes_gcm_encrypt, aes_gcm_decrypt, backend_name, AesGcmUnavailable
 
 __all__ = [
@@ -20,6 +21,8 @@ __all__ = [
     "compute_activation",
     "CouncilMessage",
     "COUNCIL_PORTS",
+    "CouncilDaemonAsyncClient",
+    "CouncilDaemonSyncClient",
     "aes_gcm_encrypt",
     "aes_gcm_decrypt",
     "backend_name",

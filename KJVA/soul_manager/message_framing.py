@@ -41,7 +41,11 @@ class CouncilMessage:
         )
 
 
-# Council port assignments
+# Council port assignments.
+# XMIND write-back is the canonical port source of truth:
+#   soulmgrd      -> 18610
+#   archivesd     -> 18611
+#   eventjournald -> 18612
 COUNCIL_PORTS = {
     "ahkid": 18600,
     "ruthd": 18601,
@@ -52,6 +56,7 @@ COUNCIL_PORTS = {
     "cherevd": 18606,
     "estherd": 18607,
     "soulmgrd": 18610,
-    "eventjournald": 18611,
-    "gaterunnerd": 18612,
+    "archivesd": 18611,
+    "eventjournald": 18612,
+    "gaterunnerd": 18613,
 }

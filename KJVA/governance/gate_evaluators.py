@@ -27,29 +27,23 @@ from __future__ import annotations
 import time
 from typing import Any, Dict
 
-from governance.decision_envelope import (
+from .decision_envelope import (
     DecisionEnvelope,
     GateChainExecutor,
     GateResult,
     GateVerdict,
 )
 
-from heptagon.harness import HeptagonHarness
-
-# Council member harnesses — provide lightweight stubs so gate_evaluators.py
-# remains importable even when consuming-project member trees are not present.
-# Each stub returns a neutral GateResult so the gate chain can still run.
-class _StubHarness(HeptagonHarness):
-    """Stub harness that returns neutral results for gate evaluation."""
-    pass
-
-AbigailHarness = _StubHarness
-AhkiHarness = _StubHarness
-EstherHarness = _StubHarness
-EzriHarness = _StubHarness
-MagenHarness = _StubHarness
-RuthHarness = _StubHarness
-SarahHarness = _StubHarness
+from ..heptagon.harness import (
+    AbigailHarness,
+    AhkiHarness,
+    EstherHarness,
+    EzriHarness,
+    HeptagonHarness,
+    MagenHarness,
+    RuthHarness,
+    SarahHarness,
+)
 
 # ---------------------------------------------------------------------------
 # CONFIDENCE THRESHOLDS
@@ -102,7 +96,7 @@ class GateEvaluator:
     def _build_signal(self, envelope: DecisionEnvelope,
                       domain: str) -> Dict[str, Any]:
         """Convert an envelope into an input signal for the harness."""
-        return {
+        signal = {
             "envelope_id": envelope.envelope_id,
             "intent": envelope.intent,
             "subject": envelope.subject,
@@ -115,6 +109,36 @@ class GateEvaluator:
             "value_score": envelope.value_score,
             "created_by": envelope.created_by,
         }
+        if not signal["resources"] and "resources" in envelope.context:
+            signal["resources"] = envelope.context["resources"]
+        if not signal["constraints"] and "constraints" in envelope.context:
+            signal["constraints"] = list(envelope.context["constraints"])
+        if not signal["evidence"] and "evidence" in envelope.context:
+            signal["evidence"] = list(envelope.context["evidence"])
+        if signal["risk_score"] == 0.0 and "risk_score" in envelope.context:
+            signal["risk_score"] = float(envelope.context["risk_score"])
+        if signal["value_score"] == 0.0 and "value_score" in envelope.context:
+            signal["value_score"] = float(envelope.context["value_score"])
+        for key in (
+            "domains",
+            "salience",
+            "priority",
+            "relevance",
+            "policy_clearance",
+            "novelty_bonus",
+            "security_penalty",
+            "route_pressure",
+            "structure_pressure",
+            "memory_pressure",
+            "complexity_score",
+            "support_count",
+            "support_confidence",
+            "contradiction_count",
+            "contradiction_confidence",
+        ):
+            if key in envelope.context:
+                signal[key] = envelope.context[key]
+        return signal
 
     def evaluate_gate(self, envelope: DecisionEnvelope,
                       domain: str) -> GateResult:
@@ -243,13 +267,18 @@ class EstherGateEvaluator(GateEvaluator):
         # Check constraints for policy compliance
         constraint_violations = 0
         for constraint in envelope.constraints:
-            if "must" in constraint.lower() and not any(
-                e.lower() in constraint.lower() for e in envelope.evidence
-            ):
+            constraint_lower = constraint.lower()
+            requires_evidence = any(
+                token in constraint_lower
+                for token in ("evidence", "proof", "review", "verification", "attestation", "benchmark", "scan")
+            )
+            if "must" in constraint_lower and requires_evidence and not envelope.evidence:
                 constraint_violations += 1
 
         if constraint_violations > 0:
             clearance = max(0.0, clearance - (constraint_violations * 0.1))
+        elif violation_count == 0 and envelope.provenance_hash and len(envelope.evidence) >= 2:
+            clearance = max(clearance, 0.62)
 
         envelope.policy_clearance = clearance
 
@@ -331,6 +360,8 @@ class MagenGateEvaluator(GateEvaluator):
             trust = max(0.0, trust - (len(suspicious) * 0.25))
         if not source:
             trust = max(0.0, trust - 0.3)
+        if is_known_source and has_provenance and len(envelope.evidence) >= 2 and not suspicious:
+            trust = max(trust, 0.6)
 
         envelope.trust_score = trust
 

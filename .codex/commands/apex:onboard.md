@@ -4,7 +4,7 @@
 Run the tiered repo onboarding playbook. Captures current truth (T1), sets direction (T2), runs the slice loop (T3), and maintains hygiene (T4) for any repo adopting Development_Skills.
 
 ## Output
-Per tier; see [SKILL_REPO_ONBOARDING_001.playbook.md](../../13_skills/active/SKILL_REPO_ONBOARDING_001.playbook.md).
+Per tier; see [SKILL_REPO_ONBOARDING_001.playbook.md](../../development_skills/13_skills/active/SKILL_REPO_ONBOARDING_001.playbook.md).
 
 - T1 → target's `current.truth.yaml`, 7 mandated diagrams, registry sync, drift evidence packet, populated twin in upstream Development_Skills, pushed target branch.
 - T2 → real intake packet, starter packet, SLICE-0001 with preview deploy, baseline specs, 1–3 baseline ADRs, registry updates, evidence packet.
@@ -44,10 +44,10 @@ python3 development_skills/25_automation/onboarding_validate_tiers.py --target /
 - If the list includes Tier 2 and `intent_brief` is empty, halt immediately before running any tier and surface the requirement to the caller.
 
 ### 2. Load context
-Compile a context packet via [42_context_compiler/compile_context.py](../../42_context_compiler/compile_context.py) for the appropriate persona ([12_agents/personas/](../../12_agents/personas/)) — typically `apex_coding_agent` for T1/T2/T3 and `drift_agent` for T4.
+Compile a context packet via [42_context_compiler/compile_context.py](../../development_skills/42_context_compiler/compile_context.py) for the appropriate persona ([12_agents/personas/](../../development_skills/12_agents/personas/)) — typically `apex_coding_agent` for T1/T2/T3 and `drift_agent` for T4.
 
 ### 3. Execute each tier in sequence
-For each tier in the expanded list, follow its body literally as written in [SKILL_REPO_ONBOARDING_001.playbook.md](../../13_skills/active/SKILL_REPO_ONBOARDING_001.playbook.md). Complete every step of a tier and confirm its outputs exist before starting the next tier. Do not skip steps.
+For each tier in the expanded list, follow its body literally as written in [SKILL_REPO_ONBOARDING_001.playbook.md](../../development_skills/13_skills/active/SKILL_REPO_ONBOARDING_001.playbook.md). Complete every step of a tier and confirm its outputs exist before starting the next tier. Do not skip steps.
 
 **Tier 1 note:** T1 begins with a mandatory discovery protocol — read git history, language artifacts, source structure, deployment signals, and any existing docs *before* writing any output file. Do not prompt the user for context about what the repo does; derive it mechanically. The reality model built during discovery is the sole input to all T1 artifacts.
 
@@ -116,9 +116,9 @@ See "Output" section above. All outputs land in canonical locations inside the t
 ```
 
 ## See also
-- Skill: [SKILL_REPO_ONBOARDING_001](../../13_skills/active/SKILL_REPO_ONBOARDING_001.yaml)
-- Playbook: [SKILL_REPO_ONBOARDING_001.playbook.md](../../13_skills/active/SKILL_REPO_ONBOARDING_001.playbook.md)
+- Skill: [SKILL_REPO_ONBOARDING_001](../../development_skills/13_skills/active/SKILL_REPO_ONBOARDING_001.yaml)
+- Playbook: [SKILL_REPO_ONBOARDING_001.playbook.md](../../development_skills/13_skills/active/SKILL_REPO_ONBOARDING_001.playbook.md)
 - Sync mechanics: [21_repo_sync/repo_sync.protocol.md](../../21_repo_sync/repo_sync.protocol.md)
-- Identity preservation: [ADR-0011](../../04_architecture/adrs/ADR-0011-repo-sync-delete-and-identity-exclude.md)
+- Identity preservation: [ADR-0011](../../development_skills/04_architecture/adrs/ADR-0011-repo-sync-delete-and-identity-exclude.md)
 - [APEX_PROTOCOL.md](../../APEX_PROTOCOL.md)
-- [37_command_protocol/commands.registry.yaml](../commands.registry.yaml)
+- [../../development_skills/37_command_protocol/commands.registry.yaml](../commands.registry.yaml)

@@ -1,0 +1,16 @@
+last_updated: '2026-05-17'
+scan_dir: 42_context_compiler/output/generated
+total: 6
+context_pkts:
+- name: CP-apex_coding_agent-buildout
+  path: 42_context_compiler/output/generated/CP-apex_coding_agent-buildout.yaml
+- name: CP-architecture_agent-buildout
+  path: 42_context_compiler/output/generated/CP-architecture_agent-buildout.yaml
+- name: CP-deployment_agent-buildout
+  path: 42_context_compiler/output/generated/CP-deployment_agent-buildout.yaml
+- name: CP-qa_agent-buildout
+  path: 42_context_compiler/output/generated/CP-qa_agent-buildout.yaml
+- name: CP-super-c-atlas-intelligence-core
+  path: 42_context_compiler/output/generated/CP-super-c-atlas-intelligence-core.yaml
+- name: CP-super-c-atlas-platform-core
+  path: 42_context_compiler/output/generated/CP-super-c-atlas-platform-core.yaml

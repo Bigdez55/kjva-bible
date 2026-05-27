@@ -1,0 +1,19 @@
+id: AGENT_DEPLOYMENT_AGENT
+name: deployment_agent
+role: deployment
+description: Deployment agent
+capabilities:
+- author preview plans
+- execute deploys
+- capture deployment evidence
+inputs:
+- preview plan
+- env passport
+outputs:
+- preview URL
+- deployment evidence packet
+escalation:
+- secret leakage
+- env mismatch
+- rollback failure
+active: true

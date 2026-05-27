@@ -8,7 +8,7 @@ Regenerate documentation from truth sources.
 
 ## Inputs
 - `target` (string, required): the entity being acted on (repo name, slice id, etc.)
-- Source-of-truth files: see [19_truth_state/source_of_truth_ranking.yaml](../../19_truth_state/source_of_truth_ranking.yaml)
+- Source-of-truth files: see [19_truth_state/source_of_truth_ranking.yaml](../../development_skills/19_truth_state/source_of_truth_ranking.yaml)
 - Relevant schemas: [26_schemas/](../../26_schemas/)
 
 ## Preconditions
@@ -19,7 +19,7 @@ Regenerate documentation from truth sources.
 ## Step-by-step
 
 ### 1. Load context
-Compile a context packet via [42_context_compiler/compile_context.py](../../42_context_compiler/compile_context.py) for the appropriate persona ([12_agents/personas/](../../12_agents/personas/)).
+Compile a context packet via [42_context_compiler/compile_context.py](../../development_skills/42_context_compiler/compile_context.py) for the appropriate persona ([12_agents/personas/](../../development_skills/12_agents/personas/)).
 
 ### 2. Validate inputs
 - Required input fields present.
@@ -28,7 +28,7 @@ Compile a context packet via [42_context_compiler/compile_context.py](../../42_c
 
 ### 3. Author artifact
 - Use the matching template in [14_templates/](../../14_templates/).
-- Reference the active ADRs ([04_architecture/adrs/](../../04_architecture/adrs/)) and skills ([13_skills/active/](../../13_skills/active/)).
+- Reference the active ADRs ([04_architecture/adrs/](../../development_skills/04_architecture/adrs/)) and skills ([13_skills/active/](../../development_skills/13_skills/active/)).
 - Write artifact to `11_documentation/generated/` with a deterministic filename.
 
 ### 4. Update registries
@@ -81,5 +81,5 @@ python3 25_automation/registry_sync/sync_registries.py --write
 
 ## See also
 - [APEX_PROTOCOL.md](../../APEX_PROTOCOL.md)
-- [37_command_protocol/commands.registry.yaml](../commands.registry.yaml)
+- [../../development_skills/37_command_protocol/commands.registry.yaml](../commands.registry.yaml)
 - [25_automation/](../../25_automation/)

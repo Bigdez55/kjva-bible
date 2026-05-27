@@ -1,0 +1,47 @@
+id: SKILL_GENOS_KERNEL_DEBUG_001
+title: "GEN.OS Kernel Debug Protocol \u2014 QEMU + GDB"
+version: 1.0.0
+layer: active
+domains:
+- genos
+- kernel
+- qemu
+playbook: 13_skills/active/SKILL_GENOS_KERNEL_DEBUG_001.playbook.md
+validation_tests: []
+status: active
+skill_number: 82
+source_documents:
+- genos_codex_skills_2026-05-17/raw/kernel-debug.md
+trigger_conditions:
+- User mentions kernel-debug.
+- User mentions kernel debug.
+- User mentions kernel.
+- User mentions debug.
+hard_constraints:
+- Preserve source-of-truth ranking.
+- Do not claim completion without validation evidence.
+- Use GEN.OS-specific commands, paths, policies, and gates only when GEN.OS context is active.
+- Record misses in the skill refinery ledger when discovered.
+tier: active
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_GENOS_KERNEL_DEBUG_001.ledger.yaml
+related_skills:
+- SKILL_LOW_LEVEL_KERNEL_BOOT_001
+- SKILL_CI_PIPELINE_001
+- SKILL_RUNTIME_REGRESSION_VERIFY_001
+router_intents:
+- kernel_debug
+- genos
+aliases:
+- kernel-debug
+- kernel debug
+- genos kernel debug
+regression_cases: []
+slash_commands: []
+workflows: []
+templates: []
+provenance:
+  collection: genos_codex_skills_2026-05-17
+  source_repo: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/GENESYS/GENESYS
+  raw_source: 16_knowledge/external_collateral/genos_codex_skills_2026-05-17/raw/kernel-debug.md
+  raw_sha256: 86a9976bbf4c4d6a716c1812d912650ddf949fdc35c17b44ba0c2f13b56841f0
+improvement_history: []

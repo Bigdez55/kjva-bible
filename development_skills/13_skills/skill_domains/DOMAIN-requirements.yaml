@@ -1,0 +1,5 @@
+domain: requirements
+description: Skills under the requirements domain.
+active_skills:
+- SKILL_SPEC_AUTHORING_001
+- SKILL_INTENT_COMPILATION_001

@@ -1,0 +1,38 @@
+id: SKILL_PREFLIGHT_LEDGER_INJECTION_001
+title: Pre-Flight Ledger Injection
+version: 1.0.0
+layer: context
+domains:
+- context
+- ledgers
+- skills
+playbook: 13_skills/active/SKILL_PREFLIGHT_LEDGER_INJECTION_001.playbook.md
+validation_tests:
+- 08_verification/skill_tests/TEST_SKILL_PREFLIGHT_LEDGER_INJECTION_001_001.yaml
+status: active
+skill_number: GOV-04
+source_documents:
+- handoff_v7_repo_native
+trigger_conditions:
+- A task maps to a skill with correction history or hard constraints.
+hard_constraints:
+- Preserve source-of-truth ranking.
+- Do not claim completion without validation evidence.
+- Record misses in the skill refinery ledger when discovered.
+tier: active
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_PREFLIGHT_LEDGER_INJECTION_001.ledger.yaml
+related_skills: []
+router_intents:
+- skill_miss_or_refinement
+aliases:
+- pre-flight-ledger-injection
+regression_cases: []
+slash_commands:
+- /apex:route
+workflows:
+- 05_workflows/skill_miss_to_ledger_to_regression.md
+templates: []
+provenance:
+  collection: skills_stack_2026-05-17
+  source_index: 16_knowledge/external_collateral/skills_stack_2026-05-17/source_index.yaml
+improvement_history: []

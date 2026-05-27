@@ -1,0 +1,85 @@
+id: SKILL_MERGEABLE_CONTEXT_ENGINE_001
+title: Mergeable Context Engine
+version: 1.0.0
+layer: active
+skill_number: 314
+status: active
+
+domains:
+  - context_merging
+  - source_ranking
+  - conflict_resolution
+  - bookworm
+  - atlas
+  - retrieval
+  - knowledge_synthesis
+
+playbook: 13_skills/active/SKILL_MERGEABLE_CONTEXT_ENGINE_001.playbook.md
+
+trigger_conditions:
+  - User asks for context merging, source ranking, or conflict resolution across context sources.
+  - User asks how competing context packets are ranked or deduplicated.
+  - User needs a prioritized merged context payload from Bookworm + Atlas + skill graphs.
+  - User asks which source wins when context from different systems conflicts.
+  - User asks about staleness, freshness, or expiry of a context packet.
+  - User asks how the system decides what to include in a context handoff.
+
+hard_constraints:
+  - Never merge context without source ranking applied first.
+  - Never silently discard a context packet — conflicted packets must be logged.
+  - Source hierarchy is immutable — PRIMARY > SECONDARY > TERTIARY.
+  - Always produce a conflict log when packets contradict on the same key.
+  - Tertiary sources must never override primary sources regardless of recency.
+  - Stale sources (>7 days without re-ingestion signal) must be flagged, not silently trusted.
+
+tier: active
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_MERGEABLE_CONTEXT_ENGINE_001.ledger.yaml
+
+related_skills:
+  - SKILL_CONTEXT_PACKET_001
+  - SKILL_ATLAS_GRAPH_ENGINE_001
+  - SKILL_ATLAS_REPO_INGESTION_LOOP_001
+  - SKILL_TRUTH_STATE_CHECK_001
+  - SKILL_SOURCE_TRUTH_RECONCILIATION_001
+  - SKILL_ATLAS_KNOWLEDGE_DEPOT_001
+
+router_intents:
+  - mergeable_context_engine
+  - context_source_ranking
+  - context_conflict_resolution
+
+aliases:
+  - context merging
+  - source ranking
+  - context conflict resolution
+  - merged context payload
+  - context weight
+  - context packet merge
+  - rank context sources
+  - which source wins
+  - competing context packets
+  - context priority
+  - context deduplication
+  - stale context
+
+required_outputs:
+  - Ranked source list with tier and weight
+  - Merged context payload
+  - Conflict log (key, source_a, source_b, resolution)
+  - Source provenance chain
+  - Staleness flags for sources older than threshold
+
+regression_cases: []
+slash_commands: []
+workflows: []
+templates: []
+
+provenance:
+  engine_dir: 46_mergeable_context_engine/
+  created_from: empty_directory_buildout
+  created_at: "2026-05-25"
+
+improvement_history:
+  - version: 1.0.0
+    date: "2026-05-25"
+    reason: Built from scaffolded 46_mergeable_context_engine directory (created 2026-05-08, filled 2026-05-25).

@@ -1,0 +1,48 @@
+id: SKILL_GENOS_COMPILE_CHECK_001
+title: "GEN.OS Compile Check \u2014 Full Sprint Gate"
+version: 1.0.0
+layer: active
+domains:
+- genos
+- ci
+- compile_validation
+- sprint_ops
+playbook: 13_skills/active/SKILL_GENOS_COMPILE_CHECK_001.playbook.md
+validation_tests: []
+status: active
+skill_number: 74
+source_documents:
+- genos_codex_skills_2026-05-17/raw/compile-check.md
+trigger_conditions:
+- User mentions compile-check.
+- User mentions compile check.
+- User mentions compile.
+- User mentions check.
+hard_constraints:
+- Preserve source-of-truth ranking.
+- Do not claim completion without validation evidence.
+- Use GEN.OS-specific commands, paths, policies, and gates only when GEN.OS context is active.
+- Record misses in the skill refinery ledger when discovered.
+tier: active
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_GENOS_COMPILE_CHECK_001.ledger.yaml
+related_skills:
+- SKILL_LOW_LEVEL_KERNEL_BOOT_001
+- SKILL_CI_PIPELINE_001
+- SKILL_RUNTIME_REGRESSION_VERIFY_001
+router_intents:
+- compile_check
+- genos
+aliases:
+- compile-check
+- compile check
+- genos compile check
+regression_cases: []
+slash_commands: []
+workflows: []
+templates: []
+provenance:
+  collection: genos_codex_skills_2026-05-17
+  source_repo: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/GENESYS/GENESYS
+  raw_source: 16_knowledge/external_collateral/genos_codex_skills_2026-05-17/raw/compile-check.md
+  raw_sha256: 6424d7724fe4032790944c4cd0728ad0cacbfcbc2dfb992c945e454b6bc0579f
+improvement_history: []

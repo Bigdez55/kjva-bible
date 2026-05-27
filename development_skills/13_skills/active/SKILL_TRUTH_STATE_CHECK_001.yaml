@@ -1,0 +1,29 @@
+id: SKILL_TRUTH_STATE_CHECK_001
+name: Truth State Source Ranking Check
+version: 1.0.0
+status: active
+playbook: 13_skills/active/SKILL_TRUTH_STATE_CHECK_001.playbook.md
+purpose: 'Prevent agents from answering from stale docs by enforcing source of truth
+  ranking.
+
+  '
+inputs:
+- source ranking
+- truth state
+- architecture models
+- proof matrix
+outputs:
+- updated structured artifacts
+known_failure_modes:
+- stale documentation used as primary truth
+- missing graph edge
+- missing verification evidence
+validation_tests:
+- TEST_SKILL_TRUTH_STATE_CHECK_001_001
+improvement_history:
+- version: 1.0.0
+  reason: Initial skill definition.
+title: Truth State Source Ranking Check
+layer: core
+domains:
+- core

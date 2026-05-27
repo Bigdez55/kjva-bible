@@ -1,0 +1,62 @@
+id: SKILL_IPOS_CHART_BUILDER_001
+title: IPOS Chart Builder
+version: 1.0.0
+layer: active
+domains:
+- ipos
+- dashboard
+- data_pipeline
+- visualization
+- performance
+- ui_ux
+- design_system
+- accessibility
+playbook: 13_skills/active/SKILL_IPOS_CHART_BUILDER_001.playbook.md
+validation_tests: []
+status: active
+skill_number: 45
+source_documents:
+- ipos_claude_skills_2026-05-17/raw/chart-builder/SKILL.md
+trigger_conditions:
+- User request matches imported IPOS skill `chart-builder`.
+- User mentions chart.
+- User mentions visualization.
+- User mentions graph.
+- User mentions gauge.
+- User mentions sparkline.
+- User mentions Recharts.
+- User mentions ECharts.
+- User mentions Chart.js.
+- User mentions Plotly.
+- User mentions D3.
+- User mentions Nivo.
+- User mentions ApexCharts.
+hard_constraints:
+- Preserve source-of-truth ranking.
+- Do not claim completion without validation evidence.
+- Use imported IPOS patterns only when the request is dashboard, KPI, SharePoint, paratransit, or frontend-dashboard related.
+- Record misses in the skill refinery ledger when discovered.
+tier: active
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_IPOS_CHART_BUILDER_001.ledger.yaml
+related_skills:
+- SKILL_PLATFORM_BUILD_001
+- SKILL_FRONTEND_BACKEND_DATAFLOW_001
+- SKILL_SOURCE_TRUTH_RECONCILIATION_001
+router_intents:
+- chart_builder
+- dashboard
+- ipos_dashboard
+aliases:
+- chart-builder
+- chart builder
+- ipos chart builder
+regression_cases: []
+slash_commands: []
+workflows: []
+templates: []
+provenance:
+  collection: ipos_claude_skills_2026-05-17
+  source_repo: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS
+  raw_source: 16_knowledge/external_collateral/ipos_claude_skills_2026-05-17/raw/chart-builder/SKILL.md
+  raw_sha256: f4dc8112d7cdd9bbd2b38dba20970c27dc80ed24e3eadd6eab1cc27e57d75353
+improvement_history: []

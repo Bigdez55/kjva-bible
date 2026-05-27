@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 development_skills/infrastructure/scripts/sync_scripts/sync_to_child_repo.py*)",
+      "Bash(python3 development_skills/infrastructure/scripts/registry_sync/sync_registries.py*)",
+      "Bash(python3 development_skills/infrastructure/scripts/drift_checkers/*.py*)",
+      "Bash(cd backend && python -m pytest*)",
+      "Bash(cd backend && python -m ruff*)",
+      "Bash(cd frontend && npm run*)",
+      "Bash(git -C * status*)",
+      "Bash(git -C * log*)",
+      "Bash(git -C * diff*)",
+      "Bash(git -C * add*)",
+      "Bash(git -C * commit*)",
+      "Bash(git -C * push*)",
+      "Bash(git -C * checkout*)",
+      "Bash(git -C * branch*)",
+      "Bash(git -C * stash*)",
+      "Bash(find * -maxdepth*)",
+      "Bash(ls *)",
+      "Bash(mkdir -p *)",
+      "Bash(cp *)",
+      "Bash(rsync *)"
+    ]
+  }
+}

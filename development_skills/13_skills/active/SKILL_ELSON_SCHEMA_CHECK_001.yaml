@@ -1,0 +1,60 @@
+id: SKILL_ELSON_SCHEMA_CHECK_001
+title: Schema Drift Detection
+version: 1.0.0
+layer: active
+domains:
+- audit
+- elson
+- trading_bot
+- validation
+playbook: 13_skills/active/SKILL_ELSON_SCHEMA_CHECK_001.playbook.md
+validation_tests: []
+status: active
+skill_number: 128
+source_documents:
+- elson_claude_skills_2026-05-17/raw/elson_tb2_root/schema-check/SKILL.md
+- elson_claude_skills_2026-05-17/raw/trading_bot_elson_tb2/schema-check/SKILL.md
+trigger_conditions:
+- User request matches Elson Claude skill `schema-check`.
+- User mentions schema-check.
+- User mentions schema check.
+hard_constraints:
+- Use Elson-specific operational commands only when the Elson, trading bot, portfolio,
+  market, vLLM, or Cloud Run context is active.
+- Do not expose or repeat credentials, tokens, API keys, passwords, or secrets from
+  preserved raw Claude skill sources.
+- Do not claim live deployment, bot status, market action, or production health without
+  current validation evidence.
+- Record misses in the skill refinery ledger when discovered.
+tier: active
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_ELSON_SCHEMA_CHECK_001.ledger.yaml
+related_skills:
+- SKILL_EXISTING_REPO_AUDIT_001
+- SKILL_RUNTIME_REGRESSION_VERIFY_001
+- SKILL_TRIGGER_ROUTER_001
+- SKILL_TRUTH_STATE_CHECK_001
+router_intents:
+- elson_schema_check
+- elson
+- trading_bot
+aliases:
+- elson schema check
+- elson schema-check
+- schema check
+- schema-check
+regression_cases: []
+slash_commands: []
+workflows: []
+templates: []
+provenance:
+  collection: elson_claude_skills_2026-05-17
+  source_repos:
+  - /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Elson-TB2
+  - /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Trading Bot/Elson TB2/Elson/Elson-TB2
+  raw_sources:
+  - 16_knowledge/external_collateral/elson_claude_skills_2026-05-17/raw/elson_tb2_root/schema-check/SKILL.md
+  - 16_knowledge/external_collateral/elson_claude_skills_2026-05-17/raw/trading_bot_elson_tb2/schema-check/SKILL.md
+  raw_sha256_values:
+  - cfcb690c27e160ea6c0783059c119c3c5ecb529cf7c37240d85c5a5fe47ca6ae
+  selected_source: 16_knowledge/external_collateral/elson_claude_skills_2026-05-17/raw/trading_bot_elson_tb2/schema-check/SKILL.md
+improvement_history: []

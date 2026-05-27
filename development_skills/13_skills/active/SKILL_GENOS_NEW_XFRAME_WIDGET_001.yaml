@@ -1,0 +1,47 @@
+id: SKILL_GENOS_NEW_XFRAME_WIDGET_001
+title: "GEN.OS New XFRAME Widget \u2014 C Template"
+version: 1.0.0
+layer: active
+domains:
+- genos
+- api_contracts
+- ui_runtime
+playbook: 13_skills/active/SKILL_GENOS_NEW_XFRAME_WIDGET_001.playbook.md
+validation_tests: []
+status: active
+skill_number: 87
+source_documents:
+- genos_codex_skills_2026-05-17/raw/new-xframe-widget.md
+trigger_conditions:
+- User mentions new-xframe-widget.
+- User mentions new xframe widget.
+- User mentions xframe.
+- User mentions widget.
+hard_constraints:
+- Preserve source-of-truth ranking.
+- Do not claim completion without validation evidence.
+- Use GEN.OS-specific commands, paths, policies, and gates only when GEN.OS context is active.
+- Record misses in the skill refinery ledger when discovered.
+tier: active
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_GENOS_NEW_XFRAME_WIDGET_001.ledger.yaml
+related_skills:
+- SKILL_LOW_LEVEL_KERNEL_BOOT_001
+- SKILL_CI_PIPELINE_001
+- SKILL_RUNTIME_REGRESSION_VERIFY_001
+router_intents:
+- new_xframe_widget
+- genos
+aliases:
+- new-xframe-widget
+- new xframe widget
+- genos new xframe widget
+regression_cases: []
+slash_commands: []
+workflows: []
+templates: []
+provenance:
+  collection: genos_codex_skills_2026-05-17
+  source_repo: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/GENESYS/GENESYS
+  raw_source: 16_knowledge/external_collateral/genos_codex_skills_2026-05-17/raw/new-xframe-widget.md
+  raw_sha256: a4602d149a670a1b3fad10f8ff24de99662247ad00c46f6c243a769f685ee893
+improvement_history: []

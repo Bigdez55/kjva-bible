@@ -1,0 +1,138 @@
+id: SKILL_TRIGGER_ROUTER_001
+title: Trigger Router and Auto Invocation
+version: 1.3.0
+layer: command_protocol
+domains:
+- routing
+- skills
+- automation
+playbook: 13_skills/active/SKILL_TRIGGER_ROUTER_001.playbook.md
+validation_tests:
+- 08_verification/skill_tests/TEST_SKILL_TRIGGER_ROUTER_001_001.yaml
+- 13_skills/skill_refinery/validation_tests/TEST_UNIVERSAL_SKILL_INVOCATION_001.yaml
+status: active
+skill_number: 30
+source_documents:
+- handoff_v7_repo_native
+- handoff_v5_trigger_router
+- 13_skills/skill_refinery/trigger_router.md
+- 13_skills/skill_refinery/trigger_router.yaml
+- 13_skills/skill_refinery/universal_skill_invocation_policy.md
+trigger_conditions:
+- User asks naturally for a build, audit, refactor, UI wiring fix, stale-doc reconciliation,
+  or skill improvement.
+- A command needs to infer required skills from intent.
+- A natural-language trigger needs deterministic root/noun/modifier/target/proof routing.
+- User asks to acquire missing skills or agents from `.claude` directories.
+- User asks to invoke, use, run, activate, or apply all skills.
+- User says this thread should create, improve, refine, or consolidate skills.
+hard_constraints:
+- Preserve source-of-truth ranking.
+- Do not claim completion without validation evidence.
+- Record misses in the skill refinery ledger when discovered.
+- Treat /atlas:* commands as alias inputs that resolve through the canonical Atlas
+  branch.
+- Use Atlas Graph Engine and Atlas Knowledge Vault as proprietary subsystem names.
+- Do not use external graph/vault product names as SUPER C Atlas subsystem names.
+- Route `.claude`, agent-surface, and thread-refinery requests to their dedicated
+  active skills.
+- Treat all-skills invocation as a portable universal coverage matrix, not a literal
+  load of every project-specific imported skill or agent.
+- Suppress project-specific constraints unless the request target/domain explicitly
+  binds them.
+- Distinguish external runtime tool-callable skills from repository-native `SKILL_*`
+  playbooks; non-tool-callable playbooks are still applied as disciplines.
+tier: active
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_TRIGGER_ROUTER_001.ledger.yaml
+related_skills:
+- SKILL_GLOBAL_CLAUDE_REPOSITORY_ACQUISITION_001
+- SKILL_CODEX_GEMINI_REPOSITORY_ACQUISITION_001
+- SKILL_AGENT_SURFACE_NORMALIZATION_001
+- SKILL_THREAD_TO_SKILL_REFINERY_CLOSURE_001
+- SKILL_GENOS_RESPONSE_ACCURACY_CORRECTIVE_001
+- SKILL_CONTEXT_PACKET_001
+- SKILL_TRUTH_STATE_CHECK_001
+- SKILL_SOURCE_TRUTH_RECONCILIATION_001
+- SKILL_PROOF_MATRIX_001
+- SKILL_APEX_VERIFIED_MACHINE_ENCODING_001
+router_intents:
+- build
+- platform
+- dashboard
+- atlas
+- atlas_graph_engine
+- atlas_knowledge_vault
+- platform_build
+- visual_to_system_backbone
+- existing_repo_audit
+- ui_feature_wiring_audit
+- source_truth_drift
+- skill_miss_or_refinement
+- global_claude_acquisition
+- unified_assistant_surface_acquisition
+- agent_surface_normalization
+- universal_skill_invocation
+- thread_to_skill_refinery
+- verified_machine_encoding
+- machine_encoding
+- emit_constant_gate
+catalog:
+  human_readable: 13_skills/skill_refinery/trigger_router.md
+  machine_readable: 13_skills/skill_refinery/trigger_router.yaml
+  runtime: 37_command_protocol/trigger_router.yaml
+required_outputs:
+- selected_root
+- selected_noun
+- selected_target
+- active_modifiers
+- active_output_contract
+- proof_requirements
+- corrective_override
+- universal_skill_coverage_matrix
+- selected_portable_skills
+- activated_project_specific_skills
+- suppressed_project_specific_skills
+- tool_called_skills
+- playbook_applied_disciplines
+- matched_intents
+- skills
+- required_outputs
+proof_contract:
+- Proof triggers add proof requirements and validation gates.
+- Completion claims require evidence when validate, verify, proof, gate, evidence,
+  regression, CI, source of truth, drift, or canon are present.
+corrective_contract:
+- Corrective triggers classify the miss, identify the responsible skill, update the
+  ledger or failure-mode queue, and add a regression case when applicable.
+aliases:
+- 30-trigger-router-and-auto-invocation
+regression_cases: []
+slash_commands:
+- /apex:route
+- /atlas:*
+workflows:
+- 05_workflows/platform_build_auto_invocation.md
+- 05_workflows/existing_repo_deep_audit.md
+templates: []
+provenance:
+  collection: skills_stack_2026-05-17
+  source_index: 16_knowledge/external_collateral/skills_stack_2026-05-17/source_index.yaml
+improvement_history:
+- version: 1.3.0
+  date: '2026-05-20'
+  reason: Added external-runtime compatibility rule so invoke all skills is not reduced
+    to a small Skill-tool registry and repository-native SKILL playbooks are applied
+    as disciplines.
+- version: 1.3.1
+  date: '2026-05-20'
+  reason: Added machine-encoding route integration so ARM64/ISA emit constants trigger
+    oracle-backed verification gates.
+- version: 1.2.0
+  date: '2026-05-20'
+  reason: Added universal all-skills invocation policy so invoke/use/run all skills
+    activates portable capability coverage and suppresses unrelated project-specific
+    imported agents.
+- version: 1.1.0
+  date: '2026-05-17'
+  reason: Current-thread skill refinery closure added acquisition/agent-surface/thread-closure
+    routing and accuracy safeguards.

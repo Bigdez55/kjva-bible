@@ -1,0 +1,70 @@
+id: SKILL_APEX_VERIFIED_MACHINE_ENCODING_001
+title: apex-verified-machine-encoding
+version: 1.0.0
+layer: active
+domains:
+  - super_c
+  - seedc
+  - scc
+  - compiler
+  - codegen
+  - arm64
+  - isa_encoding
+playbook: 13_skills/active/SKILL_APEX_VERIFIED_MACHINE_ENCODING_001.playbook.md
+validation_tests:
+  - 08_verification/regression_cases/REGRESSION_APEX_VERIFIED_MACHINE_ENCODING_001.yaml
+status: active
+skill_number: 201
+source_documents:
+  - chat_provided_skill_2026-05-20/apex-verified-machine-encoding
+trigger_conditions:
+  - User mentions apex-verified-machine-encoding.
+  - User mentions verified machine encoding.
+  - User edits ARM64 or ISA opcode literals.
+  - User writes or changes a machine-code emit constant in a *_emit.* file.
+  - User implements or fixes intrinsic machine-code emission.
+  - User implements LDR, STR, LDUR, STUR, LDRB, STRB, or other load/store encoding.
+  - User hand-decodes an instruction word in a commit message, report, or closure note.
+  - User debugs a SIGSEGV or miscompile traced to an emitted constant.
+hard_constraints:
+  - Never hand-compute a machine-code instruction word and land it directly.
+  - Every emit constant must be checked against an oracle or sovereign encoder/decoder.
+  - Every landed constant must have a paired assertion or regression test.
+  - External assembler/disassembler tools are test-time oracles only, never emit-path dependencies.
+  - Hand-decoded prose is not authoritative; re-confirm with an oracle.
+tier: active
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_APEX_VERIFIED_MACHINE_ENCODING_001.ledger.yaml
+related_skills:
+  - SKILL_SUPER_C_COMPILER_DISCIPLINE_001
+  - SKILL_GENOS_COMPILE_CHECK_001
+  - SKILL_SUPER_C_BUILD_TOOLCHAIN_CI_001
+  - SKILL_SUPER_C_XISC_CLOUD_TOOLCHAIN_001
+router_intents:
+  - verified_machine_encoding
+  - emit_constant_gate
+  - arm64_encoding_oracle
+  - super_c_codegen
+aliases:
+  - apex-verified-machine-encoding
+  - verified machine encoding
+  - machine encoding gate
+  - emit constant gate
+  - opcode oracle
+  - SC-MISS-005
+regression_cases:
+  - REGRESSION_APEX_VERIFIED_MACHINE_ENCODING_001
+slash_commands: []
+workflows:
+  - oracle_encode_compare_assert
+templates: []
+provenance:
+  collection: chat_provided_skill_2026-05-20
+  source_repo: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills
+  raw_source: user_message_2026-05-20
+  raw_sha256: pending_chat_capture
+improvement_history:
+  - date: 2026-05-20
+    version: 1.0.0
+    change: Created from user-provided SC-MISS-005 skill.
+    reason: Prevent hand-computed ARM64/ISA emit constant defects.
+

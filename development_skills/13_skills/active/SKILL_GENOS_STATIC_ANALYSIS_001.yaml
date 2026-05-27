@@ -1,0 +1,46 @@
+id: SKILL_GENOS_STATIC_ANALYSIS_001
+title: "GEN.OS Static Analysis \u2014 All 4 Tools"
+version: 1.0.0
+layer: active
+domains:
+- genos
+- static_analysis
+playbook: 13_skills/active/SKILL_GENOS_STATIC_ANALYSIS_001.playbook.md
+validation_tests: []
+status: active
+skill_number: 97
+source_documents:
+- genos_codex_skills_2026-05-17/raw/static-analysis.md
+trigger_conditions:
+- User mentions static-analysis.
+- User mentions static analysis.
+- User mentions static.
+- User mentions analysis.
+hard_constraints:
+- Preserve source-of-truth ranking.
+- Do not claim completion without validation evidence.
+- Use GEN.OS-specific commands, paths, policies, and gates only when GEN.OS context is active.
+- Record misses in the skill refinery ledger when discovered.
+tier: active
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_GENOS_STATIC_ANALYSIS_001.ledger.yaml
+related_skills:
+- SKILL_LOW_LEVEL_KERNEL_BOOT_001
+- SKILL_CI_PIPELINE_001
+- SKILL_RUNTIME_REGRESSION_VERIFY_001
+router_intents:
+- static_analysis
+- genos
+aliases:
+- static-analysis
+- static analysis
+- genos static analysis
+regression_cases: []
+slash_commands: []
+workflows: []
+templates: []
+provenance:
+  collection: genos_codex_skills_2026-05-17
+  source_repo: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/GENESYS/GENESYS
+  raw_source: 16_knowledge/external_collateral/genos_codex_skills_2026-05-17/raw/static-analysis.md
+  raw_sha256: 892a0453e0c750425d73f09968e1bc53c200dd02752120a8872f35fd6fe9f689
+improvement_history: []

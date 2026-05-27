@@ -1,0 +1,57 @@
+id: SKILL_IPOS_TABLE_MASTER_001
+title: IPOS Table Master
+version: 1.0.0
+layer: active
+domains:
+- ipos
+- dashboard
+- data_pipeline
+- reporting
+- ui_ux
+- ai_insights
+- accessibility
+- tables
+playbook: 13_skills/active/SKILL_IPOS_TABLE_MASTER_001.playbook.md
+validation_tests: []
+status: active
+skill_number: 64
+source_documents:
+- ipos_claude_skills_2026-05-17/raw/table-master/SKILL.md
+trigger_conditions:
+- User request matches imported IPOS skill `table-master`.
+- User mentions data table.
+- User mentions DetailsList.
+- User mentions TanStack Table.
+- User mentions sortable table.
+- User mentions filterable table.
+- User mentions virtual scroll table.
+- User mentions AG Grid.
+hard_constraints:
+- Preserve source-of-truth ranking.
+- Do not claim completion without validation evidence.
+- Use imported IPOS patterns only when the request is dashboard, KPI, SharePoint, paratransit, or frontend-dashboard related.
+- Record misses in the skill refinery ledger when discovered.
+tier: active
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_IPOS_TABLE_MASTER_001.ledger.yaml
+related_skills:
+- SKILL_PLATFORM_BUILD_001
+- SKILL_FRONTEND_BACKEND_DATAFLOW_001
+- SKILL_SOURCE_TRUTH_RECONCILIATION_001
+router_intents:
+- table_master
+- dashboard
+- ipos_dashboard
+aliases:
+- table-master
+- table master
+- ipos table master
+regression_cases: []
+slash_commands: []
+workflows: []
+templates: []
+provenance:
+  collection: ipos_claude_skills_2026-05-17
+  source_repo: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS
+  raw_source: 16_knowledge/external_collateral/ipos_claude_skills_2026-05-17/raw/table-master/SKILL.md
+  raw_sha256: 7cb9687a89f323f169ea47185b42886cfabc8351c61ae9d18f08b25209bdd121
+improvement_history: []

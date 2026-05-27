@@ -1,0 +1,9 @@
+skill_id: SKILL_FIND_BEFORE_CREATE_001
+entries:
+- date: '2026-05-17'
+  type: improvement
+  trigger: Thread revealed missed agent surfaces and missing thread-to-skill closure.
+  change: Linked global `.claude` acquisition, agent-surface normalization, and thread
+    refinery closure skills; added stricter inventory completeness safeguards.
+  validation: Registry, regression, skills-stack, and drift checks required after
+    update.

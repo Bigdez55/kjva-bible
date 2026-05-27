@@ -1,0 +1,34 @@
+id: SKILL_SC_AGENT_EXECUTION_ORDER_001
+name: SUPER C Agent Execution Order
+title: SUPER C Agent Execution Order
+version: 1.0.0
+status: active
+layer: governance
+domains: [handoff, agent-orchestration, communication]
+playbook: 13_skills/active/SKILL_SC_AGENT_EXECUTION_ORDER_001.playbook.md
+purpose: >
+  Produce one complete copy-paste-ready Markdown handoff for coding agents.
+  Every execution order is a single cohesive .md file with the 15 required
+  sections in order, including feasibility forecast, claim boundary, and
+  red-team block. No piecemeal handoffs across multiple messages.
+inputs:
+  - milestone spec
+  - feasibility forecast
+  - blocker register
+  - red-team verdict
+outputs:
+  - one-file handoff
+  - coding agent order
+  - implementation authorization
+  - blocked verdict template
+known_failure_modes:
+  - piecemeal handoffs across multiple messages
+  - missing feasibility forecast
+  - missing claim boundary
+  - missing red-team block
+validation_tests:
+  - TEST_SKILL_SC_AGENT_EXECUTION_ORDER_001_001
+improvement_history:
+  - version: 1.0.0
+    reason: >
+      Initial from SC-MISS-001 + user's "one complete Markdown file" directive.

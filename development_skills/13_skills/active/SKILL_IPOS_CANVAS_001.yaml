@@ -1,0 +1,54 @@
+id: SKILL_IPOS_CANVAS_001
+title: IPOS Canvas
+version: 1.0.0
+layer: active
+domains:
+- ipos
+- dashboard
+- visualization
+- ai_insights
+- frontend
+playbook: 13_skills/active/SKILL_IPOS_CANVAS_001.playbook.md
+validation_tests: []
+status: active
+skill_number: 44
+source_documents:
+- ipos_claude_skills_2026-05-17/raw/canvas/SKILL.md
+trigger_conditions:
+- User request matches imported IPOS skill `canvas`.
+- User mentions D3.
+- User mentions custom visualization.
+- User mentions SVG animation.
+- User mentions force graph.
+- User mentions canvas rendering.
+- User mentions CANVAS.
+- User mentions d3.js.
+hard_constraints:
+- Preserve source-of-truth ranking.
+- Do not claim completion without validation evidence.
+- Use imported IPOS patterns only when the request is dashboard, KPI, SharePoint, paratransit, or frontend-dashboard related.
+- Record misses in the skill refinery ledger when discovered.
+tier: active
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_IPOS_CANVAS_001.ledger.yaml
+related_skills:
+- SKILL_PLATFORM_BUILD_001
+- SKILL_FRONTEND_BACKEND_DATAFLOW_001
+- SKILL_SOURCE_TRUTH_RECONCILIATION_001
+router_intents:
+- canvas
+- dashboard
+- ipos_dashboard
+aliases:
+- canvas
+- canvas
+- ipos canvas
+regression_cases: []
+slash_commands: []
+workflows: []
+templates: []
+provenance:
+  collection: ipos_claude_skills_2026-05-17
+  source_repo: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS
+  raw_source: 16_knowledge/external_collateral/ipos_claude_skills_2026-05-17/raw/canvas/SKILL.md
+  raw_sha256: cc384c45841211e8332f68b86574bf3d7a25ce2e65d376978b1ac717309b1a9a
+improvement_history: []

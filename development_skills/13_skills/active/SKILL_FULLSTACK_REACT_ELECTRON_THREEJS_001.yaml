@@ -1,0 +1,41 @@
+id: SKILL_FULLSTACK_REACT_ELECTRON_THREEJS_001
+title: Full-Stack React Electron Three.js
+version: 1.0.0
+layer: application
+domains:
+- frontend
+- fullstack
+- desktop
+- 3d
+playbook: 13_skills/active/SKILL_FULLSTACK_REACT_ELECTRON_THREEJS_001.playbook.md
+validation_tests:
+- 08_verification/skill_tests/TEST_SKILL_FULLSTACK_REACT_ELECTRON_THREEJS_001_001.yaml
+status: active
+skill_number: 28
+source_documents:
+- handoff_v7_repo_native
+trigger_conditions:
+- React, Electron, Three.js, desktop app, 3D UI, or full-stack frontend implementation
+  is requested.
+hard_constraints:
+- Preserve source-of-truth ranking.
+- Do not claim completion without validation evidence.
+- Record misses in the skill refinery ledger when discovered.
+tier: active
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_FULLSTACK_REACT_ELECTRON_THREEJS_001.ledger.yaml
+related_skills: []
+router_intents:
+- platform_build
+- visual_to_system_backbone
+aliases:
+- 28-fullstack-react-electron-threejs
+regression_cases: []
+slash_commands:
+- /apex:platform_build
+workflows:
+- 05_workflows/platform_build_auto_invocation.md
+templates: []
+provenance:
+  collection: skills_stack_2026-05-17
+  source_index: 16_knowledge/external_collateral/skills_stack_2026-05-17/source_index.yaml
+improvement_history: []

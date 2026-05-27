@@ -1,0 +1,48 @@
+id: SKILL_GENOS_API_CONTRACT_001
+title: GEN.OS API Contract Specification
+version: 1.0.0
+layer: active
+domains:
+- genos
+- api_contracts
+- ci
+- documentation
+- service_scaffold
+playbook: 13_skills/active/SKILL_GENOS_API_CONTRACT_001.playbook.md
+validation_tests: []
+status: active
+skill_number: 72
+source_documents:
+- genos_codex_skills_2026-05-17/raw/api-contract.md
+trigger_conditions:
+- User mentions api-contract.
+- User mentions api contract.
+- User mentions contract.
+hard_constraints:
+- Preserve source-of-truth ranking.
+- Do not claim completion without validation evidence.
+- Use GEN.OS-specific commands, paths, policies, and gates only when GEN.OS context is active.
+- Record misses in the skill refinery ledger when discovered.
+tier: active
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_GENOS_API_CONTRACT_001.ledger.yaml
+related_skills:
+- SKILL_LOW_LEVEL_KERNEL_BOOT_001
+- SKILL_CI_PIPELINE_001
+- SKILL_RUNTIME_REGRESSION_VERIFY_001
+router_intents:
+- api_contract
+- genos
+aliases:
+- api-contract
+- api contract
+- genos api contract
+regression_cases: []
+slash_commands: []
+workflows: []
+templates: []
+provenance:
+  collection: genos_codex_skills_2026-05-17
+  source_repo: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/GENESYS/GENESYS
+  raw_source: 16_knowledge/external_collateral/genos_codex_skills_2026-05-17/raw/api-contract.md
+  raw_sha256: 783c1e7e706e467cc387318df2a097a307b9780cbb75200809669b162b9d1a16
+improvement_history: []

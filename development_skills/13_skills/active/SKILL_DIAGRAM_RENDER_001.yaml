@@ -1,0 +1,26 @@
+id: SKILL_DIAGRAM_RENDER_001
+name: Diagram Render
+version: 1.0.0
+status: active
+playbook: 13_skills/active/SKILL_DIAGRAM_RENDER_001.playbook.md
+domain: diagrams
+purpose: Validate and render every .mmd via mermaid-cli; emit svg/png; update diagram
+  registry.
+inputs:
+- .mmd files
+outputs:
+- rendered svg
+- rendered png
+- validation status
+known_failure_modes:
+- mermaid syntax error
+- missing mermaid-cli
+validation_tests:
+- TEST_SKILL_DIAGRAM_RENDER_001_001
+improvement_history:
+- version: 1.0.0
+  reason: Initial definition.
+title: Diagram Render
+layer: diagrams
+domains:
+- diagrams

@@ -1,0 +1,9 @@
+skill_id: SKILL_ATLAS_GRAPH_ENGINE_001
+entries:
+  - date: "2026-05-18"
+    trigger: graph_engine_visual_intelligence_pre_gate
+    user_correction: The Atlas Graph Engine cannot be a basic node-dot canvas and must become a queryable visual intelligence workbench with provenance, proof, drift, Trace, and context export.
+    miss_type: graph_substrate_and_visual_function_gap
+    correction: Added typed graph contracts, provenance-backed mock data, deterministic layout metadata, cache invalidation rules, graph queries, pathfinding, context export, saved query serialization, and production graph components.
+    prevention_rule: No graph UI without graph truth; no visual mode without query behavior; no node without provenance.
+    regression_case: REG-034

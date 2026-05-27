@@ -1,0 +1,89 @@
+id: SKILL_RUNTIME_ORCHESTRATION_001
+title: Runtime Orchestration
+version: 1.0.0
+layer: active
+domains:
+- multi_tenant_platform
+- security
+- saas
+- tenant
+- data
+- storage
+- orchestration
+- observability
+playbook: 13_skills/active/SKILL_RUNTIME_ORCHESTRATION_001.playbook.md
+validation_tests:
+- 13_skills/skill_refinery/validation_tests/TEST_MULTI_TENANT_SECURITY_SKILLS_001.yaml
+status: active
+source_documents:
+- 16_knowledge/external_collateral/security_updates_2026-05-20/multi_tenant_platform_skills-2/04_runtime_orchestration/SKILL.md
+- 16_knowledge/external_collateral/security_updates_2026-05-20/multi_tenant_platform_skills-2/manifest.json
+- 16_knowledge/external_collateral/security_updates_2026-05-20/multi_tenant_platform_skills-2/PUBLIC_RELEASE_AUTH_RATE_AUDIT_CHECKLIST.md
+trigger_conditions:
+- orchestration
+- Kubernetes
+- GEN.OS
+- sovereign orchestration
+- deployment platform
+- runtime
+- scheduler
+- XMesh
+- service discovery
+- operator
+- Docker Compose
+- cloud deployment
+- on-prem
+hard_constraints:
+- Treat tenant as a security, billing, data, operational, and governance boundary.
+- Do not rely on frontend-only authorization.
+- No proof, no claim for security, isolation, compliance, release, or resilience assertions.
+- Do not require GEN.OS or xOrchestra for current standalone Storbits work unless
+  explicitly targeted.
+tier: active
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_RUNTIME_ORCHESTRATION_001.ledger.yaml
+related_skills:
+- SKILL_MULTI_TENANT_PLATFORM_ARCHITECT_001
+- SKILL_PROOF_MATRIX_001
+- SKILL_TRIGGER_ROUTER_001
+- SKILL_CONTEXT_PACKET_001
+router_intents:
+- runtime_orchestration
+- multi_tenant_platform_security
+aliases:
+- orchestration
+- Kubernetes
+- GEN.OS
+- sovereign orchestration
+- deployment platform
+- runtime
+- scheduler
+- XMesh
+- service discovery
+- operator
+- Docker Compose
+- cloud deployment
+required_outputs:
+- Runtime mode matrix
+- Orchestrator abstraction
+- xOrchestra orchestration design
+- Optional Kubernetes adapter design
+- Service placement model
+- Storage volume model
+- Config/secrets model
+- Service discovery model
+- Health supervision model
+- Deployment/rollback model
+- Proof gates
+regression_cases:
+- REG-MULTI-TENANT-SECURITY-001
+slash_commands: []
+workflows: []
+templates: []
+provenance:
+  created_from: security_updates_multi_tenant_platform_skills_1_2_0
+  created_at: '2026-05-20'
+  source_path: 16_knowledge/external_collateral/security_updates_2026-05-20/multi_tenant_platform_skills-2/04_runtime_orchestration/SKILL.md
+improvement_history:
+- version: 1.0.0
+  date: '2026-05-20'
+  reason: Imported from security updates multi-tenant platform skill pack v1.2.0.

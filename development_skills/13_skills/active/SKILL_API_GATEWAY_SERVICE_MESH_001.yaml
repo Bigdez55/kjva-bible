@@ -1,0 +1,83 @@
+id: SKILL_API_GATEWAY_SERVICE_MESH_001
+title: API Gateway and Service Mesh
+version: 1.0.0
+layer: active
+domains:
+- multi_tenant_platform
+- security
+- saas
+- tenant
+- auth
+- gateway
+- ai
+- audit
+playbook: 13_skills/active/SKILL_API_GATEWAY_SERVICE_MESH_001.playbook.md
+validation_tests:
+- 13_skills/skill_refinery/validation_tests/TEST_MULTI_TENANT_SECURITY_SKILLS_001.yaml
+status: active
+source_documents:
+- 16_knowledge/external_collateral/security_updates_2026-05-20/multi_tenant_platform_skills-2/05_api_gateway_and_service_mesh/SKILL.md
+- 16_knowledge/external_collateral/security_updates_2026-05-20/multi_tenant_platform_skills-2/manifest.json
+- 16_knowledge/external_collateral/security_updates_2026-05-20/multi_tenant_platform_skills-2/PUBLIC_RELEASE_AUTH_RATE_AUDIT_CHECKLIST.md
+trigger_conditions:
+- API gateway
+- service mesh
+- XMesh
+- routes
+- rate limits
+- internal services
+- microservices
+- service discovery
+- tenant-aware routing
+- API keys
+hard_constraints:
+- Treat tenant as a security, billing, data, operational, and governance boundary.
+- Do not rely on frontend-only authorization.
+- No proof, no claim for security, isolation, compliance, release, or resilience assertions.
+- Do not require GEN.OS or xOrchestra for current standalone Storbits work unless
+  explicitly targeted.
+tier: active
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_API_GATEWAY_SERVICE_MESH_001.ledger.yaml
+related_skills:
+- SKILL_MULTI_TENANT_PLATFORM_ARCHITECT_001
+- SKILL_PROOF_MATRIX_001
+- SKILL_TRIGGER_ROUTER_001
+- SKILL_CONTEXT_PACKET_001
+router_intents:
+- api_gateway
+- multi_tenant_platform_security
+aliases:
+- API gateway
+- service mesh
+- XMesh
+- routes
+- rate limits
+- internal services
+- microservices
+- service discovery
+- tenant-aware routing
+- API keys
+required_outputs:
+- API boundary map
+- Public/private endpoint inventory
+- Tenant context propagation model
+- Auth enforcement plan
+- Rate limit/quotas plan
+- Service discovery model
+- Internal service identity model
+- Request tracing model
+- API versioning strategy
+- Proof gates
+regression_cases:
+- REG-MULTI-TENANT-SECURITY-001
+slash_commands: []
+workflows: []
+templates: []
+provenance:
+  created_from: security_updates_multi_tenant_platform_skills_1_2_0
+  created_at: '2026-05-20'
+  source_path: 16_knowledge/external_collateral/security_updates_2026-05-20/multi_tenant_platform_skills-2/05_api_gateway_and_service_mesh/SKILL.md
+improvement_history:
+- version: 1.0.0
+  date: '2026-05-20'
+  reason: Imported from security updates multi-tenant platform skill pack v1.2.0.

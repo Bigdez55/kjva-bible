@@ -1,0 +1,33 @@
+schema_version: '1.0'
+name: Development_Skills Universal Skill Surface
+status: canonical
+purpose: Single invocation surface for Claude, Codex, Gemini-style agents, and repo-local coding agents.
+source_of_truth:
+  registry: 13_skills/skills.registry.yaml
+  active_skill_dir: 13_skills/active
+  canonical_router: 13_skills/skill_refinery/trigger_router.yaml
+  runtime_router: 37_command_protocol/trigger_router.yaml
+  router_engine: 25_automation/route_intent.py
+  universal_policy: 13_skills/skill_refinery/universal_skill_invocation_policy.md
+  cross_runtime_contract: 13_skills/skill_refinery/cross_runtime_invoke_all_skills_contract.md
+assistant_projections:
+  claude_command: .claude/commands/invoke-all-skills.md
+  codex_command: .codex/commands/invoke-all-skills.md
+  gemini_command: .gemini/commands/invoke-all-skills.md
+rules:
+  - Runtime-registered skills are only one execution surface.
+  - Repository-native SKILL_*.yaml and playbooks are the canonical skill disciplines.
+  - Assistant projections must point back to this surface and must not redefine it.
+  - Project-specific skills are available but suppressed until target-bound.
+  - Corrective triggers must update ledgers, regression cases, or router mappings when misses occur.
+validation:
+  router_gap_audit: python3 25_automation/audit_skill_router_integration.py
+  deterministic_router: python3 25_automation/validate_trigger_determinism.py
+required_response_fields:
+  - tool_called_skills
+  - playbook_applied_disciplines
+  - activated_project_specific_skills
+  - suppressed_project_specific_skills
+  - validation_or_proof_gates
+  - misses_logged_or_none
+

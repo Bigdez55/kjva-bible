@@ -1,0 +1,16 @@
+skill_id: SKILL_ATLAS_KNOWLEDGE_DEPOT_001
+entries:
+  - date: "2026-05-18"
+    trigger: actual_use_case_missing
+    user_correction: ATLAS did not explain why the layout exists and was not functional enough for coding agents to use as a knowledge depot.
+    miss_type: product_operating_model_gap
+    correction: Added page-by-page use cases, layout rationale, agent inputs/outputs, proof gates, use-case API, and agent packet generation.
+    prevention_rule: Every ATLAS platform surface must define user action, state transition, agent input, agent output, and proof gate before being treated as operational.
+    regression_case: REG-032
+  - date: "2026-05-18"
+    trigger: functional_command_center_rebuild_order
+    user_correction: ATLAS must support an ingest-to-handoff vertical slice with page-level routing, repo twin, knowledge vault, graph engine, proof, drift, and skill refinery.
+    miss_type: vertical_slice_depth_gap
+    correction: Added required page routes, typed data models, four-zone workbench layout, schema-backed MVP data, and functional interactions for ingest, graph inspection, spec planning, and handoff export.
+    prevention_rule: A platform rebuild request is incomplete unless the workflow is demonstrable from ingest through agent handoff and proof/drift/skill feedback.
+    regression_case: REG-033

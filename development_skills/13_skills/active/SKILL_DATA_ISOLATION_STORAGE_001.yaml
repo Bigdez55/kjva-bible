@@ -1,0 +1,84 @@
+id: SKILL_DATA_ISOLATION_STORAGE_001
+title: Data Isolation and Storage
+version: 1.0.0
+layer: active
+domains:
+- multi_tenant_platform
+- security
+- saas
+- tenant
+- data
+- storage
+- ai
+playbook: 13_skills/active/SKILL_DATA_ISOLATION_STORAGE_001.playbook.md
+validation_tests:
+- 13_skills/skill_refinery/validation_tests/TEST_MULTI_TENANT_SECURITY_SKILLS_001.yaml
+status: active
+source_documents:
+- 16_knowledge/external_collateral/security_updates_2026-05-20/multi_tenant_platform_skills-2/03_data_isolation_and_storage/SKILL.md
+- 16_knowledge/external_collateral/security_updates_2026-05-20/multi_tenant_platform_skills-2/manifest.json
+- 16_knowledge/external_collateral/security_updates_2026-05-20/multi_tenant_platform_skills-2/PUBLIC_RELEASE_AUTH_RATE_AUDIT_CHECKLIST.md
+trigger_conditions:
+- tenant data isolation
+- data model
+- database per tenant
+- schema per tenant
+- row-level security
+- tenant_id
+- encryption keys
+- backup restore
+- data export
+- offboarding
+- data residency
+hard_constraints:
+- Treat tenant as a security, billing, data, operational, and governance boundary.
+- Do not rely on frontend-only authorization.
+- No proof, no claim for security, isolation, compliance, release, or resilience assertions.
+- Do not require GEN.OS or xOrchestra for current standalone Storbits work unless
+  explicitly targeted.
+tier: active
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_DATA_ISOLATION_STORAGE_001.ledger.yaml
+related_skills:
+- SKILL_MULTI_TENANT_PLATFORM_ARCHITECT_001
+- SKILL_PROOF_MATRIX_001
+- SKILL_TRIGGER_ROUTER_001
+- SKILL_CONTEXT_PACKET_001
+router_intents:
+- data_isolation
+- multi_tenant_platform_security
+aliases:
+- tenant data isolation
+- data model
+- database per tenant
+- schema per tenant
+- row-level security
+- tenant_id
+- encryption keys
+- backup restore
+- data export
+- offboarding
+- data residency
+required_outputs:
+- Data isolation strategy
+- Storage topology
+- Tenant key hierarchy
+- Data residency model
+- Backup/restore model
+- Export/offboarding model
+- Retention/legal hold model
+- Cache isolation model
+- Search/vector/graph isolation model
+- Proof gates
+regression_cases:
+- REG-MULTI-TENANT-SECURITY-001
+slash_commands: []
+workflows: []
+templates: []
+provenance:
+  created_from: security_updates_multi_tenant_platform_skills_1_2_0
+  created_at: '2026-05-20'
+  source_path: 16_knowledge/external_collateral/security_updates_2026-05-20/multi_tenant_platform_skills-2/03_data_isolation_and_storage/SKILL.md
+improvement_history:
+- version: 1.0.0
+  date: '2026-05-20'
+  reason: Imported from security updates multi-tenant platform skill pack v1.2.0.

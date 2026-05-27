@@ -49,6 +49,23 @@ const s = {
     lineHeight: "1.9",
     fontSize: "1rem",
   },
+  badge: (retrieved) => ({
+    display: "inline-block",
+    fontSize: "0.7rem",
+    padding: "2px 8px",
+    borderRadius: "3px",
+    marginBottom: "10px",
+    background: retrieved ? "#1a2a1a" : "#1a1a2a",
+    color: retrieved ? "#6a9a6a" : "#6a7a9a",
+    border: `1px solid ${retrieved ? "#3a6a3a" : "#3a4a6a"}`,
+    letterSpacing: "0.04em",
+  }),
+  refLabel: {
+    fontSize: "0.75rem",
+    color: "#d4af7a",
+    marginBottom: "8px",
+    opacity: 0.8,
+  },
   prompt: { color: "#d4af7a" },
   completion: { color: "#e8dcc8" },
   error: { color: "#c84b4b", marginTop: "12px", fontSize: "0.875rem" },
@@ -76,6 +93,7 @@ export default function CompletionPanel() {
           prompt: prompt.trim(),
           max_new_tokens: maxTokens,
           temperature,
+          top_p: 0.9,
         }),
       });
       if (!res.ok) {
@@ -92,7 +110,7 @@ export default function CompletionPanel() {
 
   return (
     <div>
-      <div style={s.label}>Prompt — type a verse fragment or any KJV-style text</div>
+      <div style={s.label}>Prompt — type a verse fragment, reference (e.g. "John 3:16"), or KJV-style text</div>
       <textarea
         style={s.textarea}
         value={prompt}
@@ -125,13 +143,13 @@ export default function CompletionPanel() {
       </div>
 
       <div style={s.hint}>
-        KJVA is a byte-level model trained on KJV+Apocrypha. It generates KJV-style text — not guaranteed accurate scripture.
+        Exact verse fragments and references return ground-truth scripture. Unrecognized text uses the KJVA model.
       </div>
 
       {error && (
         <div style={s.error}>
           {error}
-          {error.includes("not installed") && (
+          {error.toLowerCase().includes("not installed") && (
             <div style={{ marginTop: "8px", fontFamily: "monospace", fontSize: "0.8rem" }}>
               cp &lt;Tokenless Models&gt;/KJVA/training/weights.safetensors models/kjva/weights.safetensors
             </div>
@@ -141,8 +159,28 @@ export default function CompletionPanel() {
 
       {result && (
         <div style={s.output}>
-          <span style={s.prompt}>{result.prompt}</span>
-          <span style={s.completion}>{result.completion}</span>
+          <div>
+            <span style={s.badge(result.retrieved)}>
+              {result.retrieved ? "scripture" : "ai-generated"}
+            </span>
+          </div>
+          {result.verse_ref && (
+            <div style={s.refLabel}>{result.verse_ref}</div>
+          )}
+          {result.retrieved && result.completion.includes("\n") ? (
+            <div style={s.completion}>
+              {result.completion.split("\n").map((line, i) => (
+                <div key={i} style={{ marginBottom: "6px" }}>{line}</div>
+              ))}
+            </div>
+          ) : (
+            <>
+              <span style={s.prompt}>{result.prompt}</span>
+              {result.completion && (
+                <span style={s.completion}> {result.completion}</span>
+              )}
+            </>
+          )}
         </div>
       )}
     </div>

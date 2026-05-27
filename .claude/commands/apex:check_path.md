@@ -1,7 +1,7 @@
 # Slash Command: /apex:check_path
 
 ## Purpose
-Mandatory pre-write check. Before any agent creates a file or folder, this command runs the FIND-before-CREATE search and returns one of `OK_TO_CREATE | REUSE_CANDIDATE | REDIRECT_REQUIRED | HALT`. Hard enforcement per [SKILL_FIND_BEFORE_CREATE_001](../../13_skills/active/SKILL_FIND_BEFORE_CREATE_001.yaml).
+Mandatory pre-write check. Before any agent creates a file or folder, this command runs the FIND-before-CREATE search and returns one of `OK_TO_CREATE | REUSE_CANDIDATE | REDIRECT_REQUIRED | HALT`. Hard enforcement per [SKILL_FIND_BEFORE_CREATE_001](../../development_skills/13_skills/active/SKILL_FIND_BEFORE_CREATE_001.yaml).
 
 ## Output
 A decision record stored alongside the artifact (or in [18_registry/change_ledger.yaml](../../18_registry/change_ledger.yaml) when the artifact format cannot carry metadata).
@@ -23,7 +23,7 @@ A decision record stored alongside the artifact (or in [18_registry/change_ledge
 - If `artifact_kind` is supplied, it is one of the allowed values.
 
 ### 2. Run the six searches
-Execute searches 1–6 from [SKILL_FIND_BEFORE_CREATE_001.playbook.md](../../13_skills/active/SKILL_FIND_BEFORE_CREATE_001.playbook.md):
+Execute searches 1–6 from [SKILL_FIND_BEFORE_CREATE_001.playbook.md](../../development_skills/13_skills/active/SKILL_FIND_BEFORE_CREATE_001.playbook.md):
 
 1. Exact path exists?
 2. Case/separator variant exists? (collapsed-token comparison)
@@ -76,14 +76,14 @@ Same as the skill: `decision`, `candidates`, `rationale` (when `OK_TO_CREATE`), 
 
 ```text
 /apex:check_path target_path=/abs/path/to/repo/13_skills/active/SKILL_FOO_001.yaml artifact_kind=skill
-/apex:check_path target_path=04_architecture/adrs/ADR-0042-bar.md artifact_kind=adr
+/apex:check_path target_path=development_skills/04_architecture/adrs/ADR-0042-bar.md artifact_kind=adr
 /apex:check_path target_path=39_repo_twins/twins/super_c_academy artifact_kind=repo_twin
 ```
 
 ## See also
-- Skill: [SKILL_FIND_BEFORE_CREATE_001](../../13_skills/active/SKILL_FIND_BEFORE_CREATE_001.yaml)
-- Playbook: [SKILL_FIND_BEFORE_CREATE_001.playbook.md](../../13_skills/active/SKILL_FIND_BEFORE_CREATE_001.playbook.md)
-- Companion: [SKILL_REPO_ONBOARDING_001](../../13_skills/active/SKILL_REPO_ONBOARDING_001.yaml) Tier 4 promotes repeat violations into skill updates.
+- Skill: [SKILL_FIND_BEFORE_CREATE_001](../../development_skills/13_skills/active/SKILL_FIND_BEFORE_CREATE_001.yaml)
+- Playbook: [SKILL_FIND_BEFORE_CREATE_001.playbook.md](../../development_skills/13_skills/active/SKILL_FIND_BEFORE_CREATE_001.playbook.md)
+- Companion: [SKILL_REPO_ONBOARDING_001](../../development_skills/13_skills/active/SKILL_REPO_ONBOARDING_001.yaml) Tier 4 promotes repeat violations into skill updates.
 - Global predecessor (narrower scope): `~/.claude/skills/apex-directory-discipline/`.
 - [APEX_PROTOCOL.md](../../APEX_PROTOCOL.md)
-- [37_command_protocol/commands.registry.yaml](../commands.registry.yaml)
+- [../../development_skills/37_command_protocol/commands.registry.yaml](../commands.registry.yaml)

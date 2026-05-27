@@ -2,7 +2,7 @@
 
 Purpose: Map frontend, backend, APIs, database, workflows, reports, and external systems.
 
-Playbook: `37_command_protocol/command_playbooks/apex_dataflow_map.playbook.md`
+Playbook: `../../development_skills/37_command_protocol/command_playbooks/apex_dataflow_map.playbook.md`
 
 Required skills: SKILL_FRONTEND_BACKEND_DATAFLOW_001
 

@@ -4,32 +4,32 @@
 Generate or update visual architecture atlas.
 
 ## Output
-`04_architecture/diagrams/`
+`development_skills/04_architecture/diagrams/`
 
 ## Inputs
 - `target` (string, required): the entity being acted on (repo name, slice id, etc.)
-- Source-of-truth files: see [19_truth_state/source_of_truth_ranking.yaml](../../19_truth_state/source_of_truth_ranking.yaml)
+- Source-of-truth files: see [19_truth_state/source_of_truth_ranking.yaml](../../development_skills/19_truth_state/source_of_truth_ranking.yaml)
 - Relevant schemas: [26_schemas/](../../26_schemas/)
 
 ## Preconditions
 - Repo structure check passes ([apex_structure_check.yml](../../.github/workflows/apex_structure_check.yml))
 - `python3 25_automation/registry_sync/sync_registries.py --check` is green
-- Caller has write access to `04_architecture/diagrams/`
+- Caller has write access to `development_skills/04_architecture/diagrams/`
 
 ## Step-by-step
 
 ### 1. Load context
-Compile a context packet via [42_context_compiler/compile_context.py](../../42_context_compiler/compile_context.py) for the appropriate persona ([12_agents/personas/](../../12_agents/personas/)).
+Compile a context packet via [42_context_compiler/compile_context.py](../../development_skills/42_context_compiler/compile_context.py) for the appropriate persona ([12_agents/personas/](../../development_skills/12_agents/personas/)).
 
 ### 2. Validate inputs
 - Required input fields present.
 - Input matches the relevant schema in [26_schemas/](../../26_schemas/).
-- No conflicts with existing artifacts in `04_architecture/diagrams/`.
+- No conflicts with existing artifacts in `development_skills/04_architecture/diagrams/`.
 
 ### 3. Author artifact
 - Use the matching template in [14_templates/](../../14_templates/).
-- Reference the active ADRs ([04_architecture/adrs/](../../04_architecture/adrs/)) and skills ([13_skills/active/](../../13_skills/active/)).
-- Write artifact to `04_architecture/diagrams/` with a deterministic filename.
+- Reference the active ADRs ([04_architecture/adrs/](../../development_skills/04_architecture/adrs/)) and skills ([13_skills/active/](../../development_skills/13_skills/active/)).
+- Write artifact to `development_skills/04_architecture/diagrams/` with a deterministic filename.
 
 ### 4. Update registries
 - Run `python3 25_automation/registry_sync/sync_registries.py --write` to refresh the relevant `*.registry.yaml`.
@@ -46,7 +46,7 @@ Compile a context packet via [42_context_compiler/compile_context.py](../../42_c
 - Append an evidence packet to [23_evidence/evidence_packets/](../../23_evidence/evidence_packets/) referencing the new artifact.
 
 ## Outputs
-- Artifact in `04_architecture/diagrams/`
+- Artifact in `development_skills/04_architecture/diagrams/`
 - Updated `*.registry.yaml`
 - Change ledger row
 - Optional evidence packet
@@ -81,5 +81,5 @@ python3 25_automation/registry_sync/sync_registries.py --write
 
 ## See also
 - [APEX_PROTOCOL.md](../../APEX_PROTOCOL.md)
-- [37_command_protocol/commands.registry.yaml](../commands.registry.yaml)
+- [../../development_skills/37_command_protocol/commands.registry.yaml](../commands.registry.yaml)
 - [25_automation/](../../25_automation/)

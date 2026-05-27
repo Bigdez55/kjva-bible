@@ -14,7 +14,7 @@ This command invokes `SKILL_UI_FEATURE_AUDIT_001`.
 |---|---|---|---|
 | `target` | Yes | — | Absolute path to the UI repo to audit |
 | `pages` | No | all discovered pages | Comma-separated list of page/screen names to audit |
-| `output_dir` | No | `04_architecture/diagrams/source/feature/` | Directory where diagrams and YAML files are written |
+| `output_dir` | No | `development_skills/04_architecture/diagrams/source/feature/` | Directory where diagrams and YAML files are written |
 
 ### Example invocations
 
@@ -194,6 +194,6 @@ Feature audit complete for <repo>:
 This command is a thin wrapper around:
 
 - **Skill**: `SKILL_UI_FEATURE_AUDIT_001`
-- **Playbook**: `13_skills/active/SKILL_UI_FEATURE_AUDIT_001.playbook.md`
+- **Playbook**: `development_skills/13_skills/active/SKILL_UI_FEATURE_AUDIT_001.playbook.md`
 - **Test**: `08_verification/skill_tests/TEST_SKILL_UI_FEATURE_AUDIT_001_001.yaml`
 - **Schemas**: `26_schemas/feature_map/feature_map.schema.json`, `26_schemas/system_map/system_map.schema.json`

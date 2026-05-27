@@ -1,0 +1,98 @@
+evidence_packet_id: EP-2026-05-26-SLICE-0001
+repo: kjva-bible
+tier: 3
+slice: SLICE-0001-phase1-release
+date: '2026-05-26'
+author: apex-onboard
+
+summary: >
+  SLICE-0001 (Phase 1 release) implementation evidence. Retrieval-first
+  /api/complete shipped per ADR-0003; 29-test pytest suite passes locally
+  in retrieval-only mode (no weights, no MLX); Dockerfile + docker-compose.yml
+  + GitHub Actions CI authored and ready for first push.
+
+artifacts:
+  slice: development_skills/22_vertical_slices/SLICE-0001-phase1-release.yaml
+  specs:
+    - development_skills/03_specs/functional_requirements/SPEC-KJVA-FUNC-0001-retrieval-augmented-completion.yaml
+    - development_skills/03_specs/non_functional_requirements/SPEC-KJVA-NFR-0001-performance-and-availability.yaml
+    - development_skills/03_specs/acceptance_criteria/SPEC-KJVA-ACC-0001-phase1-acceptance.yaml
+    - development_skills/03_specs/security_requirements/SPEC-KJVA-SEC-0001-public-exposure-baseline.yaml
+  adrs:
+    - development_skills/04_architecture/adrs/ADR-0001-mlx-inference-engine.md
+    - development_skills/04_architecture/adrs/ADR-0002-byte-level-tokenizer-and-18m-scale.md
+    - development_skills/04_architecture/adrs/ADR-0003-retrieval-first-completion-ordering.md
+  diagrams:
+    - development_skills/04_architecture/diagrams/source/architecture/execution_sequence_kjva-bible.mmd
+    - development_skills/04_architecture/diagrams/source/architecture/data_flow_kjva-bible.mmd
+    - development_skills/04_architecture/diagrams/source/architecture/deployment_impact_kjva-bible.mmd
+    - development_skills/04_architecture/diagrams/source/architecture/test_coverage_kjva-bible.mmd
+  code:
+    - backend/corpus.py
+    - backend/routes/complete.py
+    - backend/inference.py
+    - backend/main.py
+    - frontend/src/components/CompletionPanel.jsx
+    - frontend/vite.config.js
+  tests:
+    - backend/tests/conftest.py
+    - backend/tests/test_corpus.py
+    - backend/tests/test_routes.py
+  deployment:
+    - Dockerfile
+    - .dockerignore
+    - docker-compose.yml
+    - .github/workflows/ci.yml
+
+verify:
+  - gate: pytest
+    command: "cd backend && python3 -m pytest tests/ -v"
+    result: "29 passed in 1.26s"
+    status: pass
+  - gate: tests-cover-slice-acceptance
+    detail: |
+      FR-1..FR-5 covered by test_complete_direct_ref_no_weights,
+      test_complete_range_ref_no_weights, test_complete_prefix_match_no_weights,
+      test_complete_fallback_without_weights_returns_503,
+      test_complete_validation_max_length, test_complete_validation_empty.
+    status: pass
+  - gate: dockerfile-syntax
+    detail: "Manual review only (docker not invoked in this session). GHA docker-build job will be the first real validation on push."
+    status: pending_first_ci_run
+  - gate: ci-workflow-valid-yaml
+    detail: "GHA YAML written; first push to claude/onboarding-tier1 triggers full pipeline."
+    status: pending_first_ci_run
+
+preview_deploy:
+  target: docker-compose (local)
+  command: "docker compose -f docker-compose.yml up -d backend"
+  expected_url: http://localhost:8000/api/health
+  weights_state: retrieval-only by default (mount KJVA/training/ for AI fallback)
+  rollback: "docker compose down && docker compose up -d backend:previous-tag"
+  status: documented_pending_first_invocation
+
+acceptance_status:
+  pytest_green: pass (29/29)
+  retrieval_works_without_weights: pass (3 dedicated tests)
+  range_lookup: pass
+  validation_errors_422: pass
+  weights_absent_503_shape: pass
+  dockerfile_present: pass
+  compose_present: pass
+  ci_workflow_present: pass
+  agents_md_updated: pass
+  readme_updated: pass
+
+bugs_fixed:
+  - id: BUG-engine-ready-blocks-retrieval
+    description: "engine.is_ready() gated entire /api/complete; retrieval branches unreachable without weights."
+    resolution: "Moved gate below retrieval. ADR-0003."
+  - id: BUG-mlx-hard-import
+    description: "import mlx.core at module top broke /api/complete import in MLX-less environments."
+    resolution: "try/except ImportError + _MLX_AVAILABLE flag in inference.py."
+
+drift_findings:
+  truth_drift: "current.truth.yaml needs test_count update from 0 → 29 (Tier 4 task)."
+  registry_sync: "Local change_ledger + traceability authored; upstream sync pending."
+
+status: active

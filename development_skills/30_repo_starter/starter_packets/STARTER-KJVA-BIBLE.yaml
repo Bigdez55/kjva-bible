@@ -1,0 +1,36 @@
+id: STARTER-KJVA-BIBLE
+repo: kjva-bible
+primary_goal: "Phase 1 release: retrieval-augmented completion + test suite + production deployment"
+language: Python (backend), JavaScript/JSX (frontend)
+frameworks:
+  backend: FastAPI 0.111+, uvicorn
+  frontend: React 18 + Vite 5
+  inference: MLX 0.16+ (Apple Silicon)
+  validation: pydantic v2
+model:
+  name: KJVA
+  params: 18M
+  format: safetensors
+  weights_path: KJVA/training/weights.safetensors
+  weights_distribution: gitignored, mounted at runtime
+runtime:
+  python: "3.11+"
+  node: "18+"
+  platform_primary: macOS (Apple Silicon, MLX)
+  platform_container: linux/amd64 with retrieval-only mode if weights absent
+proof_corpus:
+  - name: data/verses.jsonl
+    role: "36,822 KJV+Apocrypha verse records — primary lookup source"
+    test: "VerseIndex.load() parses all records, lookups O(1)"
+  - name: backend/corpus.py
+    role: "retrieval layer (lookup_ref, lookup_ref_range, search_prefix, build_corpus_context)"
+    test: "deterministic verse lookup + fuzzy book name resolution"
+  - name: backend/routes/complete.py
+    role: "retrieval-first completion endpoint with AI fallback"
+    test: "route returns verse for direct ref; falls back to AI only when retrieval misses"
+  - name: backend/routes/verse.py
+    role: "REST surface for /api/books, /chapters, /verses, /verse"
+    test: "all four endpoints return expected shapes"
+first_slice: SLICE-0001-phase1-release
+status: active
+date: '2026-05-26'

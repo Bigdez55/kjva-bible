@@ -1,0 +1,36 @@
+change_ledger:
+  - id: CL-2026-05-26-001
+    date: '2026-05-26'
+    slice: SLICE-0001-phase1-release
+    summary: "Retrieval-first /api/complete ordering (ADR-0003). lookup_ref + lookup_ref_range + search_prefix added to corpus; engine.is_ready() moved below retrieval branches."
+    files:
+      - backend/corpus.py
+      - backend/routes/complete.py
+      - backend/inference.py
+    adr: ADR-0003-retrieval-first-completion-ordering
+  - id: CL-2026-05-26-002
+    date: '2026-05-26'
+    slice: SLICE-0001-phase1-release
+    summary: "Backend test suite (29 pytest) covering corpus retrieval and all /api routes."
+    files:
+      - backend/tests/conftest.py
+      - backend/tests/test_corpus.py
+      - backend/tests/test_routes.py
+    adr: null
+  - id: CL-2026-05-26-003
+    date: '2026-05-26'
+    slice: SLICE-0001-phase1-release
+    summary: "Production deployment config: Dockerfile + docker-compose.yml + GitHub Actions CI."
+    files:
+      - Dockerfile
+      - .dockerignore
+      - docker-compose.yml
+      - .github/workflows/ci.yml
+    adr: null
+  - id: CL-2026-05-26-004
+    date: '2026-05-26'
+    slice: SLICE-0001-phase1-release
+    summary: "MLX import made optional in inference.py so retrieval-only mode works in linux/amd64 containers + CI."
+    files:
+      - backend/inference.py
+    adr: ADR-0003-retrieval-first-completion-ordering

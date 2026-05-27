@@ -1,0 +1,35 @@
+id: SPEC-KJVA-FUNC-0001
+category: functional_requirements
+title: Retrieval-augmented completion
+status: active
+owner: bigdez55
+slice: SLICE-0001-phase1-release
+description: >
+  POST /api/complete resolves the user's prompt against the verse index BEFORE
+  invoking the AI engine. Resolution order: (1) direct verse reference range,
+  (2) verse-text prefix/keyword match, (3) RAG-augmented AI fallback, (4) raw
+  AI completion. Retrieval branches return retrieved=true and a verse_ref;
+  fallback returns retrieved=false. The endpoint must remain functional in
+  retrieval mode even when AI weights are absent.
+requirements:
+  - id: FR-1
+    text: "Direct ref like 'John 3:16' returns the verse text with retrieved=true."
+  - id: FR-2
+    text: "Range ref like 'Numbers 15:37-41' returns all five verses joined, with verse_ref spanning the range."
+  - id: FR-3
+    text: "Chapter-only ref like 'Prov 31' returns verse 1 of that chapter."
+  - id: FR-4
+    text: "Text-prefix match (>=8 normalized chars) returns the matched verse's tail with retrieved=true."
+  - id: FR-5
+    text: "Misses on both ref and prefix → AI completion; when weights absent, 503 with structured error."
+  - id: FR-6
+    text: "Response contract: prompt, completion, model, retrieved, verse_ref (Optional)."
+acceptance:
+  - "TEST-corpus-lookup-ref passes for 'John 3:16', 'Prov 31', 'GEN 1:1', 'prov 31:10'."
+  - "TEST-corpus-lookup-range passes for 'Numbers 15:37-41'."
+  - "TEST-corpus-search-prefix passes for 'In the beginning God', 'Study and shew'."
+  - "TEST-routes-complete-retrieval-no-weights passes WITHOUT weights present."
+links:
+  adr: 04_architecture/adrs/ADR-0003-retrieval-first-completion-ordering.md
+  diagram: 04_architecture/diagrams/source/architecture/execution_sequence_kjva-bible.mmd
+  test: backend/tests/test_corpus.py, backend/tests/test_routes.py

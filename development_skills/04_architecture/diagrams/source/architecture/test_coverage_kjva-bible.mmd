@@ -1,32 +1,44 @@
 ---
 title: KJVA Bible — Test Coverage
 status: verified
-tier: T1
+tier: T3
 last_updated: 2026-05-26
+slice: SLICE-0001-phase1-release
 ---
 graph TD
-    subgraph Untested["UNTESTED (0 test files)"]
+    subgraph Covered_Backend["COVERED (29 pytest, retrieval-only)"]
+        style Covered_Backend fill:#102a10,stroke:#6f6
+        corpus_t["corpus.py<br/>VerseIndex load + lookup_ref + lookup_ref_range<br/>+ search_prefix + build_corpus_context"]
+        verse_r["routes/verse.py<br/>/api/books /chapters /verses /verse + 404s"]
+        complete_r["routes/complete.py<br/>direct ref, range, prefix, validation,<br/>weights-absent 503"]
+        stubs_r["routes/stubs.py<br/>/api/search /qa /xref 501 shape"]
+        health_t["/api/health"]
+    end
+
+    subgraph Untested["UNTESTED (planned post-Phase 1)"]
         style Untested fill:#4a1010,stroke:#f66
-        corpus_t["corpus.py\nVerseIndex load, lookup, search"]
-        inference_t["inference.py\nbyte encode/decode, completion, top-p sampling"]
-        model_t["model.py\nTokenlessLM forward pass"]
-        verse_r["routes/verse.py\n/api/books /chapters /verses /verse"]
-        complete_r["routes/complete.py\nPOST /api/complete"]
-        stubs_r["routes/stubs.py\nHTTP 501 response shape"]
-        app_t["App.jsx — tab switching"]
-        vb_t["VerseBrowser.jsx — nav interactions"]
-        cp_t["CompletionPanel.jsx — submit + render"]
-        sp_t["StubPanel.jsx — stub render"]
+        inference_t["inference.py — AI generation loop<br/>(requires MLX + weights → developer Macs only)"]
+        model_t["model.py — TokenlessLM forward pass<br/>(same)"]
+        app_t["App.jsx — tab switching (frontend)"]
+        vb_t["VerseBrowser.jsx — nav interactions (frontend)"]
+        cp_t["CompletionPanel.jsx — submit + render (frontend)"]
+        sp_t["StubPanel.jsx — stub render (frontend)"]
     end
 
-    subgraph Covered["COVERED"]
-        style Covered fill:#102a10,stroke:#6f6
-        kjva_agent_tests["KJVA/ai/tokenless-agent/tests/\n(inherited — covers AI agent,\nnot the app itself)"]
+    subgraph CI_Gate["CI Gate (GHA)"]
+        style CI_Gate fill:#102a10,stroke:#6f6
+        gha["ci.yml: ruff + pytest + docker build<br/>on push to claude/** and main"]
     end
 
-    subgraph Gap["CRITICAL GAPS"]
+    subgraph Gap["REMAINING GAPS"]
         style Gap fill:#2a1a00,stroke:#fa0
-        no_int["No integration tests\n(API round-trip)"]
-        no_e2e["No E2E tests\n(browser flow)"]
-        no_ci["No CI/CD pipeline\n(no automated test run)"]
+        no_e2e["No E2E tests (browser flow / Playwright)"]
+        no_frontend["No frontend unit tests (Vitest)"]
+        no_rate_limit_test["No rate-limit test (rate limit itself is a follow-up)"]
     end
+
+    gha --> corpus_t
+    gha --> verse_r
+    gha --> complete_r
+    gha --> stubs_r
+    gha --> health_t

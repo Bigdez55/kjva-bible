@@ -2,7 +2,7 @@ truth_id: TRUTH-KJVA-BIBLE-001
 repo: kjva-bible
 remote: https://github.com/Bigdez55/kjva-bible.git
 last_verified: '2026-05-26'
-last_verified_by: apex-onboard-tier1
+last_verified_by: apex-onboard-tier3-SLICE-0001
 
 summary: >
   Full-stack King James Bible web app powered by the KJVA AI model — an 18M-parameter
@@ -26,8 +26,8 @@ runtime:
 deployment_target:
   dev: uvicorn port 8000 + Vite dev server port 5173 (proxy)
   prod: FastAPI serves React dist/ as StaticFiles on port 8000 (single process)
-  ci_cd: none_configured
-  containerized: false
+  ci_cd: github_actions (.github/workflows/ci.yml — ruff + pytest + docker build)
+  containerized: true (Dockerfile + docker-compose.yml; retrieval-only by default on linux/amd64)
 
 repo_type:
   - web_app
@@ -65,11 +65,13 @@ components:
     - name: data/verses.jsonl
       role: 36,822 structured verse records (gittracked)
 
-test_count: 0
-test_framework: none
+test_count: 29
+test_framework: pytest + fastapi TestClient
 test_surface: >
-  No backend or frontend tests. KJVA/ai/tokenless-agent/tests/ exists for the
-  inherited AI governance module but does not cover the app itself.
+  29 backend tests (13 corpus + 16 routes) covering VerseIndex retrieval
+  (lookup_ref, lookup_ref_range, search_prefix, build_corpus_context) and
+  every /api endpoint including retrieval-first /api/complete in
+  weights-absent mode. No frontend tests yet (Vitest deferred).
 
 data:
   primary_dataset: data/verses.jsonl
@@ -154,6 +156,6 @@ open_questions:
 
 onboarding:
   tier1_completed: '2026-05-26'
-  tier2_completed: null
-  tier3_completed: null
-  tier4_last_run: null
+  tier2_completed: '2026-05-26'
+  tier3_completed: '2026-05-26'  # SLICE-0001 phase1-release
+  tier4_last_run: '2026-05-26'

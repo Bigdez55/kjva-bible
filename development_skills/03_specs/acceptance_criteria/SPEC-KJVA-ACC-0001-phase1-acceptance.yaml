@@ -1,0 +1,22 @@
+id: SPEC-KJVA-ACC-0001
+category: acceptance_criteria
+title: Phase 1 release acceptance gate
+status: active
+owner: bigdez55
+slice: SLICE-0001-phase1-release
+description: >
+  Top-level acceptance criteria that gate the Phase 1 release. All must be
+  green before slice is marked done.
+acceptance:
+  - "All backend pytest tests pass (cd backend && python -m pytest tests/ -v)."
+  - "Backend test coverage includes corpus.lookup_ref, lookup_ref_range, search_prefix, and all /api routes (books, chapters, verses, verse, complete)."
+  - "GitHub Actions CI runs on push and PR; lint + pytest both green."
+  - "Dockerfile produces a runnable image; docker-compose.yml starts backend with healthcheck."
+  - "/api/complete returns retrieved=true for 'John 3:16' with no weights present."
+  - "/api/complete returns retrieved=true with multi-line body for 'Numbers 15:37-41'."
+  - "AGENTS.md + README.md reflect retrieval-first completion behavior."
+  - "Evidence packet EP-2026-05-26-SLICE-0001.yaml exists and links all artifacts."
+links:
+  adr: null
+  diagram: null
+  test: backend/tests/

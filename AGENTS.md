@@ -19,7 +19,7 @@ backend/          FastAPI — inference, verse index, API routes
   corpus.py       VerseIndex from data/verses.jsonl
   routes/
     verse.py      /api/books, /api/chapters, /api/verses, /api/verse
-    complete.py   POST /api/complete  (live)
+    complete.py   POST /api/complete  (live; retrieval-first per ADR-0003)
     stubs.py      POST /api/search, /api/qa, /api/xref  (501 until Phase 2-4)
   main.py         FastAPI app, CORS, static serving, lifespan startup
 
@@ -58,7 +58,7 @@ models/kjva/
 
 Start backend:
 ```bash
-cd backend && uvicorn main:app --reload --port 8000
+cd backend && uvicorn main:app --reload --port 8001
 ```
 
 Start frontend (dev):
@@ -77,7 +77,7 @@ cp "<Tokenless Models>/KJVA/training/weights.safetensors" models/kjva/weights.sa
 
 | Phase | Feature | Requires |
 |---|---|---|
-| 1 (live) | Verse browser + AI completion | Base KJVA weights |
+| 1 (live) | Verse browser + retrieval-augmented completion | None for retrieval; KJVA weights for AI fallback |
 | 2 | Semantic search | Embedding adapter (train in Tokenless Models) |
 | 3 | Q&A / commentary | SFT adapter (train in Tokenless Models) |
 | 4 | Cross-reference | Embedding similarity index |
@@ -89,3 +89,14 @@ cp "<Tokenless Models>/KJVA/training/weights.safetensors" models/kjva/weights.sa
 `/api/search`, `/api/qa`, `/api/xref` return HTTP 501 with a structured error
 explaining what adapter/training is required. Do not remove stubs — they allow
 the frontend to render placeholders cleanly.
+
+---
+
+## Phase 1 Release (SLICE-0001)
+
+See `development_skills/22_vertical_slices/SLICE-0001-phase1-release.yaml`.
+
+- Retrieval-first `/api/complete` (ADR-0003)
+- 29-test pytest suite in `backend/tests/`
+- `Dockerfile` + `docker-compose.yml` for retrieval-only container preview
+- `.github/workflows/ci.yml` runs ruff + pytest + docker build on push

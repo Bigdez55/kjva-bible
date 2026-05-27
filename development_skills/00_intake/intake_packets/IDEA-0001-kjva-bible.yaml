@@ -1,0 +1,30 @@
+id: IDEA-0001
+repo: kjva-bible
+remote: https://github.com/Bigdez55/kjva-bible.git
+local_path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/kjva-bible
+raw_idea: >
+  KJVA Bible is a personal KJV scripture study app powered by a custom
+  18M-parameter byte-level AI model. The next outcome is a complete Phase 1
+  release: retrieval-augmented completion (direct verse lookup + RAG fallback),
+  a backend test suite covering all routes and corpus logic, and a production
+  deployment configuration.
+value_statement: >
+  Phase 1 release transitions kjva-bible from a hobby-grade FastAPI prototype
+  into a production-deployable study tool. Retrieval-first completion eliminates
+  hallucinations on direct verse references, the test suite hardens the corpus
+  and route surface against regression, and the deployment config unblocks a
+  publicly accessible preview (and eventual production) host without exposing
+  unmetered AI inference.
+assumptions:
+  - MLX inference remains the runtime engine for the AI fallback path (Apple Silicon dev box; CPU/GPU fallback deferred).
+  - Weights (KJVA/training/weights.safetensors, 72 MB) stay gitignored and are mounted at runtime in deployed environments rather than baked into images.
+  - Retrieval (verse lookup + text prefix match) returns deterministic answers and does not require weights — it works in CI and in container builds without weights.
+  - The KJVA/ governance subtree (heptagon, soul_manager, tokenless-agent) stays documentation/substrate during Phase 1 and is not wired to runtime request handling.
+  - Phase 2–4 endpoints (search, qa, xref) remain HTTP 501 stubs through this release.
+open_questions:
+  - Which preview host is the target (Fly.io GPU, bare VPS with volume mount, local docker compose only)?
+  - Should /api/complete be rate-limited (token bucket per IP) before public exposure, or behind auth?
+  - Does the test suite include a smoke test against the AI fallback path (requires weights in CI) or only retrieval?
+  - Does production need a healthcheck that distinguishes "retrieval ready" from "AI ready"?
+date: '2026-05-26'
+status: registered

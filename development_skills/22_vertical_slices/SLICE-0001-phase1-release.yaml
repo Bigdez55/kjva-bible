@@ -1,0 +1,45 @@
+id: SLICE-0001-phase1-release
+title: "Phase 1 release: retrieval-augmented completion + backend test suite + production deployment"
+status: active
+spec_links:
+  - SPEC-KJVA-FUNC-0001-retrieval-augmented-completion
+  - SPEC-KJVA-NFR-0001-performance-and-availability
+  - SPEC-KJVA-ACC-0001-phase1-acceptance
+  - SPEC-KJVA-SEC-0001-public-exposure-baseline
+adr_links:
+  - ADR-0001-mlx-inference-engine
+  - ADR-0002-byte-level-tokenizer-and-18m-scale
+  - ADR-0003-retrieval-first-completion-ordering
+proof_requirements:
+  test_ids:
+    - TEST-corpus-lookup-ref
+    - TEST-corpus-lookup-range
+    - TEST-corpus-search-prefix
+    - TEST-routes-verse-surface
+    - TEST-routes-complete-retrieval-no-weights
+  diagram_ids:
+    - execution_sequence_kjva-bible
+    - component_map_kjva-bible
+    - data_flow_kjva-bible
+    - deployment_impact_kjva-bible
+preview_deploy:
+  target: docker-compose (local + remote-VPS-portable)
+  strategy: retrieval-only by default; AI fallback enabled when weights volume mounted
+  build_steps:
+    - "docker compose -f docker-compose.yml build backend"
+    - "docker compose up -d backend"
+    - "curl -fsS http://localhost:8000/api/health"
+    - "curl -fsS -X POST http://localhost:8000/api/complete -H 'Content-Type: application/json' -d '{\"prompt\":\"John 3:16\"}' | jq .retrieved"
+  weights_mount: "host:/path/to/weights.safetensors -> container:/app/KJVA/training/weights.safetensors (read-only)"
+  rollback_path: |
+    docker compose down && docker compose up -d backend:previous-tag
+    If retrieval breaks: git revert HEAD on claude/onboarding-tier1 and rebuild image.
+    AI fallback degrades gracefully: 503 response with structured error explaining missing weights.
+acceptance:
+  - "/api/complete returns retrieved=true and a verse_ref for 'John 3:16' even when weights are absent."
+  - "/api/complete returns retrieved=true with multi-verse body for 'Numbers 15:37-41'."
+  - "/api/complete falls back to AI (retrieved=false) only when retrieval misses AND weights are present."
+  - "pytest suite covers corpus.lookup_ref, lookup_ref_range, search_prefix, /api/books, /api/chapters/{book}, /api/verses/{book}/{chapter}, /api/verse/{book}/{chapter}/{verse}, /api/complete retrieval path."
+  - "Dockerfile builds a self-contained backend image; docker-compose.yml runs it with healthcheck."
+  - "GitHub Actions workflow runs lint + pytest on push to claude/* and main."
+date: '2026-05-26'

@@ -1,0 +1,39 @@
+# Preview deployment per SLICE-0001-phase1-release.
+#
+# Default mode: retrieval-only (no weights, runs anywhere).
+#
+# To enable AI fallback, uncomment the weights volume and run on Apple Silicon
+# with mlx available (typically not via Docker — Docker on Apple Silicon does
+# not pass through the Metal device used by MLX).
+#
+# Rollback: docker compose down && docker compose pull backend:previous-tag
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: kjva-bible-backend:slice-0001
+    container_name: kjva-bible-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
+      # CORS is enforced at app layer (main.py). For preview, restrict origins
+      # by setting an env var the app reads (follow-up — Phase 1 ships with
+      # the existing localhost-only defaults).
+    volumes:
+      # Uncomment to enable AI fallback when weights are available on host.
+      # Path inside container must match _MODELS_DIR in backend/inference.py.
+      # - ./KJVA/training:/app/KJVA/training:ro
+      - kjva_logs:/app/backend/logs
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; r=urllib.request.urlopen('http://127.0.0.1:8000/api/health',timeout=2); sys.exit(0 if r.status==200 else 1)"]
+      interval: 15s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+    restart: unless-stopped
+
+volumes:
+  kjva_logs:

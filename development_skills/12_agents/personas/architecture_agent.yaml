@@ -1,0 +1,19 @@
+id: AGENT_ARCHITECTURE_AGENT
+name: architecture_agent
+role: architecture
+description: Architecture agent
+capabilities:
+- author ADRs
+- update component contracts
+- update diagrams
+inputs:
+- decision context
+- impact analysis
+outputs:
+- ADR md
+- contract yaml
+- diagram source
+escalation:
+- decision conflicts with prior ADR
+- no rollback path
+active: true

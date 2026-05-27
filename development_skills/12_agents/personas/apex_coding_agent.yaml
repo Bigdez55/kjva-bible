@@ -1,0 +1,21 @@
+id: AGENT_APEX_CODING_AGENT
+name: apex_coding_agent
+role: primary_implementation
+description: Primary implementation agent
+capabilities:
+- author code per ADRs
+- update registries
+- run sync_registries.py
+inputs:
+- intent packet
+- context packet
+- spec
+outputs:
+- code diff
+- updated registries
+- evidence packet
+escalation:
+- unsafe destructive command
+- spec ambiguity
+- missing ADR for major decision
+active: true

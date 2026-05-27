@@ -1,0 +1,9 @@
+required_sections:
+  - repo_state
+  - architecture
+  - diagrams
+  - skills
+  - known_mistakes
+  - tests
+  - deployment
+  - source_ranking

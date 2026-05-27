@@ -1,0 +1,52 @@
+---
+title: KJVA Bible — Deployment Impact
+status: verified
+tier: T3
+last_updated: 2026-05-26
+slice: SLICE-0001-phase1-release
+---
+flowchart LR
+    subgraph Dev["Development (Apple Silicon)"]
+        FE_DEV["npm run dev<br/>Vite :5173<br/>(proxy /api → :8000)"]
+        BE_DEV["uvicorn main:app<br/>--reload --port 8000<br/>MLX + weights present"]
+    end
+
+    subgraph CI["CI (GitHub Actions, linux/amd64)"]
+        style CI fill:#1a2a1a,stroke:#0a0
+        GHA_LINT["ruff check (non-blocking)"]
+        GHA_TEST["pytest backend/tests/<br/>(29 tests, retrieval-only)"]
+        GHA_BUILD["docker buildx build"]
+    end
+
+    subgraph Container["Preview/Prod Container"]
+        IMAGE["kjva-bible-backend:slice-0001<br/>python:3.11-slim<br/>NO mlx, NO weights"]
+        HEALTH["healthcheck: /api/health<br/>15s interval"]
+        MODE_R["retrieval-only mode<br/>(lookup_ref + search_prefix)"]
+        MODE_AI["AI fallback<br/>(requires mounted weights<br/>AND Apple Silicon host)"]
+        IMAGE --> MODE_R
+        IMAGE -.->|optional mount| MODE_AI
+        IMAGE --> HEALTH
+    end
+
+    subgraph Weights_Mount["Optional Weights Mount (per ADR-0003)"]
+        WMOUNT["host:./KJVA/training<br/>→ container:/app/KJVA/training:ro<br/>(.dockerignore excludes from image)"]
+    end
+
+    subgraph Frontend_Build["Frontend Build"]
+        FE_BUILD["npm run build → frontend/dist/<br/>(separately served / mounted)"]
+    end
+
+    PR["git push claude/onboarding-tier1<br/>+ PR to main"] --> GHA_LINT
+    PR --> GHA_TEST
+    PR --> GHA_BUILD
+    GHA_BUILD --> IMAGE
+    WMOUNT -.->|enables| MODE_AI
+    FE_BUILD -.->|served separately or via StaticFiles| IMAGE
+
+    subgraph Rollback["Rollback Path"]
+        style Rollback fill:#2a1a1a,stroke:#a44
+        RB1["docker compose down"]
+        RB2["docker compose up backend:previous-tag"]
+        RB3["retrieval keeps working through swap"]
+        RB1 --> RB2 --> RB3
+    end

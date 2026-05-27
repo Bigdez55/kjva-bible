@@ -1,0 +1,47 @@
+id: SKILL_GENOS_SPRINT3_XNET_001
+title: "Sprint 3 \u2014 XNET Networking Module Design & Scaffold"
+version: 1.0.0
+layer: active
+domains:
+- genos
+- api_contracts
+- sprint_ops
+playbook: 13_skills/active/SKILL_GENOS_SPRINT3_XNET_001.playbook.md
+validation_tests: []
+status: active
+skill_number: 94
+source_documents:
+- genos_codex_skills_2026-05-17/raw/sprint3-xnet.md
+trigger_conditions:
+- User mentions sprint3-xnet.
+- User mentions sprint3 xnet.
+- User mentions sprint3.
+- User mentions xnet.
+hard_constraints:
+- Preserve source-of-truth ranking.
+- Do not claim completion without validation evidence.
+- Use GEN.OS-specific commands, paths, policies, and gates only when GEN.OS context is active.
+- Record misses in the skill refinery ledger when discovered.
+tier: active
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_GENOS_SPRINT3_XNET_001.ledger.yaml
+related_skills:
+- SKILL_LOW_LEVEL_KERNEL_BOOT_001
+- SKILL_CI_PIPELINE_001
+- SKILL_RUNTIME_REGRESSION_VERIFY_001
+router_intents:
+- sprint3_xnet
+- genos
+aliases:
+- sprint3-xnet
+- sprint3 xnet
+- genos sprint3 xnet
+regression_cases: []
+slash_commands: []
+workflows: []
+templates: []
+provenance:
+  collection: genos_codex_skills_2026-05-17
+  source_repo: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/GENESYS/GENESYS
+  raw_source: 16_knowledge/external_collateral/genos_codex_skills_2026-05-17/raw/sprint3-xnet.md
+  raw_sha256: 7b104ec5ee7e1a474d8736abe6e7ddf8b8ae47951db0e941d215f6406badd650
+improvement_history: []

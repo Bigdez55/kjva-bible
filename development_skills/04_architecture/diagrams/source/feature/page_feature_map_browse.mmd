@@ -1,0 +1,28 @@
+---
+title: KJVA Bible — Page Feature Map: Browse Tab (VerseBrowser)
+status: verified
+tier: T1
+last_updated: 2026-05-26
+---
+graph TD
+    VB["VerseBrowser.jsx"]
+
+    subgraph Elements["UI Elements"]
+        BookList["Book list\n(canon-grouped)\n✅ wired → /api/books"]
+        ChapterList["Chapter list\n✅ wired → /api/chapters/{book}"]
+        VerseList["Verse list\n✅ wired → /api/verses/{book}/{chapter}"]
+        VerseText["Verse display\n{text, Strongs, footnotes, ref}\n✅ wired → /api/verse/{book}/{ch}/{v}"]
+    end
+
+    subgraph Missing["Missing / Not Wired"]
+        style Missing fill:#2a1a00,stroke:#fa0
+        SearchInBrowse["Inline text search\n⚠️ NOT WIRED"]
+        BookmarkFav["Bookmark / favourite\n⚠️ NOT IMPLEMENTED"]
+        CopyShare["Copy / share verse\n⚠️ NOT IMPLEMENTED"]
+        CanonFilter["Filter by canon category\n(OT/NT/Apocrypha)\n⚠️ NOT IMPLEMENTED"]
+    end
+
+    VB --> BookList
+    BookList -->|"select"| ChapterList
+    ChapterList -->|"select"| VerseList
+    VerseList -->|"select"| VerseText

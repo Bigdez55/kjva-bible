@@ -1,0 +1,4 @@
+domain: registry_sync
+description: Skills under the registry_sync domain.
+active_skills:
+- SKILL_REGISTRY_SYNC_001

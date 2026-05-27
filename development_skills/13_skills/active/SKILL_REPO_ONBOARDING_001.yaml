@@ -1,0 +1,38 @@
+id: SKILL_REPO_ONBOARDING_001
+name: Repo Onboarding
+version: 1.0.0
+status: active
+domain: repo_auditing
+purpose: Tiered onboarding sequence for any repo adopting Development_Skills. Captures
+  current truth (T1), sets direction (T2), runs the slice loop (T3), and maintains
+  hygiene (T4).
+inputs:
+- tier (1|2|3|4)
+- target (absolute path to the child repo)
+- intent_brief (string, required for Tier 2 only)
+outputs:
+- Tier 1 - current.truth.yaml, seven mandated diagrams, registry sync, drift evidence
+  packet, populated repo twin in central Development_Skills, target-repo branch pushed
+- Tier 2 - real intake packet, starter packet, first vertical slice with preview deploy,
+  baseline specs, 1-3 baseline ADRs, registry updates, evidence packet
+- Tier 3 - per-feature slice loop artifacts (slice, diagrams, verify, preview, evidence,
+  drift report, doc sync, optional skill improvement), change ledger and traceability
+  rows
+- Tier 4 - drift report per session, mistake ledger entries, promoted skill improvements,
+  refreshed twin, refreshed truth state when older than 30 days
+known_failure_modes:
+- Tier 2 invoked without intent_brief
+- target path is not a git repo or has uncommitted work that conflicts with onboarding
+  branch
+- twin sync skipped, leaving central Development_Skills out of sync with the child
+- mistake never captured into a skill, so the same mistake recurs across slices
+validation_tests:
+- TEST_SKILL_REPO_ONBOARDING_001_001
+improvement_history:
+- version: 1.0.0
+  reason: Initial definition.
+title: Repo Onboarding
+layer: repo_auditing
+domains:
+- repo_auditing
+playbook: 13_skills/active/SKILL_REPO_ONBOARDING_001.playbook.md

@@ -69,11 +69,18 @@ class GovernanceInterceptors:
         Creates a DecisionEnvelope, runs it through the gate chain,
         and returns whether the action is approved.
         """
+        envelope_context = context or {}
         envelope = DecisionEnvelope(
             intent=intent,
             subject=subject,
-            context=context or {},
+            resources_needed=dict(envelope_context.get("resources", {})),
+            context=envelope_context,
+            constraints=list(envelope_context.get("constraints", [])),
+            evidence=list(envelope_context.get("evidence", [])),
+            risk_score=float(envelope_context.get("risk_score", 0.0)),
+            value_score=float(envelope_context.get("value_score", 0.0)),
             created_by=created_by,
+            provenance_hash=str(envelope_context.get("provenance_hash", "")),
         )
 
         for hook in self._pre_hooks:

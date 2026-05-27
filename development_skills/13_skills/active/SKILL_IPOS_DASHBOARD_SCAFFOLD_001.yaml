@@ -1,0 +1,56 @@
+id: SKILL_IPOS_DASHBOARD_SCAFFOLD_001
+title: IPOS Dashboard Scaffold
+version: 1.0.0
+layer: active
+domains:
+- ipos
+- dashboard
+- testing
+- scaffolding
+- ai_insights
+- frontend
+- python_dashboard
+playbook: 13_skills/active/SKILL_IPOS_DASHBOARD_SCAFFOLD_001.playbook.md
+validation_tests: []
+status: active
+skill_number: 47
+source_documents:
+- ipos_claude_skills_2026-05-17/raw/dashboard-scaffold/SKILL.md
+trigger_conditions:
+- User request matches imported IPOS skill `dashboard-scaffold`.
+- User mentions scaffold.
+- User mentions new dashboard.
+- User mentions project setup.
+- User mentions folder structure.
+- User mentions project structure.
+- User mentions initialize project.
+- User mentions create dashboard.
+hard_constraints:
+- Preserve source-of-truth ranking.
+- Do not claim completion without validation evidence.
+- Use imported IPOS patterns only when the request is dashboard, KPI, SharePoint, paratransit, or frontend-dashboard related.
+- Record misses in the skill refinery ledger when discovered.
+tier: active
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_IPOS_DASHBOARD_SCAFFOLD_001.ledger.yaml
+related_skills:
+- SKILL_PLATFORM_BUILD_001
+- SKILL_FRONTEND_BACKEND_DATAFLOW_001
+- SKILL_SOURCE_TRUTH_RECONCILIATION_001
+router_intents:
+- dashboard_scaffold
+- dashboard
+- ipos_dashboard
+aliases:
+- dashboard-scaffold
+- dashboard scaffold
+- ipos dashboard scaffold
+regression_cases: []
+slash_commands: []
+workflows: []
+templates: []
+provenance:
+  collection: ipos_claude_skills_2026-05-17
+  source_repo: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS
+  raw_source: 16_knowledge/external_collateral/ipos_claude_skills_2026-05-17/raw/dashboard-scaffold/SKILL.md
+  raw_sha256: 689e46afb7644bce70ac35146614b021ec26f2e9d71113c328c5eba7cd7e0eb3
+improvement_history: []

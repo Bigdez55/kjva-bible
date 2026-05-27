@@ -1,0 +1,74 @@
+id: SKILL_ATLAS_OPERATIONAL_WORKSPACE_001
+title: ATLAS Operational Workspace Shell
+version: 1.0.0
+layer: active
+domains:
+  - atlas
+  - workspace
+  - repo_explorer
+  - knowledge_vault
+  - graph_engine
+  - code_workspace
+  - github_style_workflows
+playbook: 13_skills/active/SKILL_ATLAS_OPERATIONAL_WORKSPACE_001.playbook.md
+validation_tests: []
+status: active
+skill_number: 142
+source_documents:
+  - apps/atlas/src/app/page.tsx
+  - apps/atlas/src/lib/atlas-data.ts
+  - apps/atlas/src/app/api/workspace/route.ts
+trigger_conditions:
+  - User says ATLAS must operate like a workspace, not a static UI.
+  - User compares ATLAS to linked notes, graph exploration, VS Code, or GitHub.
+  - User asks for repo/file navigation, note editing, backlinks, graph canvas, commit feed, or command workspace behavior.
+hard_constraints:
+  - Preserve the ATLAS product name and proprietary subsystem names.
+  - Treat Graph and Knowledge Vault as first-party ATLAS features, not external product clones.
+  - Every operational surface must have a user action, state transition, and validation path.
+  - Do not call a surface operational if it only displays static cards.
+  - Demo persistence may use browser localStorage, but production persistence must be explicitly marked as future database work.
+tier: active
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_ATLAS_OPERATIONAL_WORKSPACE_001.ledger.yaml
+related_skills:
+  - SKILL_ATLAS_UI_UX_BUILDOUT_001
+  - SKILL_PLATFORM_BUILD_001
+  - SKILL_TRIGGER_ROUTER_001
+  - SKILL_CONTEXT_PACKET_001
+  - SKILL_PROOF_MATRIX_001
+router_intents:
+  - atlas_operational_workspace
+  - atlas_repo_file_explorer
+  - atlas_linked_note_workspace
+  - atlas_graph_workspace
+aliases:
+  - atlas workspace
+  - operational atlas
+  - working platform
+  - vscode style atlas
+  - github style atlas
+  - linked note workspace
+  - graph workspace
+required_outputs:
+  - Repo explorer
+  - File explorer
+  - Editor and preview surface
+  - Backlinks panel
+  - Graph relationship panel
+  - Commit feed
+  - Command router
+  - Ingestion action
+  - Persistence statement
+  - Validation evidence
+regression_cases:
+  - REG-028
+slash_commands: []
+workflows: []
+templates: []
+provenance:
+  created_from: atlas_operational_platform_correction
+  created_at: "2026-05-17"
+improvement_history:
+  - version: 1.0.0
+    date: "2026-05-17"
+    reason: Created after static UI/demo surface was corrected into an operational workspace requirement.

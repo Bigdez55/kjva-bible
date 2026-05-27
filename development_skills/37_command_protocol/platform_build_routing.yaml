@@ -1,0 +1,165 @@
+version: '1.0'
+intents:
+  platform_build:
+    description: User wants a platform, SaaS, app, website, dashboard, tool, or repo-backed
+      product.
+    match_any:
+    - build a platform
+    - build lmos
+    - build an app
+    - build a saas
+    - website
+    - web app
+    - platform
+    - repo-backed
+    - mvp
+    - production-ready
+    auto_invoke_skills:
+    - SKILL_TRIGGER_ROUTER_001
+    - SKILL_PLATFORM_BUILD_001
+    required_outputs:
+    - Platform backbone
+    - Product requirements
+    - Frontend map
+    - Backend services
+    - Database/data model
+    - API contracts
+    - Workflows
+    - Deployment
+    - Coding-agent handoff
+  visual_to_system_backbone:
+    description: User has or wants UI/visuals and needs the backend/data/workflow
+      infrastructure inferred.
+    match_any:
+    - ui is just a shell
+    - visual
+    - mockup
+    - screen
+    - dashboard
+    - frontend only
+    - layout
+    - the ui
+    - shell
+    auto_invoke_skills:
+    - SKILL_PLATFORM_BUILD_001
+    - SKILL_FRONTEND_BACKEND_DATAFLOW_001
+    - SKILL_UI_INTERACTION_WIRING_001
+    required_outputs:
+    - Screen-to-system mapping
+    - Backend services
+    - Data model
+    - API endpoints
+    - Workflow map
+  data_reporting_platform:
+    description: User asks about dashboards, reporting, KPIs, analytics, or data movement.
+    match_any:
+    - dashboard
+    - reporting
+    - kpi
+    - analytics
+    - data coming in
+    - information going out
+    - data going out
+    - disseminated
+    - report
+    auto_invoke_skills:
+    - SKILL_PLATFORM_BUILD_001
+    - SKILL_FRONTEND_BACKEND_DATAFLOW_001
+    required_outputs:
+    - Data source map
+    - Metric dictionary
+    - Reporting workflow
+    - Audit evidence plan
+  deployment_domain_repo:
+    description: User mentions GitHub, repo, domain, hosting, deployment, DNS, CI/CD,
+      or production.
+    match_any:
+    - github
+    - domain
+    - dns
+    - vercel
+    - netlify
+    - deploy
+    - deployment
+    - hosting
+    - ci/cd
+    - pipeline
+    - production
+    - linked to a domain
+    auto_invoke_skills:
+    - SKILL_PLATFORM_BUILD_001
+    - SKILL_CI_PIPELINE_001
+    required_outputs:
+    - Repo layout
+    - Environment strategy
+    - Deployment target
+    - Domain/DNS plan
+    - Rollback plan
+  ipos_platform:
+    description: User mentions IPOS or paratransit operating intelligence.
+    match_any:
+    - ipos
+    - paratransit
+    - vta
+    - trapeze
+    - otp
+    - otpa
+    - fleet readiness
+    - liquidated damages
+    auto_invoke_skills:
+    - SKILL_PLATFORM_BUILD_001
+    - SKILL_FRONTEND_BACKEND_DATAFLOW_001
+    required_outputs:
+    - Operating intelligence blueprint
+    - KPI and report map
+  lmos_platform:
+    description: User mentions LMOS or legal matter operations.
+    match_any:
+    - lmos
+    - legal matter operations
+    - legal saas
+    - matter workspace
+    - attorney review
+    auto_invoke_skills:
+    - SKILL_PLATFORM_BUILD_001
+    - SKILL_FRONTEND_BACKEND_DATAFLOW_001
+    required_outputs:
+    - Matter intake workflow
+    - Matter workspace model
+    - Document generation workflow
+    - Attorney review gate
+    - Audit trail
+  storbits_platform:
+    description: User mentions Storbits or storage/database systems.
+    match_any:
+    - storbits
+    - storage engine
+    - bit-level
+    - byte-level
+    - bookworm database
+    auto_invoke_skills:
+    - SKILL_PLATFORM_BUILD_001
+    - SKILL_LOW_LEVEL_KERNEL_BOOT_001
+    required_outputs:
+    - Storage architecture
+    - Data model
+    - Proof gates
+  genos_genesys_platform:
+    description: User mentions GEN.OS, GENESYS, GEN.X, SCX, OS, kernel, cloud, console,
+      or device layers.
+    match_any:
+    - gen.os
+    - genesys
+    - gen.x
+    - scx
+    - kernel
+    - operating system
+    - console
+    - device
+    auto_invoke_skills:
+    - SKILL_LOW_LEVEL_KERNEL_BOOT_001
+    - SKILL_PLATFORM_BUILD_001
+    required_outputs:
+    - Systems architecture
+    - Proof gates
+    - Runtime plan

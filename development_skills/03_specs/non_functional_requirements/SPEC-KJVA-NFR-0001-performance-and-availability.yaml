@@ -1,0 +1,30 @@
+id: SPEC-KJVA-NFR-0001
+category: non_functional_requirements
+title: Performance, availability, and degraded-mode behavior
+status: active
+owner: bigdez55
+slice: SLICE-0001-phase1-release
+description: >
+  Performance and availability envelope for Phase 1. The system must degrade
+  gracefully when AI weights are absent (retrieval-only mode) and must boot
+  cold within reasonable bounds.
+requirements:
+  - id: NFR-1
+    text: "Retrieval-path latency (P95) <= 50 ms for any single verse lookup."
+  - id: NFR-2
+    text: "AI fallback latency (P95) <= 8 s for max_new_tokens=150 on Apple Silicon."
+  - id: NFR-3
+    text: "Cold start (corpus load of 36,822 records) <= 3 s."
+  - id: NFR-4
+    text: "Container starts and serves /api/health in retrieval-only mode within 5 s even with weights absent."
+  - id: NFR-5
+    text: "Backend memory footprint without weights <= 256 MB; with weights <= 512 MB."
+  - id: NFR-6
+    text: "No single request can OOM the process; max prompt length enforced at 2000 chars by pydantic."
+acceptance:
+  - "Manual smoke: time curl on /api/complete with 'John 3:16' shows <100ms wall."
+  - "Manual smoke: docker compose up + curl /api/health in <5s in retrieval-only mode."
+links:
+  adr: 04_architecture/adrs/ADR-0003-retrieval-first-completion-ordering.md
+  diagram: 04_architecture/diagrams/source/architecture/deployment_impact_kjva-bible.mmd
+  test: null

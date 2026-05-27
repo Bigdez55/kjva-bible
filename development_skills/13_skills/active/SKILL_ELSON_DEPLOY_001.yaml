@@ -1,0 +1,58 @@
+id: SKILL_ELSON_DEPLOY_001
+title: Iron Gate Deployment Protocol
+version: 1.0.0
+layer: active
+domains:
+- cloud_ops
+- elson
+- platform
+- trading_bot
+playbook: 13_skills/active/SKILL_ELSON_DEPLOY_001.playbook.md
+validation_tests: []
+status: active
+skill_number: 115
+source_documents:
+- elson_claude_skills_2026-05-17/raw/elson_tb2_root/deploy/SKILL.md
+- elson_claude_skills_2026-05-17/raw/trading_bot_elson_tb2/deploy/SKILL.md
+trigger_conditions:
+- User request matches Elson Claude skill `deploy`.
+- User mentions deploy.
+- User mentions deploy.
+hard_constraints:
+- Use Elson-specific operational commands only when the Elson, trading bot, portfolio,
+  market, vLLM, or Cloud Run context is active.
+- Do not expose or repeat credentials, tokens, API keys, passwords, or secrets from
+  preserved raw Claude skill sources.
+- Do not claim live deployment, bot status, market action, or production health without
+  current validation evidence.
+- Record misses in the skill refinery ledger when discovered.
+tier: active
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_ELSON_DEPLOY_001.ledger.yaml
+related_skills:
+- SKILL_GENOS_CI_PREFLIGHT_001
+- SKILL_GENOS_RELEASE_PREP_001
+- SKILL_TRIGGER_ROUTER_001
+- SKILL_TRUTH_STATE_CHECK_001
+router_intents:
+- elson_deploy
+- elson
+- trading_bot
+aliases:
+- deploy
+- elson deploy
+regression_cases: []
+slash_commands: []
+workflows: []
+templates: []
+provenance:
+  collection: elson_claude_skills_2026-05-17
+  source_repos:
+  - /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Elson-TB2
+  - /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Trading Bot/Elson TB2/Elson/Elson-TB2
+  raw_sources:
+  - 16_knowledge/external_collateral/elson_claude_skills_2026-05-17/raw/elson_tb2_root/deploy/SKILL.md
+  - 16_knowledge/external_collateral/elson_claude_skills_2026-05-17/raw/trading_bot_elson_tb2/deploy/SKILL.md
+  raw_sha256_values:
+  - 6a4cb78a9f51cc943cce6bbd66a1a9105cb0f19e30c5b6cfa8b1b76e63ec07f5
+  selected_source: 16_knowledge/external_collateral/elson_claude_skills_2026-05-17/raw/trading_bot_elson_tb2/deploy/SKILL.md
+improvement_history: []

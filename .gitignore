@@ -38,7 +38,11 @@ Icon?
 *.tmp
 .pytest_cache/
 
-# AI runtime state — excluded per do_not_import_global_claude_codex_state policy
-**/.claude/
-**/.codex/
+# AI runtime state — block nested .claude/.codex per do_not_import_global_claude_codex_state policy.
+# Root-level .claude/ and .codex/ are allowed (project commands + settings).
+# The synced universal/ bundle is generated content — not tracked.
+*/.claude/
+*/.codex/
 **/.gemini/
+.claude/universal/
+.codex/universal/

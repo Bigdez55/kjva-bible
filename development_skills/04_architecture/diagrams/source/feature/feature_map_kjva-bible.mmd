@@ -1,0 +1,38 @@
+---
+title: KJVA Bible — Feature Map
+status: verified
+tier: T1
+last_updated: 2026-05-26
+---
+mindmap
+  root((KJVA Bible))
+    Phase 1 ✅ Live
+      Verse Browser
+        Book list (66 books + Apocrypha)
+        Chapter navigation
+        Verse display (text, Strongs, footnotes)
+        Canon category grouping
+      AI Completion
+        Byte-level prompt → KJV-style continuation
+        Configurable max tokens (1–512)
+        Configurable temperature (0–2)
+        Configurable top-p (0–1)
+        Model health check via /api/health
+    Phase 2 ⏳ Stub (501)
+      Semantic Search
+        Meaning-based verse lookup
+        REQUIRES: sentence-embedding adapter
+    Phase 3 ⏳ Stub (501)
+      Q&A / Commentary
+        Scripture-grounded answers
+        REQUIRES: SFT instruction-tuning adapter
+    Phase 4 ⏳ Stub (501)
+      Cross-Reference
+        Related passage surfacing
+        REQUIRES: embedding similarity index
+    Infrastructure Gaps
+      No test suite
+      No CI/CD pipeline
+      No containerization
+      No production deployment config
+      No authentication/authorization

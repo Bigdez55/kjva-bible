@@ -1,0 +1,100 @@
+version: '1.0'
+intents:
+  atlas_ingest:
+    description: User requests Atlas source-of-truth ingestion.
+    match_any:
+      - atlas ingest
+      - atlas:ingest
+      - capture atlas snapshot
+    auto_invoke_skills:
+      - SKILL_SOURCE_TRUTH_RECONCILIATION_001
+      - SKILL_REGISTRY_SYNC_001
+    required_outputs:
+      - Ingest snapshot
+      - Deterministic baseline
+  atlas_graph_engine:
+    description: User requests Atlas Graph Engine synthesis output.
+    match_any:
+      - atlas graph
+      - atlas:graph
+      - build atlas graph
+      - atlas graph engine
+    auto_invoke_skills:
+      - SKILL_CONTEXT_PACKET_001
+      - SKILL_PLATFORM_BUILD_001
+    required_outputs:
+      - Atlas Graph Engine manifest
+      - Graph intelligence artifacts
+  atlas_knowledge_vault:
+    description: User requests Atlas Knowledge Vault export.
+    match_any:
+      - atlas:knowledge_vault
+      - atlas knowledge vault
+      - knowledge vault
+      - export linked notes
+    auto_invoke_skills:
+      - SKILL_CONTEXT_PACKET_001
+      - SKILL_DOCS_ARCHITECTURE_SYNC_001
+    required_outputs:
+      - Atlas Knowledge Vault note set
+      - Knowledge manifest
+  atlas_status:
+    description: User requests Atlas status and health snapshot.
+    match_any:
+      - atlas status
+      - atlas:status
+      - atlas health
+    auto_invoke_skills:
+      - SKILL_TRUTH_STATE_CHECK_001
+      - SKILL_EXISTING_REPO_AUDIT_001
+    required_outputs:
+      - Subsystem coverage
+      - Health indicators
+  atlas_validate:
+    description: User requests Atlas safe gate execution.
+    match_any:
+      - atlas validate
+      - atlas:validate
+      - run atlas gates
+    auto_invoke_skills:
+      - SKILL_RUNTIME_REGRESSION_VERIFY_001
+      - SKILL_AUTOMATED_REGRESSION_TESTING_001
+    required_outputs:
+      - Gate matrix
+      - Blocker matrix
+  atlas_compile_context:
+    description: User requests Atlas context packet compilation.
+    match_any:
+      - atlas compile_context
+      - atlas:compile_context
+      - compile atlas context
+    auto_invoke_skills:
+      - SKILL_CONTEXT_PACKET_001
+      - SKILL_PROOF_MATRIX_001
+    required_outputs:
+      - Context packet
+      - Provenance
+  atlas_report:
+    description: User requests Atlas intelligence report output.
+    match_any:
+      - atlas report
+      - atlas:report
+      - atlas final report
+    auto_invoke_skills:
+      - SKILL_RUNTIME_REGRESSION_VERIFY_001
+      - SKILL_AUTOMATED_REGRESSION_TESTING_001
+    required_outputs:
+      - Intelligence report
+      - Evidence index
+  atlas_flow:
+    description: User requests Atlas convergence execution flow.
+    match_any:
+      - atlas flow
+      - atlas:flow
+      - run atlas flow
+    auto_invoke_skills:
+      - SKILL_PLATFORM_BUILD_001
+      - SKILL_AUTOMATED_REGRESSION_TESTING_001
+    required_outputs:
+      - Flow log
+      - Convergence status

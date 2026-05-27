@@ -1,0 +1,60 @@
+id: SKILL_ELSON_MARKET_PULSE_001
+title: "Market Pulse \u2014 Event Impact Analysis"
+version: 1.0.0
+layer: active
+domains:
+- elson
+- finance
+- operations
+- portfolio
+- trading_bot
+playbook: 13_skills/active/SKILL_ELSON_MARKET_PULSE_001.playbook.md
+validation_tests: []
+status: active
+skill_number: 121
+source_documents:
+- elson_claude_skills_2026-05-17/raw/elson_tb2_root/market-pulse/SKILL.md
+- elson_claude_skills_2026-05-17/raw/trading_bot_elson_tb2/market-pulse/SKILL.md
+trigger_conditions:
+- User request matches Elson Claude skill `market-pulse`.
+- User mentions market-pulse.
+- User mentions market pulse.
+hard_constraints:
+- Use Elson-specific operational commands only when the Elson, trading bot, portfolio,
+  market, vLLM, or Cloud Run context is active.
+- Do not expose or repeat credentials, tokens, API keys, passwords, or secrets from
+  preserved raw Claude skill sources.
+- Do not claim live deployment, bot status, market action, or production health without
+  current validation evidence.
+- Record misses in the skill refinery ledger when discovered.
+tier: active
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_ELSON_MARKET_PULSE_001.ledger.yaml
+related_skills:
+- SKILL_SOURCE_TRUTH_RECONCILIATION_001
+- SKILL_TRIGGER_ROUTER_001
+- SKILL_TRUTH_STATE_CHECK_001
+router_intents:
+- elson_market_pulse
+- elson
+- trading_bot
+aliases:
+- elson market pulse
+- elson market-pulse
+- market pulse
+- market-pulse
+regression_cases: []
+slash_commands: []
+workflows: []
+templates: []
+provenance:
+  collection: elson_claude_skills_2026-05-17
+  source_repos:
+  - /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Elson-TB2
+  - /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Trading Bot/Elson TB2/Elson/Elson-TB2
+  raw_sources:
+  - 16_knowledge/external_collateral/elson_claude_skills_2026-05-17/raw/elson_tb2_root/market-pulse/SKILL.md
+  - 16_knowledge/external_collateral/elson_claude_skills_2026-05-17/raw/trading_bot_elson_tb2/market-pulse/SKILL.md
+  raw_sha256_values:
+  - 0951e265ef7fc821d80f2581e59f0c34eaf15f2028eaca2d4bdc3bc3728da08c
+  selected_source: 16_knowledge/external_collateral/elson_claude_skills_2026-05-17/raw/trading_bot_elson_tb2/market-pulse/SKILL.md
+improvement_history: []

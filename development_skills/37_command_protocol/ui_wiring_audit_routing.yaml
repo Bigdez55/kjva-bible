@@ -1,0 +1,79 @@
+version: '1.0'
+intents:
+  ui_feature_wiring_audit:
+    description: User says UI controls do not work or need wiring map.
+    match_any:
+    - buttons and toggles do not work
+    - button does not work
+    - toggle
+    - switch
+    - kicks the user out
+    - profile settings
+    - account settings
+    - ui wiring
+    auto_invoke_skills:
+    - SKILL_UI_INTERACTION_WIRING_001
+    - SKILL_FRONTEND_BACKEND_DATAFLOW_001
+    - SKILL_RUNTIME_REGRESSION_VERIFY_001
+    required_outputs:
+    - Control behavior matrix
+    - State/API/backend/data map
+    - Regression tests
+  visual_to_system_backbone:
+    description: User has or wants UI/visuals and needs the backend/data/workflow
+      infrastructure inferred.
+    match_any:
+    - ui is just a shell
+    - visual
+    - mockup
+    - screen
+    - dashboard
+    - frontend only
+    - layout
+    - the ui
+    - shell
+    auto_invoke_skills:
+    - SKILL_PLATFORM_BUILD_001
+    - SKILL_FRONTEND_BACKEND_DATAFLOW_001
+    - SKILL_UI_INTERACTION_WIRING_001
+    required_outputs:
+    - Screen-to-system mapping
+    - Backend services
+    - Data model
+    - API endpoints
+    - Workflow map
+  data_reporting_platform:
+    description: User asks about dashboards, reporting, KPIs, analytics, or data movement.
+    match_any:
+    - dashboard
+    - reporting
+    - kpi
+    - analytics
+    - data coming in
+    - information going out
+    - data going out
+    - disseminated
+    - report
+    auto_invoke_skills:
+    - SKILL_PLATFORM_BUILD_001
+    - SKILL_FRONTEND_BACKEND_DATAFLOW_001
+    required_outputs:
+    - Data source map
+    - Metric dictionary
+    - Reporting workflow
+    - Audit evidence plan
+  runtime_verify:
+    description: User asks to prove behavior works through tests or runtime evidence.
+    match_any:
+    - runtime verify
+    - regression
+    - prove it works
+    - run tests
+    - test this feature
+    auto_invoke_skills:
+    - SKILL_RUNTIME_REGRESSION_VERIFY_001
+    - SKILL_AUTOMATED_REGRESSION_TESTING_001
+    required_outputs:
+    - Commands run
+    - Test results
+    - Evidence

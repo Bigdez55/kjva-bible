@@ -1,0 +1,35 @@
+evidence_packet_id: EP-2026-05-26-onboarding-tier2
+repo: kjva-bible
+tier: 2
+date: '2026-05-26'
+author: apex-onboard
+
+summary: >
+  Tier 2 onboarding for kjva-bible. Intent brief supplied by caller (Phase 1
+  release: retrieval-augmented completion + backend test suite + production
+  deployment). Intake packet, starter packet, first slice, four spec categories,
+  and three baseline ADRs authored.
+
+artifacts:
+  - development_skills/00_intake/intake_packets/IDEA-0001-kjva-bible.yaml
+  - development_skills/30_repo_starter/starter_packets/STARTER-KJVA-BIBLE.yaml
+  - development_skills/22_vertical_slices/SLICE-0001-phase1-release.yaml
+  - development_skills/03_specs/functional_requirements/SPEC-KJVA-FUNC-0001-retrieval-augmented-completion.yaml
+  - development_skills/03_specs/non_functional_requirements/SPEC-KJVA-NFR-0001-performance-and-availability.yaml
+  - development_skills/03_specs/acceptance_criteria/SPEC-KJVA-ACC-0001-phase1-acceptance.yaml
+  - development_skills/03_specs/security_requirements/SPEC-KJVA-SEC-0001-public-exposure-baseline.yaml
+  - development_skills/04_architecture/adrs/ADR-0001-mlx-inference-engine.md
+  - development_skills/04_architecture/adrs/ADR-0002-byte-level-tokenizer-and-18m-scale.md
+  - development_skills/04_architecture/adrs/ADR-0003-retrieval-first-completion-ordering.md
+
+validation:
+  - check: intent_brief supplied by caller (not invented)
+    status: pass
+  - check: SLICE-0001 includes preview_deploy with target, build_steps, rollback_path
+    status: pass
+  - check: 3 baseline ADRs author existing-but-undocumented decisions (MLX, byte-level tokenizer, retrieval-first ordering)
+    status: pass
+  - check: 4 spec categories present (functional, non-functional, acceptance, security)
+    status: pass
+
+status: active

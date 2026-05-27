@@ -254,6 +254,9 @@ class CycleEvaluator:
     """
 
     def __init__(self) -> None:
+        self.tracker = QualityTracker()
+        self._latest_metrics: EvaluationMetrics | None = None
+        self._cycle_counter: int = 0
         logger.debug("CycleEvaluator: initialised")
 
     # ── Public API ───────────────────────────────────────────────────────────
@@ -292,6 +295,36 @@ class CycleEvaluator:
             latency_ms, tokens,
         )
         return metrics
+
+    def record(
+        self,
+        *,
+        query_text: str,
+        response_text: str,
+        latency_ms: float,
+        context: Dict[str, Any] | None = None,
+        tokens: int | None = None,
+    ) -> EvaluationMetrics:
+        """Compute one cycle, record it to QualityTracker, and retain latest."""
+        merged_context = dict(context or {})
+        self._cycle_counter += 1
+        merged_context.setdefault("cycle_id", self._cycle_counter)
+        metrics = self.evaluate(
+            query=query_text,
+            response=response_text,
+            context=merged_context,
+            latency_ms=latency_ms,
+            tokens=tokens if tokens is not None else max(1, len(response_text.split())),
+        )
+        self._latest_metrics = metrics
+        self.tracker.record(metrics)
+        return metrics
+
+    def latest_metrics(self) -> EvaluationMetrics | None:
+        return self._latest_metrics
+
+    def quality_summary(self) -> Dict[str, Any]:
+        return self.tracker.summary()
 
     # ── Relevance ────────────────────────────────────────────────────────────
 

@@ -1,0 +1,5 @@
+domain: diagrams
+description: Skills under the diagrams domain.
+active_skills:
+- SKILL_DIAGRAM_RENDER_001
+- SKILL_ARCHITECTURE_ATLAS_001

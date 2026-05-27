@@ -1,0 +1,49 @@
+id: SKILL_GENOS_RELEASE_PREP_001
+title: GEN.OS Release Preparation Protocol
+version: 1.0.0
+layer: active
+domains:
+- genos
+- testing
+- language_gate
+- release
+- sprint_ops
+playbook: 13_skills/active/SKILL_GENOS_RELEASE_PREP_001.playbook.md
+validation_tests: []
+status: active
+skill_number: 89
+source_documents:
+- genos_codex_skills_2026-05-17/raw/release-prep.md
+trigger_conditions:
+- User mentions release-prep.
+- User mentions release prep.
+- User mentions release.
+- User mentions prep.
+hard_constraints:
+- Preserve source-of-truth ranking.
+- Do not claim completion without validation evidence.
+- Use GEN.OS-specific commands, paths, policies, and gates only when GEN.OS context is active.
+- Record misses in the skill refinery ledger when discovered.
+tier: active
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_GENOS_RELEASE_PREP_001.ledger.yaml
+related_skills:
+- SKILL_LOW_LEVEL_KERNEL_BOOT_001
+- SKILL_CI_PIPELINE_001
+- SKILL_RUNTIME_REGRESSION_VERIFY_001
+router_intents:
+- release_prep
+- genos
+aliases:
+- release-prep
+- release prep
+- genos release prep
+regression_cases: []
+slash_commands: []
+workflows: []
+templates: []
+provenance:
+  collection: genos_codex_skills_2026-05-17
+  source_repo: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/GENESYS/GENESYS
+  raw_source: 16_knowledge/external_collateral/genos_codex_skills_2026-05-17/raw/release-prep.md
+  raw_sha256: 2bd81d48250c18befcede7227351ea926b627180eb8f5d864adbfcec46d2aabb
+improvement_history: []

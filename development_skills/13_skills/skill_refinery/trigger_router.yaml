@@ -1,0 +1,2182 @@
+schema_version: '1.1'
+name: Canonical Trigger Router
+status: canonical
+naming_policy: proprietary_atlas_names_only
+model: verb_first_noun_refined
+source_documents:
+- /Users/desmondearly/Downloads/CONSOLIDATED_TRIGGER_ROUTER_V1_1_PROPRIETARY_NAMES.md
+- /Users/desmondearly/Downloads/trigger_router_catalog_v1_1_proprietary_names.yaml
+canonical_rule: The verb opens the pathway. The noun narrows it. The modifier tunes
+  it. The target binds it. The output trigger shapes it. The proof trigger validates
+  it. The corrective trigger improves it.
+precedence:
+- behavioral_protocol
+- root_verb
+- noun_branch
+- modifier
+- target
+- output
+- proof
+- corrective_override
+proprietary_names:
+  graph_layer: Atlas Graph Engine
+  knowledge_layer: Atlas Knowledge Vault
+  graph_folder: 43_atlas_graph_engine/
+  knowledge_folder: 44_atlas_knowledge_vault/
+  graph_skill: 36-atlas-graph-engine
+  knowledge_skill: 37-atlas-knowledge-vault
+forbidden_subsystem_name_policy: Do not use external graph/vault product labels as
+  SUPER C Atlas subsystem names.
+behavioral_protocols:
+  ghost:
+    aliases:
+    - Ghost
+    skills:
+    - SKILL_CONTEXT_PACKET_001
+    - SKILL_TRUTH_STATE_CHECK_001
+    meaning: Attached or pasted document is authoritative current version; read fully
+      before drafting.
+  ooda:
+    aliases:
+    - OODA
+    - Ultra Think
+    skills:
+    - SKILL_TRIGGER_ROUTER_001
+    - SKILL_TRUTH_STATE_CHECK_001
+    meaning: Maximum-depth Observe, Orient, Decide, Act with literal interpretation.
+  read_before_respond:
+    aliases:
+    - Read before respond
+    skills:
+    - SKILL_CONTEXT_PACKET_001
+    - SKILL_TRUTH_STATE_CHECK_001
+    meaning: Full file/source read mandatory before output.
+  all_agents:
+    aliases:
+    - ALL AGENTS
+    skills:
+    - SKILL_TRIGGER_ROUTER_001
+    - SKILL_CONTEXT_PACKET_001
+    meaning: Multi-angle analysis and broad role coverage.
+  all_skills:
+    aliases:
+    - invoke all skills
+    - use all skills
+    - run all skills
+    - activate all skills
+    - all skills
+    - all skills and agents
+    - full skill stack
+    - universal skills
+    skills:
+    - SKILL_TRIGGER_ROUTER_001
+    - SKILL_CONTEXT_PACKET_001
+    - SKILL_TRUTH_STATE_CHECK_001
+    - SKILL_SOURCE_TRUTH_RECONCILIATION_001
+    - SKILL_PROOF_MATRIX_001
+    - SKILL_AGENT_SURFACE_NORMALIZATION_001
+    - SKILL_THREAD_TO_SKILL_REFINERY_CLOSURE_001
+    meaning: Activate the portable universal skill coverage matrix; do not literally
+      load every project-specific imported skill or agent unless the target/domain
+      explicitly binds it.
+    required_outputs:
+    - Universal skill coverage matrix
+    - Selected portable skills
+    - Activated project-specific skills with target basis
+    - Suppressed project-specific skills with reason
+    - Proof and validation gates
+    - Skill-refinement actions if a miss caused the invocation
+root_verbs:
+  build:
+    aliases:
+    - create
+    - develop
+    - make
+    - stand up
+    - set up
+    - implement
+    - launch
+    - ship
+    - scaffold
+    foundation:
+    - requirements
+    - architecture
+    - modular decomposition
+    - interfaces
+    - data awareness
+    - UX
+    - security
+    - deployment
+    - validation
+    - documentation
+    skills:
+    - SKILL_TRIGGER_ROUTER_001
+    - SKILL_PLATFORM_BUILD_001
+    - SKILL_ELSON_GO_BUILD_001
+    - SKILL_ELSON_PLAN_FEATURE_001
+    default_output: build_blueprint
+  draft:
+    aliases:
+    - write
+    - compose
+    - author
+    - prepare
+    foundation:
+    - audience
+    - structure
+    - voice
+    - citation
+    - format
+    - self-edit
+    skills:
+    - SKILL_SPEC_AUTHORING_001
+    - SKILL_DOCS_ARCHITECTURE_SYNC_001
+    default_output: draft_artifact
+  pull:
+    aliases:
+    - extract
+    - query
+    - fetch
+    - get
+    foundation:
+    - source of truth
+    - filters
+    - windows
+    - nulls
+    - validation
+    - format
+    skills:
+    - SKILL_SOURCE_TRUTH_RECONCILIATION_001
+    default_output: query_or_extract
+  analyze:
+    aliases:
+    - examine
+    - investigate
+    - look at
+    - assess
+    - inventory
+    - acquire
+    - scan all
+    - go through every
+    foundation:
+    - question
+    - evidence
+    - variance
+    - cause
+    - limits
+    - conclusion
+    skills:
+    - SKILL_TRUTH_STATE_CHECK_001
+    - SKILL_SOURCE_TRUTH_RECONCILIATION_001
+    - SKILL_ELSON_MARKET_PULSE_001
+    - SKILL_ELSON_PERF_REPORT_001
+    - SKILL_ELSON_BOT_STATUS_001
+    - SKILL_GLOBAL_CLAUDE_REPOSITORY_ACQUISITION_001
+    - SKILL_GENOS_RESPONSE_ACCURACY_CORRECTIVE_001
+    default_output: analysis_findings
+  audit:
+    aliases:
+    - verify
+    - trace
+    - inspect
+    - forensic review
+    - review
+    - inventory
+    - acquire
+    - scan all
+    - go through every
+    foundation:
+    - criteria
+    - inventory
+    - evidence
+    - severity
+    - remediation
+    skills:
+    - SKILL_EXISTING_REPO_AUDIT_001
+    - SKILL_SOURCE_TRUTH_RECONCILIATION_001
+    - SKILL_ELSON_AUDIT_001
+    - SKILL_ELSON_SECURITY_SCAN_001
+    - SKILL_ELSON_SIGNAL_AUDIT_001
+    - SKILL_ELSON_SCHEMA_CHECK_001
+    - SKILL_GENOS_RESPONSE_ACCURACY_CORRECTIVE_001
+    - SKILL_GLOBAL_CLAUDE_REPOSITORY_ACQUISITION_001
+    default_output: audit_report
+  fix:
+    aliases:
+    - patch
+    - debug
+    - repair
+    - correct
+    - revise
+    - clean up
+    foundation:
+    - reproduce
+    - isolate
+    - patch
+    - regression test
+    - document cause
+    skills:
+    - SKILL_RUNTIME_REGRESSION_VERIFY_001
+    - SKILL_AUTOMATED_REGRESSION_TESTING_001
+    - SKILL_ELSON_DEBUG_API_001
+    - SKILL_ELSON_ROLLBACK_001
+    - SKILL_ELSON_TEST_001
+    - SKILL_THREAD_TO_SKILL_REFINERY_CLOSURE_001
+    default_output: corrected_output_plus_validation
+  automate:
+    aliases:
+    - script
+    - pipeline
+    - schedule
+    - workflow
+    foundation:
+    - manual steps
+    - deterministic split
+    - logging
+    - retries
+    - exceptions
+    - human checkpoints
+    skills:
+    - SKILL_MCP_TOOLING_AUTOMATION_001
+    - SKILL_CI_PIPELINE_001
+    - SKILL_ELSON_START_BOT_001
+    - SKILL_ELSON_STOP_BOT_001
+    - SKILL_ELSON_VLLM_START_001
+    - SKILL_ELSON_VLLM_STOP_001
+    default_output: automation_design
+  reconcile:
+    aliases:
+    - match
+    - cross-check
+    - align
+    foundation:
+    - sources
+    - authority
+    - keys
+    - exceptions
+    - audit trail
+    skills:
+    - SKILL_SOURCE_TRUTH_RECONCILIATION_001
+    - SKILL_PROOF_MATRIX_001
+    default_output: reconciliation_report
+  research:
+    aliases:
+    - look into
+    - study
+    - investigate
+    - literature review
+    - source
+    foundation:
+    - sources
+    - evidence grading
+    - citations
+    - synthesis
+    - uncertainty
+    skills:
+    - SKILL_ML_FINE_TUNING_DISTILLATION_001
+    - SKILL_TRUTH_STATE_CHECK_001
+    default_output: source_backed_synthesis
+  plan:
+    aliases:
+    - roadmap
+    - phase
+    - schedule
+    - sequence
+    foundation:
+    - current state
+    - target state
+    - phases
+    - dependencies
+    - milestones
+    - risks
+    skills:
+    - SKILL_SLICE_PLANNING_001
+    - SKILL_REFACTOR_PLANNING_001
+    - SKILL_ELSON_PLAN_FEATURE_001
+    - SKILL_ELSON_SPRINT_INIT_001
+    - SKILL_ELSON_SPRINT_REVIEW_001
+    default_output: roadmap
+  map:
+    aliases:
+    - diagram
+    - model
+    - graph
+    - blueprint
+    foundation:
+    - concepts
+    - relationships
+    - nodes
+    - edges
+    - source links
+    skills:
+    - SKILL_ARCHITECTURE_ATLAS_001
+    - SKILL_DIAGRAM_RENDER_001
+    default_output: map_or_graph
+  compare:
+    aliases:
+    - benchmark
+    - vs
+    - evaluate
+    - rank
+    foundation:
+    - criteria
+    - options
+    - tradeoffs
+    - score
+    - recommendation
+    skills:
+    - SKILL_TRUTH_STATE_CHECK_001
+    default_output: decision_matrix
+noun_branches:
+  platform:
+    aliases:
+    - SaaS
+    - portal
+    - app
+    - application
+    - product
+    - management system
+    - operating layer
+    - command center
+    - LMOS
+    - Elson
+    - Elson TB2
+    - trading bot
+    - portfolio bot
+    - auto trading platform
+    skills:
+    - SKILL_PLATFORM_BUILD_001
+    - SKILL_FRONTEND_BACKEND_DATAFLOW_001
+    - SKILL_PROOF_MATRIX_001
+    - SKILL_GENOS_AGENT_DISPATCH_001
+    - SKILL_GENOS_CI_PREFLIGHT_001
+    - SKILL_GENOS_COMPLIANCE_CHECK_001
+    - SKILL_GENOS_DOCS_SYNC_001
+    - SKILL_GENOS_RELEASE_PREP_001
+    - SKILL_GENOS_FULL_TEST_MATRIX_001
+    - SKILL_SUPER_C_SUBSYSTEMS_FROM_SCRATCH_001
+    - SKILL_SUPER_C_XISC_CLOUD_TOOLCHAIN_001
+    - SKILL_SUPER_C_AI_GOVERNANCE_CITADEL_001
+    - SKILL_SUPER_C_DESKTOP_UI_ACCESSIBILITY_001
+    - SKILL_ELSON_DEPLOY_001
+    - SKILL_ELSON_PRE_DEPLOY_001
+    - SKILL_ELSON_HEALTH_001
+    - SKILL_ELSON_LOGS_001
+    - SKILL_ELSON_MIGRATE_001
+    - SKILL_ELSON_ROLLBACK_001
+    required_outputs:
+    - Platform blueprint
+    - Module map
+    - MVP scope
+    - Architecture
+    - Build phases
+    - Validation gates
+    default_output: platform_blueprint
+  dashboard:
+    aliases:
+    - Power BI
+    - BI
+    - KPI dashboard
+    - scorecard
+    - visualization
+    - executive view
+    - tracker
+    - report view
+    - KPI
+    - analytics
+    - SharePoint dashboard
+    - SPFx dashboard
+    - KPI card
+    - KPI cards
+    - chart builder
+    - data pipeline
+    - alert system
+    - export suite
+    - responsive dashboard
+    - dashboard scaffold
+    - real-time dashboard
+    - AI insights
+    skills:
+    - SKILL_PLATFORM_BUILD_001
+    - SKILL_FRONTEND_BACKEND_DATAFLOW_001
+    - SKILL_SOURCE_TRUTH_RECONCILIATION_001
+    - SKILL_IPOS_DASHBOARD_SCAFFOLD_001
+    - SKILL_IPOS_KPI_CARD_FACTORY_001
+    - SKILL_IPOS_CHART_BUILDER_001
+    - SKILL_IPOS_TABLE_MASTER_001
+    - SKILL_IPOS_RESPONSIVE_LAYOUT_001
+    - SKILL_IPOS_THEME_ENGINE_001
+    - SKILL_IPOS_PRESTIGE_001
+    - SKILL_IPOS_DATA_PIPELINE_001
+    - SKILL_IPOS_PIPELINE_001
+    - SKILL_IPOS_AI_INSIGHTS_001
+    - SKILL_IPOS_ALERT_SYSTEM_001
+    - SKILL_IPOS_PULSE_001
+    - SKILL_IPOS_EXPORT_SUITE_001
+    - SKILL_IPOS_COURIER_001
+    - SKILL_IPOS_SENTINEL_001
+    - SKILL_IPOS_TEST_HARNESS_001
+    - SKILL_IPOS_PERF_PROFILER_001
+    - SKILL_IPOS_TURBO_001
+    - SKILL_IPOS_AUTH_GUARD_001
+    - SKILL_IPOS_DEPLOY_PIPELINE_001
+    - SKILL_IPOS_PRISM_001
+    - SKILL_IPOS_MOSAIC_001
+    - SKILL_IPOS_FORTRESS_001
+    - SKILL_IPOS_VELOCITY_001
+    - SKILL_IPOS_JUPYTER_001
+    - SKILL_IPOS_SPFX_DASHBOARD_BUILDER_001
+    - SKILL_IPOS_CANVAS_001
+    - SKILL_IPOS_ORACLE_001
+    - SKILL_IPOS_VAULT_001
+    - SKILL_IPOS_BEACON_001
+    required_outputs:
+    - Dashboard spec
+    - KPI list
+    - Data model
+    - Visual layout
+    - Formula logic
+    - Validation checklist
+    default_output: dashboard_spec
+  database:
+    aliases:
+    - schema
+    - data store
+    - warehouse
+    - repository
+    - Storbits
+    skills:
+    - SKILL_PLATFORM_BUILD_001
+    - SKILL_SOURCE_TRUTH_RECONCILIATION_001
+    required_outputs:
+    - Schema
+    - Entities
+    - Relationships
+    - Constraints
+    - Query examples
+    - Migration plan
+    default_output: schema_and_data_model
+  api:
+    aliases:
+    - API
+    - endpoint
+    - connector
+    - service
+    - integration
+    skills:
+    - SKILL_PLATFORM_BUILD_001
+    - SKILL_SPEC_AUTHORING_001
+    - SKILL_RUNTIME_REGRESSION_VERIFY_001
+    - SKILL_GENOS_API_CONTRACT_001
+    - SKILL_GENOS_NEW_PLATFORM_SERVICE_001
+    - SKILL_GENOS_NEW_GENSD_SERVICE_001
+    - SKILL_ELSON_DEBUG_API_001
+    - SKILL_ELSON_SCHEMA_CHECK_001
+    - SKILL_ELSON_GO_BUILD_001
+    required_outputs:
+    - Endpoint catalog
+    - Request/response models
+    - Auth model
+    - Error handling
+    - Test cases
+    default_output: api_contract
+  tool:
+    aliases:
+    - internal tool
+    - admin tool
+    - CLI
+    - utility
+    - workflow tool
+    skills:
+    - SKILL_PLATFORM_BUILD_001
+    - SKILL_UI_INTERACTION_WIRING_001
+    - SKILL_IPOS_SPFX_DASHBOARD_BUILDER_001
+    - SKILL_IPOS_AUTH_GUARD_001
+    - SKILL_IPOS_DEPLOY_PIPELINE_001
+    - SKILL_IPOS_TEST_HARNESS_001
+    required_outputs:
+    - Tool spec
+    - Workflows
+    - Screens or commands
+    - Validation rules
+    default_output: tool_spec
+  agent:
+    aliases:
+    - AI agent
+    - assistant
+    - orchestrator
+    - prompt
+    - system prompt
+    - council
+    - agents
+    - agent surface
+    - agent surfaces
+    - repo agents
+    - universal agents
+    - agent memory
+    - agent sessions
+    - .claude agents
+    - claude agents
+    skills:
+    - SKILL_CONTEXT_PACKET_001
+    - SKILL_TRIGGER_ROUTER_001
+    - SKILL_INTERNAL_CONSENSUS_TESTING_001
+    - SKILL_SC_AGENT_EXECUTION_ORDER_001
+    - SKILL_SC_RED_TEAM_PREFLIGHT_001
+    - SKILL_SC_NO_SURPRISE_PLANNING_001
+    - SKILL_SUPER_C_ONE_SHOT_EXECUTION_PLANNING_001
+    - SKILL_AGENT_SURFACE_NORMALIZATION_001
+    - SKILL_GLOBAL_CLAUDE_REPOSITORY_ACQUISITION_001
+    required_outputs:
+    - Agent spec
+    - System prompt
+    - Tool map
+    - Evaluation tests
+    - Agent surface registry
+    - Agent role index
+    - Agent memory/session index
+    default_output: agent_spec
+  report:
+    aliases:
+    - monthly report
+    - TD report
+    - operational report
+    - executive report
+    - reporting
+    skills:
+    - SKILL_SOURCE_TRUTH_RECONCILIATION_001
+    - SKILL_DOCS_ARCHITECTURE_SYNC_001
+    - SKILL_IPOS_EXPORT_SUITE_001
+    - SKILL_IPOS_COURIER_001
+    - SKILL_IPOS_DATA_PIPELINE_001
+    - SKILL_IPOS_PIPELINE_001
+    - SKILL_IPOS_AI_INSIGHTS_001
+    - SKILL_ELSON_PERF_REPORT_001
+    - SKILL_ELSON_BOT_STATUS_001
+    - SKILL_ELSON_LOGS_001
+    required_outputs:
+    - Report workflow
+    - Data sources
+    - Formula logic
+    - Validation plan
+    default_output: report_workflow_or_artifact
+  document:
+    aliases:
+    - Word doc
+    - memo
+    - letter
+    - correspondence
+    - formal doc
+    - DOCX
+    - PDF
+    skills:
+    - SKILL_DOCS_ARCHITECTURE_SYNC_001
+    - SKILL_SPEC_AUTHORING_001
+    required_outputs:
+    - Document structure
+    - Formatted content
+    - Validation notes
+    default_output: formatted_document
+  letter:
+    aliases:
+    - demand letter
+    - WC demand
+    - FEHA letter
+    - pre-lit
+    - correspondence
+    skills:
+    - SKILL_DOCS_ARCHITECTURE_SYNC_001
+    - SKILL_TRUTH_STATE_CHECK_001
+    required_outputs:
+    - Letter draft
+    - Fact alignment
+    - Tone constraints
+    - Deadline language when applicable
+    default_output: letter_or_email
+  research:
+    aliases:
+    - literature
+    - methodology
+    - synthesis
+    - source review
+    - citation
+    - evidence
+    - thread lessons
+    - skill lessons
+    - refinery closure
+    skills:
+    - SKILL_ML_FINE_TUNING_DISTILLATION_001
+    - SKILL_TRUTH_STATE_CHECK_001
+    - SKILL_PROOF_MATRIX_001
+    - SKILL_THREAD_TO_SKILL_REFINERY_CLOSURE_001
+    required_outputs:
+    - Research question
+    - Source plan
+    - Evidence summary
+    - Synthesis
+    - Recommendations
+    default_output: research_memo
+  query:
+    aliases:
+    - SQL
+    - pull
+    - extract
+    - Trapeze
+    - PASS database
+    - OTP
+    - OTPA
+    skills:
+    - SKILL_SOURCE_TRUTH_RECONCILIATION_001
+    - SKILL_IPOS_DATA_PIPELINE_001
+    - SKILL_IPOS_PIPELINE_001
+    required_outputs:
+    - Query
+    - Field assumptions
+    - Join logic
+    - Validation notes
+    default_output: sql_query_with_validation
+  reconciliation:
+    aliases:
+    - recon
+    - invoice
+    - Umah
+    - Bay Area Taxi
+    - supplemental
+    skills:
+    - SKILL_SOURCE_TRUTH_RECONCILIATION_001
+    - SKILL_PROOF_MATRIX_001
+    required_outputs:
+    - Source comparison
+    - Exceptions
+    - Audit trail
+    - Resolution path
+    default_output: reconciliation_report_or_macro
+  macro:
+    aliases:
+    - VBA
+    - XLSM
+    - Excel automation
+    - script
+    skills:
+    - SKILL_MCP_TOOLING_AUTOMATION_001
+    - SKILL_RUNTIME_REGRESSION_VERIFY_001
+    required_outputs:
+    - Macro patch plan
+    - Row verification
+    - Checksum or recalculation checks
+    default_output: macro_patch_and_verification
+  contract:
+    aliases:
+    - LD
+    - liquidated damages
+    - VTA contract
+    - PT-2025-014
+    skills:
+    - SKILL_SOURCE_TRUTH_RECONCILIATION_001
+    - SKILL_PROOF_MATRIX_001
+    required_outputs:
+    - Clause-backed analysis
+    - Exposure table
+    - Dispute language
+    default_output: contract_analysis_or_ld_ledger
+  analysis:
+    aliases:
+    - variance
+    - discrepancy
+    - root cause
+    - utilization
+    - market pulse
+    - portfolio impact
+    - signal audit
+    skills:
+    - SKILL_TRUTH_STATE_CHECK_001
+    - SKILL_SOURCE_TRUTH_RECONCILIATION_001
+    - SKILL_ELSON_MARKET_PULSE_001
+    - SKILL_ELSON_PERF_REPORT_001
+    - SKILL_ELSON_BOT_STATUS_001
+    required_outputs:
+    - Findings
+    - Evidence
+    - Root cause
+    - Remediation
+    default_output: analysis_findings
+  defense:
+    aliases:
+    - dissertation
+    - chapter
+    - advisor
+    - committee
+    - MEOS
+    - Delphi
+    - APA
+    skills:
+    - SKILL_DOCS_ARCHITECTURE_SYNC_001
+    - SKILL_TRUTH_STATE_CHECK_001
+    required_outputs:
+    - Academic revision
+    - APA-safe content
+    - Defense notes
+    default_output: academic_revision_or_defense_prep
+  fleet:
+    aliases:
+    - vehicles
+    - Eastridge
+    - Zanker
+    - rotation
+    - dispatcher
+    - drivers
+    skills:
+    - SKILL_SOURCE_TRUTH_RECONCILIATION_001
+    required_outputs:
+    - Operational plan
+    - Schedule
+    - Risk buffer
+    default_output: operational_plan
+  compiler:
+    aliases:
+    - language
+    - SUPER C
+    - parser
+    - kernel
+    - GEN.OS
+    - RFC
+    - GENESYS
+    - GENOS
+    - XKABI
+    - XFRAME
+    - gensd
+    - AetherBoot
+    - QEMU boot
+    - compile check
+    - language gate
+    - kernel module
+    - driver verify
+    - ISO build
+    - desmond-super-c
+    - superc-v1
+    - SUPER C compiler
+    - scc
+    - seedc
+    - SCIR
+    - bootstrap
+    - sovereignty
+    - Gold gate
+    - milestone gate
+    - red-team preflight
+    - compiler discipline
+    - verified machine encoding
+    - machine encoding
+    - emit constant
+    - emit constants
+    - emitted constant
+    - opcode literal
+    - instruction word
+    - ARM64 emit
+    - AArch64 emit
+    - LDUR
+    - STUR
+    - freestanding C kernel
+    - one-shot execution planning
+    skills:
+    - SKILL_LOW_LEVEL_KERNEL_BOOT_001
+    - SKILL_SPEC_AUTHORING_001
+    - SKILL_GENOS_COMPILE_CHECK_001
+    - SKILL_GENOS_LANGUAGE_GATE_001
+    - SKILL_GENOS_KERNEL_DEBUG_001
+    - SKILL_GENOS_NEW_KERNEL_MODULE_001
+    - SKILL_GENOS_QEMU_BOOT_TEST_001
+    - SKILL_GENOS_HW_DRIVER_VERIFY_001
+    - SKILL_GENOS_XKABI_CAPABILITY_001
+    - SKILL_GENOS_FUZZ_MODULE_001
+    - SKILL_GENOS_STATIC_ANALYSIS_001
+    - SKILL_GENOS_SECURITY_AUDIT_001
+    - SKILL_GENOS_ISO_BUILD_001
+    - SKILL_GENOS_WAL_DEBUG_001
+    - SKILL_GENOS_AGENT_DISPATCH_001
+    - SKILL_GENOS_CI_PREFLIGHT_001
+    - SKILL_GENOS_COMPLIANCE_CHECK_001
+    - SKILL_GENOS_DOCS_SYNC_001
+    - SKILL_GENOS_RELEASE_PREP_001
+    - SKILL_GENOS_FULL_TEST_MATRIX_001
+    - SKILL_GENOS_SPRINT_CI_GEN_001
+    - SKILL_GENOS_SPRINT_KICKOFF_001
+    - SKILL_GENOS_SPRINT_RETRO_001
+    - SKILL_GENOS_E2E_AUDIT_DISPATCH_001
+    - SKILL_GENOS_NEW_PLATFORM_SERVICE_001
+    - SKILL_GENOS_NEW_GENSD_SERVICE_001
+    - SKILL_GENOS_NEW_XFRAME_WIDGET_001
+    - SKILL_GENOS_API_CONTRACT_001
+    - SKILL_GENOS_ADR_001
+    - SKILL_GENOS_XMIND_TEST_001
+    - SKILL_GENOS_SPRINT3_XNET_001
+    - SKILL_GENOS_SPRINT3_XPKG_001
+    - SKILL_GENOS_SPRINT3_XSEC_001
+    - SKILL_SC_NO_SURPRISE_PLANNING_001
+    - SKILL_SC_DEPENDENCY_SOVEREIGNTY_001
+    - SKILL_SC_MILESTONE_GATE_DESIGN_001
+    - SKILL_SC_RED_TEAM_PREFLIGHT_001
+    - SKILL_SC_AGENT_EXECUTION_ORDER_001
+    - SKILL_SC_IMPROVEMENT_LOOP_001
+    - SKILL_SUPER_C_COMPILER_DISCIPLINE_001
+    - SKILL_SUPER_C_FREESTANDING_C_KERNEL_001
+    - SKILL_SUPER_C_BUILD_TOOLCHAIN_CI_001
+    - SKILL_SUPER_C_SECURITY_CRYPTO_ENGINEERING_001
+    - SKILL_SUPER_C_SUBSYSTEMS_FROM_SCRATCH_001
+    - SKILL_SUPER_C_XISC_CLOUD_TOOLCHAIN_001
+    - SKILL_SUPER_C_ONE_SHOT_EXECUTION_PLANNING_001
+    - SKILL_SUPER_C_TUTORIAL_AUTHORING_DISCIPLINE_001
+    - SKILL_SUPER_C_AI_GOVERNANCE_CITADEL_001
+    - SKILL_SUPER_C_DESKTOP_UI_ACCESSIBILITY_001
+    - SKILL_APEX_VERIFIED_MACHINE_ENCODING_001
+    required_outputs:
+    - RFC
+    - Architecture spec
+    - Parser/runtime plan
+    - Proof gates
+    default_output: rfc_or_architecture_spec
+  machine_encoding:
+    aliases:
+    - apex-verified-machine-encoding
+    - verified machine encoding
+    - machine encoding
+    - emit constant
+    - emit constants
+    - emitted constant
+    - opcode literal
+    - instruction word
+    - instruction-word literal
+    - machine-code constant
+    - ARM64 opcode
+    - AArch64 opcode
+    - ARM64 emit
+    - AArch64 emit
+    - LDR encoding
+    - STR encoding
+    - LDUR
+    - STUR
+    - LDRB
+    - STRB
+    - SCC_DUMP_JIT_BYTES
+    - SIGSEGV emitted constant
+    - emitted constant SIGSEGV
+    - debug emitted constant SIGSEGV
+    - SC-MISS-005
+    skills:
+    - SKILL_APEX_VERIFIED_MACHINE_ENCODING_001
+    - SKILL_SUPER_C_COMPILER_DISCIPLINE_001
+    - SKILL_GENOS_COMPILE_CHECK_001
+    - SKILL_GENOS_STATIC_ANALYSIS_001
+    - SKILL_RUNTIME_REGRESSION_VERIFY_001
+    required_outputs:
+    - Target emit file/function and ISA
+    - Intended mnemonic and operands
+    - Oracle command and output
+    - Claimed constant comparison
+    - Assertion/regression path
+    - Allow/block verdict
+    default_output: oracle_verified_emit_constant_gate
+  neural:
+    aliases:
+    - ML
+    - LSTM
+    - model
+    - training
+    - UTMS
+    - vLLM
+    - model health
+    - fine tune
+    - finance model
+    skills:
+    - SKILL_ML_FINE_TUNING_DISTILLATION_001
+    - SKILL_ELSON_FINE_TUNE_001
+    - SKILL_ELSON_MODEL_HEALTH_001
+    - SKILL_ELSON_VLLM_START_001
+    - SKILL_ELSON_VLLM_STOP_001
+    required_outputs:
+    - Model architecture
+    - Data plan
+    - Training plan
+    default_output: model_architecture_and_training_plan
+  atlas:
+    aliases:
+    - Atlas
+    - SUPER C Atlas
+    - Development_Skills
+    - Bookworm
+    - Atlas Graph Engine
+    - Atlas Knowledge Vault
+    - Repo Twin
+    - Proof Matrix
+    - Context Compiler
+    skills:
+    - SKILL_ADR_AUTHORING_001
+    - SKILL_APEX_PROMOTION_RULES_001
+    - SKILL_ARCHITECTURE_ATLAS_001
+    - SKILL_ATLAS_GRAPH_ENGINE_001
+    - SKILL_ATLAS_KNOWLEDGE_DEPOT_001
+    - SKILL_ATLAS_OPERATIONAL_WORKSPACE_001
+    - SKILL_ATLAS_ORBITAL_IDENTITY_001
+    - SKILL_ATLAS_PLANNING_TRACE_001
+    - SKILL_ATLAS_REPO_INGESTION_LOOP_001
+    - SKILL_ATLAS_WORKSPACE_SHELL_001
+    - SKILL_ATLAS_UI_UX_BUILDOUT_001
+    - SKILL_TRIGGER_ROUTER_001
+    - SKILL_CONTEXT_COMPILATION_002
+    - SKILL_CONTEXT_PACKET_001
+    - SKILL_TRUTH_STATE_CHECK_001
+    - SKILL_DRIFT_DETECTION_001
+    - SKILL_ERROR_LOGGING_ENGINE_001
+    - SKILL_FULLSTACK_REACT_ELECTRON_THREEJS_001
+    - SKILL_GITOPS_APEX_LOOP_001
+    - SKILL_INTENT_COMPILATION_001
+    - SKILL_LEDGER_SKILL_MERGE_001
+    - SKILL_MULTI_TENANT_CONTINUOUS_IMPROVEMENT_001
+    - SKILL_PREFLIGHT_LEDGER_INJECTION_001
+    - SKILL_PROOF_MATRIX_001
+    - SKILL_REPO_ONBOARDING_001
+    - SKILL_REPO_TWIN_INGEST_001
+    - SKILL_UI_FEATURE_AUDIT_001
+    - SKILL_XORCHESTRA_SOVEREIGN_ORCHESTRATION_001
+    required_outputs:
+    - Atlas plan
+    - Registry routing
+    - Graph intelligence plan
+    - Knowledge vault plan
+    - Proof requirements
+    default_output: atlas_build_or_context_packet
+  portfolio:
+    aliases:
+    - resume
+    - LinkedIn
+    - executive bio
+    - career
+    - ATS
+    skills:
+    - SKILL_DOCS_ARCHITECTURE_SYNC_001
+    required_outputs:
+    - Resume/profile strategy
+    - Achievement framing
+    - Keyword alignment
+    default_output: resume_or_profile_strategy
+  brand:
+    aliases:
+    - Early Solution Pros
+    - NGA
+    - website copy
+    - content
+    - tagline
+    skills:
+    - SKILL_DOCS_ARCHITECTURE_SYNC_001
+    - SKILL_PLATFORM_BUILD_001
+    required_outputs:
+    - Brand position
+    - Audience
+    - Messaging
+    - Content plan
+    default_output: brand_strategy
+  visual:
+    aliases:
+    - prompt
+    - cinematic
+    - realistic
+    - circuit city
+    - video
+    - image
+    skills:
+    - SKILL_SPEC_AUTHORING_001
+    required_outputs:
+    - Generation prompt
+    - Scene constraints
+    - Negative constraints
+    default_output: visual_prompt
+  claim:
+    aliases:
+    - packet
+    - denial
+    - MRI
+    - UR
+    - attorney
+    - records
+    - appeal
+    skills:
+    - SKILL_TRUTH_STATE_CHECK_001
+    - SKILL_DOCS_ARCHITECTURE_SYNC_001
+    required_outputs:
+    - Timeline
+    - Evidence packet
+    - Contradictions
+    - Call script
+    default_output: claim_packet
+  fitness:
+    aliases:
+    - weight
+    - cut
+    - recomp
+    - fasting
+    - cardio
+    - lumbar
+    - routine
+    skills:
+    - SKILL_TRUTH_STATE_CHECK_001
+    required_outputs:
+    - Goal
+    - Training plan
+    - Nutrition strategy
+    - Risk checks
+    default_output: fitness_plan
+targets:
+  atlas_graph_engine:
+    aliases:
+    - /atlas:graph
+    - atlas:graph
+    - atlas graph
+    - Atlas Graph Engine
+    - graph engine
+    - graph intelligence layer
+    - graph layer
+    noun: atlas
+    skills:
+    - SKILL_CONTEXT_PACKET_001
+    - SKILL_PLATFORM_BUILD_001
+    required_outputs:
+    - Atlas Graph Engine manifest
+    - Graph intelligence artifacts
+    - Provenance
+    matched_intent: atlas_graph_engine
+  atlas_knowledge_vault:
+    aliases:
+    - /atlas:knowledge_vault
+    - atlas:knowledge_vault
+    - atlas knowledge vault
+    - Knowledge Vault
+    - linked knowledge layer
+    - vault export
+    - linked notes
+    noun: atlas
+    skills:
+    - SKILL_CONTEXT_PACKET_001
+    - SKILL_DOCS_ARCHITECTURE_SYNC_001
+    required_outputs:
+    - Atlas Knowledge Vault note set
+    - Knowledge manifest
+    - Deterministic note payload
+    matched_intent: atlas_knowledge_vault
+  atlas_ingest:
+    aliases:
+    - /atlas:ingest
+    - atlas:ingest
+    - atlas ingest
+    - capture atlas snapshot
+    - atlas baseline
+    noun: atlas
+    skills:
+    - SKILL_SOURCE_TRUTH_RECONCILIATION_001
+    - SKILL_REGISTRY_SYNC_001
+    required_outputs:
+    - Ingest snapshot
+    - Deterministic baseline
+    matched_intent: atlas_ingest
+  atlas_status:
+    aliases:
+    - /atlas:status
+    - atlas:status
+    - atlas status
+    - atlas health
+    noun: atlas
+    skills:
+    - SKILL_TRUTH_STATE_CHECK_001
+    - SKILL_EXISTING_REPO_AUDIT_001
+    required_outputs:
+    - Subsystem coverage
+    - Health indicators
+    matched_intent: atlas_status
+  atlas_validate:
+    aliases:
+    - /atlas:validate
+    - atlas:validate
+    - atlas validate
+    - run atlas gates
+    noun: atlas
+    skills:
+    - SKILL_RUNTIME_REGRESSION_VERIFY_001
+    - SKILL_AUTOMATED_REGRESSION_TESTING_001
+    required_outputs:
+    - Gate matrix
+    - Blocker matrix
+    matched_intent: atlas_validate
+  atlas_compile_context:
+    aliases:
+    - /atlas:compile_context
+    - atlas:compile_context
+    - atlas compile context
+    - compile atlas context
+    - context compiler
+    noun: atlas
+    skills:
+    - SKILL_CONTEXT_PACKET_001
+    - SKILL_PROOF_MATRIX_001
+    required_outputs:
+    - Context packet
+    - Provenance
+    matched_intent: atlas_compile_context
+  atlas_report:
+    aliases:
+    - /atlas:report
+    - atlas:report
+    - atlas report
+    - atlas final report
+    - atlas report package
+    noun: atlas
+    skills:
+    - SKILL_RUNTIME_REGRESSION_VERIFY_001
+    - SKILL_AUTOMATED_REGRESSION_TESTING_001
+    required_outputs:
+    - Intelligence report
+    - Evidence index
+    matched_intent: atlas_report
+  atlas_flow:
+    aliases:
+    - /atlas:flow
+    - atlas:flow
+    - atlas flow
+    - run atlas flow
+    - convergence steps
+    noun: atlas
+    skills:
+    - SKILL_PLATFORM_BUILD_001
+    - SKILL_AUTOMATED_REGRESSION_TESTING_001
+    required_outputs:
+    - Flow log
+    - Convergence status
+    matched_intent: atlas_flow
+  atlas_ui_ux_buildout:
+    aliases:
+    - atlas ui
+    - atlas ux
+    - atlas ui ux
+    - atlas ui/ux
+    - atlas frontend
+    - atlas interface
+    - atlas vercel app
+    - build atlas ui
+    - build atlas ui ux
+    - build out atlas ui
+    - build out the atlas ui
+    - atlas multi tenant
+    - atlas multitenant
+    - multi tenant atlas
+    - repo connectors
+    - repo connector poc
+    - normalize buildouts
+    - buildout infrastructure
+    noun: atlas
+    skills:
+    - SKILL_ATLAS_UI_UX_BUILDOUT_001
+    - SKILL_PLATFORM_BUILD_001
+    - SKILL_UI_INTERACTION_WIRING_001
+    - SKILL_PREVIEW_DEPLOYMENT_001
+    required_outputs:
+    - Product surface map
+    - Multi-tenant workspace model
+    - Repo connector POC map
+    - Agent backend API contracts
+    - Repo commit/change ingestion contract
+    - UI route and component inventory
+    - Interaction contracts
+    - Skill/router binding map
+    - Data and proof binding map
+    - Vercel preview plan
+    - Validation gates
+    - Buildout optimization backlog
+    matched_intent: atlas_ui_ux_buildout
+    default_output: atlas_ui_ux_buildout_plan
+  multi_tenant_security_stack:
+    aliases:
+    - multi tenant platform
+    - multi-tenant platform
+    - enterprise SaaS
+    - tenant isolation
+    - tenant model
+    - tenant boundary
+    - tenant claims
+    - production auth
+    - login security
+    - auth security
+    - security audit
+    - production security
+    - public release auth
+    - rate limits
+    - audit logging
+    - RBAC
+    - ABAC
+    - SSO
+    - SAML
+    - OIDC
+    - service accounts
+    - API keys
+    - data isolation
+    - row-level security
+    - tenant-aware database
+    - multi-tenant security
+    - public release checklist
+    noun: platform
+    skills:
+    - SKILL_MULTI_TENANT_PLATFORM_ARCHITECT_001
+    - SKILL_TENANT_MODEL_BOUNDARY_DESIGN_001
+    - SKILL_IDENTITY_AUTH_RBAC_ABAC_001
+    - SKILL_DATA_ISOLATION_STORAGE_001
+    - SKILL_RUNTIME_ORCHESTRATION_001
+    - SKILL_API_GATEWAY_SERVICE_MESH_001
+    - SKILL_BILLING_METERING_QUOTAS_001
+    - SKILL_SECURITY_COMPLIANCE_GOVERNANCE_001
+    - SKILL_OBSERVABILITY_SRE_INCIDENT_RESPONSE_001
+    - SKILL_PROVISIONING_ONBOARDING_LIFECYCLE_001
+    - SKILL_DEVEX_CI_CD_IAC_001
+    - SKILL_SCALABILITY_RESILIENCE_DR_001
+    - SKILL_MULTI_REGION_CONSENSUS_REPLICATION_001
+    - SKILL_TESTING_GATES_RED_TEAM_001
+    - SKILL_ADMIN_CONSOLE_TENANT_OPS_001
+    - SKILL_AI_NATIVE_TENANT_AUTOMATION_001
+    - SKILL_PUBLIC_RELEASE_AUTH_RATE_AUDIT_GATE_001
+    required_outputs:
+    - Multi-tenant platform architecture
+    - Tenant model and boundary matrix
+    - Auth provider decision matrix
+    - RBAC/ABAC permission model
+    - Tenant/session claims schema
+    - Data isolation and storage model
+    - API gateway and rate-limit policy
+    - Audit event taxonomy
+    - Public release blocker checklist
+    - Cross-tenant denial test plan
+    - Proof gates
+    matched_intent: multi_tenant_security_stack
+    default_output: multi_tenant_security_plan
+  ipos:
+    aliases:
+    - IPOS
+    - paratransit
+    - VTA
+    - Trapeze
+    - OTP
+    - OTPA
+    - fleet readiness
+    - liquidated damages
+    skills:
+    - SKILL_PLATFORM_BUILD_001
+    - SKILL_FRONTEND_BACKEND_DATAFLOW_001
+    - SKILL_SOURCE_TRUTH_RECONCILIATION_001
+    required_outputs:
+    - Operating intelligence blueprint
+    - KPI and report map
+    matched_intent: ipos_platform
+  lmos:
+    aliases:
+    - LMOS
+    - legal matter operations
+    - legal SaaS
+    - matter workspace
+    - attorney review
+    noun: platform
+    skills:
+    - SKILL_PLATFORM_BUILD_001
+    - SKILL_FRONTEND_BACKEND_DATAFLOW_001
+    required_outputs:
+    - Matter intake workflow
+    - Matter workspace model
+    - Document generation workflow
+    - Attorney review gate
+    - Audit trail
+    matched_intent: lmos_platform
+  storbits:
+    aliases:
+    - Storbits
+    - storage engine
+    - bit-level
+    - byte-level
+    - bookworm database
+    noun: database
+    skills:
+    - SKILL_PLATFORM_BUILD_001
+    - SKILL_LOW_LEVEL_KERNEL_BOOT_001
+    required_outputs:
+    - Storage architecture
+    - Data model
+    - Proof gates
+    matched_intent: storbits_platform
+  genos_genesys:
+    aliases:
+    - GEN.OS
+    - GENESYS
+    - GEN.X
+    - SCX
+    - kernel
+    - operating system
+    - console
+    - device
+    noun: compiler
+    skills:
+    - SKILL_LOW_LEVEL_KERNEL_BOOT_001
+    - SKILL_PLATFORM_BUILD_001
+    required_outputs:
+    - Systems architecture
+    - Proof gates
+    - Runtime plan
+    matched_intent: genos_genesys_platform
+  genos:
+    aliases:
+    - GEN.OS
+    - GENESYS
+    - genos
+    - kernel
+    - XKABI
+    - XFRAME
+    - AetherBoot
+    noun: compiler
+    skills:
+    - SKILL_GENOS_COMPILE_CHECK_001
+    - SKILL_GENOS_LANGUAGE_GATE_001
+    - SKILL_GENOS_KERNEL_DEBUG_001
+    - SKILL_GENOS_NEW_KERNEL_MODULE_001
+    - SKILL_GENOS_QEMU_BOOT_TEST_001
+    - SKILL_GENOS_HW_DRIVER_VERIFY_001
+    - SKILL_GENOS_XKABI_CAPABILITY_001
+    - SKILL_GENOS_FUZZ_MODULE_001
+    - SKILL_GENOS_STATIC_ANALYSIS_001
+    - SKILL_GENOS_SECURITY_AUDIT_001
+    - SKILL_GENOS_ISO_BUILD_001
+    - SKILL_GENOS_WAL_DEBUG_001
+    - SKILL_GENOS_AGENT_DISPATCH_001
+    - SKILL_GENOS_CI_PREFLIGHT_001
+    - SKILL_GENOS_COMPLIANCE_CHECK_001
+    - SKILL_GENOS_DOCS_SYNC_001
+    - SKILL_GENOS_RELEASE_PREP_001
+    - SKILL_GENOS_FULL_TEST_MATRIX_001
+    - SKILL_GENOS_SPRINT_CI_GEN_001
+    - SKILL_GENOS_SPRINT_KICKOFF_001
+    - SKILL_GENOS_SPRINT_RETRO_001
+    - SKILL_GENOS_E2E_AUDIT_DISPATCH_001
+    - SKILL_GENOS_NEW_PLATFORM_SERVICE_001
+    - SKILL_GENOS_NEW_GENSD_SERVICE_001
+    - SKILL_GENOS_NEW_XFRAME_WIDGET_001
+    - SKILL_GENOS_API_CONTRACT_001
+    - SKILL_GENOS_ADR_001
+    - SKILL_GENOS_XMIND_TEST_001
+    - SKILL_GENOS_SPRINT3_XNET_001
+    - SKILL_GENOS_SPRINT3_XPKG_001
+    - SKILL_GENOS_SPRINT3_XSEC_001
+    required_outputs:
+    - GEN.OS procedure
+    - Gate commands
+    - Validation evidence
+    - Sprint or release closure notes
+    matched_intent: genos_platform
+  ipos_dashboard:
+    aliases:
+    - IPOS dashboard
+    - paratransit dashboard
+    - KPI dashboard
+    - SharePoint KPI dashboard
+    - SPFx dashboard
+    noun: dashboard
+    skills:
+    - SKILL_IPOS_DASHBOARD_SCAFFOLD_001
+    - SKILL_IPOS_KPI_CARD_FACTORY_001
+    - SKILL_IPOS_CHART_BUILDER_001
+    - SKILL_IPOS_TABLE_MASTER_001
+    - SKILL_IPOS_RESPONSIVE_LAYOUT_001
+    - SKILL_IPOS_THEME_ENGINE_001
+    - SKILL_IPOS_PRESTIGE_001
+    - SKILL_IPOS_DATA_PIPELINE_001
+    - SKILL_IPOS_PIPELINE_001
+    - SKILL_IPOS_AI_INSIGHTS_001
+    - SKILL_IPOS_ALERT_SYSTEM_001
+    - SKILL_IPOS_PULSE_001
+    - SKILL_IPOS_EXPORT_SUITE_001
+    - SKILL_IPOS_COURIER_001
+    - SKILL_IPOS_SENTINEL_001
+    - SKILL_IPOS_TEST_HARNESS_001
+    - SKILL_IPOS_PERF_PROFILER_001
+    - SKILL_IPOS_TURBO_001
+    - SKILL_IPOS_AUTH_GUARD_001
+    - SKILL_IPOS_DEPLOY_PIPELINE_001
+    - SKILL_IPOS_PRISM_001
+    - SKILL_IPOS_MOSAIC_001
+    - SKILL_IPOS_FORTRESS_001
+    - SKILL_IPOS_VELOCITY_001
+    - SKILL_IPOS_JUPYTER_001
+    - SKILL_IPOS_SPFX_DASHBOARD_BUILDER_001
+    - SKILL_IPOS_CANVAS_001
+    - SKILL_IPOS_ORACLE_001
+    - SKILL_IPOS_VAULT_001
+    - SKILL_IPOS_BEACON_001
+    required_outputs:
+    - Dashboard scaffold or component plan
+    - KPI/data contract
+    - Validation checks
+    - Deployment/export path
+    matched_intent: ipos_dashboard
+  super_c:
+    aliases:
+    - SUPER C
+    - desmond-super-c
+    - superc-v1
+    - scc
+    - seedc
+    - SCIR
+    - compiler discipline
+    - verified machine encoding
+    - machine encoding
+    - emit constant
+    - emit constants
+    - opcode literal
+    - instruction word
+    - ARM64 emit
+    - AArch64 emit
+    - LDUR
+    - STUR
+    - sovereignty gate
+    - Gold closure
+    - milestone gate
+    noun: compiler
+    skills:
+    - SKILL_SC_NO_SURPRISE_PLANNING_001
+    - SKILL_SC_DEPENDENCY_SOVEREIGNTY_001
+    - SKILL_SC_MILESTONE_GATE_DESIGN_001
+    - SKILL_SC_RED_TEAM_PREFLIGHT_001
+    - SKILL_SC_AGENT_EXECUTION_ORDER_001
+    - SKILL_SC_IMPROVEMENT_LOOP_001
+    - SKILL_SUPER_C_COMPILER_DISCIPLINE_001
+    - SKILL_SUPER_C_FREESTANDING_C_KERNEL_001
+    - SKILL_SUPER_C_BUILD_TOOLCHAIN_CI_001
+    - SKILL_SUPER_C_SECURITY_CRYPTO_ENGINEERING_001
+    - SKILL_SUPER_C_SUBSYSTEMS_FROM_SCRATCH_001
+    - SKILL_SUPER_C_XISC_CLOUD_TOOLCHAIN_001
+    - SKILL_SUPER_C_ONE_SHOT_EXECUTION_PLANNING_001
+    - SKILL_SUPER_C_TUTORIAL_AUTHORING_DISCIPLINE_001
+    - SKILL_SUPER_C_AI_GOVERNANCE_CITADEL_001
+    - SKILL_SUPER_C_DESKTOP_UI_ACCESSIBILITY_001
+    - SKILL_APEX_VERIFIED_MACHINE_ENCODING_001
+    - SKILL_GENOS_XKABI_CAPABILITY_001
+    - SKILL_GENOS_ISO_BUILD_001
+    - SKILL_GENOS_XMIND_TEST_001
+    - SKILL_GENOS_SPRINT3_XNET_001
+    - SKILL_GENOS_COMPILE_CHECK_001
+    - SKILL_GENOS_AGENT_DISPATCH_001
+    - SKILL_GENOS_ADR_001
+    - SKILL_GENOS_NEW_XFRAME_WIDGET_001
+    required_outputs:
+    - Claim boundary
+    - Feasibility forecast
+    - Dependency/gate audit
+    - Execution order or implementation plan
+    - Validation evidence
+    - Oracle-backed machine encoding gate when emit constants are present
+    matched_intent: super_c_compiler_governance
+  elson:
+    aliases:
+    - Elson
+    - Elson TB2
+    - Elson-TB2
+    - trading bot
+    - portfolio bot
+    - auto trading
+    - market pulse
+    - signal audit
+    - signal gate
+    - kill list
+    - bot status
+    - start bot
+    - stop bot
+    - vLLM
+    - model health
+    - fine tune
+    - Cloud Run logs
+    - production logs
+    - elson backend
+    - elsontrade
+    noun: platform
+    skills:
+    - SKILL_ELSON_AUDIT_001
+    - SKILL_ELSON_BOT_STATUS_001
+    - SKILL_ELSON_DEBUG_API_001
+    - SKILL_ELSON_DEPLOY_001
+    - SKILL_ELSON_FINE_TUNE_001
+    - SKILL_ELSON_GO_BUILD_001
+    - SKILL_ELSON_HEALTH_001
+    - SKILL_ELSON_KILL_LIST_001
+    - SKILL_ELSON_LOGS_001
+    - SKILL_ELSON_MARKET_PULSE_001
+    - SKILL_ELSON_MIGRATE_001
+    - SKILL_ELSON_MODEL_HEALTH_001
+    - SKILL_ELSON_PERF_REPORT_001
+    - SKILL_ELSON_PLAN_FEATURE_001
+    - SKILL_ELSON_PRE_DEPLOY_001
+    - SKILL_ELSON_ROLLBACK_001
+    - SKILL_ELSON_SCHEMA_CHECK_001
+    - SKILL_ELSON_SECURITY_SCAN_001
+    - SKILL_ELSON_SIGNAL_AUDIT_001
+    - SKILL_ELSON_SPRINT_INIT_001
+    - SKILL_ELSON_SPRINT_REVIEW_001
+    - SKILL_ELSON_START_BOT_001
+    - SKILL_ELSON_STOP_BOT_001
+    - SKILL_ELSON_TEST_001
+    - SKILL_ELSON_VLLM_START_001
+    - SKILL_ELSON_VLLM_STOP_001
+    required_outputs:
+    - Elson operational context
+    - Action sequence or diagnostic path
+    - Validation evidence requirements
+    - Risk and authorization boundary
+    matched_intent: elson_trading_platform
+    default_output: elson_operational_plan_or_status_report
+  claude_repository_assets:
+    aliases:
+    - .claude
+    - claude dirs
+    - claude directories
+    - claude assets
+    - claude code assets
+    - missing claude skills
+    - missing claude agents
+    noun: agent
+    skills:
+    - SKILL_GLOBAL_CLAUDE_REPOSITORY_ACQUISITION_001
+    - SKILL_AGENT_SURFACE_NORMALIZATION_001
+    - SKILL_GENOS_RESPONSE_ACCURACY_CORRECTIVE_001
+    required_outputs:
+    - Claude directory inventory
+    - Raw preservation manifest
+    - Normalized skill/agent imports
+    - Completeness boundary
+    - Validation results
+    matched_intent: claude_repository_asset_acquisition
+    default_output: claude_acquisition_report
+  codex_gemini_repository_assets:
+    aliases:
+    - codex directories
+    - gemini directories
+    - codex dirs
+    - gemini dirs
+    - codex assets
+    - gemini assets
+    - codex and gemini assets
+    - codex/gemini assets
+    - codex and gemini directories
+    - codex/gemini repository scan
+    - assistant repository assets
+    noun: agent
+    skills:
+    - SKILL_CODEX_GEMINI_REPOSITORY_ACQUISITION_001
+    - SKILL_AGENT_SURFACE_NORMALIZATION_001
+    - SKILL_FIND_BEFORE_CREATE_001
+    required_outputs:
+    - Search roots
+    - Scope boundary and exclusions
+    - Codex/Gemini directory inventory
+    - Raw-safe preservation manifest
+    - Indexed-only sensitive/binary manifest
+    - Category and unique hash counts
+    - Operational import decisions
+    - Validation results
+    matched_intent: codex_gemini_repository_asset_acquisition
+    default_output: codex_gemini_acquisition_report
+  assistant_surface_inventory:
+    aliases:
+    - assistant surfaces
+    - all assistant surfaces
+    - .claude .codex .gemini
+    - claude codex gemini
+    - pull all new skills
+    - pull new skills from assistant folders
+    - acquire everything missing
+    - acquire all agents
+    - acquire all skills
+    - all agent types
+    noun: agent
+    skills:
+    - SKILL_GLOBAL_CLAUDE_REPOSITORY_ACQUISITION_001
+    - SKILL_CODEX_GEMINI_REPOSITORY_ACQUISITION_001
+    - SKILL_AGENT_SURFACE_NORMALIZATION_001
+    - SKILL_FIND_BEFORE_CREATE_001
+    - SKILL_SOURCE_TRUTH_RECONCILIATION_001
+    required_outputs:
+    - Search roots and exclusions
+    - Unified .claude/.codex/.gemini inventory
+    - Raw-safe preservation manifest
+    - Indexed-only sensitive/binary manifest
+    - Duplicate hash and duplicate-name report
+    - Normalized agent registry
+    - Normalized skill registry
+    - Trigger/router integration decisions
+    - Validation results
+    matched_intent: unified_assistant_surface_acquisition
+    default_output: assistant_surface_acquisition_report
+  thread_skill_refinery:
+    aliases:
+    - this thread
+    - current thread
+    - thread alone
+    - thread skills
+    - skills from this thread
+    - refine this thread
+    - consolidate skills
+    noun: research
+    skills:
+    - SKILL_THREAD_TO_SKILL_REFINERY_CLOSURE_001
+    - SKILL_SKILL_REFINEMENT_SIMULATOR_001
+    - SKILL_DYNAMIC_RULE_LEDGER_001
+    required_outputs:
+    - Thread skill delta report
+    - New skills
+    - Improved skills
+    - Consolidation decisions
+    - Ledgers
+    - Regression coverage
+    matched_intent: thread_to_skill_refinery
+    default_output: thread_skill_refinery_report
+modifiers:
+  depth:
+    quick:
+    - quick
+    standard:
+    - standard
+    surgical:
+    - surgical
+    deep:
+    - deep
+    - DeepThink
+    - Think deeply
+    maximum:
+    - Ultra Think
+    - maximum depth
+    - Apex
+  output:
+    draft:
+    - draft
+    ship:
+    - ship it
+    direct:
+    - just answer
+    build:
+    - build it
+    plan:
+    - plan it
+    blueprint:
+    - blueprint
+    spec:
+    - spec
+    checklist:
+    - checklist
+    table:
+    - table
+    repo_ready:
+    - repo-ready
+    copy_paste:
+    - copy-paste
+    one_shot:
+    - one-shot
+    final_report:
+    - final report
+    execution_order:
+    - execution order
+  proof:
+    validate:
+    - validate
+    verify:
+    - verify
+    proof:
+    - proof
+    gate:
+    - gate
+    evidence:
+    - evidence
+    regression:
+    - regression
+    ci:
+    - CI
+    source_of_truth:
+    - source of truth
+    drift:
+    - drift
+    canon:
+    - canon
+  audience:
+    executive:
+    - executive
+    technical:
+    - technical
+    professional:
+    - professional
+    academic:
+    - academic
+    legal:
+    - legal
+    client:
+    - client
+    public:
+    - public
+correctives:
+  re_read:
+    aliases:
+    - re-read
+    miss_type: context
+    action: Hard stop; reread source; open with a specific fact.
+    skills:
+    - SKILL_GENOS_RESPONSE_ACCURACY_CORRECTIVE_001
+    - SKILL_THREAD_TO_SKILL_REFINERY_CLOSURE_001
+  specific:
+    aliases:
+    - specific
+    miss_type: convention_precision
+    action: Quote exact directive; interpret literally.
+  wrong_target:
+    aliases:
+    - wrong target
+    miss_type: routing_scope
+    action: Identify target confusion and repair route.
+    skills:
+    - SKILL_GENOS_RESPONSE_ACCURACY_CORRECTIVE_001
+    - SKILL_THREAD_TO_SKILL_REFINERY_CLOSURE_001
+  pause:
+    aliases:
+    - pause
+    miss_type: reasoning
+    action: Stop current direction and summarize.
+  step_back:
+    aliases:
+    - step back
+    miss_type: reasoning_scope
+    action: Reframe objective then narrow.
+  missed_it:
+    aliases:
+    - missed it
+    miss_type: output
+    action: List missing element; add it; redeliver.
+    skills:
+    - SKILL_GENOS_RESPONSE_ACCURACY_CORRECTIVE_001
+    - SKILL_THREAD_TO_SKILL_REFINERY_CLOSURE_001
+  log_this:
+    aliases:
+    - log this
+    miss_type: process
+    action: Add miss to correction ledger or failure-mode queue.
+  reinforce:
+    aliases:
+    - reinforce
+    - do not miss that again
+    - don't miss that again
+    miss_type: regression
+    action: Add rule, checklist item, and regression case to prevent recurrence.
+    skills:
+    - SKILL_GENOS_RESPONSE_ACCURACY_CORRECTIVE_001
+    - SKILL_THREAD_TO_SKILL_REFINERY_CLOSURE_001
+compatibility_intents:
+  verified_machine_encoding:
+    triggers:
+      noun:
+      - machine_encoding
+      target:
+      - super_c
+      phrases:
+      - apex-verified-machine-encoding
+      - verified machine encoding
+      - machine encoding gate
+      - emit constant gate
+      - emitted constant
+      - emitted constant SIGSEGV
+      - debug emitted constant SIGSEGV
+      - SIGSEGV emitted constant
+      - opcode oracle
+      - SC-MISS-005
+      - hand-computed machine-code constant
+      - instruction-word literal
+      - LDUR STUR encoding
+      - LDR STR encoding
+      - SCC_DUMP_JIT_BYTES
+    skills:
+    - SKILL_APEX_VERIFIED_MACHINE_ENCODING_001
+    - SKILL_SUPER_C_COMPILER_DISCIPLINE_001
+    - SKILL_RUNTIME_REGRESSION_VERIFY_001
+    required_outputs:
+    - Target emit file/function and ISA
+    - Intended mnemonic and operands
+    - Oracle command and output
+    - Claimed constant comparison
+    - Assertion/regression path
+    - Allow/block verdict
+  platform_build:
+    triggers:
+      noun:
+      - platform
+      target:
+      - lmos
+      phrases:
+      - build a platform
+      - build lmos
+      - build an app
+      - build a saas
+      - website
+      - web app
+      - repo-backed
+      - mvp
+      - production-ready
+    skills:
+    - SKILL_TRIGGER_ROUTER_001
+    - SKILL_PLATFORM_BUILD_001
+    required_outputs:
+    - Platform backbone
+    - Product requirements
+    - Frontend map
+    - Backend services
+    - Database/data model
+    - API contracts
+    - Workflows
+    - Deployment
+    - Coding-agent handoff
+  visual_to_system_backbone:
+    triggers:
+      phrases:
+      - ui is just a shell
+      - frontend only
+      - the ui
+      - mockup
+      - screen
+      - layout
+      - shell
+    skills:
+    - SKILL_PLATFORM_BUILD_001
+    - SKILL_FRONTEND_BACKEND_DATAFLOW_001
+    - SKILL_UI_INTERACTION_WIRING_001
+    required_outputs:
+    - Screen-to-system mapping
+    - Backend services
+    - Data model
+    - API endpoints
+    - Workflow map
+  data_reporting_platform:
+    triggers:
+      noun:
+      - dashboard
+      - report
+      phrases:
+      - reporting
+      - kpi
+      - analytics
+      - data coming in
+      - information going out
+      - data going out
+      - disseminated
+    skills:
+    - SKILL_PLATFORM_BUILD_001
+    - SKILL_FRONTEND_BACKEND_DATAFLOW_001
+    required_outputs:
+    - Data source map
+    - Metric dictionary
+    - Reporting workflow
+    - Audit evidence plan
+  deployment_domain_repo:
+    triggers:
+      phrases:
+      - github
+      - domain
+      - dns
+      - vercel
+      - netlify
+      - deploy
+      - deployment
+      - hosting
+      - ci/cd
+      - pipeline
+      - production
+      - linked to a domain
+    skills:
+    - SKILL_PLATFORM_BUILD_001
+    - SKILL_CI_PIPELINE_001
+    required_outputs:
+    - Repo layout
+    - Environment strategy
+    - Deployment target
+    - Domain/DNS plan
+    - Rollback plan
+  atlas_ui_ux_buildout:
+    triggers:
+      root:
+      - build
+      target:
+      - atlas_ui_ux_buildout
+      phrases:
+      - atlas ui
+      - atlas ui ux
+      - atlas ui/ux
+      - atlas frontend
+      - atlas vercel app
+      - atlas multi tenant
+      - multi tenant atlas
+      - repo connectors
+      - repo connector poc
+      - normalize buildouts
+      - buildout infrastructure
+    description: ATLAS multi-tenant product UI/UX buildout infrastructure for Vercel-backed platform surfaces, repo connectors, skill bindings, proof gates, and process optimization.
+    skills:
+    - SKILL_ATLAS_UI_UX_BUILDOUT_001
+    - SKILL_PLATFORM_BUILD_001
+    - SKILL_UI_INTERACTION_WIRING_001
+    - SKILL_PREVIEW_DEPLOYMENT_001
+    required_outputs:
+    - Product surface map
+    - Multi-tenant workspace model
+    - Repo connector POC map
+    - Agent backend API contracts
+    - Repo commit/change ingestion contract
+    - UI route and component inventory
+    - Interaction contracts
+    - Skill/router binding map
+    - Data and proof binding map
+    - Vercel preview plan
+    - Validation gates
+    - Buildout optimization backlog
+  existing_repo_audit:
+    triggers:
+      phrases:
+      - audit this existing repo
+      - existing repo
+      - repo audit
+      - massive repo
+      - stale readme
+      - scattered
+      - refactor this repo
+      - organize this repo
+    skills:
+    - SKILL_EXISTING_REPO_AUDIT_001
+    - SKILL_SOURCE_TRUTH_RECONCILIATION_001
+    required_outputs:
+    - Repo truth map
+    - Code inventory
+    - Test baseline
+    - Docs-code drift
+  ui_feature_wiring_audit:
+    triggers:
+      phrases:
+      - buttons and toggles do not work
+      - button does not work
+      - toggle
+      - switch
+      - kicks the user out
+      - profile settings
+      - account settings
+      - ui wiring
+      - responsive layout
+      - viewport
+      - window size
+      - scaling
+      - overlapping search bar
+      - topbar overlap
+      - layout overlap
+      - pane toggles
+      - focus view
+      - missing shell controls
+      - walkthrough button
+    skills:
+    - SKILL_UI_INTERACTION_WIRING_001
+    - SKILL_FRONTEND_BACKEND_DATAFLOW_001
+    - SKILL_VIEWPORT_RESPONSIVE_CHROME_001
+    - SKILL_RUNTIME_REGRESSION_VERIFY_001
+    required_outputs:
+    - Control behavior matrix
+    - State/API/backend/data map
+    - Regression tests
+  source_truth_drift:
+    triggers:
+      phrases:
+      - docs are stale
+      - readme is stale
+      - architecture docs are stale
+      - source of truth
+      - docs drift
+      - diagram is stale
+    skills:
+    - SKILL_SOURCE_TRUTH_RECONCILIATION_001
+    - SKILL_DOCS_ARCHITECTURE_SYNC_001
+    required_outputs:
+    - Claim reconciliation table
+    - Required doc updates
+    - Required diagram updates
+  runtime_verify:
+    triggers:
+      proof:
+      - validate
+      - verify
+      - proof
+      - regression
+      phrases:
+      - runtime verify
+      - prove it works
+      - run tests
+      - test this feature
+    skills:
+    - SKILL_RUNTIME_REGRESSION_VERIFY_001
+    - SKILL_AUTOMATED_REGRESSION_TESTING_001
+    required_outputs:
+    - Commands run
+    - Test results
+    - Evidence
+  refactor_plan:
+    triggers:
+      phrases:
+      - refactor plan
+      - section by section
+      - dependency map before moving
+      - safe refactor
+    skills:
+    - SKILL_REFACTOR_PLANNING_001
+    - SKILL_SECTION_REFACTOR_EXECUTION_001
+    required_outputs:
+    - Refactor units
+    - Dependencies
+    - Test gates
+    - Rollback plan
+  elson_trading_platform:
+    triggers:
+      target:
+      - elson
+      phrases:
+      - Elson
+      - Elson TB2
+      - trading bot
+      - market pulse
+      - signal audit
+      - vLLM
+      - Cloud Run logs
+    description: Elson TB2 trading platform operations, diagnostics, market analysis,
+      model operations, and deployment routing.
+    skills:
+    - SKILL_TRIGGER_ROUTER_001
+    - SKILL_ELSON_AUDIT_001
+    - SKILL_ELSON_BOT_STATUS_001
+    - SKILL_ELSON_DEBUG_API_001
+    - SKILL_ELSON_DEPLOY_001
+    - SKILL_ELSON_FINE_TUNE_001
+    - SKILL_ELSON_GO_BUILD_001
+    - SKILL_ELSON_HEALTH_001
+    - SKILL_ELSON_KILL_LIST_001
+    - SKILL_ELSON_LOGS_001
+    - SKILL_ELSON_MARKET_PULSE_001
+    - SKILL_ELSON_MIGRATE_001
+    - SKILL_ELSON_MODEL_HEALTH_001
+    - SKILL_ELSON_PERF_REPORT_001
+    - SKILL_ELSON_PLAN_FEATURE_001
+    - SKILL_ELSON_PRE_DEPLOY_001
+    - SKILL_ELSON_ROLLBACK_001
+    - SKILL_ELSON_SCHEMA_CHECK_001
+    - SKILL_ELSON_SECURITY_SCAN_001
+    - SKILL_ELSON_SIGNAL_AUDIT_001
+    - SKILL_ELSON_SPRINT_INIT_001
+    - SKILL_ELSON_SPRINT_REVIEW_001
+    - SKILL_ELSON_START_BOT_001
+    - SKILL_ELSON_STOP_BOT_001
+    - SKILL_ELSON_TEST_001
+    - SKILL_ELSON_VLLM_START_001
+    - SKILL_ELSON_VLLM_STOP_001
+    required_outputs:
+    - Elson context
+    - Selected operational skill path
+    - Validation evidence
+    - Risk boundary
+  claude_repository_asset_acquisition:
+    triggers:
+      target:
+      - claude_repository_assets
+      phrases:
+      - go through every .claude
+      - acquire missing skills
+      - missing agents
+      - claude agents
+      - agent surfaces
+    description: Global acquisition of Claude Code skills, agents, agent memory, plans,
+      commands, and related repo assets.
+    skills:
+    - SKILL_GLOBAL_CLAUDE_REPOSITORY_ACQUISITION_001
+    - SKILL_AGENT_SURFACE_NORMALIZATION_001
+    - SKILL_GENOS_RESPONSE_ACCURACY_CORRECTIVE_001
+    required_outputs:
+    - Search roots
+    - Category counts
+    - Raw preservation
+    - Normalized operational imports
+    - Validation results
+  codex_gemini_repository_asset_acquisition:
+    triggers:
+      target:
+      - codex_gemini_repository_assets
+      phrases:
+      - search codex and gemini directories
+      - codex directories
+      - gemini directories
+      - codex and gemini assets
+      - assistant repository assets
+    description: Bounded acquisition of Codex and Gemini skills, agents, prompts,
+      commands, and support files from OneDrive/GitHub repositories.
+    skills:
+    - SKILL_CODEX_GEMINI_REPOSITORY_ACQUISITION_001
+    - SKILL_AGENT_SURFACE_NORMALIZATION_001
+    - SKILL_FIND_BEFORE_CREATE_001
+    required_outputs:
+    - Search roots
+    - Scope boundary and exclusions
+    - Category counts
+    - Raw-safe preservation
+    - Indexed-only sensitive/binary manifest
+    - Operational import decisions
+    - Validation results
+  unified_assistant_surface_acquisition:
+    triggers:
+      target:
+      - assistant_surface_inventory
+      phrases:
+      - pull all new skills from .claude .codex .gemini
+      - all assistant surfaces
+      - acquire all agents
+      - acquire all skills
+      - all agent types across repos
+    description: Unified acquisition, deduplication, and normalization of repo-local
+      Claude, Codex, and Gemini assistant assets.
+    skills:
+    - SKILL_GLOBAL_CLAUDE_REPOSITORY_ACQUISITION_001
+    - SKILL_CODEX_GEMINI_REPOSITORY_ACQUISITION_001
+    - SKILL_AGENT_SURFACE_NORMALIZATION_001
+    - SKILL_FIND_BEFORE_CREATE_001
+    - SKILL_SOURCE_TRUTH_RECONCILIATION_001
+    required_outputs:
+    - Search roots and exclusions
+    - Unified assistant-surface inventory
+    - Raw-safe preservation manifest
+    - Indexed-only manifest
+    - Duplicate hash/name report
+    - Normalized agent and skill registries
+    - Router update decisions
+    - Validation results
+  thread_to_skill_refinery:
+    triggers:
+      target:
+      - thread_skill_refinery
+      phrases:
+      - skills should have been created
+      - improve and refined
+      - consolidated skills
+      - thread alone
+    description: Convert current-thread work and misses into durable skills, ledgers,
+      router updates, and regression coverage.
+    skills:
+    - SKILL_THREAD_TO_SKILL_REFINERY_CLOSURE_001
+    - SKILL_SKILL_REFINEMENT_SIMULATOR_001
+    required_outputs:
+    - Skill delta report
+    - New skills
+    - Improved skills
+    - Consolidation decisions
+    - Validation results
+default_core_skills:
+- SKILL_TRIGGER_ROUTER_001
+- SKILL_CONTEXT_PACKET_001
+- SKILL_TRUTH_STATE_CHECK_001

@@ -1,0 +1,59 @@
+---
+title: KJVA Bible — Schema Map
+status: verified
+tier: T1
+last_updated: 2026-05-26
+---
+classDiagram
+    class VerseRecord {
+        +str ref (GEN 1:1)
+        +str id (GEN.1.1)
+        +str book (GEN)
+        +str book_name (Genesis)
+        +str book_full_name
+        +str canon_category (OT|NT|Apocrypha)
+        +int book_order
+        +int chapter
+        +int verse
+        +str text
+        +dict strongs
+        +list footnotes
+    }
+
+    class BookRecord {
+        +str code (GEN)
+        +str name (Genesis)
+        +str full_name
+        +str canon_category
+        +int order
+    }
+
+    class CompleteRequest {
+        +str prompt (1–2000 chars)
+        +int max_new_tokens (1–512, default 150)
+        +float temperature (0–2.0, default 0.8)
+        +float top_p (0–1.0, default 0.9)
+    }
+
+    class CompleteResponse {
+        +str prompt
+        +str completion
+        +str model (kjva-18m)
+    }
+
+    class HealthResponse {
+        +str status (ok)
+        +bool model_ready
+        +bool verse_index_loaded
+    }
+
+    class ModelConfig {
+        +int n_layers (8)
+        +int d_model (384)
+        +int n_heads (6)
+        +int vocab_size (259)
+        +int max_seq_len
+    }
+
+    VerseRecord --o BookRecord : book
+    CompleteRequest --> CompleteResponse : /api/complete

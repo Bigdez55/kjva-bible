@@ -1,0 +1,59 @@
+---
+title: KJVA Bible — Component Map
+status: verified
+tier: T1
+last_updated: 2026-05-26
+---
+graph TD
+    subgraph Frontend["Frontend (React + Vite)"]
+        App["App.jsx\nTab router"]
+        VB["VerseBrowser.jsx\nBook/chapter/verse nav"]
+        CP["CompletionPanel.jsx\nAI generation UI"]
+        SP["StubPanel.jsx\nPhase 2-4 placeholders"]
+    end
+
+    subgraph Backend["Backend (FastAPI)"]
+        Main["main.py\nApp, CORS, static, lifespan"]
+        Corpus["corpus.py\nVerseIndex singleton\n36,822 records O(1)"]
+        Inference["inference.py\nKJVAInference singleton\nbyte-level + nucleus sampling"]
+        Model["model.py\nTokenlessLM architecture\n(frozen, inference copy)"]
+        RVerse["routes/verse.py\n/api/books /chapters /verses /verse"]
+        RComplete["routes/complete.py\nPOST /api/complete (live)"]
+        RStubs["routes/stubs.py\nPOST /api/search /qa /xref (501)"]
+    end
+
+    subgraph Data["Data Layer"]
+        Verses["data/verses.jsonl\n36,822 verse records"]
+        Weights["KJVA/training/weights.safetensors\nGITIGNORED — 72MB"]
+        Config["KJVA/training/model_config.json\n8L × d384, 6 heads, vocab=259"]
+        ByteVocab["KJVA/training/byte_vocab.json\nPAD=0, BOS=1, EOS=2, byte→N+3"]
+    end
+
+    subgraph KJVA_Governance["KJVA/ (AI Governance — from Tokenless-Models)"]
+        Heptagon["heptagon/\nharness, layers, registry, attestation"]
+        SoulMgr["soul_manager/\nconsolidation, message framing"]
+        Governance["governance/\ncovenant_enforcer, gate_evaluators, interceptors"]
+        AI["ai/tokenless-agent/\nCognitive pipeline, API, evaluation"]
+    end
+
+    App --> VB
+    App --> CP
+    App --> SP
+
+    VB -->|"GET /api/books /chapters /verses /verse"| RVerse
+    CP -->|"POST /api/complete"| RComplete
+    SP -->|"POST /api/search /qa /xref (501)"| RStubs
+
+    Main --> RVerse
+    Main --> RComplete
+    Main --> RStubs
+    Main --> Corpus
+    Main --> Inference
+
+    RVerse --> Corpus
+    RComplete --> Inference
+    Corpus --> Verses
+    Inference --> Model
+    Inference --> Weights
+    Inference --> Config
+    Inference --> ByteVocab

@@ -1,0 +1,39 @@
+id: SKILL_ML_FINE_TUNING_DISTILLATION_001
+title: ML Fine-Tuning and Distillation
+version: 1.0.0
+layer: ml
+domains:
+- ml
+- training
+- evaluation
+playbook: 13_skills/active/SKILL_ML_FINE_TUNING_DISTILLATION_001.playbook.md
+validation_tests:
+- 08_verification/skill_tests/TEST_SKILL_ML_FINE_TUNING_DISTILLATION_001_001.yaml
+status: active
+skill_number: 27
+source_documents:
+- handoff_v7_repo_native
+trigger_conditions:
+- Fine-tuning, distillation, QDoRA, DVoRA, DSPy, Ruth model, local/offline model,
+  or evaluation work is requested.
+hard_constraints:
+- Preserve source-of-truth ranking.
+- Do not claim completion without validation evidence.
+- Record misses in the skill refinery ledger when discovered.
+tier: active
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_ML_FINE_TUNING_DISTILLATION_001.ledger.yaml
+related_skills: []
+router_intents:
+- research_needed
+aliases:
+- 27-ml-fine-tuning-and-distillation
+regression_cases: []
+slash_commands:
+- /apex:runtime_verify
+workflows:
+- 05_workflows/runtime_test_and_regression_verification.md
+templates: []
+provenance:
+  collection: skills_stack_2026-05-17
+  source_index: 16_knowledge/external_collateral/skills_stack_2026-05-17/source_index.yaml
+improvement_history: []

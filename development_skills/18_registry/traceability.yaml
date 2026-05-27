@@ -1,0 +1,30 @@
+traceability:
+  - intent: IDEA-0001-kjva-bible
+    starter: STARTER-KJVA-BIBLE
+    slice: SLICE-0001-phase1-release
+    specs:
+      - SPEC-KJVA-FUNC-0001-retrieval-augmented-completion
+      - SPEC-KJVA-NFR-0001-performance-and-availability
+      - SPEC-KJVA-ACC-0001-phase1-acceptance
+      - SPEC-KJVA-SEC-0001-public-exposure-baseline
+    adrs:
+      - ADR-0001-mlx-inference-engine
+      - ADR-0002-byte-level-tokenizer-and-18m-scale
+      - ADR-0003-retrieval-first-completion-ordering
+    diagrams:
+      - execution_sequence_kjva-bible
+      - data_flow_kjva-bible
+      - deployment_impact_kjva-bible
+      - test_coverage_kjva-bible
+    tests:
+      - backend/tests/test_corpus.py
+      - backend/tests/test_routes.py
+    evidence:
+      - EP-2026-05-26-onboarding-tier1
+      - EP-2026-05-26-onboarding-tier2
+      - EP-2026-05-26-SLICE-0001
+    changes:
+      - CL-2026-05-26-001
+      - CL-2026-05-26-002
+      - CL-2026-05-26-003
+      - CL-2026-05-26-004

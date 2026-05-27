@@ -1,0 +1,46 @@
+---
+title: KJVA Bible — Page Feature Map: Completion Tab (CompletionPanel)
+status: verified
+tier: T1
+last_updated: 2026-05-26
+---
+graph TD
+    CP["CompletionPanel.jsx"]
+
+    subgraph Elements["UI Elements"]
+        PromptInput["Prompt textarea\n✅ wired → POST /api/complete"]
+        MaxTokensSlider["max_new_tokens slider\n1–512, default 150\n✅ wired"]
+        TempSlider["temperature slider\n0–2, default 0.8\n✅ wired"]
+        TopPSlider["top_p slider\n0–1, default 0.9\n✅ wired"]
+        SubmitBtn["Complete button\n✅ wired"]
+        CompOutput["Completion output display\n✅ wired — renders response.completion"]
+        ModelBadge["Model badge: kjva-18m\n✅ wired — from response.model"]
+    end
+
+    subgraph States["UI States"]
+        Idle["Idle — prompt empty"]
+        Generating["Generating — spinner/loading"]
+        Ready["Completion ready — text displayed"]
+        Error503["Error 503 — weights missing message"]
+        ErrorNet["Network error"]
+    end
+
+    subgraph Missing["Missing / Not Wired"]
+        style Missing fill:#2a1a00,stroke:#fa0
+        StreamOutput["Streaming output\n(token-by-token)\n⚠️ NOT IMPLEMENTED — full response only"]
+        HistoryPanel["Completion history\n⚠️ NOT IMPLEMENTED"]
+        CopyBtn["Copy completion button\n⚠️ NOT IMPLEMENTED"]
+        VerseContext["Auto-populate from Browse tab\n⚠️ NOT WIRED"]
+    end
+
+    CP --> PromptInput
+    CP --> MaxTokensSlider
+    CP --> TempSlider
+    CP --> TopPSlider
+    CP --> SubmitBtn
+    SubmitBtn --> Generating
+    Generating --> Ready
+    Generating --> Error503
+    Generating --> ErrorNet
+    Ready --> CompOutput
+    Ready --> ModelBadge

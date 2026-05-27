@@ -1,0 +1,4 @@
+version: '1.0'
+rule: If same miss class occurs twice, escalate from prompt/skill patch to workflow
+  redesign or tool implementation.
+escalations: []

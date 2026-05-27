@@ -1,0 +1,4 @@
+domain: deployment
+description: Skills under the deployment domain.
+active_skills:
+- SKILL_PREVIEW_DEPLOYMENT_001

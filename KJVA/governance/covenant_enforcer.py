@@ -33,7 +33,7 @@ from dataclasses import dataclass, field
 from enum import Enum, auto
 from typing import Any, Dict, List, Optional, Tuple
 
-from heptagon.registry import COVENANT_REGISTRY
+from ..heptagon.registry import COVENANT_REGISTRY
 
 # ---------------------------------------------------------------------------
 # ENFORCEMENT RESULT TYPES

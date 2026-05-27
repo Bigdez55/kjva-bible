@@ -1,0 +1,90 @@
+id: TEST_UNIVERSAL_SKILL_INVOCATION_001
+title: Universal Skill Invocation Router Validation
+type: route_assertion
+status: active
+validates:
+- SKILL_TRIGGER_ROUTER_001
+- platform/sdlc/13_skills/skill_refinery/universal_skill_invocation_policy.md
+cases:
+- input: invoke all skills right now
+  expected_intent: all_skills
+  must_include_skills:
+  - SKILL_TRIGGER_ROUTER_001
+  - SKILL_CONTEXT_PACKET_001
+  - SKILL_TRUTH_STATE_CHECK_001
+  - SKILL_SOURCE_TRUTH_RECONCILIATION_001
+  - SKILL_PROOF_MATRIX_001
+  must_include_outputs:
+  - Universal skill coverage matrix
+  - Selected portable skills
+  - Suppressed project-specific skills with reason
+  must_not_include_skills:
+  - SKILL_GLOBAL_CLAUDE_REPOSITORY_ACQUISITION_001
+- input: all skills and agents
+  expected_intent: all_skills
+  expected_selected_noun: null
+  must_not_include_intents:
+  - unified_assistant_surface_acquisition
+- input: pull all new skills from .claude .codex .gemini
+  expected_intent: unified_assistant_surface_acquisition
+  expected_selected_target: assistant_surface_inventory
+  must_include_skills:
+  - SKILL_GLOBAL_CLAUDE_REPOSITORY_ACQUISITION_001
+  - SKILL_CODEX_GEMINI_REPOSITORY_ACQUISITION_001
+  - SKILL_AGENT_SURFACE_NORMALIZATION_001
+- input: build a platform
+  expected_root: build
+  expected_selected_noun: platform
+  must_include_skills:
+  - SKILL_PLATFORM_BUILD_001
+  must_not_include_project_prefixes:
+  - SKILL_ELSON_
+  - SKILL_IPOS_
+  - SKILL_GENOS_
+  - SKILL_SUPER_C_
+- input: build Elson platform
+  expected_root: build
+  expected_selected_target: elson
+  must_include_project_prefixes:
+  - SKILL_ELSON_
+- input: build IPOS dashboard
+  expected_root: build
+  expected_selected_target: ipos_dashboard
+  must_include_project_prefixes:
+  - SKILL_IPOS_
+notes:
+- Invocation phrases activate portable skill coverage.
+- Acquisition phrases scan and normalize assistant surfaces.
+- Imported project-specific agents are scoped assets, not universal runtime law.
+- Generic roots and nouns suppress project-specific skill prefixes until a target
+  or domain explicitly binds them.
+- External runtime Skill tool registries are not the full Development_Skills skill
+  library.
+- Repository-native `SKILL_*` YAML/playbooks are applied as disciplines when routed,
+  even when the external runtime cannot call them through a Skill tool.
+required_files:
+- platform/sdlc/13_skills/skill_refinery/universal_skill_invocation_policy.md
+- platform/sdlc/13_skills/skill_refinery/cross_runtime_invoke_all_skills_contract.md
+- .claude/commands/invoke-all-skills.md
+- .codex/commands/invoke-all-skills.md
+- AGENTS.md
+- CLAUDE.md
+runtime_surfaces:
+- name: claude_code
+  required_file: .claude/commands/invoke-all-skills.md
+  must_contain:
+  - playbook_applied_disciplines
+  - Repository-native playbooks
+  - registered Skill tool list
+- name: codex
+  required_file: .codex/commands/invoke-all-skills.md
+  must_contain:
+  - playbook_applied_disciplines
+  - repository-native disciplines
+  - registered skill list
+- name: shared_agent_instructions
+  required_file: AGENTS.md
+  must_contain:
+  - cross_runtime_invoke_all_skills_contract.md
+  - tool_called_skills
+  - playbook_applied_disciplines

@@ -1,0 +1,32 @@
+---
+title: KJVA Bible — Knowledge Mesh
+status: verified
+tier: T1
+last_updated: 2026-05-26
+---
+graph TD
+    subgraph Static_Knowledge["Static Knowledge (gittracked)"]
+        Verses["data/verses.jsonl\n36,822 KJV + Apocrypha verses\nref, text, Strongs, footnotes\ncanon_category, book_order"]
+        Config["KJVA/training/model_config.json\narchitecture config\n8L × d384, 6 heads, vocab=259"]
+        ByteVocab["KJVA/training/byte_vocab.json\nbyte vocabulary spec\nPAD=0, BOS=1, EOS=2, byte→N+3"]
+        Provenance["KJVA/PROVENANCE.md\nsha256 manifest for tracked model artifacts"]
+    end
+
+    subgraph Learned_Knowledge["Learned Knowledge (model weights — gitignored)"]
+        Weights["KJVA/training/weights.safetensors\n72MB — 18M params trained on KJV+Apocrypha\nval_ppl=3.21\nNOT in git — manual install"]
+    end
+
+    subgraph Runtime_Index["Runtime Index (in-memory, ephemeral)"]
+        VerseIdx["VerseIndex (corpus.py)\n_by_ref: {ref → verse}\n_by_id: {id → verse}\n_book_chapters: {book → [chapters]}\n_chapter_verses: {key → [verses]}"]
+    end
+
+    subgraph Governance_Docs["Governance / Doctrine (KJVA/)"]
+        Constitution["KJVA/constitution/\nidentity_attestation, seat_protection\ndegraded_mode_matrix, member_reconstitution"]
+        HeptSpec["KJVA/heptagon/unified_model_spec.json\nheptagon layer spec"]
+        CouncilMap["KJVA/docs/Council_Canonical_Domain_Map_v1_2.md"]
+    end
+
+    Verses -->|"loaded at startup"| VerseIdx
+    Config -->|"parsed at weight load"| Weights
+    ByteVocab -->|"defines token encoding"| Weights
+    Weights -->|"mx.load → model.load_weights"| VerseIdx

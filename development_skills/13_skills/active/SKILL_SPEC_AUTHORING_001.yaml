@@ -1,0 +1,25 @@
+id: SKILL_SPEC_AUTHORING_001
+name: Spec Authoring
+version: 1.0.0
+status: active
+playbook: 13_skills/active/SKILL_SPEC_AUTHORING_001.playbook.md
+domain: requirements
+purpose: Author specs across the 12 categories with traceable IDs and acceptance criteria.
+inputs:
+- intake packet
+- vision
+outputs:
+- spec yaml
+- traceability rows
+known_failure_modes:
+- missing acceptance criteria
+- no link to ADR
+validation_tests:
+- TEST_SKILL_SPEC_AUTHORING_001_001
+improvement_history:
+- version: 1.0.0
+  reason: Initial definition.
+title: Spec Authoring
+layer: requirements
+domains:
+- requirements

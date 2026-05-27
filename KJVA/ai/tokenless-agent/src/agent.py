@@ -30,9 +30,11 @@ logger = logging.getLogger("tokenless.agent")
 # ── Local standalone agent implementation ─────────────────────────────────────
 
 _THIS_DIR = os.path.dirname(os.path.abspath(__file__))
-_REPO_ROOT = os.path.abspath(os.path.join(_THIS_DIR, "..", "..", "..", ".."))
+_REPO_ROOT = os.path.abspath(os.path.join(_THIS_DIR, "..", "..", ".."))
 if _THIS_DIR not in sys.path:
     sys.path.insert(0, _THIS_DIR)
+if _REPO_ROOT not in sys.path:
+    sys.path.append(_REPO_ROOT)
 
 @dataclass
 class AgentConfig:  # type: ignore[no-redef]
@@ -178,7 +180,7 @@ class TokenlessAgent:  # type: ignore[no-redef]
 # ── Governance integration ────────────────────────────────────────────────────
 
 try:
-    _GOV_ROOT = os.path.abspath(os.path.join(_THIS_DIR, "..", "..", "..", ".."))
+    _GOV_ROOT = os.path.abspath(os.path.join(_THIS_DIR, "..", "..", ".."))
     if _GOV_ROOT not in sys.path:
         sys.path.append(_GOV_ROOT)
     from governance.drift_signal import DriftDetector, DriftSignal
@@ -186,6 +188,9 @@ try:
 except ImportError:
     _DRIFT_AVAILABLE = False
     logger.debug("agent.py: DriftDetector not available — drift monitoring disabled")
+
+from soul_manager.consolidation import ConsolidationEngine as SoulConsolidationEngine
+from soul_manager.daemon_client import CouncilDaemonAsyncClient
 
 # ── Heptagon integration layer ────────────────────────────────────────────────
 
@@ -214,11 +219,14 @@ class HeptagonLayer:
 
     state_machine: Optional[object] = field(default=None)
     evaluator: Optional[object] = field(default=None)
+    quality_tracker: Optional[object] = field(default=None)
     calibrator: Optional[object] = field(default=None)
     verifier: Optional[object] = field(default=None)
     enforcer: Optional[object] = field(default=None)
     router: Optional[object] = field(default=None)
     registry: Optional[object] = field(default=None)
+    soul_client: Optional[object] = field(default=None)
+    consolidation: Optional[object] = field(default=None)
 
     @classmethod
     def build(cls, agent_id: str = "tokenless-default") -> "HeptagonLayer":
@@ -230,43 +238,21 @@ class HeptagonLayer:
         layer = cls()
 
         if not _HEPTAGON_AVAILABLE:
-            logger.debug("HeptagonLayer.build: heptagon modules unavailable — degraded")
-            return layer
+            raise RuntimeError("Heptagon core modules are unavailable on the promoted runtime path")
 
-        try:
-            layer.state_machine = AgentStateMachine(agent_id=agent_id)  # type: ignore[arg-type]
-        except Exception as exc:  # noqa: BLE001
-            logger.debug("HeptagonLayer: state_machine init failed: %s", exc)
-
-        try:
-            layer.evaluator = CycleEvaluator()  # type: ignore[call-arg]
-        except Exception as exc:  # noqa: BLE001
-            logger.debug("HeptagonLayer: evaluator init failed: %s", exc)
-
-        try:
-            layer.calibrator = ParameterCalibrator()
-        except Exception as exc:  # noqa: BLE001
-            logger.debug("HeptagonLayer: calibrator init failed: %s", exc)
-
-        try:
-            layer.verifier = ResponseVerifier()  # type: ignore[call-arg]
-        except Exception as exc:  # noqa: BLE001
-            logger.debug("HeptagonLayer: verifier init failed: %s", exc)
-
-        try:
-            layer.enforcer = InvariantEnforcer()  # type: ignore[call-arg]
-        except Exception as exc:  # noqa: BLE001
-            logger.debug("HeptagonLayer: enforcer init failed: %s", exc)
-
-        try:
-            layer.router = RouteEngine()  # type: ignore[call-arg]
-        except Exception as exc:  # noqa: BLE001
-            logger.debug("HeptagonLayer: router init failed: %s", exc)
-
-        try:
-            layer.registry = NodeRegistry()  # type: ignore[call-arg]
-        except Exception as exc:  # noqa: BLE001
-            logger.debug("HeptagonLayer: registry init failed: %s", exc)
+        layer.state_machine = AgentStateMachine(agent_id=agent_id)  # type: ignore[arg-type]
+        layer.evaluator = CycleEvaluator()  # type: ignore[call-arg]
+        layer.quality_tracker = getattr(layer.evaluator, "tracker", None)
+        layer.calibrator = ParameterCalibrator(agent_id)
+        layer.verifier = ResponseVerifier()  # type: ignore[call-arg]
+        layer.enforcer = InvariantEnforcer()  # type: ignore[call-arg]
+        layer.router = RouteEngine()  # type: ignore[call-arg]
+        layer.registry = NodeRegistry()  # type: ignore[call-arg]
+        layer.soul_client = CouncilDaemonAsyncClient(
+            source_agent=f"{agent_id}.heptagon",
+            namespace=agent_id,
+        )
+        layer.consolidation = SoulConsolidationEngine(soul_client=layer.soul_client)
 
         return layer
 
@@ -330,9 +316,13 @@ class TokenlessAgentWithHeptagon(TokenlessAgent):  # type: ignore[misc]
           L5: CycleEvaluator records metrics
           L6: ParameterCalibrator adjusts model parameters
         """
+        import hashlib
         import time
 
         start = time.monotonic()
+        route_result = None
+        verification_result = None
+        metrics = None
 
         # L4: Transition to LISTENING
         if self.heptagon.state_machine is not None:
@@ -359,14 +349,18 @@ class TokenlessAgentWithHeptagon(TokenlessAgent):  # type: ignore[misc]
         if self.heptagon.verifier is not None:
             try:
                 self.heptagon.state_machine.transition("REVIEWING")  # type: ignore[attr-defined]
-                verdict = self.heptagon.verifier.verify(  # type: ignore[attr-defined]
-                    response_text=response,
-                    query_text=user_message,
+                verification_result = self.heptagon.verifier.verify(  # type: ignore[attr-defined]
+                    user_message,
+                    response,
                 )
-                if verdict is not None and hasattr(verdict, 'passed') and not verdict.passed:
+                if (
+                    verification_result is not None
+                    and hasattr(verification_result, "passed")
+                    and not verification_result.passed
+                ):
                     logger.warning(
                         "ResponseVerifier: response failed verification — %s",
-                        getattr(verdict, 'reason', 'unknown'),
+                        getattr(verification_result, "flags", ["unknown"]),
                     )
             except Exception:  # noqa: BLE001
                 pass
@@ -374,10 +368,20 @@ class TokenlessAgentWithHeptagon(TokenlessAgent):  # type: ignore[misc]
         # L5: Record evaluation cycle
         if self.heptagon.evaluator is not None:
             try:
-                self.heptagon.evaluator.record(  # type: ignore[attr-defined]
+                metrics = self.heptagon.evaluator.record(  # type: ignore[attr-defined]
                     latency_ms=latency_ms,
                     response_text=response,
                     query_text=user_message,
+                    tokens=max(1, len(response.split())),
+                    context={
+                        "route_type": getattr(
+                            getattr(route_result, "route_type", None),
+                            "name",
+                            "DIRECT",
+                        ),
+                        "tool_calls": 0,
+                        "errors": 0 if verification_result is None or verification_result.passed else 1,
+                    },
                 )
             except Exception:  # noqa: BLE001
                 pass
@@ -390,7 +394,23 @@ class TokenlessAgentWithHeptagon(TokenlessAgent):  # type: ignore[misc]
             try:
                 metrics = self.heptagon.evaluator.latest_metrics()  # type: ignore[attr-defined]
                 if metrics is not None:
-                    self.heptagon.calibrator.calibrate(metrics)
+                    domain_id = getattr(
+                        getattr(route_result, "route_type", None),
+                        "name",
+                        "DIRECT",
+                    ).lower()
+                    context_hash = hashlib.sha256(
+                        f"{session_id}:{user_message}".encode("utf-8")
+                    ).hexdigest()
+                    if hasattr(self.heptagon.calibrator, "full_l6_cycle"):
+                        self.heptagon.calibrator.full_l6_cycle(
+                            metrics,
+                            domain_id,
+                            context_hash,
+                            session_id=session_id,
+                        )
+                    else:
+                        self.heptagon.calibrator.calibrate(metrics)
             except Exception:  # noqa: BLE001
                 pass
 
@@ -401,6 +421,10 @@ class TokenlessAgentWithHeptagon(TokenlessAgent):  # type: ignore[misc]
                     "agent_id": self.config.agent_id,
                     "latency_ms": latency_ms,
                     "response_length": len(response),
+                    "route_profile": getattr(route_result, "profile", "direct") if route_result else "direct",
+                    "tokens_used": metrics.tokens_used if metrics is not None else max(1, len(response.split())),
+                    "quality_score": metrics.composite_score if metrics is not None else 0.0,
+                    "error_rate": 0.0 if verification_result is None or verification_result.passed else 1.0,
                 })
             except Exception:  # noqa: BLE001
                 pass

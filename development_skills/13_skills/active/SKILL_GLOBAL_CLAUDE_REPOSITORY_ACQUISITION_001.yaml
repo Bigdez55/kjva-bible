@@ -1,0 +1,72 @@
+id: SKILL_GLOBAL_CLAUDE_REPOSITORY_ACQUISITION_001
+title: Global Claude Repository Acquisition
+version: 1.0.0
+layer: active
+domains:
+- repo_auditing
+- claude
+- skills
+- agents
+- source_preservation
+playbook: 13_skills/active/SKILL_GLOBAL_CLAUDE_REPOSITORY_ACQUISITION_001.playbook.md
+validation_tests:
+- 13_skills/skill_refinery/validation_tests/TEST_ASSISTANT_SURFACE_ACQUISITION_001.yaml
+status: active
+skill_number: 138
+source_documents:
+- 16_knowledge/external_collateral/all_claude_dirs_2026-05-17/ACQUISITION_REPORT.md
+- 16_knowledge/external_collateral/all_claude_dirs_2026-05-17/source_index.yaml
+- 16_knowledge/external_collateral/all_claude_dirs_2026-05-17/file_manifest.yaml
+trigger_conditions:
+- User asks to go through every `.claude` directory in every repo.
+- User asks to acquire missing skills, agents, memories, plans, commands, or other
+  Claude Code assets.
+- A prior acquisition answer is challenged as incomplete.
+hard_constraints:
+- Search every declared repo root and skip only explicit vendor/noise folders such
+  as `.git` and `node_modules`.
+- Preserve raw source files before normalization.
+- Report category counts and unique hash counts; do not claim complete acquisition
+  without category-level evidence.
+- Separate raw preservation, normalized operational canon, router wiring, and validation.
+tier: active
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_GLOBAL_CLAUDE_REPOSITORY_ACQUISITION_001.ledger.yaml
+related_skills:
+- SKILL_EXISTING_REPO_AUDIT_001
+- SKILL_FIND_BEFORE_CREATE_001
+- SKILL_SOURCE_TRUTH_RECONCILIATION_001
+- SKILL_AGENT_SURFACE_NORMALIZATION_001
+- SKILL_THREAD_TO_SKILL_REFINERY_CLOSURE_001
+router_intents:
+- global_claude_acquisition
+- claude_dir_scan
+- source_preservation
+aliases:
+- global claude acquisition
+- .claude acquisition
+- acquire claude dirs
+- go through every .claude
+- all claude directories
+- claude repository scan
+required_outputs:
+- Search roots
+- Claude directory inventory
+- Raw preservation manifest
+- Skill candidate index
+- Agent surface index
+- Operational import decisions
+- Router/registry updates
+- Validation results
+- Unified assistant-surface acquisition report when `.claude`, `.codex`, and `.gemini`
+  are requested together
+regression_cases: []
+slash_commands: []
+workflows: []
+templates: []
+provenance:
+  created_from: current_thread_skill_refinery_closure
+  created_at: '2026-05-17'
+improvement_history:
+- version: 1.0.0
+  date: '2026-05-17'
+  reason: Created from current-thread correction pattern and durable workflow need.

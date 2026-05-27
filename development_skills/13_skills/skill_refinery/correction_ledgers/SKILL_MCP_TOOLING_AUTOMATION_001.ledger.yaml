@@ -1,0 +1,23 @@
+schema_version: '1.0'
+skill_id: SKILL_MCP_TOOLING_AUTOMATION_001
+skill_name: MCP Tooling and Automation Templates
+skill_card_path: 13_skills/active/SKILL_MCP_TOOLING_AUTOMATION_001.yaml
+playbook_path: 13_skills/active/SKILL_MCP_TOOLING_AUTOMATION_001.playbook.md
+current_version: 1.0.0
+tier: active
+hard_constraints:
+- Preserve source-of-truth ranking.
+- Do not claim completion without validation evidence.
+- Record misses in the skill refinery ledger when discovered.
+immutable_facts:
+- Imported from handoff_v7_repo_native
+- Repo-native artifacts are operational source of truth after v7 normalization.
+correction_history: []
+regression_test_ids: []
+promotion_criteria:
+  to_tier: hardened
+  requirements:
+  - Three consecutive uses without recurrence of known misses.
+  - Regression cases pass.
+  - Final reports include evidence.
+last_updated: '2026-05-17'

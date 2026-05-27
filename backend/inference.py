@@ -15,10 +15,19 @@ import os
 from pathlib import Path
 from typing import Optional
 
-import mlx.core as mx
-import mlx.nn as nn
-
-from model import ModelConfig, TokenlessLM
+# MLX is Apple-Silicon only. Per ADR-0003, the retrieval path must work in
+# linux/amd64 containers and CI where MLX is absent. We import lazily and
+# degrade is_ready() to False when the runtime is missing.
+try:
+    import mlx.core as mx
+    import mlx.nn as nn  # noqa: F401  (loaded for model module side effects)
+    from model import ModelConfig, TokenlessLM
+    _MLX_AVAILABLE = True
+except ImportError:
+    mx = None
+    ModelConfig = None
+    TokenlessLM = None
+    _MLX_AVAILABLE = False
 
 # Weights are gitignored (72 MB .safetensors). Layout:
 #   KJVA/training/weights.safetensors   ← gitignored
@@ -46,13 +55,18 @@ def _decode(token_ids: list[int]) -> str:
 
 class KJVAInference:
     def __init__(self):
-        self._model: Optional[TokenlessLM] = None
-        self._cfg: Optional[ModelConfig] = None
+        self._model = None
+        self._cfg = None
         self._loaded = False
 
     def _load(self):
         if self._loaded:
             return
+        if not _MLX_AVAILABLE:
+            raise RuntimeError(
+                "MLX runtime not installed. AI completion requires Apple Silicon + mlx>=0.16.0. "
+                "Retrieval-only mode is still available — see ADR-0003."
+            )
         weights_path = _MODELS_DIR / "weights.safetensors"
         config_path  = _MODELS_DIR / "model_config.json"
         if not weights_path.exists():
@@ -74,7 +88,7 @@ class KJVAInference:
         self._loaded = True
 
     def is_ready(self) -> bool:
-        return (_MODELS_DIR / "weights.safetensors").exists()
+        return _MLX_AVAILABLE and (_MODELS_DIR / "weights.safetensors").exists()
 
     def complete(
         self,

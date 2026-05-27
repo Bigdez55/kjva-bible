@@ -1,0 +1,46 @@
+id: SKILL_GENOS_SPRINT_CI_GEN_001
+title: "GEN.OS Sprint CI Gen \u2014 Generate Sprint CI Workflows"
+version: 1.0.0
+layer: active
+domains:
+- genos
+- ci
+- sprint_ops
+playbook: 13_skills/active/SKILL_GENOS_SPRINT_CI_GEN_001.playbook.md
+validation_tests: []
+status: active
+skill_number: 91
+source_documents:
+- genos_codex_skills_2026-05-17/raw/sprint-ci-gen.md
+trigger_conditions:
+- User mentions sprint-ci-gen.
+- User mentions sprint ci gen.
+- User mentions sprint.
+hard_constraints:
+- Preserve source-of-truth ranking.
+- Do not claim completion without validation evidence.
+- Use GEN.OS-specific commands, paths, policies, and gates only when GEN.OS context is active.
+- Record misses in the skill refinery ledger when discovered.
+tier: active
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_GENOS_SPRINT_CI_GEN_001.ledger.yaml
+related_skills:
+- SKILL_LOW_LEVEL_KERNEL_BOOT_001
+- SKILL_CI_PIPELINE_001
+- SKILL_RUNTIME_REGRESSION_VERIFY_001
+router_intents:
+- sprint_ci_gen
+- genos
+aliases:
+- sprint-ci-gen
+- sprint ci gen
+- genos sprint ci gen
+regression_cases: []
+slash_commands: []
+workflows: []
+templates: []
+provenance:
+  collection: genos_codex_skills_2026-05-17
+  source_repo: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/GENESYS/GENESYS
+  raw_source: 16_knowledge/external_collateral/genos_codex_skills_2026-05-17/raw/sprint-ci-gen.md
+  raw_sha256: de67a33aec2b52300028f4deeec1a1fc7b7a1f893eb850934b2ff362e3df758e
+improvement_history: []

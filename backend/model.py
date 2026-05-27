@@ -15,12 +15,12 @@ import mlx.nn as nn
 
 @dataclass
 class ModelConfig:
-    vocab_size: int = 16000
-    n_layers: int = 6
+    vocab_size: int = 259   # byte-level: 256 bytes + PAD/BOS/EOS
+    n_layers: int = 8
     n_heads: int = 6
     d_model: int = 384
     d_ffn: int = 1536
-    max_seq_len: int = 512
+    max_seq_len: int = 1024
     rope_base: float = 10000.0
     tie_embeddings: bool = True
     rms_eps: float = 1e-5

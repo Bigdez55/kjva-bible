@@ -1,0 +1,25 @@
+id: SKILL_SLICE_PLANNING_001
+name: Slice Planning
+version: 1.0.0
+status: active
+playbook: 13_skills/active/SKILL_SLICE_PLANNING_001.playbook.md
+domain: slices
+purpose: Convert a spec set into a vertical slice plan with proof and deployment requirements.
+inputs:
+- specs
+- ADRs
+outputs:
+- slice yaml
+- proof requirements
+known_failure_modes:
+- slice too large
+- missing rollback path
+validation_tests:
+- TEST_SKILL_SLICE_PLANNING_001_001
+improvement_history:
+- version: 1.0.0
+  reason: Initial definition.
+title: Slice Planning
+layer: slices
+domains:
+- slices

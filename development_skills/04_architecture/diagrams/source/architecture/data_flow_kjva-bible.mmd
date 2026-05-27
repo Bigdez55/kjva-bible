@@ -1,0 +1,55 @@
+---
+title: KJVA Bible — Data Flow (with retrieval-first completion)
+status: verified
+tier: T3
+last_updated: 2026-05-26
+slice: SLICE-0001-phase1-release
+adr: ADR-0003-retrieval-first-completion-ordering
+---
+flowchart TD
+    subgraph Sources["Data Sources"]
+        KJV_Corpus["KJV Corpus<br/>eng-kjv_vpl, browserBible, html<br/>(Tokenless-Models origin)"]
+        Weights72["weights.safetensors<br/>72MB gitignored<br/>(Tokenless-Models origin)"]
+        Config_JSON["model_config.json<br/>byte_vocab.json"]
+    end
+
+    subgraph Ingest["Ingest / Pre-process"]
+        Verses_JSONL["data/verses.jsonl<br/>36,822 records"]
+    end
+
+    subgraph Runtime["Runtime (FastAPI startup)"]
+        VerseIndex["VerseIndex singleton<br/>O(1) dict lookup<br/>+ book name resolver"]
+        KJVAModel["KJVAInference singleton<br/>lazy-loaded on first AI request<br/>OPTIONAL — MLX may be absent"]
+    end
+
+    subgraph RetrievalPipeline["Retrieval Pipeline (per ADR-0003)"]
+        style RetrievalPipeline fill:#1a2a1a,stroke:#0a0
+        L1["lookup_ref_range<br/>'John 3:16', 'Num 15:37-41'"]
+        L2["search_prefix<br/>4-tier text matcher"]
+        L3["build_corpus_context<br/>RAG augmentation"]
+    end
+
+    subgraph API_Out["API Outputs"]
+        VerseData["{ref, text, book, chapter, verse,<br/>canon_category, Strongs, footnotes}"]
+        CompletionR["retrieved=true<br/>model='kjva-retrieval'<br/>+ verse_ref"]
+        CompletionAI["retrieved=false<br/>model='kjva-18m'"]
+        Err503["HTTP 503<br/>{error, fix}<br/>(AI miss + no weights)"]
+        Stub501["HTTP 501<br/>(search/qa/xref)"]
+    end
+
+    KJV_Corpus --> Verses_JSONL
+    Verses_JSONL -->|load at startup| VerseIndex
+    VerseIndex --> L1
+    VerseIndex --> L2
+    VerseIndex --> L3
+
+    Weights72 -.->|mx.load if MLX present| KJVAModel
+    Config_JSON -.->|ModelConfig parse| KJVAModel
+
+    VerseIndex --> VerseData
+    L1 -->|match| CompletionR
+    L2 -->|match| CompletionR
+    L3 -->|augment| KJVAModel
+    KJVAModel --> CompletionAI
+    L3 -.->|miss + no weights| Err503
+    VerseIndex --> Stub501

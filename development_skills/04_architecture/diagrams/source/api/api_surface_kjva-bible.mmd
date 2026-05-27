@@ -1,0 +1,33 @@
+---
+title: KJVA Bible — API Surface
+status: verified
+tier: T1
+last_updated: 2026-05-26
+---
+graph TD
+    subgraph Live["Live Endpoints"]
+        H["GET /api/health\n→ {status, model_ready, verse_index_loaded}\nAuth: none"]
+        B["GET /api/books\n→ [{code, name, full_name, canon_category, order}]\nAuth: none"]
+        C["GET /api/chapters/{book}\n→ {book, chapters: [int]}\n404 if book not found\nAuth: none"]
+        V["GET /api/verses/{book}/{chapter}\n→ {book, chapter, verses: [...]}\n404 if not found\nAuth: none"]
+        VS["GET /api/verse/{book}/{chapter}/{verse}\n→ full verse record\n404 if not found\nAuth: none"]
+        CO["POST /api/complete\nBody: {prompt, max_new_tokens?, temperature?, top_p?}\n→ {prompt, completion, model}\n503 if weights missing\nAuth: none"]
+    end
+
+    subgraph Stubs["Stub Endpoints (HTTP 501)"]
+        SE["POST /api/search\n→ 501 {error, requires_adapter, phase: 2}"]
+        QA["POST /api/qa\n→ 501 {error, requires_adapter, phase: 3}"]
+        XR["POST /api/xref\n→ 501 {error, requires_adapter, phase: 4}"]
+    end
+
+    subgraph Validation["Input Validation (Pydantic)"]
+        V_Prompt["prompt: str, min=1, max=2000"]
+        V_Tokens["max_new_tokens: int, 1–512, default 150"]
+        V_Temp["temperature: float, 0–2, default 0.8"]
+        V_TopP["top_p: float, 0–1, default 0.9"]
+    end
+
+    CO --> V_Prompt
+    CO --> V_Tokens
+    CO --> V_Temp
+    CO --> V_TopP

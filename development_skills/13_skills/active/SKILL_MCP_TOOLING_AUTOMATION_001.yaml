@@ -1,0 +1,40 @@
+id: SKILL_MCP_TOOLING_AUTOMATION_001
+title: MCP Tooling and Automation Templates
+version: 1.0.0
+layer: integration
+domains:
+- mcp
+- automation
+- tools
+playbook: 13_skills/active/SKILL_MCP_TOOLING_AUTOMATION_001.playbook.md
+validation_tests:
+- 08_verification/skill_tests/TEST_SKILL_MCP_TOOLING_AUTOMATION_001_001.yaml
+status: active
+skill_number: 29
+source_documents:
+- handoff_v7_repo_native
+trigger_conditions:
+- MCP tools, connector automation, tool templates, credentials, or environment contracts
+  are requested.
+hard_constraints:
+- Preserve source-of-truth ranking.
+- Do not claim completion without validation evidence.
+- Record misses in the skill refinery ledger when discovered.
+tier: active
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_MCP_TOOLING_AUTOMATION_001.ledger.yaml
+related_skills: []
+router_intents:
+- deployment_domain_repo
+- platform_build
+aliases:
+- 29-mcp-tooling-and-automation-templates
+regression_cases: []
+slash_commands:
+- /apex:platform_build
+workflows:
+- 05_workflows/platform_build_auto_invocation.md
+templates: []
+provenance:
+  collection: skills_stack_2026-05-17
+  source_index: 16_knowledge/external_collateral/skills_stack_2026-05-17/source_index.yaml
+improvement_history: []

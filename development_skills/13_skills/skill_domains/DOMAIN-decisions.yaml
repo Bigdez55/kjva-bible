@@ -1,0 +1,4 @@
+domain: decisions
+description: Skills under the decisions domain.
+active_skills:
+- SKILL_ADR_AUTHORING_001

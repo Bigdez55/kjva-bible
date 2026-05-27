@@ -1,0 +1,34 @@
+id: SPEC-KJVA-SEC-0001
+category: security_requirements
+title: Public exposure baseline for Phase 1
+status: active
+owner: bigdez55
+slice: SLICE-0001-phase1-release
+description: >
+  Minimum security posture required before the Phase 1 backend is exposed
+  beyond localhost. Authentication is out of scope for Phase 1 (read-only
+  scripture); abuse-of-AI surface is the primary concern.
+requirements:
+  - id: SEC-1
+    text: "Pydantic input validation on POST /api/complete: prompt 1..2000 chars, max_new_tokens 1..512."
+  - id: SEC-2
+    text: "CORS restricted to known origins in production (currently localhost dev; must be tightened on preview deploy)."
+  - id: SEC-3
+    text: "/api/complete must not echo internal stack traces; 503 errors carry only structured {error, fix} dict."
+  - id: SEC-4
+    text: "Rate limiting (slowapi or equivalent token bucket) is REQUIRED before exposing /api/complete on a public preview URL. Tracked as follow-up to Phase 1."
+  - id: SEC-5
+    text: "Weights file is never written to image; only mounted at runtime. .dockerignore excludes KJVA/training/."
+  - id: SEC-6
+    text: "Docker container runs as non-root user."
+acceptance:
+  - "Dockerfile uses USER appuser (non-root) for the final stage."
+  - ".dockerignore excludes KJVA/training/ and *.safetensors."
+  - "CORS allow_origins is configurable via env var (no wildcard in production)."
+follow_ups:
+  - "Add slowapi rate limit middleware before publishing preview URL externally."
+  - "Decide auth strategy if/when write endpoints are added."
+links:
+  adr: null
+  diagram: 04_architecture/diagrams/source/security/threat_model_kjva-bible.mmd
+  test: null

@@ -1,0 +1,53 @@
+id: SKILL_IPOS_ALERT_SYSTEM_001
+title: IPOS Alert System
+version: 1.0.0
+layer: active
+domains:
+- ipos
+- dashboard
+- kpi_reporting
+- ai_insights
+- alerts
+playbook: 13_skills/active/SKILL_IPOS_ALERT_SYSTEM_001.playbook.md
+validation_tests: []
+status: active
+skill_number: 41
+source_documents:
+- ipos_claude_skills_2026-05-17/raw/alert-system/SKILL.md
+trigger_conditions:
+- User request matches imported IPOS skill `alert-system`.
+- User mentions alerts.
+- User mentions notifications.
+- User mentions threshold breach.
+- User mentions warning system.
+- User mentions penalty alert.
+- User mentions escalation.
+hard_constraints:
+- Preserve source-of-truth ranking.
+- Do not claim completion without validation evidence.
+- Use imported IPOS patterns only when the request is dashboard, KPI, SharePoint, paratransit, or frontend-dashboard related.
+- Record misses in the skill refinery ledger when discovered.
+tier: active
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_IPOS_ALERT_SYSTEM_001.ledger.yaml
+related_skills:
+- SKILL_PLATFORM_BUILD_001
+- SKILL_FRONTEND_BACKEND_DATAFLOW_001
+- SKILL_SOURCE_TRUTH_RECONCILIATION_001
+router_intents:
+- alert_system
+- dashboard
+- ipos_dashboard
+aliases:
+- alert-system
+- alert system
+- ipos alert system
+regression_cases: []
+slash_commands: []
+workflows: []
+templates: []
+provenance:
+  collection: ipos_claude_skills_2026-05-17
+  source_repo: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS
+  raw_source: 16_knowledge/external_collateral/ipos_claude_skills_2026-05-17/raw/alert-system/SKILL.md
+  raw_sha256: 2ccd27c67df213bcefd2a0ef31b760155951b729109d33342d45bd6018371322
+improvement_history: []

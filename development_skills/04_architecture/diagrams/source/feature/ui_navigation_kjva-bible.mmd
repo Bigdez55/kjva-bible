@@ -1,0 +1,32 @@
+---
+title: KJVA Bible — UI Navigation
+status: verified
+tier: T1
+last_updated: 2026-05-26
+---
+flowchart LR
+    Entry["App Load\n(App.jsx)\ndefault: Browse tab"]
+
+    Entry --> Browse["Browse Tab\nVerseBrowser.jsx"]
+    Entry --> Completion["Completion Tab\nCompletionPanel.jsx"]
+    Entry --> Search["Search Tab\nStubPanel: Semantic Search"]
+    Entry --> QA["Q&A Tab\nStubPanel: Q&A / Commentary"]
+    Entry --> XRef["Cross-Ref Tab\nStubPanel: Cross-Reference"]
+
+    Browse -->|"tab click"| Completion
+    Browse -->|"tab click"| Search
+    Browse -->|"tab click"| QA
+    Browse -->|"tab click"| XRef
+
+    subgraph Browse_Internal["Browse Internal State"]
+        B_Books["Books list\n(from /api/books)"]
+        B_Chapters["Chapters list\n(from /api/chapters/{book})"]
+        B_Verses["Verses list\n(from /api/verses/{book}/{chapter})"]
+        B_Verse["Single verse\n(from /api/verse/{book}/{chapter}/{verse})"]
+
+        B_Books -->|"select book"| B_Chapters
+        B_Chapters -->|"select chapter"| B_Verses
+        B_Verses -->|"select verse"| B_Verse
+    end
+
+    Note["No client-side routing (React Router)\nAll navigation is useState tab switching\nNo back/forward browser history support"]

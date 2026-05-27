@@ -1,0 +1,26 @@
+# Never bake weights or training scratch into images (per SPEC-KJVA-SEC-0001).
+KJVA/training/*.safetensors
+KJVA/training/checkpoints
+KJVA/training/runs
+KJVA/training/wandb
+
+# Dev/local artifacts
+.git
+.gitignore
+.venv
+__pycache__
+*.pyc
+.pytest_cache
+.hypothesis
+node_modules
+frontend/node_modules
+frontend/dist
+.DS_Store
+
+# Onboarding artifacts — not part of runtime image
+development_skills
+
+# Editor / OS
+.idea
+.vscode
+*.swp

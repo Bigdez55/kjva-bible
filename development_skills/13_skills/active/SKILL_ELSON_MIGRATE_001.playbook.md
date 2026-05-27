@@ -1,0 +1,26 @@
+# Database Migration Protocol Playbook
+
+## Purpose
+Run a database migration — generate Alembic migration, apply ALTER TABLE to Cloud SQL, and verify schema. Use when the user adds new model columns, changes schema, or asks to run a migration.
+
+## Imported Source
+- Collection: `elson_claude_skills_2026-05-17`
+- Selected raw source: `16_knowledge/external_collateral/elson_claude_skills_2026-05-17/raw/trading_bot_elson_tb2/migrate/SKILL.md`
+- Raw SHA-256: `c856c7b0d31385e4e01b00aa6b6e0be12e0cb5e06c4d8e391a3476a8961c7aaf`
+- Source model hint: `claude-sonnet-4-6`
+
+## Activation Rule
+Use this skill only when the request is in the Elson / trading bot / portfolio automation domain and matches `migrate`, `migrate`, or the source skill title.
+
+## Operating Contract
+- Read the preserved raw `SKILL.md` before issuing Elson-specific commands, deployment steps, production diagnostics, model actions, or trading-bot recommendations.
+- Treat raw commands as source guidance, not automatic authorization to run production operations.
+- Do not repeat preserved secrets or credentials in responses.
+- Require current evidence before claiming bot status, Cloud Run health, vLLM state, migration state, or deployment outcome.
+
+## Required Output Shape
+- Objective and active Elson context.
+- Applicable source skill rules or command family.
+- Action sequence or analysis steps.
+- Validation gates and evidence requirements.
+- Risk, blocker, or escalation condition.

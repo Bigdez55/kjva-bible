@@ -42,7 +42,8 @@ logger = logging.getLogger("tokenless.api")
 # ── Path bootstrap ────────────────────────────────────────────────────────────
 
 _THIS_DIR = os.path.dirname(os.path.abspath(__file__))
-_REPO_ROOT = os.path.abspath(os.path.join(_THIS_DIR, "..", "..", "..", ".."))
+_REPO_ROOT = os.path.abspath(os.path.join(_THIS_DIR, "..", "..", ".."))
+_WORKSPACE_ROOT = os.path.abspath(os.path.join(_THIS_DIR, "..", "..", "..", ".."))
 
 _PATHS_TO_INJECT: list[str] = [
     _THIS_DIR,  # ai/tokenless-agent/src — for local heptagon/ imports
@@ -50,6 +51,8 @@ _PATHS_TO_INJECT: list[str] = [
 for _p in _PATHS_TO_INJECT:
     if os.path.isdir(_p) and _p not in sys.path:
         sys.path.insert(0, _p)
+if os.path.isdir(_WORKSPACE_ROOT) and _WORKSPACE_ROOT not in sys.path:
+    sys.path.append(_WORKSPACE_ROOT)
 
 # ── Local imports ─────────────────────────────────────────────────────────────
 
@@ -57,20 +60,15 @@ from agent import AgentConfig, TokenlessAgentWithHeptagon, HeptagonLayer  # noqa
 from cognitive_pipeline import get_pipeline  # noqa: E402
 
 # ── Governance integration ───────────────────────────────────────────────────
-# Wire CovenantEnforcer into the request path so every user message is checked
-# against the 8 Covenant Rules before processing.
-try:
-    _GOVERNANCE_ROOT = os.path.abspath(os.path.join(_THIS_DIR, "..", "..", "..", ".."))
-    if _GOVERNANCE_ROOT not in sys.path:
-        sys.path.append(_GOVERNANCE_ROOT)
-    from governance.covenant_enforcer import CovenantEnforcer, EnforcementAction  # noqa: E402
-    _covenant_enforcer = CovenantEnforcer()
-    _COVENANT_AVAILABLE = True
-    logger.info("CovenantEnforcer wired into API — 8 covenant rules active")
-except ImportError as _cov_err:
-    _COVENANT_AVAILABLE = False
-    _covenant_enforcer = None  # type: ignore[assignment]
-    logger.debug("CovenantEnforcer unavailable: %s — governance bypass active", _cov_err)
+# Wire the full governance stack into the promoted runtime path.
+from KJVA.governance.covenant_enforcer import CovenantEnforcer, EnforcementAction  # noqa: E402
+from KJVA.governance.gate_evaluators import create_default_gate_chain  # noqa: E402
+from KJVA.governance.interceptors import GovernanceInterceptors  # noqa: E402
+
+_covenant_enforcer = CovenantEnforcer()
+_gate_chain = create_default_gate_chain()
+_governance = GovernanceInterceptors(_gate_chain)
+logger.info("Governance stack wired into API — covenant + gate chain active")
 
 # ── Configuration ─────────────────────────────────────────────────────────────
 
@@ -282,19 +280,36 @@ async def chat(
     PII sanitization is performed inside the agent before model submission.
     Session IDs are hashed (SHA-256) before leaving this process.
     """
-    # Covenant enforcement gate — check user message against 8 rules
-    if _COVENANT_AVAILABLE and _covenant_enforcer is not None:
-        try:
-            cov_result = _covenant_enforcer.evaluate(req.message)
-            if cov_result.action == EnforcementAction.HARD_STOP:
-                raise HTTPException(
-                    status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
-                    detail=f"Request blocked by covenant enforcement: {cov_result.reason}",
-                )
-        except HTTPException:
-            raise
-        except Exception as _cov_exc:
-            logger.debug("CovenantEnforcer evaluation error: %s", _cov_exc)
+    cov_result = _covenant_enforcer.enforce(req.message, context={"endpoint": "/v1/chat"})
+    if cov_result.action == EnforcementAction.BLOCK:
+        raise HTTPException(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            detail=f"Request blocked by covenant enforcement: {cov_result.summary()}",
+        )
+
+    gov_result = _governance.citadel_before_execute(
+        intent=req.message,
+        subject="chat_turn",
+        context={
+            "path": "/v1/chat",
+            "session_id": req.session_id,
+            "domains": ["conversation", "continuity", "response_generation"],
+            "constraints": ["must satisfy covenant", "must preserve session continuity"],
+            "evidence": ["authenticated_chat_request", "governance_intercept"],
+            "provenance_hash": f"api:{req.session_id}",
+            "salience": 0.91,
+            "priority": 0.89,
+            "relevance": 0.90,
+            "value_score": 0.72,
+            "risk_score": 0.12,
+        },
+        created_by=_AGENT_ID,
+    )
+    if not gov_result.allowed:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail=f"Request blocked by governance: {gov_result.reason}",
+        )
 
     heptagon_active = all([
         _heptagon.state_machine is not None,
@@ -343,6 +358,40 @@ async def chat_stream(
     )
     import uuid as _uuid
 
+    cov_result = _covenant_enforcer.enforce(
+        req.message,
+        context={"endpoint": "/v1/chat/stream"},
+    )
+    if cov_result.action == EnforcementAction.BLOCK:
+        raise HTTPException(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            detail=f"Request blocked by covenant enforcement: {cov_result.summary()}",
+        )
+
+    gov_result = _governance.citadel_before_execute(
+        intent=req.message,
+        subject="chat_stream_turn",
+        context={
+            "path": "/v1/chat/stream",
+            "session_id": req.session_id,
+            "domains": ["conversation", "continuity", "response_generation"],
+            "constraints": ["must satisfy covenant", "must preserve session continuity"],
+            "evidence": ["authenticated_stream_request", "governance_intercept"],
+            "provenance_hash": f"api-stream:{req.session_id}",
+            "salience": 0.91,
+            "priority": 0.89,
+            "relevance": 0.90,
+            "value_score": 0.72,
+            "risk_score": 0.12,
+        },
+        created_by=_AGENT_ID,
+    )
+    if not gov_result.allowed:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail=f"Request blocked by governance: {gov_result.reason}",
+        )
+
     t0 = time.monotonic()
     turn_id = str(_uuid.uuid4())
     session_hash = _hash_session(req.session_id)
@@ -357,6 +406,7 @@ async def chat_stream(
     shards = await _stage_fetch_context(session_hash, entities, message_hint)
     context_prefix = _stage_build_context_prefix(shards)
     enriched_message = context_prefix + req.message if context_prefix else req.message
+    response_loop = asyncio.get_running_loop()
 
     def _token_generator() -> Iterator[str]:
         response_buf: list[str] = []
@@ -374,9 +424,7 @@ async def chat_stream(
         # Post-stream telemetry (best-effort, scheduled on the event loop)
         full_response = "".join(response_buf)
         latency_ms = int((time.monotonic() - t0) * 1000)
-        loop = asyncio.get_event_loop()
-        loop.call_soon_threadsafe(
-            asyncio.ensure_future,
+        asyncio.run_coroutine_threadsafe(
             _stage_emit_telemetry(
                 turn_id=turn_id,
                 session_hash=session_hash,
@@ -385,9 +433,9 @@ async def chat_stream(
                 heptagon_active=heptagon_active,
                 council_available=len(shards) > 0,
             ),
+            response_loop,
         )
-        loop.call_soon_threadsafe(
-            asyncio.ensure_future,
+        asyncio.run_coroutine_threadsafe(
             _stage_emit_journal_event(
                 turn_id=turn_id,
                 session_hash=session_hash,
@@ -396,6 +444,7 @@ async def chat_stream(
                 response_length=len(full_response),
                 council_available=len(shards) > 0,
             ),
+            response_loop,
         )
 
     return StreamingResponse(
@@ -420,6 +469,29 @@ def execute_tool(
 
     tool_name must be in the agent's registered tool allowlist.
     """
+    gov_result = _governance.citadel_before_execute(
+        intent=f"execute tool {req.tool_name}",
+        subject=req.tool_name,
+        context={
+            "path": "/v1/tool",
+            "params": req.params,
+            "domains": ["tool_execution", "governance", "response_generation"],
+            "constraints": ["must satisfy covenant", "must preserve execution traceability"],
+            "evidence": ["authenticated_tool_request", req.tool_name],
+            "provenance_hash": f"tool:{req.tool_name}",
+            "salience": 0.90,
+            "priority": 0.88,
+            "relevance": 0.92,
+            "value_score": 0.70,
+            "risk_score": 0.18,
+        },
+        created_by=_AGENT_ID,
+    )
+    if not gov_result.allowed:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail=f"Tool blocked by governance: {gov_result.reason}",
+        )
     start = time.monotonic()
     result = _agent.execute_tool(req.tool_name, req.params)  # type: ignore[attr-defined]
     latency_ms = int((time.monotonic() - start) * 1000)

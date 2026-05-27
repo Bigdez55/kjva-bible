@@ -1,0 +1,79 @@
+id: SKILL_ATLAS_WORKSPACE_SHELL_001
+title: ATLAS Workspace Shell and Command Palette
+version: 1.0.0
+layer: active
+domains:
+- atlas
+- ui
+- ux
+- workspace_shell
+- command_palette
+- navigation
+- frontend
+playbook: 13_skills/active/SKILL_ATLAS_WORKSPACE_SHELL_001.playbook.md
+validation_tests:
+- TEST_SKILL_ATLAS_WORKSPACE_SHELL_001_001
+status: active
+skill_number: 313
+source_documents:
+- New updates/new ui/DESIGN_SYSTEM.md
+- New updates/new ui/PLATFORM_AUDIT.md
+- New updates/new ui/CLAUDE.md
+- apps/atlas/src/components/atlas-workbench.tsx
+trigger_conditions:
+- User provides or references the ATLAS static UI prototype.
+- User asks to apply the ATLAS design system, shell, sidebar, topbar, command palette, or shared chrome.
+- User asks to make destination pages uniform across the platform.
+- User asks to port static ATLAS HTML into the live Next.js platform.
+hard_constraints:
+- Use the shared shell for every authenticated ATLAS page.
+- Keep the sidebar, topbar, command palette, left rail, main surface, right inspector, and bottom activity drawer visually and behaviorally uniform.
+- Treat the command palette as the canonical search and action affordance.
+- Use proprietary ATLAS subsystem names only.
+- Preserve functional data/API-backed pages; do not replace working surfaces with dead static HTML.
+- Every route must answer its purpose question and expose action, state, evidence, or agent output.
+tier: active
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_ATLAS_WORKSPACE_SHELL_001.ledger.yaml
+related_skills:
+- SKILL_ATLAS_UI_UX_BUILDOUT_001
+- SKILL_ATLAS_KNOWLEDGE_DEPOT_001
+- SKILL_ATLAS_GRAPH_ENGINE_001
+- SKILL_UI_INTERACTION_WIRING_001
+- SKILL_UI_FEATURE_AUDIT_001
+- SKILL_PROOF_MATRIX_001
+- SKILL_CONTEXT_PACKET_001
+router_intents:
+- atlas_workspace_shell
+- atlas_command_palette
+- atlas_destination_uniformity
+- atlas_static_ui_port
+aliases:
+- atlas shell
+- workspace shell
+- shared chrome
+- command palette
+- destination sidebar
+- atlas design system
+- new ui
+- static ui prototype
+- port atlas ui
+required_outputs:
+- Shared shell contract
+- Destination route map
+- Command palette index
+- Sidebar/topbar/bottom drawer behavior
+- Inspector and evidence behavior
+- Route alias map
+- Accessibility checks
+- Validation commands
+regression_cases: []
+slash_commands: []
+workflows: []
+templates: []
+provenance:
+  created_from: new_ui_static_prototype_port
+  created_at: '2026-05-19'
+improvement_history:
+- version: 1.0.0
+  date: '2026-05-19'
+  reason: Captured the ATLAS static UI prototype shell, command palette, and destination uniformity rules as a reusable platform skill.

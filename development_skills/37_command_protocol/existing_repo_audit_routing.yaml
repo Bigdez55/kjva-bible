@@ -1,0 +1,68 @@
+version: '1.0'
+intents:
+  existing_repo_audit:
+    description: User wants an existing repo audited, understood, reorganized, or
+      refactored.
+    match_any:
+    - audit this existing repo
+    - existing repo
+    - repo audit
+    - massive repo
+    - stale readme
+    - scattered
+    - refactor this repo
+    - organize this repo
+    auto_invoke_skills:
+    - SKILL_EXISTING_REPO_AUDIT_001
+    - SKILL_SOURCE_TRUTH_RECONCILIATION_001
+    required_outputs:
+    - Repo truth map
+    - Code inventory
+    - Test baseline
+    - Docs-code drift
+  source_truth_drift:
+    description: Docs, diagrams, ADRs, README, or summaries may be stale.
+    match_any:
+    - docs are stale
+    - readme is stale
+    - architecture docs are stale
+    - source of truth
+    - docs drift
+    - diagram is stale
+    auto_invoke_skills:
+    - SKILL_SOURCE_TRUTH_RECONCILIATION_001
+    - SKILL_DOCS_ARCHITECTURE_SYNC_001
+    required_outputs:
+    - Claim reconciliation table
+    - Required doc updates
+    - Required diagram updates
+  refactor_plan:
+    description: User asks for section-by-section refactor planning.
+    match_any:
+    - refactor plan
+    - section by section
+    - dependency map before moving
+    - safe refactor
+    auto_invoke_skills:
+    - SKILL_REFACTOR_PLANNING_001
+    - SKILL_SECTION_REFACTOR_EXECUTION_001
+    required_outputs:
+    - Refactor units
+    - Dependencies
+    - Test gates
+    - Rollback plan
+  runtime_verify:
+    description: User asks to prove behavior works through tests or runtime evidence.
+    match_any:
+    - runtime verify
+    - regression
+    - prove it works
+    - run tests
+    - test this feature
+    auto_invoke_skills:
+    - SKILL_RUNTIME_REGRESSION_VERIFY_001
+    - SKILL_AUTOMATED_REGRESSION_TESTING_001
+    required_outputs:
+    - Commands run
+    - Test results
+    - Evidence

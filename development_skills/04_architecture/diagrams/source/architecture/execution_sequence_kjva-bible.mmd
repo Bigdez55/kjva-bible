@@ -1,0 +1,79 @@
+---
+title: KJVA Bible — Execution Sequence (Primary Paths)
+status: verified
+tier: T3
+last_updated: 2026-05-26
+slice: SLICE-0001-phase1-release
+adr: ADR-0003-retrieval-first-completion-ordering
+---
+sequenceDiagram
+    participant U as User (Browser)
+    participant FE as React Frontend
+    participant BE as FastAPI Backend
+    participant CI as VerseIndex
+    participant INF as KJVAInference
+    participant FS as Filesystem
+
+    Note over BE,FS: Startup (lifespan)
+    BE->>CI: get_index().load()
+    CI->>FS: open data/verses.jsonl
+    FS-->>CI: 36,822 lines
+    CI-->>BE: ready (always — no weight dependency)
+
+    Note over U,FE: Path A — Verse Browse
+    U->>FE: select book / chapter / verse
+    FE->>BE: GET /api/verse/{book}/{chapter}/{verse}
+    BE->>CI: get_verse(book, chapter, verse)
+    CI-->>BE: verse record (O(1) dict lookup)
+    BE-->>FE: {ref, text, ...}
+    FE-->>U: render verse text
+
+    Note over U,FE: Path B — /api/complete (retrieval-first per ADR-0003)
+    U->>FE: type prompt, click Complete
+    FE->>BE: POST /api/complete {prompt, ...}
+
+    rect rgb(220,240,220)
+    Note over BE,CI: B1. Direct reference (no weights needed)
+    BE->>CI: lookup_ref_range(prompt)
+    alt ref match
+        CI-->>BE: [verse, ...]
+        BE-->>FE: {retrieved: true, model: "kjva-retrieval", verse_ref}
+        FE-->>U: render verse text(s)
+    end
+    end
+
+    rect rgb(220,240,220)
+    Note over BE,CI: B2. Text prefix / keyword match (no weights needed)
+    BE->>CI: search_prefix(prompt)
+    alt prefix match
+        CI-->>BE: verse record
+        BE-->>FE: {retrieved: true, model: "kjva-retrieval", verse_ref}
+        FE-->>U: render verse tail
+    end
+    end
+
+    rect rgb(255,235,200)
+    Note over BE,INF: B3-B4. AI fallback (REQUIRES weights + MLX)
+    BE->>INF: engine.is_ready()
+    alt weights absent
+        INF-->>BE: false
+        BE-->>FE: 503 {error, fix}
+    else weights present
+        opt prose-shaped prompt
+            BE->>CI: search_text(prompt, limit=3)
+            BE->>CI: build_corpus_context(top, prompt) → RAG block
+        end
+        BE->>INF: engine.complete(augmented, ...)
+        INF->>FS: mx.load(weights.safetensors) [first call only]
+        INF->>INF: byte-encode + nucleus sample loop
+        INF-->>BE: decoded string
+        BE-->>FE: {retrieved: false, model: "kjva-18m"}
+        FE-->>U: render completion
+    end
+    end
+
+    Note over U,FE: Path C — Stub (Phase 2-4)
+    U->>FE: click Search/Q&A/Xref tab
+    FE->>BE: POST /api/search | /api/qa | /api/xref
+    BE-->>FE: HTTP 501 {feature, requires, message}
+    FE-->>U: StubPanel placeholder

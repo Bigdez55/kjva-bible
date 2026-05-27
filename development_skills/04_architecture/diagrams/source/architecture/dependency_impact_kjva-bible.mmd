@@ -1,0 +1,54 @@
+---
+title: KJVA Bible — Dependency Impact (Full Graph incl. Cross-Repo Gaps)
+status: verified
+tier: T1
+last_updated: 2026-05-26
+---
+graph TD
+    App["kjva-bible\n(this repo)"]
+
+    subgraph Internal_Python["Python Dependencies"]
+        fastapi["fastapi >=0.111"]
+        uvicorn["uvicorn[standard] >=0.29"]
+        pydantic["pydantic >=2.7"]
+        mlx["mlx >=0.16\nApple Silicon only"]
+        safetensors["safetensors >=0.4.3"]
+        numpy["numpy >=1.26"]
+    end
+
+    subgraph Internal_JS["JS Dependencies"]
+        react["react ^18.3"]
+        react_dom["react-dom ^18.3"]
+        vite["vite ^5.3 (dev)"]
+        viteplugin["@vitejs/plugin-react ^4.3 (dev)"]
+    end
+
+    subgraph Cross_Repo_Wired["Cross-Repo (Wired)"]
+        tokenless["Tokenless-Models\n[consumes_from]\nKJVA weights + corpus + KJVA/ dir"]
+    end
+
+    subgraph Cross_Repo_Gap["Cross-Repo (GAPS — UNWIRED)"]
+        genesys["GENESYS\n[UNWIRED]\nheptagon/soul_manager pattern origin"]
+        superc["desmond-super-c\n[UNWIRED]\n.sc artifacts in KJVA/"]
+        nexus["Nexus\n[UNWIRED]\nnexus_engine.sc reference"]
+    end
+
+    App --> fastapi
+    App --> uvicorn
+    App --> pydantic
+    App --> mlx
+    App --> safetensors
+    App --> numpy
+    App --> react
+    App --> react_dom
+    App --> vite
+    App --> viteplugin
+    App -->|"KJVA/ imported"| tokenless
+
+    App -.->|"governance pattern — not wired"| genesys
+    App -.->|"Super C artifacts — not wired"| superc
+    App -.->|"nexus_engine.sc ref — not wired"| nexus
+
+    style genesys stroke:#f66,stroke-dasharray:5
+    style superc stroke:#f66,stroke-dasharray:5
+    style nexus stroke:#f66,stroke-dasharray:5

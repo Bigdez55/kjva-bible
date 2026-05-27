@@ -1,0 +1,45 @@
+id: SKILL_GENOS_WAL_DEBUG_001
+title: "GEN.OS WAL Debug \u2014 XSTORE Crash Recovery Diagnosis"
+version: 1.0.0
+layer: active
+domains:
+- genos
+- storage
+playbook: 13_skills/active/SKILL_GENOS_WAL_DEBUG_001.playbook.md
+validation_tests: []
+status: active
+skill_number: 98
+source_documents:
+- genos_codex_skills_2026-05-17/raw/wal-debug.md
+trigger_conditions:
+- User mentions wal-debug.
+- User mentions wal debug.
+- User mentions debug.
+hard_constraints:
+- Preserve source-of-truth ranking.
+- Do not claim completion without validation evidence.
+- Use GEN.OS-specific commands, paths, policies, and gates only when GEN.OS context is active.
+- Record misses in the skill refinery ledger when discovered.
+tier: active
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_GENOS_WAL_DEBUG_001.ledger.yaml
+related_skills:
+- SKILL_LOW_LEVEL_KERNEL_BOOT_001
+- SKILL_CI_PIPELINE_001
+- SKILL_RUNTIME_REGRESSION_VERIFY_001
+router_intents:
+- wal_debug
+- genos
+aliases:
+- wal-debug
+- wal debug
+- genos wal debug
+regression_cases: []
+slash_commands: []
+workflows: []
+templates: []
+provenance:
+  collection: genos_codex_skills_2026-05-17
+  source_repo: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/GENESYS/GENESYS
+  raw_source: 16_knowledge/external_collateral/genos_codex_skills_2026-05-17/raw/wal-debug.md
+  raw_sha256: 8733452942f1be8120df2583ad68c5e118552985828921b22fa089ad142dd81d
+improvement_history: []

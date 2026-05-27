@@ -1,0 +1,6 @@
+skill_id: SKILL_IDENTITY_AUTH_RBAC_ABAC_001
+status: active
+entries:
+- date: '2026-05-20'
+  type: import
+  summary: Imported from security updates multi-tenant platform skill pack v1.2.0.

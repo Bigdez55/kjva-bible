@@ -1,0 +1,48 @@
+id: SKILL_GENOS_XKABI_CAPABILITY_001
+title: "GEN.OS XKABI Capability \u2014 Definition & Registration"
+version: 1.0.0
+layer: active
+domains:
+- genos
+- kernel
+- security
+- capabilities
+playbook: 13_skills/active/SKILL_GENOS_XKABI_CAPABILITY_001.playbook.md
+validation_tests: []
+status: active
+skill_number: 99
+source_documents:
+- genos_codex_skills_2026-05-17/raw/xkabi-capability.md
+trigger_conditions:
+- User mentions xkabi-capability.
+- User mentions xkabi capability.
+- User mentions xkabi.
+- User mentions capability.
+hard_constraints:
+- Preserve source-of-truth ranking.
+- Do not claim completion without validation evidence.
+- Use GEN.OS-specific commands, paths, policies, and gates only when GEN.OS context is active.
+- Record misses in the skill refinery ledger when discovered.
+tier: active
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_GENOS_XKABI_CAPABILITY_001.ledger.yaml
+related_skills:
+- SKILL_LOW_LEVEL_KERNEL_BOOT_001
+- SKILL_CI_PIPELINE_001
+- SKILL_RUNTIME_REGRESSION_VERIFY_001
+router_intents:
+- xkabi_capability
+- genos
+aliases:
+- xkabi-capability
+- xkabi capability
+- genos xkabi capability
+regression_cases: []
+slash_commands: []
+workflows: []
+templates: []
+provenance:
+  collection: genos_codex_skills_2026-05-17
+  source_repo: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/GENESYS/GENESYS
+  raw_source: 16_knowledge/external_collateral/genos_codex_skills_2026-05-17/raw/xkabi-capability.md
+  raw_sha256: f3906019a851de32d4205555b0298ccd9b7d0e8dd0cd104322cfb4191cb7342c
+improvement_history: []

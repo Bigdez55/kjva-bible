@@ -1,7 +1,7 @@
 id: SKILL_ELSON_MODEL_HEALTH_001
 title: "AI Model Health Check \u2014 elson-finance-14b"
 version: 1.0.0
-layer: active
+layer: integration
 domains:
 - ai_model
 - elson
@@ -57,3 +57,12 @@ provenance:
   - 88e5595382918fda6d64c2fced29cf060c5bef9e539856245791feb7de85dd77
   selected_source: 16_knowledge/external_collateral/elson_claude_skills_2026-05-17/raw/trading_bot_elson_tb2/model-health/SKILL.md
 improvement_history: []
+source: native
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

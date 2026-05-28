@@ -1,7 +1,7 @@
 id: SKILL_ELSON_SPRINT_INIT_001
 title: Sprint Initialization Protocol
 version: 1.0.0
-layer: active
+layer: application
 domains:
 - elson
 - planning
@@ -56,3 +56,12 @@ provenance:
   - 458e581d2d3ce8a22c4b705b0f06950b5b9fcd729e20d1079d3fdbba51a5b17d
   selected_source: 16_knowledge/external_collateral/elson_claude_skills_2026-05-17/raw/trading_bot_elson_tb2/sprint-init/SKILL.md
 improvement_history: []
+source: native
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

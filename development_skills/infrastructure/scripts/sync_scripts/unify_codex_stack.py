@@ -17,9 +17,9 @@ from typing import Iterable
 
 import yaml
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[3]
 ONEDRIVE = ROOT.parent
-LEDGER = ROOT / "18_registry" / "repo_ledger.yaml"
+LEDGER = ROOT / "platform" / "systems" / "18_registry" / "repo_ledger.yaml"
 
 
 def run(cmd: list[str]) -> None:

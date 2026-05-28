@@ -3,7 +3,6 @@ name: Slice Planning
 version: 1.0.0
 status: active
 playbook: 13_skills/active/SKILL_SLICE_PLANNING_001.playbook.md
-domain: slices
 purpose: Convert a spec set into a vertical slice plan with proof and deployment requirements.
 inputs:
 - specs
@@ -23,3 +22,13 @@ title: Slice Planning
 layer: slices
 domains:
 - slices
+source: native
+tier: active
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

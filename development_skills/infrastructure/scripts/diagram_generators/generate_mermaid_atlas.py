@@ -3,9 +3,9 @@
 import argparse, subprocess, shutil
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
-SRC = ROOT / "04_architecture" / "diagrams" / "source"
-OUT = ROOT / "04_architecture" / "diagrams" / "architecture_atlas.generated.md"
+ROOT = Path(__file__).resolve().parents[3]
+SRC = ROOT / "platform" / "sdlc" / "04_architecture" / "diagrams" / "source"
+OUT = ROOT / "platform" / "sdlc" / "04_architecture" / "diagrams" / "architecture_atlas.generated.md"
 
 def main():
     ap = argparse.ArgumentParser()

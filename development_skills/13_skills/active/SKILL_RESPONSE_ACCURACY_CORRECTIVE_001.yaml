@@ -1,0 +1,66 @@
+id: SKILL_RESPONSE_ACCURACY_CORRECTIVE_001
+title: Response Accuracy Corrective
+version: 1.0.0
+layer: verification
+domains:
+- imported
+- validation
+- ai
+tier: starter
+status: active
+source: promoted_external
+aliases:
+- response-accuracy-corrective
+playbook: platform/sdlc/13_skills/active/SKILL_RESPONSE_ACCURACY_CORRECTIVE_001.playbook.md
+runtime_projection: true
+runtime_projection_targets:
+- claude
+- codex
+- gemini
+refinement: auto
+skill_number: 1025
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []
+provenance:
+  imported_from_surfaces:
+  - .claude
+  - .codex
+  source_repos:
+  - AHKI
+  - Apollo16-main
+  - Birdtrans
+  - Development_Skills
+  - EarlySolutionsPro
+  - Elson
+  - Elson-TB2
+  - Forge
+  - GENESYS
+  - GEN_X
+  - IPOS
+  - KPI-Dashboard
+  - KPI-Dashboard-Design
+  - LMOS
+  - Nexus
+  - Portfolio
+  - Presentations
+  - Research
+  - SOAE-Dashboard
+  - Storbits
+  - Super C Academy
+  - Tokenless models
+  - UTMS_NN
+  - Unified-Transit-Management-System--UTMS-
+  - desmond-super-c
+  - driver-training-tracker
+  - paratransit-apex-agents
+  - web
+  source_hash_sha256: e03acfab7ffa1738b9cae61715bc43865519860007a0903bf324d37d05f281ca
+  preferred_source_path: 16_knowledge/external_collateral/assistant_surfaces_2026-05-20/raw_safe_text/genesys/.claude/skills/response-accuracy-corrective.md
+  promoted_on: '2026-05-26'
+  promotion_method: auto_promote_external (Phase 4)

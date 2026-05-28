@@ -5,10 +5,10 @@ from atlas_paths import ROOT, rel
 
 def load() -> dict:
     paths = [
-        ROOT / "04_architecture" / "graphs",
-        ROOT / "04_architecture" / "models",
-        ROOT / "04_architecture" / "diagrams",
-        ROOT / "16_knowledge" / "knowledge_mesh",
+        ROOT / "platform" / "sdlc" / "04_architecture" / "graphs",
+        ROOT / "platform" / "sdlc" / "04_architecture" / "models",
+        ROOT / "platform" / "sdlc" / "04_architecture" / "diagrams",
+        ROOT / "platform" / "sdlc" / "16_knowledge" / "knowledge_mesh",
     ]
     return {
         "graph_layer": {

@@ -19,13 +19,15 @@ ROOT = Path(__file__).resolve().parents[3]
 # Source paths reflect the post-monorepo-restructure layout (2026-05-04 refactor).
 # Destination paths are the canonical names child repos expect.
 ALLOWLIST: dict[str, str] = {
+    "platform/sdlc/12_agents":              "12_agents",
     "platform/sdlc/13_skills":              "13_skills",
-    "infrastructure/14_templates":          "14_templates",
+    "platform/sdlc/14_templates":           "14_templates",
     "platform/systems/19_truth_state":      "19_truth_state",
-    "infrastructure/24_prompt_library":     "24_prompt_library",
+    "platform/systems/24_prompt_library":   "24_prompt_library",
     "infrastructure/scripts":              "infrastructure/scripts",
-    "platform/sdlc/26_schemas":             "26_schemas",
+    "schemas":                              "26_schemas",
     "platform/systems/37_command_protocol": "37_command_protocol",
+    "platform/systems/42_context_compiler": "42_context_compiler",
     "docs/APEX_PROTOCOL.md":               "APEX_PROTOCOL.md",
     "README.md":                            "README.md",
 }

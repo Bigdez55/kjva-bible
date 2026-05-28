@@ -1,0 +1,5 @@
+required:
+  - id
+  - purpose
+  - reads
+  - writes

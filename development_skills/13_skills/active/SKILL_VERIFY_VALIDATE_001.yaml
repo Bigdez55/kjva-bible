@@ -1,0 +1,36 @@
+id: SKILL_VERIFY_VALIDATE_001
+title: verify-validate
+version: 1.0.0
+layer: governance
+domains:
+- validation
+- testing
+- ci_cd
+- skills
+tier: hardened
+status: active
+source: migrated_user
+aliases:
+- verify-validate
+playbook: platform/sdlc/13_skills/active/SKILL_VERIFY_VALIDATE_001.playbook.md
+runtime_projection: true
+runtime_projection_targets:
+- claude
+- codex
+- gemini
+refinement: auto
+improvement_metrics:
+  invocation_count: 1
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []
+skill_number: 544
+use_telemetry:
+- skill_id: SKILL_VERIFY_VALIDATE_001
+  timestamp: '2026-05-27T06:18:05.504003+00:00'
+  invoker: test
+  outcome: success
+  context_hash: 46e527c01971f037

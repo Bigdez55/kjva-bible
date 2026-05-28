@@ -8,7 +8,7 @@ from pathlib import Path
 
 from atlas_inventory import build_inventory, inventory_markdown
 from atlas_models import read_yaml, write_json, write_yaml
-from atlas_paths import COMMANDS_DIR, COMMAND_LATEST, CONTEXT_PACKET, GRAPH_EVIDENCE_DIR, INGEST_DIR, INGEST_LATEST, ROOT, rel
+from atlas_paths import COMMANDS_DIR, COMMAND_LATEST, CONTEXT_PACKET, GRAPH_EVIDENCE_DIR, INGEST_DIR, INGEST_LATEST, ROOT, iter_canonical_registries, rel
 
 
 def _read_text_snippet(path: Path, max_len: int = 200) -> str:
@@ -20,19 +20,20 @@ def _read_text_snippet(path: Path, max_len: int = 200) -> str:
 def _collect_manifests() -> dict[str, str]:
     return {
         "development_skills": _read_text_snippet(ROOT / "development_skills.manifest.yaml", 400),
-        "project_manifest": _read_text_snippet(ROOT / "18_registry" / "project.manifest.yaml", 400),
+        "project_manifest": _read_text_snippet(ROOT / "platform" / "systems" / "18_registry" / "project.manifest.yaml", 400),
         "apex_version": _read_text_snippet(ROOT / "APEX_VERSION.md", 120),
     }
 
 
 def _collect_registries() -> list[str]:
-    return sorted(str(p.relative_to(ROOT)) for p in ROOT.rglob("*.registry.yaml") if ".git" not in p.parts and not str(p).endswith(".git"))
+    return [rel(p) for p in iter_canonical_registries()]
 
 
 def _collect_truth() -> dict[str, str]:
-    truth = read_yaml(ROOT / "19_truth_state" / "current.truth.yaml")
+    truth_path = "platform/systems/19_truth_state/current.truth.yaml"
+    truth = read_yaml(ROOT / truth_path)
     return {
-        "path": "19_truth_state/current.truth.yaml",
+        "path": truth_path,
         "status": truth.get("status", "missing") if isinstance(truth, dict) else "missing",
         "summary": truth.get("summary", "") if isinstance(truth, dict) else "",
     }
@@ -120,7 +121,7 @@ def write_ingest_artifacts(snapshot: IngestSnapshot, apply_latest: bool = False)
         INGEST_LATEST.write_text(snapshot_path.read_text())
         tmp.unlink(missing_ok=True)
         # Keep a deterministic command pointer that other commands can consume.
-        COMMAND_LATEST.write_text(str(snapshot_path))
+        COMMAND_LATEST.write_text(f"{snapshot_path}\n")
         if snapshot_json.exists():
             artifact_paths.append(COMMAND_LATEST)
 

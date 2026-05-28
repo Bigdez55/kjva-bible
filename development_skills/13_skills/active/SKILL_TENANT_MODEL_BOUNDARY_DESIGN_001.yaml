@@ -1,7 +1,7 @@
 id: SKILL_TENANT_MODEL_BOUNDARY_DESIGN_001
 title: Tenant Model and Boundary Design
 version: 1.0.0
-layer: active
+layer: integration
 domains:
 - multi_tenant_platform
 - security
@@ -79,3 +79,12 @@ improvement_history:
 - version: 1.0.0
   date: '2026-05-20'
   reason: Imported from security updates multi-tenant platform skill pack v1.2.0.
+source: native
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

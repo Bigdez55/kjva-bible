@@ -521,9 +521,9 @@ noun_branches:
     - SKILL_CONTEXT_PACKET_001
     - SKILL_TRIGGER_ROUTER_001
     - SKILL_INTERNAL_CONSENSUS_TESTING_001
-    - SKILL_SC_AGENT_EXECUTION_ORDER_001
-    - SKILL_SC_RED_TEAM_PREFLIGHT_001
-    - SKILL_SC_NO_SURPRISE_PLANNING_001
+    - SKILL_AGENT_EXECUTION_ORDER_001
+    - SKILL_RED_TEAM_PREFLIGHT_001
+    - SKILL_NO_SURPRISE_PLANNING_001
     - SKILL_SUPER_C_ONE_SHOT_EXECUTION_PLANNING_001
     - SKILL_AGENT_SURFACE_NORMALIZATION_001
     - SKILL_GLOBAL_CLAUDE_REPOSITORY_ACQUISITION_001
@@ -811,12 +811,12 @@ noun_branches:
     - SKILL_GENOS_SPRINT3_XNET_001
     - SKILL_GENOS_SPRINT3_XPKG_001
     - SKILL_GENOS_SPRINT3_XSEC_001
-    - SKILL_SC_NO_SURPRISE_PLANNING_001
-    - SKILL_SC_DEPENDENCY_SOVEREIGNTY_001
-    - SKILL_SC_MILESTONE_GATE_DESIGN_001
-    - SKILL_SC_RED_TEAM_PREFLIGHT_001
-    - SKILL_SC_AGENT_EXECUTION_ORDER_001
-    - SKILL_SC_IMPROVEMENT_LOOP_001
+    - SKILL_NO_SURPRISE_PLANNING_001
+    - SKILL_DEPENDENCY_SOVEREIGNTY_001
+    - SKILL_MILESTONE_GATE_DESIGN_001
+    - SKILL_RED_TEAM_PREFLIGHT_001
+    - SKILL_AGENT_EXECUTION_ORDER_001
+    - SKILL_IMPROVEMENT_LOOP_001
     - SKILL_SUPER_C_COMPILER_DISCIPLINE_001
     - SKILL_SUPER_C_FREESTANDING_C_KERNEL_001
     - SKILL_SUPER_C_BUILD_TOOLCHAIN_CI_001
@@ -827,7 +827,7 @@ noun_branches:
     - SKILL_SUPER_C_TUTORIAL_AUTHORING_DISCIPLINE_001
     - SKILL_SUPER_C_AI_GOVERNANCE_CITADEL_001
     - SKILL_SUPER_C_DESKTOP_UI_ACCESSIBILITY_001
-    - SKILL_APEX_VERIFIED_MACHINE_ENCODING_001
+    - SKILL_VERIFIED_MACHINE_ENCODING_001
     required_outputs:
     - RFC
     - Architecture spec
@@ -862,7 +862,7 @@ noun_branches:
     - debug emitted constant SIGSEGV
     - SC-MISS-005
     skills:
-    - SKILL_APEX_VERIFIED_MACHINE_ENCODING_001
+    - SKILL_VERIFIED_MACHINE_ENCODING_001
     - SKILL_SUPER_C_COMPILER_DISCIPLINE_001
     - SKILL_GENOS_COMPILE_CHECK_001
     - SKILL_GENOS_STATIC_ANALYSIS_001
@@ -910,17 +910,17 @@ noun_branches:
     - Context Compiler
     skills:
     - SKILL_ADR_AUTHORING_001
-    - SKILL_APEX_PROMOTION_RULES_001
-    - SKILL_ATLAS_WORKSPACE_SHELL_001
-    - SKILL_ATLAS_UI_UX_BUILDOUT_001
+    - SKILL_PROMOTION_RULES_001
+    - SKILL_WORKSPACE_SHELL_001
+    - SKILL_UI_UX_BUILDOUT_001
     - SKILL_TRIGGER_ROUTER_001
-    - SKILL_CONTEXT_COMPILATION_002
+    - SKILL_CONTEXT_COMPILATION_001
     - SKILL_CONTEXT_PACKET_001
     - SKILL_TRUTH_STATE_CHECK_001
     - SKILL_DRIFT_DETECTION_001
     - SKILL_ERROR_LOGGING_ENGINE_001
     - SKILL_FULLSTACK_REACT_ELECTRON_THREEJS_001
-    - SKILL_GITOPS_APEX_LOOP_001
+    - SKILL_GITOPS_LOOP_001
     - SKILL_INTENT_COMPILATION_001
     - SKILL_LEDGER_SKILL_MERGE_001
     - SKILL_MULTI_TENANT_CONTINUOUS_IMPROVEMENT_001
@@ -1088,8 +1088,8 @@ targets:
     - mcp for atlas
     noun: atlas
     skills:
-    - SKILL_ATLAS_MCP_001
-    - SKILL_ATLAS_GRAPH_ENGINE_001
+    - SKILL_MCP_001
+    - SKILL_GRAPH_ENGINE_001
     - SKILL_TRIGGER_ROUTER_001
     required_outputs:
     - apps/atlas-mcp/package.json
@@ -1208,7 +1208,7 @@ targets:
     - buildout infrastructure
     noun: atlas
     skills:
-    - SKILL_ATLAS_UI_UX_BUILDOUT_001
+    - SKILL_UI_UX_BUILDOUT_001
     - SKILL_PLATFORM_BUILD_001
     - SKILL_UI_INTERACTION_WIRING_001
     - SKILL_PREVIEW_DEPLOYMENT_001
@@ -1308,9 +1308,9 @@ targets:
     - commit feed
     noun: atlas
     skills:
-    - SKILL_ATLAS_OPERATIONAL_WORKSPACE_001
-    - SKILL_ATLAS_UI_UX_BUILDOUT_001
-    - SKILL_ATLAS_REPO_INGESTION_LOOP_001
+    - SKILL_OPERATIONAL_WORKSPACE_001
+    - SKILL_UI_UX_BUILDOUT_001
+    - SKILL_REPO_INGESTION_LOOP_001
     - SKILL_TRIGGER_ROUTER_001
     - SKILL_PROOF_MATRIX_001
     required_outputs:
@@ -1341,8 +1341,8 @@ targets:
     - city-light network
     noun: atlas
     skills:
-    - SKILL_ATLAS_ORBITAL_IDENTITY_001
-    - SKILL_ATLAS_UI_UX_BUILDOUT_001
+    - SKILL_ORBITAL_IDENTITY_001
+    - SKILL_UI_UX_BUILDOUT_001
     required_outputs:
     - Logo mark treatment
     - Visual language tokens
@@ -1368,7 +1368,7 @@ targets:
     - agent event
     noun: atlas
     skills:
-    - SKILL_ATLAS_REPO_INGESTION_LOOP_001
+    - SKILL_REPO_INGESTION_LOOP_001
     - SKILL_CONTEXT_PACKET_001
     - SKILL_PROOF_MATRIX_001
     required_outputs:
@@ -1396,9 +1396,9 @@ targets:
     - planning feature
     noun: atlas
     skills:
-    - SKILL_ATLAS_PLANNING_TRACE_001
-    - SKILL_ATLAS_OPERATIONAL_WORKSPACE_001
-    - SKILL_ATLAS_REPO_INGESTION_LOOP_001
+    - SKILL_PLANNING_TRACE_001
+    - SKILL_OPERATIONAL_WORKSPACE_001
+    - SKILL_REPO_INGESTION_LOOP_001
     - SKILL_CONTEXT_PACKET_001
     required_outputs:
     - Brainstorm cards
@@ -1435,10 +1435,10 @@ targets:
     - coding agent use this
     noun: atlas
     skills:
-    - SKILL_ATLAS_KNOWLEDGE_DEPOT_001
-    - SKILL_ATLAS_OPERATIONAL_WORKSPACE_001
-    - SKILL_ATLAS_PLANNING_TRACE_001
-    - SKILL_ATLAS_REPO_INGESTION_LOOP_001
+    - SKILL_KNOWLEDGE_DEPOT_001
+    - SKILL_OPERATIONAL_WORKSPACE_001
+    - SKILL_PLANNING_TRACE_001
+    - SKILL_REPO_INGESTION_LOOP_001
     - SKILL_CONTEXT_PACKET_001
     - SKILL_PROOF_MATRIX_001
     required_outputs:
@@ -1468,9 +1468,9 @@ targets:
     - graph provenance
     noun: atlas
     skills:
-    - SKILL_ATLAS_GRAPH_ENGINE_001
-    - SKILL_ATLAS_KNOWLEDGE_DEPOT_001
-    - SKILL_ATLAS_REPO_INGESTION_LOOP_001
+    - SKILL_GRAPH_ENGINE_001
+    - SKILL_KNOWLEDGE_DEPOT_001
+    - SKILL_REPO_INGESTION_LOOP_001
     - SKILL_SOURCE_TRUTH_RECONCILIATION_001
     - SKILL_RUNTIME_REGRESSION_VERIFY_001
     - SKILL_CONTEXT_PACKET_001
@@ -1675,12 +1675,12 @@ targets:
     - milestone gate
     noun: compiler
     skills:
-    - SKILL_SC_NO_SURPRISE_PLANNING_001
-    - SKILL_SC_DEPENDENCY_SOVEREIGNTY_001
-    - SKILL_SC_MILESTONE_GATE_DESIGN_001
-    - SKILL_SC_RED_TEAM_PREFLIGHT_001
-    - SKILL_SC_AGENT_EXECUTION_ORDER_001
-    - SKILL_SC_IMPROVEMENT_LOOP_001
+    - SKILL_NO_SURPRISE_PLANNING_001
+    - SKILL_DEPENDENCY_SOVEREIGNTY_001
+    - SKILL_MILESTONE_GATE_DESIGN_001
+    - SKILL_RED_TEAM_PREFLIGHT_001
+    - SKILL_AGENT_EXECUTION_ORDER_001
+    - SKILL_IMPROVEMENT_LOOP_001
     - SKILL_SUPER_C_COMPILER_DISCIPLINE_001
     - SKILL_SUPER_C_FREESTANDING_C_KERNEL_001
     - SKILL_SUPER_C_BUILD_TOOLCHAIN_CI_001
@@ -1691,7 +1691,7 @@ targets:
     - SKILL_SUPER_C_TUTORIAL_AUTHORING_DISCIPLINE_001
     - SKILL_SUPER_C_AI_GOVERNANCE_CITADEL_001
     - SKILL_SUPER_C_DESKTOP_UI_ACCESSIBILITY_001
-    - SKILL_APEX_VERIFIED_MACHINE_ENCODING_001
+    - SKILL_VERIFIED_MACHINE_ENCODING_001
     - SKILL_GENOS_XKABI_CAPABILITY_001
     - SKILL_GENOS_ISO_BUILD_001
     - SKILL_GENOS_XMIND_TEST_001
@@ -2030,7 +2030,7 @@ compatibility_intents:
       - LDR STR encoding
       - SCC_DUMP_JIT_BYTES
     skills:
-    - SKILL_APEX_VERIFIED_MACHINE_ENCODING_001
+    - SKILL_VERIFIED_MACHINE_ENCODING_001
     - SKILL_SUPER_C_COMPILER_DISCIPLINE_001
     - SKILL_RUNTIME_REGRESSION_VERIFY_001
     required_outputs:
@@ -2152,9 +2152,11 @@ compatibility_intents:
       - repo connector poc
       - normalize buildouts
       - buildout infrastructure
-    description: ATLAS multi-tenant product UI/UX buildout infrastructure for Vercel-backed platform surfaces, repo connectors, skill bindings, proof gates, and process optimization.
+    description: ATLAS multi-tenant product UI/UX buildout infrastructure for Vercel-backed
+      platform surfaces, repo connectors, skill bindings, proof gates, and process
+      optimization.
     skills:
-    - SKILL_ATLAS_UI_UX_BUILDOUT_001
+    - SKILL_UI_UX_BUILDOUT_001
     - SKILL_PLATFORM_BUILD_001
     - SKILL_UI_INTERACTION_WIRING_001
     - SKILL_PREVIEW_DEPLOYMENT_001
@@ -2190,11 +2192,13 @@ compatibility_intents:
       - graph workspace
       - backlinks
       - commit feed
-    description: ATLAS operational workspace shell with repo/file navigation, note editing, backlinks, graph relationships, commit feed, command routing, and ingestion actions.
+    description: ATLAS operational workspace shell with repo/file navigation, note
+      editing, backlinks, graph relationships, commit feed, command routing, and ingestion
+      actions.
     skills:
-    - SKILL_ATLAS_OPERATIONAL_WORKSPACE_001
-    - SKILL_ATLAS_UI_UX_BUILDOUT_001
-    - SKILL_ATLAS_REPO_INGESTION_LOOP_001
+    - SKILL_OPERATIONAL_WORKSPACE_001
+    - SKILL_UI_UX_BUILDOUT_001
+    - SKILL_REPO_INGESTION_LOOP_001
     required_outputs:
     - Repo explorer
     - File explorer
@@ -2218,7 +2222,7 @@ compatibility_intents:
       - code workspace
       - repo navigation
     skills:
-    - SKILL_ATLAS_OPERATIONAL_WORKSPACE_001
+    - SKILL_OPERATIONAL_WORKSPACE_001
     required_outputs:
     - Repo explorer
     - File explorer
@@ -2232,8 +2236,8 @@ compatibility_intents:
       - knowledge vault
       - note editing
     skills:
-    - SKILL_ATLAS_OPERATIONAL_WORKSPACE_001
-    - SKILL_ATLAS_UI_UX_BUILDOUT_001
+    - SKILL_OPERATIONAL_WORKSPACE_001
+    - SKILL_UI_UX_BUILDOUT_001
     required_outputs:
     - Editor and preview surface
     - Backlinks panel
@@ -2247,7 +2251,7 @@ compatibility_intents:
       - graph canvas
       - relationship canvas
     skills:
-    - SKILL_ATLAS_OPERATIONAL_WORKSPACE_001
+    - SKILL_OPERATIONAL_WORKSPACE_001
     required_outputs:
     - Graph relationship panel
   atlas_orbital_identity:
@@ -2267,10 +2271,11 @@ compatibility_intents:
       - blue atmospheric rim
       - gold city-light
       - city-light network
-    description: ATLAS orbital visual identity based on the final globe logo, deep-space field, nebula atmosphere, and gold city-light network.
+    description: ATLAS orbital visual identity based on the final globe logo, deep-space
+      field, nebula atmosphere, and gold city-light network.
     skills:
-    - SKILL_ATLAS_ORBITAL_IDENTITY_001
-    - SKILL_ATLAS_UI_UX_BUILDOUT_001
+    - SKILL_ORBITAL_IDENTITY_001
+    - SKILL_UI_UX_BUILDOUT_001
     required_outputs:
     - Logo mark treatment
     - Visual language tokens
@@ -2287,7 +2292,7 @@ compatibility_intents:
       - final globe
       - perfect image of the logo
     skills:
-    - SKILL_ATLAS_ORBITAL_IDENTITY_001
+    - SKILL_ORBITAL_IDENTITY_001
     required_outputs:
     - Logo mark treatment
   atlas_space_visual_language:
@@ -2302,7 +2307,7 @@ compatibility_intents:
       - starfield
       - atmospheric rim
     skills:
-    - SKILL_ATLAS_ORBITAL_IDENTITY_001
+    - SKILL_ORBITAL_IDENTITY_001
     required_outputs:
     - Visual language tokens
     - Background atmosphere
@@ -2322,9 +2327,10 @@ compatibility_intents:
       - stays up to date
       - ingest repos
       - ingest commits
-    description: ATLAS tenant-scoped repo commit/change ingestion loop with graph, knowledge, and proof mutation outputs.
+    description: ATLAS tenant-scoped repo commit/change ingestion loop with graph,
+      knowledge, and proof mutation outputs.
     skills:
-    - SKILL_ATLAS_REPO_INGESTION_LOOP_001
+    - SKILL_REPO_INGESTION_LOOP_001
     - SKILL_CONTEXT_PACKET_001
     - SKILL_PROOF_MATRIX_001
     required_outputs:
@@ -2346,7 +2352,7 @@ compatibility_intents:
       - always up to date
       - stays up to date
     skills:
-    - SKILL_ATLAS_REPO_INGESTION_LOOP_001
+    - SKILL_REPO_INGESTION_LOOP_001
     required_outputs:
     - Repo event schema
     - Validation evidence
@@ -2360,7 +2366,7 @@ compatibility_intents:
       - agent report
       - coding agents submit
     skills:
-    - SKILL_ATLAS_REPO_INGESTION_LOOP_001
+    - SKILL_REPO_INGESTION_LOOP_001
     - SKILL_CONTEXT_PACKET_001
     required_outputs:
     - Tenant-scoped event contract
@@ -2382,11 +2388,12 @@ compatibility_intents:
       - push to coding agent
       - graph to agent
       - brainstorm to graph
-    description: ATLAS ideation workflow that converts brainstorm cards into architecture graph mappings and coding-agent handoff packets.
+    description: ATLAS ideation workflow that converts brainstorm cards into architecture
+      graph mappings and coding-agent handoff packets.
     skills:
-    - SKILL_ATLAS_PLANNING_TRACE_001
-    - SKILL_ATLAS_OPERATIONAL_WORKSPACE_001
-    - SKILL_ATLAS_REPO_INGESTION_LOOP_001
+    - SKILL_PLANNING_TRACE_001
+    - SKILL_OPERATIONAL_WORKSPACE_001
+    - SKILL_REPO_INGESTION_LOOP_001
     - SKILL_CONTEXT_PACKET_001
     required_outputs:
     - Brainstorm cards
@@ -2409,7 +2416,7 @@ compatibility_intents:
       - map it in graph
       - graph style
     skills:
-    - SKILL_ATLAS_PLANNING_TRACE_001
+    - SKILL_PLANNING_TRACE_001
     required_outputs:
     - Brainstorm cards
     - Architecture graph nodes
@@ -2424,7 +2431,7 @@ compatibility_intents:
       - graph to agent
       - agent handoff
     skills:
-    - SKILL_ATLAS_PLANNING_TRACE_001
+    - SKILL_PLANNING_TRACE_001
     - SKILL_CONTEXT_PACKET_001
     required_outputs:
     - Coding-agent handoff packet
@@ -2454,12 +2461,14 @@ compatibility_intents:
       - ingest through handoff
       - agent needs context
       - coding agent use this
-    description: ATLAS page-by-page operating model for turning repo truth, linked knowledge, graph neighborhoods, ideations, and proof gates into coding-agent context.
+    description: ATLAS page-by-page operating model for turning repo truth, linked
+      knowledge, graph neighborhoods, ideations, and proof gates into coding-agent
+      context.
     skills:
-    - SKILL_ATLAS_KNOWLEDGE_DEPOT_001
-    - SKILL_ATLAS_OPERATIONAL_WORKSPACE_001
-    - SKILL_ATLAS_PLANNING_TRACE_001
-    - SKILL_ATLAS_REPO_INGESTION_LOOP_001
+    - SKILL_KNOWLEDGE_DEPOT_001
+    - SKILL_OPERATIONAL_WORKSPACE_001
+    - SKILL_PLANNING_TRACE_001
+    - SKILL_REPO_INGESTION_LOOP_001
     - SKILL_CONTEXT_PACKET_001
     - SKILL_PROOF_MATRIX_001
     required_outputs:
@@ -2488,11 +2497,13 @@ compatibility_intents:
       - graph context export
       - deterministic graph layout
       - graph provenance
-    description: Atlas Graph Engine graph intelligence surface with deterministic layout, provenance, query behavior, proof/drift overlays, and agent-context export.
+    description: Atlas Graph Engine graph intelligence surface with deterministic
+      layout, provenance, query behavior, proof/drift overlays, and agent-context
+      export.
     skills:
-    - SKILL_ATLAS_GRAPH_ENGINE_001
-    - SKILL_ATLAS_KNOWLEDGE_DEPOT_001
-    - SKILL_ATLAS_REPO_INGESTION_LOOP_001
+    - SKILL_GRAPH_ENGINE_001
+    - SKILL_KNOWLEDGE_DEPOT_001
+    - SKILL_REPO_INGESTION_LOOP_001
     - SKILL_SOURCE_TRUTH_RECONCILIATION_001
     - SKILL_RUNTIME_REGRESSION_VERIFY_001
     - SKILL_CONTEXT_PACKET_001
@@ -2526,7 +2537,8 @@ compatibility_intents:
       - context priority
       - context deduplication
       - stale context
-    description: Weighted context merging and conflict resolution — ranks sources by tier, resolves conflicts, produces unified prioritized context payload.
+    description: "Weighted context merging and conflict resolution \u2014 ranks sources\
+      \ by tier, resolves conflicts, produces unified prioritized context payload."
     skills:
     - SKILL_MERGEABLE_CONTEXT_ENGINE_001
     - SKILL_CONTEXT_PACKET_001
@@ -2796,18 +2808,852 @@ compatibility_intents:
       - atlas skill mcp
       - create mcp for atlas
       - atlas model context protocol
-    description: Standalone stdio MCP server exposing ATLAS graph, skills, trigger routing, context compilation, and knowledge search to Claude Code and Codex.
+    description: Standalone stdio MCP server exposing ATLAS graph, skills, trigger
+      routing, context compilation, and knowledge search to Claude Code and Codex.
     skills:
-    - SKILL_ATLAS_MCP_001
-    - SKILL_ATLAS_GRAPH_ENGINE_001
+    - SKILL_MCP_001
+    - SKILL_GRAPH_ENGINE_001
     - SKILL_TRIGGER_ROUTER_001
     required_outputs:
     - apps/atlas-mcp/package.json with @modelcontextprotocol/sdk dependency
     - apps/atlas-mcp/tsconfig.json with NodeNext module resolution
-    - apps/atlas-mcp/src/index.ts with 5 tools (atlas_graph_query, atlas_skill_get, atlas_trigger_route, atlas_context_compile, atlas_knowledge_search)
+    - apps/atlas-mcp/src/index.ts with 5 tools (atlas_graph_query, atlas_skill_get,
+      atlas_trigger_route, atlas_context_compile, atlas_knowledge_search)
     - .mcp.json config block for Claude Code
     - Install command for user to run
 default_core_skills:
 - SKILL_TRIGGER_ROUTER_001
 - SKILL_CONTEXT_PACKET_001
 - SKILL_TRUTH_STATE_CHECK_001
+migrated_skills:
+  description: Auto-populated by Phase 3 migration. Each entry maps a kebab name to
+    the canonical skill_id. Generated by infrastructure/scripts/skill_migration/migrate_user_to_canonical.py.
+  entries:
+  - skill_id: SKILL_AGENT_WORKTREE_DISCIPLINE_001
+    kebab: agent-worktree-discipline
+    phrases:
+    - /agent-worktree-discipline
+    - agent worktree discipline
+  - skill_id: SKILL_AI_INSIGHTS_001
+    kebab: ai-insights
+    phrases:
+    - /ai-insights
+    - ai insights
+  - skill_id: SKILL_ALERT_SYSTEM_001
+    kebab: alert-system
+    phrases:
+    - /alert-system
+    - alert system
+  - skill_id: SKILL_DIRECTORY_DISCIPLINE_001
+    kebab: apex-directory-discipline
+    phrases:
+    - /apex-directory-discipline
+    - apex directory discipline
+  - skill_id: SKILL_PARALLEL_DEPLOY_001
+    kebab: apex-parallel-deploy
+    phrases:
+    - /apex-parallel-deploy
+    - apex parallel deploy
+  - skill_id: SKILL_AUDIT_ASSESS_ANALYZE_001
+    kebab: audit-assess-analyze
+    phrases:
+    - /audit-assess-analyze
+    - audit assess analyze
+  - skill_id: SKILL_AUTH_GUARD_001
+    kebab: auth-guard
+    phrases:
+    - /auth-guard
+    - auth guard
+  - skill_id: SKILL_BEACON_001
+    kebab: beacon
+    phrases:
+    - /beacon
+    - beacon
+  - skill_id: SKILL_CANVAS_001
+    kebab: canvas
+    phrases:
+    - /canvas
+    - canvas
+  - skill_id: SKILL_CHART_BUILDER_001
+    kebab: chart-builder
+    phrases:
+    - /chart-builder
+    - chart builder
+  - skill_id: SKILL_COMPILER_DISCIPLINE_001
+    kebab: compiler-discipline
+    phrases:
+    - /compiler-discipline
+    - compiler discipline
+  - skill_id: SKILL_COURIER_001
+    kebab: courier
+    phrases:
+    - /courier
+    - courier
+  - skill_id: SKILL_DASHBOARD_SCAFFOLD_001
+    kebab: dashboard-scaffold
+    phrases:
+    - /dashboard-scaffold
+    - dashboard scaffold
+  - skill_id: SKILL_DATA_PIPELINE_001
+    kebab: data-pipeline
+    phrases:
+    - /data-pipeline
+    - data pipeline
+  - skill_id: SKILL_DEPLOY_PIPELINE_001
+    kebab: deploy-pipeline
+    phrases:
+    - /deploy-pipeline
+    - deploy pipeline
+  - skill_id: SKILL_EXPORT_SUITE_001
+    kebab: export-suite
+    phrases:
+    - /export-suite
+    - export suite
+  - skill_id: SKILL_FORTRESS_001
+    kebab: fortress
+    phrases:
+    - /fortress
+    - fortress
+  - skill_id: SKILL_GATE_CONTENTION_ISOLATION_001
+    kebab: gate-contention-isolation
+    phrases:
+    - /gate-contention-isolation
+    - gate contention isolation
+  - skill_id: SKILL_GATE_HARNESS_PROCESS_ISOLATION_001
+    kebab: gate-harness-process-isolation
+    phrases:
+    - /gate-harness-process-isolation
+    - gate harness process isolation
+  - skill_id: SKILL_GIT_REMOTE_DISCIPLINE_001
+    kebab: git-remote-discipline
+    phrases:
+    - /git-remote-discipline
+    - git remote discipline
+  - skill_id: SKILL_JUPYTER_001
+    kebab: jupyter
+    phrases:
+    - /jupyter
+    - jupyter
+  - skill_id: SKILL_KPI_CARD_FACTORY_001
+    kebab: kpi-card-factory
+    phrases:
+    - /kpi-card-factory
+    - kpi card factory
+  - skill_id: SKILL_MOSAIC_001
+    kebab: mosaic
+    phrases:
+    - /mosaic
+    - mosaic
+  - skill_id: SKILL_ONE_SHOT_EXECUTION_PLANNING_001
+    kebab: one-shot-execution-planning
+    phrases:
+    - /one-shot-execution-planning
+    - one shot execution planning
+  - skill_id: SKILL_ORACLE_001
+    kebab: oracle
+    phrases:
+    - /oracle
+    - oracle
+  - skill_id: SKILL_PERF_PROFILER_001
+    kebab: perf-profiler
+    phrases:
+    - /perf-profiler
+    - perf profiler
+  - skill_id: SKILL_PIPELINE_001
+    kebab: pipeline
+    phrases:
+    - /pipeline
+    - pipeline
+  - skill_id: SKILL_PIPELINE_CONNECTION_MAP_AUTHORING_001
+    kebab: pipeline-connection-map-authoring
+    phrases:
+    - /pipeline-connection-map-authoring
+    - pipeline connection map authoring
+  - skill_id: SKILL_PRESTIGE_001
+    kebab: prestige
+    phrases:
+    - /prestige
+    - prestige
+  - skill_id: SKILL_PRISM_001
+    kebab: prism
+    phrases:
+    - /prism
+    - prism
+  - skill_id: SKILL_PULSE_001
+    kebab: pulse
+    phrases:
+    - /pulse
+    - pulse
+  - skill_id: SKILL_RESPONSIVE_LAYOUT_001
+    kebab: responsive-layout
+    phrases:
+    - /responsive-layout
+    - responsive layout
+  - skill_id: SKILL_EMPIRICAL_SURFACE_PROBE_001
+    kebab: sc-empirical-surface-probe
+    phrases:
+    - /sc-empirical-surface-probe
+    - sc empirical surface probe
+  - skill_id: SKILL_FIELD_LOWERING_DISCIPLINE_001
+    kebab: sc-field-lowering-discipline
+    phrases:
+    - /sc-field-lowering-discipline
+    - sc field lowering discipline
+  - skill_id: SKILL_SENTINEL_001
+    kebab: sentinel
+    phrases:
+    - /sentinel
+    - sentinel
+  - skill_id: SKILL_SKILL_CONTINUOUS_IMPROVEMENT_LOOP_001
+    kebab: skill-continuous-improvement-loop
+    phrases:
+    - /skill-continuous-improvement-loop
+    - skill continuous improvement loop
+  - skill_id: SKILL_SPFX_DASHBOARD_BUILDER_001
+    kebab: spfx-dashboard-builder
+    phrases:
+    - /spfx-dashboard-builder
+    - spfx dashboard builder
+  - skill_id: SKILL_TABLE_MASTER_001
+    kebab: table-master
+    phrases:
+    - /table-master
+    - table master
+  - skill_id: SKILL_TEST_HARNESS_001
+    kebab: test-harness
+    phrases:
+    - /test-harness
+    - test harness
+  - skill_id: SKILL_THEME_ENGINE_001
+    kebab: theme-engine
+    phrases:
+    - /theme-engine
+    - theme engine
+  - skill_id: SKILL_TURBO_001
+    kebab: turbo
+    phrases:
+    - /turbo
+    - turbo
+  - skill_id: SKILL_TUTORIAL_AUTHORING_DISCIPLINE_001
+    kebab: tutorial-authoring-discipline
+    phrases:
+    - /tutorial-authoring-discipline
+    - tutorial authoring discipline
+  - skill_id: SKILL_VAULT_001
+    kebab: vault
+    phrases:
+    - /vault
+    - vault
+  - skill_id: SKILL_VELOCITY_001
+    kebab: velocity
+    phrases:
+    - /velocity
+    - velocity
+  - skill_id: SKILL_VERIFY_VALIDATE_001
+    kebab: verify-validate
+    phrases:
+    - /verify-validate
+    - verify validate
+promoted_external_skills:
+  description: Auto-populated by Phase 4 external promotion. Each entry maps the alias
+    to the canonical skill_id. Generated by infrastructure/scripts/skill_promotion/auto_promote_external.py.
+  entries:
+  - skill_id: SKILL_ADR_001
+    alias: adr
+    phrases:
+    - /adr
+    - adr
+  - skill_id: SKILL_AGENT_DISPATCH_001
+    alias: agent-dispatch
+    phrases:
+    - /agent-dispatch
+    - agent dispatch
+  - skill_id: SKILL_AI_GOVERNANCE_CITADEL_001
+    alias: ai-governance-citadel
+    phrases:
+    - /ai-governance-citadel
+    - ai governance citadel
+  - skill_id: SKILL_API_CONTRACT_001
+    alias: api-contract
+    phrases:
+    - /api-contract
+    - api contract
+  - skill_id: SKILL_BUILD_TOOLCHAIN_CI_001
+    alias: build-toolchain-ci
+    phrases:
+    - /build-toolchain-ci
+    - build toolchain ci
+  - skill_id: SKILL_CI_PREFLIGHT_001
+    alias: ci-preflight
+    phrases:
+    - /ci-preflight
+    - ci preflight
+  - skill_id: SKILL_COMPILE_CHECK_001
+    alias: compile-check
+    phrases:
+    - /compile-check
+    - compile check
+  - skill_id: SKILL_COMPLIANCE_CHECK_001
+    alias: compliance-check
+    phrases:
+    - /compliance-check
+    - compliance check
+  - skill_id: SKILL_DESKTOP_UI_ACCESSIBILITY_001
+    alias: desktop-ui-accessibility
+    phrases:
+    - /desktop-ui-accessibility
+    - desktop ui accessibility
+  - skill_id: SKILL_DOCS_SYNC_001
+    alias: docs-sync
+    phrases:
+    - /docs-sync
+    - docs sync
+  - skill_id: SKILL_E2E_AUDIT_DISPATCH_001
+    alias: e2e-audit-dispatch
+    phrases:
+    - /e2e-audit-dispatch
+    - e2e audit dispatch
+  - skill_id: SKILL_FREESTANDING_C_KERNEL_001
+    alias: freestanding-c-kernel
+    phrases:
+    - /freestanding-c-kernel
+    - freestanding c kernel
+  - skill_id: SKILL_FULL_TEST_MATRIX_001
+    alias: full-test-matrix
+    phrases:
+    - /full-test-matrix
+    - full test matrix
+  - skill_id: SKILL_FUZZ_MODULE_001
+    alias: fuzz-module
+    phrases:
+    - /fuzz-module
+    - fuzz module
+  - skill_id: SKILL_HW_DRIVER_VERIFY_001
+    alias: hw-driver-verify
+    phrases:
+    - /hw-driver-verify
+    - hw driver verify
+  - skill_id: SKILL_ISO_BUILD_001
+    alias: iso-build
+    phrases:
+    - /iso-build
+    - iso build
+  - skill_id: SKILL_KERNEL_DEBUG_001
+    alias: kernel-debug
+    phrases:
+    - /kernel-debug
+    - kernel debug
+  - skill_id: SKILL_LANGUAGE_GATE_001
+    alias: language-gate
+    phrases:
+    - /language-gate
+    - language gate
+  - skill_id: SKILL_NEW_GENSD_SERVICE_001
+    alias: new-gensd-service
+    phrases:
+    - /new-gensd-service
+    - new gensd service
+  - skill_id: SKILL_NEW_KERNEL_MODULE_001
+    alias: new-kernel-module
+    phrases:
+    - /new-kernel-module
+    - new kernel module
+  - skill_id: SKILL_NEW_PLATFORM_SERVICE_001
+    alias: new-platform-service
+    phrases:
+    - /new-platform-service
+    - new platform service
+  - skill_id: SKILL_NEW_XFRAME_WIDGET_001
+    alias: new-xframe-widget
+    phrases:
+    - /new-xframe-widget
+    - new xframe widget
+  - skill_id: SKILL_QEMU_BOOT_TEST_001
+    alias: qemu-boot-test
+    phrases:
+    - /qemu-boot-test
+    - qemu boot test
+  - skill_id: SKILL_README_001
+    alias: readme
+    phrases:
+    - /readme
+    - readme
+  - skill_id: SKILL_RELEASE_PREP_001
+    alias: release-prep
+    phrases:
+    - /release-prep
+    - release prep
+  - skill_id: SKILL_RESPONSE_ACCURACY_CORRECTIVE_001
+    alias: response-accuracy-corrective
+    phrases:
+    - /response-accuracy-corrective
+    - response accuracy corrective
+  - skill_id: SKILL_SECURITY_AUDIT_001
+    alias: security-audit
+    phrases:
+    - /security-audit
+    - security audit
+  - skill_id: SKILL_SECURITY_CRYPTO_ENGINEERING_001
+    alias: security-crypto-engineering
+    phrases:
+    - /security-crypto-engineering
+    - security crypto engineering
+  - skill_id: SKILL_SKILL_001
+    alias: skill
+    phrases:
+    - /skill
+    - skill
+  - skill_id: SKILL_SPRINT_CI_GEN_001
+    alias: sprint-ci-gen
+    phrases:
+    - /sprint-ci-gen
+    - sprint ci gen
+  - skill_id: SKILL_SPRINT_KICKOFF_001
+    alias: sprint-kickoff
+    phrases:
+    - /sprint-kickoff
+    - sprint kickoff
+  - skill_id: SKILL_SPRINT_RETRO_001
+    alias: sprint-retro
+    phrases:
+    - /sprint-retro
+    - sprint retro
+  - skill_id: SKILL_SPRINT3_XNET_001
+    alias: sprint3-xnet
+    phrases:
+    - /sprint3-xnet
+    - sprint3 xnet
+  - skill_id: SKILL_SPRINT3_XPKG_001
+    alias: sprint3-xpkg
+    phrases:
+    - /sprint3-xpkg
+    - sprint3 xpkg
+  - skill_id: SKILL_SPRINT3_XSEC_001
+    alias: sprint3-xsec
+    phrases:
+    - /sprint3-xsec
+    - sprint3 xsec
+  - skill_id: SKILL_STATIC_ANALYSIS_001
+    alias: static-analysis
+    phrases:
+    - /static-analysis
+    - static analysis
+  - skill_id: SKILL_SUBSYSTEMS_FROM_SCRATCH_001
+    alias: subsystems-from-scratch
+    phrases:
+    - /subsystems-from-scratch
+    - subsystems from scratch
+  - skill_id: SKILL_WAL_DEBUG_001
+    alias: wal-debug
+    phrases:
+    - /wal-debug
+    - wal debug
+  - skill_id: SKILL_XISC_CLOUD_TOOLCHAIN_001
+    alias: xisc-cloud-toolchain
+    phrases:
+    - /xisc-cloud-toolchain
+    - xisc cloud toolchain
+  - skill_id: SKILL_XKABI_CAPABILITY_001
+    alias: xkabi-capability
+    phrases:
+    - /xkabi-capability
+    - xkabi capability
+  - skill_id: SKILL_XMIND_TEST_001
+    alias: xmind-test
+    phrases:
+    - /xmind-test
+    - xmind test
+local_runtime_skills:
+  description: Local runtime skills imported into canonical repo form. Generated by
+    infrastructure/scripts/skill_migration/import_local_runtime_skills.py.
+  entries:
+  - skill_id: SKILL_AGGREGATOR_PARALLELIZATION_AUDIT_001
+    alias: aggregator-parallelization-audit
+    source: claude
+    phrases:
+    - /aggregator-parallelization-audit
+    - aggregator parallelization audit
+  - skill_id: SKILL_APEX_COORDINATOR_001
+    alias: apex-coordinator
+    source: agents
+    phrases:
+    - /apex-coordinator
+    - apex coordinator
+  - skill_id: SKILL_APEX_SYSTEMS_ARCHITECT_001
+    alias: apex-systems-architect
+    source: agents
+    phrases:
+    - /apex-systems-architect
+    - apex systems architect
+  - skill_id: SKILL_APPINSIGHTS_INSTRUMENTATION_001
+    alias: appinsights-instrumentation
+    source: agents
+    phrases:
+    - /appinsights-instrumentation
+    - appinsights instrumentation
+  - skill_id: SKILL_AZURE_AIGATEWAY_001
+    alias: azure-aigateway
+    source: agents
+    phrases:
+    - /azure-aigateway
+    - azure aigateway
+  - skill_id: SKILL_AZURE_AI_001
+    alias: azure-ai
+    source: agents
+    phrases:
+    - /azure-ai
+    - azure ai
+  - skill_id: SKILL_AZURE_COMPLIANCE_001
+    alias: azure-compliance
+    source: agents
+    phrases:
+    - /azure-compliance
+    - azure compliance
+  - skill_id: SKILL_AZURE_COST_OPTIMIZATION_001
+    alias: azure-cost-optimization
+    source: agents
+    phrases:
+    - /azure-cost-optimization
+    - azure cost optimization
+  - skill_id: SKILL_AZURE_DEPLOY_001
+    alias: azure-deploy
+    source: agents
+    phrases:
+    - /azure-deploy
+    - azure deploy
+  - skill_id: SKILL_AZURE_DIAGNOSTICS_001
+    alias: azure-diagnostics
+    source: agents
+    phrases:
+    - /azure-diagnostics
+    - azure diagnostics
+  - skill_id: SKILL_AZURE_KUSTO_001
+    alias: azure-kusto
+    source: agents
+    phrases:
+    - /azure-kusto
+    - azure kusto
+  - skill_id: SKILL_AZURE_MESSAGING_001
+    alias: azure-messaging
+    source: agents
+    phrases:
+    - /azure-messaging
+    - azure messaging
+  - skill_id: SKILL_AZURE_OBSERVABILITY_001
+    alias: azure-observability
+    source: agents
+    phrases:
+    - /azure-observability
+    - azure observability
+  - skill_id: SKILL_AZURE_POSTGRES_001
+    alias: azure-postgres
+    source: agents
+    phrases:
+    - /azure-postgres
+    - azure postgres
+  - skill_id: SKILL_AZURE_PREPARE_001
+    alias: azure-prepare
+    source: agents
+    phrases:
+    - /azure-prepare
+    - azure prepare
+  - skill_id: SKILL_AZURE_RBAC_001
+    alias: azure-rbac
+    source: agents
+    phrases:
+    - /azure-rbac
+    - azure rbac
+  - skill_id: SKILL_AZURE_RESOURCE_LOOKUP_001
+    alias: azure-resource-lookup
+    source: agents
+    phrases:
+    - /azure-resource-lookup
+    - azure resource lookup
+  - skill_id: SKILL_AZURE_RESOURCE_VISUALIZER_001
+    alias: azure-resource-visualizer
+    source: agents
+    phrases:
+    - /azure-resource-visualizer
+    - azure resource visualizer
+  - skill_id: SKILL_AZURE_STORAGE_001
+    alias: azure-storage
+    source: agents
+    phrases:
+    - /azure-storage
+    - azure storage
+  - skill_id: SKILL_AZURE_VALIDATE_001
+    alias: azure-validate
+    source: agents
+    phrases:
+    - /azure-validate
+    - azure validate
+  - skill_id: SKILL_BACK_LINK_REUSE_OVER_CACHE_001
+    alias: back-link-reuse-over-cache
+    source: claude
+    phrases:
+    - /back-link-reuse-over-cache
+    - back link reuse over cache
+  - skill_id: SKILL_CARVEOUT_DEF_ID_DISCIPLINE_001
+    alias: carveout-def-id-discipline
+    source: claude
+    phrases:
+    - /carveout-def-id-discipline
+    - carveout def id discipline
+  - skill_id: SKILL_CASCADE_ROOT_TRIAGE_001
+    alias: cascade-root-triage
+    source: claude
+    phrases:
+    - /cascade-root-triage
+    - cascade root triage
+  - skill_id: SKILL_COMPILE_OUTPUT_SIZE_DIFF_PROBE_001
+    alias: compile-output-size-diff-probe
+    source: claude
+    phrases:
+    - /compile-output-size-diff-probe
+    - compile output size diff probe
+  - skill_id: SKILL_DATA_INFRASTRUCTURE_LEAD_001
+    alias: data-infrastructure-lead
+    source: agents
+    phrases:
+    - /data-infrastructure-lead
+    - data infrastructure lead
+  - skill_id: SKILL_DATA_INFRA_ENGINEER_001
+    alias: data-infra-engineer
+    source: agents
+    phrases:
+    - /data-infra-engineer
+    - data infra engineer
+  - skill_id: SKILL_DESIGN_SYSTEMS_FORGE_001
+    alias: design-systems-forge
+    source: agents
+    phrases:
+    - /design-systems-forge
+    - design systems forge
+  - skill_id: SKILL_DEVELOPER_EXPERIENCE_LEAD_001
+    alias: developer-experience-lead
+    source: agents
+    phrases:
+    - /developer-experience-lead
+    - developer experience lead
+  - skill_id: SKILL_DEVOPS_CATALYST_001
+    alias: devops-catalyst
+    source: agents
+    phrases:
+    - /devops-catalyst
+    - devops catalyst
+  - skill_id: SKILL_EDGE_AI_OPTIMIZER_001
+    alias: edge-ai-optimizer
+    source: agents
+    phrases:
+    - /edge-ai-optimizer
+    - edge ai optimizer
+  - skill_id: SKILL_ENTRA_APP_REGISTRATION_001
+    alias: entra-app-registration
+    source: agents
+    phrases:
+    - /entra-app-registration
+    - entra app registration
+  - skill_id: SKILL_EVENT_HORIZON_AGENT_001
+    alias: event-horizon-agent
+    source: agents
+    phrases:
+    - /event-horizon-agent
+    - event horizon agent
+  - skill_id: SKILL_FAILURE_MODE_FIRST_AUTHORING_001
+    alias: failure-mode-first-authoring
+    source: claude
+    phrases:
+    - /failure-mode-first-authoring
+    - failure mode first authoring
+  - skill_id: SKILL_GATE_AUTO_BOOTSTRAP_DISCIPLINE_001
+    alias: gate-auto-bootstrap-discipline
+    source: claude
+    phrases:
+    - /gate-auto-bootstrap-discipline
+    - gate auto bootstrap discipline
+  - skill_id: SKILL_GATE_DUMP_VS_RUNTIME_001
+    alias: gate-dump-vs-runtime
+    source: claude
+    phrases:
+    - /gate-dump-vs-runtime
+    - gate dump vs runtime
+  - skill_id: SKILL_GUARDIAN_SENTINEL_001
+    alias: guardian-sentinel
+    source: agents
+    phrases:
+    - /guardian-sentinel
+    - guardian sentinel
+  - skill_id: SKILL_HARDWARE_INTEGRATION_ENGINEER_001
+    alias: hardware-integration-engineer
+    source: agents
+    phrases:
+    - /hardware-integration-engineer
+    - hardware integration engineer
+  - skill_id: SKILL_INTELLIGENCE_LEAD_001
+    alias: intelligence-lead
+    source: agents
+    phrases:
+    - /intelligence-lead
+    - intelligence lead
+  - skill_id: SKILL_INTELLIGENCE_LEAD_V2_001
+    alias: intelligence-lead-v2
+    source: agents
+    phrases:
+    - /intelligence-lead-v2
+    - intelligence lead v2
+  - skill_id: SKILL_KNOWLEDGE_WEAVER_001
+    alias: knowledge-weaver
+    source: agents
+    phrases:
+    - /knowledge-weaver
+    - knowledge weaver
+  - skill_id: SKILL_MASTER_ORCHESTRATOR_001
+    alias: master-orchestrator
+    source: agents
+    phrases:
+    - /master-orchestrator
+    - master orchestrator
+  - skill_id: SKILL_MICROSOFT_FOUNDRY_001
+    alias: microsoft-foundry
+    source: agents
+    phrases:
+    - /microsoft-foundry
+    - microsoft foundry
+  - skill_id: SKILL_MICROSOFT_FOUNDRY_FOUNDRY_AGENT_CREATE_AGENT_FRAMEWORK_001
+    alias: microsoft-foundry-foundry-agent-create-agent-framework
+    source: agents
+    phrases:
+    - /microsoft-foundry-foundry-agent-create-agent-framework
+    - microsoft foundry foundry agent create agent framework
+  - skill_id: SKILL_MICROSOFT_FOUNDRY_MODELS_DEPLOY_MODEL_001
+    alias: microsoft-foundry-models-deploy-model
+    source: agents
+    phrases:
+    - /microsoft-foundry-models-deploy-model
+    - microsoft foundry models deploy model
+  - skill_id: SKILL_MICROSOFT_FOUNDRY_MODELS_DEPLOY_MODEL_CAPACITY_001
+    alias: microsoft-foundry-models-deploy-model-capacity
+    source: agents
+    phrases:
+    - /microsoft-foundry-models-deploy-model-capacity
+    - microsoft foundry models deploy model capacity
+  - skill_id: SKILL_MICROSOFT_FOUNDRY_MODELS_DEPLOY_MODEL_CUSTOMIZE_001
+    alias: microsoft-foundry-models-deploy-model-customize
+    source: agents
+    phrases:
+    - /microsoft-foundry-models-deploy-model-customize
+    - microsoft foundry models deploy model customize
+  - skill_id: SKILL_MICROSOFT_FOUNDRY_MODELS_DEPLOY_MODEL_PRESET_001
+    alias: microsoft-foundry-models-deploy-model-preset
+    source: agents
+    phrases:
+    - /microsoft-foundry-models-deploy-model-preset
+    - microsoft foundry models deploy model preset
+  - skill_id: SKILL_MULTI_WAVE_AUDIT_CADENCE_001
+    alias: multi-wave-audit-cadence
+    source: claude
+    phrases:
+    - /multi-wave-audit-cadence
+    - multi wave audit cadence
+  - skill_id: SKILL_OBSERVABILITY_NEXUS_001
+    alias: observability-nexus
+    source: agents
+    phrases:
+    - /observability-nexus
+    - observability nexus
+  - skill_id: SKILL_OUTER_HARNESS_RC_DISCIPLINE_001
+    alias: outer-harness-rc-discipline
+    source: claude
+    phrases:
+    - /outer-harness-rc-discipline
+    - outer harness rc discipline
+  - skill_id: SKILL_PERFORMANCE_FORGE_001
+    alias: performance-forge
+    source: agents
+    phrases:
+    - /performance-forge
+    - performance forge
+  - skill_id: SKILL_PLATFORM_INTEGRITY_AUDITOR_001
+    alias: platform-integrity-auditor
+    source: agents
+    phrases:
+    - /platform-integrity-auditor
+    - platform integrity auditor
+  - skill_id: SKILL_PROCESS_GROUP_KILL_DISCIPLINE_001
+    alias: process-group-kill-discipline
+    source: claude
+    phrases:
+    - /process-group-kill-discipline
+    - process group kill discipline
+  - skill_id: SKILL_PRODUCT_EXPERIENCE_ENGINEER_001
+    alias: product-experience-engineer
+    source: agents
+    phrases:
+    - /product-experience-engineer
+    - product experience engineer
+  - skill_id: SKILL_RELIABILITY_SECURITY_SENTINEL_001
+    alias: reliability-security-sentinel
+    source: agents
+    phrases:
+    - /reliability-security-sentinel
+    - reliability security sentinel
+  - skill_id: SKILL_REPRODUCIBLE_BUILD_DISCIPLINE_001
+    alias: reproducible-build-discipline
+    source: claude
+    phrases:
+    - /reproducible-build-discipline
+    - reproducible build discipline
+  - skill_id: SKILL_RESILIENCE_ARCHITECT_001
+    alias: resilience-architect
+    source: agents
+    phrases:
+    - /resilience-architect
+    - resilience architect
+  - skill_id: SKILL_SEAL_RECONCILIATION_DISCIPLINE_001
+    alias: seal-reconciliation-discipline
+    source: claude
+    phrases:
+    - /seal-reconciliation-discipline
+    - seal reconciliation discipline
+  - skill_id: SKILL_SYSTEM_SIGNAL_ENGINE_001
+    alias: system-signal-engine
+    source: agents
+    phrases:
+    - /system-signal-engine
+    - system signal engine
+  - skill_id: SKILL_TEST_FORGE_001
+    alias: test-forge
+    source: agents
+    phrases:
+    - /test-forge
+    - test forge
+  - skill_id: SKILL_THE_ARCHITECT_001
+    alias: the-architect
+    source: agents
+    phrases:
+    - /the-architect
+    - the architect
+  - skill_id: SKILL_VANGUARD_DISRUPTIVE_ALCHEMIST_001
+    alias: vanguard-disruptive-alchemist
+    source: agents
+    phrases:
+    - /vanguard-disruptive-alchemist
+    - vanguard disruptive alchemist
+  - skill_id: SKILL_VANGUARD_DISRUPTOR_001
+    alias: vanguard-disruptor
+    source: agents
+    phrases:
+    - /vanguard-disruptor
+    - vanguard disruptor
+  - skill_id: SKILL_VANGUARD_INNOVATION_SCOUT_001
+    alias: vanguard-innovation-scout
+    source: agents
+    phrases:
+    - /vanguard-innovation-scout
+    - vanguard innovation scout
+  - skill_id: SKILL_WALL_CLOCK_BASELINE_DISCIPLINE_001
+    alias: wall-clock-baseline-discipline
+    source: claude
+    phrases:
+    - /wall-clock-baseline-discipline
+    - wall clock baseline discipline

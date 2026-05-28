@@ -1,7 +1,7 @@
 id: SKILL_ELSON_DEPLOY_001
 title: Iron Gate Deployment Protocol
 version: 1.0.0
-layer: active
+layer: integration
 domains:
 - cloud_ops
 - elson
@@ -56,3 +56,12 @@ provenance:
   - 6a4cb78a9f51cc943cce6bbd66a1a9105cb0f19e30c5b6cfa8b1b76e63ec07f5
   selected_source: 16_knowledge/external_collateral/elson_claude_skills_2026-05-17/raw/trading_bot_elson_tb2/deploy/SKILL.md
 improvement_history: []
+source: native
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

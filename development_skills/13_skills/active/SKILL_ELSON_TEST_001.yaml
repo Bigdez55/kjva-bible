@@ -1,7 +1,7 @@
 id: SKILL_ELSON_TEST_001
 title: "Full Test Suite \u2014 Elson TB2"
 version: 1.0.0
-layer: active
+layer: verification
 domains:
 - audit
 - elson
@@ -56,3 +56,12 @@ provenance:
   - 5722f632dcf66ddb819de4350341e78f90a5d9a1a39c62fee4ec868d345dddc5
   selected_source: 16_knowledge/external_collateral/elson_claude_skills_2026-05-17/raw/trading_bot_elson_tb2/test/SKILL.md
 improvement_history: []
+source: native
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

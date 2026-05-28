@@ -1,0 +1,29 @@
+id: SKILL_PIPELINE_CONNECTION_MAP_AUTHORING_001
+title: pipeline-connection-map-authoring
+version: 1.0.0
+layer: documentation
+domains:
+- data_pipeline
+- documentation
+- architecture
+tier: active
+status: active
+source: migrated_user
+aliases:
+- pipeline-connection-map-authoring
+playbook: platform/sdlc/13_skills/active/SKILL_PIPELINE_CONNECTION_MAP_AUTHORING_001.playbook.md
+runtime_projection: true
+runtime_projection_targets:
+- claude
+- codex
+- gemini
+refinement: auto
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []
+skill_number: 527

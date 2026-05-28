@@ -19,12 +19,12 @@ from typing import Any
 
 import yaml
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[3]
 ONEDRIVE = ROOT.parent
 GITHUB = Path("/Users/desmondearly/Documents/GitHub")
 RUN_ID = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d")
-DEFAULT_OUT = ROOT / "16_knowledge" / "external_collateral" / f"assistant_surfaces_{RUN_ID}"
-REGISTRY_OUT = ROOT / "18_registry" / "agent_skill_imports"
+DEFAULT_OUT = ROOT / "platform" / "sdlc" / "16_knowledge" / "external_collateral" / f"assistant_surfaces_{RUN_ID}"
+REGISTRY_OUT = ROOT / "platform" / "systems" / "18_registry" / "agent_skill_imports"
 
 SURFACE_DIRS = {".claude", ".codex", ".gemini"}
 TEXT_EXTENSIONS = {".md", ".txt", ".yaml", ".yml", ".json", ".toml", ".ini", ".cfg"}
@@ -55,11 +55,11 @@ EXCLUDED_DIRS = {
 }
 
 EXCLUDED_RELATIVE_PREFIXES = {
-    "16_knowledge/external_collateral",
+    "platform/sdlc/16_knowledge/external_collateral",
     "28_archive",
     "backups",
-    "apps/atlas/dist",
-    "apps/atlas/node_modules",
+    "apps/frontend/atlas/dist",
+    "apps/frontend/atlas/node_modules",
 }
 
 
@@ -270,7 +270,7 @@ def build_report(
             "",
             "## Operational Rule",
             "",
-            "Raw assistant surfaces remain preserved as evidence. Operational use should go through the normalized registries under `18_registry/agent_skill_imports/` and then through active skill/router promotion.",
+            "Raw assistant surfaces remain preserved as evidence. Operational use should go through the normalized registries under `platform/systems/18_registry/agent_skill_imports/` and then through active skill/router promotion.",
             "",
             "## Output Files",
             "",

@@ -1,0 +1,7 @@
+# Template: starter_packet
+# Replace placeholders. See 26_schemas/starter_packet/ if a schema exists.
+id: "{id}"
+name: "{name}"
+status: draft
+created: "{date}"
+owner: "{owner}"

@@ -9,8 +9,8 @@ from atlas_models import read_yaml, write_json, write_yaml
 from atlas_paths import ROOT, TENANT_EVIDENCE_DIR
 
 
-SYNC_PACKET_DIR = ROOT / "21_repo_sync" / "sync_packets"
-TWIN_DIR = ROOT / "39_repo_twins" / "twins"
+SYNC_PACKET_DIR = ROOT / "platform" / "systems" / "21_repo_sync" / "sync_packets"
+TWIN_DIR = ROOT / "platform" / "systems" / "39_repo_twins" / "twins"
 
 
 def _load_sync_packets() -> list[dict[str, Any]]:
@@ -100,11 +100,11 @@ def build_tenant_manifest(tenant_id: str = "desmond-personal-poc") -> dict[str, 
             "source_twin_dir": TWIN_DIR.relative_to(ROOT).as_posix(),
         },
         "next_buildouts": [
-            "Add tenant selector to apps/atlas.",
+            "Add tenant selector to apps/frontend/atlas.",
             "Expose repo connector health from this manifest.",
             "Connect Atlas Graph Engine to tenant-scoped repo nodes.",
             "Connect Atlas Knowledge Vault to tenant-scoped linked notes.",
-            "Add auth, roles, and tenant isolation before external users.",
+            "Block external users until the ATLAS production release gate proves auth, roles, tenant/session claims, rate limits, immutable audit logging, and cross-tenant denial tests.",
         ],
     }
 

@@ -5,8 +5,8 @@ from pathlib import Path
 
 import yaml
 
-ROOT = Path(__file__).resolve().parents[2]
-OUT = ROOT / "11_documentation" / "generated"
+ROOT = Path(__file__).resolve().parents[3]
+OUT = ROOT / "platform" / "sdlc" / "11_documentation" / "generated"
 OUT.mkdir(parents=True, exist_ok=True)
 
 def load(rel): return yaml.safe_load((ROOT/rel).read_text())
@@ -27,10 +27,10 @@ def tracked_system_dirs():
     return sorted(roots)
 
 def main():
-    manifest = load("18_registry/project.manifest.yaml")["project"]
-    repo_ledger = load("18_registry/repo_ledger.yaml")["repo_ledger"]
-    decision_ledger = load("18_registry/decision_ledger.yaml")
-    change_ledger = load("18_registry/change_ledger.yaml")
+    manifest = load("platform/systems/18_registry/project.manifest.yaml")["project"]
+    repo_ledger = load("platform/systems/18_registry/repo_ledger.yaml")["repo_ledger"]
+    decision_ledger = load("platform/systems/18_registry/decision_ledger.yaml")
+    change_ledger = load("platform/systems/18_registry/change_ledger.yaml")
     sysdirs = tracked_system_dirs()
 
     # README.generated
@@ -59,7 +59,7 @@ def main():
     # SYSTEMS_INDEX.generated
     idx = ["# Systems Index (generated)\n"]
     for s in sysdirs:
-        idx.append(f"## {s}\nSee [{s}/]({'../../'+s}/) and ledger entries in [18_registry/](../../18_registry/).\n")
+        idx.append(f"## {s}\nSee [{s}/]({'../../'+s}/) and ledger entries in [platform/systems/18_registry/](../../systems/18_registry/).\n")
     (OUT/"SYSTEMS_INDEX.generated.md").write_text("\n".join(idx))
 
     # CHANGELOG.generated

@@ -1,0 +1,29 @@
+id: SKILL_AUDIT_ASSESS_ANALYZE_001
+title: audit-assess-analyze
+version: 1.0.0
+layer: meta
+domains:
+- governance
+- validation
+- skills
+tier: active
+status: active
+source: migrated_user
+aliases:
+- audit-assess-analyze
+playbook: platform/sdlc/13_skills/active/SKILL_AUDIT_ASSESS_ANALYZE_001.playbook.md
+runtime_projection: true
+runtime_projection_targets:
+- claude
+- codex
+- gemini
+refinement: auto
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []
+skill_number: 505

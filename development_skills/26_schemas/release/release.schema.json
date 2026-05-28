@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "release",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "date": {
+      "type": "string"
+    },
+    "changes": {
+      "type": "array"
+    },
+    "evidence_id": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "version",
+    "date",
+    "changes"
+  ],
+  "additionalProperties": true
+}

@@ -3,7 +3,7 @@
 import argparse, yaml
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[3]
 
 TEMPLATE = lambda name, repo: {
     "repo_twin.manifest.yaml": f"repo_twin:\n  name: {name}\n  repo_url: https://github.com/{repo}\n  repository_full_name: {repo}\n  status: initialized\n  last_ingested: null\n  last_verified: null\n",
@@ -24,7 +24,7 @@ def main():
     ap.add_argument("--repo", required=True, help="owner/name format, e.g. Bigdez55/LMOS")
     ap.add_argument("--remove", action="store_true")
     args = ap.parse_args()
-    base = ROOT / "39_repo_twins" / "twins" / args.name
+    base = ROOT / "platform" / "systems" / "39_repo_twins" / "twins" / args.name
     if args.remove:
         if base.exists():
             import shutil; shutil.rmtree(base)

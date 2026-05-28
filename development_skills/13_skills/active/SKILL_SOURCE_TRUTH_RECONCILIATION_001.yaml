@@ -37,3 +37,12 @@ provenance:
   collection: skills_stack_2026-05-17
   source_index: 16_knowledge/external_collateral/skills_stack_2026-05-17/source_index.yaml
 improvement_history: []
+source: native
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

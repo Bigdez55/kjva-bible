@@ -13,7 +13,7 @@ from atlas_status import build_status, status_markdown, write_status
 
 
 def load_gate_payload() -> dict[str, Any]:
-    path = ROOT / "08_verification" / "gate_results" / "atlas_platform_core_safe_gates.yaml"
+    path = ROOT / "platform" / "sdlc" / "08_verification" / "gate_results" / "atlas_platform_core_safe_gates.yaml"
     data = read_yaml(path)
     if data:
         return data
@@ -72,16 +72,16 @@ def generate_release_report(
         "infrastructure/scripts/atlas_core/atlas_reports.py",
         "infrastructure/scripts/atlas_core/adapters/*.py",
         "infrastructure/scripts/atlas_core/tests/*.py",
-        "23_evidence/atlas_platform/preflight/2026-05-17_platform_core_preflight.md",
+        "platform/systems/23_evidence/atlas_platform/preflight/2026-05-17_platform_core_preflight.md",
         *atlas["evidence"]["generated_files"],
-        "08_verification/gate_results/atlas_platform_core_safe_gates.yaml",
-        "08_verification/gate_results/atlas_platform_core_safe_gates.json",
+        "platform/sdlc/08_verification/gate_results/atlas_platform_core_safe_gates.yaml",
+        "platform/sdlc/08_verification/gate_results/atlas_platform_core_safe_gates.json",
     ]
     updated_files = [
-        "20_drift_detection/drift_reports/truth_drift_report.json",
-        "20_drift_detection/drift_state.yaml",
+        "platform/systems/20_drift_detection/drift_reports/truth_drift_report.json",
+        "platform/systems/20_drift_detection/drift_state.yaml",
         "infrastructure/scripts/automation.registry.yaml",
-        "42_context_compiler/compiler.registry.yaml",
+        "platform/systems/42_context_compiler/compiler.registry.yaml",
     ]
     lines = [
         "# SUPER C Atlas Platform Core v0.1 Report",
@@ -216,10 +216,10 @@ def generate_intelligence_report(
         return []
 
     evidence = [
-        "23_evidence/atlas_platform/ingest/",
-        "23_evidence/atlas_platform/graph/",
-        "23_evidence/atlas_platform/vault/",
-        "23_evidence/atlas_platform/flows/",
+        "platform/systems/23_evidence/atlas_platform/ingest/",
+        "platform/systems/23_evidence/atlas_platform/graph/",
+        "platform/systems/23_evidence/atlas_platform/vault/",
+        "platform/systems/23_evidence/atlas_platform/flows/",
     ]
     created_files = [
         "infrastructure/scripts/atlas_core/atlas.py",
@@ -233,17 +233,17 @@ def generate_intelligence_report(
         "infrastructure/scripts/atlas_core/atlas_ingest.py",
         "infrastructure/scripts/atlas_core/atlas_knowledge_vault.py",
         "infrastructure/scripts/atlas_core/atlas_reports.py",
-        "23_evidence/atlas_platform/status/atlas_status.json",
-        "23_evidence/atlas_platform/status/atlas_status.md",
-        "23_evidence/atlas_platform/inventory/atlas_inventory.json",
-        "23_evidence/atlas_platform/inventory/atlas_inventory.md",
-        "23_evidence/atlas_platform/gates/atlas_safe_gate_results.md",
-        "09_release/release_evidence/" + INTELLIGENCE_CORE_REPORT.name,
+        "platform/systems/23_evidence/atlas_platform/status/atlas_status.json",
+        "platform/systems/23_evidence/atlas_platform/status/atlas_status.md",
+        "platform/systems/23_evidence/atlas_platform/inventory/atlas_inventory.json",
+        "platform/systems/23_evidence/atlas_platform/inventory/atlas_inventory.md",
+        "platform/systems/23_evidence/atlas_platform/gates/atlas_safe_gate_results.md",
+        "platform/sdlc/09_release/release_evidence/" + INTELLIGENCE_CORE_REPORT.name,
         "platform/systems/43_atlas_graph_engine/reports/atlas_graph*",
-        "44_atlas_knowledge_vault/reports/atlas_knowledge_vault*",
-        "44_atlas_knowledge_vault/notes/",
-        "08_verification/gate_results/atlas_platform_core_safe_gates.yaml",
-        "08_verification/gate_results/atlas_platform_core_safe_gates.json",
+        "platform/systems/44_atlas_knowledge_vault/reports/atlas_knowledge_vault*",
+        "platform/systems/44_atlas_knowledge_vault/notes/",
+        "platform/sdlc/08_verification/gate_results/atlas_platform_core_safe_gates.yaml",
+        "platform/sdlc/08_verification/gate_results/atlas_platform_core_safe_gates.json",
     ]
 
     lines = [
@@ -296,7 +296,7 @@ def generate_all() -> dict[str, Any]:
     packet = build_context_packet(status, gate_payload)
     write_context_packet(packet)
     generate_status_docs(status, inventory, gate_payload)
-    generate_release_report(status, inventory, gate_payload, rel(ROOT / "42_context_compiler/output/generated/CP-super-c-atlas-platform-core.yaml"))
+    generate_release_report(status, inventory, gate_payload, rel(ROOT / "platform/systems/42_context_compiler/output/generated/CP-super-c-atlas-platform-core.yaml"))
     return {
         "status": status,
         "inventory": inventory,

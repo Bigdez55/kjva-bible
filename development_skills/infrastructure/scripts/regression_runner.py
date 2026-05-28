@@ -8,7 +8,7 @@ from pathlib import Path
 import yaml
 
 ROOT = Path(__file__).resolve().parents[2]
-CASES = ROOT / "08_verification" / "regression_cases"
+CASES = ROOT / "platform" / "sdlc" / "08_verification" / "regression_cases"
 
 sys.path.insert(0, str(ROOT / "infrastructure/scripts"))
 from route_intent import route_text  # noqa: E402

@@ -3,8 +3,8 @@
 import re, yaml, hashlib
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
-OUT_DIR = ROOT / "16_knowledge" / "knowledge_mesh"
+ROOT = Path(__file__).resolve().parents[3]
+OUT_DIR = ROOT / "platform" / "sdlc" / "16_knowledge" / "knowledge_mesh"
 NODES = OUT_DIR / "nodes.yaml"
 EDGES = OUT_DIR / "edges.yaml"
 LINK_RE = re.compile(r"\[[^\]]+\]\(([^)]+)\)")

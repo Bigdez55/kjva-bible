@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "twin_snapshot",
+  "type": "object",
+  "properties": {
+    "twin": {
+      "type": "string"
+    },
+    "components": {
+      "type": "array"
+    },
+    "dependencies": {
+      "type": "array"
+    },
+    "generated_at": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "twin",
+    "components",
+    "dependencies"
+  ],
+  "additionalProperties": true
+}

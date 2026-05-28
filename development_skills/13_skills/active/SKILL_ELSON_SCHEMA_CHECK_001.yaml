@@ -1,7 +1,7 @@
 id: SKILL_ELSON_SCHEMA_CHECK_001
 title: Schema Drift Detection
 version: 1.0.0
-layer: active
+layer: verification
 domains:
 - audit
 - elson
@@ -58,3 +58,12 @@ provenance:
   - cfcb690c27e160ea6c0783059c119c3c5ecb529cf7c37240d85c5a5fe47ca6ae
   selected_source: 16_knowledge/external_collateral/elson_claude_skills_2026-05-17/raw/trading_bot_elson_tb2/schema-check/SKILL.md
 improvement_history: []
+source: native
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

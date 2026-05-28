@@ -1,7 +1,7 @@
 id: SKILL_ELSON_PLAN_FEATURE_001
 title: Feature Planning Protocol
 version: 1.0.0
-layer: active
+layer: application
 domains:
 - elson
 - planning
@@ -56,3 +56,12 @@ provenance:
   - 17f21a43ce5454a7024691627f5c90056e0ae9945d46b513b5e1d528dfc119d7
   selected_source: 16_knowledge/external_collateral/elson_claude_skills_2026-05-17/raw/trading_bot_elson_tb2/plan-feature/SKILL.md
 improvement_history: []
+source: native
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

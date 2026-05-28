@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SkillMatrix",
+  "type": "object",
+  "required": [
+    "version",
+    "skills"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "skills": {
+      "type": "array"
+    }
+  }
+}

@@ -1,7 +1,7 @@
 id: SKILL_ELSON_MIGRATE_001
 title: Database Migration Protocol
 version: 1.0.0
-layer: active
+layer: integration
 domains:
 - cloud_ops
 - elson
@@ -54,3 +54,12 @@ provenance:
   - c856c7b0d31385e4e01b00aa6b6e0be12e0cb5e06c4d8e391a3476a8961c7aaf
   selected_source: 16_knowledge/external_collateral/elson_claude_skills_2026-05-17/raw/trading_bot_elson_tb2/migrate/SKILL.md
 improvement_history: []
+source: native
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

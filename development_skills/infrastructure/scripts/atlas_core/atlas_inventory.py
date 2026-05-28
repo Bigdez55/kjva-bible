@@ -26,9 +26,9 @@ def build_inventory() -> dict[str, Any]:
     protected = [
         "New updates/",
         "backups/",
-        "28_archive/",
+        "platform/systems/28_archive/",
         "platform/systems/38_bookworm_engine/original_import/",
-        "38_bookworm_canonical_bridge/",
+        "platform/systems/38_bookworm_canonical_bridge/",
     ]
     return {
         "atlas_inventory": {
@@ -40,16 +40,16 @@ def build_inventory() -> dict[str, Any]:
             "local_numbered_directories": local_numbered_dirs,
             "protected_paths": protected,
             "subsystem_paths": {
-                "truth_state": ["19_truth_state/current.truth.yaml", "19_truth_state/source_of_truth_ranking.yaml"],
-                "manifests": ["development_skills.manifest.yaml", "18_registry/project.manifest.yaml", "APEX_VERSION.md"],
+                "truth_state": ["platform/systems/19_truth_state/current.truth.yaml", "platform/systems/19_truth_state/source_of_truth_ranking.yaml"],
+                "manifests": ["development_skills.manifest.yaml", "platform/systems/18_registry/project.manifest.yaml", "APEX_VERSION.md"],
                 "skills": ["platform/sdlc/13_skills/active", "platform/sdlc/13_skills/skills.registry.yaml"],
-                "command_protocol": ["37_command_protocol"],
-                "bookworm": ["38_bookworm_canonical_bridge", "38_bookworm_engine"],
-                "repo_twins": ["39_repo_twins"],
-                "context_compiler": ["42_context_compiler"],
-                "proof_matrix": ["36_proof_matrix"],
-                "drift_detection": ["20_drift_detection"],
-                "graph_layer": ["04_architecture/graphs", "04_architecture/models", "16_knowledge/knowledge_mesh"],
+                "command_protocol": ["platform/systems/37_command_protocol"],
+                "bookworm": ["platform/systems/38_bookworm_canonical_bridge", "platform/systems/38_bookworm_engine"],
+                "repo_twins": ["platform/systems/39_repo_twins"],
+                "context_compiler": ["platform/systems/42_context_compiler"],
+                "proof_matrix": ["platform/systems/36_proof_matrix"],
+                "drift_detection": ["platform/systems/20_drift_detection"],
+                "graph_layer": ["platform/sdlc/04_architecture/graphs", "platform/sdlc/04_architecture/models", "platform/sdlc/16_knowledge/knowledge_mesh"],
             },
         }
     }

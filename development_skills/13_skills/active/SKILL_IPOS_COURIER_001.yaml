@@ -1,7 +1,7 @@
 id: SKILL_IPOS_COURIER_001
 title: IPOS Courier
 version: 1.0.0
-layer: active
+layer: integration
 domains:
 - ipos
 - dashboard
@@ -28,7 +28,8 @@ trigger_conditions:
 hard_constraints:
 - Preserve source-of-truth ranking.
 - Do not claim completion without validation evidence.
-- Use imported IPOS patterns only when the request is dashboard, KPI, SharePoint, paratransit, or frontend-dashboard related.
+- Use imported IPOS patterns only when the request is dashboard, KPI, SharePoint,
+  paratransit, or frontend-dashboard related.
 - Record misses in the skill refinery ledger when discovered.
 tier: active
 ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_IPOS_COURIER_001.ledger.yaml
@@ -54,3 +55,12 @@ provenance:
   raw_source: 16_knowledge/external_collateral/ipos_claude_skills_2026-05-17/raw/courier/SKILL.md
   raw_sha256: dc5faf24bfccde70c6fa5cac964289d7ff8e51b36765d1725f68a27d439e67da
 improvement_history: []
+source: native
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

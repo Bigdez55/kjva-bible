@@ -1,7 +1,7 @@
 id: SKILL_SUPER_C_BUILD_TOOLCHAIN_CI_001
 title: "Build System, Toolchain & CI/CD \u2014 45 Skills"
 version: 1.0.0
-layer: active
+layer: core
 domains:
 - super_c
 - kernel
@@ -20,15 +20,16 @@ trigger_conditions:
 hard_constraints:
 - Preserve source-of-truth ranking.
 - Do not claim completion without validation evidence.
-- Use desmond-super-c patterns only when SUPER C / GEN.OS / compiler / platform context is active.
+- Use desmond-super-c patterns only when SUPER C / GEN.OS / compiler / platform context
+  is active.
 - Record misses in the skill refinery ledger when discovered.
 tier: active
 ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_SUPER_C_BUILD_TOOLCHAIN_CI_001.ledger.yaml
 related_skills:
 - SKILL_LOW_LEVEL_KERNEL_BOOT_001
 - SKILL_GENOS_COMPILE_CHECK_001
-- SKILL_SC_NO_SURPRISE_PLANNING_001
-- SKILL_SC_MILESTONE_GATE_DESIGN_001
+- SKILL_NO_SURPRISE_PLANNING_001
+- SKILL_MILESTONE_GATE_DESIGN_001
 router_intents:
 - build_toolchain_ci
 - super_c
@@ -47,3 +48,12 @@ provenance:
   raw_source: 16_knowledge/external_collateral/desmond_super_c_skills_2026-05-17/raw/claude_skills/build-toolchain-ci/SKILL.md
   raw_sha256: 40230e0742cc0fda31f9a6b131f8d6ae128a74ffef95a0c671b430d10100dd77
 improvement_history: []
+source: native
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

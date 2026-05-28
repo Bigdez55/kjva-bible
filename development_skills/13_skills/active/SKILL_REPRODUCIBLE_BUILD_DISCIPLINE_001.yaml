@@ -1,0 +1,30 @@
+id: SKILL_REPRODUCIBLE_BUILD_DISCIPLINE_001
+name: Reproducible Build Discipline
+version: 1.0.0
+status: active
+purpose: '** Reproducible Build Discipline - Systematic elimination of non-determinism
+  from compiled artifacts so that two indepen'
+inputs:
+- context
+- codebase artifacts
+outputs:
+- validated output
+- audit report
+known_failure_modes:
+- missing context
+- incomplete artifacts
+validation_tests: []
+improvement_history:
+- version: 1.0.0
+  reason: Promoted from native CLI skill.
+title: Reproducible Build Discipline
+layer: compiler
+domains:
+- compiler
+- build_systems
+playbook: 13_skills/active/SKILL_REPRODUCIBLE_BUILD_DISCIPLINE_001.playbook.md
+source: native_cli_promotion
+tier: active
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0

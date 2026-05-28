@@ -104,14 +104,14 @@ def build_status(gate_results: list[dict[str, Any]] | None = None) -> dict[str, 
             },
             "evidence": {
                 "generated_files": [
-                    "23_evidence/atlas_platform/status/atlas_status.json",
-                    "23_evidence/atlas_platform/status/atlas_status.md",
-                    "23_evidence/atlas_platform/inventory/atlas_inventory.json",
-                    "23_evidence/atlas_platform/inventory/atlas_inventory.md",
-                    "23_evidence/atlas_platform/gates/atlas_safe_gate_results.md",
-                    "11_documentation/generated/ATLAS_PLATFORM_STATUS.generated.md",
-                    "42_context_compiler/output/generated/CP-super-c-atlas-platform-core.yaml",
-                    "09_release/release_evidence/2026-05-17_super_c_atlas_platform_core_v0_1_report.md",
+                    "platform/systems/23_evidence/atlas_platform/status/atlas_status.json",
+                    "platform/systems/23_evidence/atlas_platform/status/atlas_status.md",
+                    "platform/systems/23_evidence/atlas_platform/inventory/atlas_inventory.json",
+                    "platform/systems/23_evidence/atlas_platform/inventory/atlas_inventory.md",
+                    "platform/systems/23_evidence/atlas_platform/gates/atlas_safe_gate_results.md",
+                    "platform/sdlc/11_documentation/generated/ATLAS_PLATFORM_STATUS.generated.md",
+                    "platform/systems/42_context_compiler/output/generated/CP-super-c-atlas-platform-core.yaml",
+                    "platform/sdlc/09_release/release_evidence/2026-05-17_super_c_atlas_platform_core_v0_1_report.md",
                 ],
                 "validation_outputs": [g.get("stdout_path", "") for g in gates],
             },
@@ -169,6 +169,6 @@ def write_status(status: dict[str, Any]) -> None:
 def load_gate_results_if_present() -> list[dict[str, Any]]:
     from atlas_models import read_yaml
 
-    path = ROOT / "08_verification" / "gate_results" / "atlas_platform_core_safe_gates.yaml"
+    path = ROOT / "platform" / "sdlc" / "08_verification" / "gate_results" / "atlas_platform_core_safe_gates.yaml"
     data = read_yaml(path)
     return data.get("safe_gates", []) if data else []

@@ -1,0 +1,7 @@
+# Template: vertical_slice
+# Replace placeholders. See 26_schemas/vertical_slice/ if a schema exists.
+id: "{id}"
+name: "{name}"
+status: draft
+created: "{date}"
+owner: "{owner}"

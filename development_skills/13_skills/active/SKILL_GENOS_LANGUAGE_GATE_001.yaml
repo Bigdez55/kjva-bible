@@ -1,7 +1,7 @@
 id: SKILL_GENOS_LANGUAGE_GATE_001
 title: GEN.OS Language Policy Gate
 version: 1.0.0
-layer: active
+layer: core
 domains:
 - genos
 - language_gate
@@ -19,7 +19,8 @@ trigger_conditions:
 hard_constraints:
 - Preserve source-of-truth ranking.
 - Do not claim completion without validation evidence.
-- Use GEN.OS-specific commands, paths, policies, and gates only when GEN.OS context is active.
+- Use GEN.OS-specific commands, paths, policies, and gates only when GEN.OS context
+  is active.
 - Record misses in the skill refinery ledger when discovered.
 tier: active
 ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_GENOS_LANGUAGE_GATE_001.ledger.yaml
@@ -44,3 +45,12 @@ provenance:
   raw_source: 16_knowledge/external_collateral/genos_codex_skills_2026-05-17/raw/language-gate.md
   raw_sha256: f4c0f2196a0a00950855494eae75175b6f925390335b56e20d867fc7fd90d840
 improvement_history: []
+source: native
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

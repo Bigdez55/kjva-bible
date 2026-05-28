@@ -4,17 +4,17 @@ import hashlib, json, sys, argparse, yaml
 from pathlib import Path
 from datetime import datetime, timezone
 
-ROOT = Path(__file__).resolve().parents[2]
-STATE = ROOT / "20_drift_detection" / "drift_state.yaml"
-REPORT = ROOT / "20_drift_detection" / "drift_reports" / "truth_drift_report.json"
+ROOT = Path(__file__).resolve().parents[3]
+STATE = ROOT / "platform" / "systems" / "20_drift_detection" / "drift_state.yaml"
+REPORT = ROOT / "platform" / "systems" / "20_drift_detection" / "drift_reports" / "truth_drift_report.json"
 
 WATCH = [
-    "19_truth_state",
-    "04_architecture",
-    "11_documentation",
+    "platform/systems/19_truth_state",
+    "platform/sdlc/04_architecture",
+    "platform/sdlc/11_documentation",
     "platform/sdlc/13_skills/active",
-    "18_registry",
-    "26_schemas",
+    "platform/systems/18_registry",
+    "schemas",
 ]
 
 def hash_dir(rel):

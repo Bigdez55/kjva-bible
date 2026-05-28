@@ -1,0 +1,56 @@
+version: '1.0'
+platform_build_artifacts:
+  required:
+  - id: platform_concept_summary
+    file: docs/platform/00_platform_concept_summary.md
+    template: 14_templates/platform_build/platform_concept_summary.md
+  - id: product_requirements
+    file: docs/platform/01_product_requirements.md
+    template: 14_templates/platform_build/product_requirements.md
+  - id: user_roles_permissions
+    file: docs/platform/02_user_roles_permissions.md
+    template: 14_templates/platform_build/user_roles_permissions.md
+  - id: frontend_component_map
+    file: docs/platform/03_frontend_component_map.md
+    template: 14_templates/platform_build/frontend_component_map.md
+  - id: backend_service_map
+    file: docs/platform/04_backend_service_map.md
+    template: 14_templates/platform_build/backend_service_map.md
+  - id: database_data_model
+    file: docs/platform/05_database_data_model.md
+    template: 14_templates/platform_build/database_data_model.md
+  - id: api_contract_map
+    file: docs/platform/06_api_contract_map.md
+    template: 14_templates/platform_build/api_contract_map.md
+  - id: workflow_automation_map
+    file: docs/platform/07_workflow_automation_map.md
+    template: 14_templates/platform_build/workflow_automation_map.md
+  - id: data_flow_map
+    file: docs/platform/08_data_flow_map.md
+    template: 14_templates/platform_build/data_flow_map.md
+  - id: reporting_analytics_layer
+    file: docs/platform/09_reporting_analytics_layer.md
+    template: 14_templates/platform_build/reporting_analytics_layer.md
+  - id: security_access_floor
+    file: docs/platform/10_security_access_floor.md
+    template: 14_templates/platform_build/security_access_floor.md
+  - id: infrastructure_deployment_plan
+    file: docs/platform/11_infrastructure_deployment_plan.md
+    template: 14_templates/platform_build/infrastructure_deployment_plan.md
+  - id: testing_gate_plan
+    file: docs/platform/12_testing_gate_plan.md
+    template: 14_templates/platform_build/testing_gate_plan.md
+  - id: repo_tree
+    file: docs/platform/13_repo_tree.md
+    template: 14_templates/platform_build/repo_tree.md
+  - id: build_phasing_roadmap
+    file: docs/platform/14_build_phasing_roadmap.md
+    template: 14_templates/platform_build/build_phasing_roadmap.md
+  - id: coding_agent_handoff
+    file: docs/platform/15_coding_agent_handoff.md
+    template: 14_templates/platform_build/coding_agent_handoff.md
+rules:
+- If platform_build intent is triggered, required artifacts must be created or explicitly
+  marked not applicable.
+- UI-only handoffs are not acceptable for platform builds.
+- Every visible screen must map to backend, data, workflow, permission, and test needs.

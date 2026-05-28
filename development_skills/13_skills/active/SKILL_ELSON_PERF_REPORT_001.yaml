@@ -1,7 +1,7 @@
 id: SKILL_ELSON_PERF_REPORT_001
 title: Trading Performance Report
 version: 1.0.0
-layer: active
+layer: application
 domains:
 - elson
 - planning
@@ -57,3 +57,12 @@ provenance:
   - f51a7842f23ddb80bcd056e7cf9696bedfa1123471f5f132e40835279e875d67
   selected_source: 16_knowledge/external_collateral/elson_claude_skills_2026-05-17/raw/trading_bot_elson_tb2/perf-report/SKILL.md
 improvement_history: []
+source: native
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

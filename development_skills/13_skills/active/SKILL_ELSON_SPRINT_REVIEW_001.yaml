@@ -1,7 +1,7 @@
 id: SKILL_ELSON_SPRINT_REVIEW_001
 title: Sprint Retrospective
 version: 1.0.0
-layer: active
+layer: application
 domains:
 - elson
 - planning
@@ -56,3 +56,12 @@ provenance:
   - a00bf3ec2d87ca1089bb5f142cdb06d03ec8649608b178cbd4898a0afc1a15c4
   selected_source: 16_knowledge/external_collateral/elson_claude_skills_2026-05-17/raw/trading_bot_elson_tb2/sprint-review/SKILL.md
 improvement_history: []
+source: native
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

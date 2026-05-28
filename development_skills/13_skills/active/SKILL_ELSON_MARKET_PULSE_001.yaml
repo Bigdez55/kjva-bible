@@ -1,7 +1,7 @@
 id: SKILL_ELSON_MARKET_PULSE_001
 title: "Market Pulse \u2014 Event Impact Analysis"
 version: 1.0.0
-layer: active
+layer: application
 domains:
 - elson
 - finance
@@ -58,3 +58,12 @@ provenance:
   - 0951e265ef7fc821d80f2581e59f0c34eaf15f2028eaca2d4bdc3bc3728da08c
   selected_source: 16_knowledge/external_collateral/elson_claude_skills_2026-05-17/raw/trading_bot_elson_tb2/market-pulse/SKILL.md
 improvement_history: []
+source: native
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

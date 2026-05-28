@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "FeatureMap",
+  "description": "Validates a feature map audit document listing UI elements, their wiring status, and any duplicate flags.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "page", "repo", "elements", "last_audited"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for this feature map"
+    },
+    "page": {
+      "type": "string",
+      "description": "The page or route being audited"
+    },
+    "repo": {
+      "type": "string",
+      "description": "Source repository name"
+    },
+    "elements": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "type", "status"],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["WORKS", "BROKEN", "DEAD", "DUPLICATE", "UNKNOWN"]
+          },
+          "wiring": {
+            "oneOf": [
+              { "type": "string" },
+              { "type": "null" }
+            ]
+          },
+          "notes": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "duplicates_flagged": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "last_audited": {
+      "type": "string",
+      "format": "date"
+    }
+  }
+}

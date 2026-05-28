@@ -18,7 +18,7 @@ REGISTRY = ROOT / "platform" / "sdlc" / "13_skills" / "skills.registry.yaml"
 CANONICAL_ROUTER = ROOT / "platform" / "sdlc" / "13_skills" / "skill_refinery" / "trigger_router.yaml"
 RUNTIME_ROUTER = ROOT / "platform" / "systems" / "37_command_protocol" / "trigger_router.yaml"
 LEDGER_DIR = ROOT / "platform" / "sdlc" / "13_skills" / "skill_refinery" / "correction_ledgers"
-REGRESSION_DIR = ROOT / "08_verification" / "regression_cases"
+REGRESSION_DIR = ROOT / "platform" / "sdlc" / "08_verification" / "regression_cases"
 
 
 def load_yaml(path: Path) -> Any:
@@ -157,4 +157,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

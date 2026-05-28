@@ -1,7 +1,7 @@
 id: SKILL_GENOS_SECURITY_AUDIT_001
 title: GEN.OS Security Audit Checklist
 version: 1.0.0
-layer: active
+layer: core
 domains:
 - genos
 - agent_orchestration
@@ -24,7 +24,8 @@ trigger_conditions:
 hard_constraints:
 - Preserve source-of-truth ranking.
 - Do not claim completion without validation evidence.
-- Use GEN.OS-specific commands, paths, policies, and gates only when GEN.OS context is active.
+- Use GEN.OS-specific commands, paths, policies, and gates only when GEN.OS context
+  is active.
 - Record misses in the skill refinery ledger when discovered.
 tier: active
 ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_GENOS_SECURITY_AUDIT_001.ledger.yaml
@@ -49,3 +50,12 @@ provenance:
   raw_source: 16_knowledge/external_collateral/genos_codex_skills_2026-05-17/raw/security-audit.md
   raw_sha256: 9b57b883a25d70567aa98e9a66615e062af4258ccebf37296334c883e84ddc3a
 improvement_history: []
+source: native
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

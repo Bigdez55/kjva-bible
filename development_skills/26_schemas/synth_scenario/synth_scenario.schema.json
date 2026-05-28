@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "synth_scenario",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "failure_mode": {
+      "type": "string"
+    },
+    "setup": {
+      "type": "array"
+    },
+    "expected_detection": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "failure_mode",
+    "setup"
+  ],
+  "additionalProperties": true
+}

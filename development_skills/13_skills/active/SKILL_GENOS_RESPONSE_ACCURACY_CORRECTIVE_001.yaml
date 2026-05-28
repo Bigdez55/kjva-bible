@@ -1,7 +1,7 @@
 id: SKILL_GENOS_RESPONSE_ACCURACY_CORRECTIVE_001
 title: Response Accuracy Corrective
 version: 1.0.0
-layer: active
+layer: core
 domains:
 - genos
 - audit
@@ -33,7 +33,7 @@ ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_GENOS_RESPONSE_ACCURAC
 related_skills:
 - SKILL_EXISTING_REPO_AUDIT_001
 - SKILL_TRUTH_STATE_CHECK_001
-- SKILL_SC_IMPROVEMENT_LOOP_001
+- SKILL_IMPROVEMENT_LOOP_001
 - SKILL_GLOBAL_CLAUDE_REPOSITORY_ACQUISITION_001
 - SKILL_AGENT_SURFACE_NORMALIZATION_001
 - SKILL_THREAD_TO_SKILL_REFINERY_CLOSURE_001
@@ -63,3 +63,12 @@ improvement_history:
   date: '2026-05-17'
   reason: Current-thread skill refinery closure added acquisition/agent-surface/thread-closure
     routing and accuracy safeguards.
+source: native
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

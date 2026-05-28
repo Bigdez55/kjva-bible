@@ -14,12 +14,13 @@ from atlas_paths import (
     ATLAS_GRAPH_ENGINE_REPORTS,
     GRAPH_EVIDENCE_DIR,
     GRAPH_SNAPSHOT,
+    ROOT,
     rel,
 )
 
 
 def _all_files() -> list[Path]:
-    proc = subprocess.run(["git", "ls-files"], text=True, capture_output=True, cwd=Path(__file__).resolve().parents[2])
+    proc = subprocess.run(["git", "ls-files"], text=True, capture_output=True, cwd=ROOT)
     files = [Path(line.strip()) for line in proc.stdout.splitlines() if line.strip()]
     return files
 
@@ -55,7 +56,7 @@ def build_graph(snapshot: dict | None = None) -> dict:
             "graph_id": f"AGE-{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')}",
         "generated_ts": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
         "sources": {
-            "source_of_truth": "19_truth_state/current.truth.yaml",
+            "source_of_truth": "platform/systems/19_truth_state/current.truth.yaml",
             "ingest": snapshot.get("run_id", "missing") if isinstance(snapshot, dict) else "missing",
         },
         "nodes": nodes,

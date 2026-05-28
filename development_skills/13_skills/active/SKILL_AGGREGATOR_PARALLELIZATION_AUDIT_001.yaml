@@ -1,0 +1,30 @@
+id: SKILL_AGGREGATOR_PARALLELIZATION_AUDIT_001
+name: Aggregator Parallelization Audit
+version: 1.0.0
+status: active
+purpose: '** Aggregator-Parallelization Audit - Triggers: \"aggregator gate slow\",
+  \"parallelize gates\", \"gold gate slow\", \"s'
+inputs:
+- context
+- codebase artifacts
+outputs:
+- validated output
+- audit report
+known_failure_modes:
+- missing context
+- incomplete artifacts
+validation_tests: []
+improvement_history:
+- version: 1.0.0
+  reason: Promoted from native CLI skill.
+title: Aggregator Parallelization Audit
+layer: quality
+domains:
+- quality
+- debugging
+playbook: 13_skills/active/SKILL_AGGREGATOR_PARALLELIZATION_AUDIT_001.playbook.md
+source: native_cli_promotion
+tier: active
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0

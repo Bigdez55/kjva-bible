@@ -1,7 +1,7 @@
 id: SKILL_ELSON_STOP_BOT_001
 title: Stop Autonomous Trading Bot
 version: 1.0.0
-layer: active
+layer: application
 domains:
 - elson
 - finance
@@ -57,3 +57,12 @@ provenance:
   - 2ef59201fdf18b6691458883aa67632505c2ab5235a7d5cb0323556803ba747d
   selected_source: 16_knowledge/external_collateral/elson_claude_skills_2026-05-17/raw/trading_bot_elson_tb2/stop-bot/SKILL.md
 improvement_history: []
+source: native
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

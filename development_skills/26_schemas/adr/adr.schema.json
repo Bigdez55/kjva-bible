@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "adr",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "date": {
+      "type": "string"
+    },
+    "context": {
+      "type": "string"
+    },
+    "decision": {
+      "type": "string"
+    },
+    "consequences": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "title",
+    "status"
+  ],
+  "additionalProperties": true
+}

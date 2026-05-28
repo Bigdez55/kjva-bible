@@ -1,7 +1,7 @@
 id: SKILL_ELSON_START_BOT_001
 title: Start Autonomous Trading Bot
 version: 1.0.0
-layer: active
+layer: application
 domains:
 - elson
 - finance
@@ -57,3 +57,12 @@ provenance:
   - 977d0fdfd3257653254493b1b5097fb8dcda2589305308dbfef2ae3f96fc375f
   selected_source: 16_knowledge/external_collateral/elson_claude_skills_2026-05-17/raw/trading_bot_elson_tb2/start-bot/SKILL.md
 improvement_history: []
+source: native
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

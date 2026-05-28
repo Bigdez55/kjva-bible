@@ -2,7 +2,6 @@ id: SKILL_DRIFT_DETECTION_001
 name: Drift Detection
 version: 1.0.0
 status: active
-domain: drift
 purpose: Detect drift between code, registries, diagrams, ADRs, traceability, and
   truth state.
 inputs:
@@ -25,3 +24,13 @@ layer: drift
 domains:
 - drift
 playbook: 13_skills/active/SKILL_DRIFT_DETECTION_001.playbook.md
+source: native
+tier: active
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

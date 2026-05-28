@@ -13,8 +13,11 @@ Tiered onboarding sequence for any repo adopting Development_Skills. The four ti
 
 ## Preconditions
 - `target` is a git repository (or local-only with `.git/` initialized) on a clean branch.
-- `target/development_skills/` exists and was synced from upstream Development_Skills (run [25_automation/sync_scripts/sync_to_child_repo.py](../../25_automation/sync_scripts/sync_to_child_repo.py) first if missing).
-- Central Development_Skills working tree is clean and `python3 25_automation/registry_sync/sync_registries.py --check` is green.
+- `target/development_skills/` exists and was synced from upstream Development_Skills (run `infrastructure/scripts/sync_scripts/sync_to_child_repo.py --target <target>` first if missing).
+- Central Development_Skills working tree is clean and `python3 infrastructure/scripts/registry_sync/sync_registries.py --check` is green.
+- After sync, verify `target/.claude/universal/` exists and `target/.claude/commands/` has ≥1 `apex:*.md` file. If either is missing, the sync script has a path bug — do not proceed; fix the script first.
+- `target/CLAUDE.md` exists and references `@AGENTS.md`. Create it if missing.
+- `target/.claude/settings.json` exists with repo-scoped permissions. Create from template if missing.
 
 ## Tiers
 

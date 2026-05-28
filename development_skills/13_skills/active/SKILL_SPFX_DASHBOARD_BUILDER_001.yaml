@@ -1,0 +1,29 @@
+id: SKILL_SPFX_DASHBOARD_BUILDER_001
+title: spfx-dashboard-builder
+version: 1.0.0
+layer: application
+domains:
+- microsoft_365
+- frontend
+- ipos
+tier: starter
+status: active
+source: migrated_user
+aliases:
+- spfx-dashboard-builder
+playbook: platform/sdlc/13_skills/active/SKILL_SPFX_DASHBOARD_BUILDER_001.playbook.md
+runtime_projection: true
+runtime_projection_targets:
+- claude
+- codex
+- gemini
+refinement: auto
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []
+skill_number: 536

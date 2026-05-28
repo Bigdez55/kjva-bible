@@ -1,7 +1,7 @@
 id: SKILL_ELSON_ROLLBACK_001
 title: Cloud Run Emergency Rollback
 version: 1.0.0
-layer: active
+layer: verification
 domains:
 - audit
 - cloud_ops
@@ -58,3 +58,12 @@ provenance:
   - 1bd67cb00bb96c6081a34895474d8ccf2548f9c496c58642f36160b448c0f22c
   selected_source: 16_knowledge/external_collateral/elson_claude_skills_2026-05-17/raw/trading_bot_elson_tb2/rollback/SKILL.md
 improvement_history: []
+source: native
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

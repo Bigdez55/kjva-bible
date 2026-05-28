@@ -3,7 +3,6 @@ name: Diagram Render
 version: 1.0.0
 status: active
 playbook: 13_skills/active/SKILL_DIAGRAM_RENDER_001.playbook.md
-domain: diagrams
 purpose: Validate and render every .mmd via mermaid-cli; emit svg/png; update diagram
   registry.
 inputs:
@@ -24,3 +23,13 @@ title: Diagram Render
 layer: diagrams
 domains:
 - diagrams
+source: native
+tier: active
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

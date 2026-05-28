@@ -1,0 +1,28 @@
+id: SKILL_GH_FIX_CI_001
+name: Gh Fix Ci
+version: 1.0.0
+status: active
+purpose: Diagnose and fix failing GitHub Actions CI pipelines.
+inputs:
+- context
+- artifacts
+outputs:
+- structured output
+known_failure_modes:
+- missing context
+validation_tests: []
+improvement_history:
+- version: 1.0.0
+  reason: Promoted from Codex plugin skill.
+title: Gh Fix Ci
+layer: ci_cd
+domains:
+- ci_cd
+- github
+- devops
+playbook: 13_skills/active/SKILL_GH_FIX_CI_001.playbook.md
+source: codex_plugin_promotion
+tier: active
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0

@@ -1,0 +1,7 @@
+# Template: retrospective
+# Replace placeholders. See 26_schemas/retrospective/ if a schema exists.
+id: "{id}"
+name: "{name}"
+status: draft
+created: "{date}"
+owner: "{owner}"

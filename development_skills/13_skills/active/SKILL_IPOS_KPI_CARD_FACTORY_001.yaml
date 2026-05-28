@@ -1,7 +1,7 @@
 id: SKILL_IPOS_KPI_CARD_FACTORY_001
 title: IPOS Kpi Card Factory
 version: 1.0.0
-layer: active
+layer: application
 domains:
 - ipos
 - dashboard
@@ -25,7 +25,8 @@ trigger_conditions:
 hard_constraints:
 - Preserve source-of-truth ranking.
 - Do not claim completion without validation evidence.
-- Use imported IPOS patterns only when the request is dashboard, KPI, SharePoint, paratransit, or frontend-dashboard related.
+- Use imported IPOS patterns only when the request is dashboard, KPI, SharePoint,
+  paratransit, or frontend-dashboard related.
 - Record misses in the skill refinery ledger when discovered.
 tier: active
 ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_IPOS_KPI_CARD_FACTORY_001.ledger.yaml
@@ -51,3 +52,12 @@ provenance:
   raw_source: 16_knowledge/external_collateral/ipos_claude_skills_2026-05-17/raw/kpi-card-factory/SKILL.md
   raw_sha256: c62ec6aee12c720a6fed6cb0ba284975f10010d625b3affc5fcb4817ed76f4fb
 improvement_history: []
+source: native
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

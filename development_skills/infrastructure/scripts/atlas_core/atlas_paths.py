@@ -5,10 +5,10 @@ from __future__ import annotations
 from pathlib import Path
 
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[3]
 TODAY = "2026-05-17"
 
-ATLAS_EVIDENCE = ROOT / "23_evidence" / "atlas_platform"
+ATLAS_EVIDENCE = ROOT / "platform" / "systems" / "23_evidence" / "atlas_platform"
 STATUS_DIR = ATLAS_EVIDENCE / "status"
 INVENTORY_DIR = ATLAS_EVIDENCE / "inventory"
 GATES_DIR = ATLAS_EVIDENCE / "gates"
@@ -25,18 +25,18 @@ VAULT_EVIDENCE_DIR = ATLAS_EVIDENCE / "vault"
 TENANT_EVIDENCE_DIR = ATLAS_EVIDENCE / "tenants"
 REPO_EVENTS_DIR = ATLAS_EVIDENCE / "repo_events"
 
-GENERATED_DOC = ROOT / "11_documentation" / "generated" / "ATLAS_PLATFORM_STATUS.generated.md"
-ATLAS_GRAPH_ENGINE_GENERATED_DOC = ROOT / "11_documentation" / "generated" / "ATLAS_GRAPH_ENGINE_STATUS.generated.md"
-ATLAS_KNOWLEDGE_VAULT_GENERATED_DOC = ROOT / "11_documentation" / "generated" / "ATLAS_KNOWLEDGE_VAULT_STATUS.generated.md"
+GENERATED_DOC = ROOT / "platform" / "sdlc" / "11_documentation" / "generated" / "ATLAS_PLATFORM_STATUS.generated.md"
+ATLAS_GRAPH_ENGINE_GENERATED_DOC = ROOT / "platform" / "sdlc" / "11_documentation" / "generated" / "ATLAS_GRAPH_ENGINE_STATUS.generated.md"
+ATLAS_KNOWLEDGE_VAULT_GENERATED_DOC = ROOT / "platform" / "sdlc" / "11_documentation" / "generated" / "ATLAS_KNOWLEDGE_VAULT_STATUS.generated.md"
 
 CONTEXT_PACKET = ROOT / "platform" / "systems" / "42_context_compiler" / "output" / "generated" / "CP-super-c-atlas-intelligence-core.yaml"
 PLATFORM_CONTEXT_PACKET = ROOT / "platform" / "systems" / "42_context_compiler" / "output" / "generated" / "CP-super-c-atlas-platform-core.yaml"
 
-RELEASE_REPORT = ROOT / "09_release" / "release_evidence" / f"{TODAY}_super_c_atlas_intelligence_core_v0_1_report.md"
-INTELLIGENCE_CORE_REPORT = ROOT / "09_release" / "release_evidence" / f"{TODAY}_super_c_atlas_intelligence_core_v0_2_report.md"
-PLATFORM_RELEASE_REPORT = ROOT / "09_release" / "release_evidence" / f"{TODAY}_super_c_atlas_platform_core_v0_1_report.md"
+RELEASE_REPORT = ROOT / "platform" / "sdlc" / "09_release" / "release_evidence" / f"{TODAY}_super_c_atlas_intelligence_core_v0_1_report.md"
+INTELLIGENCE_CORE_REPORT = ROOT / "platform" / "sdlc" / "09_release" / "release_evidence" / f"{TODAY}_super_c_atlas_intelligence_core_v0_2_report.md"
+PLATFORM_RELEASE_REPORT = ROOT / "platform" / "sdlc" / "09_release" / "release_evidence" / f"{TODAY}_super_c_atlas_platform_core_v0_1_report.md"
 
-VERIFICATION_GATE_DIR = ROOT / "08_verification" / "gate_results"
+VERIFICATION_GATE_DIR = ROOT / "platform" / "sdlc" / "08_verification" / "gate_results"
 
 ATLAS_GRAPH_ENGINE_ROOT = ROOT / "platform" / "systems" / "43_atlas_graph_engine"
 ATLAS_GRAPH_ENGINE_GRAPHS = ATLAS_GRAPH_ENGINE_ROOT / "graphs"
@@ -56,6 +56,24 @@ FLOW_LOGS_DIR = FLOW_DIR / "logs"
 def rel(path: Path) -> str:
     """Return a stable repo-relative path."""
     return path.relative_to(ROOT).as_posix()
+
+
+def is_canonical_registry(path: Path) -> bool:
+    """Return true for live registry roots used by ATLAS evidence."""
+    if ".git" in path.parts or ".git" in path.name:
+        return False
+    relative = path.relative_to(ROOT)
+    parts = relative.parts
+    if len(parts) >= 2 and parts[:2] in {("platform", "sdlc"), ("platform", "systems")}:
+        return True
+    if parts[:1] == ("schemas",):
+        return True
+    return parts == ("infrastructure", "scripts", "automation.registry.yaml")
+
+
+def iter_canonical_registries() -> list[Path]:
+    """Return registry files from current canonical platform/schema roots."""
+    return sorted(p for p in ROOT.rglob("*.registry.yaml") if is_canonical_registry(p))
 
 
 def ensure_output_dirs() -> None:

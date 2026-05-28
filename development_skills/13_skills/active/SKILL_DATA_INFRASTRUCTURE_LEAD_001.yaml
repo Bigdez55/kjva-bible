@@ -1,0 +1,34 @@
+id: SKILL_DATA_INFRASTRUCTURE_LEAD_001
+title: data infrastructure lead
+version: 1.0.0
+layer: data
+domains:
+- data_infrastructure
+- platform
+tier: starter
+status: active
+source: promoted_external
+aliases:
+- data-infrastructure-lead
+playbook: platform/sdlc/13_skills/active/SKILL_DATA_INFRASTRUCTURE_LEAD_001.playbook.md
+runtime_projection: true
+runtime_projection_targets:
+- claude
+- codex
+- gemini
+refinement: auto
+skill_number: 1061
+provenance:
+  imported_from_runtime: agents
+  original_skill_path: /Users/desmondearly/.agents/skills/data-infrastructure-lead/SKILL.md
+  source_archive: platform/sdlc/16_knowledge/external_collateral/local_runtime_skills_2026-05-27/agents/data-infrastructure-lead
+  imported_on: '2026-05-27'
+  import_script: infrastructure/scripts/skill_migration/import_local_runtime_skills.py
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

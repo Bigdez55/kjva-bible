@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CommandPlaybook",
+  "description": "Validates a command playbook that defines the steps, inputs, and outputs for an /apex command.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "command", "purpose", "inputs", "steps", "outputs", "success_criteria"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for this playbook"
+    },
+    "command": {
+      "type": "string",
+      "pattern": "^/apex:",
+      "description": "The slash command this playbook implements, must start with /apex:"
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 10
+    },
+    "inputs": {
+      "type": "object",
+      "description": "Named input parameters and their descriptions",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "preconditions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "steps": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "outputs": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "success_criteria": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "failure_modes": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

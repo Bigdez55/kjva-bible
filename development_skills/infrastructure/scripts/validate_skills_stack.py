@@ -13,15 +13,15 @@ ROOT = Path(__file__).resolve().parents[2]
 
 
 REQUIRED_PATHS = [
-    "16_knowledge/external_collateral/skills_stack_2026-05-17/source_index.yaml",
-    "16_knowledge/external_collateral/skills_stack_2026-05-17/native_mapping_report.md",
+    "platform/sdlc/16_knowledge/external_collateral/skills_stack_2026-05-17/source_index.yaml",
+    "platform/sdlc/16_knowledge/external_collateral/skills_stack_2026-05-17/native_mapping_report.md",
     "platform/systems/37_command_protocol/trigger_router.yaml",
     "platform/sdlc/13_skills/skill_refinery/trigger_router.md",
     "platform/sdlc/13_skills/skill_refinery/trigger_router.yaml",
-    "24_prompt_library/reusable_prompts/trigger_router_instructions.md",
+    "platform/systems/24_prompt_library/reusable_prompts/trigger_router_instructions.md",
     "schemas/trigger_router/trigger_router.schema.yaml",
     "platform/systems/43_atlas_graph_engine/graphs/trigger_skill.graph.json",
-    "44_atlas_knowledge_vault/07_skills/Trigger_Router.md",
+    "platform/systems/44_atlas_knowledge_vault/07_skills/Trigger_Router.md",
     "platform/systems/37_command_protocol/atlas_intelligence_routing.yaml",
     "platform/systems/37_command_protocol/platform_build_routing.yaml",
     "platform/systems/37_command_protocol/existing_repo_audit_routing.yaml",
@@ -29,8 +29,8 @@ REQUIRED_PATHS = [
     "platform/systems/37_command_protocol/source_truth_drift_routing.yaml",
     "platform/sdlc/13_skills/skill_refinery/master_ledger.yaml",
     "platform/sdlc/13_skills/skill_refinery/recurrence_escalation.yaml",
-    "14_templates/platform_build/platform_artifact_manifest.yaml",
-    "14_templates/final_reports/skills_stack_v7_final_report.md",
+    "platform/sdlc/14_templates/platform_build/platform_artifact_manifest.yaml",
+    "platform/sdlc/14_templates/final_reports/skills_stack_v7_final_report.md",
 ]
 
 REQUIRED_COMMANDS = [
@@ -138,7 +138,7 @@ def main() -> int:
         failures.extend(check_path(f"platform/systems/37_command_protocol/slash_commands/atlas_{slug}.md"))
         failures.extend(check_path(f"platform/systems/37_command_protocol/command_playbooks/atlas_{slug}.playbook.md"))
     for tid in ["REG-006", "REG-007", "REG-008", "REG-009", "REG-010"]:
-        failures.extend(check_path(f"08_verification/regression_cases/{tid}.yaml"))
+        failures.extend(check_path(f"platform/sdlc/08_verification/regression_cases/{tid}.yaml"))
 
     for rel in [
         "schemas/skill/skill.schema.json",
@@ -151,7 +151,9 @@ def main() -> int:
     ]:
         failures.extend(validate_json(ROOT / rel))
 
-    source_index = yaml.safe_load((ROOT / "16_knowledge/external_collateral/skills_stack_2026-05-17/source_index.yaml").read_text())
+    source_index = yaml.safe_load(
+        (ROOT / "platform/sdlc/16_knowledge/external_collateral/skills_stack_2026-05-17/source_index.yaml").read_text()
+    )
     if len(source_index.get("sources", []) or []) < 11:
         failures.append("source_index.yaml must list all 11 source files")
 

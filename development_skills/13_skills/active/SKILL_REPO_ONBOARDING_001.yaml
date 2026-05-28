@@ -2,7 +2,6 @@ id: SKILL_REPO_ONBOARDING_001
 name: Repo Onboarding
 version: 1.0.0
 status: active
-domain: repo_auditing
 purpose: Tiered onboarding sequence for any repo adopting Development_Skills. Captures
   current truth (T1), sets direction (T2), runs the slice loop (T3), and maintains
   hygiene (T4).
@@ -36,3 +35,13 @@ layer: repo_auditing
 domains:
 - repo_auditing
 playbook: 13_skills/active/SKILL_REPO_ONBOARDING_001.playbook.md
+source: native
+tier: active
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

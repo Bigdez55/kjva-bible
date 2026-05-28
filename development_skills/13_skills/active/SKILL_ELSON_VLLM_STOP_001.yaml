@@ -1,7 +1,7 @@
 id: SKILL_ELSON_VLLM_STOP_001
 title: "Stop vLLM VM \u2014 Cost Saver (~$1.50/hr)"
 version: 1.0.0
-layer: active
+layer: integration
 domains:
 - ai_model
 - elson
@@ -57,3 +57,12 @@ provenance:
   - 4882b917561f2eb01173e2a810fa80d577a874825e718c2f17befc0eeab5a420
   selected_source: 16_knowledge/external_collateral/elson_claude_skills_2026-05-17/raw/trading_bot_elson_tb2/vllm-stop/SKILL.md
 improvement_history: []
+source: native
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "RepoTwin",
+  "description": "Validates the sync_status.yaml file present in each repo twin, tracking ingestion and snapshot state.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["repo_name", "status"],
+  "properties": {
+    "repo_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": ["pending_ingestion", "synced", "stale", "archived"]
+    },
+    "last_synced": {
+      "type": "string",
+      "format": "date"
+    },
+    "component_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "has_architecture_snapshot": {
+      "type": "boolean"
+    },
+    "has_component_graph": {
+      "type": "boolean"
+    },
+    "has_dependency_graph": {
+      "type": "boolean"
+    }
+  }
+}

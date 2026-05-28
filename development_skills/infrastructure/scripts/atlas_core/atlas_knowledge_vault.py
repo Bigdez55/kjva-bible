@@ -6,11 +6,11 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from atlas_models import read_yaml, write_yaml
-from atlas_paths import ATLAS_KNOWLEDGE_VAULT_MANIFEST, ATLAS_KNOWLEDGE_VAULT_NOTES, ATLAS_KNOWLEDGE_VAULT_REPORTS
+from atlas_paths import ATLAS_KNOWLEDGE_VAULT_MANIFEST, ATLAS_KNOWLEDGE_VAULT_NOTES, ATLAS_KNOWLEDGE_VAULT_REPORTS, ROOT
 
 
 def _repo_path(value: str) -> Path:
-    return Path(__file__).resolve().parents[2] / value
+    return ROOT / value
 
 
 def _note(path: str, title: str, body: str, created_ts: str) -> str:
@@ -26,7 +26,7 @@ def _note(path: str, title: str, body: str, created_ts: str) -> str:
         "",
         body,
         "",
-        f"source: `23_evidence/{path}`",
+        f"source: `platform/systems/23_evidence/{path}`",
         "",
     ]
     return "\n".join(lines)
@@ -58,7 +58,7 @@ def build_vault_payload(graph: dict | None = None, status: dict | None = None) -
                 "id": "proof",
                 "title": "Atlas Proof Path",
                 "filename": "200_Atlas_Proof.md",
-                "body": "## Proof Evidence\n\nGenerated from `36_proof_matrix`, `20_drift_detection`, and gate outputs.",
+                "body": "## Proof Evidence\n\nGenerated from `platform/systems/36_proof_matrix`, `platform/systems/20_drift_detection`, and gate outputs.",
             },
         ],
     }
@@ -124,7 +124,7 @@ def write_vault(payload: dict, run_id: str, apply_latest: bool = False) -> tuple
     return note_paths + [report_path, ATLAS_KNOWLEDGE_VAULT_MANIFEST], report_path
 
 
-def payload_from_files(graph_payload: dict | None = None, status_path: str = "23_evidence/atlas_platform/status/atlas_status.json") -> dict:
+def payload_from_files(graph_payload: dict | None = None, status_path: str = "platform/systems/23_evidence/atlas_platform/status/atlas_status.json") -> dict:
     graph = graph_payload if isinstance(graph_payload, dict) else {}
     status = read_yaml(_repo_path(status_path))
     return build_vault_payload(graph=graph, status=status if isinstance(status, dict) else {})

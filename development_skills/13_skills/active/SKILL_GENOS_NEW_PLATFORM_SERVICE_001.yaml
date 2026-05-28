@@ -1,7 +1,7 @@
 id: SKILL_GENOS_NEW_PLATFORM_SERVICE_001
 title: "GEN.OS New Platform Service \u2014 Python FastAPI Template"
 version: 1.0.0
-layer: active
+layer: core
 domains:
 - genos
 - api_contracts
@@ -20,7 +20,8 @@ trigger_conditions:
 hard_constraints:
 - Preserve source-of-truth ranking.
 - Do not claim completion without validation evidence.
-- Use GEN.OS-specific commands, paths, policies, and gates only when GEN.OS context is active.
+- Use GEN.OS-specific commands, paths, policies, and gates only when GEN.OS context
+  is active.
 - Record misses in the skill refinery ledger when discovered.
 tier: active
 ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_GENOS_NEW_PLATFORM_SERVICE_001.ledger.yaml
@@ -45,3 +46,12 @@ provenance:
   raw_source: 16_knowledge/external_collateral/genos_codex_skills_2026-05-17/raw/new-platform-service.md
   raw_sha256: 26c75063833707aa55fe57c58b6c54cd67cebf114eddfcdefe6dc52b059d0a8b
 improvement_history: []
+source: native
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

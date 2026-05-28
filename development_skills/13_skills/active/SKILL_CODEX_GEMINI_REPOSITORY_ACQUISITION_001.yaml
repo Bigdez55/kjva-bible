@@ -1,7 +1,7 @@
 id: SKILL_CODEX_GEMINI_REPOSITORY_ACQUISITION_001
 title: Codex and Gemini Repository Acquisition
 version: 1.0.0
-layer: active
+layer: application
 domains:
 - repo_auditing
 - codex
@@ -13,7 +13,7 @@ playbook: 13_skills/active/SKILL_CODEX_GEMINI_REPOSITORY_ACQUISITION_001.playboo
 validation_tests:
 - 13_skills/skill_refinery/validation_tests/TEST_ASSISTANT_SURFACE_ACQUISITION_001.yaml
 status: active
-skill_number: 140
+skill_number: 1
 source_documents:
 - 16_knowledge/external_collateral/all_codex_gemini_dirs_2026-05-17/ACQUISITION_REPORT.md
 - 16_knowledge/external_collateral/all_codex_gemini_dirs_2026-05-17/source_index.yaml
@@ -27,8 +27,8 @@ trigger_conditions:
 hard_constraints:
 - Default scope is OneDrive and GitHub repository roots only unless the user explicitly
   authorizes user-level caches.
-- Do not scan or preserve user-level ~/.codex, ~/.gemini, Downloads, or unrelated home
-  directories by default.
+- Do not scan or preserve user-level ~/.codex, ~/.gemini, Downloads, or unrelated
+  home directories by default.
 - Preserve safe raw text and index binary, sensitive, or stateful files without copying
   their contents.
 - Report scope roots, exclusion boundaries, category counts, copied count, indexed-only
@@ -81,3 +81,12 @@ improvement_history:
   date: '2026-05-17'
   reason: Created after user corrected scope drift and required Codex/Gemini searches
     to stay bounded to OneDrive and GitHub repositories.
+source: native
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

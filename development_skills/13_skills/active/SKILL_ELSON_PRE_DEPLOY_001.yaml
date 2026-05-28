@@ -1,7 +1,7 @@
 id: SKILL_ELSON_PRE_DEPLOY_001
 title: Pre-Deployment Readiness Check
 version: 1.0.0
-layer: active
+layer: verification
 domains:
 - audit
 - cloud_ops
@@ -60,3 +60,12 @@ provenance:
   - ed738388a886167a96d65f3a1d75032264def11aa51bc635744c986a88882419
   selected_source: 16_knowledge/external_collateral/elson_claude_skills_2026-05-17/raw/trading_bot_elson_tb2/pre-deploy/SKILL.md
 improvement_history: []
+source: native
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

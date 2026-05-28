@@ -1,0 +1,13 @@
+id: API_0001
+name: ""
+method: GET
+path: ""
+consumer: ""
+provider: ""
+request_schema: {}
+response_schema: {}
+errors: []
+auth: ""
+rate_limits: ""
+linked_requirements: []
+linked_tests: []

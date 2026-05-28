@@ -54,7 +54,7 @@ related_skills:
 - SKILL_TRUTH_STATE_CHECK_001
 - SKILL_SOURCE_TRUTH_RECONCILIATION_001
 - SKILL_PROOF_MATRIX_001
-- SKILL_APEX_VERIFIED_MACHINE_ENCODING_001
+- SKILL_VERIFIED_MACHINE_ENCODING_001
 router_intents:
 - build
 - platform
@@ -136,3 +136,12 @@ improvement_history:
   date: '2026-05-17'
   reason: Current-thread skill refinery closure added acquisition/agent-surface/thread-closure
     routing and accuracy safeguards.
+source: native
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

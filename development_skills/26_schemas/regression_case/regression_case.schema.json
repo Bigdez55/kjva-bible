@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "RegressionCase",
+  "type": "object",
+  "required": [
+    "test_id",
+    "skill_id",
+    "description",
+    "input_scenario",
+    "expected_behavior",
+    "pass_criteria"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "test_id": {
+      "type": "string"
+    },
+    "skill_id": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "input_scenario": {
+      "type": "string"
+    },
+    "expected_behavior": {
+      "type": "array"
+    },
+    "expected_intents": {
+      "type": "array"
+    },
+    "failure_modes_to_catch": {
+      "type": "array"
+    },
+    "required_output_sections": {
+      "type": "array"
+    },
+    "forbidden_behaviors": {
+      "type": "array"
+    },
+    "pass_criteria": {
+      "type": "array"
+    },
+    "severity": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    }
+  }
+}

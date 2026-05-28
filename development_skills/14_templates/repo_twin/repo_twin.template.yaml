@@ -1,0 +1,7 @@
+# Template: repo_twin
+# Replace placeholders. See 26_schemas/repo_twin/ if a schema exists.
+id: "{id}"
+name: "{name}"
+status: draft
+created: "{date}"
+owner: "{owner}"

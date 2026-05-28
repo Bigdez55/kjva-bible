@@ -1,0 +1,7 @@
+# Template: twin_snapshot
+# Replace placeholders. See 26_schemas/twin_snapshot/ if a schema exists.
+id: "{id}"
+name: "{name}"
+status: draft
+created: "{date}"
+owner: "{owner}"

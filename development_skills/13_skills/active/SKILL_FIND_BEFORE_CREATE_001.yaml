@@ -2,7 +2,6 @@ id: SKILL_FIND_BEFORE_CREATE_001
 name: Find Before Create
 version: 1.0.0
 status: active
-domain: repo_auditing
 purpose: Before any coding agent creates a file or folder, force a structured search
   for existing canonical locations. Prevents the orphan-folder / duplicate-work failure
   mode where an agent abandons established work and writes the same artifact in a
@@ -50,3 +49,13 @@ trigger_conditions:
 hard_constraints:
 - Before creating imported skills, check whether an equivalent active skill should
   be updated or consolidated instead.
+source: native
+tier: active
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

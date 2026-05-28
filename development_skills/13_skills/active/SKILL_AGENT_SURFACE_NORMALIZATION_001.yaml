@@ -1,7 +1,7 @@
 id: SKILL_AGENT_SURFACE_NORMALIZATION_001
 title: Agent Surface Normalization
 version: 1.1.0
-layer: active
+layer: application
 domains:
 - agents
 - claude
@@ -27,10 +27,10 @@ hard_constraints:
 - Deduplicate by category and hash while preserving all source occurrences.
 - Keep agent-memory and session files as context/evidence unless explicitly promoted
   into active skills or personas.
-- Distinguish external runtime Skill tool registries from repository-native
-  Development_Skills playbooks.
-- Apply repository-native `SKILL_*` YAML/playbooks as disciplines when selected,
-  even when they are not tool-callable in the current runtime.
+- Distinguish external runtime Skill tool registries from repository-native Development_Skills
+  playbooks.
+- Apply repository-native `SKILL_*` YAML/playbooks as disciplines when selected, even
+  when they are not tool-callable in the current runtime.
 tier: active
 ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_AGENT_SURFACE_NORMALIZATION_001.ledger.yaml
 related_skills:
@@ -73,3 +73,12 @@ improvement_history:
 - version: 1.0.0
   date: '2026-05-17'
   reason: Created from current-thread correction pattern and durable workflow need.
+source: native
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

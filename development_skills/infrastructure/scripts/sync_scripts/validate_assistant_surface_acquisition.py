@@ -8,9 +8,9 @@ from pathlib import Path
 
 import yaml
 
-ROOT = Path(__file__).resolve().parents[2]
-RUN = ROOT / "16_knowledge" / "external_collateral" / "assistant_surfaces_2026-05-20"
-REGISTRY = ROOT / "18_registry" / "agent_skill_imports"
+ROOT = Path(__file__).resolve().parents[3]
+RUN = ROOT / "platform" / "sdlc" / "16_knowledge" / "external_collateral" / "assistant_surfaces_2026-05-20"
+REGISTRY = ROOT / "platform" / "systems" / "18_registry" / "agent_skill_imports"
 
 
 def load_yaml(path: Path):

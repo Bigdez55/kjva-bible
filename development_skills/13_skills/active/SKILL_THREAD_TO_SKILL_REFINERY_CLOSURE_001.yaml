@@ -1,7 +1,7 @@
 id: SKILL_THREAD_TO_SKILL_REFINERY_CLOSURE_001
 title: Thread to Skill Refinery Closure
 version: 1.0.0
-layer: active
+layer: governance
 domains:
 - skill_refinery
 - continuous_improvement
@@ -64,3 +64,12 @@ improvement_history:
 - version: 1.0.0
   date: '2026-05-17'
   reason: Created from current-thread correction pattern and durable workflow need.
+source: native
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

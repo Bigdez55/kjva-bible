@@ -1,7 +1,7 @@
 id: SKILL_GENOS_WAL_DEBUG_001
 title: "GEN.OS WAL Debug \u2014 XSTORE Crash Recovery Diagnosis"
 version: 1.0.0
-layer: active
+layer: core
 domains:
 - genos
 - storage
@@ -18,7 +18,8 @@ trigger_conditions:
 hard_constraints:
 - Preserve source-of-truth ranking.
 - Do not claim completion without validation evidence.
-- Use GEN.OS-specific commands, paths, policies, and gates only when GEN.OS context is active.
+- Use GEN.OS-specific commands, paths, policies, and gates only when GEN.OS context
+  is active.
 - Record misses in the skill refinery ledger when discovered.
 tier: active
 ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_GENOS_WAL_DEBUG_001.ledger.yaml
@@ -43,3 +44,12 @@ provenance:
   raw_source: 16_knowledge/external_collateral/genos_codex_skills_2026-05-17/raw/wal-debug.md
   raw_sha256: 8733452942f1be8120df2583ad68c5e118552985828921b22fa089ad142dd81d
 improvement_history: []
+source: native
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

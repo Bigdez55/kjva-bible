@@ -3,8 +3,20 @@
 import sys, json, yaml
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
-SCHEMA = ROOT / "26_schemas" / "skill" / "skill.schema.json"
+ROOT = Path(__file__).resolve().parents[3]
+SCHEMA = ROOT / "schemas" / "skill" / "skill.schema.json"
+
+PATH_ALIASES = {
+    "08_verification/": "platform/sdlc/08_verification/",
+    "13_skills/": "platform/sdlc/13_skills/",
+    "apps/atlas/": "apps/frontend/atlas/",
+}
+
+def normalize_ref(raw: str) -> str:
+    for old, new in PATH_ALIASES.items():
+        if raw.startswith(old):
+            return new + raw[len(old):]
+    return raw
 
 def main():
     if len(sys.argv) < 2:
@@ -21,11 +33,12 @@ def main():
     failures = []
     for t in tests:
         raw = str(t)
+        normalized = normalize_ref(raw)
         candidates = []
-        if raw.endswith(".yaml") or "/" in raw:
-            candidates.append(ROOT / raw)
-        candidates.append(ROOT / "08_verification" / "skill_tests" / f"{raw}.yaml")
-        candidates.append(ROOT / "08_verification" / "regression_cases" / f"{raw}.yaml")
+        if normalized.endswith((".yaml", ".ts", ".tsx")) or "/" in normalized:
+            candidates.append(ROOT / normalized)
+        candidates.append(ROOT / "platform" / "sdlc" / "08_verification" / "skill_tests" / f"{normalized}.yaml")
+        candidates.append(ROOT / "platform" / "sdlc" / "08_verification" / "regression_cases" / f"{normalized}.yaml")
         if not any(c.exists() for c in candidates):
             failures.append(t)
     if failures:

@@ -193,8 +193,8 @@ def cmd_inventory(args: argparse.Namespace) -> dict:
     if not args.check:
         write_inventory(inventory)
         changed = [
-            Path("23_evidence/atlas_platform/inventory/atlas_inventory.json"),
-            Path("23_evidence/atlas_platform/inventory/atlas_inventory.md"),
+            Path("platform/systems/23_evidence/atlas_platform/inventory/atlas_inventory.json"),
+            Path("platform/systems/23_evidence/atlas_platform/inventory/atlas_inventory.md"),
         ]
     output = inventory_markdown(inventory) if args.format != "json" else None
     resp = response_model("inventory", "pass", run_id(), changed_files=changed, evidence=[str(rel(COMMAND_LATEST))], start_ts=start)
@@ -377,7 +377,7 @@ def cmd_knowledge_vault(args: argparse.Namespace) -> dict:
     if not graph_payload:
         graph_payload = _load_graph_from_disk()
 
-    vault_payload = payload_from_files(graph_payload=graph_payload, status_path="23_evidence/atlas_platform/status/atlas_status.json")
+    vault_payload = payload_from_files(graph_payload=graph_payload, status_path="platform/systems/23_evidence/atlas_platform/status/atlas_status.json")
     if args.check:
         resp = response_model(
             "knowledge_vault",
@@ -419,8 +419,8 @@ def cmd_validate(args: argparse.Namespace) -> dict:
 
     payload = run_safe_gates()
     changed = [Path(item) for item in [
-        ROOT / "08_verification" / "gate_results" / "atlas_platform_core_safe_gates.yaml",
-        ROOT / "08_verification" / "gate_results" / "atlas_platform_core_safe_gates.json",
+        ROOT / "platform" / "sdlc" / "08_verification" / "gate_results" / "atlas_platform_core_safe_gates.yaml",
+        ROOT / "platform" / "sdlc" / "08_verification" / "gate_results" / "atlas_platform_core_safe_gates.json",
     ]]
     changed.extend([p for p in GATE_LOG_DIR.glob("*.txt")])
 
@@ -623,7 +623,7 @@ def cmd_flow(args: argparse.Namespace) -> dict:
 
 
 def load_status_if_available() -> dict:
-    path = ROOT / "23_evidence" / "atlas_platform" / "status" / "atlas_status.json"
+    path = ROOT / "platform" / "systems" / "23_evidence" / "atlas_platform" / "status" / "atlas_status.json"
     if path.exists():
         data = read_yaml(path)
         return data if isinstance(data, dict) else {}

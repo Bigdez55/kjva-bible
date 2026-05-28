@@ -3,7 +3,6 @@ name: Registry Sync
 version: 1.0.0
 status: active
 playbook: 13_skills/active/SKILL_REGISTRY_SYNC_001.playbook.md
-domain: registry_sync
 purpose: Derive every *.registry.yaml from disk so registry never lies about disk.
 inputs:
 - top-level directory listing
@@ -23,3 +22,13 @@ title: Registry Sync
 layer: registry_sync
 domains:
 - registry_sync
+source: native
+tier: active
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

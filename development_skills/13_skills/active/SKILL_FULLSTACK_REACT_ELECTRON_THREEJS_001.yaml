@@ -21,6 +21,11 @@ hard_constraints:
 - Preserve source-of-truth ranking.
 - Do not claim completion without validation evidence.
 - Record misses in the skill refinery ledger when discovered.
+- EVERY Electron main process MUST call app.requestSingleInstanceLock() at module
+  scope before any app.whenReady() logic. Missing this is a P1 regression — it
+  causes a new process and duplicate server on every launch/dock-click.
+- The second-instance event handler MUST restore and focus the existing window.
+- The activate handler (macOS) MUST show/focus the existing window, not create a new one.
 tier: active
 ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_FULLSTACK_REACT_ELECTRON_THREEJS_001.ledger.yaml
 related_skills: []
@@ -38,12 +43,18 @@ templates: []
 provenance:
   collection: skills_stack_2026-05-17
   source_index: 16_knowledge/external_collateral/skills_stack_2026-05-17/source_index.yaml
-improvement_history: []
+improvement_history:
+- version: 1.1.0
+  date: '2026-05-29'
+  reason: >
+    P1 correction: added single-instance lock hard constraint after ATLAS.app
+    bug where missing requestSingleInstanceLock() caused duplicate processes on
+    every launch.
 source: native
 improvement_metrics:
-  invocation_count: 0
-  correction_count: 0
-  last_correction: null
+  invocation_count: 1
+  correction_count: 1
+  last_correction: '2026-05-29'
   corrections_per_100_uses: null
   last_refinement: null
   refinement_count: 0

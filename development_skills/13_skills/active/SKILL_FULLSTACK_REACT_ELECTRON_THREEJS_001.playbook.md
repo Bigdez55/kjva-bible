@@ -19,6 +19,64 @@ Guide full-stack React, Electron, and Three.js application architecture, state/d
 - Do not claim completion without validation evidence.
 - Record misses in the skill refinery ledger when discovered.
 
+## Mandatory Electron Lifecycle Gates (P1 — never skip)
+
+### 1. Single-instance lock — REQUIRED at module scope
+
+Every Electron `main.mjs` MUST begin with the single-instance guard before
+any `app.whenReady()` call. Missing this causes a new process and a duplicate
+embedded server every time the app is double-clicked or the Dock icon is clicked.
+
+```js
+// CORRECT — guard before whenReady
+const gotLock = app.requestSingleInstanceLock()
+if (!gotLock) {
+  app.quit()
+} else {
+  app.on('second-instance', () => {
+    if (mainWindow) {
+      if (mainWindow.isMinimized()) mainWindow.restore()
+      mainWindow.show()
+      mainWindow.focus()
+    }
+  })
+  app.whenReady().then(() => { /* start server + create window */ })
+}
+```
+
+```js
+// WRONG — new process + duplicate server on every launch
+app.whenReady().then(async () => {
+  await startServer()
+  createWindow()
+})
+```
+
+### 2. Dock / activate handler (macOS) — show existing, not create new
+
+```js
+// CORRECT
+app.on('activate', () => {
+  if (mainWindow) { mainWindow.show(); mainWindow.focus() }
+  else createWindow()
+})
+```
+
+### 3. Server lifecycle — start once, kill on before-quit
+
+- Spawn the embedded server only inside the `gotLock` branch of `whenReady()`.
+- Kill it in `app.on('before-quit')`, not `window-all-closed` — on macOS the
+  process lives on after all windows close.
+
+## Anti-Patterns (correction ledger 2026-05-29)
+
+| Anti-pattern | Consequence | Fix |
+|---|---|---|
+| No `requestSingleInstanceLock()` | New process + duplicate server every launch | Add lock before `whenReady()` |
+| `activate` always calls `createWindow()` | Second window spawns on Dock click | Check for existing window first |
+| Kill server in `window-all-closed` | Server dies when user closes window on macOS | Move kill to `before-quit` |
+| Calling system `open(url)` instead of `BrowserWindow.loadURL()` | App opens in Chrome/Safari, not native window | Load URL in `BrowserWindow` only |
+
 ## Workflow
 
 ### Observe

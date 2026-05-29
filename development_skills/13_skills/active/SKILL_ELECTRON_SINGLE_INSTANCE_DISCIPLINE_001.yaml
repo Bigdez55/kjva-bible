@@ -1,0 +1,67 @@
+id: SKILL_ELECTRON_SINGLE_INSTANCE_DISCIPLINE_001
+title: Electron Single-Instance Discipline
+version: 1.0.0
+layer: ci_cd
+domains:
+- desktop
+- electron
+- build_systems
+status: active
+tier: active
+source: incident_promotion
+playbook: 13_skills/active/SKILL_ELECTRON_SINGLE_INSTANCE_DISCIPLINE_001.playbook.md
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_ELECTRON_SINGLE_INSTANCE_DISCIPLINE_001.ledger.yaml
+
+trigger_conditions:
+- Any Electron main process is authored or reviewed.
+- A desktop app reports duplicate windows, duplicate servers, or multiple instances.
+- An Electron app is being packaged for distribution (DMG, NSIS, AppImage).
+
+hard_constraints:
+- app.requestSingleInstanceLock() MUST be called at module scope before app.whenReady().
+- If gotLock is false the process MUST call app.quit() immediately — no other logic.
+- second-instance handler MUST restore and focus the existing BrowserWindow.
+- activate handler (macOS) MUST show/focus the existing window, not unconditionally createWindow().
+- The embedded server MUST only be spawned inside the gotLock branch.
+- Do not claim the Electron main is correct without verifying the lock pattern is present.
+
+known_failure_modes:
+- Scaffolding Electron main without the single-instance guard — causes duplicate
+  processes and duplicate embedded servers on every launch or Dock-click.
+- activate handler that calls createWindow() unconditionally — opens a second
+  window on macOS Dock click when the first window is still alive but hidden.
+- Killing the server in window-all-closed instead of before-quit — server stops
+  on macOS when user closes the window without quitting.
+- Loading BASE_URL via open() (system browser) instead of BrowserWindow.loadURL()
+  — app appears in Chrome/Safari instead of its own native window.
+
+validation_tests:
+- Launch app twice rapidly — second launch must quit silently, first window must focus.
+- Click Dock icon with window open — must show/focus, not open a second window.
+- Close main window on macOS — embedded server must keep running.
+- Quit app — embedded server process must be killed (no orphan processes).
+
+improvement_history:
+- version: 1.0.0
+  date: '2026-05-29'
+  reason: >
+    Promoted from ATLAS P1 incident: ATLAS.app opened a new Electron process and
+    duplicate Next.js server on every double-click because main.mjs lacked
+    requestSingleInstanceLock(). Fixed in commit 58b50b4. Promoted to dedicated
+    discipline skill to prevent recurrence across all desktop app projects.
+
+improvement_metrics:
+  invocation_count: 1
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: '2026-05-29'
+  refinement_count: 0
+  tier_promotion_history: []
+
+related_skills:
+- SKILL_FULLSTACK_REACT_ELECTRON_THREEJS_001
+
+slash_commands:
+- /apex:platform_build
+- /apex:verify

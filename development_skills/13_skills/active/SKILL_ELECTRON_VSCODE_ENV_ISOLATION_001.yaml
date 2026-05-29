@@ -1,0 +1,69 @@
+id: SKILL_ELECTRON_VSCODE_ENV_ISOLATION_001
+title: Electron VS Code Environment Isolation
+version: 1.0.0
+layer: ci_cd
+domains:
+- desktop
+- electron
+- developer_experience
+- macos
+status: active
+tier: active
+source: incident_promotion
+playbook: 13_skills/active/SKILL_ELECTRON_VSCODE_ENV_ISOLATION_001.playbook.md
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_ELECTRON_VSCODE_ENV_ISOLATION_001.ledger.yaml
+
+trigger_conditions:
+- An Electron app launched from a VS Code terminal (integrated or external) silently exits with code 0.
+- require('electron') returns a string (file path) instead of the Electron API object.
+- app, BrowserWindow, or other Electron APIs are undefined after destructuring require('electron').
+- process.type is undefined in what should be an Electron main process.
+- An Electron app works when launched via double-click but exits immediately when launched from terminal.
+- ELECTRON_RUN_AS_NODE is set in the environment (check with: env | grep ELECTRON).
+
+hard_constraints:
+- The dev "start" script in package.json MUST strip ELECTRON_RUN_AS_NODE before invoking the electron binary.
+- The packaged app MUST have the runAsNode fuse set to false via electronFuses in package.json build config.
+- Do not rely on environment cleanup alone for packaged apps — the fuse is the only reliable fix for distribution.
+- Never diagnose "app is undefined" errors as an import issue without first checking the ELECTRON_RUN_AS_NODE environment variable.
+
+known_failure_modes:
+- VS Code (and Claude Code, which runs inside VS Code's Electron shell) sets ELECTRON_RUN_AS_NODE=1 in all child processes. This causes any Electron binary launched from that shell to run as plain Node.js — no browser process, no Electron APIs.
+- When running as Node.js via ELECTRON_RUN_AS_NODE, require('electron') resolves to node_modules/electron/index.js which exports the string path to the Electron binary (not the API). Destructuring {app, BrowserWindow} from a string gives undefined for all keys.
+- process.type is undefined in RunAsNode mode (normally it would be "browser" in the main process).
+- The app silently exits with code 0 because without an explicit script argument, Node.js in RunAsNode mode has nothing to execute and exits immediately.
+- The failure only reproduces when launching from inside a VS Code terminal or any process tree that includes a VS Code / Claude Code Electron shell as an ancestor.
+
+validation_tests:
+- Check environment: env | grep ELECTRON — ELECTRON_RUN_AS_NODE=1 confirms the problem.
+- Dev mode fix: change start script to "env -u ELECTRON_RUN_AS_NODE electron ." then run npm start — app must open its window.
+- Packaged fix: npx @electron/fuses read --app dist/mac-arm64/<App>.app | grep RunAsNode — must show "Disabled".
+- Process check: add console.log(process.type) to top of main.js — must print "browser" (not undefined).
+
+improvement_history:
+- version: 1.0.0
+  date: '2026-05-29'
+  reason: >
+    Promoted from Storbits incident: both dev-mode launch and packaged app silently
+    exited because ELECTRON_RUN_AS_NODE=1 was set by Claude Code (running inside VS
+    Code Electron shell). Destructuring require('electron') returned a 148-char path
+    string, making app=undefined. Fixed with env -u strip for dev + runAsNode:false
+    fuse for packaged builds.
+
+improvement_metrics:
+  invocation_count: 1
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: '2026-05-29'
+  refinement_count: 0
+  tier_promotion_history: []
+
+related_skills:
+- SKILL_ELECTRON_MACOS_PACKAGE_SIGN_001
+- SKILL_ELECTRON_SINGLE_INSTANCE_DISCIPLINE_001
+- SKILL_FULLSTACK_REACT_ELECTRON_THREEJS_001
+
+slash_commands:
+- /apex:platform_build
+- /apex:verify

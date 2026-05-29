@@ -1,0 +1,39 @@
+schema_version: '1.0'
+skill_id: SKILL_ELECTRON_EMBEDDED_DAEMON_BOOTSTRAP_001
+skill_name: Electron Embedded Daemon Bootstrap
+skill_card_path: 13_skills/active/SKILL_ELECTRON_EMBEDDED_DAEMON_BOOTSTRAP_001.yaml
+playbook_path: 13_skills/active/SKILL_ELECTRON_EMBEDDED_DAEMON_BOOTSTRAP_001.playbook.md
+current_version: 1.0.0
+tier: active
+hard_constraints:
+- bootstrapRuntime() MUST run before createWindow() so runtime state is set before did-finish-load fires.
+- applyRuntimeToConsole() MUST inject mode, baseUrl, and token via executeJavaScript on did-finish-load.
+- Bundled runtime path MUST branch on app.isPackaged — process.resourcesPath in packaged mode, __dirname-relative in dev mode.
+- Daemon token MUST be generated fresh on each start and never persisted to disk in plaintext.
+- waitForReady() polling MUST have a timeout and fall back to DEMO_ENGINE on failure.
+- Before-quit handler MUST stop the daemon process before calling app.exit().
+- Start script MUST pass master KMS key via environment variable, not command-line arguments.
+immutable_facts:
+- Promoted from Storbits incident 2026-05-29.
+- Pattern applies to all Electron apps that manage an embedded backend daemon.
+correction_history:
+- date: '2026-05-29'
+  type: incident_promotion
+  severity: P1
+  project: Storbits desktop app
+  summary: >
+    App launched but UI showed DEMO_ENGINE because applyRuntimeToConsole() was not
+    calling setMode() on the renderer page. The bootstrapRuntime()/createWindow()
+    ordering and executeJavaScript injection pattern are now the canonical reference
+    for all Electron+embedded-daemon apps.
+  fix_summary: >
+    Added `if (typeof setMode === 'function') setMode(...)` to injected script.
+    Documented correct startup order: bootstrapRuntime() must complete before
+    createWindow() is called.
+regression_test_ids: []
+promotion_criteria:
+  to_tier: hardened
+  requirements:
+  - Validation gates pass on three consecutive Electron+daemon app deliveries.
+  - No recurrence of DEMO_ENGINE false-positive or orphan daemon process in any project.
+last_updated: '2026-05-29'

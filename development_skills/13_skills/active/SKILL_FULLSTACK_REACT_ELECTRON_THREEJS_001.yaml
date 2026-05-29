@@ -28,7 +28,11 @@ hard_constraints:
 - The activate handler (macOS) MUST show/focus the existing window, not create a new one.
 tier: active
 ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_FULLSTACK_REACT_ELECTRON_THREEJS_001.ledger.yaml
-related_skills: []
+related_skills:
+- SKILL_ELECTRON_SINGLE_INSTANCE_DISCIPLINE_001
+- SKILL_ELECTRON_MACOS_PACKAGE_SIGN_001
+- SKILL_ELECTRON_VSCODE_ENV_ISOLATION_001
+- SKILL_ELECTRON_EMBEDDED_DAEMON_BOOTSTRAP_001
 router_intents:
 - platform_build
 - visual_to_system_backbone

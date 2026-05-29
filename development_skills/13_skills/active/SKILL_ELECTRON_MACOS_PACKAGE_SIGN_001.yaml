@@ -1,0 +1,72 @@
+id: SKILL_ELECTRON_MACOS_PACKAGE_SIGN_001
+title: Electron macOS Packaging and Ad-Hoc Signing
+version: 1.0.0
+layer: ci_cd
+domains:
+- desktop
+- electron
+- build_systems
+- macos
+status: active
+tier: active
+source: incident_promotion
+playbook: 13_skills/active/SKILL_ELECTRON_MACOS_PACKAGE_SIGN_001.playbook.md
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_ELECTRON_MACOS_PACKAGE_SIGN_001.ledger.yaml
+
+trigger_conditions:
+- Any Electron app is being packaged with electron-builder on macOS.
+- A packaged Electron app silently exits with code 0 before main.js loads.
+- codesign reports "a sealed resource is missing or invalid" or "code has no resources but signature indicates they must be present".
+- App launches from a random /private/var/folders/.../AppTranslocation/... path instead of its real location.
+- Gatekeeper (spctl --assess) rejects the app bundle.
+- electronFuses is configured in package.json build config.
+
+hard_constraints:
+- electronFuses MUST include runAsNode:false to prevent ELECTRON_RUN_AS_NODE inheritance from VS Code or other Electron-based tools.
+- electronFuses MUST include enableEmbeddedAsarIntegrityValidation:false if distributing unsigned builds (avoids ASAR hash mismatch rejections).
+- Ad-hoc signing MUST sign inner bundles (helper apps, frameworks) BEFORE the outer app bundle — codesign in inside-out order.
+- The package-dev.js build script MUST include the ad-hoc signing step so npm run pack produces a launchable app in one step.
+- Never commit a dist/ build without verifying codesign output shows Identifier=<appId> and Sealed Resources version=2.
+- Remove com.apple.quarantine xattr from the app after moving it to Desktop or any non-/Applications location to prevent App Translocation.
+
+known_failure_modes:
+- electron-builder leaves the Electron stub "linker-signed" (flags=0x20002, Identifier=Electron, no Info.plist binding). spctl rejects it. Fix: run codesign --force --sign - on the full bundle after build.
+- signing the outer app bundle before signing inner helpers/frameworks produces partial seal errors. Fix: sign Contents/Frameworks/* first, then the app bundle.
+- empty electronFuses:{} still invokes @electron/fuses which patches the Electron Framework binary and invalidates the original linker signature. Fix: always re-sign after any electronFuses config, even an empty one.
+- App Translocation: macOS quarantine bit on apps opened from non-/Applications paths causes the OS to run the app from a random temp path. The app itself functions but resourcesPath changes every launch. Fix: xattr -r -d com.apple.quarantine <app>.
+- enableEmbeddedAsarIntegrityValidation:true with an ad-hoc signed (not notarized) build causes launch-time ASAR integrity failures. Fix: set to false for local/dev builds.
+
+validation_tests:
+- After npm run pack, run: codesign -dvv dist/mac-arm64/Storbits.app 2>&1 | grep -E "Identifier|Sealed|Signature|flags"
+- Pass criteria: Identifier=<com.appId>, Sealed Resources version=2, Signature=adhoc, flags=0x2(adhoc) — NOT 0x20002(adhoc,linker-signed).
+- Verify no quarantine: xattr -l <app> | grep quarantine — should be absent.
+- Verify fuses: npx @electron/fuses read --app dist/mac-arm64/<App>.app | grep RunAsNode — must show "Disabled".
+- Launch test: open dist/mac-arm64/<App>.app — app should open its window, NOT silently exit.
+
+improvement_history:
+- version: 1.0.0
+  date: '2026-05-29'
+  reason: >
+    Promoted from Storbits incident: packaged app silently exited (code 0) before
+    main.js loaded because ELECTRON_RUN_AS_NODE=1 (inherited from VS Code / Claude Code
+    Electron shell) caused the app to run as plain Node.js. Two fixes applied: (1)
+    runAsNode:false fuse in electronFuses; (2) ad-hoc signing script integrated into
+    package-dev.js. Quarantine removal documented to prevent App Translocation.
+
+improvement_metrics:
+  invocation_count: 1
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: '2026-05-29'
+  refinement_count: 0
+  tier_promotion_history: []
+
+related_skills:
+- SKILL_ELECTRON_SINGLE_INSTANCE_DISCIPLINE_001
+- SKILL_ELECTRON_VSCODE_ENV_ISOLATION_001
+- SKILL_FULLSTACK_REACT_ELECTRON_THREEJS_001
+
+slash_commands:
+- /apex:platform_build
+- /apex:verify

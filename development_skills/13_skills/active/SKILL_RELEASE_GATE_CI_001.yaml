@@ -42,7 +42,7 @@ improvement_history:
   date: '2026-05-29'
   reason: Promoted from ATLAS Phase C.2 (Gate 7). The release-gate-assertion + workflow pattern is the canonical merge-gate for any app with a production-readiness manifest.
 
-related_skills: [SKILL_ATLAS_OAUTH_WIRING_001, SKILL_MULTI_TENANT_ISOLATION_001, SKILL_DURABLE_STORAGE_MIGRATION_001, SKILL_AUDIT_LOG_IMMUTABLE_001, SKILL_RATE_LIMIT_TENANT_SCOPED_001]
+related_skills: [SKILL_ATLAS_OAUTH_WIRING_001, SKILL_MULTI_TENANT_ISOLATION_001, SKILL_DURABLE_STORAGE_MIGRATION_001, SKILL_AUDIT_LOG_IMMUTABLE_001, SKILL_RATE_LIMIT_TENANT_SCOPED_001, SKILL_UI_LIVE_VERIFICATION_BEFORE_DONE_001]
 slash_commands: [/apex:platform_build, /apex:verify]
 improvement_metrics:
   invocation_count: 1

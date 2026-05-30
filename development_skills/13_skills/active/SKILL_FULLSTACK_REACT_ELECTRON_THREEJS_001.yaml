@@ -41,6 +41,7 @@ related_skills:
 - SKILL_RATE_LIMIT_TENANT_SCOPED_001
 - SKILL_RELEASE_GATE_CI_001
 - SKILL_AGENT_WORKTREE_ISOLATION_001
+- SKILL_UI_LIVE_VERIFICATION_BEFORE_DONE_001
 router_intents:
 - platform_build
 - visual_to_system_backbone

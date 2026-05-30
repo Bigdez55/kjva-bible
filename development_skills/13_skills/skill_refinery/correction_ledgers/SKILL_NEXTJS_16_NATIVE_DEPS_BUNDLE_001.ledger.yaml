@@ -1,0 +1,34 @@
+schema_version: '1.0'
+skill_id: SKILL_NEXTJS_16_NATIVE_DEPS_BUNDLE_001
+skill_name: Next.js 16 Native Dependencies + Proxy Filename Convention
+skill_card_path: 13_skills/active/SKILL_NEXTJS_16_NATIVE_DEPS_BUNDLE_001.yaml
+playbook_path: 13_skills/active/SKILL_NEXTJS_16_NATIVE_DEPS_BUNDLE_001.playbook.md
+current_version: 1.0.0
+tier: active
+hard_constraints:
+- Native modules MUST be in serverExternalPackages (next.config.ts).
+- Next.js 16 uses src/proxy.ts (NOT src/middleware.ts).
+- Proxy MUST be default export.
+- npm run build output MUST show `ƒ Proxy (Middleware)`.
+immutable_facts:
+- Promoted from ATLAS D-phase audit 2026-05-29.
+- Next.js 16 deprecated middleware.ts in favor of proxy.ts (reverting Next 15's convention).
+- serverExternalPackages tells webpack to leave packages at runtime (not bundle).
+correction_history:
+- date: '2026-05-29'
+  type: incident_promotion
+  severity: P0
+  project: ATLAS
+  summary: >
+    Phase D.2 caught: npm run build failed because webpack couldn't parse
+    keytar.node + better-sqlite3.node. Phase D.1 caught: Next 16 build emitted
+    deprecation warning that middleware.ts should be proxy.ts. Both fixed in
+    efd6b43.
+  fix_commit: efd6b43
+  fix_summary: Added serverExternalPackages + renamed middleware.ts → proxy.ts + ui-surface test rewrite for new architecture.
+regression_test_ids:
+- tests/ui-surface.test.ts (verifies proxy.ts + native deps externalized)
+promotion_criteria:
+  to_tier: hardened
+  requirements: [Used by 3 Next 16 projects.]
+last_updated: '2026-05-29'

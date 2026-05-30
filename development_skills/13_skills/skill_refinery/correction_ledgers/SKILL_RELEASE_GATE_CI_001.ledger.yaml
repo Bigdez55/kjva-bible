@@ -1,0 +1,30 @@
+schema_version: '1.0'
+skill_id: SKILL_RELEASE_GATE_CI_001
+skill_name: Release Gate CI (Assert Every Gate Proven Before Merge)
+skill_card_path: 13_skills/active/SKILL_RELEASE_GATE_CI_001.yaml
+playbook_path: 13_skills/active/SKILL_RELEASE_GATE_CI_001.playbook.md
+current_version: 1.0.0
+tier: active
+hard_constraints:
+- Workflow at .github/workflows/<app>-release-gate.yml.
+- release-gate-assertion.test.ts imports manifest + exits 1 on any non-proven gate.
+- Final job needs: ALL upstream jobs.
+- Only designated coordinator agent flips gate states.
+- Gate flips require evidence file references in currentEvidence.
+immutable_facts:
+- Promoted from ATLAS Phase C.2 (Gate 7).
+- Pre-flip test deterministically fails (its job); post-flip deterministically passes.
+correction_history:
+- date: '2026-05-29'
+  type: incident_promotion
+  severity: P0
+  project: ATLAS
+  summary: No CI release gate existed; Gate 7 blocked. Paper-certification risk if anyone could flip gates without evidence.
+  fix_commit: 4b9561c
+  fix_summary: 12-job workflow + release-gate-assertion test + atlas_gates.py extension (11 safe gates) + dep pinning + max-warnings 0 lint.
+regression_test_ids:
+- tests/release-gate-assertion.test.ts
+promotion_criteria:
+  to_tier: hardened
+  requirements: [Used by 3 distinct apps with production-readiness manifests.]
+last_updated: '2026-05-29'

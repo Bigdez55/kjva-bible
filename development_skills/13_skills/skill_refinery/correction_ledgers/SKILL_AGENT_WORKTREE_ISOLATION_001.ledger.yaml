@@ -1,0 +1,30 @@
+schema_version: '1.0'
+skill_id: SKILL_AGENT_WORKTREE_ISOLATION_001
+skill_name: Parallel Multi-Agent Execution via Git Worktree Isolation
+skill_card_path: 13_skills/active/SKILL_AGENT_WORKTREE_ISOLATION_001.yaml
+playbook_path: 13_skills/active/SKILL_AGENT_WORKTREE_ISOLATION_001.playbook.md
+current_version: 1.0.0
+tier: active
+hard_constraints:
+- Pre-create named branches before launching agents.
+- Each agent gets own worktree at /tmp/<repo>-worktrees/<branch>.
+- Explicit path-ownership map; zero overlap in parallel phase.
+- Beta-unblock contract: shared types/contracts published FIRST.
+- Shared-file edits serialized via documented chain.
+- Coordinator-only modifies canonical truth file.
+immutable_facts:
+- Promoted from ATLAS production audit 2026-05-29.
+- 8 worktrees, 6 parallel fix agents, 4-hour completion (vs 12-hour serial estimate).
+- Per SKILL_PARALLEL_DEPLOY_001 — read-only audits scale to 8, fix phases stay ≤ 6.
+correction_history:
+- date: '2026-05-29'
+  type: incident_promotion
+  severity: process_improvement
+  project: ATLAS
+  summary: Phase C parallel execution proved the worktree pattern. Zero unplanned conflicts; documented package.json test-script chain conflict resolved manually.
+  fix_summary: 8 worktrees pre-created; 6 parallel C.1 agents; sequential C.0 (storage), C.2 (CI); coordinator merge into staging + flip in D.5.
+regression_test_ids: []
+promotion_criteria:
+  to_tier: hardened
+  requirements: [Used by 3 multi-agent audits.]
+last_updated: '2026-05-29'

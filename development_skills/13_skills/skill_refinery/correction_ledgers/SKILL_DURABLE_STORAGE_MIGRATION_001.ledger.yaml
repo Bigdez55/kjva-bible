@@ -1,0 +1,33 @@
+schema_version: '1.0'
+skill_id: SKILL_DURABLE_STORAGE_MIGRATION_001
+skill_name: Drizzle Dual-Driver Storage (Desktop SQLite + Hosted Postgres)
+skill_card_path: 13_skills/active/SKILL_DURABLE_STORAGE_MIGRATION_001.yaml
+playbook_path: 13_skills/active/SKILL_DURABLE_STORAGE_MIGRATION_001.playbook.md
+current_version: 1.0.0
+tier: active
+hard_constraints:
+- Schema MUST be in src/lib/db/schema.ts; driver selected by ATLAS_RUNTIME env.
+- SQLite connection MUST enable WAL + foreign_keys + synchronous=NORMAL PRAGMAs.
+- Genesis audit row MUST be seeded by migrate.ts idempotently.
+- All multi-tenant tables MUST have tenant_id + index.
+- audit_events MUST be append-only at app layer.
+- migrate.ts MUST be idempotent.
+- Native deps (keytar, better-sqlite3) MUST be in serverExternalPackages.
+immutable_facts:
+- Promoted from ATLAS Phase C.0 (Gate 6).
+- One schema, two dialects (SQLite + Postgres) selected via env at boot.
+- Beta unblock pattern: db/types.ts published first commit.
+correction_history:
+- date: '2026-05-29'
+  type: incident_promotion
+  severity: P0
+  project: ATLAS
+  summary: All 10 durable_storage records had no DB; everything was JSON/static. Production blocked.
+  fix_commit: a5cce23 → 6d6e539 → efd6b43
+  fix_summary: Drizzle dual-driver, 10 tables, tenant_id indices, WAL mode, genesis seed, backup script, migration test.
+regression_test_ids:
+- tests/db-migration.test.ts
+promotion_criteria:
+  to_tier: hardened
+  requirements: [Validation gates pass on 3 storage-bearing deliveries.]
+last_updated: '2026-05-29'

@@ -1,0 +1,67 @@
+id: SKILL_DURABLE_STORAGE_MIGRATION_001
+title: Drizzle Dual-Driver Storage (Desktop SQLite + Hosted Postgres)
+version: 1.0.0
+layer: data
+domains:
+- backend
+- data
+- storage
+- desktop
+- migration
+playbook: 13_skills/active/SKILL_DURABLE_STORAGE_MIGRATION_001.playbook.md
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_DURABLE_STORAGE_MIGRATION_001.ledger.yaml
+status: active
+tier: active
+source: incident_promotion
+
+trigger_conditions:
+- App needs to ship as both desktop (SQLite) and hosted (Postgres) from same codebase.
+- Migrating from JSON/filesystem persistence to real database.
+- Multi-tenant data layer needs schema-from-types with tenant_id on every row.
+
+hard_constraints:
+- Schema MUST be defined ONCE in src/lib/db/schema.ts; driver selected by ATLAS_RUNTIME env.
+- SQLite connection MUST enable WAL mode (PRAGMA journal_mode=WAL) for concurrent writes.
+- Genesis row in audit_events MUST be seeded by migrate.ts (idempotent).
+- ALL multi-tenant tables MUST have tenant_id column + index.
+- audit_events table MUST NOT have UPDATE/DELETE permissions at app layer.
+- rate_limit_buckets MUST have composite unique key (tenant_id, user_id, route).
+- migrate.ts MUST be idempotent (safe to re-run).
+- Type contract (db/types.ts) MUST be published as first commit so dependent agents unblock.
+
+known_failure_modes:
+- Webpack tries to bundle better-sqlite3 native binding — add to serverExternalPackages in next.config.ts.
+- Schema drift between SQLite and Postgres dialects — drizzle-kit check catches at CI.
+- Missing genesis audit row — hash chain verification fails.
+- Concurrent SQLite writes corrupt DB without WAL mode.
+
+validation_tests:
+- runMigrations() creates all 10 tables on fresh sqlite.
+- runMigrations() is idempotent (second run is no-op).
+- Genesis row exists in audit_events with event_id="GENESIS".
+- scopedSelect with tenant A returns only A data; tenant B returns only B data.
+- scopedInsert refuses cross-tenant payload.
+- Hosted driver path throws sentinel error directing to schema.pg.ts if Postgres schema not yet defined.
+
+improvement_history:
+- version: 1.0.0
+  date: '2026-05-29'
+  reason: >
+    Promoted from ATLAS Phase C.0. Closes Gate 6 (durable-storage). The dual-driver
+    pattern with schema-from-types is the canonical way to ship desktop+hosted
+    from one codebase. Reused immediately by all downstream Phase C agents.
+
+related_skills:
+- SKILL_MULTI_TENANT_ISOLATION_001
+- SKILL_AUDIT_LOG_IMMUTABLE_001
+- SKILL_NEXTJS_16_NATIVE_DEPS_BUNDLE_001
+
+slash_commands:
+- /apex:platform_build
+
+improvement_metrics:
+  invocation_count: 1
+  correction_count: 0
+  last_correction: null
+  last_refinement: '2026-05-29'
+  refinement_count: 0

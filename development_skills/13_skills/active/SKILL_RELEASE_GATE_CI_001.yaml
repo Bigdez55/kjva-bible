@@ -1,0 +1,52 @@
+id: SKILL_RELEASE_GATE_CI_001
+title: Release Gate CI (Assert Every Gate Proven Before Merge)
+version: 1.0.0
+layer: ci_cd
+domains:
+- ci_cd
+- release_engineering
+- compliance
+playbook: 13_skills/active/SKILL_RELEASE_GATE_CI_001.playbook.md
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_RELEASE_GATE_CI_001.ledger.yaml
+status: active
+tier: active
+source: incident_promotion
+
+trigger_conditions:
+- Application declares a production-readiness manifest (production-readiness.ts or similar).
+- Merge-to-main must require all release gates green.
+- Compliance review requires automated proof of gate verification.
+
+hard_constraints:
+- CI workflow MUST live at .github/workflows/<app>-release-gate.yml.
+- Workflow MUST run on pull_request to main + push to main.
+- A release-gate-assertion.test.ts MUST import the canonical manifest and exit non-zero if ANY gate.state !== "proven".
+- The CI workflow's final job MUST depend on ALL upstream jobs (lint, typecheck, test, build, e2e, security-scan, etc.).
+- Only the designated coordinator agent may flip gate states in the manifest (no Phase C/fix agent touches it).
+- Gate flips require evidence files at /tmp/atlas-audit/D/evidence/<gate-id>.* before the commit.
+
+known_failure_modes:
+- Gate states flipped without evidence — "paper certification" anti-pattern.
+- release-gate-assertion test placed in unrelated agent's branch — merge conflict.
+- CI workflow doesn't run `npm install` before `npm run build` — webpack failure not reproducible locally.
+- Native-binding deps (keytar, better-sqlite3) without serverExternalPackages → build fails in CI but not dev.
+
+validation_tests:
+- Pre-flip: release-gate-assertion.test.ts exits 1.
+- Post-flip: same test exits 0.
+- Tampered flip (gate marked proven without evidence) caught by audit-log + reviewer.
+- CI workflow YAML validates with `python3 -c "import yaml; yaml.safe_load(open(...))"`.
+
+improvement_history:
+- version: 1.0.0
+  date: '2026-05-29'
+  reason: Promoted from ATLAS Phase C.2 (Gate 7). The release-gate-assertion + workflow pattern is the canonical merge-gate for any app with a production-readiness manifest.
+
+related_skills: [SKILL_ATLAS_OAUTH_WIRING_001, SKILL_MULTI_TENANT_ISOLATION_001, SKILL_DURABLE_STORAGE_MIGRATION_001, SKILL_AUDIT_LOG_IMMUTABLE_001, SKILL_RATE_LIMIT_TENANT_SCOPED_001]
+slash_commands: [/apex:platform_build, /apex:verify]
+improvement_metrics:
+  invocation_count: 1
+  correction_count: 0
+  last_correction: null
+  last_refinement: '2026-05-29'
+  refinement_count: 0

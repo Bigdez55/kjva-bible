@@ -3,39 +3,43 @@ skill_id: SKILL_UI_LIVE_VERIFICATION_BEFORE_DONE_001
 skill_name: Live UI Verification Before "Done"
 skill_card_path: 13_skills/active/SKILL_UI_LIVE_VERIFICATION_BEFORE_DONE_001.yaml
 playbook_path: 13_skills/active/SKILL_UI_LIVE_VERIFICATION_BEFORE_DONE_001.playbook.md
-current_version: 1.0.0
+current_version: 1.1.0
 tier: active
 hard_constraints:
 - HTTP 200 + build pass + lint + typecheck = NECESSARY but NEVER SUFFICIENT to claim UI done.
-- Actual rendered surface MUST be loaded in target runtime AND visually inspected OR user-confirmed.
-- Golden path (primary CTA, form submit, navigation) MUST be walked interactively.
-- For migrations: BOTH legacy and new MUST be observed side-by-side before legacy is deleted.
-- When surface cannot be visually confirmed, report MUST say "build green; rendered NOT verified" — never "verified".
-- Sub-agent "build passed" reports are NOT visual verification — parent still owes it.
+- Rendered surface MUST be loaded in target runtime AND visually inspected OR user-confirmed.
+- Playwright (or equivalent headless browser) is the canonical verification tool.
+- Browser console errors + pageerror events MUST be captured during verification.
+- Golden path MUST be walked interactively at least once.
+- For migrations, BOTH legacy and new MUST be observed side-by-side before legacy delete.
+- When surface cannot be visually confirmed, report MUST say "build green; rendered NOT verified".
+- Sub-agent "build passed" reports are NOT visual verification.
 immutable_facts:
-- Promoted from ATLAS UI migration failure 2026-05-30.
-- The CI signals (curl 200, npm run build, lint, typecheck) all lit green; the actual UI was regressed.
-- Sub-agent isolation cannot substitute for the parent's visual-check obligation.
+- Promoted from ATLAS UI migration failure morning of 2026-05-30.
+- Refined the same afternoon after Playwright capture caught CSP-nonce trap invisible to all other checks.
+- Console + pageerror listeners catch CSP violations, hydration mismatches, missing chunks, undefined-prop crashes — bugs invisible to curl, build, lint, typecheck.
 correction_history:
 - date: '2026-05-30'
   type: incident_promotion
   severity: P0
-  project: ATLAS Electron + Next.js app
+  project: ATLAS
+  summary: Declared 22 pages complete based on CI signals; legacy files deleted; user found regression.
+  fix_summary: Codified the rule. Visual check mandatory. Migration parity required before legacy delete.
+- date: '2026-05-30'
+  type: refinement
+  severity: P0
+  project: ATLAS recovery audit
   summary: >
-    During the ATLAS UI migration (Phase 1-3), I declared 22 pages "rich TSX, all working"
-    based on HTTP 200 responses, npm run build success, and sub-agent self-reports of
-    "lint + typecheck PASS". I then deleted the legacy public/atlas-ui/*.html files. The
-    user opened the actual Electron window and reported the UI was regressed/broken.
-    None of the verification I had done actually touched the rendered surface.
-  fix_summary: >
-    Codified the rule into a canonical skill + feedback memory: the visual+behavioral
-    check is mandatory before any "done" claim on UI work. Never delete legacy before
-    user-confirmed parity. Sub-agent "build passed" reports do not substitute for
-    visually inspecting the rendered surface.
-regression_test_ids: []
+    Playwright capture caught CSP-nonce-blocks-Next.js-chunks bug invisible to
+    npm run build, lint, typecheck, and curl. All 22 pages had 3 identical
+    "violates Content Security Policy" errors only visible in browser console.
+    Lesson: Playwright screenshot + console capture + pageerror listener is the
+    canonical verification tool, not "suggested" but "required when user not present".
+  fix_commit: TBD (this commit)
+  fix_summary: Bumped skill to v1.1.0. Added Playwright recipe to playbook. Added gate "Console clean" to validation gates.
+regression_test_ids:
+- (recommended) tests/ui-verify-playwright.test.ts that runs the verify-ui.mjs recipe
 promotion_criteria:
   to_tier: hardened
-  requirements:
-  - Applied to 3 UI deliveries without recurrence of "shipped from CI alone" failure.
-  - Migration pattern with "legacy stays until user confirms new" used on 2+ migrations.
+  requirements: [Applied to 3 UI deliveries without recurrence of "shipped from CI alone" failure.]
 last_updated: '2026-05-30'

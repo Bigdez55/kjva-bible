@@ -1,0 +1,72 @@
+id: SKILL_ELECTRON_MACOS_DOCK_ICON_DISCIPLINE_001
+title: Electron macOS Dock Icon Discipline (Squircle + Single Entry + Visible Logging)
+version: 1.0.0
+layer: ci_cd
+domains:
+- desktop
+- electron
+- macos
+- branding
+playbook: 13_skills/active/SKILL_ELECTRON_MACOS_DOCK_ICON_DISCIPLINE_001.playbook.md
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_ELECTRON_MACOS_DOCK_ICON_DISCIPLINE_001.ledger.yaml
+status: active
+tier: active
+source: incident_promotion
+
+trigger_conditions:
+- Electron app shows the generic Electron icon instead of the brand icon on macOS dock.
+- Dev mode shows TWO dock entries (one branded + one generic Electron).
+- Brand icon shows as a hard-edged square instead of macOS-style rounded squircle.
+- `app.dock.setIcon()` appears to do nothing and the failure is silent.
+
+hard_constraints:
+- macOS app icons MUST be presented as rounded "squircles" with ~22.37% corner-radius and transparent corners. A hard square does not look native.
+- Spawning a child process via `spawn(process.execPath, [entry], ...)` in dev mode causes macOS to register a second dock entry for the child Electron binary — even when `ELECTRON_RUN_AS_NODE=1`. Use system `node` instead (`/opt/homebrew/bin/node` or `/usr/local/bin/node`).
+- `try { app.dock.setIcon(...) } catch {}` is forbidden — every failure path MUST log: file missing, empty nativeImage, app.dock undefined, exception thrown.
+- For dev mode, prefer source brand asset (e.g., `src/app/icon.png`) over copies in the standalone build, so brand changes are picked up immediately.
+- Packaged mode (electron-builder) handles the icon at bundle time; this skill is for dev-mode dock + window icon parity.
+
+known_failure_modes:
+- Hard-square PNG icon → dock shows hard square, looks unprofessional next to other macOS apps.
+- Child server spawned with `process.execPath` → second "Electron" dock icon appears next to the branded one.
+- Silent `try{}catch{}` around setIcon → cannot tell whether icon is set or failing; users see generic icon with no logs.
+- Icon at `apps/.../public/atlas-ui/brand/ATLAS.icns` not copied to `.next/standalone/public/...` → setIcon path resolves to non-existent file → silently skipped.
+- Reading from `appRoot()` when `appRoot` is incorrectly set → icon path resolves to a directory that lacks the brand assets.
+
+validation_tests:
+- After launch, check `~/.atlas/logs/electron-main.log` for `dock.icon.set` entry with `path` + `size: {width, height}`.
+- Visually inspect the dock — exactly ONE icon per running app; the icon is a rounded-corner squircle matching the brand.
+- `ps aux | grep "electron/dist/Electron.app/Contents/MacOS"` returns exactly one main process per app instance (plus standard helpers).
+- The icon size in log should be 1024x1024 or larger (smaller → dock will upscale → blurry).
+
+improvement_history:
+- version: 1.0.0
+  date: '2026-05-30'
+  reason: >
+    Promoted from ATLAS 2026-05-30 incident. User screenshot showed two macOS dock
+    icons for one ATLAS launch — the branded ATLAS earth + a generic "Electron"
+    atom icon. Root cause: the Electron main process spawned its Next.js server
+    child via `spawn(process.execPath, [entry])` with ELECTRON_RUN_AS_NODE=1, and
+    macOS treated the child Electron binary as a second app. Additionally, the
+    icon was a hard-square PNG with no macOS-style rounded corners. Three fixes:
+    (1) spawn with system node, (2) generate a 22.37% rounded squircle via
+    pure-Node PNG manipulation (scripts/build-mac-icon.mjs, zero deps), (3)
+    replace silent try{}catch{} around setIcon with explicit log branches for
+    every failure mode.
+
+related_skills:
+- SKILL_FULLSTACK_REACT_ELECTRON_THREEJS_001
+- SKILL_ELECTRON_SINGLE_INSTANCE_DISCIPLINE_001
+- SKILL_ELECTRON_VSCODE_ENV_ISOLATION_001
+- SKILL_ELECTRON_MACOS_PACKAGE_SIGN_001
+- SKILL_UI_LIVE_VERIFICATION_BEFORE_DONE_001
+
+slash_commands:
+- /apex:platform_build
+
+improvement_metrics:
+  invocation_count: 1
+  correction_count: 0
+  last_correction: null
+  last_refinement: '2026-05-30'
+  refinement_count: 0

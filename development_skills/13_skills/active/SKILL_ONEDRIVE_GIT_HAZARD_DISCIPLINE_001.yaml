@@ -1,0 +1,75 @@
+id: SKILL_ONEDRIVE_GIT_HAZARD_DISCIPLINE_001
+title: OneDrive + .git Hazard Discipline
+version: 1.0.0
+layer: infrastructure
+domains:
+- infrastructure
+- git
+- version_control
+tier: active
+status: active
+source: incident_promotion
+aliases:
+- onedrive-git-hazard
+playbook: platform/sdlc/13_skills/active/SKILL_ONEDRIVE_GIT_HAZARD_DISCIPLINE_001.playbook.md
+ledger: platform/sdlc/13_skills/skill_refinery/correction_ledgers/SKILL_ONEDRIVE_GIT_HAZARD_DISCIPLINE_001.ledger.yaml
+runtime_projection: true
+runtime_projection_targets:
+- claude
+- codex
+- gemini
+
+trigger_conditions:
+- The git repo lives under a cloud-sync path (OneDrive, Dropbox, iCloud, Google Drive).
+- git status or git log suddenly shows commits, branches, or a HEAD you did not create.
+- A push that should fast-forward is unexpectedly rejected or diverged.
+- main moved to an unrelated history mid-session.
+- Files you just wrote read as missing, or files you deleted reappear.
+- An Edit tool call fails old_string match on a file you recently read.
+
+hard_constraints:
+- Cloud sync can overwrite .git refs and objects mid-session from another machine. Treat any unexpected ref movement as a possible external clobber, not your own error.
+- NEVER blind reset --hard when HEAD is unexpectedly different. Branch the incoming line first, then verify your work via git reflog.
+- Before destructive git ops in a cloud-synced repo, capture the current tip in a named branch or tag so nothing is unrecoverable.
+- After any suspected clobber, confirm BOTH lines are reachable before deciding which becomes the canonical tip.
+- Prove a fast-forward relationship with git merge-base --is-ancestor before force operations.
+- Stage explicit paths, never git add . or git add -A in a cloud-synced repo mid-incident.
+- Grep-verify every Edit landed; cloud-replace can make Edit silently no-op.
+
+known_failure_modes:
+- OneDrive syncs another machine's .git refs mid-session; local main silently jumps to an unrelated commit; a subsequent reset --hard would destroy in-progress work.
+- Working tree holds one machine's edits while refs point at another machine's history, so a routine git add + commit sweeps unrelated changes under a mislabeled message.
+- Edit old_string fails to match because cloud sync replaced the file content since it was read; the edit silently no-ops and the change is lost.
+- Partial sync leaves objects present but refs stale (or vice versa), producing dangling objects and confusing fsck output.
+
+validation_tests:
+- git reflog shows your commits reachable after an unexpected HEAD change.
+- git merge-base --is-ancestor origin-main your-tip confirms a clean fast-forward before pushing.
+- A safety branch or tag exists pointing at any incoming line before it is discarded.
+- After resolution, git status is clean and git log first-parent shows the intended history.
+
+improvement_history:
+- version: 1.0.0
+  date: '2026-05-30'
+  reason: >
+    Promoted from the 2026-05-30 incident. OneDrive synced another machine's
+    atlas-rename git history into this repo mid-session, moving main to an
+    unrelated commit while the working tree still held the prior session's edits.
+    A routine git add + commit produced a mislabeled mega-commit; three Edit
+    calls silently no-opped because the target files had been cloud-replaced
+    since they were read. Recovery required branching the incoming line,
+    verifying both via reflog, and fast-forwarding main back to the intended tip.
+
+related_skills:
+- SKILL_GIT_REMOTE_DISCIPLINE_001
+- SKILL_NETWORK_CONNECTIVITY_DISCIPLINE_001
+- SKILL_UI_LIVE_VERIFICATION_BEFORE_DONE_001
+
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: '2026-05-30'
+  refinement_count: 0
+  tier_promotion_history: []

@@ -1,0 +1,41 @@
+schema_version: '1.0'
+skill_id: SKILL_ONEDRIVE_GIT_HAZARD_DISCIPLINE_001
+skill_name: OneDrive + .git Hazard Discipline
+skill_card_path: 13_skills/active/SKILL_ONEDRIVE_GIT_HAZARD_DISCIPLINE_001.yaml
+playbook_path: 13_skills/active/SKILL_ONEDRIVE_GIT_HAZARD_DISCIPLINE_001.playbook.md
+current_version: 1.0.0
+tier: active
+hard_constraints:
+- Cloud sync can overwrite .git refs/objects mid-session; treat unexpected ref movement as external clobber.
+- NEVER blind reset --hard on unexpected HEAD; branch the incoming line + verify via reflog first.
+- Capture current tip in a branch/tag before destructive ops in a cloud-synced repo.
+- Stage explicit paths, never git add . mid-incident.
+- Grep-verify writes/edits landed; cloud-replace or cancelled batches can leave the change off disk.
+immutable_facts:
+- Promoted from 2026-05-30 OneDrive .git clobber incident.
+- .git is a live database of small files; cloud clients treat them as ordinary files and overwrite mid-write.
+- Edit old_string mismatch (or a Write that reads back MISSING) on a just-touched file is a clobber/cancel signal, not necessarily wrong input.
+correction_history:
+- date: '2026-05-30'
+  type: incident_promotion
+  severity: P1
+  project: Development_Skills
+  summary: >
+    OneDrive synced another machine's atlas-rename git history mid-session,
+    moving main to an unrelated commit while the working tree still held this
+    session's edits. A routine git add + commit produced a mislabeled
+    mega-commit; three Edit calls silently no-opped and several Write calls in a
+    cancelled parallel batch never reached disk, all initially believed
+    successful.
+  fix_summary: >
+    Branched the incoming line (archived as tag), verified both lines via reflog
+    + cat-file, fast-forwarded main to the intended tip, and rebuilt the
+    silently-failed edits/writes with grep verification. Encoded pre-flight
+    snapshot, in-flight HEAD-stability check, explicit-path staging, and
+    verify-after-write/edit rules.
+regression_test_ids: []
+promotion_criteria:
+  to_tier: hardened
+  requirements:
+  - No blind reset on the next 2 unexpected-HEAD events; both lines preserved each time.
+last_updated: '2026-05-30'

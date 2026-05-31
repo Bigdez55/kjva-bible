@@ -107,6 +107,62 @@ git push <wrong-remote-url> --delete <tag1> <tag2> ...
 
 ---
 
+## STEP 7 — SSH CONNECTIVITY & HOST-KEY VERIFICATION (port-22 fallback)
+
+A push can fail for reasons that are NOT remote-contamination. Two surface as
+confusing generic errors — diagnose locally before assuming an outage or auth problem.
+
+### 7A. `Host key verification failed`
+
+Happens even when GitHub's key IS in `known_hosts`. Root cause: `~/.ssh/config`
+routes `github.com` over the port-443 fallback (`HostName ssh.github.com`,
+`Port 443`), but `known_hosts` only holds the plain `github.com` (port-22) entry.
+SSH looks up `[github.com]:443` / `[ssh.github.com]:443`, finds no port-qualified
+entry, and refuses.
+
+Diagnose:
+```bash
+cat ~/.ssh/config                      # look for a 'Host github.com / Port 443' block
+ssh-keygen -F "[github.com]:443"       # empty output = the port-qualified entry is missing
+ssh -vvT git@github.com 2>&1 | grep -iE "Server host key|known_hosts|verification"
+```
+
+Fix (persistent — append GitHub's official ed25519 key, BOTH port-qualified forms):
+```bash
+printf '[github.com]:443 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl\n[ssh.github.com]:443 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl\n' >> ~/.ssh/known_hosts
+```
+VERIFY the presented key matches GitHub's published fingerprint
+`SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU` before trusting it
+(https://docs.github.com/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints).
+**NEVER** use `StrictHostKeyChecking no` to silence this — it trusts any key (MITM).
+
+### 7B. `Can't assign requested address` / `Couldn't connect to server`
+
+This is NOT a network outage and NOT an auth problem. It is local TCP
+**ephemeral-port exhaustion**: tens of thousands of stuck `TIME_WAIT` sockets
+consuming the macOS 49152–65535 range. Tell-tale: `ping` works (ICMP needs no
+ephemeral port) while every `curl`/`git`/`nc` TCP connect fails instantly (<5ms).
+
+Diagnose:
+```bash
+netstat -an | grep -c TIME_WAIT        # tens of thousands = exhausted
+nc -z -w3 1.1.1.1 443 && echo TCP_OK || echo TCP_FAIL
+ping -c1 1.1.1.1                        # succeeds even when TCP fails → confirms exhaustion
+```
+
+Fix (any one):
+```bash
+sudo sysctl -w net.inet.ip.portrange.first=16384   # adds ~33k fresh ports immediately
+# OR toggle Wi-Fi off/on   # OR reboot
+```
+Do NOT lower `net.inet.tcp.msl` expecting existing sockets to drain — Darwin pins
+each socket's timer at creation; only NEW sockets get the shorter MSL, so the
+count does not drop. Expand the range or cycle the link instead.
+
+See also `SKILL_NETWORK_CONNECTIVITY_DISCIPLINE_001` for the full triage order.
+
+---
+
 ## ANTI-PATTERNS THAT CAUSE CROSS-REPO CONTAMINATION
 
 | Anti-pattern | Consequence | Prevention |
@@ -116,6 +172,9 @@ git push <wrong-remote-url> --delete <tag1> <tag2> ...
 | Assuming `origin` = correct repo without checking | Wrong repo gets branch + all history | Remote map (STEP 2) |
 | Cloning then never updating remote map entry | Map drifts from reality | Update map on every new clone |
 | Using `origin` when a more explicit named remote exists | `pglang` exists but `origin` was wrong — `origin` was used anyway | Prefer named remotes when multiple exist; fix `origin` immediately |
+| `StrictHostKeyChecking no` to silence `Host key verification failed` | Trusts any key — MITM-vulnerable | STEP 7A: add the verified port-qualified known_hosts entry |
+| Port-22-only `known_hosts` when `~/.ssh/config` uses the :443 fallback | Every push fails host-key verification | STEP 7A: add `[github.com]:443` + `[ssh.github.com]:443` entries |
+| Treating `Can't assign requested address` as a network outage and waiting | Hours lost; real cause is local port exhaustion | STEP 7B: expand ephemeral range / Wi-Fi toggle / reboot |
 
 ---
 
@@ -132,10 +191,17 @@ references this skill for the full protocol.
 After any push incident — whether caught before or after — add the anti-pattern
 to the table in STEP 6 and update the canonical map in STEP 2.
 
-Current version: 1.0.0
-Last updated: 2026-05-26
+Current version: 1.1.0
+Last updated: 2026-05-30
 
 **Changelog:**
+- v1.1.0 (2026-05-30): Added STEP 7 — SSH connectivity & host-key verification.
+  Sourced from the 2026-05-30 fleet-push ordeal: `~/.ssh/config` routed
+  github.com over the :443 fallback but `known_hosts` had only the port-22 entry,
+  causing `Host key verification failed` on every push; compounded by local TCP
+  ephemeral-port exhaustion (~53k stuck TIME_WAIT) surfacing as `Can't assign
+  requested address` and misread as a network outage. Added 3 anti-pattern rows.
+  Cross-references SKILL_NETWORK_CONNECTIVITY_DISCIPLINE_001.
 - v1.0.0 (2026-05-26): Initial. Sourced from SUPER C cross-repo contamination
   incident where `superc-v1/` had `origin` pointing to `Storbits.git`. Push of
   `super-c-1-lang --follow-tags` contaminated Storbits with 78 SUPER C tags + 1

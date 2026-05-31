@@ -1,6 +1,6 @@
 id: SKILL_GIT_REMOTE_DISCIPLINE_001
 title: git-remote-discipline
-version: 1.0.0
+version: 1.1.0
 layer: governance
 domains:
 - governance
@@ -17,12 +17,30 @@ runtime_projection_targets:
 - codex
 - gemini
 refinement: auto
+hard_constraints:
+- Run git remote -v and cross-check the canonical map before every push.
+- When ~/.ssh/config routes a host over a non-22 port, known_hosts MUST carry the port-qualified entry for that host and port.
+- NEVER use StrictHostKeyChecking no to silence a host-key failure; add the verified key instead.
+- The error "Can't assign requested address" is local TCP ephemeral-port exhaustion, not a network outage; expand the port range or cycle the link.
+- The error "Host key verification failed" is a known_hosts/SSH-config problem, never an auth or network problem.
+improvement_history:
+- version: 1.0.0
+  date: '2026-05-26'
+  reason: Initial promotion from SUPER C cross-repo contamination prevention.
+- version: 1.1.0
+  date: '2026-05-30'
+  reason: >
+    Added STEP 7 (SSH connectivity and host-key verification) from the 2026-05-30
+    fleet-push ordeal — a port-443 SSH fallback without a port-qualified known_hosts
+    entry, compounded by TCP ephemeral-port exhaustion misread as a network outage.
 improvement_metrics:
   invocation_count: 0
   correction_count: 0
   last_correction: null
   corrections_per_100_uses: null
-  last_refinement: null
-  refinement_count: 0
+  last_refinement: '2026-05-30'
+  refinement_count: 1
   tier_promotion_history: []
 skill_number: 519
+related_skills:
+- SKILL_NETWORK_CONNECTIVITY_DISCIPLINE_001

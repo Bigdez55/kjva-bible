@@ -42,7 +42,7 @@ Fix the remote first (STEP 3), then re-verify, then push.
 | `Storbits/` | `https://github.com/Bigdez55/Storbits.git` | `origin` |
 | `GENESYS/GENESYS/` | (verify before each push) | `origin` |
 | `kjva-bible/` | (verify before each push) | `origin` |
-| `Development_Skills/` | (verify before each push) | `origin` |
+| `ATLAS/` | (verify before each push) | `origin` |
 
 **Add new entries to this map whenever a new repo is cloned or a new project is started.**
 

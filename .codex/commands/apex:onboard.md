@@ -4,7 +4,7 @@
 Run the tiered repo onboarding playbook. Captures current truth (T1), sets direction (T2), runs the slice loop (T3), and maintains hygiene (T4) for any repo adopting ATLAS.
 
 ## Output
-Per tier; see [SKILL_REPO_ONBOARDING_001.playbook.md](../../development_skills/13_skills/active/SKILL_REPO_ONBOARDING_001.playbook.md).
+Per tier; see [SKILL_REPO_ONBOARDING_001.playbook.md](../../atlas/13_skills/active/SKILL_REPO_ONBOARDING_001.playbook.md).
 
 - T1 → target's `current.truth.yaml`, 7 mandated diagrams, registry sync, drift evidence packet, populated twin in upstream ATLAS, pushed target branch.
 - T2 → real intake packet, starter packet, SLICE-0001 with preview deploy, baseline specs, 1–3 baseline ADRs, registry updates, evidence packet.
@@ -20,20 +20,20 @@ Per tier; see [SKILL_REPO_ONBOARDING_001.playbook.md](../../development_skills/1
 - Repo structure check passes ([apex_structure_check.yml](../../.github/workflows/apex_structure_check.yml))
 - `python3 25_automation/registry_sync/sync_registries.py --check` is green
 - `target` is a git repository on a clean branch
-- `target/development_skills/` exists (sync via [25_automation/sync_scripts/sync_to_child_repo.py](../../25_automation/sync_scripts/sync_to_child_repo.py) first if missing)
+- `target/atlas/` exists (sync via [25_automation/sync_scripts/sync_to_child_repo.py](../../25_automation/sync_scripts/sync_to_child_repo.py) first if missing)
 
 ## Fast Validation Runner
 
 Run this portable validator from any repo to audit tier completion:
 
 ```bash
-python3 development_skills/25_automation/onboarding_validate_tiers.py --target /absolute/path/to/repo --tiers 1-4
+python3 atlas/25_automation/onboarding_validate_tiers.py --target /absolute/path/to/repo --tiers 1-4
 ```
 
 For JSON output:
 
 ```bash
-python3 development_skills/25_automation/onboarding_validate_tiers.py --target /absolute/path/to/repo --tiers 1-4 --json
+python3 atlas/25_automation/onboarding_validate_tiers.py --target /absolute/path/to/repo --tiers 1-4 --json
 ```
 
 ## Step-by-step
@@ -44,15 +44,15 @@ python3 development_skills/25_automation/onboarding_validate_tiers.py --target /
 - If the list includes Tier 2 and `intent_brief` is empty, halt immediately before running any tier and surface the requirement to the caller.
 
 ### 2. Load context
-Compile a context packet via [42_context_compiler/compile_context.py](../../development_skills/42_context_compiler/compile_context.py) for the appropriate persona ([12_agents/personas/](../../development_skills/12_agents/personas/)) — typically `apex_coding_agent` for T1/T2/T3 and `drift_agent` for T4.
+Compile a context packet via [42_context_compiler/compile_context.py](../../atlas/42_context_compiler/compile_context.py) for the appropriate persona ([12_agents/personas/](../../atlas/12_agents/personas/)) — typically `apex_coding_agent` for T1/T2/T3 and `drift_agent` for T4.
 
 ### 3. Execute each tier in sequence
-For each tier in the expanded list, follow its body literally as written in [SKILL_REPO_ONBOARDING_001.playbook.md](../../development_skills/13_skills/active/SKILL_REPO_ONBOARDING_001.playbook.md). Complete every step of a tier and confirm its outputs exist before starting the next tier. Do not skip steps.
+For each tier in the expanded list, follow its body literally as written in [SKILL_REPO_ONBOARDING_001.playbook.md](../../atlas/13_skills/active/SKILL_REPO_ONBOARDING_001.playbook.md). Complete every step of a tier and confirm its outputs exist before starting the next tier. Do not skip steps.
 
 **Tier 1 note:** T1 begins with a mandatory discovery protocol — read git history, language artifacts, source structure, deployment signals, and any existing docs *before* writing any output file. Do not prompt the user for context about what the repo does; derive it mechanically. The reality model built during discovery is the sole input to all T1 artifacts.
 
 ### 4. Update registries
-- Inside the target: `python3 development_skills/25_automation/registry_sync/sync_registries.py --write`.
+- Inside the target: `python3 atlas/25_automation/registry_sync/sync_registries.py --write`.
 - For T1 step 5 (twin population): run `python3 25_automation/registry_sync/sync_registries.py --write` in the upstream ATLAS checkout on the dedicated onboarding branch.
 
 ### 5. Update traceability
@@ -70,7 +70,7 @@ For each tier in the expanded list, follow its body literally as written in [SKI
 - T4 → mistake ledger entries; only generates an evidence packet when a skill is promoted.
 
 ## Outputs
-See "Output" section above. All outputs land in canonical locations inside the target's `development_skills/` (T1, T2, T3) and in upstream ATLAS for the twin (T1) and any promoted skills (T4).
+See "Output" section above. All outputs land in canonical locations inside the target's `atlas/` (T1, T2, T3) and in upstream ATLAS for the twin (T1) and any promoted skills (T4).
 
 ## Success criteria
 - Required artifacts for the requested tier exist on disk and validate against schema.
@@ -116,9 +116,9 @@ See "Output" section above. All outputs land in canonical locations inside the t
 ```
 
 ## See also
-- Skill: [SKILL_REPO_ONBOARDING_001](../../development_skills/13_skills/active/SKILL_REPO_ONBOARDING_001.yaml)
-- Playbook: [SKILL_REPO_ONBOARDING_001.playbook.md](../../development_skills/13_skills/active/SKILL_REPO_ONBOARDING_001.playbook.md)
+- Skill: [SKILL_REPO_ONBOARDING_001](../../atlas/13_skills/active/SKILL_REPO_ONBOARDING_001.yaml)
+- Playbook: [SKILL_REPO_ONBOARDING_001.playbook.md](../../atlas/13_skills/active/SKILL_REPO_ONBOARDING_001.playbook.md)
 - Sync mechanics: [21_repo_sync/repo_sync.protocol.md](../../21_repo_sync/repo_sync.protocol.md)
-- Identity preservation: [ADR-0011](../../development_skills/04_architecture/adrs/ADR-0011-repo-sync-delete-and-identity-exclude.md)
+- Identity preservation: [ADR-0011](../../atlas/04_architecture/adrs/ADR-0011-repo-sync-delete-and-identity-exclude.md)
 - [APEX_PROTOCOL.md](../../APEX_PROTOCOL.md)
-- [../../development_skills/37_command_protocol/commands.registry.yaml](../commands.registry.yaml)
+- [../../atlas/37_command_protocol/commands.registry.yaml](../commands.registry.yaml)

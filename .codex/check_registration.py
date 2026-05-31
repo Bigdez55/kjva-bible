@@ -17,7 +17,7 @@ from agent_surface_health import (
 def main() -> int:
     repo_root = Path(__file__).resolve().parents[1]
     codex_root = repo_root / '.codex'
-    dev_skills = repo_root / 'development_skills'
+    dev_skills = repo_root / 'atlas'
     config_path = Path.home() / '.codex' / 'config.toml'
     bridge_skill = Path.home() / '.codex' / 'skills' / 'kjva-codex-bundle' / 'SKILL.md'
 
@@ -44,9 +44,9 @@ def main() -> int:
         critical.append('project is not trusted in ~/.codex/config.toml')
 
     if not (dev_skills / '37_command_protocol' / 'slash_commands').exists():
-        warnings.append('development_skills slash command sources are missing')
+        warnings.append('atlas slash command sources are missing')
     if not (dev_skills / '37_command_protocol' / 'command_playbooks').exists():
-        warnings.append('development_skills command playbooks are missing')
+        warnings.append('atlas command playbooks are missing')
     warnings.extend(
         f"canonical root missing: {name} -> {entry['path']}"
         for name, entry in canonical.items()

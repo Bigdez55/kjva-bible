@@ -1,9 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Bash(python3 development_skills/infrastructure/scripts/sync_scripts/sync_to_child_repo.py*)",
-      "Bash(python3 development_skills/infrastructure/scripts/registry_sync/sync_registries.py*)",
-      "Bash(python3 development_skills/infrastructure/scripts/drift_checkers/*.py*)",
+      "Bash(python3 atlas/infrastructure/scripts/sync_scripts/sync_to_child_repo.py*)",
+      "Bash(python3 atlas/infrastructure/scripts/registry_sync/sync_registries.py*)",
+      "Bash(python3 atlas/infrastructure/scripts/drift_checkers/*.py*)",
       "Bash(cd backend && python -m pytest*)",
       "Bash(cd backend && python -m ruff*)",
       "Bash(cd frontend && npm run*)",

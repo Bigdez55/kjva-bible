@@ -14,7 +14,7 @@ Tokenless-Models/
 ├── eng-kjv_html/                 Corpus metadata: per-chapter HTM (chapter-level HTML)
 │
 ├── Bible_Tokenless_POC/          DO NOT MODIFY — reference blueprint, first working tokenless POC
-├── development_skills/           Shared skill toolkit (178 SKILL_*.yaml + playbooks)
+├── atlas/           Shared skill toolkit (178 SKILL_*.yaml + playbooks)
 │
 ├── AGENTS.md                     Agent routing and skill invocation policy
 ├── CLAUDE.md                     Claude-specific config (delegates to AGENTS.md)

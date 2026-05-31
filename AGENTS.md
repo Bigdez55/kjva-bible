@@ -94,7 +94,7 @@ the frontend to render placeholders cleanly.
 
 ## Phase 1 Release (SLICE-0001)
 
-See `development_skills/22_vertical_slices/SLICE-0001-phase1-release.yaml`.
+See `atlas/22_vertical_slices/SLICE-0001-phase1-release.yaml`.
 
 - Retrieval-first `/api/complete` (ADR-0003)
 - 29-test pytest suite in `backend/tests/`

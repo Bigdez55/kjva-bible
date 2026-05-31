@@ -4,12 +4,12 @@ from pathlib import Path
 
 
 CANONICAL_ROOTS = {
-    "04_architecture": "development_skills/04_architecture",
-    "13_skills": "development_skills/13_skills",
-    "19_truth_state": "development_skills/19_truth_state",
-    "37_command_protocol": "development_skills/37_command_protocol",
-    "12_agents": "development_skills/12_agents",
-    "42_context_compiler": "development_skills/42_context_compiler",
+    "04_architecture": "atlas/04_architecture",
+    "13_skills": "atlas/13_skills",
+    "19_truth_state": "atlas/19_truth_state",
+    "37_command_protocol": "atlas/37_command_protocol",
+    "12_agents": "atlas/12_agents",
+    "42_context_compiler": "atlas/42_context_compiler",
 }
 
 
@@ -51,7 +51,7 @@ def command_inventory(base: Path) -> dict[str, str]:
 
 
 def command_drift_report(repo_root: Path) -> dict[str, object]:
-    canonical_dir = repo_root / 'development_skills/37_command_protocol/slash_commands'
+    canonical_dir = repo_root / 'atlas/37_command_protocol/slash_commands'
     codex_dir = repo_root / '.codex/commands'
     claude_dir = repo_root / '.claude/commands'
 

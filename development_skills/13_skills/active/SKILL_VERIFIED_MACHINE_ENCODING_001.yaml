@@ -61,7 +61,7 @@ workflows:
 templates: []
 provenance:
   collection: chat_provided_skill_2026-05-20
-  source_repo: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills
+  source_repo: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS
   raw_source: user_message_2026-05-20
   raw_sha256: pending_chat_capture
   also_imported_from: migrated_user

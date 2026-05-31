@@ -5,7 +5,7 @@
 SKILL_REPO_TWIN_INGEST_001
 
 ## Purpose
-Ingest a child repo into its Development_Skills twin by running the Bookworm
+Ingest a child repo into its ATLAS twin by running the Bookworm
 ingestion pipeline. Populates architecture snapshot, component graph, and dependency
 graph from actual file system state. Writes a factual last-known-state summary.
 Updates repo ledger. Skips ingestion if twin is already synced and fresh (< 30 days),

@@ -9,7 +9,6 @@ via StaticFiles. During development, Vite dev server proxies /api to :8000.
 """
 from __future__ import annotations
 
-import sys
 from contextlib import asynccontextmanager
 from pathlib import Path
 
@@ -29,12 +28,14 @@ FRONTEND_DIST = Path(__file__).parent.parent / "frontend" / "dist"
 async def lifespan(app: FastAPI):
     # Load verse index once at startup (~36,822 records, < 1s)
     get_index().load()
+    from kjva_runtime import get_runtime
+    await get_runtime().bootstrap()
     yield
 
 
 app = FastAPI(
     title="KJVA Bible App",
-    description="KJV Bible + KJVA AI model (18M params, byte-level, MLX)",
+    description="KJV Bible + KJVA Constitutional Cognitive Runtime (XMIND active backend)",
     version="1.0.0",
     lifespan=lifespan,
 )
@@ -54,10 +55,13 @@ app.include_router(stubs_router)
 @app.get("/api/health")
 def health():
     from inference import get_engine
+    from kjva_runtime import get_runtime
+    runtime_health = get_runtime().health()
     return {
         "status": "ok",
         "model_ready": get_engine().is_ready(),
         "verse_index_loaded": get_index()._loaded,
+        **runtime_health,
     }
 
 

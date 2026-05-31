@@ -111,7 +111,7 @@ copy.
 
 | Date | Project | Symptom | Root cause | Fix |
 |---|---|---|---|---|
-| 2026-05-30 | Development_Skills | `main` jumped to unrelated atlas-rename history; 3 Edits silently no-opped; some Writes never hit disk; a routine commit became a mislabeled mega-commit | OneDrive synced another machine's `.git` refs + working tree mid-session | Branched incoming (archived as tag), verified via reflog, fast-forwarded main to intended tip; rebuilt silently-failed edits/writes with grep-verification |
+| 2026-05-30 | ATLAS | `main` jumped to unrelated atlas-rename history; 3 Edits silently no-opped; some Writes never hit disk; a routine commit became a mislabeled mega-commit | OneDrive synced another machine's `.git` refs + working tree mid-session | Branched incoming (archived as tag), verified via reflog, fast-forwarded main to intended tip; rebuilt silently-failed edits/writes with grep-verification |
 
 ## Related Skills
 

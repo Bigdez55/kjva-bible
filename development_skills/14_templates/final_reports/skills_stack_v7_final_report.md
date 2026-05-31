@@ -1,7 +1,7 @@
 # Final Report: Skills Stack v7 Repo-Native Integration
 
 ## Mission
-Integrate v1-v6 skills-stack handoffs into the native Development_Skills Apex repo layout.
+Integrate v1-v6 skills-stack handoffs into the native ATLAS Apex repo layout.
 
 ## Branch
 - Branch:

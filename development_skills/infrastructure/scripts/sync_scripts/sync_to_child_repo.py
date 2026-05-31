@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Copy a curated subset of Development_Skills into a child repo's `development_skills/` directory.
+"""Copy a curated subset of ATLAS into a child repo's `development_skills/` directory.
 
 Design notes (issues surfaced 2026-05-04 by LMOS agent):
 - `rsync -a` without --delete leaves stale paths after upstream renames (e.g. genesis → starter).
@@ -12,7 +12,7 @@ import argparse, subprocess, sys
 from pathlib import Path
 
 # Script lives at infrastructure/scripts/sync_scripts/ — 3 levels below repo root.
-# parents[3] is the Development_Skills repo root.
+# parents[3] is the ATLAS repo root.
 ROOT = Path(__file__).resolve().parents[3]
 
 # Maps source path (relative to ROOT) → destination path inside development_skills/.

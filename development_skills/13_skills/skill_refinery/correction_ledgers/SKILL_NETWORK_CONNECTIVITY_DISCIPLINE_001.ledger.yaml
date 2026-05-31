@@ -20,7 +20,7 @@ correction_history:
 - date: '2026-05-30'
   type: incident_promotion
   severity: P1
-  project: Development_Skills + fleet push
+  project: ATLAS + fleet push
   summary: >
     A routine commit-and-push turned into hours of failed pushes. Two local faults
     were misdiagnosed as a network outage: ~53k stuck TIME_WAIT sockets exhausted

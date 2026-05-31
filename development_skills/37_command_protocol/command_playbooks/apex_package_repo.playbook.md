@@ -76,7 +76,7 @@ python3 25_automation/registry_sync/sync_registries.py --write
 
 ```bash
 # Pseudocode — actual invocation is via the agent harness
-/apex:package_repo target=Development_Skills
+/apex:package_repo target=ATLAS
 ```
 
 ## See also

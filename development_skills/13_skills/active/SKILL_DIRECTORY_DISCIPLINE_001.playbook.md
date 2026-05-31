@@ -182,7 +182,7 @@ finish a session that touched Python, Node.js, or any test runner.
 
 Generated cache directories accumulate silently. They are not noticed until a commit
 or status check reveals thousands of untracked files. `.pytest_cache` alone has caused
-cleanup debt in Development_Skills, GENESYS, and child repos.
+cleanup debt in ATLAS, GENESYS, and child repos.
 
 ### Cache Directories That Must Never Be Committed
 
@@ -242,4 +242,4 @@ tools from inside a directory that doesn't have a `.gitignore` covering it. Fix 
 | Date | Version | What changed | Why |
 |---|---|---|---|
 | 2026-04-27 | v1.0 | Created | Corrective action after agent created `emulation/`, `xisc-apex/`, `rmec/amendments/` instead of working in existing `devices/desktop/vm/xemu/`, `xisc/`, and root-level RMEC file |
-| 2026-05-25 | v1.1 | Added Generated Cache Gate section + cache violation rows to violation table | `.pytest_cache` left on disk in Development_Skills root and recurring in other repos (GENESYS, child repos). Cross-repo rule now explicit. |
+| 2026-05-25 | v1.1 | Added Generated Cache Gate section + cache violation rows to violation table | `.pytest_cache` left on disk in ATLAS root and recurring in other repos (GENESYS, child repos). Cross-repo rule now explicit. |

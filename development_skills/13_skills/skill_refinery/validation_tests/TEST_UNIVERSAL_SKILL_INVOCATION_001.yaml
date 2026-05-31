@@ -58,7 +58,7 @@ notes:
 - Imported project-specific agents are scoped assets, not universal runtime law.
 - Generic roots and nouns suppress project-specific skill prefixes until a target
   or domain explicitly binds them.
-- External runtime Skill tool registries are not the full Development_Skills skill
+- External runtime Skill tool registries are not the full ATLAS skill
   library.
 - Repository-native `SKILL_*` YAML/playbooks are applied as disciplines when routed,
   even when the external runtime cannot call them through a Skill tool.

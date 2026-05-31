@@ -125,7 +125,7 @@ def main() -> None:
     skipped = 0
     for repo in repos:
         name = str(repo.get("name", "")).strip()
-        if not name or name == "Development_Skills":
+        if not name or name == "ATLAS":
             continue
         root = pick_repo_root(name, repo.get("local_path"), children)
         if root is None:

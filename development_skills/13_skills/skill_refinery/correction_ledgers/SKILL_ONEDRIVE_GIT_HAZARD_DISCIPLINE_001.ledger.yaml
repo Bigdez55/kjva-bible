@@ -19,7 +19,7 @@ correction_history:
 - date: '2026-05-30'
   type: incident_promotion
   severity: P1
-  project: Development_Skills
+  project: ATLAS
   summary: >
     OneDrive synced another machine's atlas-rename git history mid-session,
     moving main to an unrelated commit while the working tree still held this

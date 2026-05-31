@@ -27,7 +27,7 @@ hard_constraints:
 - Deduplicate by category and hash while preserving all source occurrences.
 - Keep agent-memory and session files as context/evidence unless explicitly promoted
   into active skills or personas.
-- Distinguish external runtime Skill tool registries from repository-native Development_Skills
+- Distinguish external runtime Skill tool registries from repository-native ATLAS
   playbooks.
 - Apply repository-native `SKILL_*` YAML/playbooks as disciplines when selected, even
   when they are not tool-callable in the current runtime.
@@ -68,7 +68,7 @@ provenance:
 improvement_history:
 - version: 1.1.0
   date: '2026-05-20'
-  reason: Clarified that external runtime Skill tools are not the full Development_Skills
+  reason: Clarified that external runtime Skill tools are not the full ATLAS
     library and that repo-native SKILL playbooks remain executable disciplines.
 - version: 1.0.0
   date: '2026-05-17'

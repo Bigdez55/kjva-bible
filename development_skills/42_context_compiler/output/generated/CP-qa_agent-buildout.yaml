@@ -29,7 +29,7 @@ sections:
     status: active
     last_verified: '2026-05-04'
     verified_by: apex_coding_agent_buildout
-    summary: 'Development Skills central intelligence system fully built out across
+    summary: 'ATLAS central intelligence system fully built out across
       all 44 numbered systems. Schemas, templates, ledgers, registries, ADRs, diagrams,
       skills, agents, prompts, specs, workflows, slash-command playbooks, Bookworm
       indexes, repo twins, context compiler, intent compiler, and proof matrix all

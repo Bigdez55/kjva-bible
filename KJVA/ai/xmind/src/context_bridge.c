@@ -27,9 +27,9 @@
  *              "compressed_size":<u32>,"raw_size":<u32>,
  *              "data_hex":"<hex>"},...]}
  *
- * On IPC failure: returns 0 shards (graceful degradation).
- * Inference continues without context; Heptagon pre_inference
- * falls back to keyword classification for domain tagging.
+ * On IPC failure: returns -1 so callers can distinguish unavailable
+ * council context from a valid zero-shard response. Non-critical callers
+ * may degrade; policy-dependent callers must refuse or contain.
  *
  * Freestanding C11. No libc. PAL I/O + pal_pages_alloc only.
  * Compile: clang -ffreestanding -DPAL_FREESTANDING -Werror -c context_bridge.c
@@ -474,8 +474,8 @@ static int alloc_and_register(uint32_t staging_used,
  *
  * Returns:
  *    N > 0  — number of shards returned in out->shards
- *    0      — no shards (graceful degradation; inference continues)
- *   -1      — IPC failure (also degrades gracefully; caller must handle)
+ *    0      — no shards (valid degraded read; inference may continue)
+ *   -1      — IPC failure (context unavailable; caller must classify)
  *   -2      — no shards after successful query
  * ═══════════════════════════════════════════════════════════════════════ */
 
@@ -511,8 +511,8 @@ int xmind_context_retrieve(const xmind_context_request_t *req,
     pal_status_t rc   = pal_net_connect(AHKI_HOST, AHKI_PORT,
                                          AHKI_CONNECT_MS, &sock);
     if (rc != PAL_OK || sock == PAL_HANDLE_INVALID) {
-        /* Graceful degradation — Ahki may not be running (Sprint 46 mode) */
-        return 0;
+        /* Availability is real: Ahki unavailable is not a zero-shard result. */
+        return -1;
     }
 
     /* ── Send framed JSON request ── */
@@ -520,22 +520,22 @@ int xmind_context_retrieve(const xmind_context_request_t *req,
     encode_u32_be(hdr, req_len);
 
     rc = net_write_exact(sock, hdr, FRAME_HDR_LEN);
-    if (rc != PAL_OK) { pal_handle_close(sock); return 0; }
+    if (rc != PAL_OK) { pal_handle_close(sock); return -1; }
 
     rc = net_write_exact(sock, req_buf, req_len);
-    if (rc != PAL_OK) { pal_handle_close(sock); return 0; }
+    if (rc != PAL_OK) { pal_handle_close(sock); return -1; }
 
     /* ── Read framed response ── */
     uint8_t resp_hdr[FRAME_HDR_LEN];
     rc = net_read_exact(sock, resp_hdr, FRAME_HDR_LEN);
-    if (rc != PAL_OK) { pal_handle_close(sock); return 0; }
+    if (rc != PAL_OK) { pal_handle_close(sock); return -1; }
 
     uint32_t resp_payload_len = decode_u32_be(resp_hdr);
 
     /* Sanity check: response must not exceed our buffer */
     if (resp_payload_len == 0u || resp_payload_len > CTX_RESP_BUF_SIZE) {
         pal_handle_close(sock);
-        return 0;
+        return -1;
     }
 
     /* Stack allocation for response — safe given CTX_RESP_BUF_SIZE = 32 KB
@@ -544,7 +544,7 @@ int xmind_context_retrieve(const xmind_context_request_t *req,
     rc = net_read_exact(sock, resp_buf, resp_payload_len);
     pal_handle_close(sock);  /* Close socket immediately after read */
 
-    if (rc != PAL_OK) return 0;
+    if (rc != PAL_OK) return -1;
 
     /* ── Parse response + collect shard data into staging buffer ── */
 

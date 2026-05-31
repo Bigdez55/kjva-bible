@@ -76,7 +76,7 @@ python3 25_automation/registry_sync/sync_registries.py --write
 
 ```bash
 # Pseudocode — actual invocation is via the agent harness
-/apex:detect_drift target=Development_Skills
+/apex:detect_drift target=ATLAS
 ```
 
 ## See also

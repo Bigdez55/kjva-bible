@@ -1,12 +1,12 @@
-# Development Skills / SUPER C Atlas
+# ATLAS / SUPER C Atlas
 
-**Development Skills** is the predecessor and repository lineage identity. **SUPER C Atlas** is the target system identity for the evolved living development intelligence layer: reusable software development protocols, agent skills, architecture models, repo twins, Bookworm indexing, truth state management, diagram atlases, evidence ledgers, command routing, and one shot repo starter workflows.
+**ATLAS** is the predecessor and repository lineage identity. **SUPER C Atlas** is the target system identity for the evolved living development intelligence layer: reusable software development protocols, agent skills, architecture models, repo twins, Bookworm indexing, truth state management, diagram atlases, evidence ledgers, command routing, and one shot repo starter workflows.
 
 This repository is designed to be copied into every project repository as a local `development_skills/` folder while the central repository remains the master source for reusable skills, templates, schemas, agents, prompts, and governance rules.
 
 ## Core identity
 
-Development Skills / SUPER C Atlas is not just documentation. It is the operating layer for building software from ideation through deployment. The current repo identity remains `Development_Skills`; Atlas identity alignment is layered onto the existing repo instead of forcing a rename-first refactor.
+ATLAS / SUPER C Atlas is not just documentation. It is the operating layer for building software from ideation through deployment. The current repo identity remains `ATLAS`; Atlas identity alignment is layered onto the existing repo instead of forcing a rename-first refactor.
 
 It provides:
 
@@ -46,16 +46,16 @@ From the parent folder that contains your local repo:
 
 ```bash
 tar -xzf Development_Skills_Apex_v2_1.tar.gz
-cd Development_Skills
+cd ATLAS
 git init
 git add .
-git commit -m "Initialize Apex Development Skills System v2.1"
+git commit -m "Initialize Apex ATLAS System v2.1"
 ```
 
 To copy this into another project repo:
 
 ```bash
-rsync -a Development_Skills/ /path/to/project/development_skills/
+rsync -a ATLAS/ /path/to/project/development_skills/
 ```
 
 ## One shot command pattern
@@ -86,4 +86,4 @@ The agent command protocol supports:
 
 ## Bookworm role
 
-Bookworm is the living repository intelligence engine inside Development Skills. It ingests files, diagrams, ADRs, commits, skills, mistakes, truth state files, and documentation so that agents can retrieve the real current state of every project.
+Bookworm is the living repository intelligence engine inside ATLAS. It ingests files, diagrams, ADRs, commits, skills, mistakes, truth state files, and documentation so that agents can retrieve the real current state of every project.

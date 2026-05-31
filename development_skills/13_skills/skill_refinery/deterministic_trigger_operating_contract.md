@@ -9,7 +9,7 @@ This contract makes trigger routing foolproof enough for cross-agent use. It def
 1. One trigger surface: all natural language, `/atlas:*` aliases, Claude commands, Codex usage, and Gemini usage must route through the canonical trigger router.
 2. Verb-first routing controls intent; noun branches specialize; modifiers tune; targets bind project scope; proof validates; correctives repair.
 3. `invoke all skills` means universal coverage matrix, not exhaustive tool calls.
-4. External runtime `Skill(...)` registries are incomplete relative to Development_Skills.
+4. External runtime `Skill(...)` registries are incomplete relative to ATLAS.
 5. Repository-native `13_skills/active/SKILL_*.yaml` entries are applied by reading YAML/playbooks as disciplines.
 6. Project-specific skills are suppressed until an explicit target/domain binds them.
 7. Acquisition and invocation are separate:

@@ -3293,7 +3293,7 @@ entries:
     models/Storbits_Nexus_ai/.claude/agent-memory/knowledge-weaver/MEMORY.md
   source_occurrence_count: 3
   projects:
-  - Development_Skills
+  - ATLAS
   - Tokenless models
   sources:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/Storbits_Nexus_ai/.claude/agent-memory/knowledge-weaver/MEMORY.md
@@ -3302,8 +3302,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/models/.claude/agent-memory/knowledge-weaver/MEMORY.md
     project: Tokenless models
     relative_claude_path: agent-memory/knowledge-weaver/MEMORY.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/38_bookworm_engine/original_import/models/.claude/agent-memory/knowledge-weaver/MEMORY.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/38_bookworm_engine/original_import/models/.claude/agent-memory/knowledge-weaver/MEMORY.md
+    project: ATLAS
     relative_claude_path: agent-memory/knowledge-weaver/MEMORY.md
 - category: agent_memory
   slug: platform-integrity-auditor
@@ -7280,7 +7280,7 @@ entries:
   selected_source: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/desmond-super-c/.claude/agent-memory/knowledge-weaver/project_storbits_nexus_ai.md
   source_occurrence_count: 4
   projects:
-  - Development_Skills
+  - ATLAS
   - Tokenless models
   - desmond-super-c
   sources:
@@ -7293,8 +7293,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/models/.claude/agent-memory/knowledge-weaver/project_storbits_nexus_ai.md
     project: Tokenless models
     relative_claude_path: agent-memory/knowledge-weaver/project_storbits_nexus_ai.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/38_bookworm_engine/original_import/models/.claude/agent-memory/knowledge-weaver/project_storbits_nexus_ai.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/38_bookworm_engine/original_import/models/.claude/agent-memory/knowledge-weaver/project_storbits_nexus_ai.md
+    project: ATLAS
     relative_claude_path: agent-memory/knowledge-weaver/project_storbits_nexus_ai.md
 - category: agent_memory
   slug: performance-forge
@@ -8066,7 +8066,7 @@ entries:
   source_occurrence_count: 25
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -8158,8 +8158,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/skills/b164137f4f4b__b164137f4f4b__agent-dispatch.md
     project: IPOS
     relative_claude_path: universal/skills/b164137f4f4b__b164137f4f4b__agent-dispatch.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/skills/b164137f4f4b__b164137f4f4b__b164137f4f4b__agent-dispatch.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/skills/b164137f4f4b__b164137f4f4b__b164137f4f4b__agent-dispatch.md
+    project: ATLAS
     relative_claude_path: universal/skills/b164137f4f4b__b164137f4f4b__b164137f4f4b__agent-dispatch.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/skills/b164137f4f4b__b164137f4f4b__agent-dispatch.md
     project: Research
@@ -11088,7 +11088,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -11174,8 +11174,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/02831b3e642e__02831b3e642e__developer-experience-lead.md
     project: IPOS
     relative_claude_path: universal/agents/02831b3e642e__02831b3e642e__developer-experience-lead.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/02831b3e642e__02831b3e642e__02831b3e642e__developer-experience-lead.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/02831b3e642e__02831b3e642e__02831b3e642e__developer-experience-lead.md
+    project: ATLAS
     relative_claude_path: universal/agents/02831b3e642e__02831b3e642e__02831b3e642e__developer-experience-lead.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/02831b3e642e__02831b3e642e__developer-experience-lead.md
     project: Research
@@ -11189,7 +11189,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -11275,8 +11275,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/06b68d4b6cac__intelligence-lead-v2.md
     project: IPOS
     relative_claude_path: universal/agents/06b68d4b6cac__intelligence-lead-v2.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/06b68d4b6cac__06b68d4b6cac__intelligence-lead-v2.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/06b68d4b6cac__06b68d4b6cac__intelligence-lead-v2.md
+    project: ATLAS
     relative_claude_path: universal/agents/06b68d4b6cac__06b68d4b6cac__intelligence-lead-v2.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/06b68d4b6cac__intelligence-lead-v2.md
     project: Research
@@ -11290,7 +11290,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -11376,8 +11376,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/0a425a083788__0a425a083788__alpha-pulse-engine.md
     project: IPOS
     relative_claude_path: universal/agents/0a425a083788__0a425a083788__alpha-pulse-engine.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/0a425a083788__0a425a083788__0a425a083788__alpha-pulse-engine.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/0a425a083788__0a425a083788__0a425a083788__alpha-pulse-engine.md
+    project: ATLAS
     relative_claude_path: universal/agents/0a425a083788__0a425a083788__0a425a083788__alpha-pulse-engine.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/0a425a083788__0a425a083788__alpha-pulse-engine.md
     project: Research
@@ -11391,7 +11391,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -11477,8 +11477,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/0a741d21f1fa__0a741d21f1fa__apex-performance-agent.md
     project: IPOS
     relative_claude_path: universal/agents/0a741d21f1fa__0a741d21f1fa__apex-performance-agent.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/0a741d21f1fa__0a741d21f1fa__0a741d21f1fa__apex-performance-agent.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/0a741d21f1fa__0a741d21f1fa__0a741d21f1fa__apex-performance-agent.md
+    project: ATLAS
     relative_claude_path: universal/agents/0a741d21f1fa__0a741d21f1fa__0a741d21f1fa__apex-performance-agent.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/0a741d21f1fa__0a741d21f1fa__apex-performance-agent.md
     project: Research
@@ -11492,7 +11492,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -11578,8 +11578,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/0ab0b3e2a559__reliability-security-sentinel.md
     project: IPOS
     relative_claude_path: universal/agents/0ab0b3e2a559__reliability-security-sentinel.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/0ab0b3e2a559__0ab0b3e2a559__reliability-security-sentinel.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/0ab0b3e2a559__0ab0b3e2a559__reliability-security-sentinel.md
+    project: ATLAS
     relative_claude_path: universal/agents/0ab0b3e2a559__0ab0b3e2a559__reliability-security-sentinel.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/0ab0b3e2a559__reliability-security-sentinel.md
     project: Research
@@ -11593,7 +11593,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -11679,8 +11679,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/0f95ed0fbb6c__0f95ed0fbb6c__apex-export-agent.md
     project: IPOS
     relative_claude_path: universal/agents/0f95ed0fbb6c__0f95ed0fbb6c__apex-export-agent.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/0f95ed0fbb6c__0f95ed0fbb6c__0f95ed0fbb6c__apex-export-agent.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/0f95ed0fbb6c__0f95ed0fbb6c__0f95ed0fbb6c__apex-export-agent.md
+    project: ATLAS
     relative_claude_path: universal/agents/0f95ed0fbb6c__0f95ed0fbb6c__0f95ed0fbb6c__apex-export-agent.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/0f95ed0fbb6c__0f95ed0fbb6c__apex-export-agent.md
     project: Research
@@ -11694,7 +11694,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -11780,8 +11780,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/0fb572408fd4__0fb572408fd4__apex-ai-agent.md
     project: IPOS
     relative_claude_path: universal/agents/0fb572408fd4__0fb572408fd4__apex-ai-agent.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/0fb572408fd4__0fb572408fd4__0fb572408fd4__apex-ai-agent.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/0fb572408fd4__0fb572408fd4__0fb572408fd4__apex-ai-agent.md
+    project: ATLAS
     relative_claude_path: universal/agents/0fb572408fd4__0fb572408fd4__0fb572408fd4__apex-ai-agent.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/0fb572408fd4__0fb572408fd4__apex-ai-agent.md
     project: Research
@@ -11795,7 +11795,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -11881,8 +11881,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/0fdde31b0222__0fdde31b0222__operations-integrity-auditor.md
     project: IPOS
     relative_claude_path: universal/agents/0fdde31b0222__0fdde31b0222__operations-integrity-auditor.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/0fdde31b0222__0fdde31b0222__0fdde31b0222__operations-integrity-auditor.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/0fdde31b0222__0fdde31b0222__0fdde31b0222__operations-integrity-auditor.md
+    project: ATLAS
     relative_claude_path: universal/agents/0fdde31b0222__0fdde31b0222__0fdde31b0222__operations-integrity-auditor.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/0fdde31b0222__0fdde31b0222__operations-integrity-auditor.md
     project: Research
@@ -11896,7 +11896,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -11982,8 +11982,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/0feee10f9291__0feee10f9291__apex-performance-agent.md
     project: IPOS
     relative_claude_path: universal/agents/0feee10f9291__0feee10f9291__apex-performance-agent.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/0feee10f9291__0feee10f9291__0feee10f9291__apex-performance-agent.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/0feee10f9291__0feee10f9291__0feee10f9291__apex-performance-agent.md
+    project: ATLAS
     relative_claude_path: universal/agents/0feee10f9291__0feee10f9291__0feee10f9291__apex-performance-agent.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/0feee10f9291__0feee10f9291__apex-performance-agent.md
     project: Research
@@ -11997,7 +11997,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -12083,8 +12083,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/1141a7d1cd9e__data-infrastructure-lead.md
     project: IPOS
     relative_claude_path: universal/agents/1141a7d1cd9e__data-infrastructure-lead.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/1141a7d1cd9e__1141a7d1cd9e__data-infrastructure-lead.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/1141a7d1cd9e__1141a7d1cd9e__data-infrastructure-lead.md
+    project: ATLAS
     relative_claude_path: universal/agents/1141a7d1cd9e__1141a7d1cd9e__data-infrastructure-lead.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/1141a7d1cd9e__data-infrastructure-lead.md
     project: Research
@@ -12098,7 +12098,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -12184,8 +12184,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/12747dddecb3__12747dddecb3__data-infra-engineer.md
     project: IPOS
     relative_claude_path: universal/agents/12747dddecb3__12747dddecb3__data-infra-engineer.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/12747dddecb3__12747dddecb3__12747dddecb3__data-infra-engineer.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/12747dddecb3__12747dddecb3__12747dddecb3__data-infra-engineer.md
+    project: ATLAS
     relative_claude_path: universal/agents/12747dddecb3__12747dddecb3__12747dddecb3__data-infra-engineer.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/12747dddecb3__12747dddecb3__data-infra-engineer.md
     project: Research
@@ -12199,7 +12199,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -12285,8 +12285,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/155e9214b5d8__155e9214b5d8__apex-systems-architect.md
     project: IPOS
     relative_claude_path: universal/agents/155e9214b5d8__155e9214b5d8__apex-systems-architect.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/155e9214b5d8__155e9214b5d8__155e9214b5d8__apex-systems-architect.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/155e9214b5d8__155e9214b5d8__155e9214b5d8__apex-systems-architect.md
+    project: ATLAS
     relative_claude_path: universal/agents/155e9214b5d8__155e9214b5d8__155e9214b5d8__apex-systems-architect.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/155e9214b5d8__155e9214b5d8__apex-systems-architect.md
     project: Research
@@ -12300,7 +12300,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -12386,8 +12386,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/174865883f3e__174865883f3e__vanguard-disruptor.md
     project: IPOS
     relative_claude_path: universal/agents/174865883f3e__174865883f3e__vanguard-disruptor.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/174865883f3e__174865883f3e__174865883f3e__vanguard-disruptor.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/174865883f3e__174865883f3e__174865883f3e__vanguard-disruptor.md
+    project: ATLAS
     relative_claude_path: universal/agents/174865883f3e__174865883f3e__174865883f3e__vanguard-disruptor.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/174865883f3e__174865883f3e__vanguard-disruptor.md
     project: Research
@@ -12401,7 +12401,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -12487,8 +12487,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/18c69ca2540e__18c69ca2540e__apex-angular-agent.md
     project: IPOS
     relative_claude_path: universal/agents/18c69ca2540e__18c69ca2540e__apex-angular-agent.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/18c69ca2540e__18c69ca2540e__18c69ca2540e__apex-angular-agent.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/18c69ca2540e__18c69ca2540e__18c69ca2540e__apex-angular-agent.md
+    project: ATLAS
     relative_claude_path: universal/agents/18c69ca2540e__18c69ca2540e__18c69ca2540e__apex-angular-agent.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/18c69ca2540e__18c69ca2540e__apex-angular-agent.md
     project: Research
@@ -12502,7 +12502,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -12588,8 +12588,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/1a1514e0fe99__1a1514e0fe99__dashboard-deployer-agent.md
     project: IPOS
     relative_claude_path: universal/agents/1a1514e0fe99__1a1514e0fe99__dashboard-deployer-agent.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/1a1514e0fe99__1a1514e0fe99__1a1514e0fe99__dashboard-deployer-agent.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/1a1514e0fe99__1a1514e0fe99__1a1514e0fe99__dashboard-deployer-agent.md
+    project: ATLAS
     relative_claude_path: universal/agents/1a1514e0fe99__1a1514e0fe99__1a1514e0fe99__dashboard-deployer-agent.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/1a1514e0fe99__1a1514e0fe99__dashboard-deployer-agent.md
     project: Research
@@ -12603,7 +12603,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -12689,8 +12689,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/1c3e7f65683c__1c3e7f65683c__apex-realtime-agent.md
     project: IPOS
     relative_claude_path: universal/agents/1c3e7f65683c__1c3e7f65683c__apex-realtime-agent.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/1c3e7f65683c__1c3e7f65683c__1c3e7f65683c__apex-realtime-agent.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/1c3e7f65683c__1c3e7f65683c__1c3e7f65683c__apex-realtime-agent.md
+    project: ATLAS
     relative_claude_path: universal/agents/1c3e7f65683c__1c3e7f65683c__1c3e7f65683c__apex-realtime-agent.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/1c3e7f65683c__1c3e7f65683c__apex-realtime-agent.md
     project: Research
@@ -12704,7 +12704,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -12790,8 +12790,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/1c962d883922__apex-quant-architect.md
     project: IPOS
     relative_claude_path: universal/agents/1c962d883922__apex-quant-architect.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/1c962d883922__1c962d883922__apex-quant-architect.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/1c962d883922__1c962d883922__apex-quant-architect.md
+    project: ATLAS
     relative_claude_path: universal/agents/1c962d883922__1c962d883922__apex-quant-architect.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/1c962d883922__apex-quant-architect.md
     project: Research
@@ -12805,7 +12805,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -12891,8 +12891,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/1d0707e038b5__1d0707e038b5__intelligence-lead-v2.md
     project: IPOS
     relative_claude_path: universal/agents/1d0707e038b5__1d0707e038b5__intelligence-lead-v2.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/1d0707e038b5__1d0707e038b5__1d0707e038b5__intelligence-lead-v2.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/1d0707e038b5__1d0707e038b5__1d0707e038b5__intelligence-lead-v2.md
+    project: ATLAS
     relative_claude_path: universal/agents/1d0707e038b5__1d0707e038b5__1d0707e038b5__intelligence-lead-v2.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/1d0707e038b5__1d0707e038b5__intelligence-lead-v2.md
     project: Research
@@ -12906,7 +12906,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -12992,8 +12992,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/22e97f6b8df3__22e97f6b8df3__apex-d3-agent.md
     project: IPOS
     relative_claude_path: universal/agents/22e97f6b8df3__22e97f6b8df3__apex-d3-agent.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/22e97f6b8df3__22e97f6b8df3__22e97f6b8df3__apex-d3-agent.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/22e97f6b8df3__22e97f6b8df3__22e97f6b8df3__apex-d3-agent.md
+    project: ATLAS
     relative_claude_path: universal/agents/22e97f6b8df3__22e97f6b8df3__22e97f6b8df3__apex-d3-agent.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/22e97f6b8df3__22e97f6b8df3__apex-d3-agent.md
     project: Research
@@ -13007,7 +13007,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -13093,8 +13093,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/25d9d5b96ded__25d9d5b96ded__apex-design-agent.md
     project: IPOS
     relative_claude_path: universal/agents/25d9d5b96ded__25d9d5b96ded__apex-design-agent.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/25d9d5b96ded__25d9d5b96ded__25d9d5b96ded__apex-design-agent.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/25d9d5b96ded__25d9d5b96ded__25d9d5b96ded__apex-design-agent.md
+    project: ATLAS
     relative_claude_path: universal/agents/25d9d5b96ded__25d9d5b96ded__25d9d5b96ded__apex-design-agent.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/25d9d5b96ded__25d9d5b96ded__apex-design-agent.md
     project: Research
@@ -13108,7 +13108,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -13194,8 +13194,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/26d35e53c7f5__26d35e53c7f5__apex-angular-agent.md
     project: IPOS
     relative_claude_path: universal/agents/26d35e53c7f5__26d35e53c7f5__apex-angular-agent.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/26d35e53c7f5__26d35e53c7f5__26d35e53c7f5__apex-angular-agent.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/26d35e53c7f5__26d35e53c7f5__26d35e53c7f5__apex-angular-agent.md
+    project: ATLAS
     relative_claude_path: universal/agents/26d35e53c7f5__26d35e53c7f5__26d35e53c7f5__apex-angular-agent.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/26d35e53c7f5__26d35e53c7f5__apex-angular-agent.md
     project: Research
@@ -13209,7 +13209,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -13295,8 +13295,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/29f89d14cfcc__29f89d14cfcc__vanguard-innovation-scout.md
     project: IPOS
     relative_claude_path: universal/agents/29f89d14cfcc__29f89d14cfcc__vanguard-innovation-scout.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/29f89d14cfcc__29f89d14cfcc__29f89d14cfcc__vanguard-innovation-scout.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/29f89d14cfcc__29f89d14cfcc__29f89d14cfcc__vanguard-innovation-scout.md
+    project: ATLAS
     relative_claude_path: universal/agents/29f89d14cfcc__29f89d14cfcc__29f89d14cfcc__vanguard-innovation-scout.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/29f89d14cfcc__29f89d14cfcc__vanguard-innovation-scout.md
     project: Research
@@ -13310,7 +13310,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -13396,8 +13396,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/2d531e002386__2d531e002386__master-orchestrator.md
     project: IPOS
     relative_claude_path: universal/agents/2d531e002386__2d531e002386__master-orchestrator.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/2d531e002386__2d531e002386__2d531e002386__master-orchestrator.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/2d531e002386__2d531e002386__2d531e002386__master-orchestrator.md
+    project: ATLAS
     relative_claude_path: universal/agents/2d531e002386__2d531e002386__2d531e002386__master-orchestrator.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/2d531e002386__2d531e002386__master-orchestrator.md
     project: Research
@@ -13411,7 +13411,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -13497,8 +13497,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/306d3126ed43__306d3126ed43__intelligence-lead.md
     project: IPOS
     relative_claude_path: universal/agents/306d3126ed43__306d3126ed43__intelligence-lead.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/306d3126ed43__306d3126ed43__306d3126ed43__intelligence-lead.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/306d3126ed43__306d3126ed43__306d3126ed43__intelligence-lead.md
+    project: ATLAS
     relative_claude_path: universal/agents/306d3126ed43__306d3126ed43__306d3126ed43__intelligence-lead.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/306d3126ed43__306d3126ed43__intelligence-lead.md
     project: Research
@@ -13512,7 +13512,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -13598,8 +13598,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/32828cc9d2b2__event-horizon-agent.md
     project: IPOS
     relative_claude_path: universal/agents/32828cc9d2b2__event-horizon-agent.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/32828cc9d2b2__32828cc9d2b2__event-horizon-agent.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/32828cc9d2b2__32828cc9d2b2__event-horizon-agent.md
+    project: ATLAS
     relative_claude_path: universal/agents/32828cc9d2b2__32828cc9d2b2__event-horizon-agent.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/32828cc9d2b2__event-horizon-agent.md
     project: Research
@@ -13613,7 +13613,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -13699,8 +13699,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/3311441303b4__3311441303b4__data-infra-engineer.md
     project: IPOS
     relative_claude_path: universal/agents/3311441303b4__3311441303b4__data-infra-engineer.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/3311441303b4__3311441303b4__3311441303b4__data-infra-engineer.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/3311441303b4__3311441303b4__3311441303b4__data-infra-engineer.md
+    project: ATLAS
     relative_claude_path: universal/agents/3311441303b4__3311441303b4__3311441303b4__data-infra-engineer.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/3311441303b4__3311441303b4__data-infra-engineer.md
     project: Research
@@ -13714,7 +13714,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -13800,8 +13800,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/347af7f29d1c__347af7f29d1c__data-infrastructure-lead.md
     project: IPOS
     relative_claude_path: universal/agents/347af7f29d1c__347af7f29d1c__data-infrastructure-lead.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/347af7f29d1c__347af7f29d1c__347af7f29d1c__data-infrastructure-lead.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/347af7f29d1c__347af7f29d1c__347af7f29d1c__data-infrastructure-lead.md
+    project: ATLAS
     relative_claude_path: universal/agents/347af7f29d1c__347af7f29d1c__347af7f29d1c__data-infrastructure-lead.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/347af7f29d1c__347af7f29d1c__data-infrastructure-lead.md
     project: Research
@@ -13815,7 +13815,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -13901,8 +13901,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/39968226c6e1__39968226c6e1__apex-ai-agent.md
     project: IPOS
     relative_claude_path: universal/agents/39968226c6e1__39968226c6e1__apex-ai-agent.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/39968226c6e1__39968226c6e1__39968226c6e1__apex-ai-agent.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/39968226c6e1__39968226c6e1__39968226c6e1__apex-ai-agent.md
+    project: ATLAS
     relative_claude_path: universal/agents/39968226c6e1__39968226c6e1__39968226c6e1__apex-ai-agent.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/39968226c6e1__39968226c6e1__apex-ai-agent.md
     project: Research
@@ -13916,7 +13916,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -14002,8 +14002,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/3d44fdc05e6d__3d44fdc05e6d__system-signal-engine.md
     project: IPOS
     relative_claude_path: universal/agents/3d44fdc05e6d__3d44fdc05e6d__system-signal-engine.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/3d44fdc05e6d__3d44fdc05e6d__3d44fdc05e6d__system-signal-engine.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/3d44fdc05e6d__3d44fdc05e6d__3d44fdc05e6d__system-signal-engine.md
+    project: ATLAS
     relative_claude_path: universal/agents/3d44fdc05e6d__3d44fdc05e6d__3d44fdc05e6d__system-signal-engine.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/3d44fdc05e6d__3d44fdc05e6d__system-signal-engine.md
     project: Research
@@ -14017,7 +14017,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -14103,8 +14103,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/3e2c13629a19__3e2c13629a19__apex-react-agent.md
     project: IPOS
     relative_claude_path: universal/agents/3e2c13629a19__3e2c13629a19__apex-react-agent.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/3e2c13629a19__3e2c13629a19__3e2c13629a19__apex-react-agent.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/3e2c13629a19__3e2c13629a19__3e2c13629a19__apex-react-agent.md
+    project: ATLAS
     relative_claude_path: universal/agents/3e2c13629a19__3e2c13629a19__3e2c13629a19__apex-react-agent.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/3e2c13629a19__3e2c13629a19__apex-react-agent.md
     project: Research
@@ -14118,7 +14118,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -14204,8 +14204,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/40dfc5b13253__40dfc5b13253__knowledge-weaver.md
     project: IPOS
     relative_claude_path: universal/agents/40dfc5b13253__40dfc5b13253__knowledge-weaver.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/40dfc5b13253__40dfc5b13253__40dfc5b13253__knowledge-weaver.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/40dfc5b13253__40dfc5b13253__40dfc5b13253__knowledge-weaver.md
+    project: ATLAS
     relative_claude_path: universal/agents/40dfc5b13253__40dfc5b13253__40dfc5b13253__knowledge-weaver.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/40dfc5b13253__40dfc5b13253__knowledge-weaver.md
     project: Research
@@ -14219,7 +14219,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -14305,8 +14305,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/419937cff628__419937cff628__dashboard-deployer-agent.md
     project: IPOS
     relative_claude_path: universal/agents/419937cff628__419937cff628__dashboard-deployer-agent.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/419937cff628__419937cff628__419937cff628__dashboard-deployer-agent.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/419937cff628__419937cff628__419937cff628__dashboard-deployer-agent.md
+    project: ATLAS
     relative_claude_path: universal/agents/419937cff628__419937cff628__419937cff628__dashboard-deployer-agent.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/419937cff628__419937cff628__dashboard-deployer-agent.md
     project: Research
@@ -14320,7 +14320,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -14406,8 +14406,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/489672f2d7b0__489672f2d7b0__apex-accessibility-agent.md
     project: IPOS
     relative_claude_path: universal/agents/489672f2d7b0__489672f2d7b0__apex-accessibility-agent.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/489672f2d7b0__489672f2d7b0__489672f2d7b0__apex-accessibility-agent.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/489672f2d7b0__489672f2d7b0__489672f2d7b0__apex-accessibility-agent.md
+    project: ATLAS
     relative_claude_path: universal/agents/489672f2d7b0__489672f2d7b0__489672f2d7b0__apex-accessibility-agent.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/489672f2d7b0__489672f2d7b0__apex-accessibility-agent.md
     project: Research
@@ -14421,7 +14421,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -14507,8 +14507,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/4a89293806fb__vanguard-disruptor.md
     project: IPOS
     relative_claude_path: universal/agents/4a89293806fb__vanguard-disruptor.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/4a89293806fb__4a89293806fb__vanguard-disruptor.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/4a89293806fb__4a89293806fb__vanguard-disruptor.md
+    project: ATLAS
     relative_claude_path: universal/agents/4a89293806fb__4a89293806fb__vanguard-disruptor.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/4a89293806fb__vanguard-disruptor.md
     project: Research
@@ -14522,7 +14522,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -14608,8 +14608,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/4b97623111f3__4b97623111f3__master-orchestrator.md
     project: IPOS
     relative_claude_path: universal/agents/4b97623111f3__4b97623111f3__master-orchestrator.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/4b97623111f3__4b97623111f3__4b97623111f3__master-orchestrator.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/4b97623111f3__4b97623111f3__4b97623111f3__master-orchestrator.md
+    project: ATLAS
     relative_claude_path: universal/agents/4b97623111f3__4b97623111f3__4b97623111f3__master-orchestrator.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/4b97623111f3__4b97623111f3__master-orchestrator.md
     project: Research
@@ -14623,7 +14623,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -14709,8 +14709,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/505661774de0__505661774de0__kpi-analyst-agent.md
     project: IPOS
     relative_claude_path: universal/agents/505661774de0__505661774de0__kpi-analyst-agent.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/505661774de0__505661774de0__505661774de0__kpi-analyst-agent.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/505661774de0__505661774de0__505661774de0__kpi-analyst-agent.md
+    project: ATLAS
     relative_claude_path: universal/agents/505661774de0__505661774de0__505661774de0__kpi-analyst-agent.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/505661774de0__505661774de0__kpi-analyst-agent.md
     project: Research
@@ -14724,7 +14724,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -14810,8 +14810,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/50d46e7c9742__apex-sentiment-oracle.md
     project: IPOS
     relative_claude_path: universal/agents/50d46e7c9742__apex-sentiment-oracle.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/50d46e7c9742__50d46e7c9742__apex-sentiment-oracle.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/50d46e7c9742__50d46e7c9742__apex-sentiment-oracle.md
+    project: ATLAS
     relative_claude_path: universal/agents/50d46e7c9742__50d46e7c9742__apex-sentiment-oracle.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/50d46e7c9742__apex-sentiment-oracle.md
     project: Research
@@ -14825,7 +14825,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -14911,8 +14911,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/5290026ea3a8__5290026ea3a8__reliability-security-sentinel.md
     project: IPOS
     relative_claude_path: universal/agents/5290026ea3a8__5290026ea3a8__reliability-security-sentinel.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/5290026ea3a8__5290026ea3a8__5290026ea3a8__reliability-security-sentinel.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/5290026ea3a8__5290026ea3a8__5290026ea3a8__reliability-security-sentinel.md
+    project: ATLAS
     relative_claude_path: universal/agents/5290026ea3a8__5290026ea3a8__5290026ea3a8__reliability-security-sentinel.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/5290026ea3a8__5290026ea3a8__reliability-security-sentinel.md
     project: Research
@@ -14926,7 +14926,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -15012,8 +15012,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/54ed484271b5__54ed484271b5__vanguard-disruptor.md
     project: IPOS
     relative_claude_path: universal/agents/54ed484271b5__54ed484271b5__vanguard-disruptor.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/54ed484271b5__54ed484271b5__54ed484271b5__vanguard-disruptor.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/54ed484271b5__54ed484271b5__54ed484271b5__vanguard-disruptor.md
+    project: ATLAS
     relative_claude_path: universal/agents/54ed484271b5__54ed484271b5__54ed484271b5__vanguard-disruptor.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/54ed484271b5__54ed484271b5__vanguard-disruptor.md
     project: Research
@@ -15027,7 +15027,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -15113,8 +15113,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/56a27863ba3b__apex-performance-tracker.md
     project: IPOS
     relative_claude_path: universal/agents/56a27863ba3b__apex-performance-tracker.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/56a27863ba3b__56a27863ba3b__apex-performance-tracker.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/56a27863ba3b__56a27863ba3b__apex-performance-tracker.md
+    project: ATLAS
     relative_claude_path: universal/agents/56a27863ba3b__56a27863ba3b__apex-performance-tracker.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/56a27863ba3b__apex-performance-tracker.md
     project: Research
@@ -15128,7 +15128,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -15214,8 +15214,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/58f76698e344__58f76698e344__product-experience-engineer.md
     project: IPOS
     relative_claude_path: universal/agents/58f76698e344__58f76698e344__product-experience-engineer.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/58f76698e344__58f76698e344__58f76698e344__product-experience-engineer.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/58f76698e344__58f76698e344__58f76698e344__product-experience-engineer.md
+    project: ATLAS
     relative_claude_path: universal/agents/58f76698e344__58f76698e344__58f76698e344__product-experience-engineer.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/58f76698e344__58f76698e344__product-experience-engineer.md
     project: Research
@@ -15229,7 +15229,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -15315,8 +15315,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/59df92f538ee__59df92f538ee__platform-integrity-auditor.md
     project: IPOS
     relative_claude_path: universal/agents/59df92f538ee__59df92f538ee__platform-integrity-auditor.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/59df92f538ee__59df92f538ee__59df92f538ee__platform-integrity-auditor.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/59df92f538ee__59df92f538ee__59df92f538ee__platform-integrity-auditor.md
+    project: ATLAS
     relative_claude_path: universal/agents/59df92f538ee__59df92f538ee__59df92f538ee__platform-integrity-auditor.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/59df92f538ee__59df92f538ee__platform-integrity-auditor.md
     project: Research
@@ -15330,7 +15330,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -15416,8 +15416,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/5f6d94e34130__5f6d94e34130__intelligence-lead.md
     project: IPOS
     relative_claude_path: universal/agents/5f6d94e34130__5f6d94e34130__intelligence-lead.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/5f6d94e34130__5f6d94e34130__5f6d94e34130__intelligence-lead.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/5f6d94e34130__5f6d94e34130__5f6d94e34130__intelligence-lead.md
+    project: ATLAS
     relative_claude_path: universal/agents/5f6d94e34130__5f6d94e34130__5f6d94e34130__intelligence-lead.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/5f6d94e34130__5f6d94e34130__intelligence-lead.md
     project: Research
@@ -15431,7 +15431,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -15517,8 +15517,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/5f92dcc8c962__5f92dcc8c962__resilience-architect.md
     project: IPOS
     relative_claude_path: universal/agents/5f92dcc8c962__5f92dcc8c962__resilience-architect.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/5f92dcc8c962__5f92dcc8c962__5f92dcc8c962__resilience-architect.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/5f92dcc8c962__5f92dcc8c962__5f92dcc8c962__resilience-architect.md
+    project: ATLAS
     relative_claude_path: universal/agents/5f92dcc8c962__5f92dcc8c962__5f92dcc8c962__resilience-architect.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/5f92dcc8c962__5f92dcc8c962__resilience-architect.md
     project: Research
@@ -15532,7 +15532,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -15618,8 +15618,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/62b7ec2675b9__62b7ec2675b9__apex-accessibility-agent.md
     project: IPOS
     relative_claude_path: universal/agents/62b7ec2675b9__62b7ec2675b9__apex-accessibility-agent.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/62b7ec2675b9__62b7ec2675b9__62b7ec2675b9__apex-accessibility-agent.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/62b7ec2675b9__62b7ec2675b9__62b7ec2675b9__apex-accessibility-agent.md
+    project: ATLAS
     relative_claude_path: universal/agents/62b7ec2675b9__62b7ec2675b9__62b7ec2675b9__apex-accessibility-agent.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/62b7ec2675b9__62b7ec2675b9__apex-accessibility-agent.md
     project: Research
@@ -15633,7 +15633,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -15719,8 +15719,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/694e3200f31b__694e3200f31b__apex-enterprise-agent.md
     project: IPOS
     relative_claude_path: universal/agents/694e3200f31b__694e3200f31b__apex-enterprise-agent.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/694e3200f31b__694e3200f31b__694e3200f31b__apex-enterprise-agent.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/694e3200f31b__694e3200f31b__694e3200f31b__apex-enterprise-agent.md
+    project: ATLAS
     relative_claude_path: universal/agents/694e3200f31b__694e3200f31b__694e3200f31b__apex-enterprise-agent.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/694e3200f31b__694e3200f31b__apex-enterprise-agent.md
     project: Research
@@ -15734,7 +15734,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -15820,8 +15820,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/69512896de81__69512896de81__data-infrastructure-lead.md
     project: IPOS
     relative_claude_path: universal/agents/69512896de81__69512896de81__data-infrastructure-lead.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/69512896de81__69512896de81__69512896de81__data-infrastructure-lead.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/69512896de81__69512896de81__69512896de81__data-infrastructure-lead.md
+    project: ATLAS
     relative_claude_path: universal/agents/69512896de81__69512896de81__69512896de81__data-infrastructure-lead.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/69512896de81__69512896de81__data-infrastructure-lead.md
     project: Research
@@ -15835,7 +15835,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -15921,8 +15921,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/6a9c544ce15c__6a9c544ce15c__apex-svelte-agent.md
     project: IPOS
     relative_claude_path: universal/agents/6a9c544ce15c__6a9c544ce15c__apex-svelte-agent.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/6a9c544ce15c__6a9c544ce15c__6a9c544ce15c__apex-svelte-agent.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/6a9c544ce15c__6a9c544ce15c__6a9c544ce15c__apex-svelte-agent.md
+    project: ATLAS
     relative_claude_path: universal/agents/6a9c544ce15c__6a9c544ce15c__6a9c544ce15c__apex-svelte-agent.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/6a9c544ce15c__6a9c544ce15c__apex-svelte-agent.md
     project: Research
@@ -15936,7 +15936,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -16022,8 +16022,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/6d11762bb0ff__6d11762bb0ff__apex-export-agent.md
     project: IPOS
     relative_claude_path: universal/agents/6d11762bb0ff__6d11762bb0ff__apex-export-agent.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/6d11762bb0ff__6d11762bb0ff__6d11762bb0ff__apex-export-agent.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/6d11762bb0ff__6d11762bb0ff__6d11762bb0ff__apex-export-agent.md
+    project: ATLAS
     relative_claude_path: universal/agents/6d11762bb0ff__6d11762bb0ff__6d11762bb0ff__apex-export-agent.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/6d11762bb0ff__6d11762bb0ff__apex-export-agent.md
     project: Research
@@ -16037,7 +16037,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -16123,8 +16123,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/6e7fb9afcf6c__6e7fb9afcf6c__vanguard-disruptive-alchemist.md
     project: IPOS
     relative_claude_path: universal/agents/6e7fb9afcf6c__6e7fb9afcf6c__vanguard-disruptive-alchemist.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/6e7fb9afcf6c__6e7fb9afcf6c__6e7fb9afcf6c__vanguard-disruptive-alchemist.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/6e7fb9afcf6c__6e7fb9afcf6c__6e7fb9afcf6c__vanguard-disruptive-alchemist.md
+    project: ATLAS
     relative_claude_path: universal/agents/6e7fb9afcf6c__6e7fb9afcf6c__6e7fb9afcf6c__vanguard-disruptive-alchemist.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/6e7fb9afcf6c__6e7fb9afcf6c__vanguard-disruptive-alchemist.md
     project: Research
@@ -16138,7 +16138,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -16224,8 +16224,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/6ee84c9eda02__6ee84c9eda02__guardian-sniper.md
     project: IPOS
     relative_claude_path: universal/agents/6ee84c9eda02__6ee84c9eda02__guardian-sniper.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/6ee84c9eda02__6ee84c9eda02__6ee84c9eda02__guardian-sniper.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/6ee84c9eda02__6ee84c9eda02__6ee84c9eda02__guardian-sniper.md
+    project: ATLAS
     relative_claude_path: universal/agents/6ee84c9eda02__6ee84c9eda02__6ee84c9eda02__guardian-sniper.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/6ee84c9eda02__6ee84c9eda02__guardian-sniper.md
     project: Research
@@ -16239,7 +16239,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -16325,8 +16325,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/74dda6b58068__74dda6b58068__intelligence-lead-v2.md
     project: IPOS
     relative_claude_path: universal/agents/74dda6b58068__74dda6b58068__intelligence-lead-v2.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/74dda6b58068__74dda6b58068__74dda6b58068__intelligence-lead-v2.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/74dda6b58068__74dda6b58068__74dda6b58068__intelligence-lead-v2.md
+    project: ATLAS
     relative_claude_path: universal/agents/74dda6b58068__74dda6b58068__74dda6b58068__intelligence-lead-v2.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/74dda6b58068__74dda6b58068__intelligence-lead-v2.md
     project: Research
@@ -16340,7 +16340,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -16426,8 +16426,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/75e5c70688d8__75e5c70688d8__reliability-security-sentinel.md
     project: IPOS
     relative_claude_path: universal/agents/75e5c70688d8__75e5c70688d8__reliability-security-sentinel.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/75e5c70688d8__75e5c70688d8__75e5c70688d8__reliability-security-sentinel.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/75e5c70688d8__75e5c70688d8__75e5c70688d8__reliability-security-sentinel.md
+    project: ATLAS
     relative_claude_path: universal/agents/75e5c70688d8__75e5c70688d8__75e5c70688d8__reliability-security-sentinel.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/75e5c70688d8__75e5c70688d8__reliability-security-sentinel.md
     project: Research
@@ -16441,7 +16441,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -16527,8 +16527,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/79e4aef278cd__79e4aef278cd__observability-nexus.md
     project: IPOS
     relative_claude_path: universal/agents/79e4aef278cd__79e4aef278cd__observability-nexus.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/79e4aef278cd__79e4aef278cd__79e4aef278cd__observability-nexus.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/79e4aef278cd__79e4aef278cd__79e4aef278cd__observability-nexus.md
+    project: ATLAS
     relative_claude_path: universal/agents/79e4aef278cd__79e4aef278cd__79e4aef278cd__observability-nexus.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/79e4aef278cd__79e4aef278cd__observability-nexus.md
     project: Research
@@ -16542,7 +16542,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -16628,8 +16628,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/80959c4fde36__80959c4fde36__vanguard-innovation-scout.md
     project: IPOS
     relative_claude_path: universal/agents/80959c4fde36__80959c4fde36__vanguard-innovation-scout.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/80959c4fde36__80959c4fde36__80959c4fde36__vanguard-innovation-scout.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/80959c4fde36__80959c4fde36__80959c4fde36__vanguard-innovation-scout.md
+    project: ATLAS
     relative_claude_path: universal/agents/80959c4fde36__80959c4fde36__80959c4fde36__vanguard-innovation-scout.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/80959c4fde36__80959c4fde36__vanguard-innovation-scout.md
     project: Research
@@ -16643,7 +16643,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -16729,8 +16729,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/8478c49a6eae__8478c49a6eae__the-architect.md
     project: IPOS
     relative_claude_path: universal/agents/8478c49a6eae__8478c49a6eae__the-architect.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/8478c49a6eae__8478c49a6eae__8478c49a6eae__the-architect.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/8478c49a6eae__8478c49a6eae__8478c49a6eae__the-architect.md
+    project: ATLAS
     relative_claude_path: universal/agents/8478c49a6eae__8478c49a6eae__8478c49a6eae__the-architect.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/8478c49a6eae__8478c49a6eae__the-architect.md
     project: Research
@@ -16744,7 +16744,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -16830,8 +16830,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/85a751d24600__85a751d24600__design-systems-forge.md
     project: IPOS
     relative_claude_path: universal/agents/85a751d24600__85a751d24600__design-systems-forge.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/85a751d24600__85a751d24600__85a751d24600__design-systems-forge.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/85a751d24600__85a751d24600__85a751d24600__design-systems-forge.md
+    project: ATLAS
     relative_claude_path: universal/agents/85a751d24600__85a751d24600__85a751d24600__design-systems-forge.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/85a751d24600__85a751d24600__design-systems-forge.md
     project: Research
@@ -16845,7 +16845,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -16931,8 +16931,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/87b444641261__87b444641261__apex-python-agent.md
     project: IPOS
     relative_claude_path: universal/agents/87b444641261__87b444641261__apex-python-agent.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/87b444641261__87b444641261__87b444641261__apex-python-agent.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/87b444641261__87b444641261__87b444641261__apex-python-agent.md
+    project: ATLAS
     relative_claude_path: universal/agents/87b444641261__87b444641261__87b444641261__apex-python-agent.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/87b444641261__87b444641261__apex-python-agent.md
     project: Research
@@ -16946,7 +16946,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -17032,8 +17032,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/8b34b4544cb3__apex-money-manager.md
     project: IPOS
     relative_claude_path: universal/agents/8b34b4544cb3__apex-money-manager.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/8b34b4544cb3__8b34b4544cb3__apex-money-manager.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/8b34b4544cb3__8b34b4544cb3__apex-money-manager.md
+    project: ATLAS
     relative_claude_path: universal/agents/8b34b4544cb3__8b34b4544cb3__apex-money-manager.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/8b34b4544cb3__apex-money-manager.md
     project: Research
@@ -17047,7 +17047,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -17133,8 +17133,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/8ba83b114dbb__vanguard-innovation-scout.md
     project: IPOS
     relative_claude_path: universal/agents/8ba83b114dbb__vanguard-innovation-scout.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/8ba83b114dbb__8ba83b114dbb__vanguard-innovation-scout.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/8ba83b114dbb__8ba83b114dbb__vanguard-innovation-scout.md
+    project: ATLAS
     relative_claude_path: universal/agents/8ba83b114dbb__8ba83b114dbb__vanguard-innovation-scout.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/8ba83b114dbb__vanguard-innovation-scout.md
     project: Research
@@ -17148,7 +17148,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -17234,8 +17234,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/8ce1a41bb760__8ce1a41bb760__apex-svelte-agent.md
     project: IPOS
     relative_claude_path: universal/agents/8ce1a41bb760__8ce1a41bb760__apex-svelte-agent.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/8ce1a41bb760__8ce1a41bb760__8ce1a41bb760__apex-svelte-agent.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/8ce1a41bb760__8ce1a41bb760__8ce1a41bb760__apex-svelte-agent.md
+    project: ATLAS
     relative_claude_path: universal/agents/8ce1a41bb760__8ce1a41bb760__8ce1a41bb760__apex-svelte-agent.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/8ce1a41bb760__8ce1a41bb760__apex-svelte-agent.md
     project: Research
@@ -17249,7 +17249,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -17335,8 +17335,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/8f73a7e8867d__vanguard-disruptive-alchemist.md
     project: IPOS
     relative_claude_path: universal/agents/8f73a7e8867d__vanguard-disruptive-alchemist.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/8f73a7e8867d__8f73a7e8867d__vanguard-disruptive-alchemist.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/8f73a7e8867d__8f73a7e8867d__vanguard-disruptive-alchemist.md
+    project: ATLAS
     relative_claude_path: universal/agents/8f73a7e8867d__8f73a7e8867d__vanguard-disruptive-alchemist.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/8f73a7e8867d__vanguard-disruptive-alchemist.md
     project: Research
@@ -17350,7 +17350,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -17436,8 +17436,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/90b055d5f15d__90b055d5f15d__kpi-analyst-agent.md
     project: IPOS
     relative_claude_path: universal/agents/90b055d5f15d__90b055d5f15d__kpi-analyst-agent.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/90b055d5f15d__90b055d5f15d__90b055d5f15d__kpi-analyst-agent.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/90b055d5f15d__90b055d5f15d__90b055d5f15d__kpi-analyst-agent.md
+    project: ATLAS
     relative_claude_path: universal/agents/90b055d5f15d__90b055d5f15d__90b055d5f15d__kpi-analyst-agent.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/90b055d5f15d__90b055d5f15d__kpi-analyst-agent.md
     project: Research
@@ -17451,7 +17451,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -17537,8 +17537,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/91eeb71ff5b9__91eeb71ff5b9__hardware-integration-engineer.md
     project: IPOS
     relative_claude_path: universal/agents/91eeb71ff5b9__91eeb71ff5b9__hardware-integration-engineer.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/91eeb71ff5b9__91eeb71ff5b9__91eeb71ff5b9__hardware-integration-engineer.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/91eeb71ff5b9__91eeb71ff5b9__91eeb71ff5b9__hardware-integration-engineer.md
+    project: ATLAS
     relative_claude_path: universal/agents/91eeb71ff5b9__91eeb71ff5b9__91eeb71ff5b9__hardware-integration-engineer.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/91eeb71ff5b9__91eeb71ff5b9__hardware-integration-engineer.md
     project: Research
@@ -17552,7 +17552,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -17638,8 +17638,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/9424f77165cc__fintech-integrity-auditor.md
     project: IPOS
     relative_claude_path: universal/agents/9424f77165cc__fintech-integrity-auditor.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/9424f77165cc__9424f77165cc__fintech-integrity-auditor.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/9424f77165cc__9424f77165cc__fintech-integrity-auditor.md
+    project: ATLAS
     relative_claude_path: universal/agents/9424f77165cc__9424f77165cc__fintech-integrity-auditor.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/9424f77165cc__fintech-integrity-auditor.md
     project: Research
@@ -17653,7 +17653,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -17739,8 +17739,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/9523de979a5c__9523de979a5c__apex-coordinator.md
     project: IPOS
     relative_claude_path: universal/agents/9523de979a5c__9523de979a5c__apex-coordinator.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/9523de979a5c__9523de979a5c__9523de979a5c__apex-coordinator.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/9523de979a5c__9523de979a5c__9523de979a5c__apex-coordinator.md
+    project: ATLAS
     relative_claude_path: universal/agents/9523de979a5c__9523de979a5c__9523de979a5c__apex-coordinator.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/9523de979a5c__9523de979a5c__apex-coordinator.md
     project: Research
@@ -17754,7 +17754,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -17840,8 +17840,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/9882b35ede5a__9882b35ede5a__readme.md
     project: IPOS
     relative_claude_path: universal/agents/9882b35ede5a__9882b35ede5a__readme.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/9882b35ede5a__9882b35ede5a__9882b35ede5a__readme.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/9882b35ede5a__9882b35ede5a__9882b35ede5a__readme.md
+    project: ATLAS
     relative_claude_path: universal/agents/9882b35ede5a__9882b35ede5a__9882b35ede5a__readme.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/9882b35ede5a__9882b35ede5a__readme.md
     project: Research
@@ -17855,7 +17855,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -17941,8 +17941,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/9b6eaba2cfa3__9b6eaba2cfa3__edge-ai-optimizer.md
     project: IPOS
     relative_claude_path: universal/agents/9b6eaba2cfa3__9b6eaba2cfa3__edge-ai-optimizer.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/9b6eaba2cfa3__9b6eaba2cfa3__9b6eaba2cfa3__edge-ai-optimizer.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/9b6eaba2cfa3__9b6eaba2cfa3__9b6eaba2cfa3__edge-ai-optimizer.md
+    project: ATLAS
     relative_claude_path: universal/agents/9b6eaba2cfa3__9b6eaba2cfa3__9b6eaba2cfa3__edge-ai-optimizer.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/9b6eaba2cfa3__9b6eaba2cfa3__edge-ai-optimizer.md
     project: Research
@@ -17956,7 +17956,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -18042,8 +18042,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/9f6d37adc3de__9f6d37adc3de__agent-tools.md
     project: IPOS
     relative_claude_path: universal/agents/9f6d37adc3de__9f6d37adc3de__agent-tools.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/9f6d37adc3de__9f6d37adc3de__9f6d37adc3de__agent-tools.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/9f6d37adc3de__9f6d37adc3de__9f6d37adc3de__agent-tools.md
+    project: ATLAS
     relative_claude_path: universal/agents/9f6d37adc3de__9f6d37adc3de__9f6d37adc3de__agent-tools.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/9f6d37adc3de__9f6d37adc3de__agent-tools.md
     project: Research
@@ -18057,7 +18057,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -18143,8 +18143,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/a0b5d92f8d22__a0b5d92f8d22__apex-dataops-agent.md
     project: IPOS
     relative_claude_path: universal/agents/a0b5d92f8d22__a0b5d92f8d22__apex-dataops-agent.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/a0b5d92f8d22__a0b5d92f8d22__a0b5d92f8d22__apex-dataops-agent.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/a0b5d92f8d22__a0b5d92f8d22__a0b5d92f8d22__apex-dataops-agent.md
+    project: ATLAS
     relative_claude_path: universal/agents/a0b5d92f8d22__a0b5d92f8d22__a0b5d92f8d22__apex-dataops-agent.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/a0b5d92f8d22__a0b5d92f8d22__apex-dataops-agent.md
     project: Research
@@ -18158,7 +18158,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -18244,8 +18244,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/a34973e7c86d__guardian-sniper.md
     project: IPOS
     relative_claude_path: universal/agents/a34973e7c86d__guardian-sniper.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/a34973e7c86d__a34973e7c86d__guardian-sniper.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/a34973e7c86d__a34973e7c86d__guardian-sniper.md
+    project: ATLAS
     relative_claude_path: universal/agents/a34973e7c86d__a34973e7c86d__guardian-sniper.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/a34973e7c86d__guardian-sniper.md
     project: Research
@@ -18259,7 +18259,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -18345,8 +18345,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/a953e12610de__a953e12610de__apex-d3-agent.md
     project: IPOS
     relative_claude_path: universal/agents/a953e12610de__a953e12610de__apex-d3-agent.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/a953e12610de__a953e12610de__a953e12610de__apex-d3-agent.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/a953e12610de__a953e12610de__a953e12610de__apex-d3-agent.md
+    project: ATLAS
     relative_claude_path: universal/agents/a953e12610de__a953e12610de__a953e12610de__apex-d3-agent.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/a953e12610de__a953e12610de__apex-d3-agent.md
     project: Research
@@ -18360,7 +18360,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -18446,8 +18446,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/ab91251178a3__ab91251178a3__apex-react-agent.md
     project: IPOS
     relative_claude_path: universal/agents/ab91251178a3__ab91251178a3__apex-react-agent.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/ab91251178a3__ab91251178a3__ab91251178a3__apex-react-agent.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/ab91251178a3__ab91251178a3__ab91251178a3__apex-react-agent.md
+    project: ATLAS
     relative_claude_path: universal/agents/ab91251178a3__ab91251178a3__ab91251178a3__apex-react-agent.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/ab91251178a3__ab91251178a3__apex-react-agent.md
     project: Research
@@ -18461,7 +18461,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -18547,8 +18547,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/b06686b5b02a__b06686b5b02a__apex-testing-agent.md
     project: IPOS
     relative_claude_path: universal/agents/b06686b5b02a__b06686b5b02a__apex-testing-agent.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/b06686b5b02a__b06686b5b02a__b06686b5b02a__apex-testing-agent.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/b06686b5b02a__b06686b5b02a__b06686b5b02a__apex-testing-agent.md
+    project: ATLAS
     relative_claude_path: universal/agents/b06686b5b02a__b06686b5b02a__b06686b5b02a__apex-testing-agent.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/b06686b5b02a__b06686b5b02a__apex-testing-agent.md
     project: Research
@@ -18562,7 +18562,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -18648,8 +18648,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/b3b74a7a0300__b3b74a7a0300__event-horizon-agent.md
     project: IPOS
     relative_claude_path: universal/agents/b3b74a7a0300__b3b74a7a0300__event-horizon-agent.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/b3b74a7a0300__b3b74a7a0300__b3b74a7a0300__event-horizon-agent.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/b3b74a7a0300__b3b74a7a0300__b3b74a7a0300__event-horizon-agent.md
+    project: ATLAS
     relative_claude_path: universal/agents/b3b74a7a0300__b3b74a7a0300__b3b74a7a0300__event-horizon-agent.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/b3b74a7a0300__b3b74a7a0300__event-horizon-agent.md
     project: Research
@@ -18663,7 +18663,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -18749,8 +18749,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/b6cfae488798__the-architect.md
     project: IPOS
     relative_claude_path: universal/agents/b6cfae488798__the-architect.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/b6cfae488798__b6cfae488798__the-architect.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/b6cfae488798__b6cfae488798__the-architect.md
+    project: ATLAS
     relative_claude_path: universal/agents/b6cfae488798__b6cfae488798__the-architect.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/b6cfae488798__the-architect.md
     project: Research
@@ -18764,7 +18764,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -18850,8 +18850,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/b77a18443789__product-experience-engineer.md
     project: IPOS
     relative_claude_path: universal/agents/b77a18443789__product-experience-engineer.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/b77a18443789__b77a18443789__product-experience-engineer.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/b77a18443789__b77a18443789__product-experience-engineer.md
+    project: ATLAS
     relative_claude_path: universal/agents/b77a18443789__b77a18443789__product-experience-engineer.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/b77a18443789__product-experience-engineer.md
     project: Research
@@ -18865,7 +18865,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -18951,8 +18951,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/b8d34e14f362__b8d34e14f362__apex-python-agent.md
     project: IPOS
     relative_claude_path: universal/agents/b8d34e14f362__b8d34e14f362__apex-python-agent.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/b8d34e14f362__b8d34e14f362__b8d34e14f362__apex-python-agent.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/b8d34e14f362__b8d34e14f362__b8d34e14f362__apex-python-agent.md
+    project: ATLAS
     relative_claude_path: universal/agents/b8d34e14f362__b8d34e14f362__b8d34e14f362__apex-python-agent.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/b8d34e14f362__b8d34e14f362__apex-python-agent.md
     project: Research
@@ -18966,7 +18966,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -19052,8 +19052,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/bf80cb632d71__bf80cb632d71__excel-processor-agent.md
     project: IPOS
     relative_claude_path: universal/agents/bf80cb632d71__bf80cb632d71__excel-processor-agent.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/bf80cb632d71__bf80cb632d71__bf80cb632d71__excel-processor-agent.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/bf80cb632d71__bf80cb632d71__bf80cb632d71__excel-processor-agent.md
+    project: ATLAS
     relative_claude_path: universal/agents/bf80cb632d71__bf80cb632d71__bf80cb632d71__excel-processor-agent.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/bf80cb632d71__bf80cb632d71__excel-processor-agent.md
     project: Research
@@ -19067,7 +19067,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -19153,8 +19153,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/c0ddd7b8be1d__c0ddd7b8be1d__product-experience-engineer.md
     project: IPOS
     relative_claude_path: universal/agents/c0ddd7b8be1d__c0ddd7b8be1d__product-experience-engineer.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/c0ddd7b8be1d__c0ddd7b8be1d__c0ddd7b8be1d__product-experience-engineer.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/c0ddd7b8be1d__c0ddd7b8be1d__c0ddd7b8be1d__product-experience-engineer.md
+    project: ATLAS
     relative_claude_path: universal/agents/c0ddd7b8be1d__c0ddd7b8be1d__c0ddd7b8be1d__product-experience-engineer.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/c0ddd7b8be1d__c0ddd7b8be1d__product-experience-engineer.md
     project: Research
@@ -19168,7 +19168,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -19254,8 +19254,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/c0fd76d70995__c0fd76d70995__apex-quant-architect.md
     project: IPOS
     relative_claude_path: universal/agents/c0fd76d70995__c0fd76d70995__apex-quant-architect.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/c0fd76d70995__c0fd76d70995__c0fd76d70995__apex-quant-architect.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/c0fd76d70995__c0fd76d70995__c0fd76d70995__apex-quant-architect.md
+    project: ATLAS
     relative_claude_path: universal/agents/c0fd76d70995__c0fd76d70995__c0fd76d70995__apex-quant-architect.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/c0fd76d70995__c0fd76d70995__apex-quant-architect.md
     project: Research
@@ -19269,7 +19269,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -19355,8 +19355,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/c16a83035268__master-orchestrator.md
     project: IPOS
     relative_claude_path: universal/agents/c16a83035268__master-orchestrator.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/c16a83035268__c16a83035268__master-orchestrator.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/c16a83035268__c16a83035268__master-orchestrator.md
+    project: ATLAS
     relative_claude_path: universal/agents/c16a83035268__c16a83035268__master-orchestrator.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/c16a83035268__master-orchestrator.md
     project: Research
@@ -19370,7 +19370,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -19456,8 +19456,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/c195f2efb9e4__apex-coordinator.md
     project: IPOS
     relative_claude_path: universal/agents/c195f2efb9e4__apex-coordinator.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/c195f2efb9e4__c195f2efb9e4__apex-coordinator.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/c195f2efb9e4__c195f2efb9e4__apex-coordinator.md
+    project: ATLAS
     relative_claude_path: universal/agents/c195f2efb9e4__c195f2efb9e4__apex-coordinator.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/c195f2efb9e4__apex-coordinator.md
     project: Research
@@ -19471,7 +19471,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -19557,8 +19557,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/cb1f4e739f31__cb1f4e739f31__apex-realtime-agent.md
     project: IPOS
     relative_claude_path: universal/agents/cb1f4e739f31__cb1f4e739f31__apex-realtime-agent.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/cb1f4e739f31__cb1f4e739f31__cb1f4e739f31__apex-realtime-agent.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/cb1f4e739f31__cb1f4e739f31__cb1f4e739f31__apex-realtime-agent.md
+    project: ATLAS
     relative_claude_path: universal/agents/cb1f4e739f31__cb1f4e739f31__cb1f4e739f31__apex-realtime-agent.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/cb1f4e739f31__cb1f4e739f31__apex-realtime-agent.md
     project: Research
@@ -19572,7 +19572,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -19658,8 +19658,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/d193a623ea15__d193a623ea15__test-forge.md
     project: IPOS
     relative_claude_path: universal/agents/d193a623ea15__d193a623ea15__test-forge.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/d193a623ea15__d193a623ea15__d193a623ea15__test-forge.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/d193a623ea15__d193a623ea15__d193a623ea15__test-forge.md
+    project: ATLAS
     relative_claude_path: universal/agents/d193a623ea15__d193a623ea15__d193a623ea15__test-forge.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/d193a623ea15__d193a623ea15__test-forge.md
     project: Research
@@ -19673,7 +19673,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -19759,8 +19759,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/d4f8d79c7b7f__alpha-pulse-engine.md
     project: IPOS
     relative_claude_path: universal/agents/d4f8d79c7b7f__alpha-pulse-engine.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/d4f8d79c7b7f__d4f8d79c7b7f__alpha-pulse-engine.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/d4f8d79c7b7f__d4f8d79c7b7f__alpha-pulse-engine.md
+    project: ATLAS
     relative_claude_path: universal/agents/d4f8d79c7b7f__d4f8d79c7b7f__alpha-pulse-engine.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/d4f8d79c7b7f__alpha-pulse-engine.md
     project: Research
@@ -19774,7 +19774,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -19860,8 +19860,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/d809b7e1ecab__apex-research-validator.md
     project: IPOS
     relative_claude_path: universal/agents/d809b7e1ecab__apex-research-validator.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/d809b7e1ecab__d809b7e1ecab__apex-research-validator.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/d809b7e1ecab__d809b7e1ecab__apex-research-validator.md
+    project: ATLAS
     relative_claude_path: universal/agents/d809b7e1ecab__d809b7e1ecab__apex-research-validator.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/d809b7e1ecab__apex-research-validator.md
     project: Research
@@ -19875,7 +19875,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -19961,8 +19961,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/d8dff1e57c89__intelligence-lead.md
     project: IPOS
     relative_claude_path: universal/agents/d8dff1e57c89__intelligence-lead.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/d8dff1e57c89__d8dff1e57c89__intelligence-lead.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/d8dff1e57c89__d8dff1e57c89__intelligence-lead.md
+    project: ATLAS
     relative_claude_path: universal/agents/d8dff1e57c89__d8dff1e57c89__intelligence-lead.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/d8dff1e57c89__intelligence-lead.md
     project: Research
@@ -19976,7 +19976,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -20062,8 +20062,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/d91321921c7a__d91321921c7a__devops-catalyst.md
     project: IPOS
     relative_claude_path: universal/agents/d91321921c7a__d91321921c7a__devops-catalyst.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/d91321921c7a__d91321921c7a__d91321921c7a__devops-catalyst.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/d91321921c7a__d91321921c7a__d91321921c7a__devops-catalyst.md
+    project: ATLAS
     relative_claude_path: universal/agents/d91321921c7a__d91321921c7a__d91321921c7a__devops-catalyst.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/d91321921c7a__d91321921c7a__devops-catalyst.md
     project: Research
@@ -20077,7 +20077,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -20163,8 +20163,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/dabbe18f21be__dabbe18f21be__excel-processor-agent.md
     project: IPOS
     relative_claude_path: universal/agents/dabbe18f21be__dabbe18f21be__excel-processor-agent.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/dabbe18f21be__dabbe18f21be__dabbe18f21be__excel-processor-agent.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/dabbe18f21be__dabbe18f21be__dabbe18f21be__excel-processor-agent.md
+    project: ATLAS
     relative_claude_path: universal/agents/dabbe18f21be__dabbe18f21be__dabbe18f21be__excel-processor-agent.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/dabbe18f21be__dabbe18f21be__excel-processor-agent.md
     project: Research
@@ -20178,7 +20178,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -20264,8 +20264,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/dc52c89d70e3__data-infra-engineer.md
     project: IPOS
     relative_claude_path: universal/agents/dc52c89d70e3__data-infra-engineer.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/dc52c89d70e3__dc52c89d70e3__data-infra-engineer.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/dc52c89d70e3__dc52c89d70e3__data-infra-engineer.md
+    project: ATLAS
     relative_claude_path: universal/agents/dc52c89d70e3__dc52c89d70e3__data-infra-engineer.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/dc52c89d70e3__data-infra-engineer.md
     project: Research
@@ -20279,7 +20279,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -20365,8 +20365,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/de41dea2a63f__de41dea2a63f__apex-enterprise-agent.md
     project: IPOS
     relative_claude_path: universal/agents/de41dea2a63f__de41dea2a63f__apex-enterprise-agent.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/de41dea2a63f__de41dea2a63f__de41dea2a63f__apex-enterprise-agent.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/de41dea2a63f__de41dea2a63f__de41dea2a63f__apex-enterprise-agent.md
+    project: ATLAS
     relative_claude_path: universal/agents/de41dea2a63f__de41dea2a63f__de41dea2a63f__apex-enterprise-agent.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/de41dea2a63f__de41dea2a63f__apex-enterprise-agent.md
     project: Research
@@ -20380,7 +20380,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -20466,8 +20466,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/de4f5325f7ae__de4f5325f7ae__guardian-sentinel.md
     project: IPOS
     relative_claude_path: universal/agents/de4f5325f7ae__de4f5325f7ae__guardian-sentinel.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/de4f5325f7ae__de4f5325f7ae__de4f5325f7ae__guardian-sentinel.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/de4f5325f7ae__de4f5325f7ae__de4f5325f7ae__guardian-sentinel.md
+    project: ATLAS
     relative_claude_path: universal/agents/de4f5325f7ae__de4f5325f7ae__de4f5325f7ae__guardian-sentinel.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/de4f5325f7ae__de4f5325f7ae__guardian-sentinel.md
     project: Research
@@ -20481,7 +20481,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -20567,8 +20567,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/de6cc0ba4b34__apex-ai-research-scout.md
     project: IPOS
     relative_claude_path: universal/agents/de6cc0ba4b34__apex-ai-research-scout.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/de6cc0ba4b34__de6cc0ba4b34__apex-ai-research-scout.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/de6cc0ba4b34__de6cc0ba4b34__apex-ai-research-scout.md
+    project: ATLAS
     relative_claude_path: universal/agents/de6cc0ba4b34__de6cc0ba4b34__apex-ai-research-scout.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/de6cc0ba4b34__apex-ai-research-scout.md
     project: Research
@@ -20582,7 +20582,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -20668,8 +20668,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/e02f2949b06f__e02f2949b06f__apex-vue-agent.md
     project: IPOS
     relative_claude_path: universal/agents/e02f2949b06f__e02f2949b06f__apex-vue-agent.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/e02f2949b06f__e02f2949b06f__e02f2949b06f__apex-vue-agent.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/e02f2949b06f__e02f2949b06f__e02f2949b06f__apex-vue-agent.md
+    project: ATLAS
     relative_claude_path: universal/agents/e02f2949b06f__e02f2949b06f__e02f2949b06f__apex-vue-agent.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/e02f2949b06f__e02f2949b06f__apex-vue-agent.md
     project: Research
@@ -20683,7 +20683,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -20769,8 +20769,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/e0bab3f0f363__e0bab3f0f363__apex-design-agent.md
     project: IPOS
     relative_claude_path: universal/agents/e0bab3f0f363__e0bab3f0f363__apex-design-agent.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/e0bab3f0f363__e0bab3f0f363__e0bab3f0f363__apex-design-agent.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/e0bab3f0f363__e0bab3f0f363__e0bab3f0f363__apex-design-agent.md
+    project: ATLAS
     relative_claude_path: universal/agents/e0bab3f0f363__e0bab3f0f363__e0bab3f0f363__apex-design-agent.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/e0bab3f0f363__e0bab3f0f363__apex-design-agent.md
     project: Research
@@ -20784,7 +20784,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -20870,8 +20870,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/e21dd3fa5818__e21dd3fa5818__apex-coordinator.md
     project: IPOS
     relative_claude_path: universal/agents/e21dd3fa5818__e21dd3fa5818__apex-coordinator.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/e21dd3fa5818__e21dd3fa5818__e21dd3fa5818__apex-coordinator.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/e21dd3fa5818__e21dd3fa5818__e21dd3fa5818__apex-coordinator.md
+    project: ATLAS
     relative_claude_path: universal/agents/e21dd3fa5818__e21dd3fa5818__e21dd3fa5818__apex-coordinator.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/e21dd3fa5818__e21dd3fa5818__apex-coordinator.md
     project: Research
@@ -20885,7 +20885,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -20971,8 +20971,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/e2c2ab701a64__apex-autonomous-trader.md
     project: IPOS
     relative_claude_path: universal/agents/e2c2ab701a64__apex-autonomous-trader.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/e2c2ab701a64__e2c2ab701a64__apex-autonomous-trader.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/e2c2ab701a64__e2c2ab701a64__apex-autonomous-trader.md
+    project: ATLAS
     relative_claude_path: universal/agents/e2c2ab701a64__e2c2ab701a64__apex-autonomous-trader.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/e2c2ab701a64__apex-autonomous-trader.md
     project: Research
@@ -20986,7 +20986,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -21072,8 +21072,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/e7657a0fba69__e7657a0fba69__apex-dataops-agent.md
     project: IPOS
     relative_claude_path: universal/agents/e7657a0fba69__e7657a0fba69__apex-dataops-agent.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/e7657a0fba69__e7657a0fba69__e7657a0fba69__apex-dataops-agent.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/e7657a0fba69__e7657a0fba69__e7657a0fba69__apex-dataops-agent.md
+    project: ATLAS
     relative_claude_path: universal/agents/e7657a0fba69__e7657a0fba69__e7657a0fba69__apex-dataops-agent.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/e7657a0fba69__e7657a0fba69__apex-dataops-agent.md
     project: Research
@@ -21087,7 +21087,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -21173,8 +21173,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/e8579186ccdf__e8579186ccdf__apex-vue-agent.md
     project: IPOS
     relative_claude_path: universal/agents/e8579186ccdf__e8579186ccdf__apex-vue-agent.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/e8579186ccdf__e8579186ccdf__e8579186ccdf__apex-vue-agent.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/e8579186ccdf__e8579186ccdf__e8579186ccdf__apex-vue-agent.md
+    project: ATLAS
     relative_claude_path: universal/agents/e8579186ccdf__e8579186ccdf__e8579186ccdf__apex-vue-agent.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/e8579186ccdf__e8579186ccdf__apex-vue-agent.md
     project: Research
@@ -21188,7 +21188,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -21274,8 +21274,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/e95717ff20f5__e95717ff20f5__performance-forge.md
     project: IPOS
     relative_claude_path: universal/agents/e95717ff20f5__e95717ff20f5__performance-forge.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/e95717ff20f5__e95717ff20f5__e95717ff20f5__performance-forge.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/e95717ff20f5__e95717ff20f5__e95717ff20f5__performance-forge.md
+    project: ATLAS
     relative_claude_path: universal/agents/e95717ff20f5__e95717ff20f5__e95717ff20f5__performance-forge.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/e95717ff20f5__e95717ff20f5__performance-forge.md
     project: Research
@@ -21289,7 +21289,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -21375,8 +21375,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/eb5b114b7779__apex-platform-research-scout.md
     project: IPOS
     relative_claude_path: universal/agents/eb5b114b7779__apex-platform-research-scout.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/eb5b114b7779__eb5b114b7779__apex-platform-research-scout.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/eb5b114b7779__eb5b114b7779__apex-platform-research-scout.md
+    project: ATLAS
     relative_claude_path: universal/agents/eb5b114b7779__eb5b114b7779__apex-platform-research-scout.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/eb5b114b7779__apex-platform-research-scout.md
     project: Research
@@ -21390,7 +21390,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -21476,8 +21476,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/f4cb1c50938d__f4cb1c50938d__the-architect.md
     project: IPOS
     relative_claude_path: universal/agents/f4cb1c50938d__f4cb1c50938d__the-architect.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/f4cb1c50938d__f4cb1c50938d__f4cb1c50938d__the-architect.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/f4cb1c50938d__f4cb1c50938d__f4cb1c50938d__the-architect.md
+    project: ATLAS
     relative_claude_path: universal/agents/f4cb1c50938d__f4cb1c50938d__f4cb1c50938d__the-architect.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/f4cb1c50938d__f4cb1c50938d__the-architect.md
     project: Research
@@ -21491,7 +21491,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -21577,8 +21577,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/f516e8502926__f516e8502926__apex-testing-agent.md
     project: IPOS
     relative_claude_path: universal/agents/f516e8502926__f516e8502926__apex-testing-agent.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/f516e8502926__f516e8502926__f516e8502926__apex-testing-agent.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/f516e8502926__f516e8502926__f516e8502926__apex-testing-agent.md
+    project: ATLAS
     relative_claude_path: universal/agents/f516e8502926__f516e8502926__f516e8502926__apex-testing-agent.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/f516e8502926__f516e8502926__apex-testing-agent.md
     project: Research
@@ -21592,7 +21592,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -21678,8 +21678,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/f689269a274d__apex-model-trainer.md
     project: IPOS
     relative_claude_path: universal/agents/f689269a274d__apex-model-trainer.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/f689269a274d__f689269a274d__apex-model-trainer.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/f689269a274d__f689269a274d__apex-model-trainer.md
+    project: ATLAS
     relative_claude_path: universal/agents/f689269a274d__f689269a274d__apex-model-trainer.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/f689269a274d__apex-model-trainer.md
     project: Research
@@ -21693,7 +21693,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -21779,8 +21779,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/fdaef7032535__fdaef7032535__event-horizon-agent.md
     project: IPOS
     relative_claude_path: universal/agents/fdaef7032535__fdaef7032535__event-horizon-agent.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/fdaef7032535__fdaef7032535__fdaef7032535__event-horizon-agent.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/fdaef7032535__fdaef7032535__fdaef7032535__event-horizon-agent.md
+    project: ATLAS
     relative_claude_path: universal/agents/fdaef7032535__fdaef7032535__fdaef7032535__event-horizon-agent.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/fdaef7032535__fdaef7032535__event-horizon-agent.md
     project: Research
@@ -21794,7 +21794,7 @@ entries:
   source_occurrence_count: 23
   projects:
   - Apollo16-main
-  - Development_Skills
+  - ATLAS
   - EarlySolutionsPro
   - Elson
   - Elson-TB2
@@ -21880,8 +21880,8 @@ entries:
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS/.claude/universal/agents/ffc6a1f14a0a__ffc6a1f14a0a__vanguard-disruptive-alchemist.md
     project: IPOS
     relative_claude_path: universal/agents/ffc6a1f14a0a__ffc6a1f14a0a__vanguard-disruptive-alchemist.md
-  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills/.claude/universal/agents/ffc6a1f14a0a__ffc6a1f14a0a__ffc6a1f14a0a__vanguard-disruptive-alchemist.md
-    project: Development_Skills
+  - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/ATLAS/.claude/universal/agents/ffc6a1f14a0a__ffc6a1f14a0a__ffc6a1f14a0a__vanguard-disruptive-alchemist.md
+    project: ATLAS
     relative_claude_path: universal/agents/ffc6a1f14a0a__ffc6a1f14a0a__ffc6a1f14a0a__vanguard-disruptive-alchemist.md
   - path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Research/.claude/universal/agents/ffc6a1f14a0a__ffc6a1f14a0a__vanguard-disruptive-alchemist.md
     project: Research

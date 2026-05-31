@@ -1,11 +1,11 @@
 import re
-from typing import Optional
+from typing import Any, Optional
 
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
 
 from corpus import get_index
-from inference import get_engine
+from kjva_runtime import KJVARuntimeError, get_runtime
 
 router = APIRouter(prefix="/api", tags=["completion"])
 
@@ -20,13 +20,14 @@ class CompleteRequest(BaseModel):
 class CompleteResponse(BaseModel):
     prompt: str
     completion: str
-    model: str = "kjva-18m"
+    model: str = "kjva-xmind"
     retrieved: bool = False
     verse_ref: Optional[str] = None
+    cognitive_metadata: Optional[dict[str, Any]] = None
 
 
 @router.post("/complete", response_model=CompleteResponse)
-def complete(req: CompleteRequest):
+async def complete(req: CompleteRequest):
     # Retrieval branches do NOT require AI weights. Per ADR-0003, we resolve
     # ref/prefix matches first so the endpoint stays useful in deployments
     # without weights (CI, linux/amd64 containers, retrieval-only mode).
@@ -47,12 +48,14 @@ def complete(req: CompleteRequest):
             first, last = ref_matches[0]["ref"], ref_matches[-1]["ref"]
             # "NUM 15:37 – NUM 15:41" → "NUM 15:37-41"
             verse_ref = f"{first}-{last.split(':')[1]}"
+        cognitive = await _persist_retrieval(req.prompt, completion, verse_ref)
         return CompleteResponse(
             prompt=req.prompt,
             completion=completion,
             model="kjva-retrieval",
             retrieved=True,
             verse_ref=verse_ref,
+            cognitive_metadata=cognitive,
         )
 
     text_match = index.search_prefix(req.prompt)
@@ -62,27 +65,18 @@ def complete(req: CompleteRequest):
         prompt_clean = req.prompt.strip().rstrip(".,;:!? ")
         m = re.search(re.escape(prompt_clean), verse_text, re.IGNORECASE)
         completion = verse_text[m.end():].lstrip() if m else verse_text
+        cognitive = await _persist_retrieval(req.prompt, completion, text_match["ref"])
         return CompleteResponse(
             prompt=req.prompt,
             completion=completion,
             model="kjva-retrieval",
             retrieved=True,
             verse_ref=text_match["ref"],
+            cognitive_metadata=cognitive,
         )
 
-    # --- Option B: corpus-format RAG augmentation + AI fallback ---
-    # AI path requires weights. Gate here, AFTER retrieval has had its chance.
-    engine = get_engine()
-    if not engine.is_ready():
-        raise HTTPException(
-            503,
-            detail={
-                "error": "KJVA weights not installed and prompt did not match retrieval",
-                "fix": "Weights are gitignored (72 MB). Place weights.safetensors at KJVA/training/weights.safetensors, or rephrase the prompt as a direct verse reference.",
-            },
-        )
-
-    # Only use search_text for meaningful prose phrases, not reference-style queries
+    # --- Option B: corpus-format RAG augmentation + constitutional XMIND path ---
+    # Only use search_text for meaningful prose phrases, not reference-style queries.
     # (short alphanumeric tokens like "prov 31" produce irrelevant substring matches).
     augmented = req.prompt
     looks_like_ref = bool(re.match(r"^[a-zA-Z0-9 ]+\s+\d+", req.prompt.strip()))
@@ -91,15 +85,32 @@ def complete(req: CompleteRequest):
         if candidates:
             augmented = index.build_corpus_context(candidates[0], req.prompt)
 
-    completion = engine.complete(
-        augmented,
-        max_new_tokens=req.max_new_tokens,
-        temperature=req.temperature,
-        top_p=req.top_p,
-    )
+    try:
+        result = await get_runtime().complete(
+            augmented,
+            max_new_tokens=req.max_new_tokens,
+            temperature=req.temperature,
+            top_p=req.top_p,
+        )
+    except KJVARuntimeError as exc:
+        raise HTTPException(exc.status_code, detail=exc.outcome.to_dict()) from exc
+
     return CompleteResponse(
         prompt=req.prompt,
-        completion=completion,
-        model="kjva-18m",
+        completion=result.text,
+        model="kjva-xmind",
         retrieved=False,
+        cognitive_metadata=result.metadata,
     )
+
+
+async def _persist_retrieval(prompt: str, completion: str, verse_ref: str) -> dict[str, Any]:
+    try:
+        result = await get_runtime().persist_retrieval(
+            prompt=prompt,
+            response=completion,
+            metadata={"verse_ref": verse_ref, "retrieved": True},
+        )
+    except KJVARuntimeError as exc:
+        raise HTTPException(exc.status_code, detail=exc.outcome.to_dict()) from exc
+    return result.metadata

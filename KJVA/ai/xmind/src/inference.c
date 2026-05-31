@@ -639,7 +639,16 @@ xmind_status_t xmind_generate(xmind_session_t *s,
     hept_input.raw_tokens = prompt;
     hept_input.raw_token_count = prompt_len;
     hept_input.query_domain = 0u;               /* general — L1 will classify */
-    xmind_heptagon_pre_inference(h, &hept_input);
+    int pre_rc = xmind_heptagon_pre_inference(h, &hept_input);
+    if (pre_rc < 0) {
+        pal_console_printf("[XMIND] generate: heptagon pre-inference halt rc=%d\n",
+                           pre_rc);
+        if (ctx_res.shard_count > 0u) {
+            xmind_context_release(&ctx_res);
+        }
+        pal_spin_unlock(&s_inference_lock);
+        return XMIND_ERR_POLICY;
+    }
 
     /* Release context shards after pre-inference consumed them */
     if (ctx_res.shard_count > 0u) {
@@ -695,9 +704,11 @@ xmind_status_t xmind_generate(xmind_session_t *s,
         int hept_rc = xmind_heptagon_per_token(h, current_token,
                                  m->state.logits, m->cfg.vocab_size);
         if (hept_rc < 0) {
-            /* L7 safety halt — stop generation immediately */
+            /* L7 safety halt — abort generation and surface policy failure */
             pal_console_printf("[XMIND] generate: heptagon safety halt at token %u\n", t);
-            break;
+            *n_generated = gen_count;
+            pal_spin_unlock(&s_inference_lock);
+            return XMIND_ERR_POLICY;
         }
 
         /* Sample next token */
@@ -724,7 +735,13 @@ xmind_status_t xmind_generate(xmind_session_t *s,
     *n_generated = gen_count;
 
     /* Heptagon post-inference hook: cognitive layer cleanup/logging. */
-    xmind_heptagon_post_inference(h);
+    int post_rc = xmind_heptagon_post_inference(h);
+    if (post_rc < 0) {
+        pal_console_printf("[XMIND] generate: heptagon post-inference halt rc=%d\n",
+                           post_rc);
+        pal_spin_unlock(&s_inference_lock);
+        return XMIND_ERR_POLICY;
+    }
 
     pal_console_printf("[XMIND] generate: produced %u tokens "
                        "(final pos=%u)\n", gen_count, s->pos);

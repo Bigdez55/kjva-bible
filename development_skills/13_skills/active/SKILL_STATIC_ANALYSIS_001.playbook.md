@@ -10,7 +10,7 @@
 - Original name: `static-analysis`
 - Source surfaces: `.claude`, `.codex`
 - Discovered in 110 files across 28 repositories:
-  `AHKI`, `Apollo16-main`, `Birdtrans`, `Development_Skills`, `EarlySolutionsPro`, `Elson`, `Elson-TB2`, `Forge`, `GENESYS`, `GEN_X`, `IPOS`, `KPI-Dashboard`, `KPI-Dashboard-Design`, `LMOS`, `Nexus`, `Portfolio`, `Presentations`, `Research`, `SOAE-Dashboard`, `Storbits`, `Super C Academy`, `Tokenless models`, `UTMS_NN`, `Unified-Transit-Management-System--UTMS-`, `desmond-super-c`, `driver-training-tracker`, `paratransit-apex-agents`, `web`
+  `AHKI`, `Apollo16-main`, `Birdtrans`, `ATLAS`, `EarlySolutionsPro`, `Elson`, `Elson-TB2`, `Forge`, `GENESYS`, `GEN_X`, `IPOS`, `KPI-Dashboard`, `KPI-Dashboard-Design`, `LMOS`, `Nexus`, `Portfolio`, `Presentations`, `Research`, `SOAE-Dashboard`, `Storbits`, `Super C Academy`, `Tokenless models`, `UTMS_NN`, `Unified-Transit-Management-System--UTMS-`, `desmond-super-c`, `driver-training-tracker`, `paratransit-apex-agents`, `web`
 - Preferred source path (raw_safe_text): `16_knowledge/external_collateral/assistant_surfaces_2026-05-20/raw_safe_text/genesys/.codex/skills/static-analysis.md`
 
 ## Status

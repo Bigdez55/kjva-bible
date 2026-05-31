@@ -11,7 +11,7 @@ class AtlasStatusTests(unittest.TestCase):
     def test_status_shape(self):
         status = build_status()["atlas_status"]
         self.assertEqual(status["system_name"], "SUPER C Atlas")
-        self.assertEqual(status["repository_lineage"], "Development_Skills")
+        self.assertEqual(status["repository_lineage"], "ATLAS")
         self.assertIn("bookworm", status["subsystems"])
         self.assertIn("validation", status["subsystems"])
 

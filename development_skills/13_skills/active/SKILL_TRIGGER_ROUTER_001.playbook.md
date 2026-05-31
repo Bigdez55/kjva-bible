@@ -54,7 +54,7 @@ When all-skills mode is active, route through the universal coverage matrix:
 
 Do not treat `.claude/universal`, `.codex/universal`, or imported assistant folders as automatically universal. Those directories may contain project-specific assets copied into a common surface. Use them as available sources, then activate only portable skills plus project-specific skills bound by the current target.
 
-Do not reduce all-skills mode to the current agent runtime's registered Skill tool list. Runtime-registered skills are optional callable helpers. The Development_Skills canon lives in `13_skills/active/` and is applied as repository-native discipline when selected.
+Do not reduce all-skills mode to the current agent runtime's registered Skill tool list. Runtime-registered skills are optional callable helpers. The ATLAS canon lives in `13_skills/active/` and is applied as repository-native discipline when selected.
 
 ## Workflow
 

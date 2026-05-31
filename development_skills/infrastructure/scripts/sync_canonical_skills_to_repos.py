@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Synchronize canonical ATLAS skill artifacts into local repo skill surfaces.
 
-The Development_Skills repo is the source of truth for active skill contracts.
+The ATLAS repo is the source of truth for active skill contracts.
 This script copies the canonical active skill files into each discovered repo's
 `development_skills/13_skills/active` directory and refreshes Claude/Codex
 universal agent-skill libraries when the source surfaces exist.

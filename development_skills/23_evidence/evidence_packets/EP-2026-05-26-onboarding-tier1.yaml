@@ -118,7 +118,7 @@ artifacts_produced:
 drift_check_results:
   truth_drift: 0 findings
   skill_drift: 0 findings
-  registry_sync: 37 registries synced (upstream Development_Skills)
+  registry_sync: 37 registries synced (upstream ATLAS)
 
 critical_findings:
   - finding: No test suite (0 test files for backend or frontend)
@@ -137,4 +137,4 @@ critical_findings:
     severity: info
     recommendation: Clarify governance integration path in Tier 2 ADRs
 
-twin_status: pending (see T1 step 5 — twin to be populated in upstream Development_Skills branch)
+twin_status: pending (see T1 step 5 — twin to be populated in upstream ATLAS branch)

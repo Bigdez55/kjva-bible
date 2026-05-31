@@ -64,7 +64,7 @@ Turn ATLAS UI/UX work into a repeatable multi-tenant platform buildout process t
 ## Validation Checklist
 - `apps/atlas` builds locally.
 - `python3 25_automation/atlas_core/atlas.py tenants --check` routes tenant repo wiring.
-- `python3 25_automation/atlas_core/atlas.py repo-event --repo Development_Skills --event-type commit --check` validates repo event ingestion.
+- `python3 25_automation/atlas_core/atlas.py repo-event --repo ATLAS --event-type commit --check` validates repo event ingestion.
 - ATLAS naming is used consistently.
 - Proprietary graph/vault names are preserved.
 - Each UI route has an owner skill and output contract.

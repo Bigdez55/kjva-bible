@@ -92,6 +92,7 @@ def test_complete_direct_ref_no_weights(client):
     assert body["model"] == "kjva-retrieval"
     assert body["verse_ref"] == "JHN 3:16"
     assert "God so loved" in body["completion"]
+    assert body["cognitive_metadata"]["storage_envelope"]["retention_class"] == "PERMANENT"
 
 
 def test_complete_range_ref_no_weights(client):
@@ -135,8 +136,8 @@ def test_complete_fallback_without_weights_returns_503(client):
     )
     assert r.status_code == 503
     detail = r.json()["detail"]
-    assert "error" in detail
-    assert "fix" in detail
+    assert detail["reason_code"] == "XMIND_BACKEND_NOT_READY"
+    assert detail["authority"] == "ai/xmind"
 
 
 # --- Stub endpoints still 501 ---

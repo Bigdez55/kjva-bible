@@ -4,7 +4,7 @@
 SKILL_REPO_ONBOARDING_001
 
 ## Purpose
-Tiered onboarding sequence for any repo adopting Development_Skills. The four tiers run sequentially the first time a repo onboards (T1 → T2 → T3 once per feature → T4 periodically) and individually thereafter.
+Tiered onboarding sequence for any repo adopting ATLAS. The four tiers run sequentially the first time a repo onboards (T1 → T2 → T3 once per feature → T4 periodically) and individually thereafter.
 
 ## Inputs
 - `tier` — `1`, `2`, `3`, or `4`. Required.
@@ -13,8 +13,8 @@ Tiered onboarding sequence for any repo adopting Development_Skills. The four ti
 
 ## Preconditions
 - `target` is a git repository (or local-only with `.git/` initialized) on a clean branch.
-- `target/development_skills/` exists and was synced from upstream Development_Skills (run `infrastructure/scripts/sync_scripts/sync_to_child_repo.py --target <target>` first if missing).
-- Central Development_Skills working tree is clean and `python3 infrastructure/scripts/registry_sync/sync_registries.py --check` is green.
+- `target/development_skills/` exists and was synced from upstream ATLAS (run `infrastructure/scripts/sync_scripts/sync_to_child_repo.py --target <target>` first if missing).
+- Central ATLAS working tree is clean and `python3 infrastructure/scripts/registry_sync/sync_registries.py --check` is green.
 - After sync, verify `target/.claude/universal/` exists and `target/.claude/commands/` has ≥1 `apex:*.md` file. If either is missing, the sync script has a path bug — do not proceed; fix the script first.
 - `target/CLAUDE.md` exists and references `@AGENTS.md`. Create it if missing.
 - `target/.claude/settings.json` exists with repo-scoped permissions. Create from template if missing.
@@ -36,7 +36,7 @@ Execute every step that applies; record findings in memory for use in all subseq
 5. **Source structure** — inspect `src/`, `lib/`, `app/`, or equivalent: identify primary modules/services, their imports/exports, database drivers, external HTTP calls, auth patterns, UI framework (if any).
 6. **Deployment signals** — read whichever exist: `Dockerfile`, `docker-compose.yml`, `.github/workflows/*.yml`, `vercel.json`, `netlify.toml`, `fly.toml`, `render.yaml`. Derive: target environment, CI steps, preview/production URLs.
 7. **Test surface** — count and categorize tests under `test/`, `tests/`, `spec/`, `__tests__/`, or inline. Derive: test framework, coverage breadth, presence of integration/e2e tests.
-8. **Cross-repo ecosystem map** — read from central Development_Skills (path via `development_skills/` symlink or known upstream path):
+8. **Cross-repo ecosystem map** — read from central ATLAS (path via `development_skills/` symlink or known upstream path):
    - `18_registry/repo_ledger.yaml` — all known repos in the ecosystem, their type, and remote URLs.
    - `39_repo_twins/twins/` — for each twin that shares a dependency or technology with this repo, read `architecture.snapshot.yaml` and `dependency.graph.yaml`.
    - `04_architecture/adrs/ADR-*.md` — scan all ADRs for cross-repo references (repo names, shared APIs, shared data contracts, shared auth).
@@ -71,7 +71,7 @@ After completing all 8 steps, summarize findings into an internal "reality model
    **Stubs are acceptable; blanks are not.** Every mandatory diagram must exist on disk with at minimum a `[DISCOVERY PENDING]` placeholder node. Real content from the discovery protocol must replace placeholders within the same T1 run wherever the data exists.
 3. Run `python3 development_skills/25_automation/registry_sync/sync_registries.py --write` inside the target.
 4. Run every script under `development_skills/25_automation/drift_checkers/` and write findings into `development_skills/23_evidence/evidence_packets/EP-<date>-onboarding-tier1.yaml`.
-5. Populate the repo's twin in central Development_Skills under [39_repo_twins/twins/<NAME>/](../../39_repo_twins/twins/). Replace placeholder `[]` content in `architecture.snapshot.yaml`, `component.graph.yaml`, `dependency.graph.yaml`, and `diagram.registry.yaml` with values derived from the discovery protocol and steps 1–2. Update `last_known_state.md` with a one-paragraph factual summary (no speculation). Flip `sync_status.yaml` from `pending_ingestion` to `synced`. **Do this on a separate branch in central Development_Skills, not on `main`.**
+5. Populate the repo's twin in central ATLAS under [39_repo_twins/twins/<NAME>/](../../39_repo_twins/twins/). Replace placeholder `[]` content in `architecture.snapshot.yaml`, `component.graph.yaml`, `dependency.graph.yaml`, and `diagram.registry.yaml` with values derived from the discovery protocol and steps 1–2. Update `last_known_state.md` with a one-paragraph factual summary (no speculation). Flip `sync_status.yaml` from `pending_ingestion` to `synced`. **Do this on a separate branch in central ATLAS, not on `main`.**
 6. Commit and push the target-repo branch (typically `claude/onboarding-tier1`).
 
 Outputs: target's `current.truth.yaml` (derived from code, not from user), 7 diagrams (reflecting discovered architecture), populated registries, drift evidence packet, populated twin in upstream, pushed target branch.
@@ -121,8 +121,8 @@ Steps:
 1. Run [/apex:detect_drift](../../37_command_protocol/slash_commands/apex_detect_drift.md) before any new work in the session.
 2. Capture any mistakes (whether surfaced by drift or by manual review) into `development_skills/13_skills/skill_refinery/mistake_ledgers/<YYYY-MM>.md` with date, context, root cause, and remediation.
 3. If a mistake recurs (same root cause appears twice), promote it via [/apex:improve_skill](../../37_command_protocol/slash_commands/apex_improve_skill.md): create or update a skill in [13_skills/active/](../../13_skills/active/), add a validation test in [08_verification/skill_tests/](../../08_verification/skill_tests/), and bump `improvement_history` in the skill yaml.
-4. Sync improved skills back to **central Development_Skills** by running the upstream sync script in reverse (or by manually copying the new/changed skill yaml + playbook to `Development_Skills/13_skills/active/`, committing on a branch, and opening a PR upstream).
-5. If the repo has changed materially since last twin ingest (architecture, dependencies, deployment target, or component count differ): re-run Tier 1 step 5 to refresh the twin in central Development_Skills.
+4. Sync improved skills back to **central ATLAS** by running the upstream sync script in reverse (or by manually copying the new/changed skill yaml + playbook to `ATLAS/13_skills/active/`, committing on a branch, and opening a PR upstream).
+5. If the repo has changed materially since last twin ingest (architecture, dependencies, deployment target, or component count differ): re-run Tier 1 step 5 to refresh the twin in central ATLAS.
 6. If `current.truth.yaml` `last_verified` is older than 30 days: re-run Tier 1 steps 1, 3, and 4 to refresh the truth snapshot.
 
 Outputs: drift report (per session), mistake ledger entries, promoted skills, refreshed twin (when warranted), refreshed truth state (when warranted).

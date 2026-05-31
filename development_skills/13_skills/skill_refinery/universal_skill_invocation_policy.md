@@ -24,7 +24,7 @@ The router must:
 
 ## Tool-Callable vs Playbook-Callable Skills
 
-Some agent runtimes expose a small set of tool-callable skills through a `Skill` tool or similar registry. Development_Skills also contains a larger repository-native skill library under `13_skills/active/` as `SKILL_*.yaml` plus `.playbook.md` files.
+Some agent runtimes expose a small set of tool-callable skills through a `Skill` tool or similar registry. ATLAS also contains a larger repository-native skill library under `13_skills/active/` as `SKILL_*.yaml` plus `.playbook.md` files.
 
 These are different invocation surfaces:
 
@@ -36,7 +36,7 @@ These are different invocation surfaces:
 
 If a runtime says `SKILL_IPOS_TURBO_001` or another `SKILL_*` name is not tool-callable, that is not a failure to invoke the skill. The correct behavior is to apply the repository-native playbook discipline by reading its YAML/playbook through the filesystem.
 
-Never reduce `invoke all skills` to the external runtime's registered skill list. That list is runtime-local and incomplete relative to Development_Skills.
+Never reduce `invoke all skills` to the external runtime's registered skill list. That list is runtime-local and incomplete relative to ATLAS.
 
 ## Universal Coverage Matrix
 

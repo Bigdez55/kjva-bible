@@ -1,8 +1,8 @@
-# Apex Development Skills Protocol v2.1
+# Apex ATLAS Protocol v2.1
 
 ## Purpose
 
-The Apex Development Skills Protocol converts raw ideas into production ready software through structured intent, specs, architecture, diagrams, vertical slices, proof, deployment, and feedback.
+The Apex ATLAS Protocol converts raw ideas into production ready software through structured intent, specs, architecture, diagrams, vertical slices, proof, deployment, and feedback.
 
 ## System doctrine
 

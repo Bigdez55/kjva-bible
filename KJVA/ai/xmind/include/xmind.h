@@ -53,6 +53,7 @@ typedef int32_t xmind_status_t;
 #define XMIND_ERR_CORRUPT  ((xmind_status_t) -3)
 #define XMIND_ERR_OVERFLOW ((xmind_status_t) -4)
 #define XMIND_ERR_IO       ((xmind_status_t) -5)  /* file / storage I/O error */
+#define XMIND_ERR_POLICY   ((xmind_status_t) -6)  /* governance / hook halt */
 
 /* ═══════════════════════════════════════════════════════════════════
  * §3  INTERNAL MEMORY / PANIC SHIMS

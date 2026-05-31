@@ -70,7 +70,7 @@ def build_status(gate_results: list[dict[str, Any]] | None = None) -> dict[str, 
     status = {
         "atlas_status": {
             "system_name": "SUPER C Atlas",
-            "repository_lineage": "Development_Skills",
+            "repository_lineage": "ATLAS",
             "branch": run_git(["branch", "--show-current"]),
             "commit": run_git(["rev-parse", "HEAD"]),
             "dirty_state": dirty_state(),

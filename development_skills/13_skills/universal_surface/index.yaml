@@ -1,5 +1,5 @@
 schema_version: '1.0'
-name: Development_Skills Universal Skill Surface
+name: ATLAS Universal Skill Surface
 status: canonical
 purpose: Single invocation surface for Claude, Codex, Gemini-style agents, and repo-local coding agents.
 source_of_truth:

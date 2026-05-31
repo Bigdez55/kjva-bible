@@ -2,14 +2,14 @@ context_packet_id: CP-super-c-atlas-platform-core
 mission: Atlas Intelligence Core convergence packet for ingest, graph, knowledge_vault, status,
   validation, and report synthesis.
 system_name: SUPER C Atlas
-repository_lineage: Development_Skills
+repository_lineage: ATLAS
 branch: codex/super-c-atlas-platform-core-v0-1
 commit: c8a7e5e3b11838a02031ef1a53325b606ae8cb3a
 truth_state:
   path: 19_truth_state/current.truth.yaml
   status: active
   last_verified: '2026-05-17'
-  summary: 'Development Skills is the repository lineage identity and SUPER C Atlas
+  summary: 'ATLAS is the repository lineage identity and SUPER C Atlas
     is the layered target system identity. The current tracked repo contains 45 numbered
     root directories, including separate Bookworm identity bridge and engine layers.
     Skills Stack v7 repo-native validation passes for the scoped gates. Structural

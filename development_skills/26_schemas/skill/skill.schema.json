@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Skill",
-  "description": "Validates a skill definition document in the Development_Skills knowledge base.",
+  "description": "Validates a skill definition document in the ATLAS knowledge base.",
   "type": "object",
   "additionalProperties": false,
   "required": [

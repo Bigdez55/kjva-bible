@@ -15,7 +15,7 @@ Define how coding agents access tenant repo context, skills, resources, proof ga
 ```json
 {
   "tenantId": "desmond-personal-poc",
-  "repoName": "Development_Skills",
+  "repoName": "ATLAS",
   "eventType": "commit",
   "commitSha": "abc123",
   "branch": "main",

@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This directory is the single universal invocation surface for Development_Skills.
+This directory is the single universal invocation surface for ATLAS.
 Claude, Codex, Gemini-style agents, and repo-local coding agents must use this
 surface instead of treating their own runtime skill list as the full skill system.
 

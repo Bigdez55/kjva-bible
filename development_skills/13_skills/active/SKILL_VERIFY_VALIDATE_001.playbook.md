@@ -144,7 +144,7 @@ These are PyTorch-isms. MLX does not have them — they silently corrupt trainin
 Also verify: `model.freeze()` not `requires_grad=False`; weights via `mx.load()`;
 gradients via `nn.value_and_grad`.
 
-**Python / skill-registry repos (Development_Skills, child repos):**
+**Python / skill-registry repos (ATLAS, child repos):**
 ```bash
 # No hardcoded absolute paths — scripts must use Path(__file__).resolve().parents[N]
 grep -rn '"/Users/\|"/home/' infrastructure/scripts/ --include="*.py"
@@ -169,7 +169,7 @@ grep -rn "__dirname" apps/backend/ apps/frontend/ \
 
 **Pass criteria:** All greps return zero matches for your project type.
 
-**Development_Skills lesson (2026-05-25):** After moving `25_automation/` two levels
+**ATLAS lesson (2026-05-25):** After moving `25_automation/` two levels
 deeper to `infrastructure/scripts/`, `parents[1]` in 15 scripts pointed one level
 short of the repo root. The bulk `sed` substitution fixed quoted-string paths but
 missed path-join syntax (`/ "dir" /`), requiring a second targeted pass. 3C catches
@@ -190,7 +190,7 @@ grep -n "TOK_[A-Z]" src/lexer.c | grep '"' | sed 's/.*"\(.*\)".*/\1/' | sort > /
 **TOK_PHASE lesson:** The identifier `phase` triggered 10 cascade parse errors
 that took a full session to diagnose. Pre-flight catches it in 30 seconds.
 
-**Skill-registry repos (Development_Skills, child repos):**
+**Skill-registry repos (ATLAS, child repos):**
 ```bash
 # Duplicate SKILL IDs
 grep "^id:" platform/sdlc/13_skills/active/SKILL_*.yaml | awk -F': ' '{print $2}' | sort | uniq -d
@@ -269,7 +269,7 @@ make loc
 ```
 If within 500 of escalation: flag to human. If above hard ceiling: STOP.
 
-**Skill-registry repos (Development_Skills, child repos):**
+**Skill-registry repos (ATLAS, child repos):**
 ```bash
 YAML_COUNT=$(ls platform/sdlc/13_skills/active/SKILL_*.yaml 2>/dev/null | wc -l | tr -d ' ')
 REGISTRY_TOTAL=$(grep "^total:" platform/sdlc/13_skills/skills.registry.yaml | awk '{print $2}')
@@ -353,7 +353,7 @@ find . -maxdepth 3 -type d \( \
 **Failure action:** Delete the dir (`rm -rf .pytest_cache` etc.), ensure `.gitignore`
 covers it at the level where the tool runs — not just the repo root.
 
-**Development_Skills lesson (2026-05-25):** `.pytest_cache/` was left at the repo
+**ATLAS lesson (2026-05-25):** `.pytest_cache/` was left at the repo
 root after a 38K-file reorganization commit. It was in `.gitignore` so it never
 committed, but the physical directory persisted and went unnoticed. The same pattern
 was recurring across GENESYS and child repos. Gitignore ≠ deleted — this gate
@@ -491,7 +491,7 @@ Last updated: 2026-05-26
   Gate 6: SC LOC ceiling + skill registry count integrity (yaml count == registry
   total == router coverage). No gate is ever N/A again.
 - v1.2.0 (2026-05-25): Added Gate 7D — Generated cache directory check. Pattern
-  sourced from Development_Skills reorganization session where `.pytest_cache/`
+  sourced from ATLAS reorganization session where `.pytest_cache/`
   survived a 38K-file commit undetected because gitignore ≠ deleted. Gate 7D now
   mandatory in Rapid Fire Mode. apex-directory-discipline skill also updated with
   the same pattern.

@@ -7,7 +7,7 @@ This contract prevents Claude Code, Codex, or any other coding-agent runtime fro
 `invoke all skills` means:
 
 ```text
-Apply the Development_Skills universal skill coverage matrix and selected repository-native playbooks.
+Apply the ATLAS universal skill coverage matrix and selected repository-native playbooks.
 ```
 
 It does not mean:
@@ -53,7 +53,7 @@ The agent must not answer:
 Only the registered Skill tool list counts.
 ```
 
-The registered runtime Skill tool list is only one execution surface. It is not the full Development_Skills skill library.
+The registered runtime Skill tool list is only one execution surface. It is not the full ATLAS skill library.
 
 ## Canonical Files
 

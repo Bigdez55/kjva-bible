@@ -8,7 +8,7 @@ plus router-integration status for the canonical repo.
 
 | Location | disk | registry | gap | status |
 |---|---:|---:|---:|---|
-| **Development_Skills** (CANONICAL) | 177 | 177 | 0 | ✅ IN SYNC |
+| **ATLAS** (CANONICAL) | 177 | 177 | 0 | ✅ IN SYNC |
 | desmond-super-c | 156 | 22 | 134 | ❌ DRIFT — registry severely stale |
 | GENESYS | 156 | 150 | 6 | ❌ DRIFT |
 | IPOS | 156 | 150 | 6 | ❌ DRIFT |
@@ -20,7 +20,7 @@ plus router-integration status for the canonical repo.
 
 ## Findings
 
-1. **Canonical (Development_Skills) is in sync** — 177 active skill files, 177
+1. **Canonical (ATLAS) is in sync** — 177 active skill files, 177
    registry entries, `total: 177`. `SKILL_APEX_VERIFIED_MACHINE_ENCODING_001`
    is registered. No orphaned entries (every registry name has a file).
 
@@ -84,7 +84,7 @@ Post-sync verification — all 6 now match canonical exactly:
 
 | Location | disk | registry | total | routed |
 |---|---:|---:|---:|---:|
-| Development_Skills (canonical) | 177 | 177 | 177 | 177 |
+| ATLAS (canonical) | 177 | 177 | 177 | 177 |
 | desmond-super-c | 177 | 177 | 177 | 177 |
 | GENESYS | 177 | 177 | 177 | 177 |
 | IPOS | 177 | 177 | 177 | 177 |

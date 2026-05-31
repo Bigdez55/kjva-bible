@@ -16,7 +16,7 @@ Normalize all agent-related Claude surfaces, not only canonical `universal/agent
 - Classify agent surfaces into `universal_agents`, `repo_agents`, `agent_memory`, `agent_sessions`, and `agent_root_doc_or_related`.
 - Deduplicate by category and hash while preserving all source occurrences.
 - Keep agent-memory and session files as context/evidence unless explicitly promoted into active skills or personas.
-- Do not treat the external runtime Skill tool registry as the full Development_Skills skill library.
+- Do not treat the external runtime Skill tool registry as the full ATLAS skill library.
 - Repository-native `13_skills/active/SKILL_*.yaml` entries are applied by reading YAML/playbooks, even when they are not tool-callable in Claude, Codex, Gemini, or another agent runtime.
 
 ## Workflow

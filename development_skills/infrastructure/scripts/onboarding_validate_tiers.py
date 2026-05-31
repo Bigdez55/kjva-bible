@@ -106,7 +106,7 @@ def pick_twin_root(repo_name: str, preferred_central: Path, ds: Path) -> Path:
     """Resolve where repo twins are tracked.
 
     Priority:
-    1) Explicit/derived central Development_Skills checkout (preferred_central)
+    1) Explicit/derived central ATLAS checkout (preferred_central)
     2) The target repo's local development_skills copy (ds)
     """
     roots = [preferred_central, ds]
@@ -295,7 +295,7 @@ def main() -> int:
     ap = argparse.ArgumentParser(description="Validate onboarding tiers (T1-T4) for a target repo")
     ap.add_argument("--target", required=True, help="repo root path or development_skills path")
     ap.add_argument("--tiers", default="1-4", help="tier set: 1,2,3,4 or 1-4 or all")
-    ap.add_argument("--central-root", default=None, help="central Development_Skills root; default resolves from this script")
+    ap.add_argument("--central-root", default=None, help="central ATLAS root; default resolves from this script")
     ap.add_argument("--json", dest="json_out", action="store_true", help="emit json report")
     args = ap.parse_args()
 
@@ -303,7 +303,7 @@ def main() -> int:
     repo_root, ds = resolve_target_repo(Path(args.target))
 
     # This script lives at <development_skills>/25_automation/onboarding_validate_tiers.py
-    # so the Development_Skills root is parents[1].
+    # so the ATLAS root is parents[1].
     script_root = Path(__file__).resolve().parents[2]
     central = Path(args.central_root).resolve() if args.central_root else script_root
     repo_name = repo_root.name.lower()

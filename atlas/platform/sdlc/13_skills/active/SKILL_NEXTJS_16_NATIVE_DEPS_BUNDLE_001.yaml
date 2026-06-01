@@ -1,0 +1,57 @@
+id: SKILL_NEXTJS_16_NATIVE_DEPS_BUNDLE_001
+title: Next.js 16 Native Dependencies + Proxy Filename Convention
+version: 1.0.0
+layer: ci_cd
+domains:
+- frontend
+- nextjs
+- build_systems
+- desktop
+playbook: 13_skills/active/SKILL_NEXTJS_16_NATIVE_DEPS_BUNDLE_001.playbook.md
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_NEXTJS_16_NATIVE_DEPS_BUNDLE_001.ledger.yaml
+status: active
+tier: active
+source: incident_promotion
+
+trigger_conditions:
+- Next.js 16+ project depends on native modules (keytar, better-sqlite3, sharp, etc.).
+- Project uses Edge middleware / proxy.
+- "`npm run build` fails with webpack errors about `.node` files."
+- Migrating from Next 14/15 to Next 16.
+
+hard_constraints:
+- Native modules (with .node binding) MUST be listed in `serverExternalPackages` in next.config.ts.
+- Next.js 16 uses `src/proxy.ts` as canonical proxy filename (NOT `src/middleware.ts` which Next 15 used).
+- Proxy MUST be a default export.
+- "`npm run build` output MUST show `ƒ Proxy (Middleware)` or `ƒ Middleware` to confirm pickup."
+- Never bundle native binaries through webpack — they must be loaded at runtime from node_modules.
+
+known_failure_modes:
+- Webpack tries to parse keytar.node / better-sqlite3.node as JavaScript → cryptic "Module parse failed" or "Cannot read .node file as text" errors.
+- Filename mismatch (middleware.ts in Next 16, or proxy.ts in Next 15) → entire middleware silently ignored; all API routes unguarded.
+- Named export instead of default → same silent ignore.
+- Static fallback CSP with 'unsafe-inline' → nullifies XSS protection AND per-request nonce in proxy can't take effect.
+
+validation_tests:
+- "`grep serverExternalPackages next.config.ts` shows the native deps array."
+- "`npm run build` output includes `ƒ Proxy (Middleware)` (Next 16) or `ƒ Middleware` (Next 15)."
+- File exists at correct path for Next version.
+- "`grep \"export default\" src/proxy.ts` (or middleware.ts) matches."
+
+improvement_history:
+- version: 1.0.0
+  date: '2026-05-29'
+  reason: >
+    Promoted from ATLAS production audit D-phase. Build failed because keytar +
+    better-sqlite3 native bindings hit webpack. Also confirmed Next.js 16
+    deprecated middleware.ts in favor of proxy.ts. Both lessons codified here
+    so future Next 16 apps don't hit the same wall.
+
+related_skills: [SKILL_ATLAS_OAUTH_WIRING_001, SKILL_DURABLE_STORAGE_MIGRATION_001, SKILL_FULLSTACK_REACT_ELECTRON_THREEJS_001]
+slash_commands: [/apex:platform_build, /apex:verify]
+improvement_metrics:
+  invocation_count: 1
+  correction_count: 0
+  last_correction: null
+  last_refinement: '2026-05-29'
+  refinement_count: 0

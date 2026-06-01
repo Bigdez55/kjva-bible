@@ -1,0 +1,90 @@
+id: SKILL_I18N_L10N_001
+name: i18n-l10n
+title: Internationalization and Localization
+purpose: |
+  Make a product locale-ready and translatable across web, mobile, and backend
+  surfaces: externalized message catalogs, locale-aware formatting via Intl/CLDR,
+  CLDR pluralization, bidirectional and multi-script layout, a real translation
+  pipeline with coverage gates, and deterministic locale negotiation and fallback.
+version: 1.0.0
+layer: frontend
+domains:
+  - internationalization
+  - localization
+  - frontend
+  - accessibility
+  - release_engineering
+tier: active
+status: active
+source: native
+aliases:
+  - i18n-l10n
+  - i18n
+  - l10n
+  - internationalization
+  - localization
+  - locale-readiness
+playbook: SKILL_I18N_L10N_001.playbook.md
+ledger: ../skill_refinery/correction_ledgers/SKILL_I18N_L10N_001.ledger.yaml
+runtime_projection: true
+runtime_projection_targets:
+  - claude
+  - codex
+  - gemini
+corpus_category: "Internationalization & L10n"
+trigger_conditions:
+  - "User asks to internationalize, localize, or add language/locale support to a product."
+  - "User reports hardcoded UI strings, untranslated text, or a raw message key shown to a user."
+  - "User needs locale-aware date, time, number, currency, or sorting behavior."
+  - "User must support RTL languages (Arabic, Hebrew) or non-Latin scripts (CJK, Cyrillic, Devanagari)."
+  - "User asks to set up a translation workflow, TMS, or translation coverage gate."
+  - "A pseudolocalization, hydration locale mismatch, or plural/gender bug is being triaged."
+  - "A production-readiness audit reaches the 'Internationalization & L10n' category."
+hard_constraints:
+  - "ALWAYS externalize user-facing strings into message catalogs; NEVER hardcode UI text in components or logic."
+  - "ALWAYS use one canonical catalog format (ICU MessageFormat, gettext PO, or Fluent); NEVER mix ad hoc formats."
+  - "ALWAYS keep the default-locale catalog as the single version-controlled source of truth with stable, namespaced keys."
+  - "ALWAYS format dates, times, numbers, currencies, and percentages with a locale-aware library (Intl/CLDR); NEVER hand-roll them."
+  - "ALWAYS store timestamps in UTC and render in the user's locale and time zone; NEVER store wall-clock local time."
+  - "NEVER represent money as a float; use minor units or a decimal type with locale-correct symbol, decimal, and grouping."
+  - "ALWAYS use CLDR plural categories (zero/one/two/few/many/other); NEVER gate plurals on naive n==1 logic."
+  - "NEVER concatenate strings to build sentences; full sentences live in the catalog with named placeholders, not positional word order."
+  - "ALWAYS use CSS logical properties (start/end, margin-inline) instead of physical left/right so RTL bidi mirroring is correct."
+  - "ALWAYS define a missing-translation fallback chain (locale -> region -> default) that NEVER renders a raw key to the user."
+  - "ALWAYS run pseudolocalization in CI to catch hardcoded strings and layout truncation before release."
+  - "ALWAYS gate releases on a declared minimum translation-coverage threshold per supported locale."
+  - "ALWAYS negotiate locale from a documented precedence (user preference, Accept-Language, account settings) and persist the choice across sessions."
+  - "ALWAYS make server-rendered and client-rendered locale resolution agree; NEVER ship a hydration locale mismatch."
+known_failure_modes:
+  - "Hardcoded strings: UI text baked into components, invisible to translators and pseudolocalization."
+  - "Hand-rolled formatting: manual date/number/currency strings that break for other locales and float money."
+  - "Naive pluralization: n==1 English logic that is wrong for Polish, Russian, Arabic, and others."
+  - "Sentence concatenation: assembling phrases from fragments, producing ungrammatical word order in translation."
+  - "Physical CSS in RTL: left/right styling that fails to mirror for Arabic and Hebrew layouts."
+  - "Raw key leakage: a missing translation rendering the catalog key instead of a fallback string."
+  - "Hydration locale mismatch: server and client picking different locales, causing SSR hydration errors."
+  - "Phantom coverage: shipping a locale with large untranslated gaps because no coverage gate exists."
+validation_tests:
+  - "Grep/lint finds zero hardcoded user-facing strings outside the message catalogs."
+  - "All date/number/currency rendering routes through Intl/CLDR; no manual format helpers remain."
+  - "Pseudolocalization CI run passes with no untranslated strings and no truncated layout."
+  - "Plural-heavy strings render correctly for a CLDR many/few language (e.g. Polish or Russian)."
+  - "An RTL locale (Arabic or Hebrew) renders with correctly mirrored layout using logical properties."
+  - "A forced missing translation falls back through locale -> region -> default and never shows a raw key."
+  - "Translation coverage report meets the declared per-locale threshold and gates the release."
+  - "SSR and client locale resolution match for a non-default locale with no hydration warning."
+improvement_history:
+  - version: 1.0.0
+    date: "2026-05-31"
+    change: "Initial release. Fills the 'Internationalization & L10n' zero-coverage gap in the Production-Readiness Corpus (53_production_readiness)."
+related_skills:
+  - SKILL_PRODUCTION_READINESS_AUDIT_001
+  - SKILL_UI_INTERACTION_WIRING_001
+  - SKILL_AUTOMATED_REGRESSION_TESTING_001
+  - SKILL_CI_PIPELINE_001
+improvement_metrics:
+  total_invocations: 0
+  corrections_applied: 0
+  regressions_caught: 0
+  false_positives: 0
+  last_calibration: null

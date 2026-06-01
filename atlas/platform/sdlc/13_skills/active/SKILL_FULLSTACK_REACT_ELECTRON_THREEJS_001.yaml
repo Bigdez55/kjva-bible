@@ -1,0 +1,76 @@
+id: SKILL_FULLSTACK_REACT_ELECTRON_THREEJS_001
+title: Full-Stack React Electron Three.js
+version: 1.0.0
+layer: application
+domains:
+- frontend
+- fullstack
+- desktop
+- 3d
+playbook: 13_skills/active/SKILL_FULLSTACK_REACT_ELECTRON_THREEJS_001.playbook.md
+validation_tests:
+- 08_verification/skill_tests/TEST_SKILL_FULLSTACK_REACT_ELECTRON_THREEJS_001_001.yaml
+status: active
+skill_number: 28
+source_documents:
+- handoff_v7_repo_native
+trigger_conditions:
+- React, Electron, Three.js, desktop app, 3D UI, or full-stack frontend implementation
+  is requested.
+hard_constraints:
+- Preserve source-of-truth ranking.
+- Do not claim completion without validation evidence.
+- Record misses in the skill refinery ledger when discovered.
+- EVERY Electron main process MUST call app.requestSingleInstanceLock() at module
+  scope before any app.whenReady() logic. Missing this is a P1 regression — it
+  causes a new process and duplicate server on every launch/dock-click.
+- The second-instance event handler MUST restore and focus the existing window.
+- The activate handler (macOS) MUST show/focus the existing window, not create a new one.
+tier: active
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_FULLSTACK_REACT_ELECTRON_THREEJS_001.ledger.yaml
+related_skills:
+- SKILL_ELECTRON_SINGLE_INSTANCE_DISCIPLINE_001
+- SKILL_ELECTRON_MACOS_PACKAGE_SIGN_001
+- SKILL_ELECTRON_VSCODE_ENV_ISOLATION_001
+- SKILL_ELECTRON_EMBEDDED_DAEMON_BOOTSTRAP_001
+- SKILL_NEXTJS_16_NATIVE_DEPS_BUNDLE_001
+- SKILL_ATLAS_OAUTH_WIRING_001
+- SKILL_MULTI_TENANT_ISOLATION_001
+- SKILL_DURABLE_STORAGE_MIGRATION_001
+- SKILL_AUDIT_LOG_IMMUTABLE_001
+- SKILL_RATE_LIMIT_TENANT_SCOPED_001
+- SKILL_RELEASE_GATE_CI_001
+- SKILL_AGENT_WORKTREE_ISOLATION_001
+- SKILL_UI_LIVE_VERIFICATION_BEFORE_DONE_001
+- SKILL_NEXTJS_CSP_HYDRATION_TRAP_001
+- SKILL_ELECTRON_MACOS_DOCK_ICON_DISCIPLINE_001
+router_intents:
+- platform_build
+- visual_to_system_backbone
+aliases:
+- 28-fullstack-react-electron-threejs
+regression_cases: []
+slash_commands:
+- /apex:platform_build
+workflows:
+- 05_workflows/platform_build_auto_invocation.md
+templates: []
+provenance:
+  collection: skills_stack_2026-05-17
+  source_index: 16_knowledge/external_collateral/skills_stack_2026-05-17/source_index.yaml
+improvement_history:
+- version: 1.1.0
+  date: '2026-05-29'
+  reason: >
+    P1 correction: added single-instance lock hard constraint after ATLAS.app
+    bug where missing requestSingleInstanceLock() caused duplicate processes on
+    every launch.
+source: native
+improvement_metrics:
+  invocation_count: 1
+  correction_count: 1
+  last_correction: '2026-05-29'
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

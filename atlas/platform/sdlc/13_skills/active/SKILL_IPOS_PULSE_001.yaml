@@ -1,0 +1,64 @@
+id: SKILL_IPOS_PULSE_001
+title: IPOS Pulse
+version: 1.0.0
+layer: application
+domains:
+- ipos
+- dashboard
+- data_pipeline
+- microsoft_365
+playbook: 13_skills/active/SKILL_IPOS_PULSE_001.playbook.md
+validation_tests: []
+status: active
+skill_number: 60
+source_documents:
+- ipos_claude_skills_2026-05-17/raw/pulse/SKILL.md
+trigger_conditions:
+- User request matches imported IPOS skill `pulse`.
+- User mentions real-time.
+- User mentions live updates.
+- User mentions WebSocket.
+- User mentions polling.
+- User mentions auto-refresh.
+- User mentions SignalR.
+- User mentions SSE.
+- User mentions stale data.
+hard_constraints:
+- Preserve source-of-truth ranking.
+- Do not claim completion without validation evidence.
+- Use imported IPOS patterns only when the request is dashboard, KPI, SharePoint,
+  paratransit, or frontend-dashboard related.
+- Record misses in the skill refinery ledger when discovered.
+tier: active
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_IPOS_PULSE_001.ledger.yaml
+related_skills:
+- SKILL_PLATFORM_BUILD_001
+- SKILL_FRONTEND_BACKEND_DATAFLOW_001
+- SKILL_SOURCE_TRUTH_RECONCILIATION_001
+router_intents:
+- pulse
+- dashboard
+- ipos_dashboard
+aliases:
+- pulse
+- pulse
+- ipos pulse
+regression_cases: []
+slash_commands: []
+workflows: []
+templates: []
+provenance:
+  collection: ipos_claude_skills_2026-05-17
+  source_repo: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS
+  raw_source: 16_knowledge/external_collateral/ipos_claude_skills_2026-05-17/raw/pulse/SKILL.md
+  raw_sha256: d5e8ce3bd8caf6aa85b7c5f366973023db1e515a39f42e942d6f2fa84a6ba7f2
+improvement_history: []
+source: native
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

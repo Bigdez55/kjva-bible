@@ -1,0 +1,109 @@
+id: SKILL_OSS_LICENSING_COMPLIANCE_001
+name: Open Source and Licensing Compliance
+title: Open Source and Licensing Compliance
+purpose: >
+  Govern the legal, supply-chain, and community-readiness posture of every
+  dependency you consume and every package you publish. Operationalizes the
+  Production-Readiness Corpus "Open Source & Licensing" category so license risk,
+  attribution duties, provenance, and open-source project hygiene are enforced in
+  CI before distribution, not discovered in legal review after launch.
+version: 1.0.0
+layer: governance
+domains:
+- governance
+- open_source
+- licensing
+- supply_chain
+- compliance
+- release_engineering
+tier: active
+status: active
+source: native
+aliases:
+- oss-licensing-compliance
+- license-compliance
+- open-source-compliance
+- sbom-license-governance
+- package-provenance
+playbook: platform/sdlc/13_skills/active/SKILL_OSS_LICENSING_COMPLIANCE_001.playbook.md
+ledger: platform/sdlc/13_skills/skill_refinery/correction_ledgers/SKILL_OSS_LICENSING_COMPLIANCE_001.ledger.yaml
+runtime_projection: true
+runtime_projection_targets:
+- claude
+- codex
+- gemini
+corpus_category: "Open Source & Licensing"
+
+trigger_conditions:
+- The user adds, upgrades, or vendors a third-party dependency, or asks whether a license is allowed.
+- A repository is about to be open-sourced, published publicly, or made community-facing.
+- A package is about to be published to a registry (npm, PyPI, crates.io, Maven, NuGet, etc.).
+- The user asks about NOTICE files, attribution, copyleft, SBOM, or license scanning.
+- A copyleft (GPL/AGPL/LGPL/MPL) or commercial-restricted dependency is detected in a distributed product.
+- A maintainer leaves the organization or package ownership/namespace must be reviewed.
+- The user asks to set up CONTRIBUTING, CODE_OF_CONDUCT, SECURITY, CLA/DCO, or release process for an OSS project.
+- A production-readiness audit flags the "Open Source & Licensing" category as failing or NONE coverage.
+
+hard_constraints:
+- An allowed/prohibited license allowlist is defined and approved by legal or leadership; dependencies outside it are blocked, not waived ad hoc.
+- A dependency license scan runs on every pull request and fails the build on a prohibited or unknown license (PRC DEPENDENCY_LICENSE_CONTROLS.002).
+- Transitive dependency licenses are scanned and reviewed, not only direct dependencies (PRC DEPENDENCY_LICENSE_CONTROLS.003).
+- Copyleft licenses (GPL, AGPL, LGPL, MPL) are reviewed and explicitly approved before inclusion in any distributed product (PRC DEPENDENCY_LICENSE_CONTROLS.004).
+- NOTICE and attribution files are generated for every dependency that requires attribution and ship with the distributed artifact (PRC DEPENDENCY_LICENSE_CONTROLS.005).
+- An SBOM (SPDX or CycloneDX) is generated for every release and includes license metadata for every dependency (PRC DEPENDENCY_LICENSE_CONTROLS.011).
+- License exceptions are documented, approved, and time-bounded; provenance is verified for high-risk packages (PRC DEPENDENCY_LICENSE_CONTROLS.007, .008).
+- Public repos include a correct LICENSE file plus README, CONTRIBUTING.md, CODE_OF_CONDUCT.md, and SECURITY.md before going public (PRC OPEN_SOURCE_PROJECT_READINESS.001-005).
+- A CLA or DCO process is configured before accepting external contributions when the project requires it (PRC OPEN_SOURCE_PROJECT_READINESS.011).
+- Package namespaces are owned by the organization, not an individual employee, and registry accounts enforce MFA (PRC PACKAGE_PUBLISHING_AND_PROVENANCE.001, .002).
+- Release publishing happens from CI with build provenance (SLSA) attached, never from a local developer machine (PRC PACKAGE_PUBLISHING_AND_PROVENANCE.003, .004).
+- Released version tags are immutable, artifacts are checksummed, and packages are signed where the ecosystem supports it (PRC PACKAGE_PUBLISHING_AND_PROVENANCE.005, .006, .010).
+- Breaking changes require a major version bump; deprecated versions carry migration guidance (PRC PACKAGE_PUBLISHING_AND_PROVENANCE.007, .008).
+- Package ownership and namespace access are reviewed whenever a maintainer leaves the organization (PRC PACKAGE_PUBLISHING_AND_PROVENANCE.011).
+
+known_failure_modes:
+- Scanning only direct dependencies and missing a copyleft or proprietary license buried in the transitive tree.
+- Shipping a distributed binary or container without the NOTICE/attribution files that permissive licenses (MIT, Apache-2.0, BSD) legally require.
+- Treating "the build is green" as license clearance when no license gate actually runs in CI.
+- Publishing releases from a developer laptop, leaving no build provenance and an unauditable supply chain.
+- A package namespace tied to a personal account that becomes inaccessible when that person leaves, orphaning the package.
+- Open-sourcing a repo with no LICENSE file (default copyright = all rights reserved) or with a LICENSE that contradicts the dependency obligations.
+- Accepting external contributions with no CLA/DCO, leaving the project unable to relicense or defend provenance later.
+- Mutating or re-pushing an already-released version tag, breaking reproducibility and downstream lockfiles.
+
+validation_tests:
+- CI fails a PR that introduces a dependency whose license is not on the approved allowlist (run the license scanner against a seeded prohibited license).
+- An SBOM file (SPDX or CycloneDX) is produced for the latest release and every component entry contains a non-empty license field.
+- The generated NOTICE/THIRD_PARTY attribution file lists every dependency that requires attribution and is present inside the shipped artifact.
+- For a public repo, LICENSE, README, CONTRIBUTING.md, CODE_OF_CONDUCT.md, and SECURITY.md all exist and LICENSE matches the declared package license metadata.
+- The release workflow runs in CI (not locally), attaches build provenance/attestation, and emits checksums for every artifact.
+- Registry account audit shows MFA enabled and the publishing namespace owned by an org account, not an individual.
+- A copyleft dependency in a distributed product has a recorded review/approval entry; unknown-license dependencies block the release.
+
+improvement_history:
+- version: 1.0.0
+  date: '2026-05-31'
+  reason: >
+    Created to fill the "Open Source & Licensing" zero-coverage gap (coverage_status
+    NONE) in the Production-Readiness Corpus (53_production_readiness). Operationalizes
+    all three corpus sections — Dependency License Controls (11 items), Open Source
+    Project Readiness (12 items), and Package Publishing & Provenance (11 items) —
+    into enforceable CI gates, attribution/SBOM duties, and provenance controls so the
+    category can move from NONE toward a scored, evidence-backed pass.
+
+related_skills:
+- SKILL_PRODUCTION_READINESS_AUDIT_001
+- SKILL_DEPENDENCY_SOVEREIGNTY_001
+- SKILL_REPRODUCIBLE_BUILD_DISCIPLINE_001
+- SKILL_CI_PIPELINE_001
+- SKILL_RELEASE_GATE_CI_001
+- SKILL_PROOF_MATRIX_001
+- SKILL_VERIFY_VALIDATE_001
+
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: '2026-05-31'
+  refinement_count: 0
+  tier_promotion_history: []

@@ -1,0 +1,104 @@
+id: SKILL_CMS_CONTENT_EDITORIAL_001
+name: Content, CMS and Editorial
+title: Content, CMS and Editorial Production Readiness
+purpose: >
+  Make a content platform production-ready: a justified, modeled, access-controlled
+  CMS with draft/preview/approval/publish workflow, versioning and rollback, plus
+  editorial governance (style, legal, accessibility, localization) and safe media
+  handling (EXIF stripping, malware scan, modern formats, captions). Fills the
+  "Content, CMS & Editorial" zero-coverage gap in the Production-Readiness Corpus.
+version: 1.0.0
+layer: content
+domains:
+- content_management
+- editorial_governance
+- digital_asset_management
+- accessibility
+- seo
+- localization
+tier: active
+status: active
+source: native
+aliases:
+- cms-content-editorial
+- content-cms
+- editorial-governance
+- cms-readiness
+- content-publishing-workflow
+- digital-asset-management
+playbook: platform/sdlc/13_skills/active/SKILL_CMS_CONTENT_EDITORIAL_001.playbook.md
+ledger: platform/sdlc/13_skills/skill_refinery/correction_ledgers/SKILL_CMS_CONTENT_EDITORIAL_001.ledger.yaml
+runtime_projection: true
+runtime_projection_targets:
+- claude
+- codex
+- gemini
+corpus_category: "Content, CMS & Editorial"
+
+trigger_conditions:
+- The user is selecting, configuring, or auditing a CMS (Sanity, Contentful, Strapi, WordPress, or custom).
+- The user asks to design or review a draft, preview, approval, and publish workflow.
+- The user asks about content modeling, content types, fields, validations, or relationships.
+- The user is setting up editorial roles, governance, style guides, or content review cadence.
+- The user is handling media uploads, a digital asset library, image optimization, or captions/transcripts.
+- The user asks whether content infrastructure is production ready or audits the "Content, CMS & Editorial" category.
+- The user reports broken media references, an unprotected content API, or accidental/unscheduled publishing.
+
+hard_constraints:
+- 'CMS choice is documented and justified (Sanity, Contentful, Strapi, WordPress, or custom) against content volume, editor count, workflow, and hosting constraints — not picked by default.'
+- 'The content model is documented: every content type lists its fields, validations, required/optional status, and relationships before any content is authored.'
+- 'A draft, preview, approval, and publish workflow is configured so that approval is a mandatory gate and no editor can publish without it; accidental or one-click publishing of unreviewed content is impossible.'
+- Content preview renders through the exact same template, data, and component path as production so what an editor approves is byte-for-byte what ships.
+- Version history and rollback are enabled for all critical content types, and a rollback has been exercised at least once in a drill.
+- 'Every content mutation is logged with the acting editor identity, the timestamp, and the before/after (or version id) for audit and forensics.'
+- The content API has no anonymous or public write path; all create/update/delete/publish endpoints require an authenticated editor role with least-privilege scope.
+- 'Editorial roles are defined and enforced in the CMS (author, editor, publisher, admin) with distinct permissions, and a legal/compliance review step gates claims, pricing, guarantees, and regulated content before publish.'
+- 'All public content types expose SEO metadata fields (title, description, canonical URL, Open Graph/social tags) and they are populated, not left blank, on publish.'
+- EXIF and other sensitive metadata are stripped from every public upload, and all uploaded assets are malware-scanned before they are served.
+- 'Images are compressed and served in modern formats (WebP/AVIF) with fallbacks, and video has captions and transcripts so published media meets accessibility requirements.'
+- 'A CMS backup, export, and content-migration path is documented and tested so the content estate survives a CMS change or data loss; broken media references are monitored in production.'
+
+known_failure_modes:
+- One-click or default-on publishing that lets an unreviewed draft go live, bypassing the approval gate.
+- Preview rendered by a separate code path so approved content looks different (or breaks) in production.
+- Content API left with an unauthenticated or over-scoped write endpoint, allowing tampering or spam injection.
+- Media served with intact EXIF/GPS metadata or without malware scanning, leaking author location or hosting malware.
+- No version history or untested rollback, so a bad edit cannot be reverted and there is no audit trail of who changed what.
+- Images shipped as oversized PNG/JPEG and video without captions, failing performance and accessibility gates.
+- Legal/regulated claims, pricing, or guarantees published with no legal review, creating compliance exposure.
+- CMS with no documented backup/export or migration path, leaving the content estate locked-in and unrecoverable.
+
+validation_tests:
+- 'Confirm a written CMS decision record exists naming the chosen CMS and its justification; confirm a content-model doc lists types, fields, validations, and relationships.'
+- Attempt to publish a draft without approval as an author role and confirm the workflow blocks it; confirm scheduled publish/unpublish executes at the set time.
+- Diff a preview render against the published render for a sample page and confirm they are identical; perform a rollback to a prior version and confirm content restores.
+- 'Send an unauthenticated write/publish request to the content API and confirm it is rejected (401/403); confirm the change log records editor identity and timestamp for a test edit.'
+- Upload an image with EXIF/GPS data and confirm the served asset has metadata stripped; confirm the upload pipeline runs malware scanning and rejects a known-bad test file (EICAR).
+- 'Inspect a published page and confirm images are served as WebP/AVIF and that SEO metadata fields are present and non-empty; confirm a sample video has captions and a transcript.'
+- Run the documented backup/export procedure and restore into a scratch environment; run the broken-media-reference monitor and confirm it reports zero (or triages) dangling assets.
+
+improvement_history:
+- version: 1.0.0
+  date: '2026-05-31'
+  reason: >
+    Created to fill the "Content, CMS & Editorial" zero-coverage gap (coverage_status:
+    NONE) in the Production-Readiness Corpus (53_production_readiness). Operationalizes
+    the two corpus sections — CMS Architecture (12 items) and Editorial Governance &
+    Media (16 items) — into concrete, evidence-checkable production standards for CMS
+    selection, content modeling, publish workflow, versioning, content-API security,
+    editorial governance, and safe media handling.
+
+related_skills:
+- SKILL_PRODUCTION_READINESS_AUDIT_001
+- SKILL_UI_LIVE_VERIFICATION_BEFORE_DONE_001
+- SKILL_VERIFY_VALIDATE_001
+- SKILL_AUTOMATED_REGRESSION_TESTING_001
+
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: '2026-05-31'
+  refinement_count: 0
+  tier_promotion_history: []

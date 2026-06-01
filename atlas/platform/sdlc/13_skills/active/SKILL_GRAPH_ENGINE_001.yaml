@@ -1,0 +1,88 @@
+id: SKILL_GRAPH_ENGINE_001
+title: Atlas Graph Engine Visual Intelligence Workbench
+version: 1.0.0
+layer: application
+domains:
+- atlas
+- graph_engine
+- visual_intelligence
+- provenance
+- deterministic_layout
+- context_export
+playbook: 13_skills/active/SKILL_GRAPH_ENGINE_001.playbook.md
+validation_tests:
+- TEST_SKILL_ATLAS_GRAPH_ENGINE_001_001
+status: active
+skill_number: 147
+source_documents:
+- New updates/atlas-graph-engine-concept.html
+- apps/frontend/shell/src/lib/graph/types.ts
+- apps/frontend/shell/src/lib/graph/mockGraphData.ts
+- apps/frontend/shell/src/components/graph/AtlasGraphEngine.tsx
+trigger_conditions:
+- User asks for Atlas Graph Engine as a graph intelligence workbench.
+- User asks for proof/drift overlays, local context lens, saved graph queries, deterministic
+  graph layout, or graph context export.
+- User corrects a graph as decorative, basic, visual-only, or not useful to coding
+  agents.
+hard_constraints:
+- Use proprietary Atlas names only.
+- No graph UI without graph truth.
+- No visual mode without query behavior.
+- No node or edge without provenance.
+- No saved view without deterministic layout metadata.
+- No agent context without Trace/Phase scope direction.
+tier: active
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_ATLAS_GRAPH_ENGINE_001.ledger.yaml
+related_skills:
+- SKILL_KNOWLEDGE_DEPOT_001
+- SKILL_DATA_PIPELINE_FIRST_001
+- SKILL_PROVENANCE_REQUIRED_001
+- SKILL_DETERMINISM_CHECK_001
+- SKILL_CONTEXT_PACKET_001
+- SKILL_PROOF_MATRIX_001
+router_intents:
+- atlas_graph_engine_visual_intelligence
+aliases:
+- graph intelligence workbench
+- graph command surface
+- atlas stellar graph
+- visual intelligence surface
+- graph query surface
+- proof drift heatmap
+- local context lens
+- agent context builder
+- graph context export
+required_outputs:
+- Graph data contracts
+- Provenance-backed nodes and edges
+- Deterministic layout strategy
+- Query and pathfinding layer
+- Local context extraction
+- Proof and drift overlays
+- Agent context export
+- Saved query persistence
+- Graph tests
+regression_cases:
+- REG-034
+slash_commands: []
+workflows: []
+templates: []
+provenance:
+  created_from: atlas_graph_engine_corrected_build_order
+  created_at: '2026-05-18'
+  legacy_id: SKILL_ATLAS_GRAPH_ENGINE_001
+improvement_history:
+- version: 1.0.0
+  date: '2026-05-18'
+  reason: Created from the corrected graph-engine pre-gate review and visual intelligence
+    workbench requirement.
+source: native
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

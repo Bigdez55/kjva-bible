@@ -1,0 +1,31 @@
+id: SKILL_EMPIRICAL_SURFACE_PROBE_001
+title: sc-empirical-surface-probe
+version: 1.0.0
+layer: governance
+domains:
+- super_c
+- compiler
+- testing
+tier: hardened
+status: active
+source: migrated_user
+aliases:
+- sc-empirical-surface-probe
+playbook: platform/sdlc/13_skills/active/SKILL_EMPIRICAL_SURFACE_PROBE_001.playbook.md
+runtime_projection: true
+runtime_projection_targets:
+- claude
+- codex
+- gemini
+refinement: auto
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []
+skill_number: 532
+provenance:
+  legacy_id: SKILL_SC_EMPIRICAL_SURFACE_PROBE_001

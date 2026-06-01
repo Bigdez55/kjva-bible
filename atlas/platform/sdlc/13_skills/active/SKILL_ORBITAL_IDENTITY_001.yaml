@@ -1,0 +1,73 @@
+id: SKILL_ORBITAL_IDENTITY_001
+title: ATLAS Orbital Visual Identity
+version: 1.0.0
+layer: application
+domains:
+- atlas
+- visual_identity
+- ui
+- brand_system
+- orbital_design
+playbook: 13_skills/active/SKILL_ORBITAL_IDENTITY_001.playbook.md
+validation_tests: []
+status: active
+skill_number: 143
+source_documents:
+- apps/frontend/shell/src/app/globals.css
+- apps/frontend/shell/src/app/page.tsx
+trigger_conditions:
+- User provides the ATLAS globe logo reference.
+- User asks for ATLAS UI/UX based on space, nebula, earth, orbital, or constellation
+  imagery.
+- User says the final globe image is the correct logo direction.
+hard_constraints:
+- Use the final globe direction as the ATLAS identity anchor.
+- The mark should express blue atmospheric rim, dark night side, and gold city-light
+  intelligence network.
+- Do not let visual identity break operational controls or API-backed workflows.
+- Preserve accessibility and responsive layout.
+tier: active
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_ATLAS_ORBITAL_IDENTITY_001.ledger.yaml
+related_skills:
+- SKILL_UI_UX_BUILDOUT_001
+- SKILL_OPERATIONAL_WORKSPACE_001
+router_intents:
+- atlas_orbital_identity
+- atlas_logo_system
+- atlas_space_visual_language
+aliases:
+- atlas logo
+- atlas globe
+- orbital identity
+- space ui
+- nebula ui
+- earth logo
+required_outputs:
+- Logo mark treatment
+- Visual language tokens
+- Background atmosphere
+- Operational UI application
+- Responsive validation
+regression_cases:
+- REG-029
+slash_commands: []
+workflows: []
+templates: []
+provenance:
+  created_from: atlas_logo_and_space_ui_request
+  created_at: '2026-05-17'
+  legacy_id: SKILL_ATLAS_ORBITAL_IDENTITY_001
+improvement_history:
+- version: 1.0.0
+  date: '2026-05-17'
+  reason: Created to preserve the final ATLAS globe visual identity as a reusable
+    UI skill.
+source: native
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

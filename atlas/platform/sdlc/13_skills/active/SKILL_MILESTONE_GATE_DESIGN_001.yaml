@@ -1,0 +1,47 @@
+id: SKILL_MILESTONE_GATE_DESIGN_001
+name: SUPER C Milestone Gate Design
+title: SUPER C Milestone Gate Design
+version: 1.0.0
+status: active
+layer: governance
+domains:
+- super_c
+- gating
+- validation
+- quality
+playbook: 13_skills/active/SKILL_MILESTONE_GATE_DESIGN_001.playbook.md
+purpose: Ensure every milestone has real pass/fail gates before implementation begins.
+inputs:
+- milestone definition
+- blocker register
+- dependency inventory
+- prior gate inventory
+outputs:
+- gate matrix
+- pass/fail contract
+- required evidence
+- false-pass prevention
+- post-tag validation
+known_failure_modes:
+- fake gate passes despite known blockers
+- file-presence check counted as functional check
+- scaffold counted as implementation
+- exit-0 informational gates lie about Gold readiness
+validation_tests:
+- TEST_SKILL_SC_MILESTONE_GATE_DESIGN_001_001
+improvement_history:
+- version: 1.0.0
+  reason: "Initial from SC-MISS-001 \u2014 v31 SCAFFOLDED gates initially exit-0 even\
+    \ on FAIL"
+source: native
+tier: active
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []
+provenance:
+  legacy_id: SKILL_SC_MILESTONE_GATE_DESIGN_001

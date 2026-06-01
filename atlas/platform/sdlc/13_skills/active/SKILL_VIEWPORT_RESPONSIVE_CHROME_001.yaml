@@ -1,0 +1,116 @@
+id: SKILL_VIEWPORT_RESPONSIVE_CHROME_001
+title: Viewport Responsive Chrome and Layout Integrity
+version: 1.1.0
+layer: application
+domains:
+- ui
+- ux
+- responsive_layout
+- application_chrome
+- regression_testing
+playbook: 13_skills/active/SKILL_VIEWPORT_RESPONSIVE_CHROME_001.playbook.md
+validation_tests:
+- apps/frontend/shell/tests/e2e/atlas-ui.spec.ts
+status: active
+skill_number: 178
+source_documents:
+- user_feedback_2026-05-24_topbar_overlap
+- apps/frontend/shell/public/atlas-ui/atlas-shell.css
+- apps/frontend/shell/tests/e2e/atlas-ui.spec.ts
+trigger_conditions:
+- User reports overlapping text, search bars, controls, panels, windows, margins,
+  scaling, or convoluted layout.
+- UI work touches app chrome, topbars, sidebars, drawers, inspectors, command bars,
+  profile/settings shells, or responsive breakpoints.
+- A desktop-home-app surface must work across narrow, medium, and full-screen windows.
+- A control is only valid conditionally, such as update buttons or badges that should
+  appear only when real pending state exists.
+- Shared workspace controls such as pane toggles, focus mode, and walkthrough/help
+  entry points disappear from one page family or exist only on a special-case page.
+hard_constraints:
+- Never absolute-center command/search chrome unless collision behavior is tested
+  at narrow viewport widths.
+- No topbar, sidebar, modal, inspector, or drawer control may overlap readable text
+  or another actionable control.
+- Controls that are conditional must not render when their backing state is absent.
+- Update buttons and settings badges render only when a real release/feed entry is
+  pending.
+- Pane toggles, focus mode, and walkthrough/help controls are shared shell invariants;
+  they must exist on every primary workspace page unless a page explicitly documents
+  an exception.
+- Page-specific panes must respond to the shared pane controls even when they are
+  implemented inside the page content rather than as formal shell rails.
+- Every page-level shell change must include viewport regression coverage at 512px,
+  768px, 1024px, and desktop widths when feasible.
+- 'Prefer flow-based layout, truncation, min-width: 0, container constraints, and
+  breakpoint hiding over fixed-position overlaps.'
+tier: active
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_VIEWPORT_RESPONSIVE_CHROME_001.ledger.yaml
+related_skills:
+- SKILL_UI_UX_BUILDOUT_001
+- SKILL_WORKSPACE_SHELL_001
+- SKILL_UI_INTERACTION_WIRING_001
+- SKILL_UI_FEATURE_AUDIT_001
+- SKILL_AUTOMATED_REGRESSION_TESTING_001
+- SKILL_RUNTIME_REGRESSION_VERIFY_001
+router_intents:
+- viewport_responsive_chrome
+- responsive_layout_integrity
+- app_window_scaling
+- topbar_overlap
+- conditional_update_chrome
+- shared_pane_control_integrity
+aliases:
+- responsive chrome
+- viewport fit
+- app window sizing
+- window scaling
+- layout overlap
+- overlapping search bar
+- search bar overlap
+- responsive shell
+- topbar overlap
+- conditional update button
+- pane toggles
+- left pane toggle
+- right pane toggle
+- focus view
+- walkthrough button
+- missing shell controls
+required_outputs:
+- Viewport risk summary
+- Affected chrome/layout surfaces
+- Breakpoint behavior
+- Conditional rendering rule
+- Shared control preservation check
+- Regression test evidence
+- Validation commands
+regression_cases:
+- ATLAS narrow topbar overlap at 512px
+- ATLAS shared pane/focus/help controls present on primary pages
+slash_commands: []
+workflows:
+- 05_workflows/ui_feature_wiring_audit.md
+templates: []
+provenance:
+  created_from: atlas_topbar_overlap_feedback
+  created_at: '2026-05-24'
+improvement_history:
+- version: 1.0.0
+  date: '2026-05-24'
+  reason: Created after ATLAS search bar overlapped destination text at narrow desktop-app
+    width and update/status chrome rendered without real pending update state.
+- version: 1.1.0
+  date: '2026-05-24'
+  reason: Refined after pane toggles, focus mode, and walkthrough entry remained only
+    on Graph instead of being preserved as shared shell controls on every primary
+    ATLAS page.
+source: native
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

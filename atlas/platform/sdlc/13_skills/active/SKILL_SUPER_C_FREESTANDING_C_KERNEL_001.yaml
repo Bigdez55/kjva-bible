@@ -1,0 +1,58 @@
+id: SKILL_SUPER_C_FREESTANDING_C_KERNEL_001
+title: "Freestanding C Kernel Development \u2014 57 Core Skills"
+version: 1.0.0
+layer: core
+domains:
+- super_c
+- kernel
+- ci
+playbook: 13_skills/active/SKILL_SUPER_C_FREESTANDING_C_KERNEL_001.playbook.md
+validation_tests: []
+status: active
+skill_number: 105
+source_documents:
+- desmond_super_c_skills_2026-05-17/raw/claude_skills/freestanding-c-kernel/SKILL.md
+trigger_conditions:
+- User request matches desmond-super-c Claude skill `freestanding-c-kernel`.
+- User mentions freestanding-c-kernel.
+- User mentions freestanding c kernel.
+hard_constraints:
+- Preserve source-of-truth ranking.
+- Do not claim completion without validation evidence.
+- Use desmond-super-c patterns only when SUPER C / GEN.OS / compiler / platform context
+  is active.
+- Record misses in the skill refinery ledger when discovered.
+tier: active
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_SUPER_C_FREESTANDING_C_KERNEL_001.ledger.yaml
+related_skills:
+- SKILL_LOW_LEVEL_KERNEL_BOOT_001
+- SKILL_GENOS_COMPILE_CHECK_001
+- SKILL_NO_SURPRISE_PLANNING_001
+- SKILL_MILESTONE_GATE_DESIGN_001
+router_intents:
+- freestanding_c_kernel
+- super_c
+- desmond_super_c
+aliases:
+- freestanding-c-kernel
+- freestanding c kernel
+- super c freestanding c kernel
+regression_cases: []
+slash_commands: []
+workflows: []
+templates: []
+provenance:
+  collection: desmond_super_c_skills_2026-05-17
+  source_repo: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/desmond-super-c
+  raw_source: 16_knowledge/external_collateral/desmond_super_c_skills_2026-05-17/raw/claude_skills/freestanding-c-kernel/SKILL.md
+  raw_sha256: 141f79b339c7da675a423fcb7361a089ba3aa6ba5b2fe898e45399bbc0acc21d
+improvement_history: []
+source: native
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

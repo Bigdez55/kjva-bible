@@ -1,0 +1,28 @@
+id: SKILL_ONE_SHOT_EXECUTION_PLANNING_001
+title: one-shot-execution-planning
+version: 1.0.0
+layer: governance
+domains:
+- agent_orchestration
+- governance
+tier: active
+status: active
+source: migrated_user
+aliases:
+- one-shot-execution-planning
+playbook: platform/sdlc/13_skills/active/SKILL_ONE_SHOT_EXECUTION_PLANNING_001.playbook.md
+runtime_projection: true
+runtime_projection_targets:
+- claude
+- codex
+- gemini
+refinement: auto
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []
+skill_number: 523

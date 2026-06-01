@@ -1,0 +1,48 @@
+id: SKILL_INTERNAL_CONSENSUS_TESTING_001
+title: Internal Consensus Testing
+version: 1.0.0
+layer: verification
+domains:
+- review
+- testing
+- quality
+playbook: 13_skills/active/SKILL_INTERNAL_CONSENSUS_TESTING_001.playbook.md
+validation_tests:
+- 08_verification/skill_tests/TEST_SKILL_INTERNAL_CONSENSUS_TESTING_001_001.yaml
+status: active
+skill_number: GOV-05
+source_documents:
+- handoff_v7_repo_native
+trigger_conditions:
+- High-stakes architecture, legal, academic, security, deployment, or broad repo changes
+  require independent review roles.
+hard_constraints:
+- Preserve source-of-truth ranking.
+- Do not claim completion without validation evidence.
+- Record misses in the skill refinery ledger when discovered.
+tier: active
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_INTERNAL_CONSENSUS_TESTING_001.ledger.yaml
+related_skills: []
+router_intents:
+- runtime_verify
+aliases:
+- internal-consensus-testing
+regression_cases: []
+slash_commands:
+- /apex:runtime_verify
+workflows:
+- 05_workflows/runtime_test_and_regression_verification.md
+templates: []
+provenance:
+  collection: skills_stack_2026-05-17
+  source_index: 16_knowledge/external_collateral/skills_stack_2026-05-17/source_index.yaml
+improvement_history: []
+source: native
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

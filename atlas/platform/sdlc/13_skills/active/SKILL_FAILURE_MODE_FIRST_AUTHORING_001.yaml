@@ -1,0 +1,30 @@
+id: SKILL_FAILURE_MODE_FIRST_AUTHORING_001
+name: Failure Mode First Authoring
+version: 1.0.0
+status: active
+purpose: '** Before writing code for any non-trivial feature, author a per-feature
+  failure-mode list (3-8 modes) and design defens'
+inputs:
+- context
+- codebase artifacts
+outputs:
+- validated output
+- audit report
+known_failure_modes:
+- missing context
+- incomplete artifacts
+validation_tests: []
+improvement_history:
+- version: 1.0.0
+  reason: Promoted from native CLI skill.
+title: Failure Mode First Authoring
+layer: quality
+domains:
+- quality
+- debugging
+playbook: 13_skills/active/SKILL_FAILURE_MODE_FIRST_AUTHORING_001.playbook.md
+source: native_cli_promotion
+tier: active
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0

@@ -1,0 +1,85 @@
+id: SKILL_MULTI_TENANT_CONTINUOUS_IMPROVEMENT_001
+title: Multi-Tenant Continuous Skill Improvement
+version: 1.0.0
+layer: verification
+domains:
+- multi_tenant_platform
+- security
+- saas
+- tenant
+- ai
+playbook: 13_skills/active/SKILL_MULTI_TENANT_CONTINUOUS_IMPROVEMENT_001.playbook.md
+validation_tests:
+- 13_skills/skill_refinery/validation_tests/TEST_MULTI_TENANT_SECURITY_SKILLS_001.yaml
+status: active
+source_documents:
+- 16_knowledge/external_collateral/security_updates_2026-05-20/multi_tenant_platform_skills-2/99_continuous_skill_improvement/SKILL.md
+- 16_knowledge/external_collateral/security_updates_2026-05-20/multi_tenant_platform_skills-2/manifest.json
+- 16_knowledge/external_collateral/security_updates_2026-05-20/multi_tenant_platform_skills-2/PUBLIC_RELEASE_AUTH_RATE_AUDIT_CHECKLIST.md
+trigger_conditions:
+- improve the skill
+- update the skill
+- this skill missed something
+- add this to the skill
+- skill gap
+- remember this for future builds
+- refine the development skill
+- make this one-shot
+hard_constraints:
+- Treat tenant as a security, billing, data, operational, and governance boundary.
+- Do not rely on frontend-only authorization.
+- No proof, no claim for security, isolation, compliance, release, or resilience assertions.
+- Do not require GEN.OS or xOrchestra for current standalone Storbits work unless
+  explicitly targeted.
+tier: active
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_MULTI_TENANT_CONTINUOUS_IMPROVEMENT_001.ledger.yaml
+related_skills:
+- SKILL_MULTI_TENANT_PLATFORM_ARCHITECT_001
+- SKILL_PROOF_MATRIX_001
+- SKILL_TRIGGER_ROUTER_001
+- SKILL_CONTEXT_PACKET_001
+router_intents:
+- multi_tenant_refinery
+- multi_tenant_platform_security
+aliases:
+- improve the skill
+- update the skill
+- this skill missed something
+- add this to the skill
+- skill gap
+- remember this for future builds
+- refine the development skill
+- make this one-shot
+required_outputs:
+- Miss/gap description
+- Affected skill(s)
+- Root cause
+- New trigger phrase
+- New checklist item
+- New gate or test
+- New anti-pattern
+- Version update note
+- Regression prompt
+- Cross-skill routing update
+regression_cases:
+- REG-MULTI-TENANT-SECURITY-001
+slash_commands: []
+workflows: []
+templates: []
+provenance:
+  created_from: security_updates_multi_tenant_platform_skills_1_2_0
+  created_at: '2026-05-20'
+  source_path: 16_knowledge/external_collateral/security_updates_2026-05-20/multi_tenant_platform_skills-2/99_continuous_skill_improvement/SKILL.md
+improvement_history:
+- version: 1.0.0
+  date: '2026-05-20'
+  reason: Imported from security updates multi-tenant platform skill pack v1.2.0.
+source: native
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

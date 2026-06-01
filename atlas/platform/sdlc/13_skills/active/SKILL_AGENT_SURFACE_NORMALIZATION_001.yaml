@@ -1,0 +1,84 @@
+id: SKILL_AGENT_SURFACE_NORMALIZATION_001
+title: Agent Surface Normalization
+version: 1.1.0
+layer: application
+domains:
+- agents
+- claude
+- repo_auditing
+- knowledge_indexing
+playbook: 13_skills/active/SKILL_AGENT_SURFACE_NORMALIZATION_001.playbook.md
+validation_tests: []
+status: active
+skill_number: 139
+source_documents:
+- 12_agents/imported_claude_agent_surfaces/claude_agent_surfaces.registry.yaml
+- 12_agents/imported_claude_agent_surfaces/claude_agent_role_index.yaml
+- 12_agents/imported_claude_agents/claude_agents.registry.yaml
+trigger_conditions:
+- User says agents were missed.
+- Agent acquisition needs to include repo-local agents, memory, sessions, or coordination
+  docs.
+- The system needs to distinguish agent definitions from agent operational context.
+hard_constraints:
+- Do not treat `universal/agents` as the only agent source.
+- Classify agent surfaces into `universal_agents`, `repo_agents`, `agent_memory`,
+  `agent_sessions`, and `agent_root_doc_or_related`.
+- Deduplicate by category and hash while preserving all source occurrences.
+- Keep agent-memory and session files as context/evidence unless explicitly promoted
+  into active skills or personas.
+- Distinguish external runtime Skill tool registries from repository-native ATLAS
+  playbooks.
+- Apply repository-native `SKILL_*` YAML/playbooks as disciplines when selected, even
+  when they are not tool-callable in the current runtime.
+tier: active
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_AGENT_SURFACE_NORMALIZATION_001.ledger.yaml
+related_skills:
+- SKILL_GLOBAL_CLAUDE_REPOSITORY_ACQUISITION_001
+- SKILL_CONTEXT_PACKET_001
+- SKILL_TRIGGER_ROUTER_001
+- SKILL_SOURCE_TRUTH_RECONCILIATION_001
+router_intents:
+- agent_surface_normalization
+- agent_registry_import
+- agent_memory_index
+aliases:
+- agent surface normalization
+- agent surfaces
+- agent memories
+- agent sessions
+- repo agents
+- universal agents
+- agent role index
+required_outputs:
+- Agent surface registry
+- Role-oriented index
+- Category counts
+- Source occurrence list
+- Top-level agent registry link
+- Tool-callable versus playbook-applied distinction
+- Validation results
+regression_cases: []
+slash_commands: []
+workflows: []
+templates: []
+provenance:
+  created_from: current_thread_skill_refinery_closure
+  created_at: '2026-05-17'
+improvement_history:
+- version: 1.1.0
+  date: '2026-05-20'
+  reason: Clarified that external runtime Skill tools are not the full ATLAS
+    library and that repo-native SKILL playbooks remain executable disciplines.
+- version: 1.0.0
+  date: '2026-05-17'
+  reason: Created from current-thread correction pattern and durable workflow need.
+source: native
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

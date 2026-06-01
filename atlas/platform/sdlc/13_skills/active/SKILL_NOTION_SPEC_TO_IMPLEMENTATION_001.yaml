@@ -1,0 +1,28 @@
+id: SKILL_NOTION_SPEC_TO_IMPLEMENTATION_001
+name: Notion Spec To Implementation
+version: 1.0.0
+status: active
+purpose: Convert Notion specs into implementation-ready artifacts and task breakdowns.
+inputs:
+- context
+- artifacts
+outputs:
+- structured output
+known_failure_modes:
+- missing context
+validation_tests: []
+improvement_history:
+- version: 1.0.0
+  reason: Promoted from Codex plugin skill.
+title: Notion Spec To Implementation
+layer: knowledge
+domains:
+- knowledge_management
+- notion
+- specification
+playbook: 13_skills/active/SKILL_NOTION_SPEC_TO_IMPLEMENTATION_001.playbook.md
+source: codex_plugin_promotion
+tier: active
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0

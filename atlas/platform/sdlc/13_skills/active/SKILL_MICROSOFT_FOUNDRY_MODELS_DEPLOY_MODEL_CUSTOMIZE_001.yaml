@@ -1,0 +1,35 @@
+id: SKILL_MICROSOFT_FOUNDRY_MODELS_DEPLOY_MODEL_CUSTOMIZE_001
+title: customize
+version: 1.0.0
+layer: integration
+domains:
+- microsoft_foundry
+- azure_ai
+- agent_platform
+tier: starter
+status: active
+source: promoted_external
+aliases:
+- microsoft-foundry-models-deploy-model-customize
+playbook: platform/sdlc/13_skills/active/SKILL_MICROSOFT_FOUNDRY_MODELS_DEPLOY_MODEL_CUSTOMIZE_001.playbook.md
+runtime_projection: true
+runtime_projection_targets:
+- claude
+- codex
+- gemini
+refinement: auto
+skill_number: 1078
+provenance:
+  imported_from_runtime: agents
+  original_skill_path: /Users/desmondearly/.agents/skills/microsoft-foundry/models/deploy-model/customize/SKILL.md
+  source_archive: platform/sdlc/16_knowledge/external_collateral/local_runtime_skills_2026-05-27/agents/microsoft-foundry-models-deploy-model-customize
+  imported_on: '2026-05-27'
+  import_script: infrastructure/scripts/skill_migration/import_local_runtime_skills.py
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

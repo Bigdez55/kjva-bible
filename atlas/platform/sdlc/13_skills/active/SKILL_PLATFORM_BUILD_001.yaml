@@ -1,0 +1,51 @@
+id: SKILL_PLATFORM_BUILD_001
+title: Platform Build Starter Pack
+version: 1.0.0
+layer: planning
+domains:
+- platform_build
+- product
+- architecture
+playbook: 13_skills/active/SKILL_PLATFORM_BUILD_001.playbook.md
+validation_tests:
+- 08_verification/skill_tests/TEST_SKILL_PLATFORM_BUILD_001_001.yaml
+status: active
+skill_number: 31
+source_documents:
+- handoff_v7_repo_native
+- handoff_v5_trigger_router
+trigger_conditions:
+- User wants to build a platform, SaaS, app, dashboard, website, repo-backed product,
+  or UI shell that needs backbone.
+hard_constraints:
+- Preserve source-of-truth ranking.
+- Do not claim completion without validation evidence.
+- Record misses in the skill refinery ledger when discovered.
+tier: active
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_PLATFORM_BUILD_001.ledger.yaml
+related_skills: []
+router_intents:
+- platform_build
+- visual_to_system_backbone
+- data_reporting_platform
+aliases:
+- 31-platform-build-starter-pack
+regression_cases: []
+slash_commands:
+- /apex:platform_build
+workflows:
+- 05_workflows/platform_build_auto_invocation.md
+templates: []
+provenance:
+  collection: skills_stack_2026-05-17
+  source_index: 16_knowledge/external_collateral/skills_stack_2026-05-17/source_index.yaml
+improvement_history: []
+source: native
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

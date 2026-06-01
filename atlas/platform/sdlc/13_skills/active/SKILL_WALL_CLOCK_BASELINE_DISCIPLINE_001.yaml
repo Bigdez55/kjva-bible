@@ -1,0 +1,30 @@
+id: SKILL_WALL_CLOCK_BASELINE_DISCIPLINE_001
+name: Wall Clock Baseline Discipline
+version: 1.0.0
+status: active
+purpose: '** Wall-Clock Baseline Discipline - Before any optimization wave on a gate
+  suite, CI pipeline, or build harness, measure'
+inputs:
+- context
+- codebase artifacts
+outputs:
+- validated output
+- audit report
+known_failure_modes:
+- missing context
+- incomplete artifacts
+validation_tests: []
+improvement_history:
+- version: 1.0.0
+  reason: Promoted from native CLI skill.
+title: Wall Clock Baseline Discipline
+layer: ci_cd
+domains:
+- ci_cd
+- build_systems
+playbook: 13_skills/active/SKILL_WALL_CLOCK_BASELINE_DISCIPLINE_001.playbook.md
+source: native_cli_promotion
+tier: active
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0

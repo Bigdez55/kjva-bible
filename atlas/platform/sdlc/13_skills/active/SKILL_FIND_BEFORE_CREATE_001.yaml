@@ -1,0 +1,61 @@
+id: SKILL_FIND_BEFORE_CREATE_001
+name: Find Before Create
+version: 1.0.0
+status: active
+purpose: Before any coding agent creates a file or folder, force a structured search
+  for existing canonical locations. Prevents the orphan-folder / duplicate-work failure
+  mode where an agent abandons established work and writes the same artifact in a
+  different path. Hard enforcement - if a candidate exists, the agent MUST either
+  reuse it or leave a redirect stub at the old location.
+inputs:
+- target_path (string, required) - the path the agent intends to create or write to
+- artifact_kind (string, optional) - one of file|directory|registry_entry|skill|adr|spec|diagram|template|schema
+- repo_root (string, optional) - defaults to nearest git root of target_path
+outputs:
+- decision - one of OK_TO_CREATE | REUSE_CANDIDATE | REDIRECT_REQUIRED | HALT
+- candidates - list of existing paths that match by name, content fingerprint, or
+  artifact-kind locality (e.g. for kind=adr, all paths under 04_architecture/adrs/)
+- rationale - if decision is OK_TO_CREATE, the agent's explanation of why no candidate
+  fit; recorded for audit
+- redirect_record - if decision is REDIRECT_REQUIRED, the MOVED.md content the agent
+  must write at the abandoned location before proceeding
+known_failure_modes:
+- agent skips the check and creates a duplicate path
+- agent finds a candidate but creates anyway with a generic "different scope" rationale
+- agent abandons an existing folder without leaving a redirect stub
+- search misses a candidate because of case-only or hyphen/underscore variation
+- search misses a candidate that is dehydrated (OneDrive ghost) and not yet materialized
+validation_tests:
+- TEST_SKILL_FIND_BEFORE_CREATE_001_001
+improvement_history:
+- version: 1.0.0
+  reason: Initial definition. Captures the orphan-folder / duplicate-work failure
+    mode repeatedly observed across child repos (e.g. super-c-academy vs super_c_academy
+    twin duplicate; genesis_packet ghost files alongside starter_packet).
+- version: 1.0.0
+  date: '2026-05-17'
+  reason: Current-thread skill refinery closure added acquisition/agent-surface/thread-closure
+    routing and accuracy safeguards.
+title: Find Before Create
+layer: repo_auditing
+domains:
+- repo_auditing
+playbook: 13_skills/active/SKILL_FIND_BEFORE_CREATE_001.playbook.md
+related_skills:
+- SKILL_THREAD_TO_SKILL_REFINERY_CLOSURE_001
+- SKILL_GLOBAL_CLAUDE_REPOSITORY_ACQUISITION_001
+trigger_conditions:
+- Creating or importing active skills from an external repo or `.claude` source.
+hard_constraints:
+- Before creating imported skills, check whether an equivalent active skill should
+  be updated or consolidated instead.
+source: native
+tier: active
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

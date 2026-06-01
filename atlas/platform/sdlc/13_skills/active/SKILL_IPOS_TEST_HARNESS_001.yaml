@@ -1,0 +1,70 @@
+id: SKILL_IPOS_TEST_HARNESS_001
+title: IPOS Test Harness
+version: 1.0.0
+layer: verification
+domains:
+- ipos
+- dashboard
+- data_pipeline
+- kpi_reporting
+- testing
+- accessibility
+- frontend
+playbook: 13_skills/active/SKILL_IPOS_TEST_HARNESS_001.playbook.md
+validation_tests: []
+status: active
+skill_number: 65
+source_documents:
+- ipos_claude_skills_2026-05-17/raw/test-harness/SKILL.md
+trigger_conditions:
+- User request matches imported IPOS skill `test-harness`.
+- User mentions test harness.
+- User mentions jest config.
+- User mentions vitest.
+- User mentions test setup.
+- User mentions mock data.
+- User mentions test fixtures.
+- User mentions E2E test.
+- User mentions Playwright.
+- User mentions visual regression.
+- User mentions test coverage.
+- User mentions contract test.
+hard_constraints:
+- Preserve source-of-truth ranking.
+- Do not claim completion without validation evidence.
+- Use imported IPOS patterns only when the request is dashboard, KPI, SharePoint,
+  paratransit, or frontend-dashboard related.
+- Record misses in the skill refinery ledger when discovered.
+tier: active
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_IPOS_TEST_HARNESS_001.ledger.yaml
+related_skills:
+- SKILL_PLATFORM_BUILD_001
+- SKILL_FRONTEND_BACKEND_DATAFLOW_001
+- SKILL_SOURCE_TRUTH_RECONCILIATION_001
+router_intents:
+- test_harness
+- dashboard
+- ipos_dashboard
+aliases:
+- test-harness
+- test harness
+- ipos test harness
+regression_cases: []
+slash_commands: []
+workflows: []
+templates: []
+provenance:
+  collection: ipos_claude_skills_2026-05-17
+  source_repo: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/IPOS/IPOS
+  raw_source: 16_knowledge/external_collateral/ipos_claude_skills_2026-05-17/raw/test-harness/SKILL.md
+  raw_sha256: 486126cf55adb5780170dbdde286c0a5d71bdda1844df197f13cc755ee847636
+improvement_history: []
+source: native
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

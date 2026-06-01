@@ -1,0 +1,34 @@
+id: SKILL_REGISTRY_SYNC_001
+name: Registry Sync
+version: 1.0.0
+status: active
+playbook: 13_skills/active/SKILL_REGISTRY_SYNC_001.playbook.md
+purpose: Derive every *.registry.yaml from disk so registry never lies about disk.
+inputs:
+- top-level directory listing
+- glob rules
+outputs:
+- regenerated registry yaml
+- drift list (--check mode)
+known_failure_modes:
+- hand-edited registry
+- missing scan_dir
+validation_tests:
+- TEST_SKILL_REGISTRY_SYNC_001_001
+improvement_history:
+- version: 1.0.0
+  reason: Initial definition.
+title: Registry Sync
+layer: registry_sync
+domains:
+- registry_sync
+source: native
+tier: active
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

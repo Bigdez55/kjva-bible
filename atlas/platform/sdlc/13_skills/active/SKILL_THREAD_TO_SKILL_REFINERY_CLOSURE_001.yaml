@@ -1,0 +1,75 @@
+id: SKILL_THREAD_TO_SKILL_REFINERY_CLOSURE_001
+title: Thread to Skill Refinery Closure
+version: 1.0.0
+layer: governance
+domains:
+- skill_refinery
+- continuous_improvement
+- governance
+- regression
+playbook: 13_skills/active/SKILL_THREAD_TO_SKILL_REFINERY_CLOSURE_001.playbook.md
+validation_tests: []
+status: active
+skill_number: 140
+source_documents:
+- 13_skills/skill_refinery/master_ledger.yaml
+- 13_skills/skill_refinery/correction_ledgers/
+- 08_verification/regression_cases/
+trigger_conditions:
+- User says the thread should have created, improved, refined, or consolidated skills.
+- A task exposes a repeatable failure mode or reusable operating pattern.
+- A one-off implementation creates new durable workflow knowledge.
+hard_constraints:
+- Audit the current thread for new skills, improved existing skills, consolidated
+  overlaps, router changes, ledgers, and regression cases.
+- Do not create duplicate skills when an existing skill should be updated.
+- Every new skill must include trigger conditions, hard constraints, required outputs,
+  related skills, ledger, and validation path.
+- Every miss must be classified and routed to a correction ledger or regression case.
+tier: active
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_THREAD_TO_SKILL_REFINERY_CLOSURE_001.ledger.yaml
+related_skills:
+- SKILL_SKILL_REFINEMENT_SIMULATOR_001
+- SKILL_DYNAMIC_RULE_LEDGER_001
+- SKILL_TRIGGER_ROUTER_001
+- SKILL_AUTOMATED_REGRESSION_TESTING_001
+- SKILL_GENOS_RESPONSE_ACCURACY_CORRECTIVE_001
+router_intents:
+- thread_to_skill_refinery
+- skill_closure
+- thread_lessons_to_canon
+aliases:
+- thread skill refinery
+- thread closure
+- skills from this thread
+- create and improve skills
+- consolidate skills
+- refine from thread
+required_outputs:
+- Thread skill delta report
+- New active skills
+- Updated existing skills
+- Correction ledger entries
+- Router/catalog updates
+- Regression cases
+- Validation summary
+regression_cases: []
+slash_commands: []
+workflows: []
+templates: []
+provenance:
+  created_from: current_thread_skill_refinery_closure
+  created_at: '2026-05-17'
+improvement_history:
+- version: 1.0.0
+  date: '2026-05-17'
+  reason: Created from current-thread correction pattern and durable workflow need.
+source: native
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

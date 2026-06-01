@@ -1,0 +1,36 @@
+id: SKILL_DRIFT_DETECTION_001
+name: Drift Detection
+version: 1.0.0
+status: active
+purpose: Detect drift between code, registries, diagrams, ADRs, traceability, and
+  truth state.
+inputs:
+- repo state
+- source ranking yaml
+- last-known hashes
+outputs:
+- drift report
+- severity classification
+known_failure_modes:
+- mtime confused with content change
+- OneDrive sync false positives
+validation_tests:
+- TEST_SKILL_DRIFT_DETECTION_001_001
+improvement_history:
+- version: 1.0.0
+  reason: Initial definition.
+title: Drift Detection
+layer: drift
+domains:
+- drift
+playbook: 13_skills/active/SKILL_DRIFT_DETECTION_001.playbook.md
+source: native
+tier: active
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

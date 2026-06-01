@@ -1,0 +1,56 @@
+id: SKILL_GENOS_NEW_KERNEL_MODULE_001
+title: "GEN.OS New Kernel Module \u2014 XENOS Freestanding C Template"
+version: 1.0.0
+layer: core
+domains:
+- genos
+- kernel
+playbook: 13_skills/active/SKILL_GENOS_NEW_KERNEL_MODULE_001.playbook.md
+validation_tests: []
+status: active
+skill_number: 85
+source_documents:
+- genos_codex_skills_2026-05-17/raw/new-kernel-module.md
+trigger_conditions:
+- User mentions new-kernel-module.
+- User mentions new kernel module.
+- User mentions kernel.
+- User mentions module.
+hard_constraints:
+- Preserve source-of-truth ranking.
+- Do not claim completion without validation evidence.
+- Use GEN.OS-specific commands, paths, policies, and gates only when GEN.OS context
+  is active.
+- Record misses in the skill refinery ledger when discovered.
+tier: active
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_GENOS_NEW_KERNEL_MODULE_001.ledger.yaml
+related_skills:
+- SKILL_LOW_LEVEL_KERNEL_BOOT_001
+- SKILL_CI_PIPELINE_001
+- SKILL_RUNTIME_REGRESSION_VERIFY_001
+router_intents:
+- new_kernel_module
+- genos
+aliases:
+- new-kernel-module
+- new kernel module
+- genos new kernel module
+regression_cases: []
+slash_commands: []
+workflows: []
+templates: []
+provenance:
+  collection: genos_codex_skills_2026-05-17
+  source_repo: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/GENESYS/GENESYS
+  raw_source: 16_knowledge/external_collateral/genos_codex_skills_2026-05-17/raw/new-kernel-module.md
+  raw_sha256: 6d0250c5ed49cc99edb3acba11ab3bf0e7c396572b89087f1b50485a3a630fea
+improvement_history: []
+source: native
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

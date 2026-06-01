@@ -1,0 +1,34 @@
+id: SKILL_CONTEXT_COMPILATION_001
+name: Context Compilation v2
+version: 1.0.0
+status: active
+playbook: 13_skills/active/SKILL_CONTEXT_COMPILATION_001.playbook.md
+purpose: Compile complete agent context packets per persona (coding/qa/deployment/architecture).
+inputs:
+- persona
+- target task
+- source-ranking
+outputs:
+- context_packet.yaml
+known_failure_modes:
+- stale truth state used
+- exceeds context budget
+validation_tests:
+- TEST_SKILL_CONTEXT_COMPILATION_002_001
+improvement_history:
+- version: 1.0.0
+  reason: Initial definition.
+title: Context Compilation v2
+layer: agent_orchestration
+domains:
+- agent_orchestration
+source: native
+tier: active
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

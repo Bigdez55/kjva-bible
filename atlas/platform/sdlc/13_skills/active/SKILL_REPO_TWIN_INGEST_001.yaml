@@ -1,0 +1,34 @@
+id: SKILL_REPO_TWIN_INGEST_001
+name: Repo Twin Ingest
+version: 1.0.0
+status: active
+playbook: 13_skills/active/SKILL_REPO_TWIN_INGEST_001.playbook.md
+purpose: Populate twin architecture/component/dependency snapshots from a child repo.
+inputs:
+- child repo URL or local path
+outputs:
+- architecture.snapshot.yaml
+- component.graph.yaml
+- dependency.graph.yaml
+known_failure_modes:
+- unreachable repo
+- non-standard manifest
+validation_tests:
+- TEST_SKILL_REPO_TWIN_INGEST_001_001
+improvement_history:
+- version: 1.0.0
+  reason: Initial definition.
+title: Repo Twin Ingest
+layer: twins
+domains:
+- twins
+source: native
+tier: active
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

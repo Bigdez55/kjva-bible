@@ -1,0 +1,58 @@
+id: SKILL_GENOS_AGENT_DISPATCH_001
+title: "GEN.OS Agent Dispatch \u2014 27-Agent Orchestration Protocol"
+version: 1.0.0
+layer: core
+domains:
+- genos
+- agent_orchestration
+- audit
+- testing
+playbook: 13_skills/active/SKILL_GENOS_AGENT_DISPATCH_001.playbook.md
+validation_tests: []
+status: active
+skill_number: 71
+source_documents:
+- genos_codex_skills_2026-05-17/raw/agent-dispatch.md
+trigger_conditions:
+- User mentions agent-dispatch.
+- User mentions agent dispatch.
+- User mentions agent.
+- User mentions dispatch.
+hard_constraints:
+- Preserve source-of-truth ranking.
+- Do not claim completion without validation evidence.
+- Use GEN.OS-specific commands, paths, policies, and gates only when GEN.OS context
+  is active.
+- Record misses in the skill refinery ledger when discovered.
+tier: active
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_GENOS_AGENT_DISPATCH_001.ledger.yaml
+related_skills:
+- SKILL_LOW_LEVEL_KERNEL_BOOT_001
+- SKILL_CI_PIPELINE_001
+- SKILL_RUNTIME_REGRESSION_VERIFY_001
+router_intents:
+- agent_dispatch
+- genos
+aliases:
+- agent-dispatch
+- agent dispatch
+- genos agent dispatch
+regression_cases: []
+slash_commands: []
+workflows: []
+templates: []
+provenance:
+  collection: genos_codex_skills_2026-05-17
+  source_repo: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/GENESYS/GENESYS
+  raw_source: 16_knowledge/external_collateral/genos_codex_skills_2026-05-17/raw/agent-dispatch.md
+  raw_sha256: b164137f4f4b24fb3987861eab90d774c21453a8431a9acdac693ecd9c7ea65b
+improvement_history: []
+source: native
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

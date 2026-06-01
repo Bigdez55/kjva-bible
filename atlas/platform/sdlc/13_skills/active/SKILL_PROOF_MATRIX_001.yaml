@@ -1,0 +1,36 @@
+id: SKILL_PROOF_MATRIX_001
+name: Proof Matrix Build
+version: 1.0.0
+status: active
+purpose: Walk specs/ADRs/diagrams/tests/evidence/releases and emit traceable proof
+  rows.
+inputs:
+- specs
+- tests
+- evidence
+- releases
+outputs:
+- proof_matrix.generated.yaml
+known_failure_modes:
+- orphan spec without test
+- orphan release without evidence
+validation_tests:
+- TEST_SKILL_PROOF_MATRIX_001_001
+improvement_history:
+- version: 1.0.0
+  reason: Initial definition.
+title: Proof Matrix Build
+layer: proof
+domains:
+- proof
+playbook: 13_skills/active/SKILL_PROOF_MATRIX_001.playbook.md
+source: native
+tier: active
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

@@ -1,0 +1,74 @@
+id: SKILL_GENOS_RESPONSE_ACCURACY_CORRECTIVE_001
+title: Response Accuracy Corrective
+version: 1.0.0
+layer: core
+domains:
+- genos
+- audit
+playbook: 13_skills/active/SKILL_GENOS_RESPONSE_ACCURACY_CORRECTIVE_001.playbook.md
+validation_tests: []
+status: active
+skill_number: 111
+source_documents:
+- genesys_claude_delta_skills_2026-05-17/raw/response-accuracy-corrective/SKILL.md
+trigger_conditions:
+- User request matches `response-accuracy-corrective`.
+- User mentions response-accuracy-corrective.
+- User mentions response accuracy corrective.
+- User challenges an inventory, acquisition, or validation answer as incomplete.
+- User says agents, skills, files, or useful assets were missed.
+hard_constraints:
+- Preserve source-of-truth ranking.
+- Do not claim completion without validation evidence.
+- Use imported Claude Code source patterns only when matching project/domain context
+  is active.
+- Record misses in the skill refinery ledger when discovered.
+- For inventory/acquisition answers, report scope, categories searched, category counts,
+  normalized counts, and explicit exclusions.
+- Do not equate raw preservation with operational import.
+- If the user challenges completeness, rerun category-specific reconciliation instead
+  of defending the prior answer.
+tier: active
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_GENOS_RESPONSE_ACCURACY_CORRECTIVE_001.ledger.yaml
+related_skills:
+- SKILL_EXISTING_REPO_AUDIT_001
+- SKILL_TRUTH_STATE_CHECK_001
+- SKILL_IMPROVEMENT_LOOP_001
+- SKILL_GLOBAL_CLAUDE_REPOSITORY_ACQUISITION_001
+- SKILL_AGENT_SURFACE_NORMALIZATION_001
+- SKILL_THREAD_TO_SKILL_REFINERY_CLOSURE_001
+router_intents:
+- response_accuracy_corrective
+- genos
+- missed_asset_reconciliation
+- inventory_accuracy_corrective
+aliases:
+- response-accuracy-corrective
+- response accuracy corrective
+- missed assets
+- missing agents
+- missing skills
+- incomplete acquisition
+regression_cases: []
+slash_commands: []
+workflows: []
+templates: []
+provenance:
+  collection: genesys_claude_delta_skills_2026-05-17
+  raw_source: 16_knowledge/external_collateral/genesys_claude_delta_skills_2026-05-17/raw/response-accuracy-corrective/SKILL.md
+  raw_sha256: e03acfab7ffa1738b9cae61715bc43865519860007a0903bf324d37d05f281ca
+  source: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/GENESYS/GENESYS/.claude/skills/response-accuracy-corrective.md
+improvement_history:
+- version: 1.0.0
+  date: '2026-05-17'
+  reason: Current-thread skill refinery closure added acquisition/agent-surface/thread-closure
+    routing and accuracy safeguards.
+source: native
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

@@ -1,0 +1,56 @@
+id: SKILL_AGENT_WORKTREE_ISOLATION_001
+title: Parallel Multi-Agent Execution via Git Worktree Isolation
+version: 1.0.0
+layer: process
+domains:
+- orchestration
+- ci_cd
+- multi_agent
+playbook: 13_skills/active/SKILL_AGENT_WORKTREE_ISOLATION_001.playbook.md
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_AGENT_WORKTREE_ISOLATION_001.ledger.yaml
+status: active
+tier: active
+source: incident_promotion
+
+trigger_conditions:
+- Audit or refactor requires 4+ specialized agents working in parallel.
+- File-ownership boundaries are well-defined (every path has exactly one owner).
+- Sequential dependency exists between some agents (e.g., shared types must publish first).
+
+hard_constraints:
+- Pre-create named branches before launching agents (one per agent).
+- Each agent gets its own `git worktree add /tmp/<repo>-worktrees/<branch> prod-ready/<branch>`.
+- Path-ownership map MUST be explicit; zero overlap allowed in parallel phase.
+- Beta-unblock contract: agents who publish shared types/contracts commit them FIRST so dependents can begin.
+- Shared file edits (e.g., package.json) MUST be serialized via documented chain in fix-assignments.yaml.
+- One designated coordinator agent merges all worktree branches into staging at the end.
+- ONLY the coordinator may modify the canonical truth file (e.g., production-readiness.ts).
+
+known_failure_modes:
+- All agents work in the same directory → file lock conflicts + lost work.
+- 8+ coupled agents in parallel → context-sharing overhead exceeds parallelism gain (per SKILL_PARALLEL_DEPLOY_001).
+- Read-only audit agents share the same context → safe to fan out 8-wide (no file contention).
+- Fix agents share a file (e.g., middleware.ts) → must serialize via documented PR chain.
+
+validation_tests:
+- Worktree list shows N entries pre-launch (`git worktree list`).
+- Post-execution: each agent's branch has commits on its branch only (`git log --branches`).
+- Merge into staging produces ≤1 conflict per shared-chain file (documented).
+- Coordinator's final commit references all agents' commit SHAs.
+
+improvement_history:
+- version: 1.0.0
+  date: '2026-05-29'
+  reason: >
+    Promoted from ATLAS production audit Phase C. 8 fix agents worked in parallel
+    across 8 worktrees with explicit path ownership; produced 0 unplanned merge
+    conflicts. Pattern is canonical for any audit/refactor needing >4 specialists.
+
+related_skills: [SKILL_PARALLEL_DEPLOY_001, SKILL_RELEASE_GATE_CI_001]
+slash_commands: [/apex:platform_build]
+improvement_metrics:
+  invocation_count: 1
+  correction_count: 0
+  last_correction: null
+  last_refinement: '2026-05-29'
+  refinement_count: 0

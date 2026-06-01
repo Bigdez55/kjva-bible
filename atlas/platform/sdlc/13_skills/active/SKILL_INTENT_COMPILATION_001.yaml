@@ -1,0 +1,39 @@
+id: SKILL_INTENT_COMPILATION_001
+name: Intent Compilation
+version: 1.0.0
+status: active
+playbook: 13_skills/active/SKILL_INTENT_COMPILATION_001.playbook.md
+purpose: 'Convert raw user intent into project vision, specs, architecture, diagrams,
+  backlog, tests, and deployment plan.
+
+  '
+inputs:
+- source ranking
+- truth state
+- architecture models
+- proof matrix
+outputs:
+- updated structured artifacts
+known_failure_modes:
+- stale documentation used as primary truth
+- missing graph edge
+- missing verification evidence
+validation_tests:
+- TEST_SKILL_INTENT_COMPILATION_001_001
+improvement_history:
+- version: 1.0.0
+  reason: Initial skill definition.
+title: Intent Compilation
+layer: core
+domains:
+- core
+source: native
+tier: active
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: null
+  refinement_count: 0
+  tier_promotion_history: []

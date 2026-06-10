@@ -959,6 +959,21 @@ class TokenlessAgentWithHeptagon(TokenlessAgent):  # type: ignore[misc]
                 self._transport_covenant = _CovenantEnforcer()
             _cov = self._transport_covenant.enforce(user_message)
             if getattr(_cov, "is_blocked", False):
+                # Presentation-only: dress the ALREADY-DECIDED denial with counter-
+                # witness scripture RETRIEVED from the corpus (never generated). The
+                # verdict above is unchanged. Fail-safe: any error falls back to the
+                # bare block string — it never bypasses the block and never fabricates.
+                try:
+                    from retrieval import get_retriever
+                    from retrieval.counter_witness import (
+                        CounterWitnessRetriever, GroundedRefusalFormatter)
+                    if not hasattr(self, "_counter_witness"):
+                        self._counter_witness = CounterWitnessRetriever(get_retriever())
+                        self._refusal_formatter = GroundedRefusalFormatter()
+                    cws = self._counter_witness.for_result(_cov)
+                    return self._refusal_formatter.format(_cov, cws)
+                except Exception:
+                    logger.warning("grounded refusal unavailable; bare block", exc_info=False)
                 return (f"[governance: request blocked — "
                         f"{_cov.summary() if hasattr(_cov, 'summary') else 'covenant violation'}]")
         except Exception:

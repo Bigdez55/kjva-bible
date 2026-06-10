@@ -4,7 +4,7 @@ SPDX-License-Identifier: MIT
 
 Every critical decision normalized into one common structure.
 Evaluated through the 7-stage gate chain:
-  Sarah → Esther → Magen → Abigail → Ruth → Ezri → Ahki
+  alignment → policy → trust → evidence → utility → architecture → sequencing
 
 Source: Council_Canonical_Domain_Map_v1_2.md, Heptagon Master Plan
 """
@@ -49,13 +49,13 @@ class DecisionEnvelope:
          evidence, risk, value, policy, provenance}
 
     Flows through 7 stages:
-      1. Sarah  — alignment
-      2. Esther — policy
-      3. Magen  — trust
-      4. Abigail — evidence
-      5. Ruth   — utility/risk
-      6. Ezri   — architecture
-      7. Ahki   — sequencing
+      1. alignment gate
+      2. policy gate
+      3. trust gate
+      4. evidence gate
+      5. utility gate
+      6. architecture gate
+      7. sequencing gate
     """
     # Identity
     envelope_id: str = ""
@@ -174,7 +174,7 @@ class GovernanceVerdict:
 class GateChainExecutor:
     """Executes the 7-stage gate chain on a DecisionEnvelope.
 
-    Gate order: Sarah → Esther → Magen → Abigail → Ruth → Ezri → Ahki
+    Gate order: alignment → policy → trust → evidence → utility → architecture → sequencing
 
     Fraternal reconciliation: gates are not adversaries.
     They are loyal counselors who see different angles.
@@ -182,13 +182,13 @@ class GateChainExecutor:
     """
 
     GATE_ORDER = [
-        ("Sarah", "alignment", True),      # Does this preserve mission?
-        ("Esther", "policy", True),         # Does this comply with law?
-        ("Magen", "trust", True),           # Is trust sufficient?
-        ("Abigail", "evidence", False),     # Is there enough evidence? (advisory)
-        ("Ruth", "utility", False),         # What is expected utility? (advisory)
-        ("Ezri", "architecture", False),    # Does it fit? (advisory)
-        ("Ahki", "sequencing", True),       # How should it execute?
+        ("alignment", "alignment", True),      # Does this preserve mission?
+        ("policy", "policy", True),             # Does this comply with law?
+        ("trust", "trust", True),               # Is trust sufficient?
+        ("evidence", "evidence", False),        # Is there enough evidence? (advisory)
+        ("utility", "utility", False),          # What is expected utility? (advisory)
+        ("architecture", "architecture", False),# Does it fit? (advisory)
+        ("sequencing", "sequencing", True),     # How should it execute?
     ]
 
     def __init__(self) -> None:
@@ -215,8 +215,8 @@ class GateChainExecutor:
 
             evaluator = self._evaluators.get(authority)
             if evaluator is None:
-                # Member not registered — default to ALLOW for advisory, escalate for blocking
-                verdict = GateVerdict.ALLOW if not blocking else GateVerdict.ALLOW
+                # Member not registered — default to ALLOW for advisory, DENY for blocking (fail-closed)
+                verdict = GateVerdict.ALLOW if not blocking else GateVerdict.DENY
                 envelope.add_gate_result(GateResult(
                     gate_name=f"{authority}_{domain}",
                     authority=authority,

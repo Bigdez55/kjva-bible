@@ -1,0 +1,59 @@
+{
+  "section": "B. Bible corpus BPB per section",
+  "status": "OK",
+  "by_section": {
+    "torah": {
+      "n_verses": 10,
+      "n_scored": 10,
+      "bpb_mean": 8.2647,
+      "bpb_stdev": 0.5483,
+      "bpb_min": 7.3734,
+      "bpb_max": 8.9073
+    },
+    "prophets": {
+      "n_verses": 10,
+      "n_scored": 10,
+      "bpb_mean": 8.7632,
+      "bpb_stdev": 0.4004,
+      "bpb_min": 8.0699,
+      "bpb_max": 9.5103
+    },
+    "writings": {
+      "n_verses": 10,
+      "n_scored": 10,
+      "bpb_mean": 8.6519,
+      "bpb_stdev": 0.252,
+      "bpb_min": 8.3142,
+      "bpb_max": 9.1222
+    },
+    "gospels": {
+      "n_verses": 10,
+      "n_scored": 10,
+      "bpb_mean": 8.064,
+      "bpb_stdev": 0.2603,
+      "bpb_min": 7.6822,
+      "bpb_max": 8.5097
+    },
+    "epistles": {
+      "n_verses": 10,
+      "n_scored": 10,
+      "bpb_mean": 8.5194,
+      "bpb_stdev": 0.3454,
+      "bpb_min": 7.9964,
+      "bpb_max": 9.0775
+    },
+    "apocrypha": {
+      "n_verses": 10,
+      "n_scored": 10,
+      "bpb_mean": 8.3953,
+      "bpb_stdev": 0.2195,
+      "bpb_min": 8.1062,
+      "bpb_max": 8.8999
+    }
+  },
+  "artifact_role": "archived_candidate",
+  "runtime_authority": false,
+  "promotion_status": "NO_PROMOTE",
+  "loaded_for": "benchmark_comparison_only",
+  "gguf_path": "models v7/training/gguf/archive/aligned_byte_sft_v1.gguf"
+}

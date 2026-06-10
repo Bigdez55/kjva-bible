@@ -33,7 +33,14 @@ from dataclasses import dataclass, field
 from enum import Enum, auto
 from typing import Any, Dict, List, Optional, Tuple
 
-from ..heptagon.registry import COVENANT_REGISTRY
+# COVENANT_REGISTRY is vendored in governance/ so this import does NOT depend on the
+# ambiguous `heptagon` package name (src-first, `import heptagon` resolves to the agent-side
+# package which lacks registry.py — which silently disabled the covenant gate). Fall back to
+# the legacy heptagon location for the old repo-root layout.
+try:
+    from governance.registry import COVENANT_REGISTRY
+except ImportError:  # pragma: no cover — legacy layout
+    from heptagon.registry import COVENANT_REGISTRY
 
 # ---------------------------------------------------------------------------
 # ENFORCEMENT RESULT TYPES
@@ -109,12 +116,41 @@ class EnforcementResult:
 
 # COV-001: Harm prevention (Proverbs 3:29 -- "Do not plot harm against
 # your neighbor, who lives trustfully near you.")
+#
+# Two harm classes, both ABSOLUTE/hard_stop under COV-001:
+#  (a) SYSTEM/DEVELOPER harm — the original set (sabotage, destroy data, …).
+#  (b) USER-FACING SAFETY harm — instruction-seeking for weapons/violence/self-harm/
+#      illegal manufacture. The original set covered only (a), so a deployed model would
+#      answer "how to build a bomb" / "kill yourself" — a real safety hole. These phrases
+#      are unambiguous instruction/intent for serious harm and (for any model, especially a
+#      scripture model) do not occur in legitimate requests, so substring-match block is safe.
+#      HONEST SCOPE: pattern-based, not exhaustive; a determined user can paraphrase around it.
+#      It is a real floor, not a complete safety classifier.
 HARM_PATTERNS: Tuple[str, ...] = (
+    # (a) system / developer harm
     "cause harm", "inflict damage", "destroy data", "corrupt system",
     "sabotage", "attack user", "damage infrastructure", "weaponize",
     "exploit vulnerability", "denial of service", "brick device",
     "wipe without consent", "harmful payload", "inject malware",
     "disable safety", "endanger", "cause suffering",
+    # (b) user-facing safety harm — weapons / explosives
+    "build a bomb", "make a bomb", "how to make a bomb", "construct a bomb",
+    "pipe bomb", "homemade explosive", "make explosives", "build an explosive",
+    "how to make explosives", "chemical weapon", "biological weapon", "nerve agent",
+    "build a gun", "3d print a gun", "ghost gun", "make a silencer", "untraceable gun",
+    # (b) violence toward others
+    "how to kill someone", "how to kill a person", "kill someone", "kill a person",
+    "murder someone", "get away with murder", "poison someone", "how to poison",
+    "how to harm someone", "want to harm someone", "hurt someone badly",
+    # (b) self-harm / suicide
+    "kill yourself", "kill myself", "how to kill myself", "ways to kill myself",
+    "how to commit suicide", "best way to commit suicide", "methods of suicide",
+    "how to end my life", "ways to end my life", "how to overdose", "self-harm",
+    # (b) illegal manufacture
+    "how to make meth", "how to make methamphetamine", "cook meth",
+    "synthesize methamphetamine", "untraceable poison", "how to make poison",
+    # (b) child sexual abuse material — block unconditionally
+    "child porn", "csam", "child sexual",
 )
 
 # COV-002: Truth (Proverbs 12:22 -- "The LORD detests lying lips, but he
@@ -154,6 +190,37 @@ MANIPULATION_PATTERNS: Tuple[str, ...] = (
     "emotional manipulation", "weaponize emotion",
 )
 
+# COV-009: Identity integrity (Galatians 1:8 -- "But even if we or an angel
+# from heaven should preach a gospel other than the one we preached to you,
+# let them be under God's curse.")
+IDENTITY_MUTATION_PATTERNS: Tuple[str, ...] = (
+    "rewrite your identity",
+    "add council personas",
+    "add new persona",
+    "inject persona",
+    "persona injection",
+    "change your identity",
+    "mutate your identity",
+    "assign new identity",
+    "change your name to",
+    "rename yourself",
+    "add personas to",
+    "introduce new persona",
+)
+
+# COV-010: Canonical weight authority (2 Timothy 2:15 -- "Do your best to
+# present yourself to God as one approved, a worker who does not need to be
+# ashamed and who correctly handles the word of truth.")
+WEIGHT_PROMOTE_PATTERNS: Tuple[str, ...] = (
+    "promote unauthorized weights",
+    "promote weights without",
+    "force promote",
+    "override canonical",
+    "replace canonical without",
+    "unauthorized weight",
+    "promote to canonical without",
+)
+
 
 # ---------------------------------------------------------------------------
 # ENFORCEMENT ENGINE
@@ -190,6 +257,8 @@ class CovenantEnforcer:
             "COV-006": self._check_respect,
             "COV-007": self._check_manipulation,
             "COV-008": self._check_proportionality,
+            "COV-009": self._check_identity_mutation,
+            "COV-010": self._check_weight_promotion,
         }
 
     def enforce(self, request_text: str,
@@ -207,6 +276,19 @@ class CovenantEnforcer:
             context = {}
 
         text_lower = request_text.lower()
+
+        # Deterministic ML safety classifier — the PRIMARY signal (generalizes to paraphrases the
+        # keyword lists miss); computed ONCE per request, read by the check fns from context. The
+        # keyword patterns remain the high-precision FLOOR (defense in depth). Category-aware
+        # thresholds: hard-harm categories block at >=0.70 (0 FP on a broad benign set); the
+        # FP-prone jailbreak/manipulation categories use a stricter >=0.85 here. Fail-safe: if the
+        # classifier is unavailable, the keyword floor still applies.
+        try:
+            from governance.ml_safety_classifier import classify as _ml_classify
+            context.setdefault("_ml_safety", _ml_classify(request_text))
+        except Exception:  # noqa: BLE001
+            context.setdefault("_ml_safety", {"available": False})
+
         violations: List[CovenantViolation] = []
         warnings: List[str] = []
         guidance: List[str] = []
@@ -289,8 +371,15 @@ class CovenantEnforcer:
 
     def _check_harm(self, text: str,
                     context: Dict[str, Any]) -> List[str]:
-        """COV-001: Harm prevention (Proverbs 3:29)."""
-        return [p for p in HARM_PATTERNS if p in text]
+        """COV-001: Harm prevention (Proverbs 3:29). Keyword floor + ML classifier (hard-harm
+        categories at >=0.70 — separates cleanly from benign in testing)."""
+        matched = [p for p in HARM_PATTERNS if p in text]
+        ml = context.get("_ml_safety") or {}
+        if (ml.get("available") and ml.get("category") in ("weapons", "self_harm", "violence",
+                                                           "illegal", "csam")
+                and float(ml.get("score", 0.0)) >= 0.70):
+            matched.append(f"ml:{ml['category']}:{ml['score']}")
+        return matched
 
     def _check_truth(self, text: str,
                      context: Dict[str, Any]) -> List[str]:
@@ -358,8 +447,14 @@ class CovenantEnforcer:
 
     def _check_manipulation(self, text: str,
                             context: Dict[str, Any]) -> List[str]:
-        """COV-007: No manipulation (Proverbs 12:20)."""
-        return [p for p in MANIPULATION_PATTERNS if p in text]
+        """COV-007: No manipulation (Proverbs 12:20). Keyword floor + ML (manipulation category at
+        >=0.85 — a strict threshold since this category is more FP-prone)."""
+        matched = [p for p in MANIPULATION_PATTERNS if p in text]
+        ml = context.get("_ml_safety") or {}
+        if (ml.get("available") and ml.get("category") == "manipulation"
+                and float(ml.get("score", 0.0)) >= 0.85):
+            matched.append(f"ml:manipulation:{ml['score']}")
+        return matched
 
     def _check_proportionality(self, text: str,
                                context: Dict[str, Any]) -> List[str]:
@@ -386,6 +481,16 @@ class CovenantEnforcer:
             )
 
         return matches
+
+    def _check_identity_mutation(self, text: str,
+                                 context: Dict[str, Any]) -> List[str]:
+        """COV-009: Identity integrity (Galatians 1:8). Keyword floor."""
+        return [p for p in IDENTITY_MUTATION_PATTERNS if p in text]
+
+    def _check_weight_promotion(self, text: str,
+                                context: Dict[str, Any]) -> List[str]:
+        """COV-010: Canonical weight authority (2 Timothy 2:15). Keyword floor."""
+        return [p for p in WEIGHT_PROMOTE_PATTERNS if p in text]
 
 
 # ---------------------------------------------------------------------------

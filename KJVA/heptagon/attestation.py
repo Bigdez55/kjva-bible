@@ -42,12 +42,12 @@ class AttestationResult:
 # ATTESTATION WITNESSES (with vacancy fallbacks)
 # ---------------------------------------------------------------------------
 
-NORMAL_WITNESSES = ("Ahki", "Esther", "Sarah")
+NORMAL_WITNESSES = ("alignment_witness", "policy_witness", "authority_witness")
 
 VACANCY_FALLBACKS: Dict[str, tuple] = {
-    "Ahki": ("Esther", "Ruth", "Sarah"),          # Regency Triad
-    "Esther": ("Ahki", "Sarah", "Abigail"),        # Ahki + Sarah + Abigail
-    "Sarah": ("Ahki", "Esther", "Abigail"),        # Ahki + Esther + Abigail
+    "alignment_witness": ("policy_witness", "continuity_witness", "authority_witness"),   # Regency Triad
+    "policy_witness": ("alignment_witness", "authority_witness", "oversight_witness"),    # alignment + authority + oversight
+    "authority_witness": ("alignment_witness", "policy_witness", "oversight_witness"),    # alignment + policy + oversight
 }
 
 
@@ -56,9 +56,9 @@ VACANCY_FALLBACKS: Dict[str, tuple] = {
 # ---------------------------------------------------------------------------
 
 RECONSTITUTION_ROLES = {
-    "identity": ("Sarah", "Abigail"),       # Primary, fallback
-    "constitutional": ("Esther", "Ahki"),   # Primary, fallback (Ahki as proxy)
-    "security": ("Magen", "Cherev"),        # Primary, fallback
+    "identity": ("authority_witness", "oversight_witness"),        # Primary, fallback
+    "constitutional": ("policy_witness", "alignment_witness"),     # Primary, fallback
+    "security": ("integrity_witness", "resilience_witness"),       # Primary, fallback
 }
 
 

@@ -1,0 +1,119 @@
+# Frontier-axis evaluation manifest template
+# Date: 2026-06-04
+manifest_id: frontier_axis_v1
+description: >
+  Mixed absolute-frontier and local-sovereign benchmark suite for the tokenless/local model program.
+
+run:
+  run_id: null
+  created_at_utc: null
+  git_commit: null
+  hardware_profile: null
+  operator: null
+
+model:
+  model_id: null
+  checkpoint: null
+  export_id: null
+  parameter_count: null
+  architecture: byte_lm
+  context_limit_bytes: null
+  quantization: null
+  adapters: []
+
+engines:
+  - name: pytorch
+    enabled: true
+  - name: xmind_neon
+    enabled: true
+  - name: rag_neon
+    enabled: false
+  - name: agent_neon
+    enabled: false
+
+protected_metrics:
+  - byte_exact_match
+  - in_domain_bpb
+  - grounding_unsupported_claim_rate
+  - abstention_precision
+  - abstention_recall
+  - neon_decode_throughput
+  - rss_mb_peak
+  - py_neon_parity_delta
+  - safety_attack_success_rate
+
+suites:
+  - id: byte_fidelity_v1
+    priority: P0
+    split: private
+    runner: training/eval/runners/run_neon.py
+    scorer: training/eval/scorers/byte_exact.py
+    min_cases: 300
+  - id: grounding_v1
+    priority: P0
+    split: private
+    runner: training/eval/runners/run_rag.py
+    scorer: training/eval/scorers/grounding.py
+    min_cases: 200
+  - id: instruction_v1
+    priority: P0
+    split: private
+    runner: training/eval/runners/run_neon.py
+    scorer: training/eval/scorers/instruction_schema.py
+    min_cases: 200
+  - id: runtime_edge_v1
+    priority: P0
+    split: internal
+    runner: training/eval/runners/run_neon.py
+    scorer: training/eval/scorers/runtime.py
+    min_cases: 50
+  - id: public_lm_eval_v1
+    priority: P1
+    split: public
+    runner: lm-evaluation-harness
+    tasks:
+      - mmlu
+      - truthfulqa
+      - bbh
+      - gsm8k
+  - id: long_context_v1
+    priority: P0
+    split: mixed
+    runner: training/eval/runners/run_long_context.py
+    tasks:
+      - niah
+      - ruler_style
+      - private_multi_needle
+
+promotion_gates:
+  G0_baseline_freeze:
+    required: true
+    conditions:
+      - all_P0_integrity_tests_pass
+      - baseline_report_written
+      - artifact_hashes_recorded
+  G1_grounding:
+    required: true
+    conditions:
+      - unsupported_claim_rate_below_threshold
+      - answer_absent_abstention_recall_above_threshold
+      - contradiction_detection_above_threshold
+  G2_instruction:
+    required: false
+    conditions:
+      - ifeval_or_private_instruction_improves
+      - protected_regressions_within_budget
+  G3_runtime:
+    required: true
+    conditions:
+      - neon_runtime_measured
+      - memory_budget_met
+      - py_neon_parity_within_tolerance
+
+reporting:
+  output_dir: training/eval/reports/latest
+  record_schema: training/eval/frontier_axis_eval_record_schema.json
+  aggregate_formats:
+    - json
+    - markdown
+    - csv

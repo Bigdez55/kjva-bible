@@ -11,9 +11,8 @@ FROM node:22-slim
 
 WORKDIR /app
 
-COPY package.json tsconfig.json index.html ./
+COPY package.json tsconfig.json vite.config.ts index.html ./
 COPY src/ ./src/
-COPY electron/ ./electron/
 
 RUN npm install --no-audit --no-fund 2>/dev/null || echo "npm install completed with warnings"
 

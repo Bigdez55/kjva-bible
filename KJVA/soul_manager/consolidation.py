@@ -22,8 +22,6 @@ import time
 from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional, Tuple
 
-from .daemon_client import CouncilDaemonAsyncClient
-
 logger = logging.getLogger("council.consolidation")
 
 # ── ACT-R parameters ─────────────────────────────────────────────────
@@ -291,9 +289,7 @@ class ConsolidationEngine:
         xblob: Optional[XBlobArchive] = None,
     ) -> None:
         self._memories: Dict[str, Dict[str, MemoryRecord]] = {}
-        self._soul_client = soul_client or CouncilDaemonAsyncClient(
-            source_agent="soul_manager.consolidation"
-        )
+        self._soul_client = soul_client
         self._xblob = xblob or XBlobArchive()
         self._tick_task: Optional[asyncio.Task[None]] = None
         self._tick_count: int = 0
@@ -553,18 +549,15 @@ class ConsolidationEngine:
             return
         try:
             # Read from old bucket
-            value = await self._soul_client.get(old_bucket, key, namespace=agent)
+            value = await self._soul_client.get(old_bucket, key)
             if value is not None:
                 # Write to new bucket
-                await self._soul_client.put(new_bucket, key, value, namespace=agent)
+                await self._soul_client.put(new_bucket, key, value)
                 # Delete from old bucket -- best-effort
                 # SoulManagerClient doesn't expose delete, so we
                 # overwrite with None marker
                 await self._soul_client.put(
-                    old_bucket,
-                    key,
-                    {"_deleted": True, "_migrated_to": new_bucket},
-                    namespace=agent,
+                    old_bucket, key, {"_deleted": True, "_migrated_to": new_bucket}
                 )
         except Exception as exc:
             logger.warning("Bucket migration failed for %s:%s: %s", agent, key, exc)
@@ -575,10 +568,7 @@ class ConsolidationEngine:
             return
         try:
             await self._soul_client.put(
-                bucket,
-                key,
-                {"_archived": True, "_archived_at": time.time()},
-                namespace=agent,
+                bucket, key, {"_archived": True, "_archived_at": time.time()}
             )
         except Exception as exc:
             logger.warning("Delete from soul failed for %s:%s:%s: %s", agent, bucket, key, exc)

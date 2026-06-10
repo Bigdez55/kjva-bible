@@ -1,0 +1,175 @@
+{
+  "artifact_type": "omni_peft_scribe_adapter",
+  "regimen": "omni_scribe_alignment_v2",
+  "doctrine": "ml-training/peft/OMNI_PEFT_DOCTRINE.md",
+  "target": "Bible+Apocrypha scribe assistant with constitutional governance",
+  "retrieval_delegation": "exact verse text + topical finding served by retrieval index, not adapter weights",
+  "base_checkpoint": "../kjva-bible/KJVA/training/weights.safetensors",
+  "clean_corpus": "/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/models v7/training/corpus/eng_kjv_clean_v1/corpus.txt",
+  "programs_dir": "/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/models v7/training/corpus/programs",
+  "pool_weights": {
+    "retention": 0.45,
+    "grounding": 0.25,
+    "governance": 0.2,
+    "scribe": 0.1
+  },
+  "pool_stats": {
+    "scripture_lines_total": 36822,
+    "scripture_train_lines": 36412,
+    "heldout_verses": 410,
+    "heldout_section_counts": {
+      "torah": 66,
+      "writings": 86,
+      "prophets": 44,
+      "apocrypha": 63,
+      "gospels": 42,
+      "epistles": 31
+    },
+    "retention_chunks": 20292,
+    "grounding_rows": 37,
+    "governance_rows": 34,
+    "scribe_rows": 11,
+    "alignment_files": [
+      "alignment_capability_boundaries_v1.jsonl",
+      "alignment_creator_sovereign_v1.jsonl",
+      "alignment_governance_v1.jsonl",
+      "alignment_scribe_style_v1.jsonl",
+      "alignment_scripture_grounding_v1.jsonl"
+    ],
+    "unmapped_categories": [],
+    "seq_len": 256,
+    "heldout_every": 90,
+    "byte_offset": 3
+  },
+  "enabled_methods": [
+    "adalora",
+    "bitfit",
+    "dora",
+    "ia3",
+    "lora",
+    "prefix_tuning"
+  ],
+  "operator_count": 42,
+  "epochs_planned": 15,
+  "epochs_run": 15,
+  "stopped_early": false,
+  "steps_per_epoch": 200,
+  "baseline_heldout_bpb": 1.172,
+  "baseline_section_bpb": {
+    "torah": 0.9762,
+    "prophets": 1.2298,
+    "writings": 1.208,
+    "gospels": 1.2213,
+    "epistles": 1.3926,
+    "apocrypha": 1.3017
+  },
+  "post_injection_bpb": 1.1723,
+  "final_heldout_bpb": 1.2868,
+  "best_heldout_bpb": 1.1723,
+  "final_bpb_regress_vs_baseline": 0.1149,
+  "bpb_max_regress_threshold": 0.15,
+  "final_section_bpb": {
+    "torah": 1.0824,
+    "prophets": 1.3484,
+    "writings": 1.3241,
+    "gospels": 1.3322,
+    "epistles": 1.5033,
+    "apocrypha": 1.4397
+  },
+  "epoch_log": [
+    {
+      "epoch": 1,
+      "avg_loss": 1.1664,
+      "heldout_bpb": 1.3006,
+      "bpb_regress_vs_baseline": 0.1286
+    },
+    {
+      "epoch": 2,
+      "avg_loss": 0.7968,
+      "heldout_bpb": 1.2892,
+      "bpb_regress_vs_baseline": 0.1172
+    },
+    {
+      "epoch": 3,
+      "avg_loss": 0.7121,
+      "heldout_bpb": 1.2953,
+      "bpb_regress_vs_baseline": 0.1234
+    },
+    {
+      "epoch": 4,
+      "avg_loss": 0.6092,
+      "heldout_bpb": 1.3028,
+      "bpb_regress_vs_baseline": 0.1308
+    },
+    {
+      "epoch": 5,
+      "avg_loss": 0.544,
+      "heldout_bpb": 1.3059,
+      "bpb_regress_vs_baseline": 0.1339
+    },
+    {
+      "epoch": 6,
+      "avg_loss": 0.5538,
+      "heldout_bpb": 1.3048,
+      "bpb_regress_vs_baseline": 0.1328
+    },
+    {
+      "epoch": 7,
+      "avg_loss": 0.4321,
+      "heldout_bpb": 1.3082,
+      "bpb_regress_vs_baseline": 0.1362
+    },
+    {
+      "epoch": 8,
+      "avg_loss": 0.4351,
+      "heldout_bpb": 1.3074,
+      "bpb_regress_vs_baseline": 0.1355
+    },
+    {
+      "epoch": 9,
+      "avg_loss": 0.5092,
+      "heldout_bpb": 1.2907,
+      "bpb_regress_vs_baseline": 0.1187
+    },
+    {
+      "epoch": 10,
+      "avg_loss": 0.4841,
+      "heldout_bpb": 1.2926,
+      "bpb_regress_vs_baseline": 0.1207
+    },
+    {
+      "epoch": 11,
+      "avg_loss": 0.3977,
+      "heldout_bpb": 1.2902,
+      "bpb_regress_vs_baseline": 0.1182
+    },
+    {
+      "epoch": 12,
+      "avg_loss": 0.4427,
+      "heldout_bpb": 1.2856,
+      "bpb_regress_vs_baseline": 0.1136
+    },
+    {
+      "epoch": 13,
+      "avg_loss": 0.4164,
+      "heldout_bpb": 1.2834,
+      "bpb_regress_vs_baseline": 0.1115
+    },
+    {
+      "epoch": 14,
+      "avg_loss": 0.3861,
+      "heldout_bpb": 1.2851,
+      "bpb_regress_vs_baseline": 0.1131
+    },
+    {
+      "epoch": 15,
+      "avg_loss": 0.4059,
+      "heldout_bpb": 1.2868,
+      "bpb_regress_vs_baseline": 0.1149
+    }
+  ],
+  "final_avg_loss": 0.5528,
+  "is_tournament": false,
+  "tournament_winner": null,
+  "canonical_promoted": false
+}

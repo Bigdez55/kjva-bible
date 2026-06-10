@@ -53,7 +53,6 @@ typedef int32_t xmind_status_t;
 #define XMIND_ERR_CORRUPT  ((xmind_status_t) -3)
 #define XMIND_ERR_OVERFLOW ((xmind_status_t) -4)
 #define XMIND_ERR_IO       ((xmind_status_t) -5)  /* file / storage I/O error */
-#define XMIND_ERR_POLICY   ((xmind_status_t) -6)  /* governance / hook halt */
 
 /* ═══════════════════════════════════════════════════════════════════
  * §3  INTERNAL MEMORY / PANIC SHIMS
@@ -69,11 +68,20 @@ typedef int32_t xmind_status_t;
  * In freestanding, there is no exit() — spinning is the correct
  * behavior until GENSD's watchdog resets the service.
  */
+/* POSIX hosted build replaces the freestanding hlt with libc abort.
+ * Activated only under -DXMIND_POSIX_BUILD; freestanding path unchanged. */
+#ifdef XMIND_POSIX_BUILD
+  #include <stdlib.h>
+  #define XM_PANIC_HALT() do { abort(); } while(0)
+#else
+  #define XM_PANIC_HALT() do { __asm__ volatile("hlt"); } while(0)
+#endif
+
 #define XM_ASSERT(cond) \
     do { \
         if (!(cond)) { \
             pal_console_puts("[XMIND ASSERT FAIL] " #cond "\n"); \
-            for(;;) { __asm__ volatile("hlt"); } \
+            for(;;) { XM_PANIC_HALT(); } \
         } \
     } while (0)
 

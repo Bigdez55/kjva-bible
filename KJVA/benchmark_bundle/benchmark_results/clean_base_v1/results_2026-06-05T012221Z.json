@@ -1,0 +1,324 @@
+{
+  "spec": "XMIND_BENCHMARK_AND_EVAL_SUITE_2026-06-04.md",
+  "runner": "run_xmind_benchmark.py",
+  "honest_scope_note": "This run executes the SUBSET of the spec that can run against the on-disk GGUF + dylib without external eval sets, frontier API, NLI judge, R1_PER pipeline, or alternate-quantization variants. Skipped sections are listed in results['skipped'] with reasons. No claim about overall benchmark completeness is being made.",
+  "provenance": {
+    "run_id": "2026-06-05T012221Z",
+    "timestamp_utc": "2026-06-05T01:22:21Z",
+    "model_path": "models v7/training/gguf/clean_base_v1.gguf",
+    "model_sha256": "025374484bde6af338d995f38834144d83986b5b4856ebe65b0a9d168339a85d",
+    "model_size_bytes": 11046112,
+    "dylib_path": "models v7/ai/xmind/build/libxmind-core.dylib",
+    "dylib_sha256": "9b1eb4013aad28415a27c86bb62b68eecdec1145450bb30d15ee2bd0986c84be",
+    "host_platform": "darwin",
+    "python_version": "3.13.7"
+  },
+  "engine_version": "xmind-easy/1.0 consumer-build",
+  "engine_init_ms": 347.46412496315315,
+  "sections_executed": {
+    "determinism": {
+      "section": "\u00a73.5 Determinism (T=0)",
+      "n_runs": 5,
+      "prompt": "In the beginning",
+      "max_tokens": 32,
+      "all_byte_identical": true,
+      "distinct_outputs_count": 1,
+      "outputs_preview": [
+        "niiioooumed eiieteturous d eteee",
+        "niiioooumed eiieteturous d eteee",
+        "niiioooumed eiieteturous d eteee"
+      ],
+      "wall_ms": {
+        "mean": 253.14307500375435,
+        "stdev": 6.103345240113941
+      }
+    },
+    "byte_perturbation": {
+      "section": "\u00a73.7 Byte-level perturbation robustness",
+      "n_variants": 8,
+      "distinct_output_hashes": 7,
+      "interpretation": "Lower distinct count = more robust (semantically-similar inputs \u2192 similar outputs). Higher = more brittle. For a healthy byte-LM we expect distinct < n_variants but > 1.",
+      "by_variant": {
+        "clean": {
+          "prompt_len_bytes": 53,
+          "output_preview": "inltlo eotodsesot y haro",
+          "output_sha256": "97bcd013f04034b1",
+          "wall_ms": 404.4055829872377
+        },
+        "lowercase": {
+          "prompt_len_bytes": 53,
+          "output_preview": "tedeaomaonurdie eaaa.\nSi",
+          "output_sha256": "e869efb62bda95e2",
+          "wall_ms": 412.5297089922242
+        },
+        "uppercase": {
+          "prompt_len_bytes": 53,
+          "output_preview": "yeyom oeesr twtlaioospna",
+          "output_sha256": "bde40c0b8f3ec60c",
+          "wall_ms": 470.9260420058854
+        },
+        "extra_spaces": {
+          "prompt_len_bytes": 62,
+          "output_preview": "iiltowtee oamhonerryyeos",
+          "output_sha256": "c2363075e1980c65",
+          "wall_ms": 473.52237498853356
+        },
+        "typo_swap": {
+          "prompt_len_bytes": 53,
+          "output_preview": "itmeooailynnaen dd  aaDe",
+          "output_sha256": "8a4033f00a6b3862",
+          "wall_ms": 407.7534159878269
+        },
+        "leading_ws": {
+          "prompt_len_bytes": 56,
+          "output_preview": "itlt  thed eeeeaenniistc",
+          "output_sha256": "31faa480668a4b1b",
+          "wall_ms": 427.9583749594167
+        },
+        "trailing_ws": {
+          "prompt_len_bytes": 56,
+          "output_preview": "mden deyen edepreirshehr",
+          "output_sha256": "a1cbc3fd41d22ce4",
+          "wall_ms": 434.77062502643093
+        },
+        "punct_dropped": {
+          "prompt_len_bytes": 53,
+          "output_preview": "inltlo eotodsesot y haro",
+          "output_sha256": "97bcd013f04034b1",
+          "wall_ms": 420.9148330264725
+        }
+      }
+    },
+    "throughput": {
+      "section": "\u00a74.1 Decode throughput (tokens/sec)",
+      "by_max_tokens": [
+        {
+          "max_tokens_requested": 16,
+          "n_runs": 5,
+          "tok_per_s_mean": 52.438977013171254,
+          "tok_per_s_stdev": 0.9307347470365089,
+          "tok_per_s_min": 51.416187880743635,
+          "tok_per_s_max": 53.38886523238209,
+          "samples": [
+            {
+              "chars_emitted": 16,
+              "wall_s": 0.3107159999781288,
+              "tok_per_s": 51.49396877253258
+            },
+            {
+              "chars_emitted": 16,
+              "wall_s": 0.29968795797321945,
+              "tok_per_s": 53.38886523238209
+            },
+            {
+              "chars_emitted": 16,
+              "wall_s": 0.30350062501383945,
+              "tok_per_s": 52.71817809031006
+            },
+            {
+              "chars_emitted": 16,
+              "wall_s": 0.30087808397365734,
+              "tok_per_s": 53.17768508988791
+            },
+            {
+              "chars_emitted": 16,
+              "wall_s": 0.3111860419739969,
+              "tok_per_s": 51.416187880743635
+            }
+          ]
+        },
+        {
+          "max_tokens_requested": 32,
+          "n_runs": 5,
+          "tok_per_s_mean": 81.00422118861026,
+          "tok_per_s_stdev": 1.0526573964228843,
+          "tok_per_s_min": 79.78052875346253,
+          "tok_per_s_max": 82.42936504496438,
+          "samples": [
+            {
+              "chars_emitted": 32,
+              "wall_s": 0.3932520839734934,
+              "tok_per_s": 81.37274105877825
+            },
+            {
+              "chars_emitted": 32,
+              "wall_s": 0.4011003749910742,
+              "tok_per_s": 79.78052875346253
+            },
+            {
+              "chars_emitted": 32,
+              "wall_s": 0.3937514999997802,
+              "tok_per_s": 81.26953167167075
+            },
+            {
+              "chars_emitted": 32,
+              "wall_s": 0.39915708295302466,
+              "tok_per_s": 80.16893941417536
+            },
+            {
+              "chars_emitted": 32,
+              "wall_s": 0.388211167010013,
+              "tok_per_s": 82.42936504496438
+            }
+          ]
+        },
+        {
+          "max_tokens_requested": 64,
+          "n_runs": 5,
+          "tok_per_s_mean": 111.99882967719215,
+          "tok_per_s_stdev": 1.2660311672778894,
+          "tok_per_s_min": 110.10587732442362,
+          "tok_per_s_max": 113.59120205985452,
+          "samples": [
+            {
+              "chars_emitted": 64,
+              "wall_s": 0.5721520830411464,
+              "tok_per_s": 111.8583710467719
+            },
+            {
+              "chars_emitted": 64,
+              "wall_s": 0.5812587080290541,
+              "tok_per_s": 110.10587732442362
+            },
+            {
+              "chars_emitted": 64,
+              "wall_s": 0.5688104159780778,
+              "tok_per_s": 112.51552046555102
+            },
+            {
+              "chars_emitted": 64,
+              "wall_s": 0.5718207920435816,
+              "tok_per_s": 111.92317748935966
+            },
+            {
+              "chars_emitted": 64,
+              "wall_s": 0.5634239169885404,
+              "tok_per_s": 113.59120205985452
+            }
+          ]
+        },
+        {
+          "max_tokens_requested": 128,
+          "n_runs": 5,
+          "tok_per_s_mean": 146.48088684861347,
+          "tok_per_s_stdev": 3.885065533009892,
+          "tok_per_s_min": 141.65522749846392,
+          "tok_per_s_max": 151.8360597616075,
+          "samples": [
+            {
+              "chars_emitted": 128,
+              "wall_s": 0.9036023750086315,
+              "tok_per_s": 141.65522749846392
+            },
+            {
+              "chars_emitted": 128,
+              "wall_s": 0.8878646249650046,
+              "tok_per_s": 144.16612217774207
+            },
+            {
+              "chars_emitted": 128,
+              "wall_s": 0.8430144999874756,
+              "tok_per_s": 151.8360597616075
+            },
+            {
+              "chars_emitted": 128,
+              "wall_s": 0.8635378330363892,
+              "tok_per_s": 148.22743729701315
+            },
+            {
+              "chars_emitted": 128,
+              "wall_s": 0.8736033330205828,
+              "tok_per_s": 146.51958750824068
+            }
+          ]
+        }
+      ]
+    },
+    "ttft": {
+      "section": "\u00a74.2 Time-to-first-token (TTFT)",
+      "by_prompt_length": [
+        {
+          "prompt_label": "short_8b",
+          "prompt_len_bytes": 9,
+          "ttft_ms_mean": 51.21196658583358,
+          "ttft_ms_stdev": 0.2508843315225161,
+          "ttft_ms_p50": 51.07304098783061,
+          "ttft_ms_min": 51.048166991677135,
+          "ttft_ms_max": 51.63791700033471
+        },
+        {
+          "prompt_label": "med_64b",
+          "prompt_len_bytes": 63,
+          "ttft_ms_mean": 343.04769162554294,
+          "ttft_ms_stdev": 10.936810853312078,
+          "ttft_ms_p50": 346.9576670322567,
+          "ttft_ms_min": 326.5230000251904,
+          "ttft_ms_max": 352.95920801581815
+        },
+        {
+          "prompt_label": "long_256b",
+          "prompt_len_bytes": 256,
+          "ttft_ms_mean": 1483.6692083976232,
+          "ttft_ms_stdev": 78.47417548353154,
+          "ttft_ms_p50": 1459.5530000515282,
+          "ttft_ms_min": 1401.209125004243,
+          "ttft_ms_max": 1580.4125419817865
+        }
+      ]
+    },
+    "memory": {
+      "section": "\u00a74.3 Memory + KV-cache growth",
+      "model_footprint_mb": 10.53,
+      "process_rss_mb_pre_inference": 42.44,
+      "process_rss_mb_post_inference": 42.44,
+      "rss_delta_mb": 0.0,
+      "note": "RSS includes ctypes interpreter overhead; the runtime delta is the meaningful number."
+    },
+    "cold_start": {
+      "section": "\u00a74.5 Cold-start latency",
+      "n_runs": 3,
+      "ms_mean": 400.15455533284694,
+      "ms_stdev": 12.33875428949574,
+      "ms_min": 387.05616601509973,
+      "ms_max": 411.5585419931449,
+      "raw_ms": [
+        411.5585419931449,
+        387.05616601509973,
+        401.8489579902962
+      ]
+    },
+    "concurrency": {
+      "section": "\u00a74.6 Concurrency",
+      "implementation_note": "xmind_easy_* is per-process singleton; in-process threads serialize on a spinlock. True parallelism needs multi-process.",
+      "sequential_ms_mean": 66.07954687206075,
+      "threaded_ms_per_call_mean": 304.4533698921441,
+      "threaded_wall_total_ms_for_8_calls": 546.1766669759527,
+      "ideal_parallel_wall_if_truly_concurrent_ms": 66.07954687206075
+    },
+    "bpb": {
+      "section": "\u00a75 Bits-per-byte (BPB) \u2014 approximate, on supplied held-out",
+      "status": "OK",
+      "n_bytes_scored": 64,
+      "held_out_preview": "And God said, Let there be light: and there was light. And God saw the light, th",
+      "avg_nll_nats": 5.129196515322593,
+      "bits_per_byte": 7.399866376400857,
+      "interpretation": "BPB on this held-out byte stream. Lower is better. Frontier BPB on English \u2248 0.6\u20131.0. KJV-trained 18M base will be higher off-domain and lower in-domain. Use as a CROSS-ARCHITECTURE comparable, not as a pass/fail."
+    }
+  },
+  "skipped": {
+    "\u00a72 Axis A (MMLU/GSM8K/ARC/HellaSwag/BBH/HumanEval/DROP/SQuAD)": "eval sets not in repo",
+    "\u00a73.1 Grounding fidelity": "retriever not wired",
+    "\u00a73.2 Hallucination IC/NC/OOC": "labeled strata not in repo",
+    "\u00a73.3 Calibration ECE / risk-coverage": "requires per-position logits aligned to labels",
+    "\u00a73.4 Faithfulness / NLI entailment": "NLI judge not in repo",
+    "\u00a73.6 R1_PER injection battery": "R1_PER opcode pipeline not wired in current build",
+    "\u00a74.4 Joules/query": "requires powermetrics root + per-query energy probe",
+    "\u00a74.7 Quantization sensitivity": "only Q4_0 variant present; need f32/q8 to compare",
+    "\u00a74.8 Capacity scaling curves": "only 18M tier present",
+    "\u00a76   Long-context NIAH/RULER": "sets not in repo",
+    "\u00a77   SFT / R1_PER round-trip": "no SFT checkpoint, no R1_PER decoder",
+    "\u00a78   Adversarial / corpus poisoning": "adversarial corpus not in repo",
+    "\u00a710  Frontier head-to-head": "no frontier model access from this environment",
+    "\u00a711  Contamination audit": "no eval sets to audit against"
+  }
+}

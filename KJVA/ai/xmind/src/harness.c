@@ -145,6 +145,28 @@ static void default_phase_materialize(xmind_heptagon_harness_t *h)
 
     if (rc != XMIND_OK) {
         h->halted = 1u;
+        return;
+    }
+
+    /* D11 — Materialization emit.  xmind_materialize_report() snapshots the
+     * realized state after weight/model load; previously its result was never
+     * produced (harness discarded the inline `result`), so no materialization
+     * event was ever surfaced.  Call the report fn and emit one telemetry line.
+     * Side-effect-light: no allocation, no inference-math change.  mat_state is
+     * zeroed at init, so the paged/external (layer_count==0) path is safe. */
+    {
+        xmind_materialize_result_t report;
+        har_memzero(&report, sizeof(report));
+        if (xmind_materialize_report(&h->mat_state, &report) == XMIND_OK) {
+            pal_console_printf(
+                "[xmind][materialize] kind=%d layers_embodied=%u "
+                "bytes_used=%llu sparsity=%.3f\n",
+                (int)h->mat_plan.kind,   /* plan kind is authoritative even for
+                                          * paged/external (zeroed mat_state) */
+                (unsigned)report.layers_embodied,
+                (unsigned long long)report.bytes_used,
+                (double)report.realized_sparsity);
+        }
     }
 }
 

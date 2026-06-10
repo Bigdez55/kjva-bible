@@ -1,0 +1,69 @@
+{
+  "doctrine_canonical_phrase": "Identity is singular. Engineering surfaces remain auditable. Cognitive flow remains fused.",
+  "doctrine_note": "Single canonical runtime embodiment; multiple historical embodiments of the same singular cognitive identity.",
+  "spec": "XMIND_BENCHMARK_AND_EVAL_SUITE_2026-06-04.md",
+  "engine": "libxmind-core.dylib (NEON-accelerated, scalar-fallback CPU path)",
+  "honest_scope": "8 of 23 spec sections executed. 14 sections SKIPPED (see SUMMARY_ALL_MODELS.md).",
+  "candidates": [
+    {
+      "label": "clean_base_soup_v1.source.gguf (PROMOTED to canonical.gguf)",
+      "archive_name": "clean_base_soup_v1.source.gguf (PROMOTED to canonical.gguf)",
+      "model_sha256_16": "e59c69091a1772a3",
+      "promoted": true,
+      "metrics": {
+        "section_3_5_determinism_t0": true,
+        "section_3_7_distinct_outputs_of_8": 6,
+        "section_4_1_tokens_per_sec_at_max128": 146.7,
+        "section_4_2_ttft_short_ms": 52.0,
+        "section_4_2_ttft_med_ms": 332.5,
+        "section_4_2_ttft_long_ms": 1397.0,
+        "section_4_3_model_footprint_mb": 10.53,
+        "section_4_3_rss_delta_mb": 1.08,
+        "section_4_5_coldstart_ms_mean": 393.7,
+        "section_4_6_concurrent_ms_per_call": 319.8,
+        "section_5_bpb_kjv_held_out": 1.2955,
+        "section_5_n_bytes_scored": 64
+      }
+    },
+    {
+      "label": "clean_base_v1.step2500.gguf",
+      "archive_name": "clean_base_v1.step2500.gguf",
+      "model_sha256_16": "025374484bde6af3",
+      "promoted": false,
+      "metrics": {
+        "section_3_5_determinism_t0": true,
+        "section_3_7_distinct_outputs_of_8": 7,
+        "section_4_1_tokens_per_sec_at_max128": 146.5,
+        "section_4_2_ttft_short_ms": 51.2,
+        "section_4_2_ttft_med_ms": 343.0,
+        "section_4_2_ttft_long_ms": 1483.7,
+        "section_4_3_model_footprint_mb": 10.53,
+        "section_4_3_rss_delta_mb": 0.0,
+        "section_4_5_coldstart_ms_mean": 400.2,
+        "section_4_6_concurrent_ms_per_call": 304.5,
+        "section_5_bpb_kjv_held_out": 7.3999,
+        "section_5_n_bytes_scored": 64
+      }
+    },
+    {
+      "label": "model.kjva_base.gguf",
+      "archive_name": "model.kjva_base.gguf",
+      "model_sha256_16": "270ffb99e5ced753",
+      "promoted": false,
+      "metrics": {
+        "section_3_5_determinism_t0": true,
+        "section_3_7_distinct_outputs_of_8": 7,
+        "section_4_1_tokens_per_sec_at_max128": 126.0,
+        "section_4_2_ttft_short_ms": 57.0,
+        "section_4_2_ttft_med_ms": 324.5,
+        "section_4_2_ttft_long_ms": 1600.1,
+        "section_4_3_model_footprint_mb": 10.53,
+        "section_4_3_rss_delta_mb": 0.03,
+        "section_4_5_coldstart_ms_mean": 383.0,
+        "section_4_6_concurrent_ms_per_call": 296.4,
+        "section_5_bpb_kjv_held_out": 8.6848,
+        "section_5_n_bytes_scored": 64
+      }
+    }
+  ]
+}

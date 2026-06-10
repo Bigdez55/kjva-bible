@@ -22,6 +22,7 @@
 #define PAL_FREESTANDING
 #endif
 #include "xmind.h"
+#include "xmind_adapter_runtime.h"   /* §11.1: apply adapter deltas after each matmul (no-op when inactive) */
 
 /* ====================================================================
  * S1  SCRATCH BUFFER SIZES
@@ -196,6 +197,11 @@ static void xm_attention(xmind_model_t *m, uint32_t layer, uint32_t pos) {
     xmind_matmul_q4(m->state.v, m->state.xb, m->wv[layer],
                     n_kv_heads * head_dim, hidden_dim);
 
+    /* §11.1 adapter runtime: apply Q/K/V projection deltas (no-op when inactive) */
+    xmind_adapter_runtime_apply(layer, "attn_q", m->state.xb, m->state.q);
+    xmind_adapter_runtime_apply(layer, "attn_k", m->state.xb, m->state.k);
+    xmind_adapter_runtime_apply(layer, "attn_v", m->state.xb, m->state.v);
+
     /* Apply RoPE */
     xmind_rope(m->state.q, m->state.k,
                m->rope_cos, m->rope_sin,
@@ -220,6 +226,7 @@ static void xm_attention(xmind_model_t *m, uint32_t layer, uint32_t pos) {
     /* Output projection: xb = wo[layer] x attn */
     xmind_matmul_q4(m->state.xb, m->state.attn, m->wo[layer],
                     hidden_dim, n_heads * head_dim);
+    xmind_adapter_runtime_apply(layer, "attn_output", m->state.attn, m->state.xb);
 }
 
 /* ====================================================================
@@ -258,11 +265,16 @@ static void xm_ffn(xmind_model_t *m, uint32_t layer) {
     xmind_matmul_q4(s_xm_ffn_gate, m->state.xb, m->w1[layer], ffn_dim, hidden_dim);
     xmind_matmul_q4(s_xm_ffn_up,   m->state.xb, m->w3[layer], ffn_dim, hidden_dim);
 
+    /* §11.1 adapter runtime: gate/up projection deltas (before the SwiGLU fuse) */
+    xmind_adapter_runtime_apply(layer, "ffn_gate", m->state.xb, s_xm_ffn_gate);
+    xmind_adapter_runtime_apply(layer, "ffn_up",   m->state.xb, s_xm_ffn_up);
+
     /* SiLU activation fused with element-wise multiply */
     xmind_silu(s_xm_ffn_gate, s_xm_ffn_gate, s_xm_ffn_up, ffn_dim);
 
     /* Down projection back to hidden_dim */
     xmind_matmul_q4(m->state.xb, s_xm_ffn_gate, m->w2[layer], hidden_dim, ffn_dim);
+    xmind_adapter_runtime_apply(layer, "ffn_down", s_xm_ffn_gate, m->state.xb);
 }
 
 /* ====================================================================

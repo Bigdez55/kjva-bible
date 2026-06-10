@@ -46,3 +46,11 @@ Icon?
 **/.gemini/
 .claude/universal/
 .codex/universal/
+
+# Large adapter weights — tracked on disk + provenance JSON, not in git (matches gguf/safetensors policy)
+*.npz
+# KJVA replacement rollback assets — transient, never commit
+KJVA_BACKUP_*/
+KJVA_REPLACED_*/
+KJVA_FAILED_REPLACEMENT_*/
+KJVA_OLD_FILE_INVENTORY_*.txt

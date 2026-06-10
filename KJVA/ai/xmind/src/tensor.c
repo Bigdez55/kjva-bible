@@ -39,6 +39,14 @@ extern void    xjit_matvec_f32_avx2(float *out, const float *mat,
 extern void    xjit_matvec_f32_scalar(float *out, const float *mat,
                                        const float *vec, uint32_t M, uint32_t K);
 
+#ifdef XMIND_HAS_NEON
+/* NEON hot-path kernels (neon_dot.c) — arm64/aarch64 only. Same signatures as the
+ * f32 dot and Q4_0 dot dispatch slots, so they drop straight into s_dot_f32 / s_dot_q4. */
+extern float   xmind_neon_dot_f32(const float *a, const float *b, uint32_t n);
+extern float   xmind_neon_dot_q4_0(const uint8_t *a_q4, float scale,
+                                   const float *b, uint32_t n);
+#endif
+
 /* ====================================================================
  * S0  SIMD DISPATCH STATE
  *
@@ -59,6 +67,20 @@ static xm_dot_q4_fn_t s_dot_q4    = (xm_dot_q4_fn_t)0;
 static uint8_t        s_simd_init = 0u;
 
 void xmind_simd_init(void) {
+#ifdef XMIND_HAS_NEON
+    /* arm64/aarch64: NEON accelerates the two hot-path kernels — the fp32 dot product
+     * (RMSNorm sum-of-squares) and the Q4_0 dequant+dot (every quantized weight matmul,
+     * the bulk of inference compute). AVX2 is never present here, so without this the
+     * engine ran the inline scalar Q4 path. matvec stays scalar: it is unused on the live
+     * path and the NEON matvec has a different argument order. NEON FMLA reorders the fp
+     * accumulation vs scalar, so output shifts by ~ULP-scale (verified against the parity
+     * gate), not by a meaningful amount. */
+    s_dot_f32 = xmind_neon_dot_f32;
+    s_matvec  = xjit_matvec_f32_scalar;
+    s_dot_q4  = xmind_neon_dot_q4_0;
+    pal_console_printf("[XMIND] SIMD: NEON detected -- "
+                       "accelerated inference enabled\n");
+#else
     uint8_t has_avx2 = xjit_avx2_available();
     if (has_avx2) {
         s_dot_f32 = xjit_dot_f32_avx2;
@@ -73,6 +95,7 @@ void xmind_simd_init(void) {
         pal_console_printf("[XMIND] SIMD: AVX2 not available -- "
                            "using scalar path\n");
     }
+#endif
     s_simd_init = 1u;
 }
 
@@ -356,10 +379,11 @@ void xmind_silu(float *out, const float *gate, const float *up, uint32_t n) {
  * S9  ROTARY POSITION EMBEDDING (RoPE)
  *
  * Applies RoPE to the query and key vectors for a single token at
- * position `pos`.  The rotation operates on consecutive pairs:
+ * position `pos`.  The rotation operates ROTATE-HALF, pairing element i
+ * with element i+half (half = head_dim/2):
  *
- *   q'[2i]   = q[2i]   * cos - q[2i+1] * sin
- *   q'[2i+1] = q[2i]   * sin + q[2i+1] * cos
+ *   q'[i]      = q[i] * cos - q[i+half] * sin
+ *   q'[i+half] = q[i] * sin + q[i+half] * cos
  *
  * cos/sin are looked up from pre-computed tables indexed by:
  *   table[pos * (head_dim/2) + i]
@@ -383,16 +407,18 @@ void xmind_rope(float *q, float *k,
     uint32_t h, i;
     uint32_t table_base = pos * half;
 
-    /* Rotate query heads */
+    /* Rotate query heads — ROTATE-HALF (tokenless convention; pairs (i, i+half)
+     * with theta_i), matching training/pt/model.py:apply_rope. NOT the llama
+     * interleaved (2i,2i+1) convention. See docs/INFERENCE_CORRECTNESS_NOTE.md. */
     for (h = 0u; h < n_heads; h++) {
         float *qh = q + h * head_dim;
         for (i = 0u; i < half; i++) {
             float c  = cos_table[table_base + i];
             float s  = sin_table[table_base + i];
-            float q0 = qh[2u * i];
-            float q1 = qh[2u * i + 1u];
-            qh[2u * i]      = q0 * c - q1 * s;
-            qh[2u * i + 1u] = q0 * s + q1 * c;
+            float q0 = qh[i];
+            float q1 = qh[i + half];
+            qh[i]        = q0 * c - q1 * s;
+            qh[i + half] = q0 * s + q1 * c;
         }
     }
 
@@ -402,10 +428,10 @@ void xmind_rope(float *q, float *k,
         for (i = 0u; i < half; i++) {
             float c  = cos_table[table_base + i];
             float s  = sin_table[table_base + i];
-            float k0 = kh[2u * i];
-            float k1 = kh[2u * i + 1u];
-            kh[2u * i]      = k0 * c - k1 * s;
-            kh[2u * i + 1u] = k0 * s + k1 * c;
+            float k0 = kh[i];
+            float k1 = kh[i + half];
+            kh[i]        = k0 * c - k1 * s;
+            kh[i + half] = k0 * s + k1 * c;
         }
     }
 }

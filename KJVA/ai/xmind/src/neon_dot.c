@@ -149,43 +149,42 @@ float xmind_neon_dot_q4_0(const uint8_t *a_q4, float scale,
     float32x4_t sum1   = vdupq_n_f32(0.0f);
     int32x4_t   v8     = vdupq_n_s32(8);
 
+    /* INTERLEAVED Q4_0 layout (must match the scalar/parity path in tensor.c): byte j's
+     * low nibble is weight 2j, high nibble is weight 2j+1. So for a group of 4 bytes the
+     * 8 weights are [lo0,hi0,lo1,hi1,lo2,hi2,lo3,hi3], and weight k maps to activation
+     * x[base+k] (contiguous). Earlier this kernel used the planar (llama.cpp) layout — all
+     * low nibbles then all high — which paired weights with the WRONG activations and
+     * produced garbage output. */
     uint32_t i;
     for (i = 0u; i < 16u; i += 4u) {
-        /* Load 4 bytes = 8 nibbles = 8 weights */
         uint8_t b0 = a_q4[i];
         uint8_t b1 = a_q4[i + 1u];
         uint8_t b2 = a_q4[i + 2u];
         uint8_t b3 = a_q4[i + 3u];
 
-        /* Extract low nibbles (even indices) */
-        int32x4_t lo = {
-            (int32_t)(b0 & 0x0Fu),
-            (int32_t)(b1 & 0x0Fu),
-            (int32_t)(b2 & 0x0Fu),
-            (int32_t)(b3 & 0x0Fu)
+        /* wA = weights 0..3 of this group = lo0,hi0,lo1,hi1 */
+        int32x4_t wA = {
+            (int32_t)(b0 & 0x0Fu), (int32_t)(b0 >> 4u),
+            (int32_t)(b1 & 0x0Fu), (int32_t)(b1 >> 4u)
         };
-        lo = vsubq_s32(lo, v8);  /* center at zero */
-
-        /* Extract high nibbles (odd indices) */
-        int32x4_t hi = {
-            (int32_t)(b0 >> 4u),
-            (int32_t)(b1 >> 4u),
-            (int32_t)(b2 >> 4u),
-            (int32_t)(b3 >> 4u)
+        /* wB = weights 4..7 of this group = lo2,hi2,lo3,hi3 */
+        int32x4_t wB = {
+            (int32_t)(b2 & 0x0Fu), (int32_t)(b2 >> 4u),
+            (int32_t)(b3 & 0x0Fu), (int32_t)(b3 >> 4u)
         };
-        hi = vsubq_s32(hi, v8);
+        wA = vsubq_s32(wA, v8);  /* center at zero (nibble - 8) */
+        wB = vsubq_s32(wB, v8);
 
-        /* Dequantize: weight = (nibble - 8) * scale */
-        float32x4_t w_lo = vmulq_f32(vcvtq_f32_s32(lo), vscale);
-        float32x4_t w_hi = vmulq_f32(vcvtq_f32_s32(hi), vscale);
+        float32x4_t w_a = vmulq_f32(vcvtq_f32_s32(wA), vscale);
+        float32x4_t w_b = vmulq_f32(vcvtq_f32_s32(wB), vscale);
 
-        /* Multiply with activation and accumulate */
+        /* weight k -> activation x[base+k]; contiguous, matches w_a/w_b order */
         uint32_t base = i * 2u;
-        float32x4_t act_lo = vld1q_f32(b + base);
-        float32x4_t act_hi = vld1q_f32(b + base + 4u);
+        float32x4_t act_a = vld1q_f32(b + base);
+        float32x4_t act_b = vld1q_f32(b + base + 4u);
 
-        sum0 = vfmaq_f32(sum0, w_lo, act_lo);
-        sum1 = vfmaq_f32(sum1, w_hi, act_hi);
+        sum0 = vfmaq_f32(sum0, w_a, act_a);
+        sum1 = vfmaq_f32(sum1, w_b, act_b);
     }
 
     sum0 = vaddq_f32(sum0, sum1);

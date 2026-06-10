@@ -1,0 +1,13 @@
+{
+  "section": "G. Single-runtime authority audit",
+  "passed": true,
+  "findings": [
+    "PASS: only canonical.gguf present at training/gguf/ root",
+    "PASS: canonical.gguf is not shadowed inside archive/",
+    "PASS: xmind client.py has no archive/ reference",
+    "PASS: candidate aligned_byte_sft_v1.gguf is correctly inside archive/",
+    "PASS: candidate provenance JSON records non-authoritative status=BENCHMARKED_NO_PROMOTE",
+    "INFO: archive/ contains 4 candidate artifact(s): ['aligned_byte_sft_v1.gguf', 'clean_base_soup_v1.source.gguf', 'clean_base_v1.step2500.gguf', 'model.kjva_base.gguf']"
+  ],
+  "doctrine": "There is only ONE active runtime model at any time. training/gguf/canonical.gguf is the sole ACTIVE RUNTIME AUTHORITY. archive/* artifacts are benchmarked candidates \u2014 never runtime-authoritative. No candidate may be resolved by runtime defaults."
+}

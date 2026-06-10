@@ -8,7 +8,7 @@ declare global {
         agent?: string;
       }>;
       dismiss(): Promise<boolean>;
-      /** Health check for the AI agent runtime (polls /healthz via IPC). */
+      /** Health check for the AI agent runtime (polls /v1/health via IPC). */
       healthCheck?(): Promise<{ status: string }>;
     };
   }

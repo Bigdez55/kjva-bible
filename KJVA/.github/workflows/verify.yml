@@ -1,0 +1,179 @@
+# =============================================================================
+# .github/workflows/verify.yml — XMIND C-engine verify lane (ledger #11).
+#
+# WHY: a green `pytest` with libxmind-core unbuilt SILENTLY SKIPS the whole
+# C-engine set (parity / adapter / generation / materialization), so "green" is
+# hollow on the core path. This lane makes green mean the core path actually ran:
+#   1. build the C engine (fail on any error OR `warning:` — the Makefile has no
+#      -Werror seam and we must not modify it, so we grep the build log),
+#   2. run the C smoke (`xmind-cli` must print PASS and exit 0) — the unconditional
+#      honest floor that proves the built lib works,
+#   3. run the full Python suite with `-ra`,
+#   4. SKIP-IS-FAIL GUARD: scripts/ci/verify_lane.sh fails the lane if any
+#      C-ENGINE test skipped for a reason inside the lane's control (lib unbuilt
+#      / would not bind).  MLX-absent and torch-absent skips are a separate,
+#      ACCEPTABLE class and do NOT trip the guard — we deliberately do NOT force
+#      MLX onto the runner.  Gitignored weight artifacts (*.gguf/*.safetensors are
+#      gitignored by policy; no Git LFS) are likewise outside the lane's control,
+#      so an artifact-reason C-engine skip is allowed (the C smoke covers the lib).
+#
+# The exact C-engine test classification lives in scripts/ci/verify_lane.sh.
+#
+# TOPOLOGY CAVEAT (maintainer decision — left deliberately, not auto-resolved):
+#   GitHub Actions only discovers workflows at <repo-root>/.github/workflows/.
+#   In the current shared monorepo the git root is the PARENT "Tokenless models/"
+#   and this file sits at "models v7/.github/workflows/verify.yml", so Actions
+#   will trigger it ONLY when "models v7" is itself the checked-out repo root.
+#   To run it under the shared root instead, move this file to the true repo root
+#   and add `paths: ['models v7/**']` so it fires only on models-v7 changes. That
+#   is a monorepo-topology call for the maintainer; it was intentionally NOT made
+#   here because the parent root is outside this change's "new files under models
+#   v7, zero collision" scope. The lane is fully runnable today via:
+#     (cd "models v7" && make -C ai/xmind && ./ai/xmind/build/xmind-cli &&
+#      python3 -m pytest tests/ -q -ra | tee /tmp/ra.log &&
+#      bash scripts/ci/verify_lane.sh /tmp/ra.log)
+# =============================================================================
+name: verify (xmind c-engine lane)
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+# This file lives at "models v7/.github/workflows/", so as placed it triggers only
+# when "models v7" is itself the checked-out repo root (see TOPOLOGY CAVEAT above);
+# in that case every step runs from that root, so no working-directory override is
+# needed. If instead you relocate this workflow to the shared monorepo root, add:
+#     defaults:
+#       run:
+#         working-directory: models v7
+# (plus `paths: ['models v7/**']` under `on:`) so the steps below resolve correctly.
+
+jobs:
+  verify:
+    name: build c-engine + skip-is-fail pytest
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install Python deps (explicit — no MLX; its absence is an accepted skip class)
+        run: |
+          python3 -m pip install --upgrade pip
+          # Install EXPLICITLY, not `-r requirements.txt`: requirements.txt is the
+          # API/server runtime stack (fastapi/uvicorn/pydantic/httpx/cryptography/
+          # PyYAML) and pins NEITHER the test deps NOR MLX. We install:
+          #   * pytest                — the runner
+          #   * numpy                 — parity logit comparison (test_pt_xmind_parity)
+          #   * safetensors           — REQUIRED by the provisioning step (export.py /
+          #                             safetensors_to_gguf) AND by parity's
+          #                             `from safetensors.torch import load_file`. It is
+          #                             NOT a transitive dep of torch — omitting it makes
+          #                             provisioning die with ModuleNotFoundError (a false red).
+          #   * torch (CPU)           — pt + provisioning model; pt tests are torch-gated,
+          #                             not C-engine, but we want them green here.
+          #   * requirements.txt      — fastapi/etc for the TestClient-based suite tests.
+          # MLX is intentionally NOT installed (no x86-Linux wheel anyway): its absence is
+          # a separate, acceptable skip class that must not trip the skip-is-fail guard.
+          python3 -m pip install pytest numpy safetensors
+          python3 -m pip install torch --index-url https://download.pytorch.org/whl/cpu
+          python3 -m pip install -r requirements.txt
+          # Fail fast if a load-bearing import is missing (don't leak to a downstream skip/red).
+          python3 -c "import pytest, numpy, torch, safetensors; print('test+provision deps ok')"
+
+      # -- 1. Build the C engine: fail on any build error OR compiler warning. ----
+      # The Makefile uses ':=' CFLAGS with no -Werror and we must not modify it,
+      # so enforce zero-warnings by capturing the log and grepping for 'warning:'.
+      - name: Build libxmind-core (fail on error OR warning)
+        run: |
+          set -o pipefail
+          rm -rf ai/xmind/build
+          # 'make' default target = static + shared lib + smoke CLI (POSIX hosted).
+          make -C ai/xmind 2>&1 | tee /tmp/xmind_build.log
+          if grep -E 'warning:' /tmp/xmind_build.log; then
+            echo "::error::C build emitted warning(s) — fail the lane (zero-warning policy)."
+            exit 1
+          fi
+          test -f ai/xmind/build/xmind-cli || { echo "::error::xmind-cli not built"; exit 1; }
+          # The shared lib is what _xmind/client.py dlopens — it MUST exist.
+          ls ai/xmind/build/libxmind-core.so ai/xmind/build/libxmind-core.dylib 2>/dev/null \
+            | grep -q . || { echo "::error::libxmind-core shared lib not built"; exit 1; }
+
+      # -- 2. C smoke: xmind-cli must print PASS and exit 0. ----------------------
+      - name: C smoke — xmind-cli must print PASS
+        run: |
+          set -o pipefail
+          ./ai/xmind/build/xmind-cli 2>&1 | tee /tmp/xmind_smoke.log
+          grep -q 'PASS' /tmp/xmind_smoke.log || { echo "::error::xmind-cli did not print PASS"; exit 1; }
+
+      # -- 3. Provision the base weights/GGUF so the WEIGHTS-class C-engine tests
+      #       (parity / generation / materialization) actually RUN — otherwise they
+      #       skip for "weights absent" and green is hollow. *.gguf/*.safetensors are
+      #       gitignored (no Git LFS), so they are NOT on a clean checkout; we
+      #       regenerate them on CI with the UNMODIFIED pt/train_byte.py + pt/export.py.
+      #       The model only needs to be SELF-CONSISTENT for parity (PyTorch fwd == C
+      #       fwd on the same weights), not well-trained — measured: a cheap 8-layer
+      #       model lands MAE 0.04 / argmax-match, well inside the parity band.
+      #       (On a developer's machine these target paths may hold the real base
+      #       weights; this step only ever writes them on the empty CI runner.)
+      - name: Provision base weights + GGUF (so C-engine tests run, not skip)
+        run: |
+          set -euo pipefail
+          mkdir -p training/corpus/_ci training/runs/byte_clean_v1 training/gguf
+          # Tiny deterministic corpus (real scripture bytes; enough to fit a confident model).
+          python3 - <<'PY'
+          from pathlib import Path
+          line = ("In the beginning God created the heaven and the earth. "
+                  "And the earth was without form, and void; and darkness was "
+                  "upon the face of the deep. ")
+          Path("training/corpus/_ci/corpus.txt").write_text(line * 400, encoding="utf-8")
+          PY
+          # Full 8-layer/384-d/6-head/1536-ffn arch = the exact config the parity test
+          # reconstructs (test_pt_xmind_parity.py) and that soup_best.safetensors must match.
+          TOKENLESS_HOME="$PWD/training" python3 training/pt/train_byte.py \
+            --run-id byte_clean_v1 --corpus training/corpus/_ci/corpus.txt \
+            --token-cache /tmp/ci_tok.npy \
+            --iters 60 --batch 4 --seq-len 64 --warmup 10 \
+            --eval-every 30 --save-every 60 --log-every 20 \
+            --n-layers 8 --d-model 384 --n-heads 6 --d-ffn 1536 \
+            --no-bench --device cpu
+          # Name the checkpoint exactly soup_best.safetensors (parity loads it directly).
+          cp training/runs/byte_clean_v1/ckpt_step_000060.safetensors \
+             training/runs/byte_clean_v1/soup_best.safetensors
+          # Export the SAME weights to the GGUF the engine + _xmind/client.py consume.
+          TOKENLESS_HOME="$PWD/training" python3 training/pt/export.py \
+            --run training/runs/byte_clean_v1 \
+            --output training/gguf/clean_base_soup_v1.gguf
+          # Fail LOUDLY here if provisioning produced nothing (don't leak to a downstream skip).
+          test -f training/gguf/clean_base_soup_v1.gguf \
+            || { echo "::error::GGUF not provisioned"; exit 1; }
+          test -f training/runs/byte_clean_v1/soup_best.safetensors \
+            || { echo "::error::soup_best.safetensors not provisioned"; exit 1; }
+
+      # -- 4. Full Python suite with -ra (short summary lists every SKIPPED). -----
+      # MLX may be absent → its tests skip cleanly (acceptable). We do NOT force MLX.
+      # `tee` so the run is visible in logs even when the guard later inspects it.
+      - name: Run pytest suite (-ra captures the skip summary)
+        run: |
+          set -o pipefail
+          python3 -m pytest tests/ -q -ra 2>&1 | tee /tmp/pytest_ra.log
+
+      # -- 5. SKIP-IS-FAIL GUARD — fail if a C-engine test skipped for an in-lane reason.
+      # Runs even if pytest reported failures, so the guard verdict is always emitted.
+      # XMIND_REQUIRE_WEIGHTS=1: we provisioned the weights/GGUF, so the parity /
+      # generation / materialization tests MUST have run — a weights-reason skip there
+      # is now a FAILURE. The two adapter tests stay allowed-to-skip (proof adapter is
+      # not provisioned; set XMIND_REQUIRE_ARTIFACTS=1 only if you also supply it).
+      - name: Skip-is-fail guard (C-engine must not skip)
+        if: always()
+        env:
+          XMIND_REQUIRE_WEIGHTS: "1"
+        run: |
+          test -f /tmp/pytest_ra.log || { echo "::error::no pytest -ra log to inspect"; exit 1; }
+          bash scripts/ci/verify_lane.sh /tmp/pytest_ra.log

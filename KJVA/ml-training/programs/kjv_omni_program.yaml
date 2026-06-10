@@ -1,0 +1,60 @@
+program_id: kjv_omni_master_v1
+registry: ml-training/programs/omni_training_registry.json
+stack: kjv_tokenless_master_stack
+delegate_recipe: Bible_Tokenless_POC/training/kjv_retrain.yaml
+tokenless_home: ml-training
+python_bin: ml-training/.venv/bin/python
+
+initial_artifacts:
+  - eng-kjv_vpl
+  - eng-kjv_html
+  - eng-kjv_browserBible
+
+execution_policy:
+  manual_gated: true
+  no_background_watcher: true
+  never_overwrite_active_without_gates: true
+  exact_citations_use_retrieval: true
+  old_poc_weights_for_training: false
+
+base_gate:
+  required_before_peft: true
+  active_export: ml-training/exports/kjv_tokenless_v1_active
+
+research_sequence_after_base:
+  - peft.lora
+  - peft.dora
+  - peft.qlora
+  - peft.adalora
+  - peft.vera
+  - peft.pissa
+  - peft.rslora
+  - peft.olora
+  - peft.loha
+  - peft.lokr
+  - peft.rosa
+  - peft.houlsby_adapter
+  - peft.pfeiffer_adapter
+  - peft.prompt_tuning
+  - peft.prefix_tuning
+  - peft.p_tuning
+  - peft.ia3
+  - peft.bitfit
+  - peft.diffpruning
+  - peft.fishmask
+  - peft.far
+  - peft.unipelt
+  - peft.mam_adapter
+  - peft.compacter
+  - peft.xlora
+  - alignment.sft
+  - alignment.dpo
+  - alignment.ipo
+  - alignment.kto
+  - alignment.orpo
+  - alignment.ppo_rlhf
+  - alignment.grpo
+  - distill.logit
+  - distill.sequence
+  - retrieval.embedding
+  - retrieval.reranker

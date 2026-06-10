@@ -1,25 +1,31 @@
 {
+  // Tokenless Companion — TypeScript/Vite browser client.
+  // tsc is TYPE-CHECK ONLY (noEmit); Vite is the bundler (vite.config.ts -> dist/renderer).
+  // The old config had noEmit/outDir unset, so `tsc -p` emitted .js next to every source
+  // file in src/ — that pollution is removed and prevented here.
   "compilerOptions": {
     "target": "ES2022",
     "module": "ES2022",
     "moduleResolution": "Bundler",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "jsx": "react-jsx",
+
     "strict": true,
-    "noImplicitAny": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "types": ["node"],
-    "baseUrl": ".",
-    "paths": {
-      "@ds/*": ["../../design-system/src/*"]
-    }
+
+    // Vite/esbuild-canonical: single-file transpile correctness + class-field/runtime parity.
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "useDefineForClassFields": true,
+    "resolveJsonModule": true,
+
+    // Type-check only — Vite emits the bundle.
+    "noEmit": true,
+
+    // node: vite.config.ts uses __dirname. vite/client: import.meta.env + asset-import types.
+    "types": ["node", "vite/client"]
   },
-  "include": [
-    "electron/**/*.ts",
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "vite.config.ts",
-    "../../design-system/src/**/*.ts",
-    "../../design-system/src/**/*.tsx"
-  ]
+  "include": ["src/**/*.ts", "src/**/*.tsx", "vite.config.ts"]
 }

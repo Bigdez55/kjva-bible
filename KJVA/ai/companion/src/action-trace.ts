@@ -41,6 +41,132 @@ export interface ActionTraceEntry {
   status: ActionStatus;
 }
 
+/**
+ * Determinant slice of per-turn provenance — the SAFE, non-sensitive projection of
+ * the spine's `DeterminantProbabilityRecord` (heptagon/determinant_record.py,
+ * ADR-0001 §10.1). The spine record carries deterministic input snapshot hashes and
+ * probabilistic outputs; the UI receives ONLY the route, the selection reason, the
+ * scalar confidence, and a SHORT (already-truncated by the spine) hash digest for
+ * visual audit — never the raw candidate/retrieval scores or full snapshot hashes.
+ */
+export interface DeterminantProvenance {
+  /** Route the deterministic control layer SELECTED (e.g. "direct", "memory_mediated"). */
+  selected_route: string;
+  /** Human-readable reason the control layer chose this route. */
+  selection_reason?: string;
+  /** Probabilistic-output confidence in [0,1] (DeterminantProbabilityRecord.confidence). */
+  confidence?: number;
+  /** Whether identical inputs would replay to an identical route (§10.1 replay property). */
+  replayable?: boolean;
+  /** Short hash digest (spine-truncated, e.g. first 8 hex of route_policy_hash) for audit. */
+  route_policy_digest?: string;
+}
+
+/**
+ * Materialization slice of per-turn provenance — the SAFE projection of the spine's
+ * `MaterializationRecord` (materialization/materialization_record.py, ADR-0001 §11.2).
+ * The UI receives the materialization id, type, lifecycle status, confidence, privacy
+ * class, and a single short source-hash digest. NEVER the full source_refs/source_hashes
+ * lists, transforms, lineage, or runtime_location.
+ */
+export interface MaterializationProvenance {
+  /** Stable id of the materialization (MaterializationRecord.materialization_id). */
+  materialization_id: string;
+  /** adapter|memory|sensory|simulation|action|response|provenance|model_artifact|... */
+  materialization_type: string;
+  /** planned|active|committed|rolled_back|revoked|archived (§11.2). */
+  status: string;
+  /** Confidence in [0,1] (MaterializationRecord.confidence). */
+  confidence?: number;
+  /** public|internal|private|sealed (MaterializationRecord.privacy_class). */
+  privacy_class?: string;
+  /** Short hash digest (spine-truncated) of the primary source artifact, for audit. */
+  source_digest?: string;
+}
+
+/**
+ * Safe per-turn provenance surfaced to the UI (ADR-0001 §10.2 response provenance
+ * object, §11.2 step 19). Contains ONLY non-sensitive pipeline metadata — never raw
+ * user text, memory contents, session IDs, or full snapshot hashes.
+ *
+ * D30/D31 ledger (consume side): `determinant` and `materialization` are the SAFE
+ * projections of the spine's `DeterminantProbabilityRecord` and `MaterializationRecord`
+ * that the agent now emits per turn. They are OPTIONAL so this interface stays
+ * backward-compatible with the pre-ledger pipeline metadata fields below.
+ */
+export interface TurnProvenance {
+  turn_id: string;
+  latency_ms: number;
+  /** Whether the response is grounded in retrieved/materialized evidence (D31). */
+  grounded?: boolean;
+  /** SAFE projection of DeterminantProbabilityRecord (D30). */
+  determinant?: DeterminantProvenance;
+  /** SAFE projection of MaterializationRecord (D31). */
+  materialization?: MaterializationProvenance;
+  // ── Pre-ledger pipeline metadata (retained for backward compatibility) ──
+  heptagon_active?: boolean;
+  shard_count?: number;
+  route_reason?: string;
+  degraded?: boolean;
+  evidence_salience?: number;
+  sensory_scope?: string[];
+}
+
+/**
+ * Format a TurnProvenance into a single safe summary line. Pure (no DOM) so it is
+ * unit-testable and reusable by command-panel.tsx. Renders the D30/D31 ledger
+ * projection first (route · grounded · confidence · materialization status), then
+ * any retained pipeline metadata. Every branch is guarded so partial/legacy records
+ * format cleanly.
+ */
+export function formatProvenance(p: TurnProvenance): string {
+  const parts: string[] = [`turn ${p.turn_id.slice(0, 8)}`, `${p.latency_ms}ms`];
+
+  // ── D30: determinant route + confidence ──
+  if (p.determinant) {
+    const d = p.determinant;
+    parts.push(`route ${d.selected_route}`);
+    if (typeof d.confidence === "number") {
+      parts.push(`conf ${d.confidence.toFixed(2)}`);
+    }
+    if (d.replayable === false) {
+      parts.push("⚠ non-replayable");
+    }
+  } else if (p.route_reason) {
+    // Legacy fallback when no determinant slice is present.
+    parts.push(p.route_reason);
+  }
+
+  // ── D31: grounded yes/no ──
+  if (typeof p.grounded === "boolean") {
+    parts.push(`grounded ${p.grounded ? "yes" : "no"}`);
+  }
+
+  // ── D31: materialization id/type/status ──
+  if (p.materialization) {
+    const m = p.materialization;
+    parts.push(`mat ${m.materialization_type}:${m.status}`);
+  }
+
+  // ── Retained pipeline metadata (only if no ledger slices supplied them) ──
+  if (!p.determinant && typeof p.heptagon_active === "boolean") {
+    parts.push(`heptagon ${p.heptagon_active ? "on" : "off"}`);
+  }
+  if (typeof p.shard_count === "number") {
+    parts.push(`${p.shard_count} shard${p.shard_count === 1 ? "" : "s"}`);
+  }
+  if (typeof p.evidence_salience === "number") {
+    parts.push(`salience ${p.evidence_salience.toFixed(2)}`);
+  }
+  if (p.sensory_scope && p.sensory_scope.length > 0) {
+    parts.push(`scope ${p.sensory_scope.join("/")}`);
+  }
+  if (p.degraded) {
+    parts.push("⚠ degraded");
+  }
+  return parts.join(" · ");
+}
+
 /** Maximum entries retained in the panel before oldest are evicted. */
 const MAX_ENTRIES = 50;
 
@@ -58,6 +184,7 @@ export class ActionTracePanel {
   private readonly _listeners: EntryAddedCallback[] = [];
   private _listElement: HTMLUListElement | null = null;
   private _containerElement: HTMLElement | null = null;
+  private _provenanceElement: HTMLElement | null = null;
 
   /**
    * Mount the trace panel into the given container element.
@@ -199,6 +326,135 @@ export class ActionTracePanel {
   /** Return a shallow copy of all current entries. */
   getEntries(): ActionTraceEntry[] {
     return [...this._entries];
+  }
+
+  /**
+   * Render the safe per-turn provenance summary (§11.2 step 19) into the panel.
+   * Idempotent: replaces any prior summary. Shows only non-sensitive metadata.
+   *
+   * Renders the one-line summary plus, when the D30/D31 ledger slices are present,
+   * a SAFE structured block of labeled chips (route, grounded, confidence,
+   * materialization id/type/status). Only the projected fields defined on
+   * Determinant/MaterializationProvenance are read — never raw hashes or content.
+   */
+  setProvenance(p: TurnProvenance): void {
+    if (!this._containerElement) {
+      return;
+    }
+    const panel = this._containerElement.querySelector(".action-trace-panel");
+    if (!panel) {
+      return;
+    }
+    const summary = document.createElement("div");
+    summary.className = "action-trace-provenance";
+    summary.setAttribute("role", "status");
+    summary.setAttribute("aria-label", "Response provenance");
+
+    // Line 1: compact single-line summary (D30/D31 aware).
+    const line = document.createElement("div");
+    line.className = "provenance-summary-line";
+    line.textContent = formatProvenance(p);
+    summary.appendChild(line);
+
+    // Line 2+: SAFE structured chips when ledger slices are present.
+    const chips = this._renderProvenanceChips(p);
+    if (chips) {
+      summary.appendChild(chips);
+    }
+
+    if (p.degraded) {
+      summary.classList.add("degraded");
+      summary.setAttribute("title", "Pipeline ran in degraded mode");
+    }
+    if (this._provenanceElement && this._provenanceElement.parentElement) {
+      this._provenanceElement.parentElement.replaceChild(summary, this._provenanceElement);
+    } else {
+      panel.appendChild(summary);
+    }
+    this._provenanceElement = summary;
+  }
+
+  /**
+   * Build a SAFE chip row from the D30/D31 ledger projections. Returns null when no
+   * ledger slice is present (legacy/partial records render only the summary line).
+   * Each chip is a labeled span; only projected, non-sensitive fields are read.
+   */
+  private _renderProvenanceChips(p: TurnProvenance): HTMLElement | null {
+    const chipSpecs: Array<{ label: string; value: string; tone?: string }> = [];
+
+    if (p.determinant) {
+      const d = p.determinant;
+      chipSpecs.push({ label: "route", value: d.selected_route });
+      if (typeof d.confidence === "number") {
+        chipSpecs.push({ label: "confidence", value: d.confidence.toFixed(2) });
+      }
+      if (typeof d.replayable === "boolean") {
+        chipSpecs.push({
+          label: "replay",
+          value: d.replayable ? "deterministic" : "non-replayable",
+          tone: d.replayable ? "ok" : "warn",
+        });
+      }
+      if (d.route_policy_digest) {
+        chipSpecs.push({ label: "policy", value: d.route_policy_digest });
+      }
+    }
+
+    if (typeof p.grounded === "boolean") {
+      chipSpecs.push({
+        label: "grounded",
+        value: p.grounded ? "yes" : "no",
+        tone: p.grounded ? "ok" : "warn",
+      });
+    }
+
+    if (p.materialization) {
+      const m = p.materialization;
+      chipSpecs.push({ label: "materialization", value: m.materialization_id });
+      chipSpecs.push({ label: "type", value: m.materialization_type });
+      chipSpecs.push({
+        label: "status",
+        value: m.status,
+        tone: m.status === "committed" ? "ok" : m.status === "rolled_back" || m.status === "revoked" ? "warn" : undefined,
+      });
+      if (m.privacy_class) {
+        chipSpecs.push({ label: "privacy", value: m.privacy_class });
+      }
+      if (m.source_digest) {
+        chipSpecs.push({ label: "source", value: m.source_digest });
+      }
+    }
+
+    if (chipSpecs.length === 0) {
+      return null;
+    }
+
+    const row = document.createElement("div");
+    row.className = "provenance-chips";
+    row.setAttribute("role", "group");
+    row.setAttribute("aria-label", "Turn provenance ledger");
+
+    for (const spec of chipSpecs) {
+      const chip = document.createElement("span");
+      chip.className = "provenance-chip";
+      if (spec.tone) {
+        chip.classList.add(`provenance-chip-${spec.tone}`);
+      }
+      chip.setAttribute("aria-label", `${spec.label}: ${spec.value}`);
+
+      const key = document.createElement("span");
+      key.className = "provenance-chip-key";
+      key.textContent = spec.label;
+      chip.appendChild(key);
+
+      const val = document.createElement("span");
+      val.className = "provenance-chip-value";
+      val.textContent = spec.value;
+      chip.appendChild(val);
+
+      row.appendChild(chip);
+    }
+    return row;
   }
 
   /**

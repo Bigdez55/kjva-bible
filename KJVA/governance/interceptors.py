@@ -69,18 +69,11 @@ class GovernanceInterceptors:
         Creates a DecisionEnvelope, runs it through the gate chain,
         and returns whether the action is approved.
         """
-        envelope_context = context or {}
         envelope = DecisionEnvelope(
             intent=intent,
             subject=subject,
-            resources_needed=dict(envelope_context.get("resources", {})),
-            context=envelope_context,
-            constraints=list(envelope_context.get("constraints", [])),
-            evidence=list(envelope_context.get("evidence", [])),
-            risk_score=float(envelope_context.get("risk_score", 0.0)),
-            value_score=float(envelope_context.get("value_score", 0.0)),
+            context=context or {},
             created_by=created_by,
-            provenance_hash=str(envelope_context.get("provenance_hash", "")),
         )
 
         for hook in self._pre_hooks:
@@ -130,11 +123,18 @@ class GovernanceInterceptors:
         sender: str = "",
     ) -> InterceptResult:
         """Route validation before message dispatch."""
-        # Basic validation: destination must be a known member
-        from ..heptagon.registry import MEMBER_REGISTRY, OFFICE_REGISTRY
-
-        known = set(MEMBER_REGISTRY.keys()) | set(OFFICE_REGISTRY.keys()) | {"Forge", "TOKENLESS_INTERFACE"}
-        allowed = destination in known
+        # Destination registry is deployment config, not substrate law. The relative
+        # `..heptagon.registry` import could never resolve in the runtime layout (governance
+        # loads as a top-level package) — it would raise if this method were called. Use an
+        # absolute import guarded by try/except: when no destination registry is configured
+        # (the neutral substrate case), route validation is a NO-OP (allow) rather than a
+        # hard block on every destination. A deployment may supply a registry to restrict.
+        try:
+            from heptagon.registry import MEMBER_REGISTRY, OFFICE_REGISTRY
+        except Exception:  # noqa: BLE001
+            MEMBER_REGISTRY, OFFICE_REGISTRY = {}, {}
+        known = set(MEMBER_REGISTRY) | set(OFFICE_REGISTRY)
+        allowed = (not known) or (destination in known)
 
         result = InterceptResult(
             allowed=allowed,

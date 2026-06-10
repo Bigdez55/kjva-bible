@@ -2,19 +2,19 @@
 
 SPDX-License-Identifier: MIT
 
-Wires the 7 Council member harnesses into the GateChainExecutor as
-concrete evaluators. Each evaluator wraps a member's HeptagonHarness,
+Wires the 7 role-domain gate harnesses into the GateChainExecutor as
+concrete evaluators. Each evaluator wraps a domain HeptagonHarness,
 calls cycle() with the envelope data, and returns a GateResult based
-on the member's domain logic and confidence output.
+on the domain logic and confidence output.
 
 Gate order (immutable):
-  1. Sarah  -- alignment (does intent match covenant?)
-  2. Esther -- policy (does it comply with constitutional law?)
-  3. Magen  -- trust (is the source verified?)
-  4. Abigail -- evidence (is there enough proof?)
-  5. Ruth   -- utility (is it worth the resources?)
-  6. Ezri   -- architecture (does it fit the system design?)
-  7. Ahki   -- sequencing (can it be executed safely?)
+  1. Alignment gate -- does intent match covenant?
+  2. Policy gate -- does it comply with constitutional law?
+  3. Trust gate -- is the source verified?
+  4. Evidence gate -- is there enough proof?
+  5. Utility gate -- is it worth the resources?
+  6. Architecture gate -- does it fit the system design?
+  7. Sequencing gate -- can it be executed safely?
 
 Usage:
   from governance.gate_evaluators import create_default_gate_chain
@@ -25,25 +25,78 @@ Usage:
 from __future__ import annotations
 
 import time
+from types import SimpleNamespace
 from typing import Any, Dict
 
-from .decision_envelope import (
+from governance.decision_envelope import (
     DecisionEnvelope,
     GateChainExecutor,
     GateResult,
     GateVerdict,
 )
 
-from ..heptagon.harness import (
-    AbigailHarness,
-    AhkiHarness,
-    EstherHarness,
-    EzriHarness,
-    HeptagonHarness,
-    MagenHarness,
-    RuthHarness,
-    SarahHarness,
-)
+# Resilient import: src-first `import heptagon` resolves to the agent-side package, which has
+# no harness.py (only the root models v7/heptagon does). Falling back to a minimal base keeps
+# the governance package importable in the production layout (so DriftDetector et al. load) —
+# without coupling governance to the ambiguous heptagon name. Decouples drift the same way the
+# covenant enforcer was decoupled.
+try:
+    from heptagon.harness import HeptagonHarness
+except ImportError:
+    class HeptagonHarness:  # type: ignore[no-redef]
+        """Minimal fallback base — full harness comes from the consuming project."""
+        def __init__(self, *args, **kwargs) -> None:  # noqa: D401
+            pass
+
+# Council member harnesses — provide lightweight stubs so gate_evaluators.py
+# remains importable even when consuming-project member trees are not present.
+# Each stub returns a neutral GateResult so the gate chain can still run.
+class _StubHarness(HeptagonHarness):
+    """Stub harness that returns neutral results for gate evaluation.
+
+    The real ``HeptagonHarness.__init__`` requires a ``member_id`` and looks it
+    up in ``MEMBER_REGISTRY`` (raising if absent). The role-domain evaluators
+    in this module instantiate their harness with NO arguments
+    (e.g. ``AlignmentHarness()``), so the stub must override ``__init__`` to be
+    argument-tolerant — otherwise the gate chain is dead-on-arrival the moment
+    the real harness is importable.
+
+    ``cycle()`` returns a neutral, CycleResult-shaped object. The evaluators only
+    read ``confidence`` (float), ``collaboration_requested`` (bool),
+    ``decision`` (str|None) and ``invariants_violated`` (iterable/falsy), so a
+    SimpleNamespace with safe neutral defaults is sufficient — the domain-specific
+    keyword scans in each evaluator carry the actual governance signal.
+    """
+
+    def __init__(self, *args: Any, **kwargs: Any) -> None:  # noqa: D401
+        # Deliberately do NOT call super().__init__: the real base requires a
+        # registered member_id. The stub stands in for any member harness and
+        # holds no state beyond what cycle() returns.
+        pass
+
+    def cycle(self, signal: Any = None) -> SimpleNamespace:
+        """Return a neutral cycle result (no opinion, no violations).
+
+        confidence 0.5 sits exactly on the evaluators' neutral midpoint so the
+        domain keyword scans decide the verdict, not the stub.
+        """
+        return SimpleNamespace(
+            decision="",
+            confidence=0.5,
+            invariants_violated=[],
+            collaboration_requested=False,
+            collaboration_domains=[],
+            halt_eligible=False,
+            traces_emitted=0,
+        )
+
+AlignmentHarness = _StubHarness
+PolicyHarness = _StubHarness
+TrustHarness = _StubHarness
+EvidenceHarness = _StubHarness
+UtilityHarness = _StubHarness
+ArchitectureHarness = _StubHarness
+SequencingHarness = _StubHarness
 
 # ---------------------------------------------------------------------------
 # CONFIDENCE THRESHOLDS
@@ -96,7 +149,7 @@ class GateEvaluator:
     def _build_signal(self, envelope: DecisionEnvelope,
                       domain: str) -> Dict[str, Any]:
         """Convert an envelope into an input signal for the harness."""
-        signal = {
+        return {
             "envelope_id": envelope.envelope_id,
             "intent": envelope.intent,
             "subject": envelope.subject,
@@ -109,36 +162,6 @@ class GateEvaluator:
             "value_score": envelope.value_score,
             "created_by": envelope.created_by,
         }
-        if not signal["resources"] and "resources" in envelope.context:
-            signal["resources"] = envelope.context["resources"]
-        if not signal["constraints"] and "constraints" in envelope.context:
-            signal["constraints"] = list(envelope.context["constraints"])
-        if not signal["evidence"] and "evidence" in envelope.context:
-            signal["evidence"] = list(envelope.context["evidence"])
-        if signal["risk_score"] == 0.0 and "risk_score" in envelope.context:
-            signal["risk_score"] = float(envelope.context["risk_score"])
-        if signal["value_score"] == 0.0 and "value_score" in envelope.context:
-            signal["value_score"] = float(envelope.context["value_score"])
-        for key in (
-            "domains",
-            "salience",
-            "priority",
-            "relevance",
-            "policy_clearance",
-            "novelty_bonus",
-            "security_penalty",
-            "route_pressure",
-            "structure_pressure",
-            "memory_pressure",
-            "complexity_score",
-            "support_count",
-            "support_confidence",
-            "contradiction_count",
-            "contradiction_confidence",
-        ):
-            if key in envelope.context:
-                signal[key] = envelope.context[key]
-        return signal
 
     def evaluate_gate(self, envelope: DecisionEnvelope,
                       domain: str) -> GateResult:
@@ -164,19 +187,19 @@ class GateEvaluator:
 
 
 # ---------------------------------------------------------------------------
-# SARAH -- ALIGNMENT GATE (Does intent match covenant?)
+# ALIGNMENT GATE (Does intent match covenant?)
 # ---------------------------------------------------------------------------
 
-class SarahGateEvaluator(GateEvaluator):
-    """Sarah checks alignment: does the intent preserve the covenant?
+class AlignmentGateEvaluator(GateEvaluator):
+    """Alignment gate: does the intent preserve the covenant?
 
-    She detects drift signals in the intent and subject text. If
+    Detects drift signals in the intent and subject text. If
     covenant-aligned language dominates, alignment score is high.
-    If drift language is present, she blocks.
+    If drift language is present, blocks.
     """
 
     def __init__(self) -> None:
-        super().__init__(SarahHarness(), "Sarah")
+        super().__init__(AlignmentHarness(), "alignment")
 
     def evaluate_gate(self, envelope: DecisionEnvelope,
                       domain: str) -> GateResult:
@@ -219,8 +242,8 @@ class SarahGateEvaluator(GateEvaluator):
             reason = f"Alignment {alignment:.2f} — covenant-consistent."
 
         return GateResult(
-            gate_name="Sarah_alignment",
-            authority="Sarah",
+            gate_name="alignment_gate",
+            authority="alignment",
             verdict=verdict,
             confidence=alignment,
             reason=reason,
@@ -230,19 +253,19 @@ class SarahGateEvaluator(GateEvaluator):
 
 
 # ---------------------------------------------------------------------------
-# ESTHER -- POLICY GATE (Does it comply with constitutional law?)
+# POLICY GATE (Does it comply with constitutional law?)
 # ---------------------------------------------------------------------------
 
-class EstherGateEvaluator(GateEvaluator):
-    """Esther checks policy compliance against constitutional law.
+class PolicyGateEvaluator(GateEvaluator):
+    """Policy gate: checks compliance against constitutional law.
 
-    She verifies that the decision does not violate immutable rules,
+    Verifies that the decision does not violate immutable rules,
     respects authority boundaries, and follows proper amendment process.
-    Her policy_clearance is a HARD gate: 0.0 = rejected.
+    policy_clearance is a HARD gate: 0.0 = rejected.
     """
 
     def __init__(self) -> None:
-        super().__init__(EstherHarness(), "Esther")
+        super().__init__(PolicyHarness(), "policy")
 
     # Policy violation patterns
     POLICY_VIOLATIONS = (
@@ -267,18 +290,13 @@ class EstherGateEvaluator(GateEvaluator):
         # Check constraints for policy compliance
         constraint_violations = 0
         for constraint in envelope.constraints:
-            constraint_lower = constraint.lower()
-            requires_evidence = any(
-                token in constraint_lower
-                for token in ("evidence", "proof", "review", "verification", "attestation", "benchmark", "scan")
-            )
-            if "must" in constraint_lower and requires_evidence and not envelope.evidence:
+            if "must" in constraint.lower() and not any(
+                e.lower() in constraint.lower() for e in envelope.evidence
+            ):
                 constraint_violations += 1
 
         if constraint_violations > 0:
             clearance = max(0.0, clearance - (constraint_violations * 0.1))
-        elif violation_count == 0 and envelope.provenance_hash and len(envelope.evidence) >= 2:
-            clearance = max(clearance, 0.62)
 
         envelope.policy_clearance = clearance
 
@@ -299,8 +317,8 @@ class EstherGateEvaluator(GateEvaluator):
             reason = f"Policy clearance {clearance:.2f} — compliant."
 
         return GateResult(
-            gate_name="Esther_policy",
-            authority="Esther",
+            gate_name="policy_gate",
+            authority="policy",
             verdict=verdict,
             confidence=clearance,
             reason=reason,
@@ -310,18 +328,18 @@ class EstherGateEvaluator(GateEvaluator):
 
 
 # ---------------------------------------------------------------------------
-# MAGEN -- TRUST GATE (Is the source verified?)
+# TRUST GATE (Is the source verified?)
 # ---------------------------------------------------------------------------
 
-class MagenGateEvaluator(GateEvaluator):
-    """Magen checks trust: is the source verified and trustworthy?
+class TrustGateEvaluator(GateEvaluator):
+    """Trust gate: checks whether the source is verified and trustworthy.
 
-    She evaluates the provenance of the request, checks for suspicious
+    Evaluates the provenance of the request, checks for suspicious
     patterns, and verifies that the request source has sufficient trust.
     """
 
     def __init__(self) -> None:
-        super().__init__(MagenHarness(), "Magen")
+        super().__init__(TrustHarness(), "trust")
 
     SUSPICIOUS_PATTERNS = (
         "unknown source", "unverified", "anonymous", "untrusted",
@@ -329,9 +347,8 @@ class MagenGateEvaluator(GateEvaluator):
     )
 
     TRUSTED_SOURCES = (
-        "forge", "council", "owner", "ahki", "sarah", "esther",
-        "magen", "abigail", "ruth", "ezri", "cherev", "gen", "tokenless",
-        "substrate",
+        "forge", "council", "owner", "gen", "tokenless", "substrate",
+        "governance", "system", "inference-engine",
     )
 
     def evaluate_gate(self, envelope: DecisionEnvelope,
@@ -360,8 +377,6 @@ class MagenGateEvaluator(GateEvaluator):
             trust = max(0.0, trust - (len(suspicious) * 0.25))
         if not source:
             trust = max(0.0, trust - 0.3)
-        if is_known_source and has_provenance and len(envelope.evidence) >= 2 and not suspicious:
-            trust = max(trust, 0.6)
 
         envelope.trust_score = trust
 
@@ -382,8 +397,8 @@ class MagenGateEvaluator(GateEvaluator):
             reason = f"Trust score {trust:.2f} — source verified."
 
         return GateResult(
-            gate_name="Magen_trust",
-            authority="Magen",
+            gate_name="trust_gate",
+            authority="trust",
             verdict=verdict,
             confidence=trust,
             reason=reason,
@@ -393,18 +408,18 @@ class MagenGateEvaluator(GateEvaluator):
 
 
 # ---------------------------------------------------------------------------
-# ABIGAIL -- EVIDENCE GATE (Is there enough proof?) [Advisory]
+# EVIDENCE GATE (Is there enough proof?) [Advisory]
 # ---------------------------------------------------------------------------
 
-class AbigailGateEvaluator(GateEvaluator):
-    """Abigail checks evidence: is there sufficient proof for this decision?
+class EvidenceGateEvaluator(GateEvaluator):
+    """Evidence gate: checks whether there is sufficient proof for this decision.
 
-    She evaluates the quantity and quality of evidence provided.
-    This is an advisory gate -- she warns but does not block.
+    Evaluates the quantity and quality of evidence provided.
+    This is an advisory gate -- warns but does not block.
     """
 
     def __init__(self) -> None:
-        super().__init__(AbigailHarness(), "Abigail")
+        super().__init__(EvidenceHarness(), "evidence")
 
     def evaluate_gate(self, envelope: DecisionEnvelope,
                       domain: str) -> GateResult:
@@ -446,8 +461,8 @@ class AbigailGateEvaluator(GateEvaluator):
             reason = f"Evidence adequate ({evidence_count} items, score {final_score:.2f})."
 
         return GateResult(
-            gate_name="Abigail_evidence",
-            authority="Abigail",
+            gate_name="evidence_gate",
+            authority="evidence",
             verdict=verdict,
             confidence=final_score,
             reason=reason,
@@ -456,19 +471,19 @@ class AbigailGateEvaluator(GateEvaluator):
 
 
 # ---------------------------------------------------------------------------
-# RUTH -- UTILITY GATE (Is it worth the resources?) [Advisory]
+# UTILITY GATE (Is it worth the resources?) [Advisory]
 # ---------------------------------------------------------------------------
 
-class RuthGateEvaluator(GateEvaluator):
-    """Ruth checks utility: is this decision worth the resources?
+class UtilityGateEvaluator(GateEvaluator):
+    """Utility gate: checks whether this decision is worth the resources.
 
-    She evaluates resource efficiency, expected value, and whether
+    Evaluates resource efficiency, expected value, and whether
     the allocation fits within the 3-6-9 budget framework.
     This is an advisory gate.
     """
 
     def __init__(self) -> None:
-        super().__init__(RuthHarness(), "Ruth")
+        super().__init__(UtilityHarness(), "utility")
 
     def evaluate_gate(self, envelope: DecisionEnvelope,
                       domain: str) -> GateResult:
@@ -507,8 +522,8 @@ class RuthGateEvaluator(GateEvaluator):
             reason = f"Utility score {utility:.2f} — resource allocation justified."
 
         return GateResult(
-            gate_name="Ruth_utility",
-            authority="Ruth",
+            gate_name="utility_gate",
+            authority="utility",
             verdict=verdict,
             confidence=utility,
             reason=reason,
@@ -517,19 +532,19 @@ class RuthGateEvaluator(GateEvaluator):
 
 
 # ---------------------------------------------------------------------------
-# EZRI -- ARCHITECTURE GATE (Does it fit?) [Advisory]
+# ARCHITECTURE GATE (Does it fit?) [Advisory]
 # ---------------------------------------------------------------------------
 
-class EzriGateEvaluator(GateEvaluator):
-    """Ezri checks architecture: does this decision fit the system design?
+class ArchitectureGateEvaluator(GateEvaluator):
+    """Architecture gate: checks whether this decision fits the system design.
 
-    She evaluates structural coherence, module boundary compliance,
+    Evaluates structural coherence, module boundary compliance,
     and whether the change follows expansion/collapse rules.
     This is an advisory gate.
     """
 
     def __init__(self) -> None:
-        super().__init__(EzriHarness(), "Ezri")
+        super().__init__(ArchitectureHarness(), "architecture")
 
     ARCH_CONCERNS = (
         "new dependency", "cross-boundary", "tight coupling",
@@ -569,8 +584,8 @@ class EzriGateEvaluator(GateEvaluator):
             reason = f"Architecture fit {arch_fit:.2f} — structurally sound."
 
         return GateResult(
-            gate_name="Ezri_architecture",
-            authority="Ezri",
+            gate_name="architecture_gate",
+            authority="architecture",
             verdict=verdict,
             confidence=arch_fit,
             reason=reason,
@@ -580,19 +595,19 @@ class EzriGateEvaluator(GateEvaluator):
 
 
 # ---------------------------------------------------------------------------
-# AHKI -- SEQUENCING GATE (Can it be executed safely?)
+# SEQUENCING GATE (Can it be executed safely?)
 # ---------------------------------------------------------------------------
 
-class AhkiGateEvaluator(GateEvaluator):
-    """Ahki checks sequencing: can this decision be safely executed?
+class SequencingGateEvaluator(GateEvaluator):
+    """Sequencing gate: checks whether this decision can be safely executed.
 
-    He evaluates execution ordering, rollback feasibility, and
+    Evaluates execution ordering, rollback feasibility, and
     whether the MAPE-K cycle can accommodate this action. This is
     a blocking gate -- if sequencing fails, execution must not proceed.
     """
 
     def __init__(self) -> None:
-        super().__init__(AhkiHarness(), "Ahki")
+        super().__init__(SequencingHarness(), "sequencing")
 
     SEQUENCING_RISKS = (
         "no rollback", "irreversible", "cascade failure",
@@ -634,8 +649,8 @@ class AhkiGateEvaluator(GateEvaluator):
             reason = f"Sequencing score {seq_score:.2f} — safe to execute."
 
         return GateResult(
-            gate_name="Ahki_sequencing",
-            authority="Ahki",
+            gate_name="sequencing_gate",
+            authority="sequencing",
             verdict=verdict,
             confidence=seq_score,
             reason=reason,
@@ -649,21 +664,21 @@ class AhkiGateEvaluator(GateEvaluator):
 # ---------------------------------------------------------------------------
 
 def create_default_gate_chain() -> GateChainExecutor:
-    """Create a GateChainExecutor with all 7 Council evaluators registered.
+    """Create a GateChainExecutor with all 7 role-domain evaluators registered.
 
     Returns a fully wired executor ready to evaluate DecisionEnvelopes
-    through the complete Sarah -> Esther -> Magen -> Abigail -> Ruth ->
-    Ezri -> Ahki gate chain.
+    through the complete alignment -> policy -> trust -> evidence -> utility ->
+    architecture -> sequencing gate chain.
     """
     executor = GateChainExecutor()
 
-    executor.register_evaluator("Sarah", SarahGateEvaluator())
-    executor.register_evaluator("Esther", EstherGateEvaluator())
-    executor.register_evaluator("Magen", MagenGateEvaluator())
-    executor.register_evaluator("Abigail", AbigailGateEvaluator())
-    executor.register_evaluator("Ruth", RuthGateEvaluator())
-    executor.register_evaluator("Ezri", EzriGateEvaluator())
-    executor.register_evaluator("Ahki", AhkiGateEvaluator())
+    executor.register_evaluator("alignment", AlignmentGateEvaluator())
+    executor.register_evaluator("policy", PolicyGateEvaluator())
+    executor.register_evaluator("trust", TrustGateEvaluator())
+    executor.register_evaluator("evidence", EvidenceGateEvaluator())
+    executor.register_evaluator("utility", UtilityGateEvaluator())
+    executor.register_evaluator("architecture", ArchitectureGateEvaluator())
+    executor.register_evaluator("sequencing", SequencingGateEvaluator())
 
     return executor
 

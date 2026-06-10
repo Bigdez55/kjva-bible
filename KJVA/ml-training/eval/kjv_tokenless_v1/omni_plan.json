@@ -1,0 +1,849 @@
+{
+  "program_id": "kjv_omni_master_v1",
+  "registry_id": "tokenless_omni_training_registry_v1",
+  "stack_id": "kjv_tokenless_master_stack",
+  "active_export": "ml-training/exports/kjv_tokenless_v1_active",
+  "phases": [
+    {
+      "id": "prepare",
+      "gate": null,
+      "gate_pass": true,
+      "methods": [
+        {
+          "id": "corpus.kjv_apocrypha",
+          "name": "KJV + Apocrypha Corpus Builder",
+          "family": "data",
+          "status": "implemented",
+          "runnable_now": true,
+          "requires": [
+            "eng-kjv_vpl",
+            "eng-kjv_html",
+            "eng-kjv_browserBible"
+          ],
+          "produces": [
+            "corpus",
+            "verses_jsonl",
+            "retrieval_index",
+            "manifest"
+          ]
+        },
+        {
+          "id": "retrieval.kjv_exact",
+          "name": "KJV Exact Citation and Retrieval Gates",
+          "family": "retrieval",
+          "status": "implemented",
+          "runnable_now": true,
+          "requires": [
+            "verses_jsonl",
+            "retrieval_index"
+          ],
+          "produces": [
+            "retrieval_validation_report"
+          ]
+        }
+      ],
+      "blocked": []
+    },
+    {
+      "id": "train",
+      "gate": null,
+      "gate_pass": true,
+      "methods": [
+        {
+          "id": "tokenizer.sentencepiece_bpe",
+          "name": "SentencePiece Tokenizer Training",
+          "family": "tokenizer",
+          "status": "implemented",
+          "runnable_now": true,
+          "requires": [
+            "corpus"
+          ],
+          "produces": [
+            "sentencepiece_tokenizer"
+          ]
+        },
+        {
+          "id": "scratch.bpe_lm",
+          "name": "SentencePiece Byte-Fallback BPE Pretraining",
+          "family": "from_scratch",
+          "status": "implemented",
+          "runnable_now": true,
+          "requires": [
+            "corpus",
+            "sentencepiece_tokenizer"
+          ],
+          "produces": [
+            "base_checkpoint",
+            "tokenizer_model",
+            "validation_report"
+          ]
+        },
+        {
+          "id": "scratch.byte_lm",
+          "name": "Byte-Level Tokenless Pretraining",
+          "family": "from_scratch",
+          "status": "implemented",
+          "runnable_now": true,
+          "requires": [
+            "corpus"
+          ],
+          "produces": [
+            "base_checkpoint",
+            "byte_vocab",
+            "validation_report"
+          ]
+        }
+      ],
+      "blocked": []
+    },
+    {
+      "id": "evaluate",
+      "gate": null,
+      "gate_pass": true,
+      "methods": [
+        {
+          "id": "retrieval.kjv_exact",
+          "name": "KJV Exact Citation and Retrieval Gates",
+          "family": "retrieval",
+          "status": "implemented",
+          "runnable_now": true,
+          "requires": [
+            "verses_jsonl",
+            "retrieval_index"
+          ],
+          "produces": [
+            "retrieval_validation_report"
+          ]
+        }
+      ],
+      "blocked": []
+    },
+    {
+      "id": "export",
+      "gate": null,
+      "gate_pass": true,
+      "methods": [
+        {
+          "id": "export.bpe_bundle",
+          "name": "BPE Model Bundle Export",
+          "family": "export",
+          "status": "implemented",
+          "runnable_now": true,
+          "requires": [
+            "base_checkpoint",
+            "sentencepiece_tokenizer",
+            "corpus",
+            "validation_report"
+          ],
+          "produces": [
+            "portable_bundle"
+          ]
+        },
+        {
+          "id": "export.byte_bundle",
+          "name": "Byte Model Bundle Export",
+          "family": "export",
+          "status": "implemented",
+          "runnable_now": true,
+          "requires": [
+            "base_checkpoint",
+            "corpus",
+            "validation_report"
+          ],
+          "produces": [
+            "portable_bundle"
+          ]
+        }
+      ],
+      "blocked": []
+    },
+    {
+      "id": "attest",
+      "gate": null,
+      "gate_pass": true,
+      "methods": [
+        {
+          "id": "evaluation.attestation",
+          "name": "Checkpoint Attestation and Validation",
+          "family": "evaluation",
+          "status": "implemented",
+          "runnable_now": true,
+          "requires": [
+            "portable_bundle"
+          ],
+          "produces": [
+            "attestation_report"
+          ]
+        }
+      ],
+      "blocked": []
+    },
+    {
+      "id": "post_base_research",
+      "gate": "requires_published_base_checkpoint",
+      "gate_pass": false,
+      "methods": [
+        {
+          "id": "peft.lora",
+          "name": "LoRA",
+          "family": "peft_low_rank",
+          "status": "extension_spec",
+          "runnable_now": false,
+          "requires": [
+            "base_checkpoint"
+          ],
+          "produces": [
+            "adapter_checkpoint"
+          ]
+        },
+        {
+          "id": "peft.dora",
+          "name": "DoRA",
+          "family": "peft_low_rank",
+          "status": "extension_spec",
+          "runnable_now": false,
+          "requires": [
+            "base_checkpoint"
+          ],
+          "produces": [
+            "adapter_checkpoint"
+          ]
+        },
+        {
+          "id": "peft.qlora",
+          "name": "QLoRA",
+          "family": "peft_quantized",
+          "status": "extension_spec",
+          "runnable_now": false,
+          "requires": [
+            "base_checkpoint",
+            "quantization_backend"
+          ],
+          "produces": [
+            "adapter_checkpoint"
+          ]
+        },
+        {
+          "id": "peft.adalora",
+          "name": "AdaLoRA",
+          "family": "peft_low_rank",
+          "status": "extension_spec",
+          "runnable_now": false,
+          "requires": [
+            "base_checkpoint"
+          ],
+          "produces": [
+            "adapter_checkpoint"
+          ]
+        },
+        {
+          "id": "peft.vera",
+          "name": "VeRA",
+          "family": "peft_low_rank",
+          "status": "extension_spec",
+          "runnable_now": false,
+          "requires": [
+            "base_checkpoint"
+          ],
+          "produces": [
+            "adapter_checkpoint"
+          ]
+        },
+        {
+          "id": "peft.pissa",
+          "name": "PiSSA",
+          "family": "peft_low_rank",
+          "status": "extension_spec",
+          "runnable_now": false,
+          "requires": [
+            "base_checkpoint"
+          ],
+          "produces": [
+            "adapter_checkpoint"
+          ]
+        },
+        {
+          "id": "peft.rslora",
+          "name": "Rank-Stabilized LoRA",
+          "family": "peft_low_rank",
+          "status": "extension_spec",
+          "runnable_now": false,
+          "requires": [
+            "base_checkpoint"
+          ],
+          "produces": [
+            "adapter_checkpoint"
+          ]
+        },
+        {
+          "id": "peft.olora",
+          "name": "OLoRA",
+          "family": "peft_low_rank",
+          "status": "extension_spec",
+          "runnable_now": false,
+          "requires": [
+            "base_checkpoint"
+          ],
+          "produces": [
+            "adapter_checkpoint"
+          ]
+        },
+        {
+          "id": "peft.loha",
+          "name": "LoHa",
+          "family": "peft_low_rank",
+          "status": "extension_spec",
+          "runnable_now": false,
+          "requires": [
+            "base_checkpoint"
+          ],
+          "produces": [
+            "adapter_checkpoint"
+          ]
+        },
+        {
+          "id": "peft.lokr",
+          "name": "LoKr",
+          "family": "peft_low_rank",
+          "status": "extension_spec",
+          "runnable_now": false,
+          "requires": [
+            "base_checkpoint"
+          ],
+          "produces": [
+            "adapter_checkpoint"
+          ]
+        },
+        {
+          "id": "peft.rosa",
+          "name": "RoSA",
+          "family": "peft_sparse_low_rank",
+          "status": "extension_spec",
+          "runnable_now": false,
+          "requires": [
+            "base_checkpoint"
+          ],
+          "produces": [
+            "adapter_checkpoint"
+          ]
+        },
+        {
+          "id": "peft.houlsby_adapter",
+          "name": "Houlsby Adapter",
+          "family": "peft_additive",
+          "status": "extension_spec",
+          "runnable_now": false,
+          "requires": [
+            "base_checkpoint"
+          ],
+          "produces": [
+            "adapter_checkpoint"
+          ]
+        },
+        {
+          "id": "peft.pfeiffer_adapter",
+          "name": "Pfeiffer Adapter",
+          "family": "peft_additive",
+          "status": "extension_spec",
+          "runnable_now": false,
+          "requires": [
+            "base_checkpoint"
+          ],
+          "produces": [
+            "adapter_checkpoint"
+          ]
+        },
+        {
+          "id": "peft.prompt_tuning",
+          "name": "Prompt Tuning",
+          "family": "peft_prompt",
+          "status": "extension_spec",
+          "runnable_now": false,
+          "requires": [
+            "base_checkpoint"
+          ],
+          "produces": [
+            "soft_prompt_checkpoint"
+          ]
+        },
+        {
+          "id": "peft.prefix_tuning",
+          "name": "Prefix Tuning",
+          "family": "peft_prompt",
+          "status": "extension_spec",
+          "runnable_now": false,
+          "requires": [
+            "base_checkpoint"
+          ],
+          "produces": [
+            "prefix_checkpoint"
+          ]
+        },
+        {
+          "id": "peft.p_tuning",
+          "name": "P-Tuning v1/v2",
+          "family": "peft_prompt",
+          "status": "extension_spec",
+          "runnable_now": false,
+          "requires": [
+            "base_checkpoint"
+          ],
+          "produces": [
+            "prompt_encoder_checkpoint"
+          ]
+        },
+        {
+          "id": "peft.ia3",
+          "name": "IA3",
+          "family": "peft_activation_scaling",
+          "status": "extension_spec",
+          "runnable_now": false,
+          "requires": [
+            "base_checkpoint"
+          ],
+          "produces": [
+            "activation_scale_checkpoint"
+          ]
+        },
+        {
+          "id": "peft.bitfit",
+          "name": "BitFit",
+          "family": "peft_selective",
+          "status": "extension_spec",
+          "runnable_now": false,
+          "requires": [
+            "base_checkpoint"
+          ],
+          "produces": [
+            "bias_delta_checkpoint"
+          ]
+        },
+        {
+          "id": "peft.diffpruning",
+          "name": "DiffPruning",
+          "family": "peft_selective",
+          "status": "extension_spec",
+          "runnable_now": false,
+          "requires": [
+            "base_checkpoint"
+          ],
+          "produces": [
+            "sparse_delta_checkpoint"
+          ]
+        },
+        {
+          "id": "peft.fishmask",
+          "name": "FishMask",
+          "family": "peft_selective",
+          "status": "extension_spec",
+          "runnable_now": false,
+          "requires": [
+            "base_checkpoint"
+          ],
+          "produces": [
+            "masked_update_checkpoint"
+          ]
+        },
+        {
+          "id": "peft.far",
+          "name": "Freeze and Reconfigure",
+          "family": "peft_selective",
+          "status": "extension_spec",
+          "runnable_now": false,
+          "requires": [
+            "base_checkpoint"
+          ],
+          "produces": [
+            "reconfigured_checkpoint"
+          ]
+        },
+        {
+          "id": "peft.unipelt",
+          "name": "UniPELT",
+          "family": "peft_hybrid",
+          "status": "extension_spec",
+          "runnable_now": false,
+          "requires": [
+            "base_checkpoint"
+          ],
+          "produces": [
+            "hybrid_adapter_checkpoint"
+          ]
+        },
+        {
+          "id": "peft.mam_adapter",
+          "name": "MAM Adapter",
+          "family": "peft_hybrid",
+          "status": "extension_spec",
+          "runnable_now": false,
+          "requires": [
+            "base_checkpoint"
+          ],
+          "produces": [
+            "hybrid_adapter_checkpoint"
+          ]
+        },
+        {
+          "id": "peft.compacter",
+          "name": "Compacter",
+          "family": "peft_hybrid",
+          "status": "extension_spec",
+          "runnable_now": false,
+          "requires": [
+            "base_checkpoint"
+          ],
+          "produces": [
+            "compact_adapter_checkpoint"
+          ]
+        },
+        {
+          "id": "peft.xlora",
+          "name": "X-LoRA",
+          "family": "peft_hybrid",
+          "status": "extension_spec",
+          "runnable_now": false,
+          "requires": [
+            "base_checkpoint",
+            "adapter_pool"
+          ],
+          "produces": [
+            "mixture_adapter_router"
+          ]
+        },
+        {
+          "id": "alignment.sft",
+          "name": "Supervised Fine-Tuning",
+          "family": "alignment",
+          "status": "extension_spec",
+          "runnable_now": false,
+          "requires": [
+            "base_checkpoint",
+            "instruction_dataset"
+          ],
+          "produces": [
+            "aligned_checkpoint"
+          ]
+        },
+        {
+          "id": "alignment.dpo",
+          "name": "Direct Preference Optimization",
+          "family": "alignment",
+          "status": "extension_spec",
+          "runnable_now": false,
+          "requires": [
+            "base_checkpoint",
+            "preference_dataset"
+          ],
+          "produces": [
+            "aligned_checkpoint"
+          ]
+        },
+        {
+          "id": "alignment.ipo",
+          "name": "Identity Preference Optimization",
+          "family": "alignment",
+          "status": "extension_spec",
+          "runnable_now": false,
+          "requires": [
+            "base_checkpoint",
+            "preference_dataset"
+          ],
+          "produces": [
+            "aligned_checkpoint"
+          ]
+        },
+        {
+          "id": "alignment.kto",
+          "name": "Kahneman-Tversky Optimization",
+          "family": "alignment",
+          "status": "extension_spec",
+          "runnable_now": false,
+          "requires": [
+            "base_checkpoint",
+            "binary_preference_dataset"
+          ],
+          "produces": [
+            "aligned_checkpoint"
+          ]
+        },
+        {
+          "id": "alignment.orpo",
+          "name": "Odds Ratio Preference Optimization",
+          "family": "alignment",
+          "status": "extension_spec",
+          "runnable_now": false,
+          "requires": [
+            "base_checkpoint",
+            "preference_dataset"
+          ],
+          "produces": [
+            "aligned_checkpoint"
+          ]
+        },
+        {
+          "id": "alignment.ppo_rlhf",
+          "name": "PPO RLHF",
+          "family": "alignment_rl",
+          "status": "extension_spec",
+          "runnable_now": false,
+          "requires": [
+            "base_checkpoint",
+            "reward_model"
+          ],
+          "produces": [
+            "aligned_checkpoint"
+          ]
+        },
+        {
+          "id": "alignment.grpo",
+          "name": "Group Relative Policy Optimization",
+          "family": "alignment_rl",
+          "status": "extension_spec",
+          "runnable_now": false,
+          "requires": [
+            "base_checkpoint",
+            "reward_signal"
+          ],
+          "produces": [
+            "aligned_checkpoint"
+          ]
+        },
+        {
+          "id": "distill.logit",
+          "name": "Logit Distillation",
+          "family": "distillation",
+          "status": "extension_spec",
+          "runnable_now": false,
+          "requires": [
+            "teacher_model",
+            "student_model",
+            "distillation_dataset"
+          ],
+          "produces": [
+            "student_checkpoint"
+          ]
+        },
+        {
+          "id": "distill.sequence",
+          "name": "Sequence Distillation",
+          "family": "distillation",
+          "status": "extension_spec",
+          "runnable_now": false,
+          "requires": [
+            "teacher_model",
+            "student_model",
+            "synthetic_dataset"
+          ],
+          "produces": [
+            "student_checkpoint"
+          ]
+        },
+        {
+          "id": "retrieval.embedding",
+          "name": "Embedding Retriever Training",
+          "family": "retrieval",
+          "status": "extension_spec",
+          "runnable_now": false,
+          "requires": [
+            "query_document_pairs"
+          ],
+          "produces": [
+            "embedding_model"
+          ]
+        },
+        {
+          "id": "retrieval.reranker",
+          "name": "Reranker Training",
+          "family": "retrieval",
+          "status": "extension_spec",
+          "runnable_now": false,
+          "requires": [
+            "query_document_labels"
+          ],
+          "produces": [
+            "reranker_model"
+          ]
+        }
+      ],
+      "blocked": [
+        {
+          "method": "peft.lora",
+          "reason": "requires_published_base_checkpoint"
+        },
+        {
+          "method": "peft.dora",
+          "reason": "requires_published_base_checkpoint"
+        },
+        {
+          "method": "peft.qlora",
+          "reason": "requires_published_base_checkpoint"
+        },
+        {
+          "method": "peft.adalora",
+          "reason": "requires_published_base_checkpoint"
+        },
+        {
+          "method": "peft.vera",
+          "reason": "requires_published_base_checkpoint"
+        },
+        {
+          "method": "peft.pissa",
+          "reason": "requires_published_base_checkpoint"
+        },
+        {
+          "method": "peft.rslora",
+          "reason": "requires_published_base_checkpoint"
+        },
+        {
+          "method": "peft.olora",
+          "reason": "requires_published_base_checkpoint"
+        },
+        {
+          "method": "peft.loha",
+          "reason": "requires_published_base_checkpoint"
+        },
+        {
+          "method": "peft.lokr",
+          "reason": "requires_published_base_checkpoint"
+        },
+        {
+          "method": "peft.rosa",
+          "reason": "requires_published_base_checkpoint"
+        },
+        {
+          "method": "peft.houlsby_adapter",
+          "reason": "requires_published_base_checkpoint"
+        },
+        {
+          "method": "peft.pfeiffer_adapter",
+          "reason": "requires_published_base_checkpoint"
+        },
+        {
+          "method": "peft.prompt_tuning",
+          "reason": "requires_published_base_checkpoint"
+        },
+        {
+          "method": "peft.prefix_tuning",
+          "reason": "requires_published_base_checkpoint"
+        },
+        {
+          "method": "peft.p_tuning",
+          "reason": "requires_published_base_checkpoint"
+        },
+        {
+          "method": "peft.ia3",
+          "reason": "requires_published_base_checkpoint"
+        },
+        {
+          "method": "peft.bitfit",
+          "reason": "requires_published_base_checkpoint"
+        },
+        {
+          "method": "peft.diffpruning",
+          "reason": "requires_published_base_checkpoint"
+        },
+        {
+          "method": "peft.fishmask",
+          "reason": "requires_published_base_checkpoint"
+        },
+        {
+          "method": "peft.far",
+          "reason": "requires_published_base_checkpoint"
+        },
+        {
+          "method": "peft.unipelt",
+          "reason": "requires_published_base_checkpoint"
+        },
+        {
+          "method": "peft.mam_adapter",
+          "reason": "requires_published_base_checkpoint"
+        },
+        {
+          "method": "peft.compacter",
+          "reason": "requires_published_base_checkpoint"
+        },
+        {
+          "method": "peft.xlora",
+          "reason": "requires_published_base_checkpoint"
+        },
+        {
+          "method": "alignment.sft",
+          "reason": "requires_published_base_checkpoint"
+        },
+        {
+          "method": "alignment.dpo",
+          "reason": "requires_published_base_checkpoint"
+        },
+        {
+          "method": "alignment.ipo",
+          "reason": "requires_published_base_checkpoint"
+        },
+        {
+          "method": "alignment.kto",
+          "reason": "requires_published_base_checkpoint"
+        },
+        {
+          "method": "alignment.orpo",
+          "reason": "requires_published_base_checkpoint"
+        },
+        {
+          "method": "alignment.ppo_rlhf",
+          "reason": "requires_published_base_checkpoint"
+        },
+        {
+          "method": "alignment.grpo",
+          "reason": "requires_published_base_checkpoint"
+        },
+        {
+          "method": "distill.logit",
+          "reason": "requires_published_base_checkpoint"
+        },
+        {
+          "method": "distill.sequence",
+          "reason": "requires_published_base_checkpoint"
+        },
+        {
+          "method": "retrieval.embedding",
+          "reason": "requires_published_base_checkpoint"
+        },
+        {
+          "method": "retrieval.reranker",
+          "reason": "requires_published_base_checkpoint"
+        }
+      ]
+    }
+  ],
+  "final_artifacts": [
+    "activation_scale_checkpoint",
+    "adapter_checkpoint",
+    "aligned_checkpoint",
+    "attestation_report",
+    "base_checkpoint",
+    "bias_delta_checkpoint",
+    "byte_vocab",
+    "compact_adapter_checkpoint",
+    "corpus",
+    "embedding_model",
+    "eng-kjv_browserBible",
+    "eng-kjv_html",
+    "eng-kjv_vpl",
+    "hybrid_adapter_checkpoint",
+    "manifest",
+    "masked_update_checkpoint",
+    "mixture_adapter_router",
+    "portable_bundle",
+    "prefix_checkpoint",
+    "prompt_encoder_checkpoint",
+    "reconfigured_checkpoint",
+    "reranker_model",
+    "retrieval_index",
+    "retrieval_validation_report",
+    "sentencepiece_tokenizer",
+    "soft_prompt_checkpoint",
+    "sparse_delta_checkpoint",
+    "student_checkpoint",
+    "tokenizer_model",
+    "validation_report",
+    "verses_jsonl"
+  ]
+}

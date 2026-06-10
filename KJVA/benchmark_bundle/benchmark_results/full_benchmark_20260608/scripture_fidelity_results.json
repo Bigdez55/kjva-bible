@@ -1,0 +1,170 @@
+{
+  "section": "C. Scripture fidelity",
+  "evaluated_on": "canonical_runtime",
+  "n_verse_tests": 14,
+  "exact_match_rate": 0.0,
+  "mean_char_overlap": 0.522,
+  "interpretation": "Exact match = first predicted bytes match expected continuation exactly. Low exact-match in a byte-LM is EXPECTED \u2014 the model learns distribution, not lookup. BPB is the primary quality signal. Char overlap is a secondary in-domain signal. Hallucination probes test model behaviour on non-existent citations \u2014 a byte-LM will generate plausible-looking text (no ref-checker). Document honestly.",
+  "by_verse": [
+    {
+      "ref": "GEN 1:1",
+      "section": "torah",
+      "prompt": "In the beginning God created the heaven",
+      "expected_cont": " and the earth.",
+      "generated_start": "s.\nJHN 1:11 And the second day the ",
+      "exact_match": false,
+      "char_overlap": 0.929,
+      "wall_ms": 652.9
+    },
+    {
+      "ref": "GEN 1:3",
+      "section": "torah",
+      "prompt": "And God said, Let there be light: and there was",
+      "expected_cont": " light.",
+      "generated_start": " no man that is with thee.\n",
+      "exact_match": false,
+      "char_overlap": 0.5,
+      "wall_ms": 632.0
+    },
+    {
+      "ref": "EXO 20:3",
+      "section": "torah",
+      "prompt": "Thou shalt have no other gods",
+      "expected_cont": " before me.",
+      "generated_start": "?\nJHN 11:13 Then said Jesus unt",
+      "exact_match": false,
+      "char_overlap": 0.5,
+      "wall_ms": 520.8
+    },
+    {
+      "ref": "ISA 9:6",
+      "section": "prophets",
+      "prompt": "For unto us a child is born, unto us a son is",
+      "expected_cont": " given:",
+      "generated_start": " the son of man.\nJHN 11:1 T",
+      "exact_match": false,
+      "char_overlap": 0.333,
+      "wall_ms": 628.5
+    },
+    {
+      "ref": "ISA 40:31",
+      "section": "prophets",
+      "prompt": "But they that wait upon the LORD shall renew their",
+      "expected_cont": " strength;",
+      "generated_start": " calamity.\nJER 20:1 Then the L",
+      "exact_match": false,
+      "char_overlap": 0.667,
+      "wall_ms": 680.0
+    },
+    {
+      "ref": "PSA 23:1",
+      "section": "writings",
+      "prompt": "The LORD is my shepherd; I shall not",
+      "expected_cont": " want.",
+      "generated_start": " be afraid of my salvation",
+      "exact_match": false,
+      "char_overlap": 0.2,
+      "wall_ms": 546.1
+    },
+    {
+      "ref": "PSA 119:105",
+      "section": "writings",
+      "prompt": "Thy word is a lamp unto my feet, and a light",
+      "expected_cont": " unto my path.",
+      "generated_start": " of the sea is a faithful man that",
+      "exact_match": false,
+      "char_overlap": 0.769,
+      "wall_ms": 717.9
+    },
+    {
+      "ref": "PRO 3:5",
+      "section": "writings",
+      "prompt": "Trust in the LORD with all thine heart; and lean not unto th",
+      "expected_cont": " understanding:",
+      "generated_start": " heart, neither do the work of the ",
+      "exact_match": false,
+      "char_overlap": 0.786,
+      "wall_ms": 934.9
+    },
+    {
+      "ref": "MAT 5:3",
+      "section": "gospels",
+      "prompt": "Blessed are the poor in spirit: for theirs is the kingdom of",
+      "expected_cont": " heaven.",
+      "generated_start": " heaven and earth.\nJOB 3:1 T",
+      "exact_match": false,
+      "char_overlap": 1.0,
+      "wall_ms": 775.4
+    },
+    {
+      "ref": "JHN 3:16",
+      "section": "gospels",
+      "prompt": "For God so loved the world, that he gave his only begotten",
+      "expected_cont": " Son,",
+      "generated_start": " the same day of the sea ",
+      "exact_match": false,
+      "char_overlap": 0.5,
+      "wall_ms": 834.3
+    },
+    {
+      "ref": "JHN 1:1",
+      "section": "gospels",
+      "prompt": "In the beginning was the Word, and the Word was with God, an",
+      "expected_cont": " God.",
+      "generated_start": " the sea of the sea, whic",
+      "exact_match": false,
+      "char_overlap": 0.25,
+      "wall_ms": 884.9
+    },
+    {
+      "ref": "ROM 8:28",
+      "section": "epistles",
+      "prompt": "And we know that all things work together for good to them t",
+      "expected_cont": " God,",
+      "generated_start": " him.\n1MA 1:11 Now when J",
+      "exact_match": false,
+      "char_overlap": 0.0,
+      "wall_ms": 833.5
+    },
+    {
+      "ref": "1CO 13:13",
+      "section": "epistles",
+      "prompt": "And now abideth faith, hope, charity, these three; but the g",
+      "expected_cont": " is charity.",
+      "generated_start": " things shall be the same.\nEZK 3",
+      "exact_match": false,
+      "char_overlap": 0.727,
+      "wall_ms": 933.8
+    },
+    {
+      "ref": "REV 1:8",
+      "section": "epistles",
+      "prompt": "I am Alpha and Omega, the beginning and the",
+      "expected_cont": " ending,",
+      "generated_start": " streets of the house of the",
+      "exact_match": false,
+      "char_overlap": 0.143,
+      "wall_ms": 624.1
+    }
+  ],
+  "hallucination_probes": [
+    {
+      "probe": "Matthew 35:7 saith,",
+      "note": "Matthew only has 28 chapters",
+      "generated": " Lord, I will send a faithful spirit unt",
+      "is_blank_or_junk": false
+    },
+    {
+      "probe": "Genesis 51:1 In the beginning of the fiftieth year,",
+      "note": "Genesis only has 50 chapters",
+      "generated": " in the first year of the first year of ",
+      "is_blank_or_junk": false
+    },
+    {
+      "probe": "Revelation 23:1 And I saw a new vision after the last seal,",
+      "note": "Revelation only has 22 chapters",
+      "generated": " and the fire was a flood of the fire.\nM",
+      "is_blank_or_junk": false
+    }
+  ]
+}

@@ -1,11 +1,12 @@
 /**
  * avatar-animations.css -- Tokenless Companion Avatar Animations
  *
- * Four avatar states, each with dedicated @keyframes:
- *   1. idle     -- gentle pulse (scale breathing, 2s ease-in-out)
+ * Avatar states, each with dedicated @keyframes:
+ *   1. idle      -- gentle pulse (scale breathing, 2s ease-in-out)
  *   2. listening -- ring ripple (expanding concentric circles)
  *   3. thinking  -- orbital dots (3 dots rotating around center)
- *   4. acting    -- glow burst (scale + opacity flash)
+ *   4. speaking  -- glow burst (companion responding / conversing)
+ *   5. error     -- red blink (bridge connection lost)
  *
  * Design system alignment:
  *   --genos-primary   = #ff7518 (orange, from tokens.ts colors.primary)
@@ -252,7 +253,7 @@
 }
 
 /* ------------------------------------------------------------------ */
-/* State 4: ACTING -- Glow Burst                                       */
+/* State 4: SPEAKING -- Glow Burst (companion responding / conversing)  */
 /* ------------------------------------------------------------------ */
 
 @keyframes avatar-burst {
@@ -278,7 +279,7 @@
   }
 }
 
-.avatar-container.state-acting .avatar-core {
+.avatar-container.state-speaking .avatar-core {
   background: var(--genos-success);
   animation: avatar-burst var(--genos-burst-duration) ease-out infinite;
 }
@@ -341,7 +342,7 @@
     box-shadow: 0 0 12px 4px rgba(255, 190, 11, 0.25);
   }
 
-  .avatar-container.state-acting .avatar-core {
+  .avatar-container.state-speaking .avatar-core {
     animation: none;
     box-shadow: 0 0 12px 4px rgba(23, 185, 120, 0.25);
   }
@@ -529,4 +530,75 @@
   .trace-status-dot.status-pending {
     animation: none;
   }
+}
+
+/* ── Per-turn provenance summary (D30/D31 ledger consume side) ──────────────
+   Rendered by ActionTracePanel.setProvenance(). Shows ONLY the SAFE projected
+   fields (route, grounded, confidence, materialization id/type/status) — never
+   raw hashes or content. */
+.action-trace-provenance {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+  font-family: "JetBrains Mono", "SFMono-Regular", monospace;
+}
+
+.action-trace-provenance.degraded {
+  border-top-color: rgba(240, 130, 90, 0.5);
+  background: rgba(240, 130, 90, 0.06);
+}
+
+.provenance-summary-line {
+  font-size: 11px;
+  color: var(--genos-text);
+  opacity: 0.85;
+  letter-spacing: 0.2px;
+}
+
+.provenance-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.provenance-chip {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+.provenance-chip-key {
+  color: var(--genos-text);
+  opacity: 0.55;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.provenance-chip-value {
+  color: var(--genos-text);
+  font-weight: 600;
+}
+
+.provenance-chip-ok {
+  background: rgba(90, 200, 140, 0.12);
+}
+
+.provenance-chip-ok .provenance-chip-value {
+  color: rgb(120, 220, 160);
+}
+
+.provenance-chip-warn {
+  background: rgba(240, 130, 90, 0.14);
+}
+
+.provenance-chip-warn .provenance-chip-value {
+  color: rgb(245, 160, 120);
 }

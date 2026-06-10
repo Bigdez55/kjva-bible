@@ -1,0 +1,35 @@
+{
+  "event": "checkpoint_metadata",
+  "framework": "pytorch",
+  "run_id": "byte_clean_v2",
+  "step": 2250,
+  "loss": 0.7116646766662598,
+  "last_eval": {
+    "event": "eval",
+    "step": 2200,
+    "val_loss": 1.041225826740265,
+    "val_ppl": 2.8326872707537625
+  },
+  "validation_perplexity": 2.8326872707537625,
+  "checkpoint": "/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/models v7/training/runs/byte_clean_v2/ckpt_step_002250.safetensors",
+  "checkpoint_sha256": "53c93ded52a40666227d3ca997d1a5f85dacb5dc95e207b392eb41f164ab2fc3",
+  "model_config": {
+    "vocab_size": 259,
+    "n_layers": 8,
+    "n_heads": 6,
+    "d_model": 384,
+    "d_ffn": 1536,
+    "max_seq_len": 1024,
+    "rope_base": 10000.0,
+    "tie_embeddings": true,
+    "rms_eps": 1e-05,
+    "init_std": 0.02
+  },
+  "tokenization": "utf8_byte",
+  "vocab_size": 259,
+  "corpus": "corpus/eng_kjv_clean_v1/corpus.txt",
+  "corpus_sha256": "9991686c21125e976c8645b31ea2027c12725ba228195b8fbd2467ec44d8112f",
+  "byte_vocab_sha256": "d53c4c8606a7435f211ed192cce12d639c1629df4dd0502a313090f6686900fe",
+  "random_initialization": true,
+  "pretrained_loaded": false
+}

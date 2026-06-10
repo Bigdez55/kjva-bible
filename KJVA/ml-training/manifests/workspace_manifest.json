@@ -1,0 +1,106 @@
+{
+  "workspace": "ml-training",
+  "manifest_version": "2026-05-25",
+  "tokenless_home": "ml-training",
+  "source_code_home": "ml-training/scripts",
+  "current_run_group": "kjv_byte_v1_20m",
+  "current_corpus_id": "eng_kjv_apocrypha_v1",
+  "canonical_commands": {
+    "pretrain": [
+      "python3", "ml-training/scripts/train_byte.py",
+      "--run-id", "kjv_byte_v1_20m",
+      "--iters", "5000"
+    ],
+    "pretrain_resume": [
+      "python3", "ml-training/scripts/train_byte.py",
+      "--run-id", "kjv_byte_v1_20m",
+      "--resume"
+    ],
+    "peft_train": [
+      "python3", "ml-training/scripts/train_peft.py",
+      "--method", "<method>",
+      "--base-checkpoint", "../kjva-bible/KJVA/training/weights.safetensors",
+      "--corpus", "ml-training/corpus/eng_kjv_apocrypha_v1/corpus.txt"
+    ],
+    "peft_omni": [
+      "python3", "ml-training/scripts/train_peft.py",
+      "--method", "omni",
+      "--base-checkpoint", "../kjva-bible/KJVA/training/weights.safetensors",
+      "--corpus", "ml-training/corpus/eng_kjv_apocrypha_v1/corpus.txt"
+    ],
+    "benchmark": [
+      "python3", "ml-training/scripts/benchmark_byte.py",
+      "--run-dir", "ml-training/runs/kjv_byte_v1_20m"
+    ],
+    "validate_adapter": [
+      "python3", "ml-training/scripts/validate_adapter.py",
+      "check", "<adapter_dir>"
+    ],
+    "promote_base": [
+      "python3", "ml-training/scripts/promote_base_model.py",
+      "--run-dir", "ml-training/runs/kjv_byte_v1_20m",
+      "--name", "<MODEL_NAME>"
+    ]
+  },
+  "base_models": {
+    "KJVA": {
+      "path": "../kjva-bible/KJVA/training/weights.safetensors",
+      "config": "../kjva-bible/KJVA/training/model_config.json",
+      "vocab": "../kjva-bible/KJVA/training/byte_vocab.json",
+      "note": "KJVA directory moved to kjva-bible repo on 2026-05-25",
+      "step": 5000,
+      "params": 18980352,
+      "val_ppl": 3.21,
+      "corpus": "eng_kjv_apocrypha_v1",
+      "benchmark": "ml-training/eval/kjv_byte_v1_20m/benchmark_final.json"
+    }
+  },
+  "tracked_inputs": {
+    "note": "Corpus source dirs moved to kjva-bible repo on 2026-05-25",
+    "primary_corpus_txt": "../kjva-bible/data/corpus/eng-kjv_vpl/eng-kjv_vpl.txt",
+    "primary_corpus_xml": "../kjva-bible/data/corpus/eng-kjv_vpl/eng-kjv_vpl.xml",
+    "metadata_html": "../kjva-bible/data/corpus/eng-kjv_html",
+    "metadata_browser_bible": "../kjva-bible/data/corpus/eng-kjv_browserBible"
+  },
+  "tracked_outputs": {
+    "corpus_cache": "ml-training/corpus/eng_kjv_apocrypha_v1/tokens_byte_uint16.npy",
+    "corpus_text": "ml-training/corpus/eng_kjv_apocrypha_v1/corpus.txt",
+    "program_corpus": "ml-training/corpus/programs/omni_training_programs.jsonl",
+    "benchmark_final": "ml-training/eval/kjv_byte_v1_20m/benchmark_final.json",
+    "run_log": "ml-training/runs/kjv_byte_v1_20m/train_log.jsonl",
+    "peft_staging": "ml-training/adapters/staging",
+    "peft_gated": "ml-training/adapters/gated",
+    "gguf_exports": "ml-training/gguf"
+  },
+  "peft_framework": {
+    "home": "ml-training/peft",
+    "entry_point": "ml-training/scripts/train_peft.py",
+    "registry": "ml-training/programs/omni_training_registry.json",
+    "adapter_governance": "ml-training/scripts/validate_adapter.py",
+    "gguf_conversion": "ml-training/scripts/convert_to_gguf.py",
+    "benchmark_inline": "ml-training/scripts/ckpt_bench.py",
+    "benchmark_full": "ml-training/scripts/benchmark_byte.py",
+    "method_count": 37,
+    "registry_total": 44,
+    "registry_implemented": 42,
+    "registry_planned": 2,
+    "implemented_families": [
+      "low_rank", "additive", "prompt", "activation",
+      "selective", "hybrid", "structural", "alignment"
+    ],
+    "omni_peft_os_modules": [
+      "profiler", "fingerprint", "compiler", "tournament",
+      "registry", "conflict", "router", "deployment", "model"
+    ]
+  },
+  "policy": {
+    "bible_tokenless_poc": "DO_NOT_MODIFY — reference blueprint only",
+    "old_checkpoint_reuse": false,
+    "automatic_watcher": false,
+    "exact_citations_use_generation": false,
+    "do_not_import_global_claude_codex_state": true,
+    "peft_staging_requires_validation_before_gated": true,
+    "adapter_genome_required_with_weights": true,
+    "corpus_source_files": "MOVED TO kjva-bible — ../kjva-bible/data/corpus/"
+  }
+}

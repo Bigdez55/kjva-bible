@@ -1,0 +1,320 @@
+{
+  "spec": "XMIND_BENCHMARK_AND_EVAL_SUITE_2026-06-04.md",
+  "runner": "run_xmind_benchmark.py",
+  "honest_scope_note": "This run executes the SUBSET of the spec that can run against the on-disk GGUF + dylib without external eval sets, frontier API, NLI judge, R1_PER pipeline, or alternate-quantization variants. Skipped sections are listed in results['skipped'] with reasons. No claim about overall benchmark completeness is being made.",
+  "provenance": {
+    "run_id": "2026-06-05T011943Z",
+    "timestamp_utc": "2026-06-05T01:19:43Z",
+    "model_path": "models v7/training/gguf/clean_base_soup_v1.gguf",
+    "model_sha256": "e59c69091a1772a347098efd68d7494419d5e82a75a3e064d95370d1d3f8fb93",
+    "model_size_bytes": 11046112,
+    "dylib_path": "models v7/ai/xmind/build/libxmind-core.dylib",
+    "dylib_sha256": "9b1eb4013aad28415a27c86bb62b68eecdec1145450bb30d15ee2bd0986c84be",
+    "host_platform": "darwin",
+    "python_version": "3.13.7"
+  },
+  "engine_version": "xmind-easy/1.0 consumer-build",
+  "engine_init_ms": 312.1592500247061,
+  "sections_executed": {
+    "determinism": {
+      "section": "\u00a73.5 Determinism (T=0)",
+      "n_runs": 5,
+      "prompt": "In the beginning",
+      "max_tokens": 32,
+      "all_byte_identical": true,
+      "distinct_outputs_count": 1,
+      "outputs_preview": [
+        " of the sea shall be for the san",
+        " of the sea shall be for the san",
+        " of the sea shall be for the san"
+      ],
+      "wall_ms": {
+        "mean": 210.70630819303915,
+        "stdev": 4.049703853662256
+      }
+    },
+    "byte_perturbation": {
+      "section": "\u00a73.7 Byte-level perturbation robustness",
+      "n_variants": 8,
+      "distinct_output_hashes": 6,
+      "interpretation": "Lower distinct count = more robust (semantically-similar inputs \u2192 similar outputs). Higher = more brittle. For a healthy byte-LM we expect distinct < n_variants but > 1.",
+      "by_variant": {
+        "clean": {
+          "prompt_len_bytes": 53,
+          "output_preview": ".\nJOB 11:11 And the LORD",
+          "output_sha256": "56b7dc79cb654bd1",
+          "wall_ms": 344.86979100620374
+        },
+        "lowercase": {
+          "prompt_len_bytes": 53,
+          "output_preview": ".\nPSA 105:1 The LORD sha",
+          "output_sha256": "b6e8f2ceba5e3d49",
+          "wall_ms": 334.3023330089636
+        },
+        "uppercase": {
+          "prompt_len_bytes": 53,
+          "output_preview": " 2:2 The LORD said unto ",
+          "output_sha256": "ff598d32ffdfe72c",
+          "wall_ms": 332.3818749631755
+        },
+        "extra_spaces": {
+          "prompt_len_bytes": 62,
+          "output_preview": ".\nJOB 11:1 And the LORD ",
+          "output_sha256": "803bba671c09ff5d",
+          "wall_ms": 370.4579999903217
+        },
+        "typo_swap": {
+          "prompt_len_bytes": 53,
+          "output_preview": ".\nJOB 11:10 And the LORD",
+          "output_sha256": "1f4d0b9d3cb69ea8",
+          "wall_ms": 336.632875027135
+        },
+        "leading_ws": {
+          "prompt_len_bytes": 56,
+          "output_preview": ".\nJOB 11:1 And the LORD ",
+          "output_sha256": "803bba671c09ff5d",
+          "wall_ms": 349.03208300238475
+        },
+        "trailing_ws": {
+          "prompt_len_bytes": 56,
+          "output_preview": "will send the heavens an",
+          "output_sha256": "7844723368b18276",
+          "wall_ms": 360.04962504375726
+        },
+        "punct_dropped": {
+          "prompt_len_bytes": 53,
+          "output_preview": ".\nJOB 11:11 And the LORD",
+          "output_sha256": "56b7dc79cb654bd1",
+          "wall_ms": 334.76037497166544
+        }
+      }
+    },
+    "throughput": {
+      "section": "\u00a74.1 Decode throughput (tokens/sec)",
+      "by_max_tokens": [
+        {
+          "max_tokens_requested": 16,
+          "n_runs": 5,
+          "tok_per_s_mean": 63.02962486735668,
+          "tok_per_s_stdev": 1.1114479174519947,
+          "tok_per_s_min": 61.39191785202845,
+          "tok_per_s_max": 64.12986297589471,
+          "samples": [
+            {
+              "chars_emitted": 16,
+              "wall_s": 0.24949374998686835,
+              "tok_per_s": 64.12986297589471
+            },
+            {
+              "chars_emitted": 16,
+              "wall_s": 0.25176025001564994,
+              "tok_per_s": 63.55252665583787
+            },
+            {
+              "chars_emitted": 16,
+              "wall_s": 0.2606206249911338,
+              "tok_per_s": 61.39191785202845
+            },
+            {
+              "chars_emitted": 16,
+              "wall_s": 0.25133737502619624,
+              "tok_per_s": 63.6594537455178
+            },
+            {
+              "chars_emitted": 16,
+              "wall_s": 0.2563512499909848,
+              "tok_per_s": 62.414363107504556
+            }
+          ]
+        },
+        {
+          "max_tokens_requested": 32,
+          "n_runs": 5,
+          "tok_per_s_mean": 98.14041221179329,
+          "tok_per_s_stdev": 1.6004378839994922,
+          "tok_per_s_min": 96.61355656474204,
+          "tok_per_s_max": 100.09562511211195,
+          "samples": [
+            {
+              "chars_emitted": 32,
+              "wall_s": 0.3284526250208728,
+              "tok_per_s": 97.42653144564284
+            },
+            {
+              "chars_emitted": 32,
+              "wall_s": 0.33005833299830556,
+              "tok_per_s": 96.95255898951741
+            },
+            {
+              "chars_emitted": 32,
+              "wall_s": 0.33121645799838006,
+              "tok_per_s": 96.61355656474204
+            },
+            {
+              "chars_emitted": 32,
+              "wall_s": 0.3212406669626944,
+              "tok_per_s": 99.61378894695221
+            },
+            {
+              "chars_emitted": 32,
+              "wall_s": 0.3196942919748835,
+              "tok_per_s": 100.09562511211195
+            }
+          ]
+        },
+        {
+          "max_tokens_requested": 64,
+          "n_runs": 5,
+          "tok_per_s_mean": 138.89618510530906,
+          "tok_per_s_stdev": 1.8658692207649783,
+          "tok_per_s_min": 137.05484845343523,
+          "tok_per_s_max": 141.5463253126905,
+          "samples": [
+            {
+              "chars_emitted": 64,
+              "wall_s": 0.460446042008698,
+              "tok_per_s": 138.99565673493404
+            },
+            {
+              "chars_emitted": 64,
+              "wall_s": 0.46647529100300744,
+              "tok_per_s": 137.19912122759655
+            },
+            {
+              "chars_emitted": 64,
+              "wall_s": 0.4669663329841569,
+              "tok_per_s": 137.05484845343523
+            },
+            {
+              "chars_emitted": 64,
+              "wall_s": 0.4581738340202719,
+              "tok_per_s": 139.68497379788894
+            },
+            {
+              "chars_emitted": 64,
+              "wall_s": 0.45214879198465496,
+              "tok_per_s": 141.5463253126905
+            }
+          ]
+        },
+        {
+          "max_tokens_requested": 128,
+          "n_runs": 5,
+          "tok_per_s_mean": 172.1071636913005,
+          "tok_per_s_stdev": 1.3063067544185458,
+          "tok_per_s_min": 170.03653958922786,
+          "tok_per_s_max": 173.6252113207682,
+          "samples": [
+            {
+              "chars_emitted": 128,
+              "wall_s": 0.7438161660102196,
+              "tok_per_s": 172.08553114216846
+            },
+            {
+              "chars_emitted": 128,
+              "wall_s": 0.7416880410164595,
+              "tok_per_s": 172.5792960401251
+            },
+            {
+              "chars_emitted": 128,
+              "wall_s": 0.7432818339439109,
+              "tok_per_s": 172.209240364213
+            },
+            {
+              "chars_emitted": 128,
+              "wall_s": 0.7527793750050478,
+              "tok_per_s": 170.03653958922786
+            },
+            {
+              "chars_emitted": 128,
+              "wall_s": 0.7372201250400394,
+              "tok_per_s": 173.6252113207682
+            }
+          ]
+        }
+      ]
+    },
+    "ttft": {
+      "section": "\u00a74.2 Time-to-first-token (TTFT)",
+      "by_prompt_length": [
+        {
+          "prompt_label": "short_8b",
+          "prompt_len_bytes": 9,
+          "ttft_ms_mean": 42.03468341147527,
+          "ttft_ms_stdev": 0.2752159964088147,
+          "ttft_ms_p50": 42.1718749566935,
+          "ttft_ms_min": 41.70416702982038,
+          "ttft_ms_max": 42.31987503590062
+        },
+        {
+          "prompt_label": "med_64b",
+          "prompt_len_bytes": 63,
+          "ttft_ms_mean": 271.9473330071196,
+          "ttft_ms_stdev": 2.8041788836407227,
+          "ttft_ms_p50": 271.0392500157468,
+          "ttft_ms_min": 269.9450409854762,
+          "ttft_ms_max": 276.76124998833984
+        },
+        {
+          "prompt_label": "long_256b",
+          "prompt_len_bytes": 256,
+          "ttft_ms_mean": 1155.1552332006395,
+          "ttft_ms_stdev": 47.143597275322946,
+          "ttft_ms_p50": 1160.04766599508,
+          "ttft_ms_min": 1097.9303329950199,
+          "ttft_ms_max": 1212.4983749818057
+        }
+      ]
+    },
+    "memory": {
+      "section": "\u00a74.3 Memory + KV-cache growth",
+      "model_footprint_mb": 10.53,
+      "process_rss_mb_pre_inference": 41.89,
+      "process_rss_mb_post_inference": 45.34,
+      "rss_delta_mb": 3.45,
+      "note": "RSS includes ctypes interpreter overhead; the runtime delta is the meaningful number."
+    },
+    "cold_start": {
+      "section": "\u00a74.5 Cold-start latency",
+      "n_runs": 0,
+      "ms_mean": null,
+      "ms_stdev": 0.0,
+      "ms_min": null,
+      "ms_max": null,
+      "raw_ms": []
+    },
+    "concurrency": {
+      "section": "\u00a74.6 Concurrency",
+      "implementation_note": "xmind_easy_* is per-process singleton; in-process threads serialize on a spinlock. True parallelism needs multi-process.",
+      "sequential_ms_mean": 51.663828126038425,
+      "threaded_ms_per_call_mean": 233.7020366321667,
+      "threaded_wall_total_ms_for_8_calls": 421.0516669554636,
+      "ideal_parallel_wall_if_truly_concurrent_ms": 51.663828126038425
+    },
+    "bpb": {
+      "section": "\u00a75 Bits-per-byte (BPB) \u2014 approximate, on supplied held-out",
+      "status": "OK",
+      "n_bytes_scored": 64,
+      "held_out_preview": "And God said, Let there be light: and there was light. And God saw the light, th",
+      "avg_nll_nats": 0.8979503557220789,
+      "bits_per_byte": 1.295468525164724,
+      "interpretation": "BPB on this held-out byte stream. Lower is better. Frontier BPB on English \u2248 0.6\u20131.0. KJV-trained 18M base will be higher off-domain and lower in-domain. Use as a CROSS-ARCHITECTURE comparable, not as a pass/fail."
+    }
+  },
+  "skipped": {
+    "\u00a72 Axis A (MMLU/GSM8K/ARC/HellaSwag/BBH/HumanEval/DROP/SQuAD)": "eval sets not in repo",
+    "\u00a73.1 Grounding fidelity": "retriever not wired",
+    "\u00a73.2 Hallucination IC/NC/OOC": "labeled strata not in repo",
+    "\u00a73.3 Calibration ECE / risk-coverage": "requires per-position logits aligned to labels",
+    "\u00a73.4 Faithfulness / NLI entailment": "NLI judge not in repo",
+    "\u00a73.6 R1_PER injection battery": "R1_PER opcode pipeline not wired in current build",
+    "\u00a74.4 Joules/query": "requires powermetrics root + per-query energy probe",
+    "\u00a74.7 Quantization sensitivity": "only Q4_0 variant present; need f32/q8 to compare",
+    "\u00a74.8 Capacity scaling curves": "only 18M tier present",
+    "\u00a76   Long-context NIAH/RULER": "sets not in repo",
+    "\u00a77   SFT / R1_PER round-trip": "no SFT checkpoint, no R1_PER decoder",
+    "\u00a78   Adversarial / corpus poisoning": "adversarial corpus not in repo",
+    "\u00a710  Frontier head-to-head": "no frontier model access from this environment",
+    "\u00a711  Contamination audit": "no eval sets to audit against"
+  }
+}

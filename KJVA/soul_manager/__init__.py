@@ -8,9 +8,9 @@ types. All soul data is AES-256-GCM encrypted at rest. Nothing is ever deleted
 """
 from .soul_manager import SoulManager, SoulManagerError, SoulManagerCryptoError
 from .consolidation import ConsolidationEngine, MemoryRecord, compute_activation
-from .message_framing import CouncilMessage, COUNCIL_PORTS
-from .daemon_client import CouncilDaemonAsyncClient, CouncilDaemonSyncClient
+from .message_framing import CognitiveBusMessage, COUNCIL_PORTS
 from .aes_gcm_bridge import aes_gcm_encrypt, aes_gcm_decrypt, backend_name, AesGcmUnavailable
+from .memory_types import ContinuityState, RecallReadiness, MemoryHealth
 
 __all__ = [
     "SoulManager",
@@ -19,12 +19,14 @@ __all__ = [
     "ConsolidationEngine",
     "MemoryRecord",
     "compute_activation",
-    "CouncilMessage",
+    "CognitiveBusMessage",
     "COUNCIL_PORTS",
-    "CouncilDaemonAsyncClient",
-    "CouncilDaemonSyncClient",
     "aes_gcm_encrypt",
     "aes_gcm_decrypt",
     "backend_name",
     "AesGcmUnavailable",
+    # ADR-0002 §4.7 Edge G types
+    "ContinuityState",
+    "RecallReadiness",
+    "MemoryHealth",
 ]

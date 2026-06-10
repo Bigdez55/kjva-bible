@@ -1,0 +1,13 @@
+{"event": "run_start", "framework": "pytorch", "device": "cpu", "tokenization": "utf8_byte", "config": {"vocab_size": 259, "n_layers": 8, "n_heads": 6, "d_model": 384, "d_ffn": 1536, "max_seq_len": 1024, "rope_base": 10000.0, "tie_embeddings": true, "rms_eps": 1e-05, "init_std": 0.02}, "iters": 120, "batch": 4, "seq_len": 1024, "lr_max": 0.0003, "lr_min": 3e-05, "weight_decay": 0.1, "n_params": 18980352, "train_tokens": 5355548, "valid_tokens": 109296, "corpus": "corpus/eng_kjv_apocrypha_v1/corpus.txt", "corpus_sha256": "0c498787091aa1e80ede06cc533fc484813d231f3ffe8b99c26f6365bdeebaec", "byte_vocab_sha256": "d53c4c8606a7435f211ed192cce12d639c1629df4dd0502a313090f6686900fe", "random_initialization": true, "pretrained_loaded": false}
+{"event": "step", "step": 1, "loss": 5.683326244354248, "grad_norm": 37.43511962890625, "lr": 1.4999999999999999e-05, "tok_s": 1900.9, "elapsed_s": 2.2}
+{"event": "step", "step": 20, "loss": 2.892198324203491, "grad_norm": 1.7352386713027954, "lr": 0.0003, "tok_s": 2206.6, "elapsed_s": 37.1}
+{"event": "step", "step": 40, "loss": 2.4882893562316895, "grad_norm": 0.6812471747398376, "lr": 0.0002766558775270658, "tok_s": 2198.1, "elapsed_s": 74.5}
+{"event": "eval", "step": 40, "val_loss": 2.5319704532623293, "val_ppl": 12.578266620465506}
+{"event": "step", "step": 60, "loss": 2.329005241394043, "grad_norm": 0.680627167224884, "lr": 0.00021072961923311432, "tok_s": 2079.2, "elapsed_s": 118.2}
+{"event": "step", "step": 80, "loss": 2.1985554695129395, "grad_norm": 0.7503155469894409, "lr": 0.00012733620068470405, "tok_s": 2073.0, "elapsed_s": 158.1}
+{"event": "eval", "step": 80, "val_loss": 2.3061583042144775, "val_ppl": 10.035796027501393}
+{"event": "step", "step": 100, "loss": 2.218571424484253, "grad_norm": 0.6848734021186829, "lr": 5.832907332928179e-05, "tok_s": 2003.6, "elapsed_s": 204.4}
+{"event": "step", "step": 120, "loss": 2.1696832180023193, "grad_norm": 0.8168355226516724, "lr": 3.0066614350626235e-05, "tok_s": 1949.3, "elapsed_s": 252.2}
+{"event": "eval", "step": 120, "val_loss": 2.2138330698013307, "val_ppl": 9.150724621893403}
+{"event": "checkpoint", "step": 120, "path": "/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/models v7/training/runs/byte_proof/ckpt_step_000120.safetensors", "sha256": "763a794a305c94803913d4977e59221ab4760de9e0875035bf93c7d112585261"}
+{"event": "run_end", "total_time_s": 260.2, "total_steps": 120, "total_tokens_seen": 491520}

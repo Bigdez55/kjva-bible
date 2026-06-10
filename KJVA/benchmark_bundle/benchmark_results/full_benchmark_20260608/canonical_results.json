@@ -1,0 +1,98 @@
+{
+  "artifact_role": "canonical_runtime",
+  "runtime_authority": true,
+  "promotion_status": "ACTIVE",
+  "gguf_path": "/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/models v7/training/gguf/canonical.gguf",
+  "model": "/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/models v7/training/gguf/canonical.gguf",
+  "model_sha256": "e59c69091a1772a347098efd68d74944",
+  "engine_version": "xmind-easy/1.0 consumer-build",
+  "engine_init_ms": 615.4,
+  "determinism": {
+    "section": "\u00a73.5 Determinism (T=0)",
+    "n_runs": 5,
+    "all_byte_identical": true,
+    "distinct_outputs_count": 1,
+    "outputs_preview": [
+      " of the sea shall be for the san",
+      " of the sea shall be for the san",
+      " of the sea shall be for the san"
+    ],
+    "wall_ms_mean": 328.87,
+    "wall_ms_stdev": 14.23
+  },
+  "throughput": {
+    "section": "\u00a74.1 Decode throughput",
+    "by_max_tokens": [
+      {
+        "max_tokens": 32,
+        "tok_per_s_mean": 60.6,
+        "tok_per_s_stdev": 0.9,
+        "tok_per_s_min": 59.7,
+        "tok_per_s_max": 62.2
+      },
+      {
+        "max_tokens": 64,
+        "tok_per_s_mean": 89.7,
+        "tok_per_s_stdev": 1.7,
+        "tok_per_s_min": 87.0,
+        "tok_per_s_max": 91.3
+      },
+      {
+        "max_tokens": 128,
+        "tok_per_s_mean": 110.1,
+        "tok_per_s_stdev": 0.9,
+        "tok_per_s_min": 108.9,
+        "tok_per_s_max": 111.0
+      }
+    ]
+  },
+  "ttft": {
+    "section": "\u00a74.2 TTFT",
+    "by_prompt_length": [
+      {
+        "prompt": "short_8b",
+        "bytes": 9,
+        "ttft_ms_mean": 65.2,
+        "ttft_ms_p50": 64.6,
+        "ttft_ms_min": 63.0,
+        "ttft_ms_max": 69.3
+      },
+      {
+        "prompt": "med_64b",
+        "bytes": 63,
+        "ttft_ms_mean": 430.1,
+        "ttft_ms_p50": 430.5,
+        "ttft_ms_min": 415.3,
+        "ttft_ms_max": 441.3
+      },
+      {
+        "prompt": "long_256b",
+        "bytes": 256,
+        "ttft_ms_mean": 1851.4,
+        "ttft_ms_p50": 1788.5,
+        "ttft_ms_min": 1764.0,
+        "ttft_ms_max": 2141.8
+      }
+    ]
+  },
+  "memory": {
+    "section": "\u00a74.3 Memory",
+    "model_footprint_mb": 10.53,
+    "rss_pre_mb": 46.08,
+    "rss_post_mb": 48.28,
+    "rss_delta_mb": 2.2
+  },
+  "cold_start": {
+    "section": "\u00a74.5 Cold-start latency",
+    "n_runs": 3,
+    "ms_mean": 639.6,
+    "ms_stdev": 21.3,
+    "ms_min": 625.7,
+    "ms_max": 664.2
+  },
+  "concurrency": {
+    "section": "\u00a74.6 Concurrency",
+    "note": "Singleton; in-process threads serialize on spinlock.",
+    "sequential_ms_mean": 73.8
+  }
+}

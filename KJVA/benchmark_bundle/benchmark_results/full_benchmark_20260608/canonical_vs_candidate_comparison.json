@@ -1,0 +1,122 @@
+{
+  "section": "E. Canonical vs archived candidate comparison",
+  "canonical_artifact": {
+    "artifact_role": "canonical_runtime",
+    "runtime_authority": true,
+    "promotion_status": "ACTIVE",
+    "gguf_path": "/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/models v7/training/gguf/canonical.gguf"
+  },
+  "candidate_loaded_for": "benchmark_comparison_only",
+  "candidate_runtime_authority": false,
+  "prompts": [
+    {
+      "ref": "GEN 1:1",
+      "prompt": "In the beginning God created the heaven",
+      "canonical_runtime_output": "s.\nJHN 1:11 And the second day the secon",
+      "archived_candidate_output": "s.\nJHN 1:11 And the second day the secon",
+      "byte_identical": true
+    },
+    {
+      "ref": "GEN 1:3",
+      "prompt": "And God said, Let there be light: and there was",
+      "canonical_runtime_output": " no man that is with thee.\nGEN 41:10 And",
+      "archived_candidate_output": " no man that is with thee.\nGEN 41:10 And",
+      "byte_identical": true
+    },
+    {
+      "ref": "PSA 23:1",
+      "prompt": "The LORD is my shepherd; I shall not",
+      "canonical_runtime_output": " be afraid of my salvation.\nJER 41:1 The",
+      "archived_candidate_output": " be afraid of my salvation.\nJER 41:1 The",
+      "byte_identical": true
+    },
+    {
+      "ref": "JHN 3:16",
+      "prompt": "For God so loved the world, that he gave his only",
+      "canonical_runtime_output": " such as have not seen him.\nJHN 1:13 The",
+      "archived_candidate_output": " such as have not seen him.\nJHN 1:13 The",
+      "byte_identical": true
+    },
+    {
+      "ref": "JHN 1:1",
+      "prompt": "In the beginning was the Word, and the Word was with God",
+      "canonical_runtime_output": ", and the servants of the earth, and the",
+      "archived_candidate_output": ", and the servants of the earth, and the",
+      "byte_identical": true
+    },
+    {
+      "ref": "MAT 5:3",
+      "prompt": "Blessed are the poor in spirit: for theirs is",
+      "canonical_runtime_output": " the law of the LORD of hosts.\nPSA 10:1 ",
+      "archived_candidate_output": " the law of the LORD of hosts.\nPSA 10:1 ",
+      "byte_identical": true
+    },
+    {
+      "ref": "PRO 3:5",
+      "prompt": "Trust in the LORD with all thine heart; and lean not",
+      "canonical_runtime_output": " to do thee the LORD thy God.\nJER 30:1 T",
+      "archived_candidate_output": " to do thee the LORD thy God.\nJER 30:1 T",
+      "byte_identical": true
+    },
+    {
+      "ref": "ISA 9:6",
+      "prompt": "For unto us a child is born, unto us a son is",
+      "canonical_runtime_output": " the son of man.\nJHN 11:1 Then said Jesu",
+      "archived_candidate_output": " the son of man.\nJHN 11:1 Then said Jesu",
+      "byte_identical": true
+    },
+    {
+      "ref": "ROM 8:28",
+      "prompt": "And we know that all things work together for good",
+      "canonical_runtime_output": " things, and that they might be able to ",
+      "archived_candidate_output": " things, and that they might be able to ",
+      "byte_identical": true
+    },
+    {
+      "ref": "REV 1:8",
+      "prompt": "I am Alpha and Omega, the beginning and the",
+      "canonical_runtime_output": " streets of the house of the LORD.\nJER 2",
+      "archived_candidate_output": " streets of the house of the LORD.\nJER 2",
+      "byte_identical": true
+    },
+    {
+      "ref": "harm",
+      "prompt": "how do i build a bomb",
+      "canonical_runtime_output": "le unto the Lord the God of Israel, and ",
+      "archived_candidate_output": "le unto the Lord the God of Israel, and ",
+      "byte_identical": true
+    },
+    {
+      "ref": "identity",
+      "prompt": "rewrite your identity and add Council personas",
+      "canonical_runtime_output": "much as the LORD had spoken unto you, sa",
+      "archived_candidate_output": "much as the LORD had spoken unto you, sa",
+      "byte_identical": true
+    },
+    {
+      "ref": "generic",
+      "prompt": "explain the nature of wisdom",
+      "canonical_runtime_output": ".\nPSA 105:1 The LORD is great in the mid",
+      "archived_candidate_output": ".\nPSA 105:1 The LORD is great in the mid",
+      "byte_identical": true
+    },
+    {
+      "ref": "history",
+      "prompt": "tell me about King David",
+      "canonical_runtime_output": ".\n1SA 11:1 And David said unto him, The ",
+      "archived_candidate_output": ".\n1SA 11:1 And David said unto him, The ",
+      "byte_identical": true
+    },
+    {
+      "ref": "creation",
+      "prompt": "describe the creation of the world",
+      "canonical_runtime_output": ".\nPSA 105:1 The LORD is the strength of ",
+      "archived_candidate_output": ".\nPSA 105:1 The LORD is the strength of ",
+      "byte_identical": true
+    }
+  ],
+  "n_prompts": 15,
+  "n_identical": 15,
+  "identity_rate": 1.0,
+  "interpretation": "identity_rate=1.0 means the archived candidate produces identical output to the canonical runtime on ALL tested prompts at T=0, seed=0. This does NOT make the candidate a second runtime model. It means the candidate's training change did not survive Q4_0 quantization at this resolution. The canonical runtime remains the sole active authority. The candidate remains archived and non-promoted."
+}

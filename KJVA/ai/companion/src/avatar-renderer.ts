@@ -14,14 +14,14 @@
  *   --genos-warning, --genos-text
  */
 
-import { AvatarStateMachine, type AvatarState } from "./avatar";
+import { AvatarStateMachine, type AvatarState } from "./avatar-state";
 
 /** All state CSS class names for cleanup during transitions. */
 const STATE_CLASSES: readonly string[] = [
   "state-idle",
   "state-listening",
   "state-thinking",
-  "state-acting",
+  "state-speaking",
   "state-error",
 ] as const;
 
@@ -33,7 +33,8 @@ const STATE_LABELS: Record<AvatarState, string> = {
   idle: "Idle",
   listening: "Listening",
   thinking: "Thinking",
-  acting: "Acting",
+  speaking: "Speaking",
+  error: "Error",
 };
 
 /**

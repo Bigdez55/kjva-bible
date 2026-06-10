@@ -4,6 +4,18 @@
  * Copyright (c) 2026 Tokenless Models Project. All rights reserved.
  * SPDX-License-Identifier: LicenseRef-Proprietary
  *
+ * STATUS (2026-06-04): this module's classical/sparse/paged materializers are reached ONLY by the
+ * cognitive harness (harness.c -> xmind_harness_execute), itself driven only by a test
+ * (tests/materialize_emit_check.c) — NOT the live inference path. The LIVE engine materializes
+ * weights via weights_loader (xmind_weights_load_file), and THAT live materialization is now
+ * tracked as an ADR-0002 §8.3 MaterializationRecord (real source_hash + materialized_at_ns +
+ * tensor_roles + rollback_pointer) emitted from xmind_easy_init and consumed Python-side
+ * (agent._emit_model_materialization). So Workstream-4 "connect weights_loader to materialization
+ * tracking" is DONE on the real path; the literal "extend materialize.c …" is intentionally NOT
+ * done here — this is the alternative role-based materializer, redundant with weights_loader, kept
+ * as a harness seam (wiring it onto the live path would double-materialize). See
+ * docs/DEAD_CODE_AUDIT_2026-06-03.md.
+ *
  * Implements the materialization doctrine: classical (full dense),
  * sparse (active mask only), and paged (on-demand page-in/out).
  *

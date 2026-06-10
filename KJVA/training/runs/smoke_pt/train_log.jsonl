@@ -1,0 +1,10 @@
+{"event": "run_start", "framework": "pytorch", "device": "cpu", "tokenization": "utf8_byte", "config": {"vocab_size": 259, "n_layers": 8, "n_heads": 6, "d_model": 384, "d_ffn": 1536, "max_seq_len": 128, "rope_base": 10000.0, "tie_embeddings": true, "rms_eps": 1e-05, "init_std": 0.02}, "iters": 20, "batch": 4, "seq_len": 128, "lr_max": 0.0003, "lr_min": 3e-05, "weight_decay": 0.1, "n_params": 18980352, "train_tokens": 5355548, "valid_tokens": 109296, "corpus": "corpus/eng_kjv_apocrypha_v1/corpus.txt", "corpus_sha256": "0c498787091aa1e80ede06cc533fc484813d231f3ffe8b99c26f6365bdeebaec", "byte_vocab_sha256": "d53c4c8606a7435f211ed192cce12d639c1629df4dd0502a313090f6686900fe", "random_initialization": true, "pretrained_loaded": false}
+{"event": "step", "step": 1, "loss": 5.619510173797607, "grad_norm": 31.76353645324707, "lr": 5.9999999999999995e-05, "tok_s": 1383.0, "elapsed_s": 0.4}
+{"event": "step", "step": 5, "loss": 4.038307189941406, "grad_norm": 5.02044677734375, "lr": 0.0003, "tok_s": 2790.8, "elapsed_s": 0.9}
+{"event": "step", "step": 10, "loss": 3.3785438537597656, "grad_norm": 2.2340593338012695, "lr": 0.0002553326318584458, "tok_s": 3248.4, "elapsed_s": 1.6}
+{"event": "eval", "step": 10, "val_loss": 3.3582406282424926, "val_ppl": 28.738584520641147}
+{"event": "step", "step": 15, "loss": 3.130622148513794, "grad_norm": 12.561873435974121, "lr": 0.0001232827057593821, "tok_s": 2940.8, "elapsed_s": 2.6}
+{"event": "step", "step": 20, "loss": 2.9652295112609863, "grad_norm": 1.6811838150024414, "lr": 3.2950073900936234e-05, "tok_s": 3126.9, "elapsed_s": 3.3}
+{"event": "eval", "step": 20, "val_loss": 2.9294052839279177, "val_ppl": 18.71649618502974}
+{"event": "checkpoint", "step": 20, "path": "/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/models v7/training/runs/smoke_pt/ckpt_step_000020.safetensors", "sha256": "d450be2966fdc5453f305c131a033f0f95f8713577d947cb4835f4808525b413"}
+{"event": "run_end", "total_time_s": 3.7, "total_steps": 20, "total_tokens_seen": 10240}

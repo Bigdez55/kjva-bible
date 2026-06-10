@@ -1,2 +1,0 @@
-"""KJVA AI contract roots."""
-

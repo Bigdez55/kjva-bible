@@ -245,7 +245,11 @@ static gguf_status_t gr_parse_kv_file(pal_file_t *fh,
             } else {
                 uint32_t esz = gr_vtype_size(elem_type);
                 if (esz == 0u) esz = 8u;  /* conservative skip for unknown */
-                uint64_t skip = arr_count * (uint64_t)esz;
+                /* Bound arr_count before the multiply: GGUF metadata arrays are small; an
+                 * implausibly large count (crafted/corrupt file) could drive a huge seek. Reject
+                 * counts beyond a generous cap (67M elements) rather than trust the file. */
+                if ((uint64_t)arr_count > (uint64_t)(1u << 26)) return GGUF_ERR_CORRUPT;
+                uint64_t skip = (uint64_t)arr_count * (uint64_t)esz;
                 if (pal_file_seek(fh, (int64_t)skip, PAL_SEEK_CUR) != PAL_OK)
                     return GGUF_ERR_IO;
                 *file_pos += skip;

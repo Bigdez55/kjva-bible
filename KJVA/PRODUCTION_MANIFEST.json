@@ -1,0 +1,49 @@
+{
+  "model_family": "KJVA-1 / XMIND-1",
+  "runtime_authority": "models v7/training/gguf/canonical.gguf",
+  "sha256": "e59c69091a1772a347098efd68d7494419d5e82a75a3e064d95370d1d3f8fb93",
+  "vocab_size": 259,
+  "n_layers": 8,
+  "n_heads": 6,
+  "d_model": 384,
+  "tokenizer": "utf8_byte_plus3",
+  "byte_offset": 3,
+  "status": "production_candidate",
+  "verified_date": "2026-06-09",
+  "source_commit": "1c35db7",
+  "source_branch": "release/kjva1-xmind1-production-candidate",
+  "prior_milestone_commit": "d52158a",
+  "production_stack": [
+    "canonical.gguf (byte-level KJV+Apocrypha LM)",
+    "exact scripture retrieval (36,822 verses)",
+    "invalid-citation abstention",
+    "constitutional governance (COV-001..COV-010)",
+    "single-runtime-authority enforcement",
+    "locked regression gate"
+  ],
+  "gates": {
+    "governance": "25/25",
+    "grounding": "14/14",
+    "ci": "268 passed / 4 skipped / 0 failed",
+    "unified_cognitive_identity_audit": "12/12 PASS",
+    "regression_gate": "PASS",
+    "production_runtime_authority_audit": "PASS",
+    "canonical_sha_unchanged": true
+  },
+  "single_runtime_authority": true,
+  "candidate_artifacts_promoted": false,
+  "archived_candidates_non_authoritative": [
+    "training/gguf/archive/* (SFT, soup, historical embodiments)",
+    "training/gguf/archive/adapters/alignment_omnipeft_v1 (proof-of-architecture, NO_PROMOTE)",
+    "training/gguf/archive/adapters/alignment_omnipeft_scribe_v2 (NO_PROMOTE)",
+    "training/gguf/archive/adapters/alignment_omnipeft_scribe_v21 (NO_PROMOTE → FIX_RUNTIME_RETRIEVAL)",
+    "training/gguf/archive/adapters/peft_tournament_lora_winner_v1 (reclassified tournament)"
+  ],
+  "known_limitations": [
+    "Omni-PEFT adapters are NOT promoted; production ships canonical only.",
+    "Raw generation is NOT exact scripture lookup — exact verses come from the retrieval layer.",
+    "Scripture counter-witness retrieval at runtime is a v2.1+ enhancement (pending wiring).",
+    "General reasoning / math / code are not target capability claims."
+  ],
+  "creator_approval_required_before_production_replacement": true
+}

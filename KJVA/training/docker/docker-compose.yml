@@ -1,0 +1,36 @@
+# Portable training compose for TokenlessLM.
+#   Local CPU:  docker compose -f training/docker/docker-compose.yml run --rm train \
+#                 python pt/train_byte.py --corpus corpus/eng_kjv_apocrypha_v1/corpus.txt --iters 5000
+#   Cloud GPU:  uncomment the `deploy.resources` GPU block + build with TORCH_VARIANT=cu121,
+#               then add `--gpus all` (or use the gpu profile) — no code change.
+#
+# The repo is mounted read-write so runs/bases/eval persist to the host; the corpus
+# is available via the in-repo symlink corpus/eng_kjv_apocrypha_v1 (-> ml-training).
+services:
+  train:
+    build:
+      context: ../..                      # models v7/  (so ai/, training/ are both visible)
+      dockerfile: training/docker/Dockerfile
+      args:
+        TORCH_VARIANT: ${TORCH_VARIANT:-cpu}
+    image: tokenless-train:${TORCH_VARIANT:-cpu}
+    working_dir: /workspace/models_v7/training
+    environment:
+      TOKENLESS_HOME: /workspace/models_v7/training
+      OMP_NUM_THREADS: ${OMP_NUM_THREADS:-4}
+    volumes:
+      - ../..:/workspace/models_v7                          # models v7 tree
+      - ../../../ml-training:/workspace/ml-training:ro      # corpus source (read-only)
+    shm_size: ${SHM_SIZE:-2gb}
+    # Resource caps so the host stays responsive (override via env on bigger hosts).
+    mem_limit: ${MEM_LIMIT:-12g}
+    cpus: ${CPUS:-6}
+    # --- GPU (cloud/remote Linux host): uncomment + build with TORCH_VARIANT=cu121 ---
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [gpu]
+    command: ["bash"]

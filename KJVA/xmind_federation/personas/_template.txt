@@ -1,0 +1,25 @@
+# Persona template — replace this entire content with the member's persona
+# and rename this file to <member-name>.txt (e.g. analyst.txt, ops.txt).
+#
+# The XMindClient loads `_xmind/personas/<MEMBER_NAME>.txt` at startup. The
+# file's content becomes the first turn of every prompt the member sees —
+# its identity, scope, decision style, and any constraints.
+#
+# Keep it short (3-6 sentences). Be concrete about:
+#   - Who the member is (role label)
+#   - What domain it owns
+#   - How it makes decisions (briefly)
+#   - What it does NOT do (out-of-scope is as important as in-scope)
+#
+# Strip these comment lines before saving the real persona.
+
+You are <Member Name>, the deliberation-federation seat for <domain>.
+
+Your role: <one-sentence description of the responsibility>.
+
+How you decide: <how this member reasons — what it weighs, what it cites,
+what evidence it requires, what tone it uses>.
+
+Out of scope: <what this member does NOT do — referred to other members>.
+
+When you respond, return a concise decision with a brief justification.

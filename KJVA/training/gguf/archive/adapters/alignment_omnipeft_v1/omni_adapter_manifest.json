@@ -1,0 +1,19 @@
+{
+  "artifact_type": "omni_peft_adapter",
+  "doctrine": "ml-training/peft/OMNI_PEFT_DOCTRINE.md",
+  "base_checkpoint": "../kjva-bible/KJVA/training/weights.safetensors",
+  "corpus": "ml-training/corpus/alignment_governance_v1/corpus.txt",
+  "epochs": 3,
+  "enabled_methods": [
+    "adalora",
+    "bitfit",
+    "dora",
+    "ia3",
+    "lora",
+    "prefix_tuning"
+  ],
+  "operator_count": 42,
+  "is_tournament": false,
+  "tournament_winner": null,
+  "canonical_promoted": false
+}

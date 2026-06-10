@@ -1,0 +1,58 @@
+# kjv_omni_program.yaml — Omni-PEFT training program for the KJV+Apocrypha byte model.
+# Named artifact required by UNIFIED_MASTER_TECH_PACK.md §11.1; consumed by the omni
+# pipeline (Fingerprinter -> Compiler -> Tournament -> Pareto / tournament_v2 lanes).
+id: kjv_omni_program
+version: 1.0.0
+ref: UNIFIED_MASTER_TECH_PACK.md §11.1, §11.2 steps 2-7
+framework: pytorch          # training backend (Docker, CPU local / CUDA cloud)
+
+corpus:
+  id: eng_kjv_apocrypha_v1
+  path: corpus/eng_kjv_apocrypha_v1/corpus.txt
+  tokenization: utf8_byte   # token = byte + 3, vocab 259 (PAD0/BOS1/EOS2)
+
+base:
+  name: byte_v1_20m
+  arch:                     # spec §8.6 — exactly 18,980,352 params
+    vocab_size: 259
+    n_layers: 8
+    n_heads: 6
+    d_model: 384
+    d_ffn: 1536
+    max_seq_len: 1024
+    rope_base: 10000.0
+    tie_embeddings: true
+    rms_eps: 1.0e-5
+
+pretraining:                # intended regimen (train/pt/train_byte.py defaults)
+  optimizer: adamw
+  betas: [0.9, 0.95]
+  weight_decay: 0.1
+  lr_max: 3.0e-4
+  lr_min: 3.0e-5
+  warmup: 200
+  grad_clip: 1.0
+  batch: 8
+  seq_len: 1024
+  iters: 5000
+  seed: 42
+  val_ppl_target: 3.21
+
+omni:
+  method: omni              # --method omni auto-selects via the pipeline below
+  pipeline: [fingerprint, compile, tournament, pareto]
+  ontology: programs/method_ontology_v2.json
+  tournament_v2:
+    lanes: [adversarial, privacy, memory, sensor]
+  pareto_objectives:        # v1 5-objective weights
+    domain_accuracy: 0.35
+    base_retention: 0.25
+    params: 0.15
+    latency: 0.15
+    merge_safe: 0.10
+
+eval_gates:
+  byte_ppl_ratio_max: 1.25
+  retention_requirement: 0.92
+  adapter_validation: validate_adapter.py   # all gates must PASS
+  acceptance: tests/validate_apex.py         # Apex §22 9/9

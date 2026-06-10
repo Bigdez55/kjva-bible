@@ -275,6 +275,34 @@ else:
 #
 # When the native library is unavailable, XStoreBackend.available is False
 # and SoulManager falls back to the in-memory dict backend.
+#
+# Status codes mirror the canonical contract in xstore/include/xstore.h
+# (typedef int32_t xstore_status_t):
+#     XSTORE_OK             0
+#     XSTORE_ERR_INVAL     -1
+#     XSTORE_ERR_NOT_FOUND -2   (ctypes _lib path; header convention)
+#     XSTORE_ERR_IO        -3
+# NOTE: the xstore_ffi *module* path uses its own delete convention where
+# -3 == not-found (see comment above and line ~274); that map is applied
+# only on the _ffi_module branch, never to the ctypes _lib branch.
+
+XSTORE_OK = 0
+XSTORE_ERR_INVAL = -1
+XSTORE_ERR_NOT_FOUND = -2
+XSTORE_ERR_IO = -3
+# _ffi_module.delete() documents -3 as "not found" (distinct from the header).
+XSTORE_FFI_DELETE_NOT_FOUND = -3
+
+
+class XStoreBackendError(SoulManagerError):
+    """A real XSTORE backend failure (I/O, invalid arg, unexpected status).
+
+    Distinguished from the "key genuinely absent" case, which still returns
+    None/[]/False as before.  Raising this (rather than collapsing every
+    failure to the absent value) prevents a transient backend error on a
+    never-delete memory component from masquerading as data loss.
+    """
+
 
 class XStoreBackend:
     """XSTORE B-tree backend for soul data persistence.
@@ -324,92 +352,220 @@ class XStoreBackend:
         for path in search_paths:
             try:
                 self._lib = ctypes.CDLL(path)
-                self.available = True
-                logger.info("XSTORE backend available via ctypes at %s", path)
-                return
             except OSError:
                 continue
+            # Pin explicit argtypes/restype BEFORE first use, otherwise on
+            # 64-bit ctypes marshals the size_t length args as default c_int
+            # (truncating size_t) and passes buffers with wrong widths.
+            if not self._configure_ctypes_signatures():
+                # Library loaded but does not export the expected FFI symbols;
+                # treat as unavailable rather than crashing on first call.
+                self._lib = None
+                continue
+            self.available = True
+            logger.info("XSTORE backend available via ctypes at %s", path)
+            return
 
         logger.warning(
             "XSTORE library not available — using in-memory fallback. "
             "Set XSTORE_LIB_PATH or XSTORE_DB_PATH for production use."
         )
 
+    def _configure_ctypes_signatures(self) -> bool:
+        """Set explicit .argtypes/.restype on the xstore_ffi_* C symbols.
+
+        Mirrors the xstore.h type shapes (char* key, size_t lengths,
+        int32_t status), with the explicit-length, binary-safe _ffi_
+        variant arity actually called below:
+
+            xstore_ffi_get(const char *key, size_t key_len,
+                           void *buf, size_t buf_len, size_t *out_len) -> int32
+            xstore_ffi_set(const char *key, size_t key_len,
+                           const void *buf, size_t len)                 -> int32
+            xstore_ffi_delete(const char *key, size_t key_len)          -> int32
+
+        Returns True if all required symbols were found and configured;
+        False (with a clear log) if the loaded library lacks them.
+        """
+        try:
+            get_fn = self._lib.xstore_ffi_get
+            get_fn.argtypes = [
+                ctypes.c_char_p,                    # key
+                ctypes.c_size_t,                    # key_len
+                ctypes.c_void_p,                    # buf
+                ctypes.c_size_t,                    # buf_len
+                ctypes.POINTER(ctypes.c_size_t),    # out_len
+            ]
+            get_fn.restype = ctypes.c_int32         # xstore_status_t
+
+            set_fn = self._lib.xstore_ffi_set
+            set_fn.argtypes = [
+                ctypes.c_char_p,                    # key
+                ctypes.c_size_t,                    # key_len
+                ctypes.c_char_p,                    # buf (value bytes)
+                ctypes.c_size_t,                    # len
+            ]
+            set_fn.restype = ctypes.c_int32         # xstore_status_t
+
+            del_fn = self._lib.xstore_ffi_delete
+            del_fn.argtypes = [
+                ctypes.c_char_p,                    # key
+                ctypes.c_size_t,                    # key_len
+            ]
+            del_fn.restype = ctypes.c_int32         # xstore_status_t
+        except AttributeError as e:
+            logger.warning(
+                "XSTORE library loaded but missing expected FFI symbol "
+                "(xstore_ffi_get/set/delete): %s — treating as unavailable", e
+            )
+            return False
+        return True
+
     def get(self, key: str) -> Optional[bytes]:
-        """Retrieve a value by key from XSTORE. Returns None if not found."""
+        """Retrieve a value by key from XSTORE.
+
+        Returns None ONLY when the key is genuinely absent. A transient or
+        structural backend failure (I/O error, invalid arg, unexpected
+        status, or an exception from the FFI layer) is logged and re-raised
+        as XStoreBackendError so callers can distinguish "miss" from "error"
+        on this never-delete memory component.
+        """
         if not self.available:
             return None
         key_bytes = key.encode("utf-8")
         try:
             if self._ffi_module is not None:
-                result = self._ffi_module.get(key_bytes)
-                return result  # bytes or None
+                # _ffi_module.get() returns bytes (found) or None (absent).
+                return self._ffi_module.get(key_bytes)
             if self._lib is not None:
-                # ctypes path: call xstore_get via the C FFI
-                # This path requires the library to expose a simple get API
                 buf = ctypes.create_string_buffer(65536)  # XSTORE_MAX_VAL_LEN
-                buf_len = ctypes.c_uint32(65536)
-                out_len = ctypes.c_uint32(0)
+                buf_len = ctypes.c_size_t(65536)
+                out_len = ctypes.c_size_t(0)
                 rc = self._lib.xstore_ffi_get(
                     key_bytes, len(key_bytes),
                     buf, buf_len, ctypes.byref(out_len),
                 )
-                if rc == 0:
+                if rc == XSTORE_OK:
                     return buf.raw[: out_len.value]
-                return None  # Not found or error
+                if rc == XSTORE_ERR_NOT_FOUND:
+                    return None  # genuinely absent
+                # Any other status (INVAL/IO/unknown) is a real error.
+                logger.error(
+                    "XSTORE get error for key %s: status=%d", key, rc
+                )
+                raise XStoreBackendError(
+                    f"xstore_ffi_get failed for key {key!r}: status={rc}"
+                )
+        except XStoreBackendError:
+            raise
         except Exception as e:
-            logger.warning("XSTORE get failed for key %s: %s", key, e)
+            logger.exception("XSTORE get failed for key %s: %s", key, e)
+            raise XStoreBackendError(f"xstore get failed for key {key!r}: {e}") from e
         return None
 
     def put(self, key: str, value: bytes) -> bool:
-        """Store a key-value pair in XSTORE. Returns True on success."""
+        """Store a key-value pair in XSTORE. Returns True on success.
+
+        A non-OK status or an exception from the FFI layer is a real backend
+        failure: it is logged and re-raised as XStoreBackendError rather than
+        being collapsed to a benign-looking False (which the write-through
+        caller would otherwise treat as a recoverable, ignorable warning).
+        """
         if not self.available:
             return False
         key_bytes = key.encode("utf-8")
         try:
             if self._ffi_module is not None:
                 rc = self._ffi_module.set(key_bytes, value)
-                return rc == 0
-            if self._lib is not None:
+            elif self._lib is not None:
                 rc = self._lib.xstore_ffi_set(
                     key_bytes, len(key_bytes), value, len(value),
                 )
-                return rc == 0
+            else:
+                return False
+            if rc == XSTORE_OK:
+                return True
+            logger.error(
+                "XSTORE put error for key %s: status=%d", key, rc
+            )
+            raise XStoreBackendError(
+                f"xstore put failed for key {key!r}: status={rc}"
+            )
+        except XStoreBackendError:
+            raise
         except Exception as e:
-            logger.warning("XSTORE put failed for key %s: %s", key, e)
-        return False
+            logger.exception("XSTORE put failed for key %s: %s", key, e)
+            raise XStoreBackendError(f"xstore put failed for key {key!r}: {e}") from e
 
     def delete(self, key: str) -> bool:
-        """Delete a key from XSTORE. Returns True if it existed."""
+        """Delete a key from XSTORE.
+
+        Returns True if the key existed and was deleted, False if it was
+        genuinely absent (a legitimate non-error outcome). Any other non-OK
+        status or an FFI exception is a real backend failure: logged and
+        re-raised as XStoreBackendError rather than collapsed to False.
+
+        Note the two backends use DIFFERENT not-found conventions:
+          * _ffi_module.delete(): status -3 == not found (see module contract).
+          * ctypes _lib path:      status -2 == not found (xstore.h header).
+        """
         if not self.available:
             return False
         key_bytes = key.encode("utf-8")
         try:
             if self._ffi_module is not None:
                 rc = self._ffi_module.delete(key_bytes)
-                return rc == 0
-            if self._lib is not None:
+                if rc == XSTORE_OK:
+                    return True
+                if rc == XSTORE_FFI_DELETE_NOT_FOUND:
+                    return False  # genuinely absent
+            elif self._lib is not None:
                 rc = self._lib.xstore_ffi_delete(key_bytes, len(key_bytes))
-                return rc == 0
+                if rc == XSTORE_OK:
+                    return True
+                if rc == XSTORE_ERR_NOT_FOUND:
+                    return False  # genuinely absent
+            else:
+                return False
+            logger.error(
+                "XSTORE delete error for key %s: status=%d", key, rc
+            )
+            raise XStoreBackendError(
+                f"xstore delete failed for key {key!r}: status={rc}"
+            )
+        except XStoreBackendError:
+            raise
         except Exception as e:
-            logger.warning("XSTORE delete failed for key %s: %s", key, e)
-        return False
+            logger.exception("XSTORE delete failed for key %s: %s", key, e)
+            raise XStoreBackendError(f"xstore delete failed for key {key!r}: {e}") from e
 
     def list_keys(self, prefix: str) -> List[str]:
-        """List all keys matching a prefix. Returns empty list if unavailable."""
+        """List all keys matching a prefix.
+
+        Returns [] when the backend is unavailable, or when no range-scan
+        capability is exposed (the ctypes _lib path has no range_scan — a
+        pre-existing structural gap, NOT an error). A genuine failure during
+        an attempted scan is logged and re-raised as XStoreBackendError so a
+        transient error is not silently masked as "no keys" (which would hide
+        existing keys on a never-delete memory component).
+        """
         if not self.available:
             return []
         # XSTORE cursor range scan: uses prefix as lower bound,
         # prefix + \xff as upper bound for the B-tree range query.
         prefix_bytes = prefix.encode("utf-8")
         upper_bytes = prefix_bytes + b"\xff"
+        if self._ffi_module is None or not hasattr(self._ffi_module, "range_scan"):
+            # No scan capability (e.g. ctypes _lib path) — structural gap.
+            return []
         try:
-            if self._ffi_module is not None and hasattr(self._ffi_module, "range_scan"):
-                results = self._ffi_module.range_scan(prefix_bytes, upper_bytes, 10000)
-                return [k.decode("utf-8", errors="replace") for k in results]
+            results = self._ffi_module.range_scan(prefix_bytes, upper_bytes, 10000)
+            return [k.decode("utf-8", errors="replace") for k in results]
         except Exception as e:
-            logger.warning("XSTORE list_keys failed for prefix %s: %s", prefix, e)
-        return []
+            logger.exception("XSTORE list_keys failed for prefix %s: %s", prefix, e)
+            raise XStoreBackendError(
+                f"xstore list_keys failed for prefix {prefix!r}: {e}"
+            ) from e
 
 
 # Initialize global XSTORE backend at module load
@@ -656,6 +812,12 @@ class SoulManager:
         encrypted = _encrypt_value(plaintext, agent_key)
         async with self._lock:
             self._store[storage_key] = encrypted
+        # M19: Append to JSONL journal FIRST so the durable file-backed
+        # record always lands before the XSTORE write-through. XSTORE.put
+        # may now raise XStoreBackendError on a real backend failure (it no
+        # longer masks errors as a benign False); journaling first guarantees
+        # the write survives a process restart even if XSTORE then errors.
+        self._journal.append_put(storage_key, encrypted)
         # M19: Write-through to XSTORE persistent backend
         if self._xstore.available:
             ok = self._xstore.put(storage_key, encrypted)
@@ -663,8 +825,6 @@ class SoulManager:
                 logger.warning(
                     "soul.put %s — XSTORE write-through failed", storage_key
                 )
-        # M19: Append to JSONL journal for file-backed persistence
-        self._journal.append_put(storage_key, encrypted)
         logger.debug("soul.put %s (%d bytes encrypted)", storage_key, len(encrypted))
 
     async def list_keys(
@@ -715,12 +875,16 @@ class SoulManager:
             existed = key in self._store
             if existed:
                 del self._store[key]
+        # M19: Append DELETE to JSONL journal FIRST so the durable tombstone
+        # lands before the XSTORE delete. XSTORE.delete may now raise
+        # XStoreBackendError on a real backend failure; journaling first keeps
+        # the in-memory state (key removed) consistent with the durable record
+        # across a restart even if XSTORE then errors.
+        if existed:
+            self._journal.append_delete(key)
         # M19: Delete from XSTORE persistent backend
         if self._xstore.available:
             self._xstore.delete(key)
-        # M19: Append DELETE to JSONL journal for file-backed persistence
-        if existed:
-            self._journal.append_delete(key)
         logger.debug(f"soul.delete {key} -> {'deleted' if existed else 'not found'}")
         return existed
 

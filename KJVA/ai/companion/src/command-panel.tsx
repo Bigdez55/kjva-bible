@@ -22,6 +22,7 @@ import React, {
   useRef,
   useState,
 } from "react";
+import { formatProvenance, type TurnProvenance } from "./action-trace";
 
 // ── Types ────────────────────────────────────────────────────────────────────
 
@@ -53,6 +54,8 @@ export interface CommandPanelProps {
     tool_result?: unknown;
     agent?: string;
     latency_ms?: number;
+    /** Safe per-turn provenance (§11.2 step 19) surfaced in the action trace. */
+    provenance?: TurnProvenance;
   }>;
   /** Called when the user clicks Undo for a trace item. */
   onUndo?: (actionId: string) => Promise<{ status: string }>;
@@ -274,6 +277,69 @@ export function CommandPanel({
         timestamp: Date.now(),
       };
       setMessages((prev) => [...prev, assistantMsg]);
+
+      // Surface safe per-turn provenance in the action trace (§11.2 step 19,
+      // D30/D31 ledger consume side). Render route / grounded / confidence /
+      // materialization status from the SAFE TurnProvenance projection only —
+      // never raw hashes or content.
+      if (result.provenance) {
+        const prov = result.provenance;
+        // Status tone: error if degraded; warn-as-error if explicitly ungrounded
+        // or the materialization was rolled back/revoked; success otherwise.
+        const matStatus = prov.materialization?.status;
+        const isFailedMat = matStatus === "rolled_back" || matStatus === "revoked";
+        const provStatus: TraceItem["status"] =
+          prov.degraded || prov.grounded === false || isFailedMat
+            ? "error"
+            : "success";
+
+        // SAFE structured detail block (expandable) from the ledger projection.
+        const detailLines: string[] = [];
+        if (prov.determinant) {
+          detailLines.push(`route: ${prov.determinant.selected_route}`);
+          if (prov.determinant.selection_reason) {
+            detailLines.push(`reason: ${prov.determinant.selection_reason}`);
+          }
+          if (typeof prov.determinant.confidence === "number") {
+            detailLines.push(`confidence: ${prov.determinant.confidence.toFixed(2)}`);
+          }
+          if (typeof prov.determinant.replayable === "boolean") {
+            detailLines.push(
+              `replayable: ${prov.determinant.replayable ? "yes" : "no"}`
+            );
+          }
+          if (prov.determinant.route_policy_digest) {
+            detailLines.push(`policy: ${prov.determinant.route_policy_digest}`);
+          }
+        }
+        if (typeof prov.grounded === "boolean") {
+          detailLines.push(`grounded: ${prov.grounded ? "yes" : "no"}`);
+        }
+        if (prov.materialization) {
+          const m = prov.materialization;
+          detailLines.push(`materialization: ${m.materialization_id}`);
+          detailLines.push(`  type: ${m.materialization_type}`);
+          detailLines.push(`  status: ${m.status}`);
+          if (m.privacy_class) {
+            detailLines.push(`  privacy: ${m.privacy_class}`);
+          }
+          if (typeof m.confidence === "number") {
+            detailLines.push(`  confidence: ${m.confidence.toFixed(2)}`);
+          }
+          if (m.source_digest) {
+            detailLines.push(`  source: ${m.source_digest}`);
+          }
+        }
+
+        const provTrace: TraceItem = {
+          id: nextId("prov"),
+          label: `Provenance · ${formatProvenance(prov)}`,
+          detail: detailLines.length > 0 ? detailLines.join("\n") : undefined,
+          status: provStatus,
+          timestamp: Date.now(),
+        };
+        setTrace((prev) => [...prev, provTrace]);
+      }
     } catch (err: unknown) {
       const reason = err instanceof Error ? err.message : "Unknown error";
 

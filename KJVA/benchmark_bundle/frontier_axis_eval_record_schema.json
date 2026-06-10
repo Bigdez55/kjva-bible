@@ -1,0 +1,162 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Frontier Axis Evaluation Record",
+  "type": "object",
+  "required": [
+    "run_id",
+    "model_id",
+    "engine",
+    "mode",
+    "prompt_id",
+    "suite",
+    "output_text",
+    "latency_ms",
+    "scorer",
+    "score",
+    "lineage"
+  ],
+  "properties": {
+    "run_id": {
+      "type": "string"
+    },
+    "model_id": {
+      "type": "string"
+    },
+    "checkpoint": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "export_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "engine": {
+      "type": "string",
+      "enum": [
+        "pytorch",
+        "xmind_neon",
+        "gguf",
+        "external_api",
+        "human",
+        "other"
+      ]
+    },
+    "engine_commit": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "mode": {
+      "type": "string",
+      "enum": [
+        "raw_lm_pytorch",
+        "raw_lm_neon",
+        "instructed_pytorch",
+        "instructed_neon",
+        "rag_neon",
+        "agent_neon",
+        "frontier_reference",
+        "local_baseline_reference",
+        "other"
+      ]
+    },
+    "adapter_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "prompt_id": {
+      "type": "string"
+    },
+    "suite": {
+      "type": "string"
+    },
+    "split": {
+      "type": "string"
+    },
+    "prompt_hash": {
+      "type": "string"
+    },
+    "input_bytes": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "context_bytes": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "output_text": {
+      "type": "string"
+    },
+    "output_bytes": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "latency_ms": {
+      "type": "number",
+      "minimum": 0
+    },
+    "time_to_first_token_ms": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "decode_tokens_per_sec": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "rss_mb_peak": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "joules_estimate": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "temperature": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "top_p": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "seed": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "scorer": {
+      "type": "string"
+    },
+    "score": {
+      "type": "object"
+    },
+    "lineage": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": true
+}

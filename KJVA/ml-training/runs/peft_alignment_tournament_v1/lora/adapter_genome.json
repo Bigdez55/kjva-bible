@@ -1,0 +1,45 @@
+{
+  "adapter_genome": {
+    "name": "lora",
+    "version": "1.0.0",
+    "base_model": "/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/models v7/training/runs/byte_clean_v1/soup_best.safetensors",
+    "peft_method": "lora",
+    "delta_family": "LOW_RANK",
+    "purpose": {
+      "domains": [
+        "kjv_scripture",
+        "theology"
+      ],
+      "tasks": [
+        "completion",
+        "citation"
+      ]
+    },
+    "training": {
+      "corpus": "/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/ml-training/corpus/alignment_governance_v1/corpus.txt",
+      "rank": 8,
+      "alpha": 16.0,
+      "epochs": 3,
+      "lr": 0.0002
+    },
+    "evaluation": {},
+    "routing": {
+      "activate_when": [
+        "kjv_query",
+        "scripture_completion"
+      ],
+      "never_activate_when": []
+    },
+    "compatibility": {
+      "compatible_with": [],
+      "conflicts_with": []
+    },
+    "deployment": {
+      "mergeable": true,
+      "hot_swappable": true
+    },
+    "rollback": {
+      "previous_stable": ""
+    }
+  }
+}

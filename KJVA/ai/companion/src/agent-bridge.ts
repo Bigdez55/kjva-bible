@@ -1,7 +1,7 @@
 /**
  * agent-bridge.ts -- Bridge between AI Agent Runtime and Companion UI
  *
- * Connects the Tokenless cognitive runtime (Python, on localhost:8090)
+ * Connects the Tokenless cognitive runtime (Python, on localhost:8091)
  * to the Electron companion's AvatarStateMachine and ActionTracePanel.
  *
  * Architecture decision: All HTTP calls go through Electron IPC to
@@ -10,35 +10,35 @@
  * and window.companion.bridgeActions() if available, otherwise falls
  * back to polling via IPC.
  *
- * NOTE: The existing api.py does NOT expose /v1/status or /v1/actions.
- * It exposes:
- *   GET  /healthz  (unauthenticated, returns { status: "ok"|"degraded" })
- *   GET  /status   (authenticated, returns circuit breaker state)
+ * NOTE: The existing api.py does NOT expose /v1/actions.
+ * It exposes (ADR-0002 maps ai/companion/src/* as Interface/UI only;
+ * api.py is the route source of truth):
+ *   GET  /v1/health          (unauthenticated, returns { status: "healthy", version })
+ *   GET  /v1/pipeline/status (authenticated, returns cognitive pipeline health)
  *
- * This bridge polls /healthz for connection liveness and synthesizes
- * ActionTraceEntry objects from /chat responses when they arrive.
- * The /v1/ prefix endpoints are documented as the future target API.
- * For now, the bridge maps existing endpoints:
- *   /healthz          -> connection health
- *   /status           -> agent state (requires auth via IPC)
+ * This bridge polls /v1/health for connection liveness and synthesizes
+ * ActionTraceEntry objects from /v1/chat responses when they arrive.
+ * The bridge maps existing api.py endpoints:
+ *   /v1/health          -> connection health
+ *   /v1/pipeline/status -> agent/pipeline state (requires auth via IPC)
  *
  * Retry strategy: exponential backoff starting at 2s, max 30s.
  * Backoff doubles on each consecutive failure, resets on success.
  *
  * Causal topology:
- *   AgentBridge.start() -> poll timer -> fetch /healthz via IPC ->
+ *   AgentBridge.start() -> poll timer -> fetch /v1/health via IPC ->
  *   response analysis -> AvatarStateMachine.transition() +
  *   ActionTracePanel.addEntry()
  */
 
-import type { AvatarState } from "./avatar";
-import { AvatarStateMachine } from "./avatar";
+import type { AvatarState } from "./avatar-state";
+import { AvatarStateMachine } from "./avatar-state";
 import type { ActionTraceEntry, ActionStatus, ActionType } from "./action-trace";
 import { ActionTracePanel } from "./action-trace";
 
 /** Configuration for the AgentBridge. */
 export interface AgentBridgeConfig {
-  /** Base URL for the AI agent runtime. Default: http://localhost:8090 */
+  /** Base URL for the AI agent runtime. Default: http://localhost:8091 */
   agentBaseUrl?: string;
   /** Polling interval in ms. Default: 2000 */
   pollIntervalMs?: number;
@@ -46,6 +46,27 @@ export interface AgentBridgeConfig {
   minBackoffMs?: number;
   /** Maximum backoff in ms. Default: 30000 */
   maxBackoffMs?: number;
+}
+
+/**
+ * Safe request metadata attached to outgoing chat requests (§11.1 Companion,
+ * [BRIDGE-001..003]). Contains ONLY non-sensitive client context — never user
+ * text or identifiers beyond what the runtime already hashes.
+ */
+export interface RequestMetadata {
+  /** Originating surface (always "companion" here). */
+  source: string;
+  /** Input modality for the §12 evidence envelope. */
+  modality: "text" | "voice" | "sensor";
+  /** Client-side request timestamp (ms). */
+  client_ts: number;
+}
+
+/** Build safe request metadata for a companion chat request. */
+export function buildRequestMetadata(
+  modality: RequestMetadata["modality"] = "text"
+): RequestMetadata {
+  return { source: "companion", modality, client_ts: Date.now() };
 }
 
 /** Internal connection state. */
@@ -65,7 +86,7 @@ function nextTraceId(): string {
  * Usage:
  *   const sm = new AvatarStateMachine();
  *   const tp = new ActionTracePanel();
- *   const bridge = new AgentBridge(sm, tp, { agentBaseUrl: "http://localhost:8090" });
+ *   const bridge = new AgentBridge(sm, tp, { agentBaseUrl: "http://localhost:8091" });
  *   bridge.start();
  *   // ... later
  *   bridge.stop();
@@ -84,10 +105,10 @@ export class AgentBridge {
   private _consecutiveFailures: number = 0;
   private _running: boolean = false;
 
-  /** Last known agent status from /healthz. */
+  /** Last known agent status from /v1/health. */
   private _lastHealthStatus: string = "unknown";
 
-  /** Last known circuit state from /status (authenticated). */
+  /** Last known circuit state from /v1/pipeline/status (authenticated). */
   private _lastCircuitOpen: boolean = false;
 
   constructor(
@@ -97,7 +118,7 @@ export class AgentBridge {
   ) {
     this._stateMachine = stateMachine;
     this._tracePanel = tracePanel;
-    // Default points at the KJV bundle runtime on :8091.
+    // Default points at the substrate agent runtime on :8091.
     // Override via config.agentBaseUrl for tunnel / remote / alt ports.
     this._baseUrl = config?.agentBaseUrl ?? "http://localhost:8091";
     this._pollInterval = config?.pollIntervalMs ?? 2000;
@@ -185,11 +206,16 @@ export class AgentBridge {
   }
 
   /**
-   * Fetch /healthz from the agent runtime.
+   * Fetch /v1/health from the agent runtime.
    *
    * This goes through IPC if window.companion.healthCheck is available.
    * Otherwise falls back to a direct fetch (which will only work if
    * CSP allows it -- in production, the IPC path is the only valid route).
+   *
+   * api.py GET /v1/health returns { status: "healthy", version }. The IPC
+   * bridge implementation (Electron main, declared in global.d.ts) may
+   * normalize this to "ok", so the IPC path accepts either token; the
+   * direct-fetch fallback reads api.py verbatim and matches "healthy".
    */
   private async _fetchHealth(): Promise<boolean> {
     // Prefer IPC path (secure, tokens stay in main process)
@@ -204,15 +230,15 @@ export class AgentBridge {
         }
       ).healthCheck();
       this._lastHealthStatus = result.status;
-      return result.status === "ok";
+      return result.status === "healthy" || result.status === "ok";
     }
 
-    // Fallback: direct fetch to /healthz (unauthenticated endpoint)
+    // Fallback: direct fetch to /v1/health (unauthenticated endpoint)
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 5000);
 
     try {
-      const response = await fetch(`${this._baseUrl}/healthz`, {
+      const response = await fetch(`${this._baseUrl}/v1/health`, {
         method: "GET",
         signal: controller.signal,
       });
@@ -224,7 +250,7 @@ export class AgentBridge {
 
       const data = (await response.json()) as { status: string };
       this._lastHealthStatus = data.status;
-      return data.status === "ok";
+      return data.status === "healthy";
     } finally {
       clearTimeout(timeoutId);
     }
@@ -280,7 +306,7 @@ export class AgentBridge {
    * Record a chat interaction's lifecycle as trace entries.
    * Called by the main UI when a chat request/response cycle occurs.
    *
-   * This synthesizes trace entries from the existing /chat response
+   * This synthesizes trace entries from the existing /v1/chat response
    * structure since /v1/actions does not exist in the current API.
    *
    * Usage from main.tsx integration:
@@ -314,7 +340,7 @@ export class AgentBridge {
       id: inferenceId,
       timestamp: Date.now(),
       action_type: "inference",
-      description: "Processing with Llama 3.2 3B...",
+      description: "Processing through the Tokenless cognitive runtime...",
       status: "pending",
     });
 
@@ -332,7 +358,7 @@ export class AgentBridge {
 
       // Phase 3: Tool call (if present)
       if (result.tool_result !== undefined && result.tool_result !== null) {
-        this._stateMachine.transition("acting");
+        this._stateMachine.transition("speaking");
         this._tracePanel.addEntry({
           id: nextTraceId(),
           timestamp: Date.now(),
@@ -342,7 +368,7 @@ export class AgentBridge {
           status: "success",
         });
       } else {
-        this._stateMachine.transition("acting");
+        this._stateMachine.transition("speaking");
       }
 
       // Phase 4: Result

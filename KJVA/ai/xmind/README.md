@@ -14,14 +14,5 @@ and future low-level deployment targets.
 
 ## Current Boundary
 
-XMIND is the active serving boundary for the KJVA byte-level model.
-
-The current host bridge is `kjva_byte_backend.py`. It loads
-`KJVA/training/weights.safetensors`, enforces the KJVA byte-token contract
-(`PAD=0`, `BOS=1`, `EOS=2`, byte `b -> b+3`, vocab `259`), validates the
-8-layer/384-hidden/6-head/1024-context config, maps embeddings and RMS weights
-as F32, materializes projection matrices through XMIND `Q4_0`, and exposes the
-same pre/per-token/post hook halt semantics used by the C runtime.
-
-The C implementation remains the freestanding lower-level materialization
-target. MLX is reference-only and is not a serving fallback.
+The active local server uses Python/MLX. XMIND remains the contract to preserve
+when moving a model into lower-level or project-specific runtimes.

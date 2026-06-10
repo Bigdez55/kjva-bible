@@ -1,0 +1,70 @@
+# Tokenless Models Substrate — .gitignore
+# A consuming project starts clean; these artifacts are local-only.
+
+# ── Build artifacts ──────────────────────────────────────────────────
+ai/xmind/build/
+ai/companion/node_modules/
+ai/companion/dist/
+ai/companion/.vite-temp/
+*.o
+*.a
+*.so
+*.dylib
+*.d
+build/
+dist/
+*.egg-info/
+
+# ── Model weight artifacts (always large, never commit) ──────────────
+*.safetensors
+*.gguf
+*.bin.weights
+*.pt
+*.pth
+*.onnx
+*.npz
+*.xmwf
+*.xmtk
+
+# ── Runtime state (per-process; never commit) ────────────────────────
+data/
+.adapter
+.pids/
+*.pid
+
+# ── Wired corpus slots (populated from ml-training; Docker mounts the source) ──
+training/corpus/eng_kjv_apocrypha_v1
+training/corpus/*/tokens_byte_uint16.npy
+
+# ── Caches ────────────────────────────────────────────────────────────
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
+.coverage
+htmlcov/
+.next/
+
+# ── Virtual environments ─────────────────────────────────────────────
+.venv/
+venv/
+env/
+
+# ── OS / editor ──────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# ── Logs + temp ──────────────────────────────────────────────────────
+*.log
+/tmp/
+.env
+.env.local
+
+# Companion tsc-emitted JS (legacy build output; tsconfig now noEmit, kept as a guard)
+ai/companion/src/*.js

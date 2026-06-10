@@ -1,0 +1,93 @@
+{
+  "workspace": "training",
+  "manifest_version": "2026-05-27",
+  "tokenless_home": "training",
+  "source_code_home": "training/scripts",
+  "current_run_group": "byte_v1_20m",
+  "current_corpus_id": "domain_corpus_v1",
+  "canonical_commands": {
+    "pretrain": [
+      "python3", "training/scripts/train_byte.py",
+      "--run-id", "byte_v1_20m",
+      "--iters", "5000"
+    ],
+    "pretrain_resume": [
+      "python3", "training/scripts/train_byte.py",
+      "--run-id", "byte_v1_20m",
+      "--resume"
+    ],
+    "peft_train": [
+      "python3", "training/scripts/train_peft.py",
+      "--method", "<method>",
+      "--base-checkpoint", "training/bases/<BASE_NAME>/weights.safetensors",
+      "--corpus", "training/corpus/domain_corpus_v1/corpus.txt"
+    ],
+    "peft_omni": [
+      "python3", "training/scripts/train_peft.py",
+      "--method", "omni",
+      "--base-checkpoint", "training/bases/<BASE_NAME>/weights.safetensors",
+      "--corpus", "training/corpus/domain_corpus_v1/corpus.txt"
+    ],
+    "benchmark": [
+      "python3", "training/scripts/benchmark_byte.py",
+      "--run-dir", "training/runs/byte_v1_20m"
+    ],
+    "validate_adapter": [
+      "python3", "training/scripts/validate_adapter.py",
+      "check", "<adapter_dir>"
+    ],
+    "promote_base": [
+      "python3", "training/scripts/promote_base_model.py",
+      "--run-dir", "training/runs/byte_v1_20m",
+      "--name", "<MODEL_NAME>"
+    ]
+  },
+  "base_models": {
+    "_template": {
+      "note": "Consuming project fills in entries here. Each entry should hold path, config, vocab, step, params, val_ppl, corpus, benchmark.",
+      "path": "training/bases/<BASE_NAME>/weights.safetensors",
+      "config": "training/bases/<BASE_NAME>/model_config.json",
+      "vocab": "training/bases/<BASE_NAME>/byte_vocab.json"
+    }
+  },
+  "tracked_inputs": {
+    "note": "Consuming project supplies its own raw source corpus files; this template only declares slots.",
+    "primary_corpus_txt": "<provided-by-consuming-project>",
+    "primary_corpus_metadata": "<provided-by-consuming-project>"
+  },
+  "tracked_outputs": {
+    "corpus_cache": "training/corpus/domain_corpus_v1/tokens_byte_uint16.npy",
+    "corpus_text": "training/corpus/domain_corpus_v1/corpus.txt",
+    "program_corpus": "training/corpus/programs/omni_training_programs.jsonl",
+    "benchmark_final": "training/eval/byte_v1_20m/benchmark_final.json",
+    "run_log": "training/runs/byte_v1_20m/train_log.jsonl",
+    "peft_staging": "training/adapters/staging",
+    "peft_gated": "training/adapters/gated",
+    "gguf_exports": "training/gguf"
+  },
+  "peft_framework": {
+    "home": "training/peft",
+    "entry_point": "training/scripts/train_peft.py",
+    "registry": "training/programs/omni_training_registry.json",
+    "adapter_governance": "training/scripts/validate_adapter.py",
+    "gguf_conversion": "training/scripts/convert_to_gguf.py",
+    "benchmark_inline": "training/scripts/ckpt_bench.py",
+    "benchmark_full": "training/scripts/benchmark_byte.py",
+    "method_count": 37,
+    "implemented_families": [
+      "low_rank", "additive", "prompt", "activation",
+      "selective", "hybrid", "structural", "alignment"
+    ],
+    "omni_peft_os_modules": [
+      "profiler", "fingerprint", "compiler", "tournament",
+      "registry", "conflict", "router", "deployment", "model"
+    ]
+  },
+  "policy": {
+    "old_checkpoint_reuse": false,
+    "automatic_watcher": false,
+    "do_not_import_global_claude_codex_state": true,
+    "peft_staging_requires_validation_before_gated": true,
+    "adapter_genome_required_with_weights": true
+  }
+}

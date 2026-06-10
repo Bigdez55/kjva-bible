@@ -1,0 +1,54 @@
+{
+  "source_bundle": "/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/ml-training/runs/byte_sft_v1",
+  "gguf_path": "/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/models v7/training/gguf/archive/aligned_byte_sft_v1.gguf",
+  "sha256": "b84ffc4838d0c907c646954857af658924c74a41075ea594e047edb858d8da09",
+  "dtype": "q4_0",
+  "mixed_precision": "token_emb+output_norm=f32; attn/ffn weight matrices=q4_0; 1-D norms=f32",
+  "status": "BENCHMARKED_NO_PROMOTE",
+  "load_test": {
+    "xmind_preflight": "OK",
+    "metadata_vocab": 259,
+    "metadata_layers": 8,
+    "metadata_heads": 6,
+    "metadata_hidden": 384,
+    "determinism_t0": "PASS"
+  },
+  "benchmark_vs_canonical": {
+    "run_date": "2026-06-08",
+    "prompts_tested": 5,
+    "generation_parity": "IDENTICAL — byte-for-byte identical at T=0 on all 5 scripture prompts",
+    "latency_sft_tok_per_s": 153.7,
+    "latency_canonical_tok_per_s": 153.4,
+    "latency_delta_pct": 0.2,
+    "bpb_comparison": "INDETERMINATE — identical greedy outputs imply same effective weights post-Q4_0"
+  },
+  "promotion_gates": {
+    "loads_in_xmind": "PASS",
+    "metadata_matches_canonical": "PASS",
+    "safety_gates_pass": "PASS (identical behavior to canonical)",
+    "governance_tests_pass": "PASS (263/263 suite)",
+    "bpb_acceptable": "PASS (no regression vs canonical)",
+    "latency_acceptable": "PASS (153.7 vs 153.4 tok/s — parity)",
+    "determinism": "PASS",
+    "no_identity_drift": "PASS (identical outputs)"
+  },
+  "promotion_verdict": "NO_PROMOTE",
+  "promotion_reason": "SFT does not beat canonical — generation is identical after Q4_0 quantization. Promotion gate requires SFT to beat canonical; parity is not sufficient. The SFT run (short fine-tuning) did not move weights enough to differentiate from canonical at this quantization level. Artifact is valid and format-correct; hold for a longer SFT run or explicit alignment data that produces measurable improvement.",
+  "config": {
+    "vocab_size": 259,
+    "n_layers": 8,
+    "n_heads": 6,
+    "d_model": 384,
+    "d_ffn": 1536,
+    "max_seq_len": 1024,
+    "rope_base": 10000.0,
+    "tie_embeddings": true,
+    "rms_eps": 1e-05,
+    "init_std": 0.02,
+    "canonical_compatible": true,
+    "trained_by": "sft"
+  },
+  "tensor_count": 74,
+  "total_params": 18980352,
+  "file_size_mb": 10.53
+}

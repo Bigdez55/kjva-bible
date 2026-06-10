@@ -1,0 +1,78 @@
+{
+  "doctrine_canonical_phrase": "Identity is singular. Engineering surfaces remain auditable. Cognitive flow remains fused.",
+  "doctrine_short_form": "One cognitive identity. Auditable engineering surfaces. Fluid depth-scaled cognition.",
+  "doctrine_doc": "training/gguf/CANONICAL_BASE_DOCTRINE.md",
+  "canonical": {
+    "path": "training/gguf/canonical.gguf",
+    "sha256": "e59c69091a1772a347098efd68d7494419d5e82a75a3e064d95370d1d3f8fb93",
+    "promoted_at_utc": "2026-06-07",
+    "promoted_from": "archive/clean_base_soup_v1.source.gguf",
+    "promotion_record": "training/gguf/promotion/PROMOTION_RECORD.md",
+    "architecture": {
+      "family": "tokenless_lm",
+      "interpreter_slot": 1,
+      "params_total": 18980352,
+      "params_label": "18.98M",
+      "vocab_size": 259,
+      "n_layers": 8,
+      "n_heads": 6,
+      "n_kv_heads": 6,
+      "d_model": 384,
+      "d_ffn": 1536,
+      "max_seq_len": 1024,
+      "rope_base": 10000.0,
+      "rms_eps": 1.0e-5,
+      "tie_embeddings": true,
+      "byte_offset": 3,
+      "pad_id": 0,
+      "bos_id": 1,
+      "eos_id": 2
+    },
+    "tensor_count": 74,
+    "file_size_bytes": 11046112,
+    "dtype": "f32"
+  },
+  "archive": [
+    {
+      "path": "training/gguf/archive/clean_base_soup_v1.source.gguf",
+      "sha256": "e59c69091a1772a347098efd68d7494419d5e82a75a3e064d95370d1d3f8fb93",
+      "role": "promoted-source",
+      "label": "byte_clean_v1 soup_best",
+      "source_weights": "runs/byte_clean_v1/soup_best.safetensors",
+      "created_utc": "2026-06-01T17:45Z",
+      "note": "Weight-soup of best checkpoints from runs/byte_clean_v1. Promoted to canonical 2026-06-07."
+    },
+    {
+      "path": "training/gguf/archive/clean_base_v1.step2500.gguf",
+      "sha256": "025374484bde6af338d995f38834144d83986b5b4856ebe65b0a9d168339a85d",
+      "role": "single-checkpoint-from-promoted-run",
+      "label": "byte_clean_v1 ckpt_step_002500",
+      "source_weights": "runs/byte_clean_v1/ckpt_step_002500.safetensors",
+      "created_utc": "2026-05-31T22:32Z",
+      "note": "Single checkpoint at step 2,500 of the byte_clean_v1 run. Used as a non-souped reference."
+    },
+    {
+      "path": "training/gguf/archive/model.kjva_base.gguf",
+      "sha256": "270ffb99e5ced753b566016994304a9fdc5e9855319329496035a28af6ae37b7",
+      "role": "external-base-import",
+      "label": "external KJVA base (pre-retraining)",
+      "source_weights": "../../kjva-bible/KJVA/training/weights.safetensors",
+      "created_utc": "2026-05-30T11:16Z",
+      "note": "Originally imported as model.gguf on 2026-05-30 (first weight in this repo). Renamed and archived 2026-06-07."
+    }
+  ],
+  "forbidden": [
+    "Treating archived weights as separate model designs.",
+    "Loading archive/*.gguf directly in production code paths.",
+    "Adding a new .gguf alongside canonical.gguf without archiving first and updating PROMOTION_RECORD.md.",
+    "Using historical names (model.gguf, clean_base_v1, clean_base_soup_v1) as if they were distinct architectures."
+  ],
+  "authority_chain": [
+    "training/gguf/canonical.gguf — the runtime base",
+    "training/gguf/canonical.gguf.json — metadata for the runtime base",
+    "training/gguf/promotion/PROMOTION_RECORD.md — append-only ledger of promotions",
+    "training/gguf/promotion/lineage_manifest.json — this file (machine-readable lineage)",
+    "training/gguf/promotion/benchmark_table.json — measured properties of every candidate",
+    "training/gguf/archive/ — historical evidence only"
+  ]
+}

@@ -1,0 +1,6 @@
+# Built ctypes artifact — rebuildable via `make` (sources tts_engine.c +
+# pal_shim.c are tracked). Binary libs are not committed.
+build/
+*.dylib
+*.so
+*.o

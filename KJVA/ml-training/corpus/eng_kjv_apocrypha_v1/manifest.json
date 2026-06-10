@@ -1,0 +1,69 @@
+{
+  "corpus_id": "eng_kjv_apocrypha_v1",
+  "created_by": "ml-training/scripts/build_kjv_corpus.py",
+  "source_policy": {
+    "primary_text": "eng-kjv_vpl/eng-kjv_vpl.xml",
+    "crosscheck_text": "eng-kjv_vpl/eng-kjv_vpl.txt",
+    "metadata_sources": [
+      "eng-kjv_html",
+      "eng-kjv_browserBible"
+    ]
+  },
+  "stats": {
+    "books": 80,
+    "chapters": 1362,
+    "verses": 36822,
+    "counts_by_canon": {
+      "old_testament": 23145,
+      "apocrypha": 5720,
+      "new_testament": 7957
+    },
+    "corpus_chars": 5464844
+  },
+  "hashes": {
+    "inputs": {
+      "eng-kjv_vpl/eng-kjv_vpl.xml": "f267301d8200fb7dd4f65957bde05afc95ff30b46023e0bd7ac42aea6e8f8f15",
+      "eng-kjv_vpl/eng-kjv_vpl.txt": "bcd732dea06ada44e6d60e4371a4b22f89bda05148285ea82582527d5a7d624a",
+      "eng-kjv_html/eng-kjv-VernacularParms.xml": "154c125b4198d5b56cc648dcd7c8e614bcfe67a5b464cd34eebd8377c798a661",
+      "eng-kjv_browserBible/info.json": "3461ec765ef28cdb93a976e0d2c5da5afcbc87b03adfc42cfe3520ec49a71195"
+    },
+    "outputs": {
+      "verses.jsonl": "466ea28d289adb1dbe493784458cfabd29ddcb83a313212c12b973d983aee2ae",
+      "corpus.txt": "0c498787091aa1e80ede06cc533fc484813d231f3ffe8b99c26f6365bdeebaec",
+      "retrieval_index.json": "80724cded4f33907287a1bd57e260c70dace4296a636aa1880bf6dc6b2e69d09",
+      "byte_vocab.json": "ee3c222edf9ecb779a696f84727ba3c0116b32a517207c6368881ea7df5407d8",
+      "validation_report.json": "1b1996637f9697cfc4f58af85710bff799637b04df2c292bb97628cf01fc29fd"
+    }
+  },
+  "artifacts": {
+    "verses": "verses.jsonl",
+    "corpus": "corpus.txt",
+    "retrieval_index": "retrieval_index.json",
+    "byte_vocab": "byte_vocab.json",
+    "validation_report": "validation_report.json"
+  },
+  "validation": {
+    "pass": true,
+    "xml_verse_count": 36822,
+    "vpl_verse_count": 36822,
+    "mismatch_count": 0,
+    "mismatches_sample": [],
+    "anchors": {
+      "GEN.1.1": true,
+      "PSA.23.1": true,
+      "PRO.3.5": true,
+      "PRO.3.6": true,
+      "JHN.3.16": true,
+      "MAT.5.3-12": true,
+      "apocrypha_any": true
+    },
+    "counts_by_canon": {
+      "old_testament": 23145,
+      "apocrypha": 5720,
+      "new_testament": 7957
+    },
+    "footnoted_verses": 5188,
+    "strongs_verses": 11321
+  },
+  "attestation": "KJV corpus built from provided local eng-kjv_vpl XML/VPL files. HTML/browser metadata is used only for retrieval enrichment."
+}

@@ -35,11 +35,20 @@ static const xmind_artifact_interp_t *s_interps[XMIND_MAX_INTERPS];
 static uint32_t s_interp_count = 0u;
 static uint8_t  s_initialized  = 0u;
 
+/* Forward declaration: built-in tokenless interpreter (slot 1).
+ * Defined in interp_tokenless.c.  Forward-declared here rather than
+ * added to the contract header (ai/xmind/include/xmind_artifact_interp.h
+ * is in DO_NOT_MODIFY guardrail). */
+extern const xmind_artifact_interp_t xmind_interp_tokenless;
+
 /* ===================================================================
  * S2  xmind_interps_init — Register all built-in interpreters
  *
  * Idempotent.  Safe to call multiple times.
- * Registers Llama first (the primary model family for Tokenless Models).
+ * XMIND is tokenless-only (see docs/INFERENCE_CORRECTNESS_NOTE.md): the llama interpreter is NOT
+ * registered. The tokenless rotate-half RoPE convention is the engine's
+ * single convention; conforming to llama's interleaved RoPE was the
+ * contamination that corrupted inference.
  * =================================================================== */
 
 void xmind_interps_init(void) {
@@ -47,10 +56,12 @@ void xmind_interps_init(void) {
     s_initialized = 1u;
     s_interp_count = 0u;
 
-    /* Register built-in interpreters */
-    xmind_interp_register(&xmind_interp_llama);
+    /* Register built-in interpreters.
+     * tokenless_lm family (UTF-8 byte-level, KJVA base — the ONLY family
+     * for Tokenless Models per master spec Part II §25.2 + docs/INFERENCE_CORRECTNESS_NOTE.md). */
+    xmind_interp_register(&xmind_interp_tokenless);
 
-    pal_console_printf("[INTERP-REG] initialized: %u interpreters\n",
+    pal_console_printf("[INTERP-REG] initialized: %u interpreter(s) (tokenless-only)\n",
                        s_interp_count);
 }
 

@@ -1,0 +1,36 @@
+{
+  "event": "checkpoint_metadata",
+  "run_id": "kjv_byte_v1_20m",
+  "step": 2000,
+  "loss": 0.7927404642105103,
+  "last_eval": {
+    "event": "eval",
+    "step": 2000,
+    "val_loss": 1.0412498772144319,
+    "val_ppl": 2.832755399045046
+  },
+  "validation_perplexity": 2.832755399045046,
+  "checkpoint": "/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/ml-training/runs/kjv_byte_v1_20m/ckpt_step_002000.safetensors",
+  "checkpoint_sha256": "1b2d87d77f08ce5cefe2530ccb95ac3ed2410272afe7b8dedb1d298f3cdabff8",
+  "model_config": {
+    "vocab_size": 259,
+    "n_layers": 8,
+    "n_heads": 6,
+    "d_model": 384,
+    "d_ffn": 1536,
+    "max_seq_len": 1024,
+    "rope_base": 10000.0,
+    "tie_embeddings": true,
+    "rms_eps": 1e-05,
+    "init_std": 0.02
+  },
+  "tokenization": "utf8_byte",
+  "vocab_size": 259,
+  "corpus": "/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/ml-training/corpus/eng_kjv_apocrypha_v1/corpus.txt",
+  "corpus_sha256": "0c498787091aa1e80ede06cc533fc484813d231f3ffe8b99c26f6365bdeebaec",
+  "token_cache": "/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/ml-training/corpus/eng_kjv_apocrypha_v1/tokens_byte_uint16.npy",
+  "byte_vocab": "/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/ml-training/runs/kjv_byte_v1_20m/byte_vocab.json",
+  "byte_vocab_sha256": "d53c4c8606a7435f211ed192cce12d639c1629df4dd0502a313090f6686900fe",
+  "random_initialization": true,
+  "pretrained_loaded": false
+}

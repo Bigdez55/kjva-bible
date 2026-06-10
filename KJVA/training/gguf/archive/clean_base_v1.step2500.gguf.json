@@ -1,0 +1,35 @@
+{
+  "model_name": "ckpt_step_002500",
+  "domain": null,
+  "source_weights": "runs/byte_clean_v1/ckpt_step_002500.safetensors",
+  "source_config": "runs/byte_clean_v1/model_config.json",
+  "source_vocab": "runs/byte_clean_v1/byte_vocab.json",
+  "gguf_path": "gguf/clean_base_v1.gguf",
+  "dtype": "f32",
+  "config": {
+    "vocab_size": 259,
+    "n_layers": 8,
+    "n_heads": 6,
+    "d_model": 384,
+    "d_ffn": 1536,
+    "max_seq_len": 1024,
+    "rope_base": 10000.0,
+    "tie_embeddings": true,
+    "rms_eps": 1e-05,
+    "init_std": 0.02
+  },
+  "vocab": {
+    "kind": "utf8_byte",
+    "pad_id": 0,
+    "bos_id": 1,
+    "eos_id": 2,
+    "byte_offset": 3,
+    "vocab_size": 259
+  },
+  "tensor_count": 74,
+  "total_params": 18980352,
+  "file_size_mb": 10.53,
+  "interpreter_slot": 1,
+  "interpreter_family": "tokenless_lm",
+  "ref": "UNIFIED_MASTER_TECH_PACK.md Part II \u00a725.2/\u00a725.6"
+}

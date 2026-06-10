@@ -1,0 +1,525 @@
+{
+  "checkpoint": "runs/kjv_byte_v1_20m/ckpt_step_005000.safetensors",
+  "checkpoint_name": "ckpt_step_005000.safetensors",
+  "run_dir": "runs/kjv_byte_v1_20m",
+  "model_config": {
+    "vocab_size": 259,
+    "n_layers": 8,
+    "n_heads": 6,
+    "d_model": 384,
+    "d_ffn": 1536,
+    "max_seq_len": 1024,
+    "rope_base": 10000.0,
+    "tie_embeddings": true,
+    "rms_eps": 1e-05,
+    "init_std": 0.02
+  },
+  "tokenization": "utf8_byte",
+  "benchmarked_at": "2026-05-25T20:03:55Z",
+  "load_time_s": 0.047,
+  "results": {
+    "full_perplexity": {
+      "label": "full_valid",
+      "ppl": 3.2125,
+      "tokens_scored": 108544,
+      "chunks": 106,
+      "elapsed_s": 5.26
+    },
+    "canon_perplexity": [
+      {
+        "label": "old_testament",
+        "ppl": 2.223,
+        "tokens_scored": 3205120,
+        "chunks": 6260,
+        "elapsed_s": 112.69
+      },
+      {
+        "label": "apocrypha",
+        "ppl": 2.4748,
+        "tokens_scored": 754688,
+        "chunks": 1474,
+        "elapsed_s": 32.88
+      },
+      {
+        "label": "new_testament",
+        "ppl": 2.5948,
+        "tokens_scored": 951296,
+        "chunks": 1858,
+        "elapsed_s": 48.55
+      }
+    ],
+    "book_perplexity": [
+      {
+        "label": "PSA",
+        "ppl": 2.7317,
+        "tokens_scored": 228864,
+        "chunks": 447,
+        "elapsed_s": 11.47
+      },
+      {
+        "label": "GEN",
+        "ppl": 2.2829,
+        "tokens_scored": 197632,
+        "chunks": 386,
+        "elapsed_s": 9.97
+      },
+      {
+        "label": "SIR",
+        "ppl": 2.8162,
+        "tokens_scored": 149504,
+        "chunks": 292,
+        "elapsed_s": 7.42
+      },
+      {
+        "label": "JER",
+        "ppl": 2.0837,
+        "tokens_scored": 224256,
+        "chunks": 438,
+        "elapsed_s": 11.11
+      },
+      {
+        "label": "ISA",
+        "ppl": 2.3268,
+        "tokens_scored": 194560,
+        "chunks": 380,
+        "elapsed_s": 9.7
+      },
+      {
+        "label": "NUM",
+        "ppl": 2.0111,
+        "tokens_scored": 176128,
+        "chunks": 344,
+        "elapsed_s": 8.8
+      },
+      {
+        "label": "EZK",
+        "ppl": 2.1964,
+        "tokens_scored": 205312,
+        "chunks": 401,
+        "elapsed_s": 10.22
+      },
+      {
+        "label": "EXO",
+        "ppl": 2.1411,
+        "tokens_scored": 169984,
+        "chunks": 332,
+        "elapsed_s": 8.45
+      },
+      {
+        "label": "LUK",
+        "ppl": 2.4013,
+        "tokens_scored": 134656,
+        "chunks": 263,
+        "elapsed_s": 6.68
+      },
+      {
+        "label": "MAT",
+        "ppl": 2.3482,
+        "tokens_scored": 124416,
+        "chunks": 243,
+        "elapsed_s": 6.17
+      }
+    ],
+    "throughput": [
+      {
+        "batch": 1,
+        "seq_len": 64,
+        "toks_per_sec": 15741.0,
+        "ms_per_batch": 4.07
+      },
+      {
+        "batch": 1,
+        "seq_len": 128,
+        "toks_per_sec": 20329.9,
+        "ms_per_batch": 6.3
+      },
+      {
+        "batch": 1,
+        "seq_len": 256,
+        "toks_per_sec": 23565.3,
+        "ms_per_batch": 10.86
+      },
+      {
+        "batch": 1,
+        "seq_len": 512,
+        "toks_per_sec": 22500.0,
+        "ms_per_batch": 22.76
+      },
+      {
+        "batch": 1,
+        "seq_len": 1024,
+        "toks_per_sec": 16846.0,
+        "ms_per_batch": 60.79
+      },
+      {
+        "batch": 4,
+        "seq_len": 64,
+        "toks_per_sec": 20988.6,
+        "ms_per_batch": 12.2
+      },
+      {
+        "batch": 4,
+        "seq_len": 128,
+        "toks_per_sec": 22814.9,
+        "ms_per_batch": 22.44
+      },
+      {
+        "batch": 4,
+        "seq_len": 256,
+        "toks_per_sec": 24653.9,
+        "ms_per_batch": 41.54
+      },
+      {
+        "batch": 4,
+        "seq_len": 512,
+        "toks_per_sec": 21188.5,
+        "ms_per_batch": 96.66
+      },
+      {
+        "batch": 4,
+        "seq_len": 1024,
+        "toks_per_sec": 16401.6,
+        "ms_per_batch": 249.73
+      }
+    ],
+    "long_context": [
+      {
+        "context_len": 128,
+        "actual_tokens": 128,
+        "elapsed_ms": 9.49,
+        "has_nan": false,
+        "has_inf": false,
+        "pass": true
+      },
+      {
+        "context_len": 256,
+        "actual_tokens": 256,
+        "elapsed_ms": 13.14,
+        "has_nan": false,
+        "has_inf": false,
+        "pass": true
+      },
+      {
+        "context_len": 512,
+        "actual_tokens": 512,
+        "elapsed_ms": 25.62,
+        "has_nan": false,
+        "has_inf": false,
+        "pass": true
+      },
+      {
+        "context_len": 768,
+        "actual_tokens": 768,
+        "elapsed_ms": 73.86,
+        "has_nan": false,
+        "has_inf": false,
+        "pass": true
+      },
+      {
+        "context_len": 1024,
+        "actual_tokens": 1024,
+        "elapsed_ms": 63.59,
+        "has_nan": false,
+        "has_inf": false,
+        "pass": true
+      }
+    ],
+    "generation_probes": [
+      {
+        "id": "gen_1_1",
+        "category": "canonical",
+        "prompt": "In the beginning God created the heaven and the earth.",
+        "generation": "\nLUK 1:11 Only behold the Son of man, and it be eaten of it, that it may be eaten:\nLUK 1:12 But whos",
+        "new_tokens": 100,
+        "elapsed_s": 1.234,
+        "tok_per_s": 81.0
+      },
+      {
+        "id": "jhn_3_16",
+        "category": "canonical",
+        "prompt": "For God so loved the world, that he gave his only begotten Son,",
+        "generation": " and [his] sons.\nJOS 8:23 And he drove out the land by and night, that [was] in the west bday; and t",
+        "new_tokens": 100,
+        "elapsed_s": 0.853,
+        "tok_per_s": 117.2
+      },
+      {
+        "id": "psa_23_1",
+        "category": "canonical",
+        "prompt": "The LORD is my shepherd;",
+        "generation": " and the graven image is broken off: and when I looked yet more, and, behold, the woman [was] blind.",
+        "new_tokens": 100,
+        "elapsed_s": 0.803,
+        "tok_per_s": 124.5
+      },
+      {
+        "id": "psa_119_1",
+        "category": "canonical",
+        "prompt": "Blessed are the undefiled in the way,",
+        "generation": " before God armed by the way by day.\n<|endsource|>\n\n<|source:kjv:apocrypha:BEL:1|>\nBook: The Book of",
+        "new_tokens": 100,
+        "elapsed_s": 0.738,
+        "tok_per_s": 135.6
+      },
+      {
+        "id": "pro_3_5",
+        "category": "canonical",
+        "prompt": "Trust in the LORD with all thine heart;",
+        "generation": " and make a great nation, and not only the waters of the sea.\nJER 43:20 Is there builded no burden b",
+        "new_tokens": 100,
+        "elapsed_s": 0.771,
+        "tok_per_s": 129.7
+      },
+      {
+        "id": "isa_53_1",
+        "category": "canonical",
+        "prompt": "Who hath believed our report? and to whom is the arm of the LORD revealed?",
+        "generation": "\n2KI 21:12 Then he said, Behold, I will deliver them into the hand of Antioch for their inheritance.",
+        "new_tokens": 100,
+        "elapsed_s": 0.918,
+        "tok_per_s": 109.0
+      },
+      {
+        "id": "rom_8_28",
+        "category": "canonical",
+        "prompt": "And we know that all things work together for good",
+        "generation": " when we were gone out, the host of Achor were come to Beth-horon.\n2CH 24:14 And they gave also the ",
+        "new_tokens": 100,
+        "elapsed_s": 0.779,
+        "tok_per_s": 128.3
+      },
+      {
+        "id": "mat_5_3",
+        "category": "canonical",
+        "prompt": "Blessed are the poor in spirit:",
+        "generation": " but if thou wilt not be found, let not manner for thyself, lest thou be able to raise up thy day th",
+        "new_tokens": 100,
+        "elapsed_s": 0.829,
+        "tok_per_s": 120.6
+      },
+      {
+        "id": "rev_1_1",
+        "category": "canonical",
+        "prompt": "The Revelation of Jesus Christ, which God gave unto him,",
+        "generation": " saying,\nACT 1:20 Thus speaketh Paul, the God of Abraham, who art the God always for the Son of God,",
+        "new_tokens": 100,
+        "elapsed_s": 0.916,
+        "tok_per_s": 109.2
+      },
+      {
+        "id": "exo_20_1",
+        "category": "canonical",
+        "prompt": "And God spake all these words, saying,",
+        "generation": " Let neither man nor beast.\nLUK 12:25 And Jesus said unto him, Here thy father and no God my Father ",
+        "new_tokens": 100,
+        "elapsed_s": 0.792,
+        "tok_per_s": 126.3
+      },
+      {
+        "id": "theo_grace",
+        "category": "theology",
+        "prompt": "For by grace are ye saved through faith;",
+        "generation": "\n<|endsource|>\n\n<|source:kjv:old_testament:JER:32|>\nBook: The Book of the Prophet Jeremiah\nChapter: ",
+        "new_tokens": 100,
+        "elapsed_s": 0.856,
+        "tok_per_s": 116.8
+      },
+      {
+        "id": "theo_love",
+        "category": "theology",
+        "prompt": "And now abideth faith, hope, charity, these three;",
+        "generation": " but woe, make or a wise man, that the sea know that God is stronger than he.\nROM 15:23 Salute Barak",
+        "new_tokens": 100,
+        "elapsed_s": 0.798,
+        "tok_per_s": 125.3
+      },
+      {
+        "id": "theo_law",
+        "category": "theology",
+        "prompt": "Thou shalt love the LORD thy God with all thy heart,",
+        "generation": " and with all thy soul: deliver me I will utterly destroy thee.\nDEU 15:9 I will also slay my covenan",
+        "new_tokens": 100,
+        "elapsed_s": 0.805,
+        "tok_per_s": 124.3
+      },
+      {
+        "id": "theo_sin",
+        "category": "theology",
+        "prompt": "For all have sinned, and come short of the glory of God;",
+        "generation": " for he shall not abide with the flesh thereof.\nJDT 16:5 Your man shall be healed, which the Lord yo",
+        "new_tokens": 100,
+        "elapsed_s": 0.878,
+        "tok_per_s": 113.8
+      },
+      {
+        "id": "theo_faith",
+        "category": "theology",
+        "prompt": "Now faith is the substance of things hoped for,",
+        "generation": " and the holy border is to be cast into his garden; and the liers that ran to come before the sand?\n",
+        "new_tokens": 100,
+        "elapsed_s": 0.864,
+        "tok_per_s": 115.8
+      },
+      {
+        "id": "names_adam",
+        "category": "names",
+        "prompt": "And Adam knew Eve his wife;",
+        "generation": " and the spirit of God was upon him, and the pin by the wilderness of Paran.\nGEN 50:4 And the servan",
+        "new_tokens": 100,
+        "elapsed_s": 0.756,
+        "tok_per_s": 132.3
+      },
+      {
+        "id": "names_abr",
+        "category": "names",
+        "prompt": "Now the LORD had said unto Abram, Get thee out of thy country,",
+        "generation": " to possess the land which thou hadst brought forth out of the land of Egypt, to destroy thy cities;",
+        "new_tokens": 100,
+        "elapsed_s": 0.864,
+        "tok_per_s": 115.7
+      },
+      {
+        "id": "names_moses",
+        "category": "names",
+        "prompt": "And Moses said unto God, Who am I, that I should go unto Pharaoh,",
+        "generation": " and the Canaanites, and the Gadites, and the Gazerites, and the Gadites, and the Geshurites, and th",
+        "new_tokens": 100,
+        "elapsed_s": 0.814,
+        "tok_per_s": 122.8
+      },
+      {
+        "id": "names_david",
+        "category": "names",
+        "prompt": "And David said to Saul, Let no man's heart fail because of him;",
+        "generation": " for he hath sent him dominion and evil, and hath been told the souls of the house of Abraham, and h",
+        "new_tokens": 100,
+        "elapsed_s": 0.798,
+        "tok_per_s": 125.2
+      },
+      {
+        "id": "open_ruth",
+        "category": "opener",
+        "prompt": "Now it came to pass in the days when the judges ruled,",
+        "generation": " and he came to the same hour until the morning.\nJDT 1:16 And the house of Israel and the people wen",
+        "new_tokens": 100,
+        "elapsed_s": 0.715,
+        "tok_per_s": 139.9
+      },
+      {
+        "id": "open_job",
+        "category": "opener",
+        "prompt": "There was a man in the land of Uz, whose name was Job;",
+        "generation": " and he said unto them, I [am] the LORD.\nLUK 2:20 And they took her, and brought him to the priestho",
+        "new_tokens": 100,
+        "elapsed_s": 0.608,
+        "tok_per_s": 164.5
+      },
+      {
+        "id": "open_acts",
+        "category": "opener",
+        "prompt": "The former treatise have I made, O Theophilus, of all that Jesus began both to do and teach,",
+        "generation": " and to worship God, if thou forbid that the angels hast been delivered into thine hands.\nTOB 1:2 No",
+        "new_tokens": 100,
+        "elapsed_s": 0.831,
+        "tok_per_s": 120.4
+      },
+      {
+        "id": "apoc_tob",
+        "category": "apocrypha",
+        "prompt": "The book of the words of Tobit,",
+        "generation": " and what [is] that HORST EPISTLE OF THE ROTHEPHESIANS\nChapter: 2\nCanon: new_testament\n\nEPH 2:1 Let ",
+        "new_tokens": 100,
+        "elapsed_s": 0.706,
+        "tok_per_s": 141.6
+      },
+      {
+        "id": "apoc_wis",
+        "category": "apocrypha",
+        "prompt": "Love righteousness, ye that be judges of the earth:",
+        "generation": " who shall not stand before the LORD your God?\nLEV 14:20 As soon as ye be clear the children of Isra",
+        "new_tokens": 100,
+        "elapsed_s": 1.005,
+        "tok_per_s": 99.5
+      },
+      {
+        "id": "short_lord",
+        "category": "short",
+        "prompt": "LORD",
+        "generation": ") God of Israel, which seeth the good taleth before the day [that is] that shall come out of the lan",
+        "new_tokens": 100,
+        "elapsed_s": 0.595,
+        "tok_per_s": 168.0
+      },
+      {
+        "id": "short_god",
+        "category": "short",
+        "prompt": "God",
+        "generation": ": but deliver him into the hands of love.\nLUK 5:18 And Herod granted [me] the elders, and said unto ",
+        "new_tokens": 100,
+        "elapsed_s": 0.641,
+        "tok_per_s": 156.0
+      },
+      {
+        "id": "short_and",
+        "category": "short",
+        "prompt": "And",
+        "generation": " they shall say, The LORD liveth, when shall deliver us out of the hand of the king of Assyria.\nJER ",
+        "new_tokens": 100,
+        "elapsed_s": 0.523,
+        "tok_per_s": 191.2
+      },
+      {
+        "id": "vc_psa_22",
+        "category": "verse_continuation",
+        "prompt": "My God, my God, why hast thou forsaken me?",
+        "generation": "\nJOB 3:4 He will strengthen me, and he shall make me to anger.\nJOB 3:5 I will not put my words unto ",
+        "new_tokens": 100,
+        "elapsed_s": 0.752,
+        "tok_per_s": 132.9
+      },
+      {
+        "id": "vc_luk_2",
+        "category": "verse_continuation",
+        "prompt": "And she brought forth her firstborn son,",
+        "generation": " and went out, and smote the horse before the LORD, and proclaimed there with a mandrake offering, t",
+        "new_tokens": 100,
+        "elapsed_s": 0.728,
+        "tok_per_s": 137.3
+      },
+      {
+        "id": "vc_jhn_1",
+        "category": "verse_continuation",
+        "prompt": "In the beginning was the Word, and the Word was with God,",
+        "generation": " and the prince of the province, which were espiest, and could would have a plump under the tree tha",
+        "new_tokens": 100,
+        "elapsed_s": 0.705,
+        "tok_per_s": 141.8
+      }
+    ],
+    "stability": {
+      "runs": 50,
+      "failures": 0,
+      "nan_events": 0,
+      "pass": true,
+      "elapsed_s": 6.1,
+      "failure_details": []
+    },
+    "latency_dist": {
+      "n": 100,
+      "p50_ms": 4.21,
+      "p90_ms": 6.61,
+      "p95_ms": 6.91,
+      "p99_ms": 7.4,
+      "min_ms": 3.73,
+      "max_ms": 7.4,
+      "mean_ms": 4.72
+    }
+  },
+  "summary": {
+    "full_val_ppl": 3.2125,
+    "long_context_pass": true,
+    "stability_pass": true,
+    "p50_latency_ms": 4.21,
+    "overall": "PASS"
+  }
+}

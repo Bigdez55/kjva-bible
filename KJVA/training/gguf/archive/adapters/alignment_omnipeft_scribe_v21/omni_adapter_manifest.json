@@ -1,0 +1,166 @@
+{
+  "artifact_type": "omni_peft_scribe_adapter",
+  "regimen": "omni_scribe_alignment_v2",
+  "doctrine": "ml-training/peft/OMNI_PEFT_DOCTRINE.md",
+  "target": "Bible+Apocrypha scribe assistant with constitutional governance",
+  "retrieval_delegation": "exact verse text + topical finding served by retrieval index, not adapter weights",
+  "base_checkpoint": "../kjva-bible/KJVA/training/weights.safetensors",
+  "clean_corpus": "/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/models v7/training/corpus/eng_kjv_clean_v1/corpus.txt",
+  "programs_dir": "/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/models v7/training/corpus/programs",
+  "pool_weights": {
+    "retention": 0.45,
+    "grounding": 0.25,
+    "governance": 0.2,
+    "scribe": 0.1
+  },
+  "pool_stats": {
+    "scripture_lines_total": 36822,
+    "scripture_train_lines": 36412,
+    "heldout_verses": 410,
+    "heldout_section_counts": {
+      "torah": 66,
+      "writings": 86,
+      "prophets": 44,
+      "apocrypha": 63,
+      "gospels": 42,
+      "epistles": 31
+    },
+    "retention_chunks": 5073,
+    "grounding_rows": 37,
+    "governance_rows": 44,
+    "scribe_rows": 11,
+    "alignment_files": [
+      "alignment_capability_boundaries_v1.jsonl",
+      "alignment_counter_witness_v1.jsonl",
+      "alignment_creator_sovereign_v1.jsonl",
+      "alignment_governance_v1.jsonl",
+      "alignment_scribe_style_v1.jsonl",
+      "alignment_scripture_grounding_v1.jsonl"
+    ],
+    "unmapped_categories": [],
+    "skipped_no_out_span": 0,
+    "seq_len": 1024,
+    "heldout_every": 90,
+    "byte_offset": 3,
+    "completion_only_masking": true
+  },
+  "enabled_methods": [
+    "adalora",
+    "bitfit",
+    "dora",
+    "ia3",
+    "lora",
+    "prefix_tuning"
+  ],
+  "operator_count": 42,
+  "epochs_planned": 10,
+  "epochs_run": 10,
+  "stopped_early": false,
+  "steps_per_epoch": 150,
+  "baseline_heldout_bpb": 1.1693,
+  "baseline_section_bpb": {
+    "torah": 0.973,
+    "prophets": 1.2301,
+    "writings": 1.2052,
+    "gospels": 1.2213,
+    "epistles": 1.3926,
+    "apocrypha": 1.2942
+  },
+  "post_injection_bpb": 1.1695,
+  "final_heldout_bpb": 1.2995,
+  "best_heldout_bpb": 1.1695,
+  "final_bpb_regress_vs_baseline": 0.1301,
+  "bpb_max_regress_threshold": 0.15,
+  "final_section_bpb": {
+    "torah": 1.0907,
+    "prophets": 1.3597,
+    "writings": 1.3365,
+    "gospels": 1.351,
+    "epistles": 1.5433,
+    "apocrypha": 1.4542
+  },
+  "epoch_log": [
+    {
+      "epoch": 1,
+      "avg_loss": 1.1716,
+      "heldout_bpb": 1.27,
+      "bpb_regress_vs_baseline": 0.1007,
+      "checkpoint": "models v7/training/gguf/archive/adapters/alignment_omnipeft_scribe_v21/epoch_01/omni_adapter_weights.npz"
+    },
+    {
+      "epoch": 2,
+      "avg_loss": 0.8746,
+      "heldout_bpb": 1.2961,
+      "bpb_regress_vs_baseline": 0.1268,
+      "checkpoint": "models v7/training/gguf/archive/adapters/alignment_omnipeft_scribe_v21/epoch_02/omni_adapter_weights.npz"
+    },
+    {
+      "epoch": 3,
+      "avg_loss": 0.7336,
+      "heldout_bpb": 1.2886,
+      "bpb_regress_vs_baseline": 0.1193,
+      "checkpoint": "models v7/training/gguf/archive/adapters/alignment_omnipeft_scribe_v21/epoch_03/omni_adapter_weights.npz"
+    },
+    {
+      "epoch": 4,
+      "avg_loss": 0.7033,
+      "heldout_bpb": 1.2947,
+      "bpb_regress_vs_baseline": 0.1254,
+      "checkpoint": "models v7/training/gguf/archive/adapters/alignment_omnipeft_scribe_v21/epoch_04/omni_adapter_weights.npz"
+    },
+    {
+      "epoch": 5,
+      "avg_loss": 0.6269,
+      "heldout_bpb": 1.2957,
+      "bpb_regress_vs_baseline": 0.1264,
+      "checkpoint": "models v7/training/gguf/archive/adapters/alignment_omnipeft_scribe_v21/epoch_05/omni_adapter_weights.npz"
+    },
+    {
+      "epoch": 6,
+      "avg_loss": 0.5734,
+      "heldout_bpb": 1.3042,
+      "bpb_regress_vs_baseline": 0.1349,
+      "checkpoint": "models v7/training/gguf/archive/adapters/alignment_omnipeft_scribe_v21/epoch_06/omni_adapter_weights.npz"
+    },
+    {
+      "epoch": 7,
+      "avg_loss": 0.5075,
+      "heldout_bpb": 1.2978,
+      "bpb_regress_vs_baseline": 0.1284,
+      "checkpoint": "models v7/training/gguf/archive/adapters/alignment_omnipeft_scribe_v21/epoch_07/omni_adapter_weights.npz"
+    },
+    {
+      "epoch": 8,
+      "avg_loss": 0.5298,
+      "heldout_bpb": 1.2987,
+      "bpb_regress_vs_baseline": 0.1294,
+      "checkpoint": "models v7/training/gguf/archive/adapters/alignment_omnipeft_scribe_v21/epoch_08/omni_adapter_weights.npz"
+    },
+    {
+      "epoch": 9,
+      "avg_loss": 0.4106,
+      "heldout_bpb": 1.3092,
+      "bpb_regress_vs_baseline": 0.1399,
+      "checkpoint": "models v7/training/gguf/archive/adapters/alignment_omnipeft_scribe_v21/epoch_09/omni_adapter_weights.npz"
+    },
+    {
+      "epoch": 10,
+      "avg_loss": 0.4198,
+      "heldout_bpb": 1.2995,
+      "bpb_regress_vs_baseline": 0.1301,
+      "checkpoint": "models v7/training/gguf/archive/adapters/alignment_omnipeft_scribe_v21/epoch_10/omni_adapter_weights.npz"
+    }
+  ],
+  "final_avg_loss": 0.6551,
+  "is_tournament": false,
+  "tournament_winner": null,
+  "canonical_promoted": false,
+  "pareto_recommendation": {
+    "epoch": 10,
+    "rationale": "lowest held-out BPB regression among well-learned epochs (alignment loss within 15% of best)",
+    "avg_loss": 0.4198,
+    "heldout_bpb": 1.2995,
+    "bpb_regress_vs_baseline": 0.1301,
+    "checkpoint": "models v7/training/gguf/archive/adapters/alignment_omnipeft_scribe_v21/epoch_10/omni_adapter_weights.npz"
+  }
+}

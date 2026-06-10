@@ -1,0 +1,99 @@
+{
+  "artifact_role": "archived_candidate",
+  "runtime_authority": false,
+  "promotion_status": "NO_PROMOTE",
+  "loaded_for": "benchmark_comparison_only",
+  "gguf_path": "models v7/training/gguf/archive/aligned_byte_sft_v1.gguf",
+  "model": "models v7/training/gguf/archive/aligned_byte_sft_v1.gguf",
+  "model_sha256": "b84ffc4838d0c907c646954857af6589",
+  "engine_version": "xmind-easy/1.0 consumer-build",
+  "engine_init_ms": 0.0,
+  "determinism": {
+    "section": "\u00a73.5 Determinism (T=0)",
+    "n_runs": 5,
+    "all_byte_identical": true,
+    "distinct_outputs_count": 1,
+    "outputs_preview": [
+      " of the sea shall be for the san",
+      " of the sea shall be for the san",
+      " of the sea shall be for the san"
+    ],
+    "wall_ms_mean": 330.6,
+    "wall_ms_stdev": 16.87
+  },
+  "throughput": {
+    "section": "\u00a74.1 Decode throughput",
+    "by_max_tokens": [
+      {
+        "max_tokens": 32,
+        "tok_per_s_mean": 60.7,
+        "tok_per_s_stdev": 1.5,
+        "tok_per_s_min": 59.0,
+        "tok_per_s_max": 62.5
+      },
+      {
+        "max_tokens": 64,
+        "tok_per_s_mean": 85.1,
+        "tok_per_s_stdev": 4.9,
+        "tok_per_s_min": 77.5,
+        "tok_per_s_max": 88.9
+      },
+      {
+        "max_tokens": 128,
+        "tok_per_s_mean": 112.4,
+        "tok_per_s_stdev": 2.8,
+        "tok_per_s_min": 107.9,
+        "tok_per_s_max": 114.5
+      }
+    ]
+  },
+  "ttft": {
+    "section": "\u00a74.2 TTFT",
+    "by_prompt_length": [
+      {
+        "prompt": "short_8b",
+        "bytes": 9,
+        "ttft_ms_mean": 66.6,
+        "ttft_ms_p50": 64.9,
+        "ttft_ms_min": 64.7,
+        "ttft_ms_max": 71.1
+      },
+      {
+        "prompt": "med_64b",
+        "bytes": 63,
+        "ttft_ms_mean": 416.0,
+        "ttft_ms_p50": 415.2,
+        "ttft_ms_min": 411.0,
+        "ttft_ms_max": 422.5
+      },
+      {
+        "prompt": "long_256b",
+        "bytes": 256,
+        "ttft_ms_mean": 1783.6,
+        "ttft_ms_p50": 1792.8,
+        "ttft_ms_min": 1750.4,
+        "ttft_ms_max": 1804.1
+      }
+    ]
+  },
+  "memory": {
+    "section": "\u00a74.3 Memory",
+    "model_footprint_mb": 10.53,
+    "rss_pre_mb": 49.14,
+    "rss_post_mb": 49.14,
+    "rss_delta_mb": 0.0
+  },
+  "cold_start": {
+    "section": "\u00a74.5 Cold-start latency",
+    "n_runs": 3,
+    "ms_mean": 502.7,
+    "ms_stdev": 30.4,
+    "ms_min": 484.4,
+    "ms_max": 537.8
+  },
+  "concurrency": {
+    "section": "\u00a74.6 Concurrency",
+    "note": "Singleton; in-process threads serialize on spinlock.",
+    "sequential_ms_mean": 77.1
+  }
+}

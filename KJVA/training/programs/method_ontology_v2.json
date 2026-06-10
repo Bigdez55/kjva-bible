@@ -1,0 +1,37 @@
+{
+  "ontology_version": "2.0",
+  "ref": "UNIFIED_MASTER_TECH_PACK.md §11.1/§11.2 step 3 (Omni-PEFT++ method ontology)",
+  "note": "Additive sidecar to omni_training_registry.json (which stays schema-valid). Maps each PEFT method to its v2 family, capability profile, plasticity zones, and applicable tournament lanes.",
+  "families": [
+    "WEIGHT_ADDITIVE", "ACTIVATION", "PROMPT", "MODULE",
+    "STRUCTURAL", "SPARSE", "ROUTING", "ALIGNMENT"
+  ],
+  "lanes": ["adversarial", "privacy", "memory", "sensor"],
+  "methods": {
+    "lora":    {"family": "WEIGHT_ADDITIVE", "bespoke": true,  "zones": ["early_mlp", "middle", "late_attn", "late_mlp"], "lanes": ["memory", "sensor"], "merge_safe": true},
+    "dora":    {"family": "WEIGHT_ADDITIVE", "bespoke": true,  "zones": ["late_attn", "late_mlp"], "lanes": ["memory"], "merge_safe": true},
+    "ia3":     {"family": "ACTIVATION",      "bespoke": true,  "zones": ["early_attn"], "lanes": ["privacy", "memory"], "merge_safe": true},
+    "bitfit":  {"family": "SPARSE",          "bespoke": true,  "zones": ["layernorm"], "lanes": ["privacy"], "merge_safe": true},
+    "oft":     {"family": "STRUCTURAL",      "bespoke": true,  "zones": ["middle"], "lanes": ["adversarial"], "merge_safe": false},
+    "houlsby": {"family": "MODULE",          "bespoke": true,  "zones": ["early_mlp", "late_mlp"], "lanes": ["sensor"], "merge_safe": true},
+    "adalora": {"family": "WEIGHT_ADDITIVE", "bespoke": false, "alias_of": "lora"},
+    "rslora":  {"family": "WEIGHT_ADDITIVE", "bespoke": false, "alias_of": "lora"},
+    "olora":   {"family": "WEIGHT_ADDITIVE", "bespoke": false, "alias_of": "lora"},
+    "pissa":   {"family": "WEIGHT_ADDITIVE", "bespoke": false, "alias_of": "lora"},
+    "vera":    {"family": "WEIGHT_ADDITIVE", "bespoke": false, "alias_of": "lora"},
+    "loha":    {"family": "WEIGHT_ADDITIVE", "bespoke": false, "alias_of": "lora"},
+    "lokr":    {"family": "WEIGHT_ADDITIVE", "bespoke": false, "alias_of": "lora"},
+    "rosa":    {"family": "WEIGHT_ADDITIVE", "bespoke": false, "alias_of": "lora"},
+    "qlora":   {"family": "WEIGHT_ADDITIVE", "bespoke": false, "alias_of": "lora"},
+    "pfeiffer":   {"family": "MODULE",       "bespoke": false, "alias_of": "houlsby"},
+    "compacter":  {"family": "MODULE",       "bespoke": false, "alias_of": "houlsby"},
+    "mam_adapter": {"family": "ROUTING",     "bespoke": false, "alias_of": "houlsby"},
+    "boft":       {"family": "STRUCTURAL",   "bespoke": false, "alias_of": "oft"},
+    "fourier_ft": {"family": "STRUCTURAL",   "bespoke": false, "alias_of": "oft"},
+    "unipelt":    {"family": "ROUTING",      "bespoke": false, "alias_of": "lora"},
+    "xlora":      {"family": "ROUTING",      "bespoke": false, "alias_of": "lora"},
+    "diffpruning": {"family": "SPARSE",      "bespoke": false, "alias_of": "bitfit"},
+    "fishmask":   {"family": "SPARSE",       "bespoke": false, "alias_of": "bitfit"},
+    "far":        {"family": "SPARSE",       "bespoke": false, "alias_of": "bitfit"}
+  }
+}

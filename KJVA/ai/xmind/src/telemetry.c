@@ -186,14 +186,29 @@ void xmind_telemetry_emit(const xmind_heptagon_t        *h,
         TELEM_JSON_PUTS(",\"tokens\":");
         { char t[12]; char *e = telem_u32_dec(t, pkt->tokens_generated); *e = '\0'; TELEM_JSON_PUTS(t); }
         TELEM_JSON_PUTS(",\"input_hash\":\"");
-        /* Emit first 8 bytes of input hash as 16 hex chars */
+        /* Emit first 8 bytes of input hash as 16 hex chars.
+         * D26 ENVELOPE INVARIANT: input_hash is the ONLY representation of the
+         * user's input that ever leaves this process — it is a one-way SHA-256
+         * digest (from r1_per_signal_t), never the raw prompt/bytes. Every other
+         * field above is a numeric metric (scores, counts, flags). No raw user
+         * content is serialised here. Keep it that way. */
         for (uint32_t hi = 0u; hi < 8u && p + 2 < lim; hi++) {
             uint8_t b = pkt->input_hash[hi];
             const char hex[] = "0123456789abcdef";
             *p++ = hex[(b >> 4) & 0x0Fu];
             *p++ = hex[b & 0x0Fu];
         }
-        TELEM_JSON_PUTS("\"}");
+        TELEM_JSON_PUTS("\"");
+        /* D26 lineage/decision id: a cheap, content-free correlation key so a
+         * downstream consumer can join this telemetry record to its inference
+         * decision without ever needing the input. session_id identifies the
+         * inference session; telemetry_seq is the monotonic per-session record
+         * index. Both are integers — no user content. */
+        TELEM_JSON_PUTS(",\"session_id\":");
+        { char t[12]; char *e = telem_u32_dec(t, pkt->session_id); *e = '\0'; TELEM_JSON_PUTS(t); }
+        TELEM_JSON_PUTS(",\"decision_id\":");
+        { char t[12]; char *e = telem_u32_dec(t, h->telemetry_seq); *e = '\0'; TELEM_JSON_PUTS(t); }
+        TELEM_JSON_PUTS("}");
         #undef TELEM_JSON_PUTS
         *p = '\0';
 

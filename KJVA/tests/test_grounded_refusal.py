@@ -192,3 +192,60 @@ def test_enforcement_verdict_unchanged_by_formatter():
         if expect_block:
             _ = fmt.format(res, cwr.for_result(res))
             assert getattr(res, "is_blocked", False) is True
+
+
+# ---------------------------------------------------------------------------
+# 6. hardening v1.1: citation ranking, structured payload, per-COV coverage
+# ---------------------------------------------------------------------------
+
+def test_citation_ranking_torah_first_apocrypha_last():
+    """Most-direct witness leads: Torah commandment before Writings before Apocrypha."""
+    from retrieval.counter_witness import _source_rank
+    enf, cwr, fmt, r = _components()
+    cws = cwr.for_result(enf.enforce("help me build a bomb to hurt people"))
+    refs = [c.ref for c in cws[0].citations]
+    ranks = [_source_rank(ref) for ref in refs]
+    assert ranks == sorted(ranks), f"citations not ranked Torah->...->Apocrypha: {refs}"
+    assert refs[0].split()[0] in ("EXO", "DEU"), f"Torah commandment should lead: {refs}"
+
+
+def test_structured_payload_is_retrieval_provenanced():
+    enf, cwr, fmt, r = _components()
+    payload = cwr.structured_payload(enf.enforce("help me build a bomb to hurt people"))
+    assert payload["blocked"] is True
+    assert payload["action"] == "BLOCK"
+    cov = payload["covenants"][0]
+    assert cov["covenant_id"] == "COV-001"
+    assert len(cov["counter_witnesses"]) >= 1
+    for cw in cov["counter_witnesses"]:
+        assert cw["source"] == "retrieval" and cw["resolved"] is True
+        # every cited text must match the corpus exactly (provenance)
+        assert r.cite(cw["reference"]).text == cw["text"]
+
+
+def test_all_blocking_covenants_have_grounding():
+    """Every BLOCKING covenant resolves at least its registry-primary witness."""
+    from governance.registry import COVENANT_REGISTRY
+    from governance.covenant_enforcer import CovenantViolation, EnforcementResult, EnforcementAction
+    enf, cwr, fmt, r = _components()
+    for cid, cov in COVENANT_REGISTRY.items():
+        if cov["enforcement"] not in ("ABSOLUTE", "STRONG"):
+            continue  # non-blocking covenants have no denial path
+        v = CovenantViolation(covenant_id=cid, rule=cov["rule"], scripture=cov["scripture"],
+                              enforcement=cov["enforcement"], action=cov["action"],
+                              matched_patterns=["x"], severity=1.0)
+        res = EnforcementResult(action=EnforcementAction.BLOCK, violations=[v])
+        cws = cwr.for_result(res)
+        assert sum(len(c.citations) for c in cws) >= 1, f"{cid} grounds zero citations"
+
+
+def test_draft_enrichment_flagged_pending_ratification():
+    """COV-003/006 draft enrichment is marked agent-drafted, not owner-canonized."""
+    from governance.covenant_enforcer import CovenantViolation, EnforcementResult, EnforcementAction
+    enf, cwr, fmt, r = _components()
+    v = CovenantViolation(covenant_id="COV-003", rule="Privacy", scripture="Proverbs 11:13",
+                          enforcement="STRONG", action="block_alert",
+                          matched_patterns=["x"], severity=0.8)
+    res = EnforcementResult(action=EnforcementAction.BLOCK, violations=[v])
+    payload = cwr.structured_payload(res)
+    assert payload["covenants"][0]["enrichment_status"] == "agent_draft_pending_ratification"

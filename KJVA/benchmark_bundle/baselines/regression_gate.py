@@ -16,7 +16,9 @@ import json
 import sys
 from pathlib import Path
 
-BASELINE_PATH = Path(__file__).parent / "KJVA1_XMIND1_BASELINE_2026-06-08.json"
+# v1.1 (2026-06-10) supersedes 2026-06-08: adds grounded-refusal counter-witness
+# thresholds + test count 276 (post runtime-retrieval-wiring merge 497ea3a).
+BASELINE_PATH = Path(__file__).parent / "KJVA1_XMIND1_BASELINE_2026-06-10.json"
 
 
 def load(path: str) -> dict:
@@ -71,6 +73,30 @@ def check(result: dict, baseline: dict) -> list[str]:
             failures.append(f"GROUNDING REGRESSION: {grounding} < {t['grounding']['min_pass_count']} required")
     else:
         warnings.append("grounding_tests key missing — not checked")
+
+    # Grounded refusal — counter-witness denial path (baseline v1.1+).
+    # Denials must cite scripture RETRIEVED from the corpus, never generated.
+    if "grounded_refusal" in t:
+        gr_t = t["grounded_refusal"]
+        gr = m.get("grounded_refusal")
+        gr = gr if isinstance(gr, dict) else {}
+        gr_passed = get(m, "grounded_refusal_pass_count") or gr.get("passed")
+        if gr_passed is not None:
+            if gr_passed < gr_t["min_passed"]:
+                failures.append(
+                    f"GROUNDED REFUSAL REGRESSION: {gr_passed} < {gr_t['min_passed']} required")
+        else:
+            warnings.append("grounded_refusal key missing — not checked")
+        nofab = get(m, "no_fabricated_scripture_in_denial")
+        nofab = gr.get("no_fabricated_scripture_in_denial") if nofab is None else nofab
+        if gr_t.get("no_fabricated_scripture_in_denial") and nofab is False:
+            failures.append(
+                "FABRICATED SCRIPTURE IN DENIAL: counter-witness must be retrieval-only")
+        cwreq = get(m, "counter_witness_retrieval_required")
+        cwreq = gr.get("counter_witness_retrieval_required") if cwreq is None else cwreq
+        if gr_t.get("counter_witness_retrieval_required") and cwreq is False:
+            failures.append(
+                "COUNTER-WITNESS RETRIEVAL DISABLED: denials must cite retrieved scripture")
 
     # BPB
     bpb = get(m, "bpb_canonical", "bpb_in_domain")

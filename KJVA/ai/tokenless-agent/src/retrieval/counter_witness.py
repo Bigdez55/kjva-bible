@@ -62,6 +62,41 @@ _PROGRAMS_CANDIDATES = (
     "models v7/training/corpus/programs/alignment_counter_witness_v1.jsonl",
 )
 
+# DRAFT enrichment for BLOCKING covenants the owner's v1 map does not cover
+# (COV-003 Privacy, COV-006 Respect). Keyed by covenant_id (these covenants have
+# no clean owner category). Every ref is grounded (verified to resolve via cite()).
+#
+# *** AGENT-DRAFTED — PENDING CREATOR RATIFICATION. ***  These scripture choices
+# are NOT owner-canonized doctrine; they extend denial coverage so no blocking
+# covenant grounds on a single witness. The registry primary remains the
+# guaranteed floor regardless. Promote into the owner's authored map on approval.
+_DRAFT_ENRICHMENT: dict[str, dict] = {
+    "COV-003": {  # Privacy — registry primary: Proverbs 11:13
+        "refs": ["Proverbs 11:13", "Proverbs 20:19", "Sirach 27:16", "Sirach 19:8"],
+        "redirect": "lawful confidentiality, consent-based information handling, and data protection",
+    },
+    "COV-006": {  # Respect — registry primary: Proverbs 15:1
+        "refs": ["Proverbs 15:1", "Proverbs 12:18", "Ephesians 4:29", "Sirach 28:17"],
+        "redirect": "respectful communication, de-escalation, and constructive dialogue",
+    },
+}
+
+# Citation ranking: most-direct witness first. Torah (Decalogue/commandment) ->
+# OT/NT non-Torah (Writings/Prophets/Gospels/Epistles) -> Apocrypha. Matches the
+# owner's stated preference order (e.g. harm: Exodus 20:13, Proverbs 3:29, Wisdom 1:13).
+_TORAH = {"GEN", "EXO", "LEV", "NUM", "DEU"}
+_APOCRYPHA = {"TOB", "JDT", "SIR", "WIS", "BAR", "1MA", "2MA", "BEL", "SUS", "MAN",
+              "1ES", "2ES", "S3Y", "ESG"}
+
+
+def _source_rank(ref: str) -> int:
+    code = ref.split(" ", 1)[0]
+    if code in _TORAH:
+        return 0
+    if code in _APOCRYPHA:
+        return 2
+    return 1
+
 
 @dataclass
 class GroundedCounterWitness:
@@ -135,6 +170,13 @@ class CounterWitnessRetriever:
             if cat and cat in self._enrichment:
                 refs.extend(self._enrichment[cat]["refs"])
 
+            # (3) DRAFT enrichment (agent-drafted, pending ratification) for blocking
+            # covenants the owner map does not cover (COV-003 privacy, COV-006 respect).
+            if cov_id in _DRAFT_ENRICHMENT:
+                refs.extend(_DRAFT_ENRICHMENT[cov_id]["refs"])
+                if not redirect:
+                    redirect = _DRAFT_ENRICHMENT[cov_id]["redirect"]
+
             # retrieve EXACT text; keep ONLY refs that resolve (no fabrication)
             citations: list[Citation] = []
             seen: set[str] = set()
@@ -144,6 +186,10 @@ class CounterWitnessRetriever:
                     citations.append(c)
                     seen.add(c.ref)
 
+            # RANK: most-direct witness first (Torah -> OT/NT -> Apocrypha), stable
+            # so insertion order is preserved within a rank.
+            citations.sort(key=lambda c: _source_rank(c.ref))
+
             out.append(GroundedCounterWitness(
                 covenant_id=cov_id,
                 rule=getattr(v, "rule", "") or "",
@@ -151,6 +197,32 @@ class CounterWitnessRetriever:
                 safe_redirect=redirect,
             ))
         return out
+
+    def structured_payload(self, enforcement_result) -> dict:
+        """Machine-readable refusal payload (for audit / UI / logs). Every
+        counter-witness is retrieval-provenanced; nothing here is LM-generated."""
+        cws = self.for_result(enforcement_result)
+        action = getattr(enforcement_result, "action", None)
+        return {
+            "action": getattr(action, "name", str(action)),
+            "blocked": bool(getattr(enforcement_result, "is_blocked", False)),
+            "covenants": [
+                {
+                    "covenant_id": cw.covenant_id,
+                    "rule": cw.rule,
+                    "category": _COVENANT_TO_CATEGORY.get(cw.covenant_id),
+                    "counter_witnesses": [
+                        {"reference": c.ref, "source": "retrieval",
+                         "resolved": True, "text": c.text}
+                        for c in cw.citations
+                    ],
+                    "safe_redirect": cw.safe_redirect,
+                    "enrichment_status": ("agent_draft_pending_ratification"
+                                          if cw.covenant_id in _DRAFT_ENRICHMENT else "owner_authored"),
+                }
+                for cw in cws
+            ],
+        }
 
 
 class GroundedRefusalFormatter:

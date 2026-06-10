@@ -25,10 +25,10 @@
    "note": "Hard floor. Any regression below 25/25 blocks promotion and flags a regression."
   },
   "test_suite": {
-   "min_passed": 283,
+   "min_passed": 284,
    "max_failed": 0,
-   "skipped": 4,
-   "note": "Skipped count is stable; new tests must not increase failures."
+   "skipped": 3,
+   "note": "3 skips remain: PyTorch reference/parity tests (test_pt_gradflow/parity/xmind_parity) require torch, which has no wheel for the system externally-managed Python 3.14. Optional reference tests; production runtime is MLX/C."
   },
   "grounding": {
    "min_pass_count": 14,
@@ -95,8 +95,8 @@
   "footprint_mb": 10.53,
   "corpus_verses": 36822,
   "test_suite": {
-   "passed": 283,
-   "skipped": 4,
+   "passed": 284,
+   "skipped": 3,
    "failed": 0
   },
   "governance": 25,

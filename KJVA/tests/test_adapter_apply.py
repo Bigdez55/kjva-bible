@@ -43,7 +43,13 @@ HARNESS_SRC = XMIND / "tests" / "adapter_apply_check.c"
 HARNESS_BIN = XMIND / "build" / "adapter_apply_check"
 STATIC_LIB = XMIND / "build" / "libxmind-core.a"
 
-GGUF = ROOT / "training" / "gguf" / "clean_base_soup_v1.gguf"
+# Soup GGUF: at the gguf root in a dev tree, ARCHIVED in a sealed production tree
+# (single-runtime authority keeps only canonical.gguf at root). Resolve both so the
+# check runs in the sealed tree WITHOUT placing a non-canonical gguf at the root.
+GGUF = next((p for p in (
+    ROOT / "training" / "gguf" / "clean_base_soup_v1.gguf",
+    ROOT / "training" / "gguf" / "archive" / "clean_base_soup_v1.source.gguf",
+) if p.exists()), ROOT / "training" / "gguf" / "clean_base_soup_v1.gguf")
 ADAPTER = ROOT / "training" / "adapters" / "staging" / "lora_proof" / "adapter.safetensors"
 PROMPT = "In the beginning"
 

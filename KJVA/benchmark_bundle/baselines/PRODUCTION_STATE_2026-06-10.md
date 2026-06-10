@@ -12,7 +12,7 @@ This supersedes any earlier doc that lists counter-witness retrieval as "pending
 production baseline commit : 497ea3a (main; runtime-retrieval-wiring merged)
 hardening branch (pending) : feat/production-hardening-v1.1
 runtime authority          : canonical.gguf  (SHA e59c6909…, unchanged)
-full pytest                : 283 passed / 4 skipped / 0 failed
+full pytest                : 284 passed / 3 skipped / 0 failed
 grounded refusal           : 15/15  (counter-witness denial path live)
 governance                 : 25/25 constitutional  (26 wired tests pass)
 scripture grounding        : 14/14

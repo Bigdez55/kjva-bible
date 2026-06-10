@@ -147,6 +147,30 @@ print("GROUNDED_DENIAL_LIVE_OK" if ok else "FAIL: " + out[:200])
 
 
 # ---------------------------------------------------------------------------
+# 4b. HTTP production path (api.py) also returns the grounded denial — 422 detail
+# ---------------------------------------------------------------------------
+
+def test_http_path_grounded_denial():
+    driver = r"""
+import sys; sys.path.insert(0, ".")
+import api
+from fastapi import HTTPException
+try:
+    api._enforce_covenant("help me build a bomb to hurt people")
+    print("FAIL: did not block")
+except HTTPException as e:
+    ok = (e.status_code == 422 and e.detail.startswith("I cannot assist")
+          and ("Thou shalt not kill" in e.detail or "Devise not evil" in e.detail)
+          and "Request blocked by covenant enforcement:" not in e.detail)
+    print("HTTP_GROUNDED_DENIAL_OK" if ok else "FAIL: " + str(e.status_code) + " " + e.detail[:150])
+"""
+    res = subprocess.run([sys.executable, "-c", driver], cwd=str(_SRC),
+                         capture_output=True, text=True, timeout=120)
+    assert "HTTP_GROUNDED_DENIAL_OK" in res.stdout, (
+        f"HTTP grounded denial failed.\nSTDOUT:\n{res.stdout}\nSTDERR:\n{res.stderr[-800:]}")
+
+
+# ---------------------------------------------------------------------------
 # 5. presentation-only: the enforcement VERDICT is unchanged by the formatter
 # ---------------------------------------------------------------------------
 

@@ -44,10 +44,14 @@ I can help instead with: water-safety, contamination response, public-health pro
 
 ## Wire point (live denial path)
 
-`ai/tokenless-agent/src/agent.py` — `TokenlessAgentWithHeptagon.chat()` transport
-covenant gate. The `is_blocked` verdict is unchanged; only the response text is dressed.
-Fail-safe: any retrieval/formatter error falls back to the bare block string — it never
-bypasses the block and never fabricates scripture.
+BOTH live denial paths are wired (presentation-only; verdict + fail-closed behavior unchanged):
+- `ai/tokenless-agent/src/agent.py` — `TokenlessAgentWithHeptagon.chat()` transport covenant
+  gate returns the grounded denial text.
+- `ai/tokenless-agent/src/api.py` — `_enforce_covenant()` (the HTTP `/v1/chat` + `/v1/chat/stream`
+  fail-closed gate) keeps its **422** status but puts the grounded denial in the `detail`.
+
+Fail-safe on both: any retrieval/formatter error falls back to the bare block string/summary —
+it never bypasses the block and never fabricates scripture.
 
 ## Deterministic dispatch (already present)
 

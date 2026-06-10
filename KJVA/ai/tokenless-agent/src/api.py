@@ -691,6 +691,23 @@ async def chat(
     )
 
 
+_counter_witness_retriever = None
+_grounded_refusal_formatter = None
+
+
+def _grounded_denial_text(cov_result) -> str:
+    """Grounded denial (deny + retrieved counter-witness scripture + redirect) for a
+    blocked covenant result. Same component as agent.chat(); cached per process."""
+    global _counter_witness_retriever, _grounded_refusal_formatter
+    if _counter_witness_retriever is None:
+        from retrieval import get_retriever
+        from retrieval.counter_witness import CounterWitnessRetriever, GroundedRefusalFormatter
+        _counter_witness_retriever = CounterWitnessRetriever(get_retriever())
+        _grounded_refusal_formatter = GroundedRefusalFormatter()
+    cws = _counter_witness_retriever.for_result(cov_result)
+    return _grounded_refusal_formatter.format(cov_result, cws)
+
+
 def _enforce_covenant(message: str) -> None:
     """Covenant gate (FAIL CLOSED) — shared by /v1/chat and /v1/chat/stream.
 
@@ -713,9 +730,18 @@ def _enforce_covenant(message: str) -> None:
             detail="Request blocked: covenant enforcement error (fail-closed).",
         )
     if cov_result.is_blocked:
+        # Presentation-only: keep the fail-closed 422 contract, but enrich the
+        # detail with a GROUNDED denial — counter-witness scripture RETRIEVED from
+        # the corpus (never generated). Same grounded refusal as agent.chat().
+        # Fail-safe: any error falls back to the bare summary (block is unchanged).
+        _detail = f"Request blocked by covenant enforcement: {cov_result.summary()}"
+        try:
+            _detail = _grounded_denial_text(cov_result)
+        except Exception:  # noqa: BLE001
+            logger.warning("grounded denial unavailable on HTTP path; bare summary")
         raise HTTPException(
             status_code=status.HTTP_422_UNPROCESSABLE_CONTENT,
-            detail=f"Request blocked by covenant enforcement: {cov_result.summary()}",
+            detail=_detail,
         )
 
 

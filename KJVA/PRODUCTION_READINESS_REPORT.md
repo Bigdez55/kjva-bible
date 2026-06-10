@@ -10,7 +10,9 @@
 
 ## 1. Executive verdict
 
-**PRODUCTION-CANDIDATE READY — pending Creator approval.**
+**PRODUCTION USE APPROVED (2026-06-10) — Creator Sovereign grant at commit `bea8a3a`.**
+Scope: canonical.gguf + retrieval + governance only; NO adapter/SFT/candidate promotion.
+See `CREATOR_APPROVAL_RECORD.md` (incl. live post-approval smoke).
 
 Every production gate is green. The production stack ships the stable canonical runtime plus
 exact scripture retrieval and constitutional governance. No experimental adapter is promoted or

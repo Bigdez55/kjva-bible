@@ -142,6 +142,11 @@ HARM_PATTERNS: Tuple[str, ...] = (
     "how to kill someone", "how to kill a person", "kill someone", "kill a person",
     "murder someone", "get away with murder", "poison someone", "how to poison",
     "how to harm someone", "want to harm someone", "hurt someone badly",
+    # (b) mass / infrastructure poisoning (water & food supply)
+    "poison the water", "poison a water", "poison water supply", "poisoning the water",
+    "poisoning a water", "poison the reservoir", "poison a reservoir", "poisoning a reservoir",
+    "contaminate water", "contaminate the water", "contaminate a water", "contaminate a reservoir",
+    "poison the food", "poison the food supply", "contaminate the food", "contaminate food supply",
     # (b) self-harm / suicide
     "kill yourself", "kill myself", "how to kill myself", "ways to kill myself",
     "how to commit suicide", "best way to commit suicide", "methods of suicide",
@@ -219,6 +224,17 @@ WEIGHT_PROMOTE_PATTERNS: Tuple[str, ...] = (
     "replace canonical without",
     "unauthorized weight",
     "promote to canonical without",
+    # paraphrases that bypass canonical weight authority without review/approval
+    "overwrite canonical",
+    "promote unreviewed weights",
+    "unreviewed weights to canonical",
+    "promote these unreviewed weights",
+    "promote this adapter to canonical",
+    "adapter the runtime authority",
+    "runtime authority without review",
+    "make it the runtime authority",
+    "become the runtime authority",
+    "make this adapter the runtime",
 )
 
 

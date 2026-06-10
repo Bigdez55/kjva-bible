@@ -10,9 +10,10 @@ This supersedes any earlier doc that lists counter-witness retrieval as "pending
 
 ```
 production baseline commit : 497ea3a (main; runtime-retrieval-wiring merged)
+hardening branch (pending) : feat/production-hardening-v1.1
 runtime authority          : canonical.gguf  (SHA e59c6909…, unchanged)
-full pytest                : 280 passed / 4 skipped / 0 failed
-grounded refusal           : 12/12  (counter-witness denial path live)
+full pytest                : 283 passed / 4 skipped / 0 failed
+grounded refusal           : 15/15  (counter-witness denial path live)
 governance                 : 25/25 constitutional  (26 wired tests pass)
 scripture grounding        : 14/14
 identity audit             : 12/12
@@ -33,14 +34,21 @@ Omni-PEFT v1/v2/v2.1        : ARCHIVED, opt-in only, NON-authoritative, NOT prom
   counter_witnesses[{reference, source:retrieval, resolved, text}], safe_redirect,
   enrichment_status}]}`.
 - **Per-covenant coverage** — every BLOCKING covenant (COV-001/002/003/006/007/009/010) grounds
-  at least its registry-primary witness; multi-witness enrichment for 7 categories. COV-003/006
-  enrichment is **agent-drafted, pending Creator ratification** (flagged in payload).
+  at least its **owner-authored** registry-primary witness; multi-witness enrichment for 5
+  owner-authored categories.
+- **Ratification boundary** — COV-003/006 agent-drafted scripture is **GATED OFF** from production
+  (`_DRAFT_ENRICHMENT_PRODUCTION_ENABLED = False`) until the Creator ratifies it
+  (`COVENANT_WITNESS_RATIFICATION.md`). A test asserts no draft-only witness reaches a production
+  denial. The non-scripture safe-redirect (guidance) is unaffected.
+- **Enforcer coverage closed** for the surfaced paraphrases: "poison the water supply",
+  "contaminate the water supply", "overwrite canonical.gguf", "make this adapter the runtime
+  authority", "promote these unreviewed weights to canonical" now BLOCK (regression-tested),
+  with a false-positive guard (benign scripture/teaching requests unaffected).
 - **`scripts/production_smoke.py`** — fast post-deploy check (10 checks).
 
 ## Known, tracked (not regressions of this work)
 
-- **Enforcer paraphrase gaps:** the covenant enforcer's keyword/ML patterns miss some natural
-  phrasings (e.g. "overwrite canonical.gguf", "poison the water supply"). The grounded-denial
-  layer only fires when `enforce()` blocks, so these phrasings produce no denial. This is a
-  pre-existing enforcer-coverage issue, separate from the grounded layer — candidate for a future
-  governance-pattern / ML-classifier sprint. Do NOT conflate with grounded-refusal coverage.
+- **General paraphrase generalization** beyond the specific phrasings now patched remains the
+  ML safety classifier's job (the keyword patterns are the high-precision floor). Broad coverage
+  is a future governance-pattern / ML-classifier sprint. The grounded-denial layer only fires
+  when `enforce()` blocks; do NOT conflate enforcer coverage with grounded-refusal coverage.

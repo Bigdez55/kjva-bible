@@ -62,14 +62,21 @@ _PROGRAMS_CANDIDATES = (
     "models v7/training/corpus/programs/alignment_counter_witness_v1.jsonl",
 )
 
+# Whether agent-drafted SCRIPTURE witnesses may appear in PRODUCTION denials.
+# DEFAULT OFF: until the Creator ratifies them (see COVENANT_WITNESS_RATIFICATION.md),
+# draft scripture is NOT production-canonical — covenants ground on owner-authored /
+# registry-primary witnesses only. The non-scripture safe-redirect text (guidance,
+# not doctrine) is unaffected. Flip to True only after ratification.
+_DRAFT_ENRICHMENT_PRODUCTION_ENABLED = False
+
 # DRAFT enrichment for BLOCKING covenants the owner's v1 map does not cover
 # (COV-003 Privacy, COV-006 Respect). Keyed by covenant_id (these covenants have
 # no clean owner category). Every ref is grounded (verified to resolve via cite()).
 #
 # *** AGENT-DRAFTED — PENDING CREATOR RATIFICATION. ***  These scripture choices
-# are NOT owner-canonized doctrine; they extend denial coverage so no blocking
-# covenant grounds on a single witness. The registry primary remains the
-# guaranteed floor regardless. Promote into the owner's authored map on approval.
+# are NOT owner-canonized doctrine; the registry primary remains the guaranteed
+# floor. They are GATED OFF from production by _DRAFT_ENRICHMENT_PRODUCTION_ENABLED
+# until the Creator ratifies them.
 _DRAFT_ENRICHMENT: dict[str, dict] = {
     "COV-003": {  # Privacy — registry primary: Proverbs 11:13
         "refs": ["Proverbs 11:13", "Proverbs 20:19", "Sirach 27:16", "Sirach 19:8"],
@@ -170,12 +177,15 @@ class CounterWitnessRetriever:
             if cat and cat in self._enrichment:
                 refs.extend(self._enrichment[cat]["refs"])
 
-            # (3) DRAFT enrichment (agent-drafted, pending ratification) for blocking
-            # covenants the owner map does not cover (COV-003 privacy, COV-006 respect).
+            # (3) DRAFT enrichment for blocking covenants the owner map does not cover
+            # (COV-003 privacy, COV-006 respect). The non-scripture redirect (guidance)
+            # is always available; the agent-drafted SCRIPTURE is gated OFF from
+            # production until Creator ratification.
             if cov_id in _DRAFT_ENRICHMENT:
-                refs.extend(_DRAFT_ENRICHMENT[cov_id]["refs"])
                 if not redirect:
                     redirect = _DRAFT_ENRICHMENT[cov_id]["redirect"]
+                if _DRAFT_ENRICHMENT_PRODUCTION_ENABLED:
+                    refs.extend(_DRAFT_ENRICHMENT[cov_id]["refs"])
 
             # retrieve EXACT text; keep ONLY refs that resolve (no fabrication)
             citations: list[Citation] = []
@@ -217,8 +227,13 @@ class CounterWitnessRetriever:
                         for c in cw.citations
                     ],
                     "safe_redirect": cw.safe_redirect,
-                    "enrichment_status": ("agent_draft_pending_ratification"
-                                          if cw.covenant_id in _DRAFT_ENRICHMENT else "owner_authored"),
+                    # draft SCRIPTURE only counts as draft when actually applied to
+                    # production (flag on). Gated off => owner-authored witnesses only.
+                    "enrichment_status": (
+                        "agent_draft_pending_ratification"
+                        if (_DRAFT_ENRICHMENT_PRODUCTION_ENABLED
+                            and cw.covenant_id in _DRAFT_ENRICHMENT)
+                        else "owner_authored"),
                 }
                 for cw in cws
             ],

@@ -42,6 +42,20 @@ _COVENANT_TO_CATEGORY: dict[str, str] = {
     "COV-010": "canonical_weight_authority",
 }
 
+# GENERIC, category-appropriate redirects. The owner's per-row safe_redirect is
+# scenario-specific (e.g. the poison-water row offers "water-safety"), which
+# mis-fires when applied to a different request in the same category (a bomb
+# request must not be offered "water-safety"). Use a neutral per-category line.
+_GENERIC_REDIRECT: dict[str, str] = {
+    "harm_prevention": "lawful safety, de-escalation, and protective resources",
+    "false_witness": "honest communication, factual verification, and lawful reporting",
+    "theft_or_fraud": "fraud protection, account security, and lawful recourse",
+    "oppression_or_exploitation": "fair-treatment practices, protection of the vulnerable, and lawful remedies",
+    "manipulation": "honest communication, conflict resolution, and restorative mediation",
+    "identity_integrity": "scripture study, governance questions, and Bible-related help",
+    "canonical_weight_authority": "the promotion gate, review requirements, and the attestation process",
+}
+
 # enrichment dataset (owner-authored, audited); resolved across layouts
 _PROGRAMS_CANDIDATES = (
     "training/corpus/programs/alignment_counter_witness_v1.jsonl",
@@ -113,12 +127,13 @@ class CounterWitnessRetriever:
             if primary:
                 refs.append(primary)
 
-            # (2) OPTIONAL enrichment — owner category map, clean mappings only
+            # (2) OPTIONAL enrichment — owner category map (refs only); the
+            # redirect is the GENERIC per-category line, never the scenario-
+            # specific first-row redirect (avoids "water-safety" on a bomb request).
             cat = _COVENANT_TO_CATEGORY.get(cov_id)
-            redirect = ""
+            redirect = _GENERIC_REDIRECT.get(cat or "", "")
             if cat and cat in self._enrichment:
                 refs.extend(self._enrichment[cat]["refs"])
-                redirect = self._enrichment[cat].get("redirect", "")
 
             # retrieve EXACT text; keep ONLY refs that resolve (no fabrication)
             citations: list[Citation] = []

@@ -28,8 +28,11 @@ Counter-witness (retrieved from KJV+Apocrypha — exact text):
   WIS 1:13  For God made not death: neither hath he pleasure in the destruction of the living.
   DEU 5:17  Thou shalt not kill.
   PRO 6:17  A proud look, a lying tongue, and hands that shed innocent blood,
-I can help instead with: water-safety, contamination response, public-health protection, lawful emergency reporting.
+I can help instead with: lawful safety, de-escalation, and protective resources.
 ```
+
+(The redirect is a GENERIC per-category line, not the owner's scenario-specific row redirect —
+a bomb request must not be offered "water-safety".)
 
 ## Components (`ai/tokenless-agent/src/retrieval/counter_witness.py`)
 

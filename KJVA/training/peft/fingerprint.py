@@ -114,6 +114,7 @@ class TaskFingerprinter:
         domains: list[str],
         data_size: DataSize,
         hardware: HardwareBudget,
+        safety_level: str = "medium",
     ) -> TaskFingerprint:
         text = (task_desc + " " + " ".join(domains)).lower()
 
@@ -130,7 +131,7 @@ class TaskFingerprinter:
 
         # Select substrate and PEFT stack
         substrate, stack = self._select_stack(
-            data_size, domain_shift, hardware, reasoning, style
+            data_size, domain_shift, hardware, reasoning, style, safety_level
         )
 
         return TaskFingerprint(
@@ -157,11 +158,12 @@ class TaskFingerprinter:
         hardware: HardwareBudget,
         reasoning: str,
         style: str,
+        safety_level: str = "medium",
     ) -> tuple[str, list[str]]:
         """Apply the escalation ladder and return (substrate, peft_stack)."""
 
-        # Substrate: always qlora if VRAM < 8 GB
-        if hardware.train_vram_mb < 8_000:
+        # Substrate: always qlora if VRAM < 12 GB (matches compiler.py line 165)
+        if hardware.train_vram_mb < 12_000:
             substrate = "qlora"
         else:
             substrate = "float16"
@@ -187,6 +189,14 @@ class TaskFingerprinter:
         # Escalate if reasoning is high and stack doesn't already include strong methods
         if reasoning == "high" and "dora" not in stack and "adalora" not in stack:
             stack.append("adalora")
+
+        # Safety cap: high safety_level blocks retention-risk methods and caps to
+        # lighter adapters (ia3, lora) only.
+        if safety_level == "high":
+            _BLOCKED = {"dora", "houlsby_adapter"}
+            stack = [m for m in stack if m not in _BLOCKED]
+            if not stack:
+                stack = ["ia3", "lora"]
 
         # Always include substrate override
         if substrate == "qlora" and "qlora" not in stack:

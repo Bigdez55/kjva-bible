@@ -105,6 +105,12 @@ class AdapterGenomeRegistry:
         if entry.status == "gated":
             return  # already promoted
 
+        if entry.status == "quarantined":
+            raise ValueError(
+                f"Cannot promote '{name}': adapter is quarantined. "
+                "Unquarantine before promoting."
+            )
+
         if not entry.genome.evaluation:
             raise ValueError(
                 f"Cannot promote '{name}': genome.evaluation is empty. "
@@ -112,10 +118,16 @@ class AdapterGenomeRegistry:
             )
         # §9.2 rule 7 (the previously-missing half): a rollback pointer is mandatory so a
         # promoted adapter can always be reverted.
-        if not getattr(entry.genome, "rollback_previous", ""):
+        rollback_ptr = getattr(entry.genome, "rollback_previous", "")
+        if not rollback_ptr:
             raise ValueError(
                 f"Cannot promote '{name}': genome.rollback_previous is empty "
                 "(ADR-0002 §9.2: no promotion without a rollback pointer)."
+            )
+        if rollback_ptr not in self.entries:
+            raise ValueError(
+                f"Cannot promote '{name}': rollback_previous '{rollback_ptr}' "
+                "does not exist in the registry."
             )
 
         self._move_entry(name, "gated")
@@ -134,6 +146,9 @@ class AdapterGenomeRegistry:
             raise ValueError(f"No rollback target for '{name}'.")
         if prev not in self.entries:
             raise KeyError(f"Rollback target '{prev}' not found in registry.")
+        # Quarantine the bad adapter before promoting the previous stable so it
+        # cannot remain active and the rollback event is recorded.
+        self.quarantine(name, reason=f"rolled back in favour of '{prev}'")
         # Promote the previous version back to gated
         self.promote(prev)
 
@@ -192,6 +207,8 @@ class AdapterGenomeRegistry:
                 mergeable=ag.get("deployment", {}).get("mergeable", True),
                 hot_swappable=ag.get("deployment", {}).get("hot_swappable", True),
                 rollback_previous=ag.get("rollback", {}).get("previous_stable", ""),
+                signature=ag.get("security", {}).get("signature", ""),
+                content_hash=ag.get("security", {}).get("content_hash", ""),
             )
             self.entries[name] = RegistryEntry(
                 genome=genome,
@@ -205,13 +222,18 @@ class AdapterGenomeRegistry:
     # Internal helpers
     # ------------------------------------------------------------------
 
-    def _get(self, name: str) -> RegistryEntry:
+    def get(self, name: str) -> RegistryEntry:
+        """Public lookup — returns the RegistryEntry for *name*, or raises KeyError."""
         if name not in self.entries:
             raise KeyError(f"Adapter '{name}' not found in registry.")
         return self.entries[name]
 
+    # kept for internal callers that already use _get
+    def _get(self, name: str) -> RegistryEntry:
+        return self.get(name)
+
     def _move_entry(self, name: str, new_status: str) -> None:
-        """Physically move genome yaml to new status directory and update entry."""
+        """Physically move genome yaml AND checkpoint binary to new status directory."""
         entry = self._get(name)
         old_dir = Path(entry.genome_path).parent
         new_dir = self.registry_root / new_status / name
@@ -220,11 +242,20 @@ class AdapterGenomeRegistry:
         new_genome_path = new_dir / "adapter_genome.yaml"
 
         if old_dir.exists() and old_dir != new_dir:
-            # Copy yaml to new location
+            # Move yaml to new location
             src_yaml = Path(entry.genome_path)
             if src_yaml.exists():
                 shutil.copy2(src_yaml, new_genome_path)
                 src_yaml.unlink()
+
+            # Move checkpoint binary (adapter.safetensors or .npz) to new location
+            src_ckpt = Path(entry.checkpoint_path)
+            if src_ckpt.exists():
+                new_ckpt_path = new_dir / src_ckpt.name
+                shutil.copy2(src_ckpt, new_ckpt_path)
+                src_ckpt.unlink()
+                entry.checkpoint_path = str(new_ckpt_path)
+
             # Remove old dir if empty
             try:
                 old_dir.rmdir()

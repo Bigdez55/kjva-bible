@@ -107,6 +107,10 @@ class AdapterGenomeRecord:
                 "rollback": {
                     "previous_stable": self.rollback_previous,
                 },
+                "security": {
+                    "signature": self.signature,
+                    "content_hash": self.content_hash,
+                },
             }
         }
 
@@ -187,6 +191,20 @@ class DeltaOperator(nn.Module, abc.ABC):
             module = getattr(self, key, None)
             if module is not None and hasattr(module, "freeze"):
                 module.freeze()
+
+    def to_adapter_ir(self, target_module: str, layer_idx: int):
+        from mlx.utils import tree_flatten
+        import numpy as np
+        from peft.v2.adapter_ir import AdapterIR
+        arrays = {k: np.array(v) for k, v in tree_flatten(self.trainable_parameters())}
+        return AdapterIR.from_named_arrays(
+            self.family.name,
+            self.__class__.__name__.lower(),
+            target_module,
+            layer_idx,
+            arrays,
+            self.genome_config,
+        )
 
 
 # ---------------------------------------------------------------------------

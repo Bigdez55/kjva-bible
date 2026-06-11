@@ -35,6 +35,8 @@ class LayerProfile:
     recommended_rank_max: int
     can_freeze: bool
     sensitivity: str  # "high", "medium", "low"
+    is_merge_safe: bool = False
+    is_bottleneck: bool = False
 
 
 # ---------------------------------------------------------------------------
@@ -92,6 +94,8 @@ class ModelProfiler:
             recommended_rank_max=0,
             can_freeze=True,
             sensitivity="low",
+            is_merge_safe=True,
+            is_bottleneck=(d_model < vocab_size),
         ))
 
         early_end = n_layers // 3
@@ -114,6 +118,8 @@ class ModelProfiler:
                     recommended_rank_max=rank_max,
                     can_freeze=(zone == "early"),
                     sensitivity=sensitivity,
+                    is_merge_safe=(zone == "late" or zone == "early"),
+                    is_bottleneck=False,
                 ))
 
             # MLP sub-modules
@@ -132,6 +138,8 @@ class ModelProfiler:
                     recommended_rank_max=rank_max,
                     can_freeze=(zone == "early"),
                     sensitivity=sensitivity,
+                    is_merge_safe=(zone == "late" or zone == "early"),
+                    is_bottleneck=(out_f < in_f),
                 ))
 
             # LayerNorm (two per block: norm1 before attn, norm2 before mlp)
@@ -146,6 +154,8 @@ class ModelProfiler:
                     recommended_rank_max=0,
                     can_freeze=False,
                     sensitivity="low",
+                    is_merge_safe=True,
+                    is_bottleneck=False,
                 ))
 
         total_params = self._count_params(vocab_size, d_model, d_ffn, n_layers)

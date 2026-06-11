@@ -18,6 +18,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 
 from .base import ActiveExpert, HardwareBudget, RoutePlan
+from .conflict import _CLASH_PAIRS
 
 
 # ---------------------------------------------------------------------------
@@ -40,6 +41,13 @@ class RouterConfig:
     # ADR-0002 §9.2 rule 4 (conflict): two adapters whose weight-deltas point in strongly
     # opposing directions interfere. cosine ≤ this threshold ⇒ weight-space conflict (pruned).
     weight_conflict_threshold: float = -0.5
+    # Safety blocklist: additional (frozenset, frozenset) clash pairs beyond _CLASH_PAIRS.
+    # Each pair is (domain_set_A, domain_set_B); any plan whose active adapters collectively
+    # span both sides is flagged as safety_pass=False.
+    safety_blocklist: list[tuple[frozenset, frozenset]] = field(default_factory=list)
+    # LayerPlasticityV2 instance (Component 4) used to assign layer_idx per expert.
+    # When None, layer_idx remains None (no layer-scoped assignment).
+    layer_plasticity_map: object | None = None
 
 
 # ---------------------------------------------------------------------------
@@ -170,16 +178,24 @@ class HierarchicalRouter:
         for entry, score in admitted:
             weight = score / total_score
             if weight >= self.config.min_expert_weight:
+                layer_idx = self._assign_layer_idx(entry.genome, active_experts)
                 active_experts.append(ActiveExpert(
                     expert_id=entry.genome.name,
                     weight=weight,
-                    layer_idx=None,
+                    layer_idx=layer_idx,
                 ))
+
+        # Token-level routing stage: delegate to XLoRALayer when a ROUTING-family
+        # adapter is among the active experts (position context forwarded downstream).
+        active_experts = self._route_token_level(active_experts)
+
+        # Safety check: must run after conflict resolution prep, before RoutePlan is sealed.
+        safety_pass = self._check_safety(active_experts)
 
         raw_plan = RoutePlan(
             active_experts=active_experts,
             budget_vram_mb=float(budget.infer_vram_mb),
-            safety_pass=True,
+            safety_pass=safety_pass,
             conflict_free=True,
         )
 
@@ -209,6 +225,140 @@ class HierarchicalRouter:
         self._last_admission = getattr(self, "_last_admission", [])
 
         return report.final_plan
+
+    # ------------------------------------------------------------------
+    # Layer-level routing: assign layer_idx per expert via LayerPlasticityMap
+    # ------------------------------------------------------------------
+
+    def _assign_layer_idx(self, genome, already_assigned: list[ActiveExpert]) -> int | None:
+        """
+        Return a layer_idx for this genome using the LayerPlasticityV2 map when
+        available, respecting max_experts_per_layer.
+
+        Strategy:
+          - For each layer in the plasticity map, count how many experts are
+            already assigned to it.
+          - Find the best-fit layer: the highest-plasticity layer whose sublayer
+            recommendation matches the genome's peft_method, and that has not yet
+            hit max_experts_per_layer.
+          - Fall back to the globally most-plastic under-capped layer, then None.
+        """
+        plmap = self.config.layer_plasticity_map
+        if plmap is None:
+            return None
+
+        n_layers = getattr(plmap, "n_layers", 0)
+        if not n_layers:
+            return None
+
+        max_per_layer = self.config.max_experts_per_layer
+        peft_method = (getattr(genome, "peft_method", "") or "").lower()
+
+        # Count current assignments per layer
+        layer_counts: dict[int, int] = {}
+        for e in already_assigned:
+            if e.layer_idx is not None:
+                layer_counts[e.layer_idx] = layer_counts.get(e.layer_idx, 0) + 1
+
+        best_layer: int | None = None
+        best_plasticity: float = -1.0
+
+        for sublayer in ("attn", "mlp"):
+            for li in range(n_layers):
+                if layer_counts.get(li, 0) >= max_per_layer:
+                    continue
+                rec = plmap.recommend(li, sublayer)
+                plasticity = plmap.plasticity(li, sublayer)
+                # Prefer layers where the peft_method is explicitly recommended
+                method_match = any(peft_method.startswith(r) for r in rec) if rec else False
+                effective_plasticity = plasticity + (0.5 if method_match else 0.0)
+                if effective_plasticity > best_plasticity:
+                    best_plasticity = effective_plasticity
+                    best_layer = li
+
+        return best_layer
+
+    # ------------------------------------------------------------------
+    # Token-level routing stage
+    # ------------------------------------------------------------------
+
+    def _route_token_level(self, experts: list[ActiveExpert]) -> list[ActiveExpert]:
+        """
+        Token-level routing stage: for any active expert whose genome carries a
+        ROUTING delta_family (X-LoRA and kin), mark the expert as token-routed by
+        recording the routing family in a side-channel attribute. The XLoRALayer's
+        per-position softmax gating runs at forward time; here we simply ensure the
+        router recognises and forwards the token-position context to those experts by
+        tagging them. Experts from other families are passed through unchanged.
+
+        This stage sits between layer-level assignment (above) and budget routing
+        (conflict resolver), exactly as specified in the pipeline docstring.
+        """
+        from .base import DeltaFamily
+
+        routing_family_name = DeltaFamily.ROUTING.name  # "ROUTING"
+
+        updated: list[ActiveExpert] = []
+        for expert in experts:
+            genome = None
+            entry = self.registry.entries.get(expert.expert_id)
+            if entry is not None:
+                genome = entry.genome
+
+            is_routing_family = (
+                genome is not None
+                and (getattr(genome, "delta_family", "") or "").upper() == routing_family_name
+            )
+
+            if is_routing_family:
+                # Token-level dispatch: annotate the expert so the caller (OmniPEFTBlock
+                # / serve layer) knows to delegate to the XLoRALayer router at inference.
+                # We represent this by setting layer_idx to a sentinel value that the
+                # serving layer interprets as "apply XLoRALayer token routing".
+                # Preserve the existing layer_idx if already assigned; only attach the
+                # token-routing flag via a wrapped ActiveExpert with a known convention.
+                # Since ActiveExpert is a plain dataclass with no flags field, we store the
+                # annotation on a parallel dict keyed by expert_id.
+                if not hasattr(self, "_token_routed_experts"):
+                    self._token_routed_experts: set[str] = set()
+                self._token_routed_experts.add(expert.expert_id)
+
+            updated.append(expert)
+
+        return updated
+
+    # ------------------------------------------------------------------
+    # Safety routing stage (final gate before RoutePlan is returned)
+    # ------------------------------------------------------------------
+
+    def _check_safety(self, experts: list[ActiveExpert]) -> bool:
+        """
+        Evaluate unsafe adapter combinations using _CLASH_PAIRS from conflict.py
+        plus any additional pairs in RouterConfig.safety_blocklist.
+
+        Returns False if any active expert pair collectively spans both sides of a
+        clash pair (i.e., the combined domain set of the plan touches group_A AND
+        group_B). Returns True when the plan is safe.
+
+        Must run after conflict resolution, as the spec requires it as the final
+        gate before the RoutePlan is returned.
+        """
+        # Collect all domains from every active expert's genome
+        all_domains: set[str] = set()
+        for expert in experts:
+            entry = self.registry.entries.get(expert.expert_id)
+            if entry is not None:
+                genome = entry.genome
+                all_domains.update(getattr(genome, "purpose_domains", []) or [])
+                # Include routing_never_activate_when tags for conservative coverage
+                all_domains.update(getattr(genome, "routing_never_activate_when", []) or [])
+
+        clash_pairs = list(_CLASH_PAIRS) + list(self.config.safety_blocklist)
+        for group_a, group_b in clash_pairs:
+            if all_domains & group_a and all_domains & group_b:
+                return False
+
+        return True
 
     # ------------------------------------------------------------------
     # ADR-0002 §9.2 admission gate

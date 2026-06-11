@@ -413,60 +413,60 @@ def build_peft_model(method: str, base_model, args: argparse.Namespace):
 
 
 def run_peft_training(method: str, operators: dict, base_model, corpus_chunks: list, args: argparse.Namespace, output_dir: Path | None = None) -> None:
-    """Run the PEFT training loop using MLX."""
+    """Run the PEFT training loop using MLX.
+
+    Operators are injected into the model as _OmniPatched wrappers so that
+    gradients flow through them via nn.value_and_grad(base_model, ...).
+    base_model was already frozen by build_peft_model.
+    """
     import mlx.core as mx
     import mlx.nn as nn
-    from mlx.utils import tree_flatten
     import mlx.optimizers as optim
 
     if not corpus_chunks:
         print("[WARN] No corpus chunks loaded. Skipping training.")
         return
 
-    # Collect trainable parameters from operators
-    trainable_params = {}
-    for key, op in operators.items():
-        if hasattr(op, "parameters"):
-            from mlx.utils import tree_flatten
-            for pname, pval in tree_flatten(op.parameters()):
-                trainable_params[f"{key}.{pname}"] = pval
+    # Inject operators into the model so gradients flow through them.
+    # Without injection, base_model(tokens) ignores the operators entirely.
+    from peft.omni_composite import _OmniPatched, _get_base_linear, _set_model_module
 
-    if not trainable_params:
-        print("[WARN] No trainable parameters found. Check operator setup.")
+    injected: dict[str, tuple] = {}
+    for key, op in operators.items():
+        parts = key.split(".", 1)
+        if not parts[0].startswith("layer"):
+            continue
+        try:
+            block_idx = int(parts[0][5:])
+        except (ValueError, IndexError):
+            continue
+        module_path = parts[1] if len(parts) > 1 else None
+        if module_path is None:
+            continue
+        base_linear, _, _ = _get_base_linear(base_model, block_idx, module_path)
+        if base_linear is None:
+            continue
+        patched = _OmniPatched(base_linear, op, None, None)
+        orig = _set_model_module(base_model, block_idx, module_path, patched)
+        if orig is not None:
+            injected[key] = (block_idx, module_path, orig)
+
+    if not injected:
+        print("[WARN] No operators could be injected — key format may not match model topology.")
         return
+
+    print(f"[INFO] {method}: {len(injected)} operators injected into model")
 
     optimizer = optim.Adam(learning_rate=args.lr)
 
-    def compute_loss(params):
-        # Update operator params
-        for key, op in operators.items():
-            if hasattr(op, "parameters"):
-                from mlx.utils import tree_unflatten
-                op_params = {
-                    k.replace(f"{key}.", "", 1): v
-                    for k, v in params.items()
-                    if k.startswith(f"{key}.")
-                }
-                if op_params:
-                    op.update(tree_unflatten(list(op_params.items())))
-
-        # Sample random batch
+    def compute_loss():
         idx = int(mx.random.randint(0, len(corpus_chunks), shape=()).item())
         seq = corpus_chunks[idx]
         tokens = seq[:-1].reshape(1, -1)
         targets = seq[1:].reshape(1, -1)
-
         logits = base_model(tokens)
-
-        # Cross-entropy loss
         B, T, V = logits.shape
-        loss = mx.mean(
-            nn.losses.cross_entropy(
-                logits.reshape(B * T, V),
-                targets.reshape(B * T),
-            )
-        )
-        return loss
+        return mx.mean(nn.losses.cross_entropy(logits.reshape(B * T, V), targets.reshape(B * T)))
 
     loss_and_grad = nn.value_and_grad(base_model, compute_loss)
 
@@ -477,9 +477,9 @@ def run_peft_training(method: str, operators: dict, base_model, corpus_chunks: l
         n_steps = min(args.steps_per_epoch, len(corpus_chunks))
 
         for step in range(n_steps):
-            loss_val, grads = loss_and_grad(trainable_params)
-            optimizer.update(trainable_params, grads)
-            mx.eval(trainable_params)
+            loss_val, grads = loss_and_grad()
+            optimizer.update(base_model, grads)
+            mx.eval(base_model.parameters(), optimizer.state)
             epoch_loss += float(loss_val.item())
 
             if step % max(1, n_steps // 5) == 0:
@@ -583,7 +583,7 @@ def run_alignment_training(
         epoch_loss = 0.0
         n_steps = min(args.steps_per_epoch, len(corpus_chunks))
         for step in range(n_steps):
-            loss_val, grads = loss_and_grad(base_model)
+            loss_val, grads = loss_and_grad()
             optimizer.update(base_model, grads)
             mx.eval(base_model.parameters(), optimizer.state)
             epoch_loss += float(loss_val.item())
@@ -594,6 +594,143 @@ def run_alignment_training(
         if output_dir and not getattr(args, "no_bench", False):
             run_peft_epoch_bench(base_model, output_dir, epoch=epoch + 1, method=method, seq_len=128)
     print("[INFO] Training complete.")
+
+
+def run_omni_training(
+    base_model,
+    corpus_chunks: list,
+    args: argparse.Namespace,
+    output_dir: "Path | None" = None,
+) -> None:
+    """True Omni-PEFT: all mechanisms in one unified forward/backward pass.
+
+    NOT a tournament — all operators contribute gradient signal simultaneously.
+    Produces omni_adapter_weights.npz + omni_adapter_genome.json + omni_adapter_manifest.json.
+    """
+    import mlx.core as mx
+    import mlx.nn as nn
+    import mlx.optimizers as optim
+    import json as _json
+    import numpy as np
+
+    if not corpus_chunks:
+        print("[WARN] run_omni_training: no corpus chunks. Nothing to train.")
+        return
+
+    from peft.base import AdaptationConstraints, HardwareBudget
+    from peft.fingerprint import TaskFingerprinter, DataSize
+    from peft.profiler import ModelProfiler
+    from peft.compiler import PEFTCompiler
+    from peft.omni_composite import OmniPEFTCompositeAdapter
+
+    hardware = HardwareBudget(train_vram_mb=args.train_vram_mb)
+    constraints = AdaptationConstraints(hardware=hardware)
+    cfg_dict = {
+        "vocab_size": base_model.cfg.vocab_size,
+        "n_layers": base_model.cfg.n_layers,
+        "d_model": base_model.cfg.d_model,
+        "d_ffn": base_model.cfg.d_ffn,
+    }
+    plasticity = ModelProfiler().profile(cfg_dict, constraints)
+    fingerprint = TaskFingerprinter().fingerprint(
+        task_desc="omni alignment",
+        domains=["scripture", "governance", "alignment"],
+        data_size=DataSize.MEDIUM,
+        hardware=hardware,
+    )
+    plan = PEFTCompiler().plan(plasticity, fingerprint, constraints)
+    print(f"[INFO] Omni compiler plan: {len(plan.layer_specs)} specs, "
+          f"methods={set(s.peft_method for s in plan.layer_specs)}")
+
+    composite = OmniPEFTCompositeAdapter.from_plan(
+        plan, base_model,
+        enable_ia3=True, enable_bitfit=True, enable_prefix=True,
+        prefix_n=getattr(args, "prompt_tokens", 8),
+    )
+    print(f"[INFO] Omni composite built: methods={composite._genome_methods}, "
+          f"operators={composite._operator_count}")
+
+    base_model.freeze()
+    rollback = composite.inject_into(base_model)
+    injected = len(rollback)
+    print(f"[INFO] Injected {injected} _OmniPatched layers into model tree")
+    if injected == 0:
+        print("[WARN] No layers injected — gradient flow impossible. Check model structure.")
+
+    def compute_loss():
+        idx = int(mx.random.randint(0, len(corpus_chunks), shape=()).item())
+        seq = corpus_chunks[idx]
+        tokens = seq[:-1].reshape(1, -1)
+        targets = seq[1:].reshape(1, -1)
+        logits = base_model(tokens)
+        B, T, V = logits.shape
+        return mx.mean(nn.losses.cross_entropy(logits.reshape(B * T, V), targets.reshape(B * T)))
+
+    loss_and_grad = nn.value_and_grad(composite, compute_loss)
+    optimizer = optim.Adam(learning_rate=args.lr)
+
+    print(f"[INFO] Omni-PEFT training: {args.epochs} epoch(s), {len(corpus_chunks)} chunks")
+    print("[INFO] Single optimizer. Single loss. All mechanisms train together.")
+
+    total_loss = 0.0
+    total_steps = 0
+    for epoch in range(args.epochs):
+        epoch_loss = 0.0
+        n_steps = min(args.steps_per_epoch, len(corpus_chunks))
+        for step in range(n_steps):
+            loss_val, grads = loss_and_grad()
+            optimizer.update(composite, grads)
+            mx.eval(composite.parameters(), optimizer.state)
+            step_loss = float(loss_val.item())
+            epoch_loss += step_loss
+            total_loss += step_loss
+            total_steps += 1
+            if step % max(1, n_steps // 5) == 0:
+                print(f"  [omni] epoch {epoch+1}/{args.epochs}  "
+                      f"step {step+1}/{n_steps}  loss={epoch_loss/(step+1):.4f}")
+        avg = epoch_loss / max(1, n_steps)
+        print(f"[INFO] Omni epoch {epoch+1} complete. avg_loss={avg:.4f}")
+        if output_dir and not getattr(args, "no_bench", False):
+            run_peft_epoch_bench(base_model, output_dir, epoch=epoch + 1, method="omni", seq_len=128)
+
+    final_avg_loss = total_loss / max(1, total_steps)
+    print(f"[INFO] Omni-PEFT training complete. final_avg_loss={final_avg_loss:.4f}")
+
+    if output_dir is not None:
+        output_dir.mkdir(parents=True, exist_ok=True)
+        weights = composite.extract_weights()
+        np_weights = {k: np.array(v) for k, v in weights.items()}
+        np.savez(str(output_dir / "omni_adapter_weights.npz"), **np_weights)
+        print(f"[INFO] Saved Omni weights ({len(np_weights)} tensors) → {output_dir / 'omni_adapter_weights.npz'}")
+
+        base_sha = ""
+        if args.base_checkpoint and Path(args.base_checkpoint).exists():
+            import hashlib
+            base_sha = hashlib.sha256(Path(args.base_checkpoint).read_bytes()).hexdigest()[:16]
+        genome = composite.genome_dict(
+            base_model_sha256=base_sha,
+            final_avg_loss=round(final_avg_loss, 4),
+            training_epochs=args.epochs,
+        )
+        with open(output_dir / "omni_adapter_genome.json", "w") as _f:
+            _json.dump(genome, _f, indent=2)
+        print(f"[INFO] Saved Omni genome → {output_dir / 'omni_adapter_genome.json'}")
+
+        manifest = {
+            "artifact_type": "omni_peft_adapter",
+            "doctrine": "training/peft/OMNI_PEFT_DOCTRINE.md",
+            "base_checkpoint": str(args.base_checkpoint or ""),
+            "corpus": str(args.corpus or ""),
+            "epochs": args.epochs,
+            "enabled_methods": composite._genome_methods,
+            "operator_count": composite._operator_count,
+            "is_tournament": False,
+            "tournament_winner": None,
+            "canonical_promoted": False,
+        }
+        with open(output_dir / "omni_adapter_manifest.json", "w") as _f:
+            _json.dump(manifest, _f, indent=2)
+        print(f"[INFO] Saved Omni manifest → {output_dir / 'omni_adapter_manifest.json'}")
 
 
 def save_alignment_model(method: str, base_model, output_dir: Path, args: argparse.Namespace) -> None:
@@ -758,6 +895,23 @@ def parse_args() -> argparse.Namespace:
                    help="Print compilation plan without executing training")
     p.add_argument("--list-methods", action="store_true",
                    help="Print all available PEFT methods and exit")
+    # --- Omni-PEFT Scribe Alignment regimen (--method omni --scribe) ---
+    p.add_argument("--scribe", action="store_true",
+                   help="Omni-PEFT Scribe regimen: 4 weighted pools "
+                        "(45%% retention / 25%% grounding / 20%% governance / 10%% scribe) "
+                        "+ held-out scripture BPB retention gate + early-stop. "
+                        "Requires --method omni.")
+    p.add_argument("--clean-corpus", default=None, metavar="PATH",
+                   help="Scribe: clean scripture corpus for retention pool + held-out slice")
+    p.add_argument("--programs-dir", default=None, metavar="PATH",
+                   help="Scribe: dir of audited alignment_*_v1.jsonl pools")
+    p.add_argument("--scribe-seq-len", type=int, default=256,
+                   help="Scribe: scripture window length (default: 256)")
+    p.add_argument("--heldout-every", type=int, default=90,
+                   help="Scribe: hold out every Nth verse for BPB eval (default: 90)")
+    p.add_argument("--bpb-max-regress", type=float, default=0.13,
+                   help="Scribe: fallback BPB regression gate when no per-difficulty gate applies "
+                        "(default: 0.13 = 90%% retention at baseline 1.1393 BPB)")
     return p.parse_args()
 
 
@@ -832,6 +986,16 @@ def main() -> int:
     from model import ModelConfig, TokenlessLM
 
     cfg = ModelConfig()  # default: d_model=384, n_layers=6, etc.
+    # Auto-load architecture from model_config.json next to the checkpoint so the
+    # byte-level model (vocab=259, layers=8) is sized correctly without a separate flag.
+    if args.base_checkpoint:
+        cfg_path = Path(args.base_checkpoint).parent / "model_config.json"
+        if cfg_path.exists():
+            import json as _cj
+            _data = _cj.loads(cfg_path.read_text())
+            cfg = ModelConfig(**{k: v for k, v in _data.items() if hasattr(cfg, k)})
+            print(f"[INFO] Loaded model config from {cfg_path}: "
+                  f"vocab_size={cfg.vocab_size}, n_layers={cfg.n_layers}")
     base_model = TokenlessLM(cfg)
 
     if args.base_checkpoint:
@@ -874,6 +1038,49 @@ def main() -> int:
             print(f"[ERROR] Could not load teacher checkpoint {teacher_path}: {e}", file=sys.stderr)
             return 2
 
+    # Omni-PEFT Scribe: 4-pool behavioral alignment with BPB retention gate
+    if method == "omni" and getattr(args, "scribe", False):
+        from omni_scribe import run_omni_scribe_training
+        repo_root = ML_TRAINING.parent
+
+        def _resolve(rel: str) -> str:
+            for base in (repo_root / "models v7", repo_root):
+                cand = base / rel
+                if cand.exists():
+                    return str(cand)
+            return str(repo_root / rel)
+
+        if not args.clean_corpus:
+            args.clean_corpus = _resolve("training/corpus/eng_kjv_clean_v1/corpus.txt")
+        if not args.programs_dir:
+            args.programs_dir = _resolve("training/corpus/programs")
+        for label, path in (("clean-corpus", args.clean_corpus), ("programs-dir", args.programs_dir)):
+            if not Path(path).exists():
+                print(f"[ERROR] scribe {label} not found: {path}", file=sys.stderr)
+                return 1
+        run_omni_scribe_training(base_model, args, output_dir=Path(args.output))
+        print(f"[SUCCESS] Omni-PEFT Scribe complete. Artifact: {args.output}")
+        return 0
+
+    # Omni-PEFT: bypass build_peft_model and run unified training directly
+    if method == "omni":
+        corpus_chunks = []
+        if args.corpus:
+            corpus_path = Path(args.corpus)
+            if corpus_path.exists():
+                corpus_chunks = load_corpus_tokens(corpus_path, max_seq_len=cfg.max_seq_len, vocab_size=cfg.vocab_size)
+                print(f"[INFO] Loaded {len(corpus_chunks)} corpus chunks for Omni-PEFT")
+            else:
+                print(f"[WARN] Corpus not found: {args.corpus}")
+        if not corpus_chunks:
+            print("[ERROR] Omni-PEFT requires a corpus (--corpus <path>)", file=sys.stderr)
+            return 1
+        run_omni_training(base_model, corpus_chunks, args, output_dir=Path(args.output))
+        if not getattr(args, "no_bench", False):
+            run_final_bench(Path(args.output))
+        print(f"[SUCCESS] Omni-PEFT complete. Artifact saved to: {args.output}")
+        return 0
+
     # Build PEFT operators
     operators, resolved_method = build_peft_model(method, base_model, args)
 
@@ -882,7 +1089,7 @@ def main() -> int:
     if args.corpus and resolved_method in CORPUS_METHODS:
         corpus_path = Path(args.corpus)
         if corpus_path.exists():
-            corpus_chunks = load_corpus_tokens(corpus_path, max_seq_len=cfg.max_seq_len)
+            corpus_chunks = load_corpus_tokens(corpus_path, max_seq_len=cfg.max_seq_len, vocab_size=cfg.vocab_size)
             print(f"[INFO] Loaded {len(corpus_chunks)} corpus chunks from {corpus_path.name}")
         else:
             print(f"[WARN] Corpus not found: {corpus_path}")

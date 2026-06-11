@@ -54,6 +54,54 @@ class ConflictResolver:
     # before we start pruning the lowest-weight ones.
     _MAX_ACTIVE_ADAPTERS = 4
 
+    def check(
+        self,
+        genomes: "list[AdapterGenomeRecord]",
+    ) -> "ConflictReport":
+        """
+        Convenience entry-point: given a flat list of AdapterGenomeRecords, run a
+        metadata-only pairwise conflict scan and return a ConflictReport.
+
+        No registry or hardware budget is required — this is useful for quick
+        pre-registration checks where only the genome metadata is available.
+        """
+        conflicts: list[dict] = []
+        pruned: list[str] = []
+
+        surviving = list(genomes)
+        i = 0
+        while i < len(surviving):
+            j = i + 1
+            while j < len(surviving):
+                ga = surviving[i]
+                gb = surviving[j]
+                conflict_type = self._conflict_type(ga, gb)
+                if conflict_type is not None:
+                    victim = ga if ga.name > gb.name else gb  # deterministic: higher name pruned
+                    surviving.remove(victim)
+                    pruned.append(victim.name)
+                    conflicts.append({
+                        "type": conflict_type,
+                        "expert_ids": [ga.name, gb.name],
+                        "severity": "high",
+                        "resolution": f"pruned {victim.name}",
+                    })
+                    continue
+                j += 1
+            i += 1
+
+        from .base import RoutePlan
+        final_plan = RoutePlan(
+            active_experts=[],
+            conflict_free=(len(conflicts) == 0),
+        )
+        return ConflictReport(
+            has_conflicts=bool(conflicts),
+            conflicts=conflicts,
+            pruned_experts=pruned,
+            final_plan=final_plan,
+        )
+
     def check_compatibility(
         self,
         genome_a: AdapterGenomeRecord,
@@ -66,27 +114,7 @@ class ConflictResolver:
           - either lists the other in conflicts_with
           - they share a domain keyword that is in one's routing_never_activate_when
         """
-        # Explicit conflict lists
-        if genome_b.name in genome_a.conflicts_with:
-            return False
-        if genome_a.name in genome_b.conflicts_with:
-            return False
-
-        # Domain bleed: if genome_a says "never activate when X" and genome_b targets X
-        for forbidden in genome_a.routing_never_activate_when:
-            if forbidden in genome_b.purpose_domains or forbidden in genome_b.purpose_tasks:
-                return False
-        for forbidden in genome_b.routing_never_activate_when:
-            if forbidden in genome_a.purpose_domains or forbidden in genome_a.purpose_tasks:
-                return False
-
-        # Style clash: overlapping but semantically incompatible domains
-        a_domains = set(genome_a.purpose_domains)
-        b_domains = set(genome_b.purpose_domains)
-        if _domain_clash(a_domains, b_domains):
-            return False
-
-        return True
+        return self._conflict_type(genome_a, genome_b) is None
 
     def prune(
         self,
@@ -136,14 +164,15 @@ class ConflictResolver:
                     j += 1
                     continue
 
-                if not self.check_compatibility(genome_a, genome_b):
+                conflict_type = self._conflict_type(genome_a, genome_b)
+                if conflict_type is not None:
                     # Prune the lower-weight expert
                     victim = ea if ea.weight < eb.weight else eb
                     if victim in experts:
                         experts.remove(victim)
                         pruned.append(victim.expert_id)
                         conflicts.append({
-                            "type": "compatibility",
+                            "type": conflict_type,
                             "expert_ids": [ea.expert_id, eb.expert_id],
                             "severity": "high",
                             "resolution": f"pruned {victim.expert_id}",
@@ -152,6 +181,29 @@ class ConflictResolver:
                     continue
                 j += 1
             i += 1
+
+        # --- Merge conflict detection ---
+        for idx_a in range(len(experts)):
+            for idx_b in range(idx_a + 1, len(experts)):
+                ea = experts[idx_a]
+                eb = experts[idx_b]
+                ga = self._genome(ea.expert_id, registry)
+                gb = self._genome(eb.expert_id, registry)
+                if ga is None or gb is None:
+                    continue
+                if (
+                    not ga.mergeable
+                    and not gb.mergeable
+                    and ga.delta_family == gb.delta_family
+                    and ga.delta_family is not None
+                ):
+                    conflicts.append({
+                        "type": "merge_conflict",
+                        "expert_ids": [ea.expert_id, eb.expert_id],
+                        "severity": "high",
+                        "delta_family": ga.delta_family,
+                        "resolution": "manual intervention required — two non-mergeable adapters share delta_family",
+                    })
 
         # --- Latency / count budget ---
         max_active = self._max_experts_from_budget(budget)
@@ -260,6 +312,35 @@ class ConflictResolver:
 
         mx.eval(cosine)
         return float(cosine.item())
+
+    def _conflict_type(
+        self,
+        genome_a: AdapterGenomeRecord,
+        genome_b: AdapterGenomeRecord,
+    ) -> str | None:
+        """Return the conflict type string if the two genomes are incompatible, else None."""
+        # Explicit conflict lists
+        if genome_b.name in genome_a.conflicts_with or genome_a.name in genome_b.conflicts_with:
+            return "explicit_conflict"
+
+        # Domain bleed: routing_never_activate_when
+        for forbidden in genome_a.routing_never_activate_when:
+            if forbidden in genome_b.purpose_domains or forbidden in genome_b.purpose_tasks:
+                return "domain_bleed"
+        for forbidden in genome_b.routing_never_activate_when:
+            if forbidden in genome_a.purpose_domains or forbidden in genome_a.purpose_tasks:
+                return "domain_bleed"
+
+        # Style / safety clash
+        a_domains = set(genome_a.purpose_domains)
+        b_domains = set(genome_b.purpose_domains)
+        if _domain_clash(a_domains, b_domains):
+            _SAFETY_KEYWORDS = {"safety", "harmful", "jailbreak"}
+            if (a_domains | b_domains) & _SAFETY_KEYWORDS:
+                return "safety_conflict"
+            return "style_conflict"
+
+        return None
 
     # ------------------------------------------------------------------
     # Helpers

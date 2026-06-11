@@ -7,17 +7,20 @@ import at module load → mlx-free).
 """
 from __future__ import annotations
 
+import warnings
 from dataclasses import dataclass, field
 
 LANES = ("adversarial", "privacy", "memory", "sensor")
 
 # Objectives each lane optimizes (higher = better unless prefixed neg_).
 LANE_OBJECTIVES = {
-    "adversarial": ("robustness", "domain_accuracy", "neg_attack_success"),
+    "adversarial": ("robustness", "domain_accuracy", "neg_attack_success", "neg_hallucination", "safety", "neg_merge_risk"),
     "privacy": ("neg_leakage", "base_retention", "domain_accuracy"),
     "memory": ("retention", "neg_params", "neg_latency"),
     "sensor": ("sensor_coverage", "domain_accuracy", "neg_latency"),
 }
+
+_RETENTION_THRESHOLD = 0.95
 
 
 @dataclass
@@ -40,10 +43,25 @@ def _dominates(a: tuple[float, ...], b: tuple[float, ...]) -> bool:
 
 
 def pareto_front(cands: list[Candidate], objectives: tuple[str, ...]) -> list[Candidate]:
-    vecs = {c.name: c.vector(objectives) for c in cands}
+    # Fix 1: retention-first gate — only consider candidates above the retention threshold.
+    retained = [
+        c for c in cands
+        if c.scores.get("base_retention", c.scores.get("retention", 0.0)) >= _RETENTION_THRESHOLD
+    ]
+    if not retained:
+        warnings.warn(
+            "pareto_front: no candidate meets retention threshold "
+            f"({_RETENTION_THRESHOLD}); falling back to full candidate set.",
+            RuntimeWarning,
+            stacklevel=2,
+        )
+        retained = list(cands)
+
+    # Fix 4: key vecs by object id to avoid name-collision bugs.
+    vecs = {id(c): c.vector(objectives) for c in retained}
     front = []
-    for c in cands:
-        if not any(_dominates(vecs[o.name], vecs[c.name]) for o in cands if o is not c):
+    for c in retained:
+        if not any(_dominates(vecs[id(o)], vecs[id(c)]) for o in retained if o is not c):
             front.append(c)
     return front
 
@@ -52,9 +70,22 @@ def pareto_front(cands: list[Candidate], objectives: tuple[str, ...]) -> list[Ca
 class TournamentV2:
     candidates: list[Candidate]
 
+    def __post_init__(self) -> None:
+        # Fix 4: enforce unique names at construction time.
+        names = [c.name for c in self.candidates]
+        if len(names) != len(set(names)):
+            dupes = {n for n in names if names.count(n) > 1}
+            raise ValueError(f"TournamentV2: duplicate candidate names: {dupes}")
+
     def run_lane(self, lane: str) -> Candidate:
+        # Fix 5: guard against empty candidates.
+        if not self.candidates:
+            raise ValueError(f"run_lane({lane!r}): candidate list is empty")
         objs = LANE_OBJECTIVES[lane]
         front = pareto_front(self.candidates, objs)
+        # Fix 5: mirror v1 safety fallback if pareto_front returns empty.
+        if not front:
+            front = self.candidates
         # tie-break: max sum of (sign-corrected) objectives
         return max(front, key=lambda c: sum(c.vector(objs)))
 
@@ -63,7 +94,10 @@ class TournamentV2:
 
     def sovereign_winner(self) -> str:
         """Candidate winning the most lanes (sovereign score)."""
-        wins = {}
+        # Fix 5: guard against empty candidates.
+        if not self.candidates:
+            raise ValueError("sovereign_winner: candidate list is empty")
+        wins: dict[str, int] = {}
         for lane in LANES:
             w = self.run_lane(lane).name
             wins[w] = wins.get(w, 0) + 1

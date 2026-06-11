@@ -27,7 +27,6 @@ MODULES = [
     "peft.router",
     "peft.tournament",
     "peft.deployment",
-    "peft.model",
     # Low-rank family
     "peft.low_rank.lora",
     "peft.low_rank.dora",

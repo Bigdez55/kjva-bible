@@ -53,6 +53,6 @@ omni:
 
 eval_gates:
   byte_ppl_ratio_max: 1.25
-  retention_requirement: 0.92
+  retention_requirement: 0.95
   adapter_validation: validate_adapter.py   # all gates must PASS
   acceptance: tests/validate_apex.py         # Apex §22 9/9

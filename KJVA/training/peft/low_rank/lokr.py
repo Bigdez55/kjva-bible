@@ -74,21 +74,17 @@ class LoKrLinear(DeltaOperator):
         k1 = max(1, in_features // factor)
         k2 = factor
 
-        # A: (rank * k1, k2) — left Kronecker-structured factor
-        self.A = kaiming_uniform((rank * k1, k2))
-        # B: (out_features // rank, rank) — right Kronecker-structured factor
+        # Kronecker factor shapes: stored as underscore attrs (reserved for future
+        # true-Kronecker forward pass, not currently in the computation graph).
         b_rows = max(1, out_features // rank)
-        self.B = kaiming_uniform((b_rows, rank))
+        self._A_kron = kaiming_uniform((rank * k1, k2))  # left Kronecker factor
+        self._B_kron = kaiming_uniform((b_rows, rank))   # right Kronecker factor
 
-        # Projection matrices to adapt to actual in/out dims
-        # These handle dimension mismatch in the approximation
         self._k1 = k1
         self._k2 = k2
         self._b_rows = b_rows
 
-        # Fallback linear adapter for the delta (LoRA-compatible output)
-        # NOTE: Kronecker structure approximated — A and B are shaped for
-        # Kronecker semantics but composed via matmul for generality.
+        # Active parameters: standard LoRA-style decomposition (trainable)
         self.A_proj = kaiming_uniform((rank, in_features))
         self.B_proj = mx.zeros((out_features, rank))
 

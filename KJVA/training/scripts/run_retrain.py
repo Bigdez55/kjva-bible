@@ -10,15 +10,14 @@ contract:
 where ``--stage`` ∈ {prepare, train, evaluate, export, publish} (omitted ⇒
 ``all``). This file is the missing delegate that contract pointed at.
 
-Per ``AGENTS.md`` the canonical trainer is the **PyTorch** tree under
-``training/pt/`` — NOT the MLX tree. So a runnable ``train`` stage means
-subprocess'ing into ``pt/train_byte.py`` (full pretrain) or, for a PEFT
-recipe, ``pt/train_peft.py``.
+The canonical trainer is the **MLX** stack under ``training/scripts/``.
+A runnable ``train`` stage means subprocess'ing into ``scripts/train_byte.py``
+(full pretrain) or, for a PEFT recipe, ``scripts/train_peft.py``.
 
 Recipe schema (reuse of the existing ``kjv_omni_program.yaml`` shape — the
 only real program file in the repo, so the dry-run is meaningful)::
 
-    framework: pytorch
+    framework: mlx
     corpus: {path: corpus/.../corpus.txt}
     base:
       name: byte_v1_20m
@@ -50,9 +49,8 @@ if str(SCRIPT_DIR) not in sys.path:
 
 # REPO_ROOT == training/scripts/../.. == "models v7" root.
 REPO_ROOT = SCRIPT_DIR.parents[1]
-PT_DIR = SCRIPT_DIR.parent / "pt"
-TRAIN_BYTE = PT_DIR / "train_byte.py"
-TRAIN_PEFT = PT_DIR / "train_peft.py"
+TRAIN_BYTE = SCRIPT_DIR / "train_byte.py"
+TRAIN_PEFT = SCRIPT_DIR / "train_peft.py"
 
 # PEFT/alignment method ids that route to train_peft.py instead of train_byte.py.
 PEFT_METHODS = {
@@ -114,7 +112,7 @@ def _detect_peft_method(recipe: dict[str, Any]) -> str | None:
 
 
 def build_pretrain_cmd(py: str, recipe: dict[str, Any]) -> list[str]:
-    """Map a pretraining recipe onto a pt/train_byte.py invocation."""
+    """Map a pretraining recipe onto a scripts/train_byte.py invocation."""
     cmd = [py, str(TRAIN_BYTE)]
     _emit(cmd, "--run-id", _get(recipe, "base", "name"))
 
@@ -142,7 +140,7 @@ def build_pretrain_cmd(py: str, recipe: dict[str, Any]) -> list[str]:
 
 
 def build_peft_cmd(py: str, recipe: dict[str, Any], method: str) -> list[str]:
-    """Map a PEFT recipe onto a pt/train_peft.py invocation (requires base ckpt)."""
+    """Map a PEFT recipe onto a scripts/train_peft.py invocation (requires base ckpt)."""
     peft = recipe.get("peft", {}) if isinstance(recipe.get("peft"), dict) else {}
     base_ckpt = (
         peft.get("base_checkpoint")
@@ -185,12 +183,12 @@ def run(recipe_path: Path, stage: str, dry_run: bool) -> int:
               f"{recipe_path.name} (nothing to do).", flush=True)
         return 0
     if stage in {"evaluate", "export"}:
+        script = "scripts/eval_byte.py" if stage == "evaluate" else "scripts/export_byte.py"
         print(f"[run_retrain] stage '{stage}' is not driven by the recipe; run "
-              f"pt/{'eval_clean_ppl.py' if stage == 'evaluate' else 'export.py'} "
-              f"directly with explicit checkpoint paths.", flush=True)
+              f"{script} directly with explicit checkpoint paths.", flush=True)
         return 0
 
-    # stage in {"all", "train"} → drive the canonical PyTorch trainer.
+    # stage in {"all", "train"} → drive the canonical MLX trainer.
     method = _detect_peft_method(recipe)
     if method and method.lower() != "omni":
         if not TRAIN_PEFT.exists():
@@ -212,7 +210,7 @@ def run(recipe_path: Path, stage: str, dry_run: bool) -> int:
 
 
 def main() -> int:
-    ap = argparse.ArgumentParser(description="omni retrain delegate → pt/ trainer")
+    ap = argparse.ArgumentParser(description="omni retrain delegate → MLX trainer")
     ap.add_argument("--recipe", required=True, help="path to a program/recipe YAML or JSON")
     ap.add_argument("--stage", default="all",
                     choices=["all", "prepare", "train", "evaluate", "export", "publish"])

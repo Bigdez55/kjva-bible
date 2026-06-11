@@ -94,7 +94,8 @@ class Attention(nn.Module):
         self.o = nn.Linear(cfg.d_model, cfg.d_model, bias=False)
 
     def __call__(self, x: mx.array, cos: mx.array, sin: mx.array,
-                 mask: mx.array | None = None) -> mx.array:
+                 mask: mx.array | None = None,
+                 prefix_kv: tuple | None = None) -> mx.array:
         B, T, D = x.shape
         H = self.cfg.n_heads
         Dh = self.cfg.head_dim
@@ -106,8 +107,24 @@ class Attention(nn.Module):
         q = apply_rope(q, cos, sin)
         k = apply_rope(k, cos, sin)
 
+        # Prefix tuning: prepend learned K/V context vectors before attention scores.
+        # prefix_kv = (pk, pv) each shaped (n_prefix, d_kv) from PrefixTuningLayer.
+        # Input tokens attend to ALL prefix tokens (no causal masking on the prefix).
+        if prefix_kv is not None:
+            pk, pv = prefix_kv                                                    # (P, d_kv)
+            P = pk.shape[0]
+            pk = mx.broadcast_to(pk.reshape(P, H, Dh).transpose(1, 0, 2)[None], (B, H, P, Dh))  # [B, H, P, Dh]
+            pv = mx.broadcast_to(pv.reshape(P, H, Dh).transpose(1, 0, 2)[None], (B, H, P, Dh))
+            k = mx.concatenate([pk, k], axis=2)                      # [B, H, P+T, Dh]
+            v = mx.concatenate([pv, v], axis=2)
+            if mask is not None:
+                # Extend causal mask: columns for prefix tokens are 0 (fully visible).
+                # Original mask: [T, T] → extended: [T, P+T]
+                prefix_allow = mx.zeros((T, P), dtype=mask.dtype)
+                mask = mx.concatenate([prefix_allow, mask], axis=-1)  # [T, P+T]
+
         scale = mx.rsqrt(mx.array(Dh, dtype=q.dtype))
-        scores = (q @ k.transpose(0, 1, 3, 2)) * scale             # [B, H, T, T]
+        scores = (q @ k.transpose(0, 1, 3, 2)) * scale             # [B, H, T, P+T]
         if mask is not None:
             scores = scores + mask
         attn = mx.softmax(scores, axis=-1)
@@ -141,7 +158,13 @@ class TransformerBlock(nn.Module):
 
     def __call__(self, x: mx.array, cos: mx.array, sin: mx.array,
                  mask: mx.array | None = None) -> mx.array:
-        x = x + self.attn(self.norm1(x), cos, sin, mask)
+        # PrefixTuning wiring: inject_into() sets _prefix_layer and _prefix_layer_idx
+        # on this block (underscore attrs excluded from MLX param tree but the same
+        # array objects are discovered via composite.prefix_tuning, so gradients flow).
+        prefix_kv = None
+        if hasattr(self, "_prefix_layer") and self._prefix_layer is not None:
+            prefix_kv = self._prefix_layer.get_prefix(self._prefix_layer_idx)
+        x = x + self.attn(self.norm1(x), cos, sin, mask, prefix_kv=prefix_kv)
         x = x + self.mlp(self.norm2(x))
         return x
 
@@ -185,15 +208,8 @@ class TokenlessLM(nn.Module):
         return logits
 
     def num_params(self) -> int:
-        total = 0
-        for _, v in self.parameters().items() if hasattr(self, "parameters") else []:
-            pass
-        # Walk tree explicitly:
         from mlx.utils import tree_flatten
-        flat = tree_flatten(self.parameters())
-        for _, arr in flat:
-            total += int(arr.size)
-        return total
+        return sum(int(arr.size) for _, arr in tree_flatten(self.parameters()))
 
 # ---------------------------------------------------------------------------
 # Parameter initialization

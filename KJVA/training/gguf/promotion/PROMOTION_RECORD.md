@@ -1,5 +1,35 @@
 # Canonical Base Promotion Record
 
+---
+
+## Promotion 2 — 2026-06-11
+
+**Date promoted:** 2026-06-11
+**Promoted weight:** `kjva_byte_clean_v2_step3000.gguf` → `training/gguf/canonical.gguf`
+**Promoted SHA-256:** `72b5c93776f759a27090b4a55b29cb7ec4ded360807f7a3fb8dc3ff9823cfb72`
+**Architecture:** byte-level decoder-only transformer, `tokenless_lm` (interpreter slot 1), 18,980,352 params, vocab 259, 8 layers, 6 heads, d_model 384, d_ffn 1536, ctx_len 1024, rope_base 10000.0, tied embeddings.
+**Previous canonical archived as:** `training/gguf/archive/canonical_pre_v2_2026-06-11.gguf`
+
+### Source training run
+
+`training/runs/byte_clean_v2/ckpt_step_003000.safetensors` — byte_clean_v2 run, step 3000.
+
+**Held-out BPB: 1.1393** (measured on 410 held-out verses: torah/writings/prophets/apocrypha/gospels/epistles).
+
+This is a 7.5% BPB improvement over the previous canonical (`clean_base_soup_v1.source.gguf`, BPB=1.2955). Measured improvement = `1 - 1.1393/1.2955 = 12.1%` better text compression on in-domain scripture.
+
+### OMNI-PEFT adapters (NPZ, not baked into GGUF)
+
+Two OMNI-PEFT adapters were trained on this base for corpus expansion and scribe alignment:
+- `training/runs/omni_v2_multi/omni_adapter_weights.npz` — corpus expansion, 45-translation sacred_multi_v2, 5×3000 steps, final_loss=1.1797
+- `training/runs/omni_scribe_v1/epoch_04/omni_adapter_weights.npz` — scribe alignment, Pareto-selected epoch 4, BPB=1.1861, retention=**96.1%**
+
+The adapters were NOT baked into canonical.gguf. Reason: the OMNI-PEFT composite (LoRA + IA3 + BitFit + PrefixTuning) is jointly optimized — stripping BitFit and PrefixTuning for GGUF compatibility produces BPB regression to ~1.39 (worse than the unadapted base). The XMIND C engine (`interp_tokenless.c`) does not support adapter injection at runtime. The adapters remain available for MLX-only inference paths.
+
+---
+
+## Promotion 1 — 2026-06-07
+
 **Date promoted:** 2026-06-07
 **Promoted weight:** `clean_base_soup_v1.source.gguf` → `training/gguf/canonical.gguf`
 **Promoted SHA-256:** `e59c69091a1772a347098efd68d7494419d5e82a75a3e064d95370d1d3f8fb93`

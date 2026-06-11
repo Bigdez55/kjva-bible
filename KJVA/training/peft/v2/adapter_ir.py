@@ -2,12 +2,13 @@
 
 Framework-neutral: numpy payloads + stdlib only, so it imports and tests without
 torch or mlx. Conversion to/from a live framework happens at explicit boundaries
-(to_torch / from_torch — lazy import). This is the canonical, hashable container
-that adapter_algebra, adapter_genome_v2, and determinism operate on.
+(to_torch / from_torch / to_mlx / from_mlx — lazy import). This is the canonical,
+hashable container that adapter_algebra, adapter_genome_v2, and determinism operate on.
 """
 from __future__ import annotations
 
 import hashlib
+import json
 from dataclasses import dataclass, field, asdict
 from typing import Any
 
@@ -61,8 +62,8 @@ class AdapterIR:
     def canonical_bytes(self) -> bytes:
         """Deterministic byte serialization (meta + sorted tensors) for hashing."""
         h = hashlib.sha256()
-        for k in sorted(self.meta()):
-            h.update(f"{k}={self.meta()[k]!r}".encode("utf-8"))
+        m = self.meta()
+        h.update(json.dumps(m, sort_keys=True, default=str).encode("utf-8"))
         for name, arr in self.flatten():
             h.update(name.encode("utf-8"))
             h.update(np.ascontiguousarray(arr, dtype=np.float32).tobytes())
@@ -85,6 +86,17 @@ class AdapterIR:
         return cls.from_named_arrays(
             family, method, target_module, layer_idx,
             {k: v.detach().cpu().numpy() for k, v in tensors.items()}, hparams)
+
+    def to_mlx(self) -> dict:
+        import mlx.core as mx  # lazy
+        return {k: mx.array(v) for k, v in self.tensors.items()}
+
+    @classmethod
+    def from_mlx(cls, family: str, method: str, target_module: str, layer_idx: int,
+                 tensors: dict, hparams: dict | None = None) -> "AdapterIR":
+        return cls.from_named_arrays(
+            family, method, target_module, layer_idx,
+            {k: np.asarray(v) for k, v in tensors.items()}, hparams)
 
 
 def compatible(a: AdapterIR, b: AdapterIR) -> bool:

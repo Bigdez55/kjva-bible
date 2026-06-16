@@ -1,0 +1,123 @@
+schema_version: '1.0'
+category_id: PRC.USER_INTERFACE_AND_ACCOUNTS
+name: User Interface & Accounts
+icon: ◈
+color: '#22C55E'
+default_severity: medium
+coverage_status: FULL
+skill_refs:
+- SKILL_IDENTITY_AUTH_RBAC_ABAC_001
+- SKILL_AUTH_GUARD_001
+- SKILL_ADMIN_CONSOLE_TENANT_OPS_001
+capability_status: MISSING
+tool_refs: []
+mcp_refs: []
+command_refs: []
+capability_refs: []
+capability_notes: No account-management executor. Build account CRUD + profile routes (depends on a real auth provider).
+sections:
+- id: PRC.USER_INTERFACE_AND_ACCOUNTS.ONBOARDING_AND_REGISTRATION
+  name: Onboarding & Registration
+  items:
+  - id: PRC.USER_INTERFACE_AND_ACCOUNTS.ONBOARDING_AND_REGISTRATION.001
+    text: 'Registration flow: name, email, password, email verification'
+  - id: PRC.USER_INTERFACE_AND_ACCOUNTS.ONBOARDING_AND_REGISTRATION.002
+    text: Email verification required before sensitive actions are permitted
+  - id: PRC.USER_INTERFACE_AND_ACCOUNTS.ONBOARDING_AND_REGISTRATION.003
+    text: Social/SSO login reduces registration friction
+  - id: PRC.USER_INTERFACE_AND_ACCOUNTS.ONBOARDING_AND_REGISTRATION.004
+    text: Onboarding wizard guides user to first value moment
+  - id: PRC.USER_INTERFACE_AND_ACCOUNTS.ONBOARDING_AND_REGISTRATION.005
+    text: Progress indicator on multi-step onboarding
+  - id: PRC.USER_INTERFACE_AND_ACCOUNTS.ONBOARDING_AND_REGISTRATION.006
+    text: Onboarding checklist tracks key setup tasks with completion state
+  - id: PRC.USER_INTERFACE_AND_ACCOUNTS.ONBOARDING_AND_REGISTRATION.007
+    text: Default settings sensibly pre-configured; user does not need to configure to start
+  - id: PRC.USER_INTERFACE_AND_ACCOUNTS.ONBOARDING_AND_REGISTRATION.008
+    text: Sample or demo data available for new accounts, dismissable
+  - id: PRC.USER_INTERFACE_AND_ACCOUNTS.ONBOARDING_AND_REGISTRATION.009
+    text: Welcome email sent immediately on verification with quick-start link
+  - id: PRC.USER_INTERFACE_AND_ACCOUNTS.ONBOARDING_AND_REGISTRATION.010
+    text: 'Team invite flow: invite by email, expires in 7 days, resend available'
+  - id: PRC.USER_INTERFACE_AND_ACCOUNTS.ONBOARDING_AND_REGISTRATION.011
+    text: 'GDPR/CCPA consent: marketing emails require explicit opt-in at registration'
+  - id: PRC.USER_INTERFACE_AND_ACCOUNTS.ONBOARDING_AND_REGISTRATION.012
+    text: Social login to existing email account handled with account linking flow
+- id: PRC.USER_INTERFACE_AND_ACCOUNTS.ACCOUNT_MANAGEMENT
+  name: Account Management
+  items:
+  - id: PRC.USER_INTERFACE_AND_ACCOUNTS.ACCOUNT_MANAGEMENT.001
+    text: 'Profile edit: name, avatar, bio, display name'
+  - id: PRC.USER_INTERFACE_AND_ACCOUNTS.ACCOUNT_MANAGEMENT.002
+    text: Email change requires verification of new email before commit
+  - id: PRC.USER_INTERFACE_AND_ACCOUNTS.ACCOUNT_MANAGEMENT.003
+    text: Password change requires current password confirmation
+  - id: PRC.USER_INTERFACE_AND_ACCOUNTS.ACCOUNT_MANAGEMENT.004
+    text: Password change invalidates all other active sessions
+  - id: PRC.USER_INTERFACE_AND_ACCOUNTS.ACCOUNT_MANAGEMENT.005
+    text: 'Account deactivation: temporary, reversible, stops all emails'
+  - id: PRC.USER_INTERFACE_AND_ACCOUNTS.ACCOUNT_MANAGEMENT.006
+    text: 'Account deletion: permanent, GDPR Article 17, with 30-day grace period'
+  - id: PRC.USER_INTERFACE_AND_ACCOUNTS.ACCOUNT_MANAGEMENT.007
+    text: 'Data export: GDPR Article 20 portability in machine-readable format'
+  - id: PRC.USER_INTERFACE_AND_ACCOUNTS.ACCOUNT_MANAGEMENT.008
+    text: 'Two-factor authentication: TOTP setup with QR code and recovery codes'
+  - id: PRC.USER_INTERFACE_AND_ACCOUNTS.ACCOUNT_MANAGEMENT.009
+    text: 'Recovery codes: 8–10 single-use codes, downloadable, printable'
+  - id: PRC.USER_INTERFACE_AND_ACCOUNTS.ACCOUNT_MANAGEMENT.010
+    text: Passkey / WebAuthn registration UI available
+  - id: PRC.USER_INTERFACE_AND_ACCOUNTS.ACCOUNT_MANAGEMENT.011
+    text: 'Active session list: all sessions visible with IP, device, last active time'
+  - id: PRC.USER_INTERFACE_AND_ACCOUNTS.ACCOUNT_MANAGEMENT.012
+    text: Revoke specific or all other sessions
+  - id: PRC.USER_INTERFACE_AND_ACCOUNTS.ACCOUNT_MANAGEMENT.013
+    text: 'Login history: last 30 events with IP, device, success/fail, timestamp'
+  - id: PRC.USER_INTERFACE_AND_ACCOUNTS.ACCOUNT_MANAGEMENT.014
+    text: 'Connected OAuth apps: list permissions, revoke access'
+  - id: PRC.USER_INTERFACE_AND_ACCOUNTS.ACCOUNT_MANAGEMENT.015
+    text: 'API key management: generate, name, copy-once, rotate, revoke'
+  - id: PRC.USER_INTERFACE_AND_ACCOUNTS.ACCOUNT_MANAGEMENT.016
+    text: Notification preferences reachable from profile page
+  - id: PRC.USER_INTERFACE_AND_ACCOUNTS.ACCOUNT_MANAGEMENT.017
+    text: 'Danger zone: destructive actions separated, require typed confirmation'
+  - id: PRC.USER_INTERFACE_AND_ACCOUNTS.ACCOUNT_MANAGEMENT.018
+    text: Account ownership transfer to another member (for teams)
+- id: PRC.USER_INTERFACE_AND_ACCOUNTS.UI_STATES_AND_INTERACTION_QUALITY
+  name: UI States & Interaction Quality
+  items:
+  - id: PRC.USER_INTERFACE_AND_ACCOUNTS.UI_STATES_AND_INTERACTION_QUALITY.001
+    text: 'Every async action has: loading, success, and error state explicitly designed'
+  - id: PRC.USER_INTERFACE_AND_ACCOUNTS.UI_STATES_AND_INTERACTION_QUALITY.002
+    text: 'Loading state: skeleton screens or spinner with aria-busy'
+  - id: PRC.USER_INTERFACE_AND_ACCOUNTS.UI_STATES_AND_INTERACTION_QUALITY.003
+    text: 'Empty state: meaningful message and CTA (not blank white page)'
+  - id: PRC.USER_INTERFACE_AND_ACCOUNTS.UI_STATES_AND_INTERACTION_QUALITY.004
+    text: 'Error state: clear message, retry option, support link for persistent errors'
+  - id: PRC.USER_INTERFACE_AND_ACCOUNTS.UI_STATES_AND_INTERACTION_QUALITY.005
+    text: 'Partial error: shows what succeeded and what failed in batch operations'
+  - id: PRC.USER_INTERFACE_AND_ACCOUNTS.UI_STATES_AND_INTERACTION_QUALITY.006
+    text: Optimistic UI updates with automatic rollback on failure
+  - id: PRC.USER_INTERFACE_AND_ACCOUNTS.UI_STATES_AND_INTERACTION_QUALITY.007
+    text: 'Toast notifications: success, error, info; auto-dismiss plus manual dismiss button'
+  - id: PRC.USER_INTERFACE_AND_ACCOUNTS.UI_STATES_AND_INTERACTION_QUALITY.008
+    text: Destructive actions require confirmation; irreversible actions require typed confirmation
+  - id: PRC.USER_INTERFACE_AND_ACCOUNTS.UI_STATES_AND_INTERACTION_QUALITY.009
+    text: Unsaved changes warning on navigation away from edit forms
+  - id: PRC.USER_INTERFACE_AND_ACCOUNTS.UI_STATES_AND_INTERACTION_QUALITY.010
+    text: Form auto-save or draft saving for long forms
+  - id: PRC.USER_INTERFACE_AND_ACCOUNTS.UI_STATES_AND_INTERACTION_QUALITY.011
+    text: Form field validation on blur (not just on submit)
+  - id: PRC.USER_INTERFACE_AND_ACCOUNTS.UI_STATES_AND_INTERACTION_QUALITY.012
+    text: 'Inline field errors: specific, actionable, not just top-of-form summary'
+  - id: PRC.USER_INTERFACE_AND_ACCOUNTS.UI_STATES_AND_INTERACTION_QUALITY.013
+    text: Password strength indicator on registration
+  - id: PRC.USER_INTERFACE_AND_ACCOUNTS.UI_STATES_AND_INTERACTION_QUALITY.014
+    text: Copy-to-clipboard on all IDs, keys, and code snippets
+  - id: PRC.USER_INTERFACE_AND_ACCOUNTS.UI_STATES_AND_INTERACTION_QUALITY.015
+    text: Pagination or infinite scroll on all lists > 20 items
+  - id: PRC.USER_INTERFACE_AND_ACCOUNTS.UI_STATES_AND_INTERACTION_QUALITY.016
+    text: Sort, filter, and search controls on all significant list views
+  - id: PRC.USER_INTERFACE_AND_ACCOUNTS.UI_STATES_AND_INTERACTION_QUALITY.017
+    text: Bulk actions with select-all for list items
+  - id: PRC.USER_INTERFACE_AND_ACCOUNTS.UI_STATES_AND_INTERACTION_QUALITY.018
+    text: Print-friendly view for reports and invoices

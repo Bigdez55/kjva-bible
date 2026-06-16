@@ -1,0 +1,184 @@
+schema_version: '1.0'
+category_id: PRC.ACCESSIBILITY_ENGINEERING
+name: Accessibility Engineering
+icon: ⊚
+color: '#00E5C0'
+default_severity: medium
+coverage_status: FULL
+skill_refs:
+- SKILL_DESKTOP_UI_ACCESSIBILITY_001
+- SKILL_BEACON_001
+capability_status: MISSING
+tool_refs: []
+mcp_refs: []
+command_refs: []
+capability_refs: []
+capability_notes: No a11y-audit executor. Build an axe/contrast scan tool or CI gate.
+sections:
+- id: PRC.ACCESSIBILITY_ENGINEERING.STANDARDS_AND_LEGAL_COMPLIANCE
+  name: Standards & Legal Compliance
+  items:
+  - id: PRC.ACCESSIBILITY_ENGINEERING.STANDARDS_AND_LEGAL_COMPLIANCE.001
+    text: 'Target conformance level set and documented: WCAG 2.2 Level AA minimum'
+  - id: PRC.ACCESSIBILITY_ENGINEERING.STANDARDS_AND_LEGAL_COMPLIANCE.002
+    text: WCAG 2.2 Level AAA targeted for critical flows where feasible
+  - id: PRC.ACCESSIBILITY_ENGINEERING.STANDARDS_AND_LEGAL_COMPLIANCE.003
+    text: 'Legal obligations identified: ADA (US), Section 508 (US gov), EN 301 549 (EU), AODA (Ontario), UK Equality Act'
+  - id: PRC.ACCESSIBILITY_ENGINEERING.STANDARDS_AND_LEGAL_COMPLIANCE.004
+    text: European Accessibility Act (EAA) June 2025 deadline tracked for applicable products
+  - id: PRC.ACCESSIBILITY_ENGINEERING.STANDARDS_AND_LEGAL_COMPLIANCE.005
+    text: 'Accessibility statement published: conformance level, known issues, contact, last-updated date'
+  - id: PRC.ACCESSIBILITY_ENGINEERING.STANDARDS_AND_LEGAL_COMPLIANCE.006
+    text: VPAT / Accessibility Conformance Report prepared for enterprise and government sales
+  - id: PRC.ACCESSIBILITY_ENGINEERING.STANDARDS_AND_LEGAL_COMPLIANCE.007
+    text: Accessibility included in Definition of Done for all UI work
+  - id: PRC.ACCESSIBILITY_ENGINEERING.STANDARDS_AND_LEGAL_COMPLIANCE.008
+    text: Accessibility owner or team designated with clear mandate
+  - id: PRC.ACCESSIBILITY_ENGINEERING.STANDARDS_AND_LEGAL_COMPLIANCE.009
+    text: Remediation backlog prioritized by user impact and severity
+  - id: PRC.ACCESSIBILITY_ENGINEERING.STANDARDS_AND_LEGAL_COMPLIANCE.010
+    text: Third-party and embedded components audited for accessibility before adoption
+  - id: PRC.ACCESSIBILITY_ENGINEERING.STANDARDS_AND_LEGAL_COMPLIANCE.011
+    text: No new WCAG violations permitted to merge (accessibility regression budget)
+  - id: PRC.ACCESSIBILITY_ENGINEERING.STANDARDS_AND_LEGAL_COMPLIANCE.012
+    text: Accessibility considered in procurement of vendor UI tools
+- id: PRC.ACCESSIBILITY_ENGINEERING.PERCEIVABLE_AND_OPERABLE_WCAG_2_2
+  name: Perceivable & Operable (WCAG 2.2)
+  items:
+  - id: PRC.ACCESSIBILITY_ENGINEERING.PERCEIVABLE_AND_OPERABLE_WCAG_2_2.001
+    text: Text alternatives for all non-text content (1.1.1)
+  - id: PRC.ACCESSIBILITY_ENGINEERING.PERCEIVABLE_AND_OPERABLE_WCAG_2_2.002
+    text: Captions for prerecorded and live video; audio description provided (1.2.x)
+  - id: PRC.ACCESSIBILITY_ENGINEERING.PERCEIVABLE_AND_OPERABLE_WCAG_2_2.003
+    text: Info and relationships conveyed in markup, not visual presentation alone (1.3.1)
+  - id: PRC.ACCESSIBILITY_ENGINEERING.PERCEIVABLE_AND_OPERABLE_WCAG_2_2.004
+    text: Meaningful sequence preserved when stylesheets disabled (1.3.2)
+  - id: PRC.ACCESSIBILITY_ENGINEERING.PERCEIVABLE_AND_OPERABLE_WCAG_2_2.005
+    text: Instructions do not rely on sensory characteristics alone (1.3.3)
+  - id: PRC.ACCESSIBILITY_ENGINEERING.PERCEIVABLE_AND_OPERABLE_WCAG_2_2.006
+    text: Content not restricted to a single display orientation (1.3.4)
+  - id: PRC.ACCESSIBILITY_ENGINEERING.PERCEIVABLE_AND_OPERABLE_WCAG_2_2.007
+    text: Input purpose identified via autocomplete attributes (1.3.5)
+  - id: PRC.ACCESSIBILITY_ENGINEERING.PERCEIVABLE_AND_OPERABLE_WCAG_2_2.008
+    text: Contrast 4.5:1 for normal text, 3:1 for large text and UI components (1.4.3, 1.4.11)
+  - id: PRC.ACCESSIBILITY_ENGINEERING.PERCEIVABLE_AND_OPERABLE_WCAG_2_2.009
+    text: Text resizable to 200% without loss of content or function (1.4.4)
+  - id: PRC.ACCESSIBILITY_ENGINEERING.PERCEIVABLE_AND_OPERABLE_WCAG_2_2.010
+    text: Content reflows at 320px width with no horizontal scroll (1.4.10)
+  - id: PRC.ACCESSIBILITY_ENGINEERING.PERCEIVABLE_AND_OPERABLE_WCAG_2_2.011
+    text: Text spacing adjustable without content loss (1.4.12)
+  - id: PRC.ACCESSIBILITY_ENGINEERING.PERCEIVABLE_AND_OPERABLE_WCAG_2_2.012
+    text: Content on hover or focus is dismissable, hoverable, and persistent (1.4.13)
+  - id: PRC.ACCESSIBILITY_ENGINEERING.PERCEIVABLE_AND_OPERABLE_WCAG_2_2.013
+    text: All functionality keyboard operable with no keyboard trap (2.1.1, 2.1.2)
+  - id: PRC.ACCESSIBILITY_ENGINEERING.PERCEIVABLE_AND_OPERABLE_WCAG_2_2.014
+    text: Character-key shortcuts can be turned off or remapped (2.1.4)
+  - id: PRC.ACCESSIBILITY_ENGINEERING.PERCEIVABLE_AND_OPERABLE_WCAG_2_2.015
+    text: No time limits, or time limits are adjustable and extendable (2.2.1)
+  - id: PRC.ACCESSIBILITY_ENGINEERING.PERCEIVABLE_AND_OPERABLE_WCAG_2_2.016
+    text: Flashing content does not exceed three flashes per second (2.3.1)
+  - id: PRC.ACCESSIBILITY_ENGINEERING.PERCEIVABLE_AND_OPERABLE_WCAG_2_2.017
+    text: Bypass blocks / skip links provided (2.4.1)
+  - id: PRC.ACCESSIBILITY_ENGINEERING.PERCEIVABLE_AND_OPERABLE_WCAG_2_2.018
+    text: Descriptive page titles, headings, and labels (2.4.2, 2.4.6)
+  - id: PRC.ACCESSIBILITY_ENGINEERING.PERCEIVABLE_AND_OPERABLE_WCAG_2_2.019
+    text: Focus order logical and focus indicator clearly visible (2.4.3, 2.4.7)
+  - id: PRC.ACCESSIBILITY_ENGINEERING.PERCEIVABLE_AND_OPERABLE_WCAG_2_2.020
+    text: Focus not obscured by sticky headers or footers (2.4.11, new in WCAG 2.2)
+  - id: PRC.ACCESSIBILITY_ENGINEERING.PERCEIVABLE_AND_OPERABLE_WCAG_2_2.021
+    text: Dragging movements have a single-pointer alternative (2.5.7, new in WCAG 2.2)
+  - id: PRC.ACCESSIBILITY_ENGINEERING.PERCEIVABLE_AND_OPERABLE_WCAG_2_2.022
+    text: Target size at least 24 by 24 CSS pixels (2.5.8, new in WCAG 2.2)
+  - id: PRC.ACCESSIBILITY_ENGINEERING.PERCEIVABLE_AND_OPERABLE_WCAG_2_2.023
+    text: 'Accessible authentication: no cognitive function test without alternative (3.3.8, new in WCAG 2.2)'
+- id: PRC.ACCESSIBILITY_ENGINEERING.ASSISTIVE_TECHNOLOGY_AND_ARIA
+  name: Assistive Technology & ARIA
+  items:
+  - id: PRC.ACCESSIBILITY_ENGINEERING.ASSISTIVE_TECHNOLOGY_AND_ARIA.001
+    text: Semantic HTML used first; ARIA added only when no native element exists
+  - id: PRC.ACCESSIBILITY_ENGINEERING.ASSISTIVE_TECHNOLOGY_AND_ARIA.002
+    text: ARIA roles, states, and properties valid and non-conflicting
+  - id: PRC.ACCESSIBILITY_ENGINEERING.ASSISTIVE_TECHNOLOGY_AND_ARIA.003
+    text: 'Landmark regions defined: banner, navigation, main, contentinfo'
+  - id: PRC.ACCESSIBILITY_ENGINEERING.ASSISTIVE_TECHNOLOGY_AND_ARIA.004
+    text: Live regions announce dynamic updates at appropriate politeness level
+  - id: PRC.ACCESSIBILITY_ENGINEERING.ASSISTIVE_TECHNOLOGY_AND_ARIA.005
+    text: Form fields programmatically associated with their labels
+  - id: PRC.ACCESSIBILITY_ENGINEERING.ASSISTIVE_TECHNOLOGY_AND_ARIA.006
+    text: Error messages associated via aria-describedby and announced to screen readers
+  - id: PRC.ACCESSIBILITY_ENGINEERING.ASSISTIVE_TECHNOLOGY_AND_ARIA.007
+    text: Required and invalid states exposed via aria-required and aria-invalid
+  - id: PRC.ACCESSIBILITY_ENGINEERING.ASSISTIVE_TECHNOLOGY_AND_ARIA.008
+    text: Modal dialogs use role dialog, aria-modal, focus trap, and focus restore
+  - id: PRC.ACCESSIBILITY_ENGINEERING.ASSISTIVE_TECHNOLOGY_AND_ARIA.009
+    text: Custom widgets follow the ARIA Authoring Practices Guide patterns
+  - id: PRC.ACCESSIBILITY_ENGINEERING.ASSISTIVE_TECHNOLOGY_AND_ARIA.010
+    text: Decorative images hidden from assistive tech via aria-hidden or empty alt
+  - id: PRC.ACCESSIBILITY_ENGINEERING.ASSISTIVE_TECHNOLOGY_AND_ARIA.011
+    text: Icon-only buttons have accessible names
+  - id: PRC.ACCESSIBILITY_ENGINEERING.ASSISTIVE_TECHNOLOGY_AND_ARIA.012
+    text: Status messages announced without moving focus (4.1.3)
+  - id: PRC.ACCESSIBILITY_ENGINEERING.ASSISTIVE_TECHNOLOGY_AND_ARIA.013
+    text: Screen reader tested with VoiceOver on Safari and NVDA on Firefox
+  - id: PRC.ACCESSIBILITY_ENGINEERING.ASSISTIVE_TECHNOLOGY_AND_ARIA.014
+    text: 'Mobile screen reader tested: VoiceOver on iOS and TalkBack on Android'
+  - id: PRC.ACCESSIBILITY_ENGINEERING.ASSISTIVE_TECHNOLOGY_AND_ARIA.015
+    text: Reading order verified via screen reader linearization
+- id: PRC.ACCESSIBILITY_ENGINEERING.TESTING_TOOLING_AND_PROCESS
+  name: Testing, Tooling & Process
+  items:
+  - id: PRC.ACCESSIBILITY_ENGINEERING.TESTING_TOOLING_AND_PROCESS.001
+    text: 'Automated accessibility testing in CI: axe-core, jest-axe, Playwright-axe, or Pa11y'
+  - id: PRC.ACCESSIBILITY_ENGINEERING.TESTING_TOOLING_AND_PROCESS.002
+    text: 'Accessibility linting active: eslint-plugin-jsx-a11y in frontend builds'
+  - id: PRC.ACCESSIBILITY_ENGINEERING.TESTING_TOOLING_AND_PROCESS.003
+    text: Keyboard-only navigation tested on every critical flow
+  - id: PRC.ACCESSIBILITY_ENGINEERING.TESTING_TOOLING_AND_PROCESS.004
+    text: Screen reader manual test performed on every critical flow
+  - id: PRC.ACCESSIBILITY_ENGINEERING.TESTING_TOOLING_AND_PROCESS.005
+    text: Color contrast verified with tooling at design and build time
+  - id: PRC.ACCESSIBILITY_ENGINEERING.TESTING_TOOLING_AND_PROCESS.006
+    text: Zoom and reflow tested at 200% and 400%
+  - id: PRC.ACCESSIBILITY_ENGINEERING.TESTING_TOOLING_AND_PROCESS.007
+    text: Windows High Contrast and forced-colors mode tested
+  - id: PRC.ACCESSIBILITY_ENGINEERING.TESTING_TOOLING_AND_PROCESS.008
+    text: prefers-reduced-motion respected and tested across all animation
+  - id: PRC.ACCESSIBILITY_ENGINEERING.TESTING_TOOLING_AND_PROCESS.009
+    text: Usability testing conducted with real assistive technology users
+  - id: PRC.ACCESSIBILITY_ENGINEERING.TESTING_TOOLING_AND_PROCESS.010
+    text: Accessibility issues logged with WCAG criterion reference and severity
+  - id: PRC.ACCESSIBILITY_ENGINEERING.TESTING_TOOLING_AND_PROCESS.011
+    text: Regression tests added for every fixed accessibility defect
+  - id: PRC.ACCESSIBILITY_ENGINEERING.TESTING_TOOLING_AND_PROCESS.012
+    text: Design system components accessible by default; focus styles never removed
+  - id: PRC.ACCESSIBILITY_ENGINEERING.TESTING_TOOLING_AND_PROCESS.013
+    text: Designers and engineers trained on accessibility fundamentals
+  - id: PRC.ACCESSIBILITY_ENGINEERING.TESTING_TOOLING_AND_PROCESS.014
+    text: Figma annotations specify reading order, alt text, and ARIA intent
+- id: PRC.ACCESSIBILITY_ENGINEERING.DOCUMENTS_MEDIA_AND_COGNITIVE_ACCESSIBILITY
+  name: Documents, Media & Cognitive Accessibility
+  items:
+  - id: PRC.ACCESSIBILITY_ENGINEERING.DOCUMENTS_MEDIA_AND_COGNITIVE_ACCESSIBILITY.001
+    text: PDFs tagged with reading order, language, and alt text
+  - id: PRC.ACCESSIBILITY_ENGINEERING.DOCUMENTS_MEDIA_AND_COGNITIVE_ACCESSIBILITY.002
+    text: Distributed Office documents (Word, PowerPoint) made accessible
+  - id: PRC.ACCESSIBILITY_ENGINEERING.DOCUMENTS_MEDIA_AND_COGNITIVE_ACCESSIBILITY.003
+    text: Data tables have proper headers and scope attributes
+  - id: PRC.ACCESSIBILITY_ENGINEERING.DOCUMENTS_MEDIA_AND_COGNITIVE_ACCESSIBILITY.004
+    text: Charts and graphs have text or data-table alternatives
+  - id: PRC.ACCESSIBILITY_ENGINEERING.DOCUMENTS_MEDIA_AND_COGNITIVE_ACCESSIBILITY.005
+    text: Video player controls keyboard accessible and labeled
+  - id: PRC.ACCESSIBILITY_ENGINEERING.DOCUMENTS_MEDIA_AND_COGNITIVE_ACCESSIBILITY.006
+    text: Transcripts provided for all audio and video content
+  - id: PRC.ACCESSIBILITY_ENGINEERING.DOCUMENTS_MEDIA_AND_COGNITIVE_ACCESSIBILITY.007
+    text: Plain language used; reading level appropriate to the audience
+  - id: PRC.ACCESSIBILITY_ENGINEERING.DOCUMENTS_MEDIA_AND_COGNITIVE_ACCESSIBILITY.008
+    text: Navigation consistent and interactions predictable to reduce cognitive load
+  - id: PRC.ACCESSIBILITY_ENGINEERING.DOCUMENTS_MEDIA_AND_COGNITIVE_ACCESSIBILITY.009
+    text: Error prevention and recovery for important or irreversible transactions (3.3.4)
+  - id: PRC.ACCESSIBILITY_ENGINEERING.DOCUMENTS_MEDIA_AND_COGNITIVE_ACCESSIBILITY.010
+    text: Autocomplete and saved input reduce cognitive and memory burden
+  - id: PRC.ACCESSIBILITY_ENGINEERING.DOCUMENTS_MEDIA_AND_COGNITIVE_ACCESSIBILITY.011
+    text: Content chunked and scannable with clear, descriptive headings
+  - id: PRC.ACCESSIBILITY_ENGINEERING.DOCUMENTS_MEDIA_AND_COGNITIVE_ACCESSIBILITY.012
+    text: No unexpected context changes on focus or input (3.2.1, 3.2.2)

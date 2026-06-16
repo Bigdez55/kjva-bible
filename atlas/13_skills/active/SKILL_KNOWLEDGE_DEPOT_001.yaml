@@ -15,9 +15,9 @@ validation_tests: []
 status: active
 skill_number: 146
 source_documents:
-- apps/atlas/src/lib/atlas-data.ts
-- apps/atlas/src/app/page.tsx
-- apps/atlas/src/app/api/use-cases/route.ts
+- apps/frontend/shell/src/lib/atlas-data.ts
+- apps/frontend/shell/src/app/page.tsx
+- apps/frontend/shell/src/app/api/use-cases/route.ts
 trigger_conditions:
 - User says ATLAS lacks the actual use case.
 - User asks how a coding agent is supposed to use ATLAS as a knowledge depot.

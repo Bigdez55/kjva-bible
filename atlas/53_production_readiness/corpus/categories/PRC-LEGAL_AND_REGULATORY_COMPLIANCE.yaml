@@ -1,0 +1,179 @@
+schema_version: '1.0'
+category_id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE
+name: Legal & Regulatory Compliance
+icon: §
+color: '#F687B3'
+default_severity: high
+coverage_status: FULL
+skill_refs:
+- SKILL_COMPLIANCE_CHECK_001
+- SKILL_SECURITY_COMPLIANCE_GOVERNANCE_001
+capability_status: MISSING
+tool_refs: []
+mcp_refs: []
+command_refs: []
+capability_refs: []
+capability_notes: Knowledge-only. Build a compliance-evidence/report generation route if in scope.
+sections:
+- id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.MARKETING_AND_COMMUNICATIONS_LAW
+  name: Marketing & Communications Law
+  items:
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.MARKETING_AND_COMMUNICATIONS_LAW.001
+    text: 'CAN-SPAM compliance: accurate headers, physical address, working unsubscribe'
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.MARKETING_AND_COMMUNICATIONS_LAW.002
+    text: Unsubscribe honored promptly (within 10 business days under CAN-SPAM)
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.MARKETING_AND_COMMUNICATIONS_LAW.003
+    text: 'CASL (Canada) compliance: express or implied consent documented'
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.MARKETING_AND_COMMUNICATIONS_LAW.004
+    text: GDPR/PECR consent for marketing email to EU/UK recipients
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.MARKETING_AND_COMMUNICATIONS_LAW.005
+    text: SMS marketing consent and opt-out (TCPA in US) compliant
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.MARKETING_AND_COMMUNICATIONS_LAW.006
+    text: Telemarketing and Do-Not-Call list compliance where applicable
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.MARKETING_AND_COMMUNICATIONS_LAW.007
+    text: Misleading advertising and false claims reviewed by legal
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.MARKETING_AND_COMMUNICATIONS_LAW.008
+    text: Endorsement and testimonial disclosures (FTC) where required
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.MARKETING_AND_COMMUNICATIONS_LAW.009
+    text: Influencer and affiliate disclosure requirements met
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.MARKETING_AND_COMMUNICATIONS_LAW.010
+    text: Pricing and discount claims substantiated and lawful
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.MARKETING_AND_COMMUNICATIONS_LAW.011
+    text: Comparative advertising reviewed for legal risk
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.MARKETING_AND_COMMUNICATIONS_LAW.012
+    text: Consent records retained as proof for audits and disputes
+- id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.COOKIE_AND_TRACKING_LAW
+  name: Cookie & Tracking Law
+  items:
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.COOKIE_AND_TRACKING_LAW.001
+    text: Cookie consent compliant with ePrivacy Directive and GDPR
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.COOKIE_AND_TRACKING_LAW.002
+    text: Non-essential cookies and trackers blocked until consent
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.COOKIE_AND_TRACKING_LAW.003
+    text: Granular consent by purpose (necessary, analytics, marketing)
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.COOKIE_AND_TRACKING_LAW.004
+    text: Consent withdrawal as easy as granting
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.COOKIE_AND_TRACKING_LAW.005
+    text: Cookie banner not using dark patterns (reject as easy as accept)
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.COOKIE_AND_TRACKING_LAW.006
+    text: Consent records stored with proof and timestamp
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.COOKIE_AND_TRACKING_LAW.007
+    text: Cookie policy lists every cookie, purpose, duration, and party
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.COOKIE_AND_TRACKING_LAW.008
+    text: Consent re-prompted when purposes or vendors change
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.COOKIE_AND_TRACKING_LAW.009
+    text: Consent signal propagated to tag manager and downstream tools
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.COOKIE_AND_TRACKING_LAW.010
+    text: Third-party tag inventory maintained and reviewed
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.COOKIE_AND_TRACKING_LAW.011
+    text: Global Privacy Control / opt-out preference signals honored
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.COOKIE_AND_TRACKING_LAW.012
+    text: Consent solution audited for compliance (e.g., IAB TCF where used)
+- id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.ACCESSIBILITY_AND_ANTI_DISCRIMINATION_LAW
+  name: Accessibility & Anti-Discrimination Law
+  items:
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.ACCESSIBILITY_AND_ANTI_DISCRIMINATION_LAW.001
+    text: ADA Title III digital accessibility obligations assessed (US)
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.ACCESSIBILITY_AND_ANTI_DISCRIMINATION_LAW.002
+    text: Section 508 conformance for US government customers
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.ACCESSIBILITY_AND_ANTI_DISCRIMINATION_LAW.003
+    text: European Accessibility Act (EAA) 2025 obligations tracked
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.ACCESSIBILITY_AND_ANTI_DISCRIMINATION_LAW.004
+    text: EN 301 549 conformance for EU public sector
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.ACCESSIBILITY_AND_ANTI_DISCRIMINATION_LAW.005
+    text: AODA (Ontario) and provincial obligations assessed
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.ACCESSIBILITY_AND_ANTI_DISCRIMINATION_LAW.006
+    text: UK Equality Act 2010 digital accessibility considered
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.ACCESSIBILITY_AND_ANTI_DISCRIMINATION_LAW.007
+    text: Accessibility statement and VPAT/ACR maintained
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.ACCESSIBILITY_AND_ANTI_DISCRIMINATION_LAW.008
+    text: Accessibility remediation plan documented for known gaps
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.ACCESSIBILITY_AND_ANTI_DISCRIMINATION_LAW.009
+    text: Anti-discrimination considered in algorithmic decisions
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.ACCESSIBILITY_AND_ANTI_DISCRIMINATION_LAW.010
+    text: Reasonable accommodation process for users with disabilities
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.ACCESSIBILITY_AND_ANTI_DISCRIMINATION_LAW.011
+    text: Litigation and demand-letter risk assessed for inaccessible flows
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.ACCESSIBILITY_AND_ANTI_DISCRIMINATION_LAW.012
+    text: Accessibility obligations included in vendor contracts
+- id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.CHILDREN_VULNERABLE_USERS_AND_DARK_PATTERNS
+  name: Children, Vulnerable Users & Dark Patterns
+  items:
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.CHILDREN_VULNERABLE_USERS_AND_DARK_PATTERNS.001
+    text: 'COPPA compliance for users under 13 (US): parental consent, data limits'
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.CHILDREN_VULNERABLE_USERS_AND_DARK_PATTERNS.002
+    text: UK Age Appropriate Design Code (Children's Code) conformance
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.CHILDREN_VULNERABLE_USERS_AND_DARK_PATTERNS.003
+    text: California Age-Appropriate Design Code obligations assessed
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.CHILDREN_VULNERABLE_USERS_AND_DARK_PATTERNS.004
+    text: Age assurance proportionate to risk
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.CHILDREN_VULNERABLE_USERS_AND_DARK_PATTERNS.005
+    text: Default privacy-protective settings for minors
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.CHILDREN_VULNERABLE_USERS_AND_DARK_PATTERNS.006
+    text: Dark patterns prohibited (FTC, GDPR, CPRA, DSA scrutiny)
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.CHILDREN_VULNERABLE_USERS_AND_DARK_PATTERNS.007
+    text: No deceptive consent, forced action, or nagging interfaces
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.CHILDREN_VULNERABLE_USERS_AND_DARK_PATTERNS.008
+    text: Cancellation as easy as signup (click-to-cancel / negative-option rules)
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.CHILDREN_VULNERABLE_USERS_AND_DARK_PATTERNS.009
+    text: Subscription auto-renewal disclosures and reminders compliant
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.CHILDREN_VULNERABLE_USERS_AND_DARK_PATTERNS.010
+    text: No misleading urgency, fake scarcity, or confirmshaming
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.CHILDREN_VULNERABLE_USERS_AND_DARK_PATTERNS.011
+    text: Default opt-outs lawful; pre-checked consent boxes avoided
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.CHILDREN_VULNERABLE_USERS_AND_DARK_PATTERNS.012
+    text: Vulnerable-user protections considered in product design
+- id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.PAYMENTS_SANCTIONS_AND_EXPORT_CONTROLS
+  name: Payments, Sanctions & Export Controls
+  items:
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.PAYMENTS_SANCTIONS_AND_EXPORT_CONTROLS.001
+    text: PSD2 / Strong Customer Authentication for EU payments
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.PAYMENTS_SANCTIONS_AND_EXPORT_CONTROLS.002
+    text: PCI-DSS scope and obligations satisfied (see Payments category)
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.PAYMENTS_SANCTIONS_AND_EXPORT_CONTROLS.003
+    text: Money transmission licensing assessed if holding or moving funds
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.PAYMENTS_SANCTIONS_AND_EXPORT_CONTROLS.004
+    text: OFAC and global sanctions screening enforced (see KYC/AML category)
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.PAYMENTS_SANCTIONS_AND_EXPORT_CONTROLS.005
+    text: Sanctioned-country access blocked by geo and IP controls
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.PAYMENTS_SANCTIONS_AND_EXPORT_CONTROLS.006
+    text: 'Export controls assessed: EAR and ITAR for controlled tech/encryption'
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.PAYMENTS_SANCTIONS_AND_EXPORT_CONTROLS.007
+    text: Encryption export classification (ECCN) determined where applicable
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.PAYMENTS_SANCTIONS_AND_EXPORT_CONTROLS.008
+    text: Denied/restricted party screening for customers and partners
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.PAYMENTS_SANCTIONS_AND_EXPORT_CONTROLS.009
+    text: 'Tax obligations assessed: sales tax, VAT, GST nexus'
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.PAYMENTS_SANCTIONS_AND_EXPORT_CONTROLS.010
+    text: Reseller, marketplace, and platform liability assessed
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.PAYMENTS_SANCTIONS_AND_EXPORT_CONTROLS.011
+    text: Crypto-specific regulation assessed if applicable (MiCA, Travel Rule)
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.PAYMENTS_SANCTIONS_AND_EXPORT_CONTROLS.012
+    text: High-risk-jurisdiction policy documented and enforced
+- id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.TERMS_IP_AND_LIABILITY
+  name: Terms, IP & Liability
+  items:
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.TERMS_IP_AND_LIABILITY.001
+    text: Terms of Service reviewed by legal and enforceable (clickwrap, not browsewrap)
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.TERMS_IP_AND_LIABILITY.002
+    text: Privacy Policy accurate and matched to actual data practices
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.TERMS_IP_AND_LIABILITY.003
+    text: Acceptable Use Policy published and enforceable
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.TERMS_IP_AND_LIABILITY.004
+    text: Limitation of liability and warranty disclaimers reviewed
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.TERMS_IP_AND_LIABILITY.005
+    text: Governing law and dispute resolution (arbitration, venue) specified
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.TERMS_IP_AND_LIABILITY.006
+    text: IP ownership of user content and platform content clarified
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.TERMS_IP_AND_LIABILITY.007
+    text: DMCA agent registered and takedown process operational (US)
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.TERMS_IP_AND_LIABILITY.008
+    text: Trademark and brand usage guidelines defined
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.TERMS_IP_AND_LIABILITY.009
+    text: Open-source license obligations satisfied (see OSS category)
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.TERMS_IP_AND_LIABILITY.010
+    text: Third-party content licensing verified (images, fonts, data)
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.TERMS_IP_AND_LIABILITY.011
+    text: Terms versioning with change notification to users
+  - id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE.TERMS_IP_AND_LIABILITY.012
+    text: Record of user acceptance of terms retained

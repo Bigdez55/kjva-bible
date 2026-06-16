@@ -1,0 +1,38 @@
+schema_version: '1.0'
+skill_id: SKILL_DEFINITION_OF_DONE_GATE_001
+skill_name: Definition of Done Gate
+skill_card_path: 13_skills/active/SKILL_DEFINITION_OF_DONE_GATE_001.yaml
+playbook_path: 13_skills/active/SKILL_DEFINITION_OF_DONE_GATE_001.playbook.md
+current_version: 1.0.0
+tier: active
+hard_constraints:
+- Completion verdicts come from probes (scripts), never agent assertion.
+- unknown/unassessed == NOT pass, everywhere.
+- Release state is DERIVED from probes; hand-typing a claim is forbidden + --check-blocked.
+- A staged done/ready claim must be probe-backed or the commit is blocked.
+- Pre-commit is --no-verify-bypassable; CI is the real non-bypassable floor.
+immutable_facts:
+- Created from the 2026-06-01 false-completion incident (ATLAS_MISS_LOG MISS-001).
+- Probes write verdicts; the agent that benefits from "done" does not decide done.
+- Composes wired-not-defined (DEFINED/IMPORTED/CALLED) + ui-live-verification + proof-matrix.
+correction_history:
+- date: '2026-06-01'
+  type: creation
+  severity: P1
+  summary: >
+    ATLAS was declared production-ready while a read-only demo (can't push, not
+    installed, static mvp-data); production-readiness.ts hardcoded
+    READY_FOR_PUBLIC_RELEASE and CI asserted the lie. Built the enforced gate:
+    probes write verdicts, derived release state, pre-commit claim-guard, CI floor,
+    miss-log force-regression. Flagship proof: probe_claim_backed FAILs on the lie;
+    a false-done commit is rejected with git exit 1.
+regression_test_ids:
+- probe_runner.py --self-test
+- completion_claim_guard rejects a staged false-done commit (git exit 1)
+- derive_gate_state.py --check
+promotion_criteria:
+  to_tier: hardened
+  requirements:
+  - Three projects adopt the gate (probes + derived state + CI dod-gate) without a false-done slipping through.
+  - No lenient-probe bug found in self-test across those adoptions.
+last_updated: '2026-06-01'

@@ -1,0 +1,121 @@
+schema_version: '1.0'
+category_id: PRC.THREAT_MODELING_AND_ZERO_TRUST
+name: Threat Modeling & Zero Trust
+icon: ⊛
+color: '#FDBA74'
+default_severity: high
+coverage_status: FULL
+skill_refs:
+- SKILL_RED_TEAM_PREFLIGHT_001
+- SKILL_SECURITY_AUDIT_001
+- SKILL_RELIABILITY_SECURITY_SENTINEL_001
+capability_status: MISSING
+tool_refs: []
+mcp_refs: []
+command_refs: []
+capability_refs: []
+capability_notes: No threat-model executor. Build a red-team/security-scan MCP tool or CI gate.
+sections:
+- id: PRC.THREAT_MODELING_AND_ZERO_TRUST.THREAT_MODELING
+  name: Threat Modeling
+  items:
+  - id: PRC.THREAT_MODELING_AND_ZERO_TRUST.THREAT_MODELING.001
+    text: 'Threat modeling methodology selected: STRIDE, PASTA, or LINDDUN'
+  - id: PRC.THREAT_MODELING_AND_ZERO_TRUST.THREAT_MODELING.002
+    text: 'Threat model conducted for: authentication, payment flow, data ingestion, admin access'
+  - id: PRC.THREAT_MODELING_AND_ZERO_TRUST.THREAT_MODELING.003
+    text: Data Flow Diagrams (DFDs) created showing all trust boundaries
+  - id: PRC.THREAT_MODELING_AND_ZERO_TRUST.THREAT_MODELING.004
+    text: 'STRIDE per component: Spoofing, Tampering, Repudiation, Info Disclosure, DoS, EoP'
+  - id: PRC.THREAT_MODELING_AND_ZERO_TRUST.THREAT_MODELING.005
+    text: Each threat has a documented mitigation or accepted risk
+  - id: PRC.THREAT_MODELING_AND_ZERO_TRUST.THREAT_MODELING.006
+    text: Residual risk documented and signed off by security owner
+  - id: PRC.THREAT_MODELING_AND_ZERO_TRUST.THREAT_MODELING.007
+    text: Threat model updated when architecture changes
+  - id: PRC.THREAT_MODELING_AND_ZERO_TRUST.THREAT_MODELING.008
+    text: Threat model reviewed annually at minimum
+  - id: PRC.THREAT_MODELING_AND_ZERO_TRUST.THREAT_MODELING.009
+    text: Threat model output drives security test cases and pen test scope
+  - id: PRC.THREAT_MODELING_AND_ZERO_TRUST.THREAT_MODELING.010
+    text: 'Asset inventory: all valuable assets identified with their threat surface'
+  - id: PRC.THREAT_MODELING_AND_ZERO_TRUST.THREAT_MODELING.011
+    text: 'Attack surface mapping: all entry points documented and reviewed quarterly'
+  - id: PRC.THREAT_MODELING_AND_ZERO_TRUST.THREAT_MODELING.012
+    text: Known industry-specific attack patterns reviewed and mitigated
+- id: PRC.THREAT_MODELING_AND_ZERO_TRUST.ZERO_TRUST_ARCHITECTURE
+  name: Zero Trust Architecture
+  items:
+  - id: PRC.THREAT_MODELING_AND_ZERO_TRUST.ZERO_TRUST_ARCHITECTURE.001
+    text: 'Zero trust principle applied: never trust, always verify regardless of network location'
+  - id: PRC.THREAT_MODELING_AND_ZERO_TRUST.ZERO_TRUST_ARCHITECTURE.002
+    text: Every service request authenticated and authorized, even on internal network
+  - id: PRC.THREAT_MODELING_AND_ZERO_TRUST.ZERO_TRUST_ARCHITECTURE.003
+    text: mTLS between all internal services
+  - id: PRC.THREAT_MODELING_AND_ZERO_TRUST.ZERO_TRUST_ARCHITECTURE.004
+    text: 'Service identity: every service has cryptographic identity (SPIFFE/SPIRE or Vault PKI)'
+  - id: PRC.THREAT_MODELING_AND_ZERO_TRUST.ZERO_TRUST_ARCHITECTURE.005
+    text: 'Workload identity: cloud services use IAM roles, not long-lived credentials'
+  - id: PRC.THREAT_MODELING_AND_ZERO_TRUST.ZERO_TRUST_ARCHITECTURE.006
+    text: User tokens short-lived; re-evaluated at every request
+  - id: PRC.THREAT_MODELING_AND_ZERO_TRUST.ZERO_TRUST_ARCHITECTURE.007
+    text: 'Microsegmentation: services communicate only with explicitly defined peers'
+  - id: PRC.THREAT_MODELING_AND_ZERO_TRUST.ZERO_TRUST_ARCHITECTURE.008
+    text: 'Just-In-Time (JIT) access for production: elevated permissions are temporary and logged'
+  - id: PRC.THREAT_MODELING_AND_ZERO_TRUST.ZERO_TRUST_ARCHITECTURE.009
+    text: Privileged Access Management (PAM) for all infrastructure access
+  - id: PRC.THREAT_MODELING_AND_ZERO_TRUST.ZERO_TRUST_ARCHITECTURE.010
+    text: 'Bastion-less access: AWS SSM Session Manager or GCP IAP for server access'
+  - id: PRC.THREAT_MODELING_AND_ZERO_TRUST.ZERO_TRUST_ARCHITECTURE.011
+    text: 'Device trust: MDM-enrolled and uncompromised device required before access'
+  - id: PRC.THREAT_MODELING_AND_ZERO_TRUST.ZERO_TRUST_ARCHITECTURE.012
+    text: 'Continuous authorization: privileges re-evaluated based on risk signals'
+  - id: PRC.THREAT_MODELING_AND_ZERO_TRUST.ZERO_TRUST_ARCHITECTURE.013
+    text: Zero Trust Network Access (ZTNA) for remote employee access to internal apps
+  - id: PRC.THREAT_MODELING_AND_ZERO_TRUST.ZERO_TRUST_ARCHITECTURE.014
+    text: 'Data access audited: every access to sensitive data logged and reviewable'
+  - id: PRC.THREAT_MODELING_AND_ZERO_TRUST.ZERO_TRUST_ARCHITECTURE.015
+    text: 'Insider threat monitoring: unusual data access patterns detected and alerted'
+- id: PRC.THREAT_MODELING_AND_ZERO_TRUST.VULNERABILITY_AND_POSTURE_MANAGEMENT
+  name: Vulnerability & Posture Management
+  items:
+  - id: PRC.THREAT_MODELING_AND_ZERO_TRUST.VULNERABILITY_AND_POSTURE_MANAGEMENT.001
+    text: 'CVE SLA: Critical 24h, High 7d, Medium 30d, Low 90d'
+  - id: PRC.THREAT_MODELING_AND_ZERO_TRUST.VULNERABILITY_AND_POSTURE_MANAGEMENT.002
+    text: 'Host vulnerability scanner weekly: Qualys, Tenable, or AWS Inspector'
+  - id: PRC.THREAT_MODELING_AND_ZERO_TRUST.VULNERABILITY_AND_POSTURE_MANAGEMENT.003
+    text: Container image scanner weekly on running images
+  - id: PRC.THREAT_MODELING_AND_ZERO_TRUST.VULNERABILITY_AND_POSTURE_MANAGEMENT.004
+    text: Dependency scanner monitors new CVEs across all projects
+  - id: PRC.THREAT_MODELING_AND_ZERO_TRUST.VULNERABILITY_AND_POSTURE_MANAGEMENT.005
+    text: 'IaC scanner on every PR: Checkov, tfsec, or Snyk IaC'
+  - id: PRC.THREAT_MODELING_AND_ZERO_TRUST.VULNERABILITY_AND_POSTURE_MANAGEMENT.006
+    text: 'DAST scanner on staging weekly: OWASP ZAP or Burp Suite Enterprise'
+  - id: PRC.THREAT_MODELING_AND_ZERO_TRUST.VULNERABILITY_AND_POSTURE_MANAGEMENT.007
+    text: Findings aggregated in single vulnerability management platform
+  - id: PRC.THREAT_MODELING_AND_ZERO_TRUST.VULNERABILITY_AND_POSTURE_MANAGEMENT.008
+    text: 'Risk-based prioritization: CVSS + exploitability + asset criticality'
+  - id: PRC.THREAT_MODELING_AND_ZERO_TRUST.VULNERABILITY_AND_POSTURE_MANAGEMENT.009
+    text: Exception/risk acceptance process for vulnerabilities not immediately fixable
+  - id: PRC.THREAT_MODELING_AND_ZERO_TRUST.VULNERABILITY_AND_POSTURE_MANAGEMENT.010
+    text: Accepted exceptions re-reviewed every 90 days
+  - id: PRC.THREAT_MODELING_AND_ZERO_TRUST.VULNERABILITY_AND_POSTURE_MANAGEMENT.011
+    text: 'Security metrics reported monthly: open vulns by severity, MTTR trend'
+  - id: PRC.THREAT_MODELING_AND_ZERO_TRUST.VULNERABILITY_AND_POSTURE_MANAGEMENT.012
+    text: Vendor advisories monitored for all major software dependencies
+  - id: PRC.THREAT_MODELING_AND_ZERO_TRUST.VULNERABILITY_AND_POSTURE_MANAGEMENT.013
+    text: 'CSPM tool active: AWS Security Hub, Defender for Cloud, Wiz, or Lacework'
+  - id: PRC.THREAT_MODELING_AND_ZERO_TRUST.VULNERABILITY_AND_POSTURE_MANAGEMENT.014
+    text: CSPM critical findings remediated immediately; score tracked
+  - id: PRC.THREAT_MODELING_AND_ZERO_TRUST.VULNERABILITY_AND_POSTURE_MANAGEMENT.015
+    text: 'SIEM deployed: all security events centralized (Splunk, Elastic, or Sentinel)'
+  - id: PRC.THREAT_MODELING_AND_ZERO_TRUST.VULNERABILITY_AND_POSTURE_MANAGEMENT.016
+    text: SIEM correlation rules detect brute force, privilege escalation, data exfil
+  - id: PRC.THREAT_MODELING_AND_ZERO_TRUST.VULNERABILITY_AND_POSTURE_MANAGEMENT.017
+    text: 'Security awareness training: annual training + quarterly phishing simulation'
+  - id: PRC.THREAT_MODELING_AND_ZERO_TRUST.VULNERABILITY_AND_POSTURE_MANAGEMENT.018
+    text: Bug bounty program active with defined scope and 24h acknowledgment SLA
+  - id: PRC.THREAT_MODELING_AND_ZERO_TRUST.VULNERABILITY_AND_POSTURE_MANAGEMENT.019
+    text: Vulnerability disclosure policy at /.well-known/security.txt
+  - id: PRC.THREAT_MODELING_AND_ZERO_TRUST.VULNERABILITY_AND_POSTURE_MANAGEMENT.020
+    text: SOC 2 / ISO 27001 compliance roadmap if enterprise customers require it

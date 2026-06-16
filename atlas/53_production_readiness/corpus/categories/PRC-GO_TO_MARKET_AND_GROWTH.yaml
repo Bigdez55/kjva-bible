@@ -1,0 +1,95 @@
+schema_version: '1.0'
+category_id: PRC.GO_TO_MARKET_AND_GROWTH
+name: Go-To-Market & Growth
+icon: ↗
+color: '#FB7185'
+default_severity: low
+coverage_status: FULL
+skill_refs:
+- SKILL_GTM_GROWTH_001
+capability_status: MISSING
+tool_refs: []
+mcp_refs: []
+command_refs: []
+capability_refs: []
+capability_notes: Knowledge-only. Build a GTM/analytics integration route if execution is in scope.
+sections:
+- id: PRC.GO_TO_MARKET_AND_GROWTH.LAUNCH_STRATEGY
+  name: Launch Strategy
+  items:
+  - id: PRC.GO_TO_MARKET_AND_GROWTH.LAUNCH_STRATEGY.001
+    text: 'Positioning statement: audience, problem, promise, proof'
+  - id: PRC.GO_TO_MARKET_AND_GROWTH.LAUNCH_STRATEGY.002
+    text: Messaging framework approved by product, sales, marketing, and support
+  - id: PRC.GO_TO_MARKET_AND_GROWTH.LAUNCH_STRATEGY.003
+    text: 'Launch audience segmented: internal, beta, existing, new, enterprise'
+  - id: PRC.GO_TO_MARKET_AND_GROWTH.LAUNCH_STRATEGY.004
+    text: 'Launch tier defined: silent, minor, major, flagship'
+  - id: PRC.GO_TO_MARKET_AND_GROWTH.LAUNCH_STRATEGY.005
+    text: Landing page or product page ready before public launch
+  - id: PRC.GO_TO_MARKET_AND_GROWTH.LAUNCH_STRATEGY.006
+    text: Demo script and demo environment prepared
+  - id: PRC.GO_TO_MARKET_AND_GROWTH.LAUNCH_STRATEGY.007
+    text: Sales enablement deck created for revenue-facing teams
+  - id: PRC.GO_TO_MARKET_AND_GROWTH.LAUNCH_STRATEGY.008
+    text: FAQ prepared for objections, pricing, limitations, and support questions
+  - id: PRC.GO_TO_MARKET_AND_GROWTH.LAUNCH_STRATEGY.009
+    text: Press, social, and community plan created for public launches
+  - id: PRC.GO_TO_MARKET_AND_GROWTH.LAUNCH_STRATEGY.010
+    text: Launch timeline includes content, product, support, and engineering milestones
+  - id: PRC.GO_TO_MARKET_AND_GROWTH.LAUNCH_STRATEGY.011
+    text: Launch owner assigned across each business function
+  - id: PRC.GO_TO_MARKET_AND_GROWTH.LAUNCH_STRATEGY.012
+    text: Launch retrospective scheduled
+- id: PRC.GO_TO_MARKET_AND_GROWTH.GROWTH_ANALYTICS
+  name: Growth Analytics
+  items:
+  - id: PRC.GO_TO_MARKET_AND_GROWTH.GROWTH_ANALYTICS.001
+    text: North Star metric defined and agreed by product and leadership
+  - id: PRC.GO_TO_MARKET_AND_GROWTH.GROWTH_ANALYTICS.002
+    text: 'Activation metric defined: first value moment measurable'
+  - id: PRC.GO_TO_MARKET_AND_GROWTH.GROWTH_ANALYTICS.003
+    text: 'AARRR funnel instrumented: acquisition, activation, retention, referral, revenue'
+  - id: PRC.GO_TO_MARKET_AND_GROWTH.GROWTH_ANALYTICS.004
+    text: Event taxonomy documented with consistent naming convention
+  - id: PRC.GO_TO_MARKET_AND_GROWTH.GROWTH_ANALYTICS.005
+    text: Attribution model selected for marketing channels
+  - id: PRC.GO_TO_MARKET_AND_GROWTH.GROWTH_ANALYTICS.006
+    text: UTM governance defined for all campaigns
+  - id: PRC.GO_TO_MARKET_AND_GROWTH.GROWTH_ANALYTICS.007
+    text: Cohort retention dashboard created
+  - id: PRC.GO_TO_MARKET_AND_GROWTH.GROWTH_ANALYTICS.008
+    text: Conversion funnel dashboard created
+  - id: PRC.GO_TO_MARKET_AND_GROWTH.GROWTH_ANALYTICS.009
+    text: Drop-off points monitored and reviewed weekly after launch
+  - id: PRC.GO_TO_MARKET_AND_GROWTH.GROWTH_ANALYTICS.010
+    text: Growth experiment backlog prioritized by impact and effort
+  - id: PRC.GO_TO_MARKET_AND_GROWTH.GROWTH_ANALYTICS.011
+    text: Experiments include hypothesis, success metric, guardrail metric, and duration
+  - id: PRC.GO_TO_MARKET_AND_GROWTH.GROWTH_ANALYTICS.012
+    text: Experiment results archived and shared across teams
+- id: PRC.GO_TO_MARKET_AND_GROWTH.LIFECYCLE_AND_RETENTION
+  name: Lifecycle & Retention
+  items:
+  - id: PRC.GO_TO_MARKET_AND_GROWTH.LIFECYCLE_AND_RETENTION.001
+    text: Welcome sequence guides new users to first value moment
+  - id: PRC.GO_TO_MARKET_AND_GROWTH.LIFECYCLE_AND_RETENTION.002
+    text: In-app onboarding checklist tied to activation metric
+  - id: PRC.GO_TO_MARKET_AND_GROWTH.LIFECYCLE_AND_RETENTION.003
+    text: Lifecycle emails triggered by user behavior, not only time-based
+  - id: PRC.GO_TO_MARKET_AND_GROWTH.LIFECYCLE_AND_RETENTION.004
+    text: Re-engagement campaign defined for inactive users
+  - id: PRC.GO_TO_MARKET_AND_GROWTH.LIFECYCLE_AND_RETENTION.005
+    text: Upgrade prompts tied to real usage limits or demonstrated value moments
+  - id: PRC.GO_TO_MARKET_AND_GROWTH.LIFECYCLE_AND_RETENTION.006
+    text: Customer feedback loop connected to roadmap planning
+  - id: PRC.GO_TO_MARKET_AND_GROWTH.LIFECYCLE_AND_RETENTION.007
+    text: Churn reasons captured, categorized, and reviewed monthly
+  - id: PRC.GO_TO_MARKET_AND_GROWTH.LIFECYCLE_AND_RETENTION.008
+    text: Win/loss analysis performed for sales-led products
+  - id: PRC.GO_TO_MARKET_AND_GROWTH.LIFECYCLE_AND_RETENTION.009
+    text: Product usage reviewed by customer segment
+  - id: PRC.GO_TO_MARKET_AND_GROWTH.LIFECYCLE_AND_RETENTION.010
+    text: Retention risks surfaced to customer success or account owner
+  - id: PRC.GO_TO_MARKET_AND_GROWTH.LIFECYCLE_AND_RETENTION.011
+    text: Lifecycle content localized for key customer segments

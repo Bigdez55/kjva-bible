@@ -1,0 +1,16 @@
+{
+  "omni_peft_version": "1.0.0",
+  "single_training_run": true,
+  "single_optimizer": true,
+  "single_loss": true,
+  "enabled_methods": [
+    "bitfit",
+    "ia3",
+    "prefix_tuning"
+  ],
+  "operator_count": 12,
+  "total_trainable_params": 1975296,
+  "base_model_sha256": "8580e29f8a011035",
+  "training_epochs": 5,
+  "final_avg_loss": 1.1797
+}

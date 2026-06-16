@@ -1,0 +1,23 @@
+archetype: consulting_infra_assessment
+directories:
+- 00_intake
+- 02_discovery
+- 03_specs
+- 04_architecture
+- 08_verification
+- 10_operations
+- 11_documentation
+starter_skills:
+- SKILL_EXISTING_REPO_AUDIT_001
+- SKILL_AUDIT_ASSESS_ANALYZE_001
+- SKILL_PRODUCTION_READINESS_AUDIT_001
+- SKILL_PROOF_MATRIX_001
+production_readiness_profile:
+  required_tier: gold
+  na_categories: []
+  notes: >
+    Consulting / infrastructure assessment of a CLIENT's stack across any domain.
+    Default scope is the FULL corpus (na_categories empty) — narrow it per engagement,
+    then layer an industry overlay from profiles/industry_overlays/ (e.g. healthcare,
+    fintech) to make compliance-critical categories mandatory and raise the bar. This
+    is the domain/industry-agnostic entry point for paid engagements.

@@ -1,14 +1,10 @@
 import React, { useState } from "react";
 import VerseBrowser from "./components/VerseBrowser";
-import CompletionPanel from "./components/CompletionPanel";
-import StubPanel from "./components/StubPanel";
+import StudyPanel from "./components/StudyPanel";
 
 const TABS = [
-  { id: "browse",   label: "Browse" },
-  { id: "complete", label: "Completion" },
-  { id: "search",   label: "Search" },
-  { id: "qa",       label: "Q&A" },
-  { id: "xref",     label: "Cross-Reference" },
+  { id: "browse", label: "Browse" },
+  { id: "study",  label: "Study" },
 ];
 
 const styles = {
@@ -83,32 +79,8 @@ export default function App() {
       </nav>
 
       <main style={styles.content}>
-        {activeTab === "browse"   && <VerseBrowser />}
-        {activeTab === "complete" && <CompletionPanel />}
-        {activeTab === "search"   && (
-          <StubPanel
-            feature="Semantic Search"
-            description="Find verses by meaning, not just keywords."
-            requires="a sentence-embedding adapter trained on KJVA"
-            phase="Phase 2"
-          />
-        )}
-        {activeTab === "qa" && (
-          <StubPanel
-            feature="Q&A / Commentary"
-            description="Ask questions and receive scripture-grounded answers."
-            requires="an SFT instruction-tuning adapter trained on KJVA"
-            phase="Phase 3"
-          />
-        )}
-        {activeTab === "xref" && (
-          <StubPanel
-            feature="Cross-Reference"
-            description="Surface related passages and thematic connections."
-            requires="an embedding similarity index or precomputed reference graph"
-            phase="Phase 4"
-          />
-        )}
+        {activeTab === "browse" && <VerseBrowser />}
+        {activeTab === "study"  && <StudyPanel />}
       </main>
     </>
   );

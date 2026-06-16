@@ -1,0 +1,6 @@
+id: STARTER-DEV_SKILLS
+repo_name: ATLAS
+blueprint: central_intelligence
+first_slice:
+  id: SLICE-0001
+  title: Registry-derived-from-disk gate

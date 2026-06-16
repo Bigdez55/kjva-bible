@@ -1,0 +1,37 @@
+id: SLICE-0002-corpus-expansion-v2
+title: "Corpus v2: multi-version KJV lineage + Apocrypha + Pseudepigrapha + Torah/Tanakh acquisition and normalization"
+status: active
+date: '2026-06-10'
+spec_links:
+  - SPEC-KJVA-FUNC-0002-multi-version-corpus-expansion
+adr_links:
+  - ADR-0002-byte-level-tokenizer-and-18m-scale   # byte-level vocab means no tokenizer change needed for new versions/Hebrew
+owner_directives:
+  - "All work inside kjva-bible; Tokenless models workspace off-limits (owner, 2026-06-10)."
+  - "NKJV blocked on copyright; licensed-ingest stub provided instead of scraping."
+phases:
+  - phase: 1
+    name: acquire
+    steps:
+      - "scripts/corpus/fetch_sources.py downloads scrollmapper JSON (13 translations), ebible VPL zips (5), Wesley NNU pseudepigrapha pages (19 books) into data/corpus/external/ with sha256 fetch_manifest.json"
+  - phase: 2
+    name: normalize
+    steps:
+      - "scripts/corpus/normalize_sources.py emits data/corpus_v2/versions/<translation_id>.jsonl in the v2 verse record schema"
+      - "Pseudepigrapha HTML parsed to chapter:verse records; partial-canon translations flagged"
+  - phase: 3
+    name: build_and_validate
+    steps:
+      - "scripts/corpus/build_corpus_v2.py merges validated versions into data/corpus_v2/corpus.txt with source tags, writes manifest.json + validation_report.json + SOURCES.md"
+proof_requirements:
+  validation:
+    - "validation_report.json: all gates pass (counts, anchors, no dupes, UTF-8)"
+    - "fetch_manifest.json: sha256 for every raw file"
+acceptance:
+  - ">= 12 KJV-lineage translations normalized"
+  - "JPS 1917 + Westminster Leningrad Codex normalized"
+  - ">= 15 pseudepigrapha books normalized"
+  - "NKJV blocker + licensed-ingest path documented in SOURCES.md"
+  - "Pipeline rerunnable end-to-end"
+follow_on:
+  - "SLICE-0003 (future): retrain KJVA on corpus v2 — awaits owner go; training location decision is owner's"

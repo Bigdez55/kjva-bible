@@ -14,9 +14,9 @@ validation_tests: []
 status: active
 skill_number: 145
 source_documents:
-- apps/atlas/src/app/api/planning-trace/route.ts
-- apps/atlas/src/lib/atlas-data.ts
-- apps/atlas/src/app/page.tsx
+- apps/frontend/shell/src/app/api/planning-trace/route.ts
+- apps/frontend/shell/src/lib/atlas-data.ts
+- apps/frontend/shell/src/app/page.tsx
 trigger_conditions:
 - User wants a Traycer-style brainstorming or planning feature inside ATLAS.
 - User wants notes/backlinks to become architecture maps.

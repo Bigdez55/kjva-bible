@@ -103,7 +103,7 @@ export async function auditDenial(req: Request, reason: string, status: number):
 ## Nightly NDJSON Export
 
 ```python
-# infrastructure/scripts/atlas_core/audit_export.py
+# infrastructure/scripts/core/audit_export.py
 import json, sqlite3, boto3, os
 from datetime import datetime
 

@@ -1,5 +1,5 @@
 # Template: twin_snapshot
-# Replace placeholders. See 26_schemas/twin_snapshot/ if a schema exists.
+# Replace placeholders. See schemas/twin_snapshot/ if a schema exists.
 id: "{id}"
 name: "{name}"
 status: draft

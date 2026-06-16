@@ -42,4 +42,4 @@ Use proprietary Atlas names for subsystem references:
 - Linked Knowledge Layer
 - Graph Intelligence Layer
 
-Do not use external graph/vault product names as SUPER C Atlas subsystem names. Legacy command names remain compatibility aliases only.
+Do not use external graph/vault product names as ATLAS subsystem names. Legacy command names remain compatibility aliases only.

@@ -21,7 +21,7 @@ repo_connectors:
   source: 21_repo_sync/sync_packets/SYNC-ExampleRepo.yaml
 data_sources:
 - source: tenant_manifest
-  binding: 23_evidence/atlas_platform/tenants/atlas_tenant_poc.yaml
+  binding: 23_evidence/platform/tenants/atlas_tenant_poc.yaml
 agent_backend:
   tenant_endpoint: /api/tenant
   skills_endpoint: /api/skills
@@ -29,13 +29,13 @@ agent_backend:
   repo_event_ingest_endpoint: /api/ingest/repo-event
 proof_gates:
 - gate: tenant_manifest_check
-  command: python3 25_automation/atlas_core/atlas.py tenants --check
+  command: python3 infrastructure/scripts/core/atlas.py tenants --check
 - gate: lint
   command: npm run lint
 - gate: build
   command: npm run build
 vercel:
-  project_root: apps/atlas
+  project_root: apps/frontend/shell
   framework: nextjs
   install_command: npm install
   build_command: npm run build

@@ -1,5 +1,5 @@
 # Template: retrospective
-# Replace placeholders. See 26_schemas/retrospective/ if a schema exists.
+# Replace placeholders. See schemas/retrospective/ if a schema exists.
 id: "{id}"
 name: "{name}"
 status: draft

@@ -14,9 +14,9 @@ validation_tests: []
 status: active
 skill_number: 144
 source_documents:
-- apps/atlas/src/app/api/ingest/repo-event/route.ts
-- apps/atlas/src/app/api/workspace/route.ts
-- apps/atlas/src/lib/atlas-data.ts
+- apps/frontend/shell/src/app/api/ingest/repo-event/route.ts
+- apps/frontend/shell/src/app/api/workspace/route.ts
+- apps/frontend/shell/src/lib/atlas-data.ts
 trigger_conditions:
 - User says repo commits and changes must be ingested into ATLAS.
 - User asks for GitHub-style synchronization, webhook ingestion, commit feeds, or

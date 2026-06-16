@@ -21,12 +21,12 @@ precedence:
 proprietary_names:
   graph_layer: Atlas Graph Engine
   knowledge_layer: Atlas Knowledge Vault
-  graph_folder: 43_atlas_graph_engine/
-  knowledge_folder: 44_atlas_knowledge_vault/
+  graph_folder: 43_graph_engine/
+  knowledge_folder: 44_knowledge_vault/
   graph_skill: 36-atlas-graph-engine
   knowledge_skill: 37-atlas-knowledge-vault
 forbidden_subsystem_name_policy: Do not use external graph/vault product labels as
-  SUPER C Atlas subsystem names.
+  ATLAS subsystem names.
 behavioral_protocols:
   ghost:
     aliases:
@@ -900,7 +900,7 @@ noun_branches:
   atlas:
     aliases:
     - Atlas
-    - SUPER C Atlas
+    - ATLAS
     - ATLAS
     - Bookworm
     - Atlas Graph Engine

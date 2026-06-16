@@ -29,7 +29,7 @@ CANONICAL_ACTIVE = REPO_ROOT / "platform" / "sdlc" / "13_skills" / "active"
 CANONICAL_REGISTRY = REPO_ROOT / "platform" / "sdlc" / "13_skills" / "skills.registry.yaml"
 CANONICAL_CLAUDE_UNIVERSAL = REPO_ROOT / ".claude" / "universal"
 CANONICAL_CODEX_UNIVERSAL = REPO_ROOT / ".codex" / "universal"
-DEFAULT_REPORT = REPO_ROOT / "23_evidence" / "skill_sync" / "canonical_skill_sync_report.json"
+DEFAULT_REPORT = REPO_ROOT / "platform" / "systems" / "23_evidence" / "skill_sync" / "canonical_skill_sync_report.json"
 
 
 @dataclass

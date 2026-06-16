@@ -1,0 +1,96 @@
+schema_version: '1.0'
+category_id: PRC.EMAIL_AND_NOTIFICATION_INFRASTRUCTURE
+name: Email & Notification Infrastructure
+icon: ✉
+color: '#FCA5A5'
+default_severity: medium
+coverage_status: PARTIAL
+skill_refs:
+- SKILL_ALERT_SYSTEM_001
+capability_status: MISSING
+tool_refs: []
+mcp_refs: []
+command_refs: []
+capability_refs: []
+capability_notes: No send-notification executor. Build an email/notification MCP tool or route (provider integration).
+sections:
+- id: PRC.EMAIL_AND_NOTIFICATION_INFRASTRUCTURE.EMAIL_INFRASTRUCTURE_AND_DELIVERABILITY
+  name: Email Infrastructure & Deliverability
+  items:
+  - id: PRC.EMAIL_AND_NOTIFICATION_INFRASTRUCTURE.EMAIL_INFRASTRUCTURE_AND_DELIVERABILITY.001
+    text: 'Transactional email provider: SendGrid, Postmark, AWS SES, or Mailgun'
+  - id: PRC.EMAIL_AND_NOTIFICATION_INFRASTRUCTURE.EMAIL_INFRASTRUCTURE_AND_DELIVERABILITY.002
+    text: Marketing email on separate sending domain and IP from transactional
+  - id: PRC.EMAIL_AND_NOTIFICATION_INFRASTRUCTURE.EMAIL_INFRASTRUCTURE_AND_DELIVERABILITY.003
+    text: Custom sending domain configured (email.myapp.com, not provider default)
+  - id: PRC.EMAIL_AND_NOTIFICATION_INFRASTRUCTURE.EMAIL_INFRASTRUCTURE_AND_DELIVERABILITY.004
+    text: Dedicated IP for high-volume sending; warm-up plan executed
+  - id: PRC.EMAIL_AND_NOTIFICATION_INFRASTRUCTURE.EMAIL_INFRASTRUCTURE_AND_DELIVERABILITY.005
+    text: SPF record includes all sending sources
+  - id: PRC.EMAIL_AND_NOTIFICATION_INFRASTRUCTURE.EMAIL_INFRASTRUCTURE_AND_DELIVERABILITY.006
+    text: 'DKIM configured: 2048-bit RSA key per sending domain'
+  - id: PRC.EMAIL_AND_NOTIFICATION_INFRASTRUCTURE.EMAIL_INFRASTRUCTURE_AND_DELIVERABILITY.007
+    text: DMARC policy progressed to p=reject after monitoring period
+  - id: PRC.EMAIL_AND_NOTIFICATION_INFRASTRUCTURE.EMAIL_INFRASTRUCTURE_AND_DELIVERABILITY.008
+    text: DMARC reporting email monitored for failures
+  - id: PRC.EMAIL_AND_NOTIFICATION_INFRASTRUCTURE.EMAIL_INFRASTRUCTURE_AND_DELIVERABILITY.009
+    text: 'Bounce handling: hard bounces suppress future sends automatically'
+  - id: PRC.EMAIL_AND_NOTIFICATION_INFRASTRUCTURE.EMAIL_INFRASTRUCTURE_AND_DELIVERABILITY.010
+    text: 'Complaint handling: FBL reports trigger automatic unsubscribe'
+  - id: PRC.EMAIL_AND_NOTIFICATION_INFRASTRUCTURE.EMAIL_INFRASTRUCTURE_AND_DELIVERABILITY.011
+    text: 'Unsubscribe: one-click and List-Unsubscribe header in all marketing emails'
+  - id: PRC.EMAIL_AND_NOTIFICATION_INFRASTRUCTURE.EMAIL_INFRASTRUCTURE_AND_DELIVERABILITY.012
+    text: Marketing opt-in verified before any marketing emails sent (GDPR)
+  - id: PRC.EMAIL_AND_NOTIFICATION_INFRASTRUCTURE.EMAIL_INFRASTRUCTURE_AND_DELIVERABILITY.013
+    text: Suppression list maintained and respected across all sends
+  - id: PRC.EMAIL_AND_NOTIFICATION_INFRASTRUCTURE.EMAIL_INFRASTRUCTURE_AND_DELIVERABILITY.014
+    text: Email volume caps prevent accidental mass send
+  - id: PRC.EMAIL_AND_NOTIFICATION_INFRASTRUCTURE.EMAIL_INFRASTRUCTURE_AND_DELIVERABILITY.015
+    text: 'Sender reputation monitored: Google Postmaster Tools, SNDS'
+  - id: PRC.EMAIL_AND_NOTIFICATION_INFRASTRUCTURE.EMAIL_INFRASTRUCTURE_AND_DELIVERABILITY.016
+    text: Spam score checked on all templates (SpamAssassin, Mail Tester)
+  - id: PRC.EMAIL_AND_NOTIFICATION_INFRASTRUCTURE.EMAIL_INFRASTRUCTURE_AND_DELIVERABILITY.017
+    text: 'Blacklist monitoring: IP and domain checked daily'
+  - id: PRC.EMAIL_AND_NOTIFICATION_INFRASTRUCTURE.EMAIL_INFRASTRUCTURE_AND_DELIVERABILITY.018
+    text: 'Transactional email delivery latency monitored: target < 30 seconds'
+  - id: PRC.EMAIL_AND_NOTIFICATION_INFRASTRUCTURE.EMAIL_INFRASTRUCTURE_AND_DELIVERABILITY.019
+    text: Alert on delivery failure rate > 5% or spam complaint rate > 0.1%
+- id: PRC.EMAIL_AND_NOTIFICATION_INFRASTRUCTURE.EMAIL_TEMPLATES_AND_NOTIFICATIONS
+  name: Email Templates & Notifications
+  items:
+  - id: PRC.EMAIL_AND_NOTIFICATION_INFRASTRUCTURE.EMAIL_TEMPLATES_AND_NOTIFICATIONS.001
+    text: 'HTML email: table-based layout for Outlook compatibility'
+  - id: PRC.EMAIL_AND_NOTIFICATION_INFRASTRUCTURE.EMAIL_TEMPLATES_AND_NOTIFICATIONS.002
+    text: Inline CSS in all HTML emails
+  - id: PRC.EMAIL_AND_NOTIFICATION_INFRASTRUCTURE.EMAIL_TEMPLATES_AND_NOTIFICATIONS.003
+    text: Plain-text version included with every HTML email
+  - id: PRC.EMAIL_AND_NOTIFICATION_INFRASTRUCTURE.EMAIL_TEMPLATES_AND_NOTIFICATIONS.004
+    text: Alt text on all images in emails
+  - id: PRC.EMAIL_AND_NOTIFICATION_INFRASTRUCTURE.EMAIL_TEMPLATES_AND_NOTIFICATIONS.005
+    text: Email preview text (preheader) defined for every template
+  - id: PRC.EMAIL_AND_NOTIFICATION_INFRASTRUCTURE.EMAIL_TEMPLATES_AND_NOTIFICATIONS.006
+    text: 'Mobile responsive email: min font-size 14px, touch targets ≥ 48px'
+  - id: PRC.EMAIL_AND_NOTIFICATION_INFRASTRUCTURE.EMAIL_TEMPLATES_AND_NOTIFICATIONS.007
+    text: Dark mode styles tested in major email clients
+  - id: PRC.EMAIL_AND_NOTIFICATION_INFRASTRUCTURE.EMAIL_TEMPLATES_AND_NOTIFICATIONS.008
+    text: 'Email tested in: Gmail, Outlook, Apple Mail, iOS Mail, Android Gmail'
+  - id: PRC.EMAIL_AND_NOTIFICATION_INFRASTRUCTURE.EMAIL_TEMPLATES_AND_NOTIFICATIONS.009
+    text: 'Email testing tool used: Litmus or Email on Acid'
+  - id: PRC.EMAIL_AND_NOTIFICATION_INFRASTRUCTURE.EMAIL_TEMPLATES_AND_NOTIFICATIONS.010
+    text: Links use HTTPS and tracked with UTM parameters
+  - id: PRC.EMAIL_AND_NOTIFICATION_INFRASTRUCTURE.EMAIL_TEMPLATES_AND_NOTIFICATIONS.011
+    text: 'Footer: legal entity, address, unsubscribe link, privacy policy link'
+  - id: PRC.EMAIL_AND_NOTIFICATION_INFRASTRUCTURE.EMAIL_TEMPLATES_AND_NOTIFICATIONS.012
+    text: Email localized per user's language preference
+  - id: PRC.EMAIL_AND_NOTIFICATION_INFRASTRUCTURE.EMAIL_TEMPLATES_AND_NOTIFICATIONS.013
+    text: Push notification permission requested with value proposition context
+  - id: PRC.EMAIL_AND_NOTIFICATION_INFRASTRUCTURE.EMAIL_TEMPLATES_AND_NOTIFICATIONS.014
+    text: 'Notification content: clear title, useful body, relevant deep-link action'
+  - id: PRC.EMAIL_AND_NOTIFICATION_INFRASTRUCTURE.EMAIL_TEMPLATES_AND_NOTIFICATIONS.015
+    text: 'Quiet hours respected: no notifications midnight–8am in user''s timezone'
+  - id: PRC.EMAIL_AND_NOTIFICATION_INFRASTRUCTURE.EMAIL_TEMPLATES_AND_NOTIFICATIONS.016
+    text: Notification delivery rate and open rate monitored per campaign
+  - id: PRC.EMAIL_AND_NOTIFICATION_INFRASTRUCTURE.EMAIL_TEMPLATES_AND_NOTIFICATIONS.017
+    text: 'In-app notification center: 30-day history, read/unread state, deep links'
+  - id: PRC.EMAIL_AND_NOTIFICATION_INFRASTRUCTURE.EMAIL_TEMPLATES_AND_NOTIFICATIONS.018
+    text: 'SMS: explicit opt-in required, STOP reply for opt-out, transactional only without opt-in'

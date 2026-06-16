@@ -1,0 +1,93 @@
+id: SKILL_CAPABILITY_CREATION_001
+name: Capability Creation
+title: Capability Creation — build/refine the skill, tool, MCP, or plugin a checklist item needs
+purpose: >
+  The checklist drives capability creation, not just grading. When a
+  production-readiness item needs an executable capability (skill, tool, MCP
+  server, plugin/slash-command, service) we do not have, CREATE it; when it is
+  weak, REFINE it. A skill DESCRIBES; a tool/MCP/plugin DOES — capability is only
+  HAVE when probe-verified WIRED (called at runtime), never merely DESCRIBED.
+version: 1.0.0
+layer: governance
+domains:
+- capability_engineering
+- governance
+- mcp
+- tooling
+- continuous_improvement
+tier: active
+status: active
+source: native
+aliases:
+- capability-creation
+- build-the-missing-capability
+playbook: platform/sdlc/13_skills/active/SKILL_CAPABILITY_CREATION_001.playbook.md
+ledger: platform/sdlc/13_skills/skill_refinery/correction_ledgers/SKILL_CAPABILITY_CREATION_001.ledger.yaml
+runtime_projection: true
+runtime_projection_targets:
+- claude
+- codex
+- gemini
+router_intents:
+- capability_creation
+- build_missing_capability
+
+capability_registry: platform/systems/53_production_readiness/capabilities/registry.yaml
+maturity_ladder: [DESCRIBED, ROUTED, EXECUTABLE, WIRED, TESTED]
+
+creation_paths:
+  skill: 50_skill_os_templates + validate_skill_router_integration.py (register + route)
+  mcp_tool: SKILL_MCP_TOOLING_AUTOMATION_001 → add to apps/backend/mcp/src/server-factory.ts TOOL_LIST + handleTool case
+  slash_command: platform/systems/37_command_protocol/commands.registry.yaml + trigger_router.yaml + owning skill
+  service_or_route: SKILL_NEW_PLATFORM_SERVICE_001 / Next API route under apps/frontend/shell/src/app/api
+
+trigger_conditions:
+- A checklist/corpus item needs an executable capability we lack (capability_status MISSING/PARTIAL).
+- A probe reports a capability not WIRED.
+- An existing skill/tool/MCP is weak and must be refined.
+- Asked to make something the platform can DO (not just describe).
+
+hard_constraints:
+- Build REAL, runtime-callable code — never a stub, demo payload, or TODO claiming done.
+- A new capability is HAVE only when probe-verified WIRED (called at runtime, e.g. via wired_audit or a verify script that prints success).
+- Register every new capability in capabilities/registry.yaml (CAP_*) with owning skill + executor + status.
+- find-before-create: search for an existing skill/tool/MCP/command before building a new one (SKILL_FIND_BEFORE_CREATE_001).
+- Write capabilities must be safe: path-confined (no traversal), tenant-scoped where applicable, input-validated; destructive/remote actions require an explicit confirm flag.
+- A capability is not done until its corpus capability_status flips MISSING→HAVE BECAUSE a probe passed — never by hand.
+
+known_failure_modes:
+- Marking capability HAVE because a skill (description) exists — skill-coverage ≠ capability.
+- Shipping a stub/demo route and calling the capability built.
+- Creating a duplicate capability that already exists (skipped find-before-create).
+- Unsafe write capability (path traversal, no tenant scope, auto-push to remote).
+
+validation_tests:
+- The new capability has a verify script / wired_audit run proving it is CALLED at runtime.
+- capabilities/registry.yaml lists it with a probe and the probe passes.
+- The owning skill is registered + router-integrated (validate_skill_router_integration.py).
+
+improvement_history:
+- version: 1.0.0
+  date: '2026-06-01'
+  reason: >
+    Created from MISS-002 (skill-vs-capability conflation) + the user mandate that
+    the checklist must list the skills/tools/MCP/plugins needed and CREATE/REFINE
+    missing ones. Proven by building the Tier-1 ATLAS write capabilities
+    (git commit/push, repo file-write, knowledge-write) as real probe-verified tools.
+
+related_skills:
+- SKILL_DEFINITION_OF_DONE_GATE_001
+- SKILL_PRODUCTION_READINESS_AUDIT_001
+- SKILL_MCP_TOOLING_AUTOMATION_001
+- SKILL_FIND_BEFORE_CREATE_001
+- SKILL_WIRED_NOT_DEFINED_001
+- SKILL_IMPROVEMENT_LOOP_001
+
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: '2026-06-01'
+  refinement_count: 0
+  tier_promotion_history: []

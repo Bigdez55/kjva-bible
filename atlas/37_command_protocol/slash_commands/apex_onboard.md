@@ -18,22 +18,22 @@ Per tier; see [SKILL_REPO_ONBOARDING_001.playbook.md](../../13_skills/active/SKI
 
 ## Preconditions
 - Repo structure check passes ([apex_structure_check.yml](../../.github/workflows/apex_structure_check.yml))
-- `python3 25_automation/registry_sync/sync_registries.py --check` is green
+- `python3 infrastructure/scripts/registry_sync/sync_registries.py --check` is green
 - `target` is a git repository on a clean branch
-- `target/atlas/` exists (sync via [25_automation/sync_scripts/sync_to_child_repo.py](../../25_automation/sync_scripts/sync_to_child_repo.py) first if missing)
+- `target/atlas/` exists (sync via [infrastructure/scripts/sync_scripts/sync_to_child_repo.py](../../infrastructure/scripts/sync_scripts/sync_to_child_repo.py) first if missing)
 
 ## Fast Validation Runner
 
 Run this portable validator from any repo to audit tier completion:
 
 ```bash
-python3 atlas/25_automation/onboarding_validate_tiers.py --target /absolute/path/to/repo --tiers 1-4
+python3 infrastructure/scripts/onboarding_validate_tiers.py --target /absolute/path/to/repo --tiers 1-4
 ```
 
 For JSON output:
 
 ```bash
-python3 atlas/25_automation/onboarding_validate_tiers.py --target /absolute/path/to/repo --tiers 1-4 --json
+python3 infrastructure/scripts/onboarding_validate_tiers.py --target /absolute/path/to/repo --tiers 1-4 --json
 ```
 
 ## Step-by-step
@@ -52,16 +52,16 @@ For each tier in the expanded list, follow its body literally as written in [SKI
 **Tier 1 note:** T1 begins with a mandatory discovery protocol — read git history, language artifacts, source structure, deployment signals, and any existing docs *before* writing any output file. Do not prompt the user for context about what the repo does; derive it mechanically. The reality model built during discovery is the sole input to all T1 artifacts.
 
 ### 4. Update registries
-- Inside the target: `python3 atlas/25_automation/registry_sync/sync_registries.py --write`.
-- For T1 step 5 (twin population): run `python3 25_automation/registry_sync/sync_registries.py --write` in the upstream ATLAS checkout on the dedicated onboarding branch.
+- Inside the target: `python3 atlas/infrastructure/scripts/registry_sync/sync_registries.py --write`.
+- For T1 step 5 (twin population): run `python3 infrastructure/scripts/registry_sync/sync_registries.py --write` in the upstream ATLAS checkout on the dedicated onboarding branch.
 
 ### 5. Update traceability
 - T2 baseline ADRs and the SLICE-0001 spec links → rows in [18_registry/traceability.yaml](../../18_registry/traceability.yaml).
 - T3 every slice → rows in `traceability.yaml` and [18_registry/change_ledger.yaml](../../18_registry/change_ledger.yaml).
 
 ### 6. Validate
-- Schema-validate every new artifact against [26_schemas/](../../26_schemas/).
-- Run all drift checkers under [25_automation/drift_checkers/](../../25_automation/drift_checkers/).
+- Schema-validate every new artifact against [platform/sdlc/14_templates/](../../platform/sdlc/14_templates/).
+- Run all drift checkers under [infrastructure/scripts/drift_checkers/](../../infrastructure/scripts/drift_checkers/).
 
 ### 7. Capture evidence
 - T1 → `EP-<date>-onboarding-tier1.yaml`

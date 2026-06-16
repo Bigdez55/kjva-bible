@@ -50,25 +50,25 @@ agents:
   apex-systems-architect:
     branch: prod-ready/auth
     paths:
-      - apps/frontend/atlas/src/lib/auth/types.ts        # BETA UNBLOCK
-      - apps/frontend/atlas/src/lib/auth/session.ts
-      - apps/frontend/atlas/src/proxy.ts                  # or middleware.ts
-      - apps/frontend/atlas/src/app/api/auth/**
-      - apps/frontend/atlas/next.config.ts
-      - apps/frontend/atlas/electron/main.mjs
+      - apps/frontend/shell/src/lib/auth/types.ts        # BETA UNBLOCK
+      - apps/frontend/shell/src/lib/auth/session.ts
+      - apps/frontend/shell/src/proxy.ts                  # or middleware.ts
+      - apps/frontend/shell/src/app/api/auth/**
+      - apps/frontend/shell/next.config.ts
+      - apps/frontend/shell/electron/main.mjs
   reliability-security-sentinel:
     branch: prod-ready/tenant-iso
     paths:
-      - apps/frontend/atlas/src/lib/auth/require-session.ts
-      - apps/frontend/atlas/src/lib/auth/require-tenant.ts
-      - apps/frontend/atlas/src/app/api/**/route.ts       # NOT auth/*
-      - apps/frontend/atlas/tests/cross-tenant-isolation.test.ts
+      - apps/frontend/shell/src/lib/auth/require-session.ts
+      - apps/frontend/shell/src/lib/auth/require-tenant.ts
+      - apps/frontend/shell/src/app/api/**/route.ts       # NOT auth/*
+      - apps/frontend/shell/tests/cross-tenant-isolation.test.ts
   # ... etc
 
 shared_files:
-  apps/frontend/atlas/package.json:
+  apps/frontend/shell/package.json:
     chain: [storage, audit-ratelimit, ci-gate]  # in this order
-  apps/frontend/atlas/electron/main.mjs:
+  apps/frontend/shell/electron/main.mjs:
     chain: [auth]  # single owner — others propose as PR to auth's branch
 ```
 

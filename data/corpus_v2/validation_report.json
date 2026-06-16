@@ -1,0 +1,746 @@
+{
+  "gates": [
+    {
+      "gate": "AKJV: no empty texts",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "AKJV: no duplicate ids",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "AKJV: verse count in [30480,31800]",
+      "pass": true,
+      "detail": 31102
+    },
+    {
+      "gate": "Geneva1599: no empty texts",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "Geneva1599: no duplicate ids",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "Geneva1599: verse count in [30480,31800]",
+      "pass": true,
+      "detail": 31064
+    },
+    {
+      "gate": "JPS: no empty texts",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "JPS: no duplicate ids",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "JPS: verse count in [22500,24500]",
+      "pass": true,
+      "detail": 23194
+    },
+    {
+      "gate": "JPS: anchor GEN 1:1",
+      "pass": true,
+      "detail": "IN THE beginning G-d created the heaven and the earth."
+    },
+    {
+      "gate": "JPS: anchor DEU 6:4",
+      "pass": true,
+      "detail": "HEAR, O ISRAEL: THE HaShem OUR GOD, THE HaShem IS ONE."
+    },
+    {
+      "gate": "KJV: no empty texts",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "KJV: no duplicate ids",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "KJV: verse count in [30480,31800]",
+      "pass": true,
+      "detail": 31102
+    },
+    {
+      "gate": "KJV: anchor GEN 1:1",
+      "pass": true,
+      "detail": "In the beginning God created the heaven and the earth."
+    },
+    {
+      "gate": "KJV: anchor PSA 23:1",
+      "pass": true,
+      "detail": "The Lord is my shepherd; I shall not want."
+    },
+    {
+      "gate": "KJV: anchor JHN 3:16",
+      "pass": true,
+      "detail": "For God so loved the world, that he gave his only begotten S"
+    },
+    {
+      "gate": "KJVA: no empty texts",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "KJVA: no duplicate ids",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "KJVA: verse count in [36000,37600]",
+      "pass": true,
+      "detail": 36819
+    },
+    {
+      "gate": "KJVA: anchor GEN 1:1",
+      "pass": true,
+      "detail": "In the beginning God created the heaven and the earth."
+    },
+    {
+      "gate": "KJVA: anchor TOB 1:1",
+      "pass": true,
+      "detail": "The book of the words of Tobit, son of Tobiel, the son of An"
+    },
+    {
+      "gate": "KJVA: anchor JHN 3:16",
+      "pass": true,
+      "detail": "For God so loved the world, that he gave his only begotten S"
+    },
+    {
+      "gate": "KJVPCE: no empty texts",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "KJVPCE: no duplicate ids",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "KJVPCE: verse count in [30480,31800]",
+      "pass": true,
+      "detail": 31098
+    },
+    {
+      "gate": "KJVPCE: anchor GEN 1:1",
+      "pass": true,
+      "detail": "IN the beginning God created the heaven and the earth."
+    },
+    {
+      "gate": "KJVPCE: anchor JHN 3:16",
+      "pass": true,
+      "detail": "\u00b6 For God so loved the world, that he gave his only begotten"
+    },
+    {
+      "gate": "MKJV: no empty texts",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "MKJV: no duplicate ids",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "MKJV: verse count in [30480,31800]",
+      "pass": true,
+      "detail": 31102
+    },
+    {
+      "gate": "PSEUD-1-enoch: no empty texts",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-1-enoch: no duplicate ids",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-1-enoch: nonempty pseudepigrapha book",
+      "pass": true,
+      "detail": 937
+    },
+    {
+      "gate": "PSEUD-1-enoch: anchor 1ENOCH 1:1",
+      "pass": true,
+      "detail": "The words of the blessing of Enoch, wherewith he blessed the"
+    },
+    {
+      "gate": "PSEUD-2-baruch: no empty texts",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-2-baruch: no duplicate ids",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-2-baruch: nonempty pseudepigrapha book",
+      "pass": true,
+      "detail": 663
+    },
+    {
+      "gate": "PSEUD-2-enoch: no empty texts",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-2-enoch: no duplicate ids",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-2-enoch: nonempty pseudepigrapha book",
+      "pass": true,
+      "detail": 243
+    },
+    {
+      "gate": "PSEUD-3-baruch: no empty texts",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-3-baruch: no duplicate ids",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-3-baruch: nonempty pseudepigrapha book",
+      "pass": true,
+      "detail": 124
+    },
+    {
+      "gate": "PSEUD-4-maccabees: no empty texts",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-4-maccabees: no duplicate ids",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-4-maccabees: nonempty pseudepigrapha book",
+      "pass": true,
+      "detail": 332
+    },
+    {
+      "gate": "PSEUD-apocalypse-of-moses: no empty texts",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-apocalypse-of-moses: no duplicate ids",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-apocalypse-of-moses: nonempty pseudepigrapha book",
+      "pass": true,
+      "detail": 156
+    },
+    {
+      "gate": "PSEUD-books-of-adam-and-eve: no empty texts",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-books-of-adam-and-eve: no duplicate ids",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-books-of-adam-and-eve: nonempty pseudepigrapha book",
+      "pass": true,
+      "detail": 148
+    },
+    {
+      "gate": "PSEUD-jubilees: no empty texts",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-jubilees: no duplicate ids",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-jubilees: nonempty pseudepigrapha book",
+      "pass": true,
+      "detail": 1224
+    },
+    {
+      "gate": "PSEUD-letter-of-aristeas: no empty texts",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-letter-of-aristeas: no duplicate ids",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-letter-of-aristeas: nonempty pseudepigrapha book",
+      "pass": true,
+      "detail": 237
+    },
+    {
+      "gate": "PSEUD-odes-of-solomon: no empty texts",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-odes-of-solomon: no duplicate ids",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-odes-of-solomon: nonempty pseudepigrapha book",
+      "pass": true,
+      "detail": 1012
+    },
+    {
+      "gate": "PSEUD-psalms-of-solomon: no empty texts",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-psalms-of-solomon: no duplicate ids",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-psalms-of-solomon: nonempty pseudepigrapha book",
+      "pass": true,
+      "detail": 327
+    },
+    {
+      "gate": "PSEUD-slavonic-adam-and-eve: no empty texts",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-slavonic-adam-and-eve: no duplicate ids",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-slavonic-adam-and-eve: nonempty pseudepigrapha book",
+      "pass": true,
+      "detail": 31
+    },
+    {
+      "gate": "PSEUD-story-of-ahikar: no empty texts",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-story-of-ahikar: no duplicate ids",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-story-of-ahikar: nonempty pseudepigrapha book",
+      "pass": true,
+      "detail": 341
+    },
+    {
+      "gate": "PSEUD-testament-of-asher: no empty texts",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-testament-of-asher: no duplicate ids",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-testament-of-asher: nonempty pseudepigrapha book",
+      "pass": true,
+      "detail": 44
+    },
+    {
+      "gate": "PSEUD-testament-of-benjamin: no empty texts",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-testament-of-benjamin: no duplicate ids",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-testament-of-benjamin: nonempty pseudepigrapha book",
+      "pass": true,
+      "detail": 71
+    },
+    {
+      "gate": "PSEUD-testament-of-dan: no empty texts",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-testament-of-dan: no duplicate ids",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-testament-of-dan: nonempty pseudepigrapha book",
+      "pass": true,
+      "detail": 50
+    },
+    {
+      "gate": "PSEUD-testament-of-gad: no empty texts",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-testament-of-gad: no duplicate ids",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-testament-of-gad: nonempty pseudepigrapha book",
+      "pass": true,
+      "detail": 55
+    },
+    {
+      "gate": "PSEUD-testament-of-issachar: no empty texts",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-testament-of-issachar: no duplicate ids",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-testament-of-issachar: nonempty pseudepigrapha book",
+      "pass": true,
+      "detail": 55
+    },
+    {
+      "gate": "PSEUD-testament-of-job: no empty texts",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-testament-of-job: no duplicate ids",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-testament-of-job: nonempty pseudepigrapha book",
+      "pass": true,
+      "detail": 319
+    },
+    {
+      "gate": "PSEUD-testament-of-joseph: no empty texts",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-testament-of-joseph: no duplicate ids",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-testament-of-joseph: nonempty pseudepigrapha book",
+      "pass": true,
+      "detail": 152
+    },
+    {
+      "gate": "PSEUD-testament-of-judah: no empty texts",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-testament-of-judah: no duplicate ids",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-testament-of-judah: nonempty pseudepigrapha book",
+      "pass": true,
+      "detail": 156
+    },
+    {
+      "gate": "PSEUD-testament-of-levi: no empty texts",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-testament-of-levi: no duplicate ids",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-testament-of-levi: nonempty pseudepigrapha book",
+      "pass": true,
+      "detail": 149
+    },
+    {
+      "gate": "PSEUD-testament-of-naphtali: no empty texts",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-testament-of-naphtali: no duplicate ids",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-testament-of-naphtali: nonempty pseudepigrapha book",
+      "pass": true,
+      "detail": 65
+    },
+    {
+      "gate": "PSEUD-testament-of-reuben: no empty texts",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-testament-of-reuben: no duplicate ids",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-testament-of-reuben: nonempty pseudepigrapha book",
+      "pass": true,
+      "detail": 63
+    },
+    {
+      "gate": "PSEUD-testament-of-simeon: no empty texts",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-testament-of-simeon: no duplicate ids",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-testament-of-simeon: nonempty pseudepigrapha book",
+      "pass": true,
+      "detail": 48
+    },
+    {
+      "gate": "PSEUD-testament-of-zebulun: no empty texts",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-testament-of-zebulun: no duplicate ids",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-testament-of-zebulun: nonempty pseudepigrapha book",
+      "pass": true,
+      "detail": 72
+    },
+    {
+      "gate": "PSEUD-word-revelation-esdras: no empty texts",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-word-revelation-esdras: no duplicate ids",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "PSEUD-word-revelation-esdras: nonempty pseudepigrapha book",
+      "pass": true,
+      "detail": 14
+    },
+    {
+      "gate": "RNKJV: no empty texts",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "RNKJV: no duplicate ids",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "RNKJV: verse count in [30480,31800]",
+      "pass": true,
+      "detail": 31102
+    },
+    {
+      "gate": "RWebster: no empty texts",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "RWebster: no duplicate ids",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "RWebster: verse count in [30480,31800]",
+      "pass": true,
+      "detail": 31102
+    },
+    {
+      "gate": "Tyndale: no empty texts",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "Tyndale: no duplicate ids",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "UKJV: no empty texts",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "UKJV: no duplicate ids",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "UKJV: verse count in [30480,31800]",
+      "pass": true,
+      "detail": 31102
+    },
+    {
+      "gate": "Webster: no empty texts",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "Webster: no duplicate ids",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "Webster: verse count in [30480,31800]",
+      "pass": true,
+      "detail": 31102
+    },
+    {
+      "gate": "Wycliffe: no empty texts",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "Wycliffe: no duplicate ids",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "engDRA: no empty texts",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "engDRA: no duplicate ids",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "engDRA: verse count in [34000,36500]",
+      "pass": true,
+      "detail": 35811
+    },
+    {
+      "gate": "engDRA: anchor TOB 1:1",
+      "pass": true,
+      "detail": "Tobias of the tribe and city of Nephtali, (which is in the u"
+    },
+    {
+      "gate": "engDRA: anchor WIS 1:1",
+      "pass": true,
+      "detail": "Love justice, you that are the judges of the earth. Think of"
+    },
+    {
+      "gate": "enggnv: no empty texts",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "enggnv: no duplicate ids",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "enggnv: verse count in [30480,31800]",
+      "pass": true,
+      "detail": 31090
+    },
+    {
+      "gate": "engjps: no empty texts",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "engjps: no duplicate ids",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "engjps: verse count in [22500,24500]",
+      "pass": true,
+      "detail": 23145
+    },
+    {
+      "gate": "engwebster: no empty texts",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "engwebster: no duplicate ids",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "engwebster: verse count in [30480,31800]",
+      "pass": true,
+      "detail": 31102
+    },
+    {
+      "gate": "hboWLC: no empty texts",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "hboWLC: no duplicate ids",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "gate": "hboWLC: verse count in [22500,24500]",
+      "pass": true,
+      "detail": 23213
+    },
+    {
+      "gate": "hboWLC: anchor GEN 1:1",
+      "pass": true,
+      "detail": "\u05d1\u05b0\u05bc\u05e8\u05b5\u05d0\u05e9\u05b4\u05c1\u0596\u05d9\u05ea \u05d1\u05b8\u05bc\u05e8\u05b8\u05a3\u05d0 \u05d0\u05b1\u05dc\u05b9\u05d4\u05b4\u0591\u05d9\u05dd \u05d0\u05b5\u05a5\u05ea \u05d4\u05b7\u05e9\u05b8\u05bc\u05c1\u05de\u05b7\u0596\u05d9\u05b4\u05dd \u05d5\u05b0\u05d0\u05b5\u05a5\u05ea \u05d4\u05b8\u05d0\u05b8"
+    },
+    {
+      "gate": "hboWLC: anchor DEU 6:4",
+      "pass": true,
+      "detail": "'l s=\"H8085\"'\u05e9\u05b0\u05c1\u05de\u05b7\u0596'seg type=\"x-large\"'\u05e2'seg''/l' \u05d9\u05b4\u05e9\u05b0\u05c2\u05e8\u05b8\u05d0\u05b5\u0591"
+    }
+  ],
+  "pass": true,
+  "failed": []
+}

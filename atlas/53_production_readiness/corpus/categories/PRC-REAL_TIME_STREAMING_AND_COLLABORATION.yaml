@@ -1,0 +1,147 @@
+schema_version: '1.0'
+category_id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION
+name: Real-Time, Streaming & Collaboration
+icon: ↯
+color: '#7DD3FC'
+default_severity: medium
+coverage_status: PARTIAL
+skill_refs:
+- SKILL_AZURE_MESSAGING_001
+capability_status: MISSING
+tool_refs: []
+mcp_refs: []
+command_refs: []
+capability_refs: []
+capability_notes: No realtime executor. Build a websocket/streaming service (Event Hubs / SSE) if in scope.
+sections:
+- id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.CONNECTION_LAYER_WEBSOCKET_SSE
+  name: Connection Layer (WebSocket / SSE)
+  items:
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.CONNECTION_LAYER_WEBSOCKET_SSE.001
+    text: 'Transport chosen deliberately: WebSocket, SSE, long-polling, or WebTransport'
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.CONNECTION_LAYER_WEBSOCKET_SSE.002
+    text: 'Connection authentication: token validated on connect and periodically refreshed'
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.CONNECTION_LAYER_WEBSOCKET_SSE.003
+    text: Heartbeat / ping-pong keepalive detects dead connections
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.CONNECTION_LAYER_WEBSOCKET_SSE.004
+    text: Automatic reconnection with exponential backoff and jitter on the client
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.CONNECTION_LAYER_WEBSOCKET_SSE.005
+    text: Resume / replay after reconnect avoids missed messages (sequence numbers or cursors)
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.CONNECTION_LAYER_WEBSOCKET_SSE.006
+    text: Graceful degradation to polling where WebSocket is blocked
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.CONNECTION_LAYER_WEBSOCKET_SSE.007
+    text: Idle and zombie connections reaped server-side
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.CONNECTION_LAYER_WEBSOCKET_SSE.008
+    text: Per-connection and per-user message rate limiting
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.CONNECTION_LAYER_WEBSOCKET_SSE.009
+    text: Backpressure handling when client cannot keep up (buffer limits, drop policy)
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.CONNECTION_LAYER_WEBSOCKET_SSE.010
+    text: Maximum connection count per user enforced
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.CONNECTION_LAYER_WEBSOCKET_SSE.011
+    text: Connection through proxies, load balancers, and firewalls tested (60s+ idle)
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.CONNECTION_LAYER_WEBSOCKET_SSE.012
+    text: Binary vs text frame and compression strategy decided
+- id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.SCALE_OUT_AND_FAN_OUT
+  name: Scale-Out & Fan-Out
+  items:
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.SCALE_OUT_AND_FAN_OUT.001
+    text: 'Horizontal scaling: pub/sub backplane (Redis, NATS, Kafka) routes messages across nodes'
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.SCALE_OUT_AND_FAN_OUT.002
+    text: Sticky routing or stateless connection model decided and documented
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.SCALE_OUT_AND_FAN_OUT.003
+    text: 'Fan-out strategy scales: room/channel membership tracked efficiently'
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.SCALE_OUT_AND_FAN_OUT.004
+    text: Large-room fan-out optimized (no O(n^2) broadcast storms)
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.SCALE_OUT_AND_FAN_OUT.005
+    text: Presence and subscription state survives single-node failure
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.SCALE_OUT_AND_FAN_OUT.006
+    text: Message ordering guarantees defined per channel
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.SCALE_OUT_AND_FAN_OUT.007
+    text: At-least-once vs at-most-once delivery semantics documented
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.SCALE_OUT_AND_FAN_OUT.008
+    text: 'Connection draining on deploy: clients reconnect to healthy nodes'
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.SCALE_OUT_AND_FAN_OUT.009
+    text: Autoscaling triggers on connection count, not just CPU
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.SCALE_OUT_AND_FAN_OUT.010
+    text: Hot-channel and celebrity-fan-out problem mitigated
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.SCALE_OUT_AND_FAN_OUT.011
+    text: Cross-region real-time strategy defined for global users
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.SCALE_OUT_AND_FAN_OUT.012
+    text: Load tested to target concurrent connection count
+- id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.PRESENCE_AND_LIVE_STATE
+  name: Presence & Live State
+  items:
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.PRESENCE_AND_LIVE_STATE.001
+    text: 'Presence system: online, away, offline with reliable transitions'
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.PRESENCE_AND_LIVE_STATE.002
+    text: Presence TTL and heartbeat tuned to avoid ghost-online status
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.PRESENCE_AND_LIVE_STATE.003
+    text: Typing indicators and ephemeral signals debounced and rate limited
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.PRESENCE_AND_LIVE_STATE.004
+    text: Last-seen and activity state consistent across devices
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.PRESENCE_AND_LIVE_STATE.005
+    text: Live counters (viewers, active users) eventually consistent and de-duplicated
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.PRESENCE_AND_LIVE_STATE.006
+    text: 'Subscription model: clients subscribe only to needed channels'
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.PRESENCE_AND_LIVE_STATE.007
+    text: Authorization enforced per channel subscription (no eavesdropping)
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.PRESENCE_AND_LIVE_STATE.008
+    text: Live state reconciled on reconnect (full sync vs delta)
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.PRESENCE_AND_LIVE_STATE.009
+    text: Multi-device presence aggregated correctly per user
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.PRESENCE_AND_LIVE_STATE.010
+    text: Presence storms during mass events handled
+- id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.COLLABORATIVE_EDITING_CRDT_OT
+  name: Collaborative Editing (CRDT / OT)
+  items:
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.COLLABORATIVE_EDITING_CRDT_OT.001
+    text: 'Conflict-resolution model chosen: CRDT or Operational Transformation, justified'
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.COLLABORATIVE_EDITING_CRDT_OT.002
+    text: Concurrent edits converge to a consistent state for all clients
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.COLLABORATIVE_EDITING_CRDT_OT.003
+    text: Offline edits merge cleanly on reconnect
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.COLLABORATIVE_EDITING_CRDT_OT.004
+    text: Document versioning and history maintained
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.COLLABORATIVE_EDITING_CRDT_OT.005
+    text: Cursor and selection presence shown per collaborator
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.COLLABORATIVE_EDITING_CRDT_OT.006
+    text: Undo/redo behaves correctly in multi-user context
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.COLLABORATIVE_EDITING_CRDT_OT.007
+    text: Large-document performance tested (memory and merge cost)
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.COLLABORATIVE_EDITING_CRDT_OT.008
+    text: Persistence and snapshotting strategy bounds replay cost
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.COLLABORATIVE_EDITING_CRDT_OT.009
+    text: Garbage collection of tombstones (CRDT) to bound growth
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.COLLABORATIVE_EDITING_CRDT_OT.010
+    text: Access control enforced on collaborative documents
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.COLLABORATIVE_EDITING_CRDT_OT.011
+    text: Data integrity verified after concurrent edit stress tests
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.COLLABORATIVE_EDITING_CRDT_OT.012
+    text: Migration path for document format/schema changes
+- id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.WEBRTC_AND_MEDIA_STREAMING
+  name: WebRTC & Media Streaming
+  items:
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.WEBRTC_AND_MEDIA_STREAMING.001
+    text: Signaling server implemented and secured
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.WEBRTC_AND_MEDIA_STREAMING.002
+    text: STUN/TURN servers configured for NAT traversal
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.WEBRTC_AND_MEDIA_STREAMING.003
+    text: TURN fallback for restrictive networks tested
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.WEBRTC_AND_MEDIA_STREAMING.004
+    text: Media encryption (DTLS-SRTP) enforced
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.WEBRTC_AND_MEDIA_STREAMING.005
+    text: Bandwidth adaptation and simulcast for varying network quality
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.WEBRTC_AND_MEDIA_STREAMING.006
+    text: Echo cancellation, noise suppression, and AGC configured
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.WEBRTC_AND_MEDIA_STREAMING.007
+    text: Connection quality metrics and reconnection handled
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.WEBRTC_AND_MEDIA_STREAMING.008
+    text: SFU vs mesh vs MCU topology chosen for scale
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.WEBRTC_AND_MEDIA_STREAMING.009
+    text: Recording and consent handled per legal requirements
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.WEBRTC_AND_MEDIA_STREAMING.010
+    text: Graceful handling of permission denial (camera, microphone)
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.WEBRTC_AND_MEDIA_STREAMING.011
+    text: Cross-browser WebRTC compatibility tested
+  - id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION.WEBRTC_AND_MEDIA_STREAMING.012
+    text: Server media capacity and cost modeled for concurrent streams

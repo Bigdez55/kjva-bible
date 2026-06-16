@@ -1,0 +1,427 @@
+{
+  "corpus_id": "sacred_multi_v2",
+  "spec": "SPEC-KJVA-FUNC-0002-multi-version-corpus-expansion",
+  "translations": {
+    "AKJV": {
+      "verses": 31102,
+      "books": 66,
+      "chars": 4068362,
+      "sections": [
+        "kjv_lineage"
+      ],
+      "sha256": "5876522e4ed386d2d6f3c3f1dac859310bdc30d72a521ec8a44636e57f016006"
+    },
+    "Geneva1599": {
+      "verses": 31064,
+      "books": 66,
+      "chars": 4154378,
+      "sections": [
+        "kjv_lineage"
+      ],
+      "sha256": "667e2374aa99ffa94ba1d930b70bbc86032afbca17095fb76e09c39a87a4b0dc"
+    },
+    "JPS": {
+      "verses": 23194,
+      "books": 39,
+      "chars": 3175309,
+      "sections": [
+        "tanakh"
+      ],
+      "sha256": "ff1ee4eb5a72d5aaf9a19dfc9f0ca31acf1e520bafa392fdb50c6017e846ae65"
+    },
+    "KJV": {
+      "verses": 31102,
+      "books": 66,
+      "chars": 4108485,
+      "sections": [
+        "kjv_lineage"
+      ],
+      "sha256": "df139b495354e7d66a0c6eaed036b56e11e028d8c456bb8faa6be1805b8b9eb4"
+    },
+    "KJVA": {
+      "verses": 36819,
+      "books": 80,
+      "chars": 4857206,
+      "sections": [
+        "kjv_lineage"
+      ],
+      "sha256": "7cb29e0ddeb1853a8c2708a791f10eb68072f14c6b2b30dd767487fd7575f402"
+    },
+    "KJVPCE": {
+      "verses": 31098,
+      "books": 66,
+      "chars": 4113955,
+      "sections": [
+        "kjv_lineage"
+      ],
+      "sha256": "27897745542729db5d4cca731e367807405cfd0fb1ef4eb335bbf9f933dbf151"
+    },
+    "MKJV": {
+      "verses": 31102,
+      "books": 66,
+      "chars": 3974229,
+      "sections": [
+        "kjv_lineage"
+      ],
+      "sha256": "c9aea251163af8b9dd4b09bfe54457eb217f5bc236049bd466891c60f229db98"
+    },
+    "PSEUD-1-enoch": {
+      "verses": 937,
+      "books": 1,
+      "chars": 183546,
+      "sections": [
+        "pseudepigrapha"
+      ],
+      "sha256": "132e5fdef7747ed32e581d2afa5efd8a4d372b0a44ea2b0aaed7cf7d913d7346"
+    },
+    "PSEUD-2-baruch": {
+      "verses": 663,
+      "books": 1,
+      "chars": 100088,
+      "sections": [
+        "pseudepigrapha"
+      ],
+      "sha256": "46c407e4b00c5e7e4e62a17e3ab7e7ce53979649fe70898bc53541168d879f67"
+    },
+    "PSEUD-2-enoch": {
+      "verses": 243,
+      "books": 1,
+      "chars": 40060,
+      "sections": [
+        "pseudepigrapha"
+      ],
+      "sha256": "bd8e7e2bdade2afa2f7514cc4f5d920332cfc3d811f0ab3ab5ec7f62eec3ac48"
+    },
+    "PSEUD-3-baruch": {
+      "verses": 124,
+      "books": 1,
+      "chars": 22369,
+      "sections": [
+        "pseudepigrapha"
+      ],
+      "sha256": "3bac67b7d89ba1084e206c7cf7f754c0702364328b221812729616719179975e"
+    },
+    "PSEUD-4-maccabees": {
+      "verses": 332,
+      "books": 1,
+      "chars": 56809,
+      "sections": [
+        "pseudepigrapha"
+      ],
+      "sha256": "dabbcb74f63b92c5b36d1bfb111885d46793bbad7e61564b71cebbdb29247388"
+    },
+    "PSEUD-apocalypse-of-moses": {
+      "verses": 156,
+      "books": 1,
+      "chars": 27538,
+      "sections": [
+        "pseudepigrapha"
+      ],
+      "sha256": "c35f29082855b948bc66d6e48da2a743fc5374ec296e5f86d5dc6b8f862d314f"
+    },
+    "PSEUD-books-of-adam-and-eve": {
+      "verses": 148,
+      "books": 1,
+      "chars": 26808,
+      "sections": [
+        "pseudepigrapha"
+      ],
+      "sha256": "368196ce48a1b1e952277fc957724dd4d899e94cc3159e5be36aae8f3346aa97"
+    },
+    "PSEUD-jubilees": {
+      "verses": 1224,
+      "books": 1,
+      "chars": 261803,
+      "sections": [
+        "pseudepigrapha"
+      ],
+      "sha256": "c3f1f57c7d8de272b514e3bbdc63f031b06c04895e01706bfdd57a1e60acc6f1"
+    },
+    "PSEUD-letter-of-aristeas": {
+      "verses": 237,
+      "books": 1,
+      "chars": 84783,
+      "sections": [
+        "pseudepigrapha"
+      ],
+      "sha256": "6bfa1cdf24a51f6a9e64ca9a721246a77244f85e4ad672774c49a7f99e1e088d"
+    },
+    "PSEUD-odes-of-solomon": {
+      "verses": 1012,
+      "books": 1,
+      "chars": 142114,
+      "sections": [
+        "pseudepigrapha"
+      ],
+      "sha256": "cf88eb001de021155b7a27de405c2a10a004c45ff107684d7f3ddae539479c12"
+    },
+    "PSEUD-psalms-of-solomon": {
+      "verses": 327,
+      "books": 1,
+      "chars": 38051,
+      "sections": [
+        "pseudepigrapha"
+      ],
+      "sha256": "6acb20149b9b66186944c177ab6e5d8b8a300acd898f8ffcc7dd238ac3f069e7"
+    },
+    "PSEUD-slavonic-adam-and-eve": {
+      "verses": 31,
+      "books": 1,
+      "chars": 5942,
+      "sections": [
+        "pseudepigrapha"
+      ],
+      "sha256": "adaced9e82e7b6a74d5baf146fee509176d932d90853b46b896615d419d9471d"
+    },
+    "PSEUD-story-of-ahikar": {
+      "verses": 341,
+      "books": 1,
+      "chars": 56530,
+      "sections": [
+        "pseudepigrapha"
+      ],
+      "sha256": "3c1822e19750afdd958bb28de74994b2dea39d394d6d15704691f999c3cc2712"
+    },
+    "PSEUD-testament-of-asher": {
+      "verses": 44,
+      "books": 1,
+      "chars": 6759,
+      "sections": [
+        "pseudepigrapha"
+      ],
+      "sha256": "d7b1deaea8bba82b65a8ec92f65788f35ba3382dfd0f2affa6d46fdf9a25d8d0"
+    },
+    "PSEUD-testament-of-benjamin": {
+      "verses": 71,
+      "books": 1,
+      "chars": 9609,
+      "sections": [
+        "pseudepigrapha"
+      ],
+      "sha256": "69d3d3aa23db42ddd3c41a276573b76d145b94060533cd027e5d59731c88df68"
+    },
+    "PSEUD-testament-of-dan": {
+      "verses": 50,
+      "books": 1,
+      "chars": 7265,
+      "sections": [
+        "pseudepigrapha"
+      ],
+      "sha256": "e98fa9df153d22a552b5e8721ea92ccb3e58308e6603cadb0728f9759697365f"
+    },
+    "PSEUD-testament-of-gad": {
+      "verses": 55,
+      "books": 1,
+      "chars": 7467,
+      "sections": [
+        "pseudepigrapha"
+      ],
+      "sha256": "2431787f6351e1080336efbb32e684fa59537af603fa6b86e28de6467e6ac8ba"
+    },
+    "PSEUD-testament-of-issachar": {
+      "verses": 55,
+      "books": 1,
+      "chars": 6626,
+      "sections": [
+        "pseudepigrapha"
+      ],
+      "sha256": "5d8b84f52e47f89243b5f9aef4f62d6fffc3e39e7552bec444727f47ea5a090d"
+    },
+    "PSEUD-testament-of-job": {
+      "verses": 319,
+      "books": 1,
+      "chars": 46760,
+      "sections": [
+        "pseudepigrapha"
+      ],
+      "sha256": "d247db61cb6c313b04662b5bb1a5025eb1614804fdda07db5d8dc49dc3c342b2"
+    },
+    "PSEUD-testament-of-joseph": {
+      "verses": 152,
+      "books": 1,
+      "chars": 17739,
+      "sections": [
+        "pseudepigrapha"
+      ],
+      "sha256": "dee7057a2d03a0ff110054bbee946fbcf52b4e50934ba0d259c6d2593b4b1564"
+    },
+    "PSEUD-testament-of-judah": {
+      "verses": 156,
+      "books": 1,
+      "chars": 19824,
+      "sections": [
+        "pseudepigrapha"
+      ],
+      "sha256": "2ce5ff5e5ff760407bf730c580f705be3df4da3905ef4317a25e3a4e9b3b884a"
+    },
+    "PSEUD-testament-of-levi": {
+      "verses": 149,
+      "books": 1,
+      "chars": 18991,
+      "sections": [
+        "pseudepigrapha"
+      ],
+      "sha256": "912f47736977269e663eb2005c8bae48bd36afe843fd9e2536fbf77dd550eedb"
+    },
+    "PSEUD-testament-of-naphtali": {
+      "verses": 65,
+      "books": 1,
+      "chars": 9072,
+      "sections": [
+        "pseudepigrapha"
+      ],
+      "sha256": "94aaecb356b09ee016702a553ea1c566e149688b504f7901730e44077eed0136"
+    },
+    "PSEUD-testament-of-reuben": {
+      "verses": 63,
+      "books": 1,
+      "chars": 8410,
+      "sections": [
+        "pseudepigrapha"
+      ],
+      "sha256": "fe708c2643b3ec4cd3763f1508200f8fe700f931423312e62dd5ebe25a72c914"
+    },
+    "PSEUD-testament-of-simeon": {
+      "verses": 48,
+      "books": 1,
+      "chars": 6576,
+      "sections": [
+        "pseudepigrapha"
+      ],
+      "sha256": "e96f12f9640544feb215b3a5cb3a01b05e19eff86db25753cf23f35957e47a3b"
+    },
+    "PSEUD-testament-of-zebulun": {
+      "verses": 72,
+      "books": 1,
+      "chars": 9154,
+      "sections": [
+        "pseudepigrapha"
+      ],
+      "sha256": "d1a716ebc7f75f154b5c1c8bb25b80034096191ef4fce31db5b9967ca1fba17e"
+    },
+    "PSEUD-word-revelation-esdras": {
+      "verses": 14,
+      "books": 1,
+      "chars": 17818,
+      "sections": [
+        "pseudepigrapha"
+      ],
+      "sha256": "fc08f8d095aa5d0e0fe0694e6b1f4b7e06395e4487f65d6c20147e7ba5b2deb2"
+    },
+    "RNKJV": {
+      "verses": 31102,
+      "books": 66,
+      "chars": 4101311,
+      "sections": [
+        "kjv_lineage"
+      ],
+      "sha256": "5394b9c71b5f84e0920bd0592d64ebd010ec8eee7fd997cef80ae330c7010d24"
+    },
+    "RWebster": {
+      "verses": 31102,
+      "books": 66,
+      "chars": 4077993,
+      "sections": [
+        "kjv_lineage"
+      ],
+      "sha256": "85a1dbcf392ef1fece795ca554276d6aaf0294229f8ad4c8df57a4e7d5af4db9"
+    },
+    "Tyndale": {
+      "verses": 7888,
+      "books": 10,
+      "chars": 940484,
+      "sections": [
+        "kjv_lineage"
+      ],
+      "sha256": "011ef727e1abacb072a2a313201b4faa4c503bb15fc2b29eb0161bffd4b1a67d"
+    },
+    "UKJV": {
+      "verses": 31102,
+      "books": 66,
+      "chars": 4133354,
+      "sections": [
+        "kjv_lineage"
+      ],
+      "sha256": "413b14c7d3b13acc9630b9b636a1f60c9b7c2ba5bef6c068b954cd40417382d9"
+    },
+    "Webster": {
+      "verses": 31102,
+      "books": 66,
+      "chars": 4124139,
+      "sections": [
+        "kjv_lineage"
+      ],
+      "sha256": "39695a707b2737911bbfa89db4c77d41cd60a37e99a3cac583104e2837d1d0b9"
+    },
+    "Wycliffe": {
+      "verses": 36207,
+      "books": 75,
+      "chars": 4792628,
+      "sections": [
+        "kjv_lineage"
+      ],
+      "sha256": "4601754e6d5fb448e34b3ae1da3267aa2734fa13021f5408be11f560afac9782"
+    },
+    "engDRA": {
+      "verses": 35811,
+      "books": 73,
+      "chars": 4610116,
+      "sections": [
+        "apocrypha"
+      ],
+      "sha256": "3e46aa0803f3da51a1aada29aa1d065612d557801cb19d5d5300457ae028594d"
+    },
+    "enggnv": {
+      "verses": 31090,
+      "books": 66,
+      "chars": 4154367,
+      "sections": [
+        "kjv_lineage"
+      ],
+      "sha256": "233893df3704339403d94ab295e63ca8d907b76ccb7abd4076f7337b6d6819dc"
+    },
+    "engjps": {
+      "verses": 23145,
+      "books": 39,
+      "chars": 3203340,
+      "sections": [
+        "tanakh"
+      ],
+      "sha256": "e1b55070859b4db0b1fb7332379564720ae9c0269ea4aa222867969122615196"
+    },
+    "engwebster": {
+      "verses": 31102,
+      "books": 66,
+      "chars": 4126365,
+      "sections": [
+        "kjv_lineage"
+      ],
+      "sha256": "2e97b6a933c86b47d54936a7d50ac035fac7e67a9c51b9cf090d0802da6dbc11"
+    },
+    "hboWLC": {
+      "verses": 23213,
+      "books": 39,
+      "chars": 2799188,
+      "sections": [
+        "hebrew"
+      ],
+      "sha256": "4a120d978631240c91a0db5262f6768f5f090b431c18e4517fe8aef4c0f6b465"
+    }
+  },
+  "totals": {
+    "translations": 45,
+    "verses": 535433,
+    "chars": 70753720,
+    "corpus_txt_bytes": 85333575,
+    "corpus_txt_sha256": "effc39df5c57c3980d72e2b859281c3b14a7ebc4eb0fa88211050e20bef7134d"
+  },
+  "fetch_manifest": "data/corpus/external/fetch_manifest.json",
+  "excluded": {
+    "NKJV": "copyright Thomas Nelson 1982 \u2014 see SOURCES.md; use ingest_licensed.py with an owner-licensed copy"
+  },
+  "validation": {
+    "pass": true,
+    "gates": 148,
+    "failed": 0
+  }
+}

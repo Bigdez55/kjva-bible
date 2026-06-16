@@ -7,7 +7,7 @@ source_of_truth:
   active_skill_dir: 13_skills/active
   canonical_router: 13_skills/skill_refinery/trigger_router.yaml
   runtime_router: 37_command_protocol/trigger_router.yaml
-  router_engine: 25_automation/route_intent.py
+  router_engine: infrastructure/scripts/route_intent.py
   universal_policy: 13_skills/skill_refinery/universal_skill_invocation_policy.md
   cross_runtime_contract: 13_skills/skill_refinery/cross_runtime_invoke_all_skills_contract.md
 assistant_projections:
@@ -21,8 +21,8 @@ rules:
   - Project-specific skills are available but suppressed until target-bound.
   - Corrective triggers must update ledgers, regression cases, or router mappings when misses occur.
 validation:
-  router_gap_audit: python3 25_automation/audit_skill_router_integration.py
-  deterministic_router: python3 25_automation/validate_trigger_determinism.py
+  router_gap_audit: python3 infrastructure/scripts/audit_skill_router_integration.py
+  deterministic_router: python3 infrastructure/scripts/validate_trigger_determinism.py
 required_response_fields:
   - tool_called_skills
   - playbook_applied_disciplines

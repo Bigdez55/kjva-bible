@@ -1,0 +1,11 @@
+repo_name: ""
+project_type: ""
+deployment_target:
+  primary: vercel
+  secondary: github_pages
+database:
+  provider: ""
+  orm: ""
+first_slice:
+  name: ""
+  must_include: []

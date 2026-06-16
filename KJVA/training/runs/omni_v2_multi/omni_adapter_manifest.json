@@ -1,0 +1,16 @@
+{
+  "artifact_type": "omni_peft_adapter",
+  "doctrine": "training/peft/OMNI_PEFT_DOCTRINE.md",
+  "base_checkpoint": "training/runs/byte_clean_v2/ckpt_step_003000.safetensors",
+  "corpus": "training/corpus/sacred_multi_v2/corpus.txt",
+  "epochs": 5,
+  "enabled_methods": [
+    "bitfit",
+    "ia3",
+    "prefix_tuning"
+  ],
+  "operator_count": 12,
+  "is_tournament": false,
+  "tournament_winner": null,
+  "canonical_promoted": false
+}

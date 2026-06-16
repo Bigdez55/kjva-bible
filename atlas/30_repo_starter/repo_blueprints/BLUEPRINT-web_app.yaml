@@ -1,0 +1,27 @@
+archetype: web_app
+directories:
+- 00_intake
+- 01_vision
+- 02_discovery
+- 03_specs
+- 04_architecture
+- 05_workflows
+- 06_planning
+- 07_build
+- 08_verification
+- 09_release
+starter_skills:
+- SKILL_INTENT_COMPILATION_001
+- SKILL_REGISTRY_SYNC_001
+production_readiness_profile:
+  required_tier: gold
+  na_categories:
+  - Mobile Application
+  - Desktop Application
+  - Operating Systems
+  - Programming Language
+  - Hardware, IoT & Edge
+  - Browser Extension
+  - Identity Verification & KYC/AML
+  - CLI, SDK & Developer Platform
+  notes: Standard hosted web application.

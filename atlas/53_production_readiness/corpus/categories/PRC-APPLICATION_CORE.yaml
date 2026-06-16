@@ -1,0 +1,200 @@
+schema_version: '1.0'
+category_id: PRC.APPLICATION_CORE
+name: Application Core
+icon: ◉
+color: '#7C3AED'
+default_severity: medium
+coverage_status: PARTIAL
+skill_refs:
+- SKILL_ARCHITECTURE_ATLAS_001
+- SKILL_NEW_PLATFORM_SERVICE_001
+capability_status: MISSING
+tool_refs: []
+mcp_refs: []
+command_refs: []
+capability_refs: []
+capability_notes: No executor beyond demo wiring. Build a core app-service/route that performs the domain operation, not just describes it.
+sections:
+- id: PRC.APPLICATION_CORE.PROJECT_SETUP_AND_STANDARDS
+  name: Project Setup & Standards
+  items:
+  - id: PRC.APPLICATION_CORE.PROJECT_SETUP_AND_STANDARDS.001
+    text: Monorepo vs polyrepo decision documented with rationale in ADR
+  - id: PRC.APPLICATION_CORE.PROJECT_SETUP_AND_STANDARDS.002
+    text: Folder structure mirrors domain/bounded context, not tech layer
+  - id: PRC.APPLICATION_CORE.PROJECT_SETUP_AND_STANDARDS.003
+    text: 'README: setup, prerequisites, env vars, run commands, test commands all documented'
+  - id: PRC.APPLICATION_CORE.PROJECT_SETUP_AND_STANDARDS.004
+    text: 'CONTRIBUTING.md: PR process, review expectations, coding standards'
+  - id: PRC.APPLICATION_CORE.PROJECT_SETUP_AND_STANDARDS.005
+    text: CHANGELOG.md maintained using Conventional Commits format
+  - id: PRC.APPLICATION_CORE.PROJECT_SETUP_AND_STANDARDS.006
+    text: Semantic versioning enforced (SemVer MAJOR.MINOR.PATCH)
+  - id: PRC.APPLICATION_CORE.PROJECT_SETUP_AND_STANDARDS.007
+    text: License file committed; all dependency licenses comply with org policy
+  - id: PRC.APPLICATION_CORE.PROJECT_SETUP_AND_STANDARDS.008
+    text: Linter configured and enforced in CI (ESLint, Pylint, golangci-lint, Clippy)
+  - id: PRC.APPLICATION_CORE.PROJECT_SETUP_AND_STANDARDS.009
+    text: Formatter opinionated and non-negotiable in CI (Prettier, Black, gofmt, rustfmt)
+  - id: PRC.APPLICATION_CORE.PROJECT_SETUP_AND_STANDARDS.010
+    text: 'Pre-commit hooks: lint + format + secret scan (Husky, pre-commit, lefthook)'
+  - id: PRC.APPLICATION_CORE.PROJECT_SETUP_AND_STANDARDS.011
+    text: EditorConfig committed for cross-editor consistency
+  - id: PRC.APPLICATION_CORE.PROJECT_SETUP_AND_STANDARDS.012
+    text: Environment variable validation on startup; crash fast on missing required config
+  - id: PRC.APPLICATION_CORE.PROJECT_SETUP_AND_STANDARDS.013
+    text: 'All config externalized: no hardcoded URLs, credentials, or feature toggles'
+  - id: PRC.APPLICATION_CORE.PROJECT_SETUP_AND_STANDARDS.014
+    text: .env.example committed with placeholder values for every required variable
+  - id: PRC.APPLICATION_CORE.PROJECT_SETUP_AND_STANDARDS.015
+    text: .env files in .gitignore and never committed
+  - id: PRC.APPLICATION_CORE.PROJECT_SETUP_AND_STANDARDS.016
+    text: Architecture Decision Records (ADRs) created for all major technical decisions
+  - id: PRC.APPLICATION_CORE.PROJECT_SETUP_AND_STANDARDS.017
+    text: SBOM (Software Bill of Materials) generated and stored per release
+  - id: PRC.APPLICATION_CORE.PROJECT_SETUP_AND_STANDARDS.018
+    text: Dependency update automation active (Dependabot or Renovate)
+  - id: PRC.APPLICATION_CORE.PROJECT_SETUP_AND_STANDARDS.019
+    text: Tech debt tracked in backlog with priority, owner, and estimated effort
+- id: PRC.APPLICATION_CORE.RESILIENCE_AND_ERROR_HANDLING
+  name: Resilience & Error Handling
+  items:
+  - id: PRC.APPLICATION_CORE.RESILIENCE_AND_ERROR_HANDLING.001
+    text: Global uncaught exception handler implemented
+  - id: PRC.APPLICATION_CORE.RESILIENCE_AND_ERROR_HANDLING.002
+    text: Unhandled promise rejection handler configured
+  - id: PRC.APPLICATION_CORE.RESILIENCE_AND_ERROR_HANDLING.003
+    text: Custom error classes with error codes and HTTP status code mapping
+  - id: PRC.APPLICATION_CORE.RESILIENCE_AND_ERROR_HANDLING.004
+    text: User-facing error messages are generic; stack traces never exposed to end users
+  - id: PRC.APPLICATION_CORE.RESILIENCE_AND_ERROR_HANDLING.005
+    text: 'All errors logged with full context: user ID, request ID, stack trace, relevant input'
+  - id: PRC.APPLICATION_CORE.RESILIENCE_AND_ERROR_HANDLING.006
+    text: PII scrubbed from error logs before they are persisted
+  - id: PRC.APPLICATION_CORE.RESILIENCE_AND_ERROR_HANDLING.007
+    text: Retry logic with exponential backoff and jitter on all external service calls
+  - id: PRC.APPLICATION_CORE.RESILIENCE_AND_ERROR_HANDLING.008
+    text: Maximum retry count bounded and not infinite
+  - id: PRC.APPLICATION_CORE.RESILIENCE_AND_ERROR_HANDLING.009
+    text: Circuit breaker pattern applied to all external service calls
+  - id: PRC.APPLICATION_CORE.RESILIENCE_AND_ERROR_HANDLING.010
+    text: Circuit breaker state (closed/open/half-open) monitored and dashboarded
+  - id: PRC.APPLICATION_CORE.RESILIENCE_AND_ERROR_HANDLING.011
+    text: Timeout defined on every external HTTP call, DB query, and queue operation
+  - id: PRC.APPLICATION_CORE.RESILIENCE_AND_ERROR_HANDLING.012
+    text: 'Graceful degradation: core functionality continues when non-critical deps fail'
+  - id: PRC.APPLICATION_CORE.RESILIENCE_AND_ERROR_HANDLING.013
+    text: 'Bulkhead: thread/connection pools isolated per external dependency'
+  - id: PRC.APPLICATION_CORE.RESILIENCE_AND_ERROR_HANDLING.014
+    text: Rate limiting applied on both inbound requests and outbound API calls
+  - id: PRC.APPLICATION_CORE.RESILIENCE_AND_ERROR_HANDLING.015
+    text: Dead letter queue for failed async jobs with alerting when messages accumulate
+  - id: PRC.APPLICATION_CORE.RESILIENCE_AND_ERROR_HANDLING.016
+    text: All resources properly released in finally/defer/RAII (no connection leaks)
+  - id: PRC.APPLICATION_CORE.RESILIENCE_AND_ERROR_HANDLING.017
+    text: Idempotency enforced on all mutating operations; idempotency-key tested
+  - id: PRC.APPLICATION_CORE.RESILIENCE_AND_ERROR_HANDLING.018
+    text: 'Partial failure handling: batch operations report per-item results'
+- id: PRC.APPLICATION_CORE.GRACEFUL_SHUTDOWN_AND_HEALTH_CHECKS
+  name: Graceful Shutdown & Health Checks
+  items:
+  - id: PRC.APPLICATION_CORE.GRACEFUL_SHUTDOWN_AND_HEALTH_CHECKS.001
+    text: 'SIGTERM handler: drains in-flight requests before exiting'
+  - id: PRC.APPLICATION_CORE.GRACEFUL_SHUTDOWN_AND_HEALTH_CHECKS.002
+    text: In-flight request counter tracked for clean drain during shutdown
+  - id: PRC.APPLICATION_CORE.GRACEFUL_SHUTDOWN_AND_HEALTH_CHECKS.003
+    text: Shutdown timeout bounded (30s default) with forced exit after timeout
+  - id: PRC.APPLICATION_CORE.GRACEFUL_SHUTDOWN_AND_HEALTH_CHECKS.004
+    text: Database connections closed and returned to pool during shutdown
+  - id: PRC.APPLICATION_CORE.GRACEFUL_SHUTDOWN_AND_HEALTH_CHECKS.005
+    text: Message consumer offsets committed / messages acknowledged before shutdown
+  - id: PRC.APPLICATION_CORE.GRACEFUL_SHUTDOWN_AND_HEALTH_CHECKS.006
+    text: Background job workers acknowledge in-flight job before shutdown
+  - id: PRC.APPLICATION_CORE.GRACEFUL_SHUTDOWN_AND_HEALTH_CHECKS.007
+    text: 'Startup probe: app does not receive traffic until all dependencies ready'
+  - id: PRC.APPLICATION_CORE.GRACEFUL_SHUTDOWN_AND_HEALTH_CHECKS.008
+    text: 'Liveness probe: process killed and restarted if it deadlocks or becomes unresponsive'
+  - id: PRC.APPLICATION_CORE.GRACEFUL_SHUTDOWN_AND_HEALTH_CHECKS.009
+    text: 'Readiness probe: traffic only sent to fully initialized instances'
+  - id: PRC.APPLICATION_CORE.GRACEFUL_SHUTDOWN_AND_HEALTH_CHECKS.010
+    text: /health endpoint returns 200 with dependency status summary
+  - id: PRC.APPLICATION_CORE.GRACEFUL_SHUTDOWN_AND_HEALTH_CHECKS.011
+    text: /ready endpoint returns 200 only when instance can serve traffic
+  - id: PRC.APPLICATION_CORE.GRACEFUL_SHUTDOWN_AND_HEALTH_CHECKS.012
+    text: /live endpoint returns 200 as long as process is responsive
+  - id: PRC.APPLICATION_CORE.GRACEFUL_SHUTDOWN_AND_HEALTH_CHECKS.013
+    text: Health check response includes version, uptime, and dependency states
+  - id: PRC.APPLICATION_CORE.GRACEFUL_SHUTDOWN_AND_HEALTH_CHECKS.014
+    text: Health check endpoints excluded from authentication middleware
+  - id: PRC.APPLICATION_CORE.GRACEFUL_SHUTDOWN_AND_HEALTH_CHECKS.015
+    text: 'Health check latency < 100ms: lightweight, no heavy queries'
+  - id: PRC.APPLICATION_CORE.GRACEFUL_SHUTDOWN_AND_HEALTH_CHECKS.016
+    text: 'Zero-downtime deployment: rolling update with maxUnavailable: 0'
+  - id: PRC.APPLICATION_CORE.GRACEFUL_SHUTDOWN_AND_HEALTH_CHECKS.017
+    text: New instance health checked before old instance deregistered
+- id: PRC.APPLICATION_CORE.LOGGING_TRACING_AND_OBSERVABILITY
+  name: Logging, Tracing & Observability
+  items:
+  - id: PRC.APPLICATION_CORE.LOGGING_TRACING_AND_OBSERVABILITY.001
+    text: Structured logging in JSON format on every log line
+  - id: PRC.APPLICATION_CORE.LOGGING_TRACING_AND_OBSERVABILITY.002
+    text: 'Log levels used correctly: DEBUG, INFO, WARN, ERROR, FATAL'
+  - id: PRC.APPLICATION_CORE.LOGGING_TRACING_AND_OBSERVABILITY.003
+    text: Request ID / correlation ID generated at ingress and propagated downstream
+  - id: PRC.APPLICATION_CORE.LOGGING_TRACING_AND_OBSERVABILITY.004
+    text: Correlation ID present in every single log line
+  - id: PRC.APPLICATION_CORE.LOGGING_TRACING_AND_OBSERVABILITY.005
+    text: User ID (anonymized or hashed) in all request log lines
+  - id: PRC.APPLICATION_CORE.LOGGING_TRACING_AND_OBSERVABILITY.006
+    text: 'Request logs include: method, path, status code, duration, user agent'
+  - id: PRC.APPLICATION_CORE.LOGGING_TRACING_AND_OBSERVABILITY.007
+    text: 'Log aggregation platform configured: Datadog, Loki, ELK, or CloudWatch'
+  - id: PRC.APPLICATION_CORE.LOGGING_TRACING_AND_OBSERVABILITY.008
+    text: 'Log retention: hot 7 days, warm 30 days, cold 1 year'
+  - id: PRC.APPLICATION_CORE.LOGGING_TRACING_AND_OBSERVABILITY.009
+    text: Distributed tracing implemented via OpenTelemetry (Jaeger, Tempo, Datadog APM)
+  - id: PRC.APPLICATION_CORE.LOGGING_TRACING_AND_OBSERVABILITY.010
+    text: Trace context propagated across all service-to-service calls
+  - id: PRC.APPLICATION_CORE.LOGGING_TRACING_AND_OBSERVABILITY.011
+    text: 'Custom business metrics emitted: orders, payments, signups per hour'
+  - id: PRC.APPLICATION_CORE.LOGGING_TRACING_AND_OBSERVABILITY.012
+    text: 'Four golden signals dashboarded per service: latency, traffic, errors, saturation'
+  - id: PRC.APPLICATION_CORE.LOGGING_TRACING_AND_OBSERVABILITY.013
+    text: 'Error rate alert: fires when error rate > threshold over 5 minutes'
+  - id: PRC.APPLICATION_CORE.LOGGING_TRACING_AND_OBSERVABILITY.014
+    text: 'Latency alert: fires when p99 > threshold for 3 consecutive minutes'
+  - id: PRC.APPLICATION_CORE.LOGGING_TRACING_AND_OBSERVABILITY.015
+    text: No PII or secrets logged anywhere in the system
+  - id: PRC.APPLICATION_CORE.LOGGING_TRACING_AND_OBSERVABILITY.016
+    text: 'Audit log separate from app log: who did what, when, from where'
+  - id: PRC.APPLICATION_CORE.LOGGING_TRACING_AND_OBSERVABILITY.017
+    text: Log sampling configured for high-volume debug/trace logs
+- id: PRC.APPLICATION_CORE.CONFIGURATION_AND_FEATURE_FLAGS
+  name: Configuration & Feature Flags
+  items:
+  - id: PRC.APPLICATION_CORE.CONFIGURATION_AND_FEATURE_FLAGS.001
+    text: 'Feature flag system in place: LaunchDarkly, Flagsmith, GrowthBook, or Unleash'
+  - id: PRC.APPLICATION_CORE.CONFIGURATION_AND_FEATURE_FLAGS.002
+    text: Every major feature behind a feature flag before going to production
+  - id: PRC.APPLICATION_CORE.CONFIGURATION_AND_FEATURE_FLAGS.003
+    text: Kill switch flags for every revenue-critical system (payments, auth, core feature)
+  - id: PRC.APPLICATION_CORE.CONFIGURATION_AND_FEATURE_FLAGS.004
+    text: Kill switch activatable in < 1 minute without a code deploy
+  - id: PRC.APPLICATION_CORE.CONFIGURATION_AND_FEATURE_FLAGS.005
+    text: Feature flags allow per-user, per-group, percentage-based rollout
+  - id: PRC.APPLICATION_CORE.CONFIGURATION_AND_FEATURE_FLAGS.006
+    text: 'Remote config for runtime-tunable values: timeouts, rate limits, thresholds'
+  - id: PRC.APPLICATION_CORE.CONFIGURATION_AND_FEATURE_FLAGS.007
+    text: Config validated at startup with descriptive crash on missing required value
+  - id: PRC.APPLICATION_CORE.CONFIGURATION_AND_FEATURE_FLAGS.008
+    text: All sensitive config (secrets) separate from feature flag systems
+  - id: PRC.APPLICATION_CORE.CONFIGURATION_AND_FEATURE_FLAGS.009
+    text: Environment-specific config clearly separated (dev, staging, prod)
+  - id: PRC.APPLICATION_CORE.CONFIGURATION_AND_FEATURE_FLAGS.010
+    text: 'Feature flag cleanup process: flags removed 2 weeks after 100% rollout'
+  - id: PRC.APPLICATION_CORE.CONFIGURATION_AND_FEATURE_FLAGS.011
+    text: Stale flag debt tracked in engineering backlog
+  - id: PRC.APPLICATION_CORE.CONFIGURATION_AND_FEATURE_FLAGS.012
+    text: A/B experiment flags separate from kill switch flags (different lifecycle)
+  - id: PRC.APPLICATION_CORE.CONFIGURATION_AND_FEATURE_FLAGS.013
+    text: 'Config change audit trail: who changed what and when'

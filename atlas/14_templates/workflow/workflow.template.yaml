@@ -1,5 +1,5 @@
 # Template: workflow
-# Replace placeholders. See 26_schemas/workflow/ if a schema exists.
+# Replace placeholders. See schemas/workflow/ if a schema exists.
 id: "{id}"
 name: "{name}"
 status: draft

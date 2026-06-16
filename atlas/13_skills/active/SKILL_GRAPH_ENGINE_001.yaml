@@ -16,9 +16,9 @@ status: active
 skill_number: 147
 source_documents:
 - New updates/atlas-graph-engine-concept.html
-- apps/atlas/src/lib/graph/types.ts
-- apps/atlas/src/lib/graph/mockGraphData.ts
-- apps/atlas/src/components/graph/AtlasGraphEngine.tsx
+- apps/frontend/shell/src/lib/graph/types.ts
+- apps/frontend/shell/src/lib/graph/mockGraphData.ts
+- apps/frontend/shell/src/components/graph/AtlasGraphEngine.tsx
 trigger_conditions:
 - User asks for Atlas Graph Engine as a graph intelligence workbench.
 - User asks for proof/drift overlays, local context lens, saved graph queries, deterministic

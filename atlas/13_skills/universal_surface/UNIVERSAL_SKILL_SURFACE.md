@@ -15,7 +15,7 @@ The source of truth is:
 - `13_skills/active/SKILL_*.playbook.md`
 - `13_skills/skill_refinery/trigger_router.yaml`
 - `37_command_protocol/trigger_router.yaml`
-- `25_automation/route_intent.py`
+- `infrastructure/scripts/route_intent.py`
 
 Assistant-specific folders are projections:
 
@@ -50,7 +50,7 @@ Load every project-specific skill regardless of target.
 
 ## Required Runtime Sequence
 
-1. Run `python3 25_automation/route_intent.py "<user request>" --json`.
+1. Run `python3 infrastructure/scripts/route_intent.py "<user request>" --json`.
 2. Read this universal surface contract.
 3. Use `13_skills/skill_refinery/universal_skill_invocation_policy.md`.
 4. Use `13_skills/skill_refinery/cross_runtime_invoke_all_skills_contract.md`.
@@ -75,8 +75,8 @@ Every all-skills response must include:
 The router integration gate is:
 
 ```bash
-python3 25_automation/audit_skill_router_integration.py
-python3 25_automation/validate_trigger_determinism.py
+python3 infrastructure/scripts/audit_skill_router_integration.py
+python3 infrastructure/scripts/validate_trigger_determinism.py
 ```
 
 Passing means:

@@ -11,13 +11,13 @@ atlas_ingest
 - Optional `--apply` when pointer stability is required.
 
 ## Required Outputs
-- `23_evidence/atlas_platform/ingest/atlas_ingest_<run_id>.yaml`
-- `23_evidence/atlas_platform/ingest/atlas_ingest_<run_id>.json`
-- `23_evidence/atlas_platform/ingest/atlas_ingest_<run_id>.md`
+- `23_evidence/platform/ingest/atlas_ingest_<run_id>.yaml`
+- `23_evidence/platform/ingest/atlas_ingest_<run_id>.json`
+- `23_evidence/platform/ingest/atlas_ingest_<run_id>.md`
 
 ## Validation Gates
 - `/atlas:ingest --check` remains read-only.
 - `/atlas:status --format json` can verify generated status wiring.
 
 ## Post-conditions
-- `23_evidence/atlas_platform/ingest/atlas_ingest_latest.yaml` is updated when `--apply` is used.
+- `23_evidence/platform/ingest/atlas_ingest_latest.yaml` is updated when `--apply` is used.

@@ -2,7 +2,7 @@ id: TEST_ASSISTANT_SURFACE_ACQUISITION_001
 title: Assistant Surface Acquisition Registry Validation
 type: script
 status: active
-command: python3 25_automation/sync_scripts/validate_assistant_surface_acquisition.py
+command: python3 infrastructure/scripts/sync_scripts/validate_assistant_surface_acquisition.py
 validates:
 - SKILL_GLOBAL_CLAUDE_REPOSITORY_ACQUISITION_001
 - SKILL_CODEX_GEMINI_REPOSITORY_ACQUISITION_001

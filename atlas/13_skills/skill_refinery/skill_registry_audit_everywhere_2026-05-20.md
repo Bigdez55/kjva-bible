@@ -14,7 +14,7 @@ plus router-integration status for the canonical repo.
 | IPOS | 156 | 150 | 6 | ❌ DRIFT |
 | nexus | 156 | 150 | 6 | ❌ DRIFT |
 | Storbits | 156 | 150 | 6 | ❌ DRIFT |
-| Apollo16-main/atlas | 156 | 150 | 6 | ❌ DRIFT |
+| Apollo16-main/development_skills | 156 | 150 | 6 | ❌ DRIFT |
 | Apollo16-main/Apollo16 | 14 | 14 | 0 | ✅ IN SYNC (fossil copy) |
 | Nexus (uppercase) | 156 | 150 | 6 | ❌ DRIFT |
 
@@ -25,7 +25,7 @@ plus router-integration status for the canonical repo.
    is registered. No orphaned entries (every registry name has a file).
 
 2. **6 embedded copies drift identically** — GENESYS, IPOS, nexus, Storbits,
-   Apollo16-main/atlas, Nexus each have 156 skill files but only
+   Apollo16-main/development_skills, Nexus each have 156 skill files but only
    150 registered. All six are missing the **same 6** skills from their
    registry: `SKILL_ATLAS_GRAPH_ENGINE_001`, `SKILL_ATLAS_KNOWLEDGE_DEPOT_001`,
    `SKILL_ATLAS_OPERATIONAL_WORKSPACE_001`, `SKILL_ATLAS_ORBITAL_IDENTITY_001`,
@@ -90,7 +90,7 @@ Post-sync verification — all 6 now match canonical exactly:
 | IPOS | 177 | 177 | 177 | 177 |
 | Nexus (= nexus) | 177 | 177 | 177 | 177 |
 | Storbits | 177 | 177 | 177 | 177 |
-| Apollo16-main/atlas | 177 | 177 | 177 | 177 |
+| Apollo16-main/development_skills | 177 | 177 | 177 | 177 |
 | Apollo16-main/Apollo16 (fossil) | 14 | 14 | 14 | — (left untouched, by decision) |
 
 Files re-synced only; **not committed** in any repo (per decision — each repo

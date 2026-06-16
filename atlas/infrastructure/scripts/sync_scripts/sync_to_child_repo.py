@@ -25,11 +25,14 @@ ALLOWLIST: dict[str, str] = {
     "platform/systems/19_truth_state":      "19_truth_state",
     "platform/systems/24_prompt_library":   "24_prompt_library",
     "infrastructure/scripts":              "infrastructure/scripts",
-    "schemas":                              "26_schemas",
+    "platform/sdlc/26_schemas":             "26_schemas",
     "platform/systems/37_command_protocol": "37_command_protocol",
     "platform/systems/42_context_compiler": "42_context_compiler",
+    "platform/systems/53_production_readiness": "53_production_readiness",
+    "platform/systems/30_repo_starter":     "30_repo_starter",
     "docs/APEX_PROTOCOL.md":               "APEX_PROTOCOL.md",
     "README.md":                            "README.md",
+    "dev-checklist-v2.jsx":                 "dev-checklist-v2.jsx",
 }
 
 # Per-path excludes (rsync --exclude) keyed by SOURCE path.

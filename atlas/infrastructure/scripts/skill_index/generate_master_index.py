@@ -186,7 +186,11 @@ def main() -> int:
             print(f"FAIL: {args.output} missing", file=sys.stderr)
             return 1
         existing = args.output.read_text()
-        if existing != md:
+        # Date-insensitive comparison: the **Generated:** line carries today's date, which
+        # would make --check report drift every day after the file is committed (a flaky CI
+        # gate). Normalize that one volatile line so --check reflects real content drift only.
+        norm = lambda s: re.sub(r"(?m)^\*\*Generated:\*\* .*$", "**Generated:** <date>", s)
+        if norm(existing) != norm(md):
             print(f"DRIFT: {args.output.relative_to(REPO_ROOT)} differs from generated", file=sys.stderr)
             return 1
         print("PASS: master index in sync")

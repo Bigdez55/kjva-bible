@@ -12,7 +12,7 @@ atlas_validate
 ## Required Outputs
 - `08_verification/gate_results/atlas_platform_core_safe_gates.yaml`
 - `08_verification/gate_results/atlas_platform_core_safe_gates.json`
-- `23_evidence/atlas_platform/gates/atlas_safe_gate_results.md`
+- `23_evidence/platform/gates/atlas_safe_gate_results.md`
 
 ## Validation Gates
 - Gate execution and returned verdict matrix are evidence for follow-on commands.

@@ -1,0 +1,136 @@
+schema_version: '1.0'
+category_id: PRC.DOCUMENTATION
+name: Documentation
+icon: ⊡
+color: '#60A5FA'
+default_severity: low
+coverage_status: FULL
+skill_refs:
+- SKILL_ADR_AUTHORING_001
+- SKILL_DOCS_SYNC_001
+- SKILL_README_001
+- SKILL_TUTORIAL_AUTHORING_DISCIPLINE_001
+capability_status: HAVE
+tool_refs: []
+mcp_refs:
+- atlas_knowledge_note_write
+command_refs:
+- POST /api/knowledge
+- PUT /api/knowledge/[id]
+capability_refs:
+- CAP_KNOWLEDGE_NOTE_WRITE
+capability_notes: 'BUILT + probe-verified WIRED (verify_knowledge_write.mjs VERIFY_OK; tenant-scoped create/update through SQLite). Knowledge wiki write: atlas_knowledge_note_write + POST/PUT /api/knowledge.'
+sections:
+- id: PRC.DOCUMENTATION.CODE_AND_API_DOCUMENTATION
+  name: Code & API Documentation
+  items:
+  - id: PRC.DOCUMENTATION.CODE_AND_API_DOCUMENTATION.001
+    text: Public APIs of all modules/classes/functions documented (JSDoc, docstrings, godoc)
+  - id: PRC.DOCUMENTATION.CODE_AND_API_DOCUMENTATION.002
+    text: Complex algorithms have inline explanation of WHY, not just WHAT
+  - id: PRC.DOCUMENTATION.CODE_AND_API_DOCUMENTATION.003
+    text: Non-obvious business logic references requirement, ticket, or ADR
+  - id: PRC.DOCUMENTATION.CODE_AND_API_DOCUMENTATION.004
+    text: TODO/FIXME comments include ticket reference and author initials
+  - id: PRC.DOCUMENTATION.CODE_AND_API_DOCUMENTATION.005
+    text: No commented-out code in codebase
+  - id: PRC.DOCUMENTATION.CODE_AND_API_DOCUMENTATION.006
+    text: README for every top-level package and service
+  - id: PRC.DOCUMENTATION.CODE_AND_API_DOCUMENTATION.007
+    text: Code examples in docstrings for non-obvious usage patterns
+  - id: PRC.DOCUMENTATION.CODE_AND_API_DOCUMENTATION.008
+    text: 'Type definitions documented: TypeScript types, Python type hints'
+  - id: PRC.DOCUMENTATION.CODE_AND_API_DOCUMENTATION.009
+    text: 'Configuration options documented: name, type, default, description, example'
+  - id: PRC.DOCUMENTATION.CODE_AND_API_DOCUMENTATION.010
+    text: 'Error codes documented: code, meaning, recovery action for operators'
+  - id: PRC.DOCUMENTATION.CODE_AND_API_DOCUMENTATION.011
+    text: 'OpenAPI 3.x spec complete: every endpoint, parameter, response, auth, error'
+  - id: PRC.DOCUMENTATION.CODE_AND_API_DOCUMENTATION.012
+    text: Example requests and responses for every endpoint
+  - id: PRC.DOCUMENTATION.CODE_AND_API_DOCUMENTATION.013
+    text: 'Webhook event catalog: every event type with full example payload'
+  - id: PRC.DOCUMENTATION.CODE_AND_API_DOCUMENTATION.014
+    text: 'API changelog: breaking changes highlighted, sunset dates shown'
+  - id: PRC.DOCUMENTATION.CODE_AND_API_DOCUMENTATION.015
+    text: Interactive API explorer (Swagger UI, Scalar, Redoc) hosted and up to date
+  - id: PRC.DOCUMENTATION.CODE_AND_API_DOCUMENTATION.016
+    text: SDK documentation with getting-started code examples
+  - id: PRC.DOCUMENTATION.CODE_AND_API_DOCUMENTATION.017
+    text: Migration guides for each major API version upgrade
+- id: PRC.DOCUMENTATION.ARCHITECTURE_AND_RUNBOOK_DOCUMENTATION
+  name: Architecture & Runbook Documentation
+  items:
+  - id: PRC.DOCUMENTATION.ARCHITECTURE_AND_RUNBOOK_DOCUMENTATION.001
+    text: 'Architecture overview diagram: components and data flows in version control'
+  - id: PRC.DOCUMENTATION.ARCHITECTURE_AND_RUNBOOK_DOCUMENTATION.002
+    text: Data flow diagrams for all key user journeys
+  - id: PRC.DOCUMENTATION.ARCHITECTURE_AND_RUNBOOK_DOCUMENTATION.003
+    text: Sequence diagrams for complex multi-service interactions
+  - id: PRC.DOCUMENTATION.ARCHITECTURE_AND_RUNBOOK_DOCUMENTATION.004
+    text: ER diagram for database schema auto-generated and version-controlled
+  - id: PRC.DOCUMENTATION.ARCHITECTURE_AND_RUNBOOK_DOCUMENTATION.005
+    text: Network topology diagram current and accurate
+  - id: PRC.DOCUMENTATION.ARCHITECTURE_AND_RUNBOOK_DOCUMENTATION.006
+    text: Deployment architecture diagram showing all environments
+  - id: PRC.DOCUMENTATION.ARCHITECTURE_AND_RUNBOOK_DOCUMENTATION.007
+    text: ADRs for all major decisions stored in /docs/adr
+  - id: PRC.DOCUMENTATION.ARCHITECTURE_AND_RUNBOOK_DOCUMENTATION.008
+    text: 'Service catalog: every service has owner, SLO, docs link, on-call contact'
+  - id: PRC.DOCUMENTATION.ARCHITECTURE_AND_RUNBOOK_DOCUMENTATION.009
+    text: 'Runbook for every P1/P2 alert: symptoms, diagnosis steps, resolution steps'
+  - id: PRC.DOCUMENTATION.ARCHITECTURE_AND_RUNBOOK_DOCUMENTATION.010
+    text: 'Runbook for DB failover: step-by-step, tested quarterly'
+  - id: PRC.DOCUMENTATION.ARCHITECTURE_AND_RUNBOOK_DOCUMENTATION.011
+    text: Runbook for cache flush and rebuild
+  - id: PRC.DOCUMENTATION.ARCHITECTURE_AND_RUNBOOK_DOCUMENTATION.012
+    text: 'Runbook for deployment rollback: steps to revert last deploy'
+  - id: PRC.DOCUMENTATION.ARCHITECTURE_AND_RUNBOOK_DOCUMENTATION.013
+    text: 'Runbook for manual scaling: how to scale DB, app, and queues'
+  - id: PRC.DOCUMENTATION.ARCHITECTURE_AND_RUNBOOK_DOCUMENTATION.014
+    text: Runbook for certificate renewal emergency fallback
+  - id: PRC.DOCUMENTATION.ARCHITECTURE_AND_RUNBOOK_DOCUMENTATION.015
+    text: Runbook for secret rotation procedure
+  - id: PRC.DOCUMENTATION.ARCHITECTURE_AND_RUNBOOK_DOCUMENTATION.016
+    text: Runbook for security incident initial response
+  - id: PRC.DOCUMENTATION.ARCHITECTURE_AND_RUNBOOK_DOCUMENTATION.017
+    text: Runbook for GDPR erasure request processing
+  - id: PRC.DOCUMENTATION.ARCHITECTURE_AND_RUNBOOK_DOCUMENTATION.018
+    text: Runbook for recovering from backup
+  - id: PRC.DOCUMENTATION.ARCHITECTURE_AND_RUNBOOK_DOCUMENTATION.019
+    text: All runbooks tested quarterly and updated after incidents
+  - id: PRC.DOCUMENTATION.ARCHITECTURE_AND_RUNBOOK_DOCUMENTATION.020
+    text: Runbooks stored where accessible during outage (not in the down system)
+- id: PRC.DOCUMENTATION.DEVELOPER_AND_PROCESS_DOCUMENTATION
+  name: Developer & Process Documentation
+  items:
+  - id: PRC.DOCUMENTATION.DEVELOPER_AND_PROCESS_DOCUMENTATION.001
+    text: 'CONTRIBUTING.md: contribution process, PR workflow, code style, review expectations'
+  - id: PRC.DOCUMENTATION.DEVELOPER_AND_PROCESS_DOCUMENTATION.002
+    text: New developer can clone and run locally in < 30 minutes with documented steps
+  - id: PRC.DOCUMENTATION.DEVELOPER_AND_PROCESS_DOCUMENTATION.003
+    text: 'One-command environment setup script: make setup or ./scripts/bootstrap.sh'
+  - id: PRC.DOCUMENTATION.DEVELOPER_AND_PROCESS_DOCUMENTATION.004
+    text: 'Testing guide: how to run unit, integration, and E2E tests locally'
+  - id: PRC.DOCUMENTATION.DEVELOPER_AND_PROCESS_DOCUMENTATION.005
+    text: 'Debugging guide: how to attach debugger, inspect DB, tail logs locally'
+  - id: PRC.DOCUMENTATION.DEVELOPER_AND_PROCESS_DOCUMENTATION.006
+    text: 'Deployment process documented: what happens automatically on each deploy'
+  - id: PRC.DOCUMENTATION.DEVELOPER_AND_PROCESS_DOCUMENTATION.007
+    text: 'Release process: how to cut a release, who approves, what is automated'
+  - id: PRC.DOCUMENTATION.DEVELOPER_AND_PROCESS_DOCUMENTATION.008
+    text: 'Incident response playbook: how to declare, lead, and close an incident'
+  - id: PRC.DOCUMENTATION.DEVELOPER_AND_PROCESS_DOCUMENTATION.009
+    text: 'On-call guide: what to do when paged, escalation path, handoff procedure'
+  - id: PRC.DOCUMENTATION.DEVELOPER_AND_PROCESS_DOCUMENTATION.010
+    text: 'Onboarding checklist for new engineers: tools access, first PR target, reading list'
+  - id: PRC.DOCUMENTATION.DEVELOPER_AND_PROCESS_DOCUMENTATION.011
+    text: 'Team norms: meeting cadences, async communication, review expectations'
+  - id: PRC.DOCUMENTATION.DEVELOPER_AND_PROCESS_DOCUMENTATION.012
+    text: 'Data classification guide: how to handle each sensitivity level'
+  - id: PRC.DOCUMENTATION.DEVELOPER_AND_PROCESS_DOCUMENTATION.013
+    text: 'Glossary: all domain-specific terms and acronyms defined in one place'
+  - id: PRC.DOCUMENTATION.DEVELOPER_AND_PROCESS_DOCUMENTATION.014
+    text: Architecture deep-dive recordings accessible to all engineers
+  - id: PRC.DOCUMENTATION.DEVELOPER_AND_PROCESS_DOCUMENTATION.015
+    text: 'Technology radar maintained: adopt, trial, assess, hold decisions'

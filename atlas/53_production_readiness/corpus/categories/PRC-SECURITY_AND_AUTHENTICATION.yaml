@@ -1,0 +1,210 @@
+schema_version: '1.0'
+category_id: PRC.SECURITY_AND_AUTHENTICATION
+name: Security & Authentication
+icon: ⬡
+color: '#EF4444'
+default_severity: high
+coverage_status: FULL
+skill_refs:
+- SKILL_SECURITY_CRYPTO_ENGINEERING_001
+- SKILL_IDENTITY_AUTH_RBAC_ABAC_001
+- SKILL_AUTH_GUARD_001
+- SKILL_SECURITY_AUDIT_001
+capability_status: PARTIAL
+tool_refs: []
+mcp_refs: []
+command_refs: []
+capability_refs: []
+capability_notes: requireSession/requireTenant gate every mutating route + x-atlas-* header injection (proxy.ts) are wired, but no full IdP/RBAC/MFA executor. Partial executor; build a real auth provider + RBAC service to reach HAVE.
+sections:
+- id: PRC.SECURITY_AND_AUTHENTICATION.AUTHENTICATION
+  name: Authentication
+  items:
+  - id: PRC.SECURITY_AND_AUTHENTICATION.AUTHENTICATION.001
+    text: 'Authentication protocol: OAuth 2.0 + OIDC, SAML for enterprise, Passkeys'
+  - id: PRC.SECURITY_AND_AUTHENTICATION.AUTHENTICATION.002
+    text: 'Identity provider evaluated: Okta, Auth0, Cognito, Keycloak, or custom OIDC'
+  - id: PRC.SECURITY_AND_AUTHENTICATION.AUTHENTICATION.003
+    text: 'JWT algorithm: RS256 or ES256; never HS256 for multi-service deployments'
+  - id: PRC.SECURITY_AND_AUTHENTICATION.AUTHENTICATION.004
+    text: 'JWT claims minimal: sub, exp, iat, aud, scope only; no PII in JWT payload'
+  - id: PRC.SECURITY_AND_AUTHENTICATION.AUTHENTICATION.005
+    text: Access token lifetime ≤ 15 minutes
+  - id: PRC.SECURITY_AND_AUTHENTICATION.AUTHENTICATION.006
+    text: Refresh token rotated on every use
+  - id: PRC.SECURITY_AND_AUTHENTICATION.AUTHENTICATION.007
+    text: Refresh token absolute expiry (30 days regardless of activity)
+  - id: PRC.SECURITY_AND_AUTHENTICATION.AUTHENTICATION.008
+    text: Refresh token revoked on logout and password change
+  - id: PRC.SECURITY_AND_AUTHENTICATION.AUTHENTICATION.009
+    text: Refresh token in httpOnly, Secure, SameSite=Strict cookie
+  - id: PRC.SECURITY_AND_AUTHENTICATION.AUTHENTICATION.010
+    text: MFA enforced for all admin and privileged accounts
+  - id: PRC.SECURITY_AND_AUTHENTICATION.AUTHENTICATION.011
+    text: 'MFA options: TOTP (authenticator app) and WebAuthn/Passkeys as primary; SMS as fallback only'
+  - id: PRC.SECURITY_AND_AUTHENTICATION.AUTHENTICATION.012
+    text: Passkeys / WebAuthn supported as passwordless option
+  - id: PRC.SECURITY_AND_AUTHENTICATION.AUTHENTICATION.013
+    text: 'Account enumeration prevented: identical error for invalid user or wrong password'
+  - id: PRC.SECURITY_AND_AUTHENTICATION.AUTHENTICATION.014
+    text: 'Brute force protection: lockout after 5 failed attempts with CAPTCHA'
+  - id: PRC.SECURITY_AND_AUTHENTICATION.AUTHENTICATION.015
+    text: Rate limiting on /login, /register, /forgot-password endpoints
+  - id: PRC.SECURITY_AND_AUTHENTICATION.AUTHENTICATION.016
+    text: 'Password minimum: 12 characters per NIST SP 800-63B; no forced complexity'
+  - id: PRC.SECURITY_AND_AUTHENTICATION.AUTHENTICATION.017
+    text: Breached password check via HaveIBeenPwned API on registration and change
+  - id: PRC.SECURITY_AND_AUTHENTICATION.AUTHENTICATION.018
+    text: Email verification required before account activation
+  - id: PRC.SECURITY_AND_AUTHENTICATION.AUTHENTICATION.019
+    text: Session regenerated on privilege escalation
+  - id: PRC.SECURITY_AND_AUTHENTICATION.AUTHENTICATION.020
+    text: SSO (SAML/OIDC) supported for enterprise customer accounts
+  - id: PRC.SECURITY_AND_AUTHENTICATION.AUTHENTICATION.021
+    text: 'Service-to-service auth: mTLS or signed JWT; not static shared secrets'
+- id: PRC.SECURITY_AND_AUTHENTICATION.AUTHORIZATION
+  name: Authorization
+  items:
+  - id: PRC.SECURITY_AND_AUTHENTICATION.AUTHORIZATION.001
+    text: 'Authorization model documented: RBAC, ABAC, or ReBAC (Zanzibar-style)'
+  - id: PRC.SECURITY_AND_AUTHENTICATION.AUTHORIZATION.002
+    text: Every endpoint and action has explicit server-side permission check
+  - id: PRC.SECURITY_AND_AUTHENTICATION.AUTHORIZATION.003
+    text: Authorization enforced server-side; client-supplied role claims never trusted
+  - id: PRC.SECURITY_AND_AUTHENTICATION.AUTHORIZATION.004
+    text: Row-level security at DB level matches application-level authorization
+  - id: PRC.SECURITY_AND_AUTHENTICATION.AUTHORIZATION.005
+    text: 'IDOR prevention: object IDs always validated against requesting user permissions'
+  - id: PRC.SECURITY_AND_AUTHENTICATION.AUTHORIZATION.006
+    text: 'Tenant isolation enforced: cross-tenant data access impossible at every layer'
+  - id: PRC.SECURITY_AND_AUTHENTICATION.AUTHORIZATION.007
+    text: API keys scoped to minimum permissions with rotation mechanism
+  - id: PRC.SECURITY_AND_AUTHENTICATION.AUTHORIZATION.008
+    text: OAuth scopes requested are minimum necessary for the use case
+  - id: PRC.SECURITY_AND_AUTHENTICATION.AUTHORIZATION.009
+    text: Webhook receiver validates HMAC signature before processing any payload
+  - id: PRC.SECURITY_AND_AUTHENTICATION.AUTHORIZATION.010
+    text: 'Admin panel: separate subdomain, MFA required, IP allowlist enforced'
+  - id: PRC.SECURITY_AND_AUTHENTICATION.AUTHORIZATION.011
+    text: 'Permission model unit-tested: all deny cases explicitly covered'
+  - id: PRC.SECURITY_AND_AUTHENTICATION.AUTHORIZATION.012
+    text: Privilege escalation requires re-authentication
+- id: PRC.SECURITY_AND_AUTHENTICATION.OWASP_TOP_10_MITIGATIONS
+  name: OWASP Top 10 Mitigations
+  items:
+  - id: PRC.SECURITY_AND_AUTHENTICATION.OWASP_TOP_10_MITIGATIONS.001
+    text: 'A01 Broken Access Control: all endpoints authorized, IDOR prevented, CORS restricted'
+  - id: PRC.SECURITY_AND_AUTHENTICATION.OWASP_TOP_10_MITIGATIONS.002
+    text: 'A02 Cryptographic Failures: no plaintext PII at rest, argon2id for passwords, TLS everywhere'
+  - id: PRC.SECURITY_AND_AUTHENTICATION.OWASP_TOP_10_MITIGATIONS.003
+    text: 'A03 Injection: parameterized queries everywhere; no string-interpolated SQL/commands'
+  - id: PRC.SECURITY_AND_AUTHENTICATION.OWASP_TOP_10_MITIGATIONS.004
+    text: 'A03 Command Injection: no shell exec with user input; if unavoidable, allowlist args'
+  - id: PRC.SECURITY_AND_AUTHENTICATION.OWASP_TOP_10_MITIGATIONS.005
+    text: 'A03 LDAP/XPath Injection: inputs sanitized before any query construction'
+  - id: PRC.SECURITY_AND_AUTHENTICATION.OWASP_TOP_10_MITIGATIONS.006
+    text: 'A04 Insecure Design: threat model (STRIDE) completed for all major features'
+  - id: PRC.SECURITY_AND_AUTHENTICATION.OWASP_TOP_10_MITIGATIONS.007
+    text: 'A05 Security Misconfiguration: debug off, defaults changed, directory listing off'
+  - id: PRC.SECURITY_AND_AUTHENTICATION.OWASP_TOP_10_MITIGATIONS.008
+    text: 'A06 Outdated Components: Dependabot active, CVEs remediated within defined SLA'
+  - id: PRC.SECURITY_AND_AUTHENTICATION.OWASP_TOP_10_MITIGATIONS.009
+    text: 'A08 Software Integrity: SBOM generated, supply chain secured, CI trusted'
+  - id: PRC.SECURITY_AND_AUTHENTICATION.OWASP_TOP_10_MITIGATIONS.010
+    text: 'A09 Monitoring Failures: alerts on brute force, privilege escalation, suspicious access'
+  - id: PRC.SECURITY_AND_AUTHENTICATION.OWASP_TOP_10_MITIGATIONS.011
+    text: 'A10 SSRF: outbound HTTP requests validated against strict allowlist of hosts'
+  - id: PRC.SECURITY_AND_AUTHENTICATION.OWASP_TOP_10_MITIGATIONS.012
+    text: 'CSRF: SameSite cookies + CSRF token for non-CORS form submissions'
+  - id: PRC.SECURITY_AND_AUTHENTICATION.OWASP_TOP_10_MITIGATIONS.013
+    text: 'XSS: output encoding, CSP deployed, DOMPurify for user-generated HTML'
+  - id: PRC.SECURITY_AND_AUTHENTICATION.OWASP_TOP_10_MITIGATIONS.014
+    text: 'Clickjacking: X-Frame-Options DENY or CSP frame-ancestors none'
+  - id: PRC.SECURITY_AND_AUTHENTICATION.OWASP_TOP_10_MITIGATIONS.015
+    text: 'Open redirect: all redirect targets validated against allowlist'
+  - id: PRC.SECURITY_AND_AUTHENTICATION.OWASP_TOP_10_MITIGATIONS.016
+    text: 'Mass assignment: explicit allow-list of writable fields on every model'
+  - id: PRC.SECURITY_AND_AUTHENTICATION.OWASP_TOP_10_MITIGATIONS.017
+    text: 'Subdomain takeover: dangling CNAME records audited quarterly'
+- id: PRC.SECURITY_AND_AUTHENTICATION.SDLC_SECURITY_AND_SECRETS
+  name: SDLC Security & Secrets
+  items:
+  - id: PRC.SECURITY_AND_AUTHENTICATION.SDLC_SECURITY_AND_SECRETS.001
+    text: Threat modeling (STRIDE/PASTA) completed for all major features before coding
+  - id: PRC.SECURITY_AND_AUTHENTICATION.SDLC_SECURITY_AND_SECRETS.002
+    text: Security champion designated per engineering team
+  - id: PRC.SECURITY_AND_AUTHENTICATION.SDLC_SECURITY_AND_SECRETS.003
+    text: Security training completed annually by all engineers
+  - id: PRC.SECURITY_AND_AUTHENTICATION.SDLC_SECURITY_AND_SECRETS.004
+    text: 'SAST scanning on every PR: Semgrep, CodeQL, or Checkmarx'
+  - id: PRC.SECURITY_AND_AUTHENTICATION.SDLC_SECURITY_AND_SECRETS.005
+    text: 'DAST scanning on staging before each production release: OWASP ZAP or Burp'
+  - id: PRC.SECURITY_AND_AUTHENTICATION.SDLC_SECURITY_AND_SECRETS.006
+    text: 'Container scanning on every image build: Trivy, Grype, or Snyk Container'
+  - id: PRC.SECURITY_AND_AUTHENTICATION.SDLC_SECURITY_AND_SECRETS.007
+    text: 'IaC scanning in CI: Checkov, tfsec, or Terrascan'
+  - id: PRC.SECURITY_AND_AUTHENTICATION.SDLC_SECURITY_AND_SECRETS.008
+    text: 'Secrets scanning on every commit: GitGuardian, truffleHog, or detect-secrets'
+  - id: PRC.SECURITY_AND_AUTHENTICATION.SDLC_SECURITY_AND_SECRETS.009
+    text: Penetration test by external firm annually; findings tracked to remediation
+  - id: PRC.SECURITY_AND_AUTHENTICATION.SDLC_SECURITY_AND_SECRETS.010
+    text: 'Bug bounty program active: HackerOne, Bugcrowd, or Intigriti'
+  - id: PRC.SECURITY_AND_AUTHENTICATION.SDLC_SECURITY_AND_SECRETS.011
+    text: Vulnerability disclosure policy at /.well-known/security.txt
+  - id: PRC.SECURITY_AND_AUTHENTICATION.SDLC_SECURITY_AND_SECRETS.012
+    text: 'CVE SLA: Critical 24h, High 7d, Medium 30d, Low 90d'
+  - id: PRC.SECURITY_AND_AUTHENTICATION.SDLC_SECURITY_AND_SECRETS.013
+    text: 'All secrets in vault: HashiCorp Vault, AWS Secrets Manager, or GCP Secret Manager'
+  - id: PRC.SECURITY_AND_AUTHENTICATION.SDLC_SECURITY_AND_SECRETS.014
+    text: No secrets in environment variables for containers (use runtime injection)
+  - id: PRC.SECURITY_AND_AUTHENTICATION.SDLC_SECURITY_AND_SECRETS.015
+    text: No secrets in CI/CD env vars (use OIDC/workload identity where possible)
+  - id: PRC.SECURITY_AND_AUTHENTICATION.SDLC_SECURITY_AND_SECRETS.016
+    text: Secret rotation automated for DB credentials, API keys, JWT signing keys
+  - id: PRC.SECURITY_AND_AUTHENTICATION.SDLC_SECURITY_AND_SECRETS.017
+    text: 'Secret rotation tested: app handles rotation without downtime'
+  - id: PRC.SECURITY_AND_AUTHENTICATION.SDLC_SECURITY_AND_SECRETS.018
+    text: 'Short-lived credentials used where possible: STS, OIDC tokens, IAM roles'
+- id: PRC.SECURITY_AND_AUTHENTICATION.API_AND_TOKEN_SECURITY
+  name: API & Token Security
+  items:
+  - id: PRC.SECURITY_AND_AUTHENTICATION.API_AND_TOKEN_SECURITY.001
+    text: API authentication required on every non-public endpoint
+  - id: PRC.SECURITY_AND_AUTHENTICATION.API_AND_TOKEN_SECURITY.002
+    text: API keys hashed at rest; shown once at creation; never logged
+  - id: PRC.SECURITY_AND_AUTHENTICATION.API_AND_TOKEN_SECURITY.003
+    text: API key scopes minimal; per-key rate limits and expiry
+  - id: PRC.SECURITY_AND_AUTHENTICATION.API_AND_TOKEN_SECURITY.004
+    text: 'OAuth tokens: short-lived access tokens, rotated refresh tokens'
+  - id: PRC.SECURITY_AND_AUTHENTICATION.API_AND_TOKEN_SECURITY.005
+    text: Token audience and scope validated on every request
+  - id: PRC.SECURITY_AND_AUTHENTICATION.API_AND_TOKEN_SECURITY.006
+    text: Token revocation effective immediately (no long-lived cached grants)
+  - id: PRC.SECURITY_AND_AUTHENTICATION.API_AND_TOKEN_SECURITY.007
+    text: Bearer tokens never placed in URLs or logs
+  - id: PRC.SECURITY_AND_AUTHENTICATION.API_AND_TOKEN_SECURITY.008
+    text: Replay protection for sensitive API operations (nonce, timestamp)
+  - id: PRC.SECURITY_AND_AUTHENTICATION.API_AND_TOKEN_SECURITY.009
+    text: Webhook payloads signed (HMAC); receivers verify before processing
+  - id: PRC.SECURITY_AND_AUTHENTICATION.API_AND_TOKEN_SECURITY.010
+    text: 'GraphQL: query depth and complexity limits to prevent abusive queries'
+  - id: PRC.SECURITY_AND_AUTHENTICATION.API_AND_TOKEN_SECURITY.011
+    text: 'GraphQL: introspection disabled or restricted in production'
+  - id: PRC.SECURITY_AND_AUTHENTICATION.API_AND_TOKEN_SECURITY.012
+    text: 'GraphQL: field-level authorization enforced'
+  - id: PRC.SECURITY_AND_AUTHENTICATION.API_AND_TOKEN_SECURITY.013
+    text: 'gRPC: TLS enforced and per-method authorization applied'
+  - id: PRC.SECURITY_AND_AUTHENTICATION.API_AND_TOKEN_SECURITY.014
+    text: 'Mass assignment prevented: explicit allowlist of writable fields'
+  - id: PRC.SECURITY_AND_AUTHENTICATION.API_AND_TOKEN_SECURITY.015
+    text: 'IDOR prevented: object access authorized against the caller every time'
+  - id: PRC.SECURITY_AND_AUTHENTICATION.API_AND_TOKEN_SECURITY.016
+    text: API versioning with deprecation policy and sunset headers
+  - id: PRC.SECURITY_AND_AUTHENTICATION.API_AND_TOKEN_SECURITY.017
+    text: Rate limiting and quota enforced per API consumer
+  - id: PRC.SECURITY_AND_AUTHENTICATION.API_AND_TOKEN_SECURITY.018
+    text: API error responses avoid leaking internal details or stack traces
+  - id: PRC.SECURITY_AND_AUTHENTICATION.API_AND_TOKEN_SECURITY.019
+    text: API security tested with fuzzing and abuse-case tests
+  - id: PRC.SECURITY_AND_AUTHENTICATION.API_AND_TOKEN_SECURITY.020
+    text: API inventory maintained; no undocumented or shadow APIs in production

@@ -17,8 +17,7 @@ Output:
   - skill_refinery/cross_layer_aliases_<date>.yaml (Phase 3 migration mapping)
 
 Modes:
-  --strict          — exit non-zero on canonical identity conflicts
-  --strict-near     — make near-duplicate advisory pairs strict blockers too
+  --strict          — exit non-zero if ANY duplicate or near-duplicate is found
   --report-only     — generate the report files; no console output beyond summary
   --no-write        — print summary to stdout only; do not write files
 """
@@ -52,6 +51,30 @@ EXTERNAL_REGISTRY = (
 
 NEAR_DUP_THRESHOLD = 0.7  # Jaccard on token bigrams
 TODAY = dt.date.today().isoformat()
+
+# MISS-005: the near-dup detector flags ~1119 pairs that are NOT removable duplicates —
+# they are DISTINCT skills sharing a common playbook template/scaffold (0 same-base numeric
+# clones; median Jaccard ~0.90). Deleting them is wrong; lowering the threshold hides the
+# signal. Instead we BASELINE the reviewed-and-accepted template-family pairs in an
+# allowlist; --strict then fails only on NEW, unexpected near-dups (real regressions).
+ALLOWLIST_PATH = REFINERY_DIR / "near_dup_allowlist.yaml"
+
+
+def _pair_key(a: str, b: str) -> str:
+    return "|".join(sorted((a, b)))
+
+
+def load_near_dup_allowlist() -> dict[str, set[str]]:
+    """Load the reviewed near-dup/overlap baseline. Missing file => empty (gate stays strict)."""
+    if not ALLOWLIST_PATH.exists():
+        return {"pairs": set(), "concepts": set()}
+    try:
+        data = yaml.safe_load(ALLOWLIST_PATH.read_text(encoding="utf-8")) or {}
+    except Exception:
+        return {"pairs": set(), "concepts": set()}
+    pairs = {str(p) for p in (data.get("near_dup_pairs") or [])}
+    concepts = {str(c) for c in (data.get("concept_overlaps") or [])}
+    return {"pairs": pairs, "concepts": concepts}
 
 
 def token_bigrams(text: str) -> set[tuple[str, str]]:
@@ -283,7 +306,6 @@ def detect_schema_drift(skills: dict[str, dict]) -> dict[str, Any]:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--strict", action="store_true")
-    parser.add_argument("--strict-near", action="store_true")
     parser.add_argument("--report-only", action="store_true")
     parser.add_argument("--no-write", action="store_true")
     parser.add_argument("--json", action="store_true")
@@ -335,8 +357,6 @@ def main() -> int:
         print(f"User-level skills: {len(user_level)}")
         print(f"Exact playbook duplicates: {len(exact_dups)}")
         print(f"Near-duplicate pairs (Jaccard ≥ {NEAR_DUP_THRESHOLD}): {len(near_dups)}")
-        if near_dups and not args.strict_near:
-            print("Near-duplicate pairs are advisory in --strict mode; use --strict-near to block on them.")
         print(f"Concept overlaps: {len(overlaps)}")
         print(f"Version anomalies: {len(version_anomalies)}")
         print(f"Duplicate skill_ids: {len(id_num_dups['duplicate_ids'])}")
@@ -350,18 +370,33 @@ def main() -> int:
             print(f"\nWrote: {dedup_report_path.relative_to(REPO_ROOT)}")
             print(f"Wrote: {cross_layer_path.relative_to(REPO_ROOT)}")
 
-    # Strict mode blocks canonical identity conflicts. Near-duplicate playbooks are
-    # migration/refinement evidence unless the caller explicitly opts into them.
+    # MISS-005: subtract the reviewed template-family baseline. --strict fails only on
+    # NEW (unexpected) near-dups/overlaps — a real regression — not the accepted scaffold noise.
+    allow = load_near_dup_allowlist()
+    unexpected_near = [p for p in near_dups if _pair_key(p["a"], p["b"]) not in allow["pairs"]]
+    unexpected_overlaps = [o for o in overlaps if o["base_concept"] not in allow["concepts"]]
+    if not args.json:  # keep --json stdout pure (machine-parseable)
+        print(
+            f"Near-dup baseline: {len(near_dups)} total, "
+            f"{len(near_dups) - len(unexpected_near)} allowlisted, {len(unexpected_near)} unexpected"
+        )
+        print(
+            f"Concept-overlap baseline: {len(overlaps)} total, "
+            f"{len(overlaps) - len(unexpected_overlaps)} allowlisted, {len(unexpected_overlaps)} unexpected"
+        )
+
+    # Strict mode fails on any duplicate (not on drift — drift is fixed in Phase 2).
+    # Near-dups/overlaps count only when UNEXPECTED (not in the reviewed allowlist).
     any_dup = bool(
         exact_dups
-        or overlaps
+        or unexpected_near
+        or unexpected_overlaps
         or version_anomalies
         or id_num_dups["duplicate_ids"]
         or id_num_dups["duplicate_skill_numbers"]
-        or (args.strict_near and near_dups)
     )
     if args.strict and any_dup:
-        print("STRICT MODE: FAIL — duplicates present", file=sys.stderr)
+        print("STRICT MODE: FAIL — duplicates present (unexpected near-dups/overlaps or exact/id/number dups)", file=sys.stderr)
         return 1
     return 0
 

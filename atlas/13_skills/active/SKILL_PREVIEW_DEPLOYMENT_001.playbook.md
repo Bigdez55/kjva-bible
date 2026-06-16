@@ -13,7 +13,7 @@ Author a preview deployment plan and emit evidence on success.
 
 ## Steps
 1. Load inputs.
-2. Validate against [26_schemas/skill/skill.schema.json](../../26_schemas/skill/skill.schema.json).
+2. Validate against [schemas/skill/skill.schema.json](../../schemas/skill/skill.schema.json).
 3. Execute the operation described in `purpose`.
 4. Emit outputs.
 5. Record `improvement_history` entry on any change.

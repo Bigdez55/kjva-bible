@@ -1,5 +1,5 @@
 # Template: evidence_packet
-# Replace placeholders. See 26_schemas/evidence_packet/ if a schema exists.
+# Replace placeholders. See schemas/evidence_packet/ if a schema exists.
 id: "{id}"
 name: "{name}"
 status: draft

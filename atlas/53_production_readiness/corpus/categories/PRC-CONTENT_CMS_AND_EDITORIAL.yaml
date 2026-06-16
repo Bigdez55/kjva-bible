@@ -1,0 +1,78 @@
+schema_version: '1.0'
+category_id: PRC.CONTENT_CMS_AND_EDITORIAL
+name: Content, CMS & Editorial
+icon: ▧
+color: '#FDE68A'
+default_severity: low
+coverage_status: FULL
+skill_refs:
+- SKILL_CMS_CONTENT_EDITORIAL_001
+capability_status: MISSING
+tool_refs: []
+mcp_refs: []
+command_refs: []
+capability_refs: []
+capability_notes: No CMS executor. Build a content create/publish route+store (the knowledge-note write is wiki, not editorial CMS).
+sections:
+- id: PRC.CONTENT_CMS_AND_EDITORIAL.CMS_ARCHITECTURE
+  name: CMS Architecture
+  items:
+  - id: PRC.CONTENT_CMS_AND_EDITORIAL.CMS_ARCHITECTURE.001
+    text: 'CMS selected and justified: Sanity, Contentful, Strapi, WordPress, or custom'
+  - id: PRC.CONTENT_CMS_AND_EDITORIAL.CMS_ARCHITECTURE.002
+    text: 'Content model documented: types, fields, validations, relationships'
+  - id: PRC.CONTENT_CMS_AND_EDITORIAL.CMS_ARCHITECTURE.003
+    text: 'Editorial roles defined: author, editor, publisher, admin'
+  - id: PRC.CONTENT_CMS_AND_EDITORIAL.CMS_ARCHITECTURE.004
+    text: Draft, preview, approval, and publish workflow configured
+  - id: PRC.CONTENT_CMS_AND_EDITORIAL.CMS_ARCHITECTURE.005
+    text: Scheduled publishing and unpublishing supported
+  - id: PRC.CONTENT_CMS_AND_EDITORIAL.CMS_ARCHITECTURE.006
+    text: Version history and rollback supported for all critical content
+  - id: PRC.CONTENT_CMS_AND_EDITORIAL.CMS_ARCHITECTURE.007
+    text: Content preview matches production rendering exactly
+  - id: PRC.CONTENT_CMS_AND_EDITORIAL.CMS_ARCHITECTURE.008
+    text: SEO metadata fields available on all public content types
+  - id: PRC.CONTENT_CMS_AND_EDITORIAL.CMS_ARCHITECTURE.009
+    text: Content API protected from unauthorized writes
+  - id: PRC.CONTENT_CMS_AND_EDITORIAL.CMS_ARCHITECTURE.010
+    text: Content changes logged with editor identity and timestamp
+  - id: PRC.CONTENT_CMS_AND_EDITORIAL.CMS_ARCHITECTURE.011
+    text: CMS backup and export process documented
+  - id: PRC.CONTENT_CMS_AND_EDITORIAL.CMS_ARCHITECTURE.012
+    text: Content migration path documented for future CMS changes
+- id: PRC.CONTENT_CMS_AND_EDITORIAL.EDITORIAL_GOVERNANCE_AND_MEDIA
+  name: Editorial Governance & Media
+  items:
+  - id: PRC.CONTENT_CMS_AND_EDITORIAL.EDITORIAL_GOVERNANCE_AND_MEDIA.001
+    text: Editorial style guide documented
+  - id: PRC.CONTENT_CMS_AND_EDITORIAL.EDITORIAL_GOVERNANCE_AND_MEDIA.002
+    text: Voice and tone guidelines documented
+  - id: PRC.CONTENT_CMS_AND_EDITORIAL.EDITORIAL_GOVERNANCE_AND_MEDIA.003
+    text: Content ownership assigned by section or content type
+  - id: PRC.CONTENT_CMS_AND_EDITORIAL.EDITORIAL_GOVERNANCE_AND_MEDIA.004
+    text: Content review cadence defined for evergreen content
+  - id: PRC.CONTENT_CMS_AND_EDITORIAL.EDITORIAL_GOVERNANCE_AND_MEDIA.005
+    text: Legal review process for claims, pricing, guarantees, regulated content
+  - id: PRC.CONTENT_CMS_AND_EDITORIAL.EDITORIAL_GOVERNANCE_AND_MEDIA.006
+    text: Accessibility review required for all published content
+  - id: PRC.CONTENT_CMS_AND_EDITORIAL.EDITORIAL_GOVERNANCE_AND_MEDIA.007
+    text: Localization workflow defined for translated content
+  - id: PRC.CONTENT_CMS_AND_EDITORIAL.EDITORIAL_GOVERNANCE_AND_MEDIA.008
+    text: Content approval prevents accidental publishing
+  - id: PRC.CONTENT_CMS_AND_EDITORIAL.EDITORIAL_GOVERNANCE_AND_MEDIA.009
+    text: Content analytics reviewed to improve high-traffic pages
+  - id: PRC.CONTENT_CMS_AND_EDITORIAL.EDITORIAL_GOVERNANCE_AND_MEDIA.010
+    text: Digital asset library organized with naming conventions
+  - id: PRC.CONTENT_CMS_AND_EDITORIAL.EDITORIAL_GOVERNANCE_AND_MEDIA.011
+    text: Image licensing and usage rights documented
+  - id: PRC.CONTENT_CMS_AND_EDITORIAL.EDITORIAL_GOVERNANCE_AND_MEDIA.012
+    text: Images compressed and served in modern formats (WebP/AVIF)
+  - id: PRC.CONTENT_CMS_AND_EDITORIAL.EDITORIAL_GOVERNANCE_AND_MEDIA.013
+    text: Video captions and transcripts required for accessibility
+  - id: PRC.CONTENT_CMS_AND_EDITORIAL.EDITORIAL_GOVERNANCE_AND_MEDIA.014
+    text: EXIF and sensitive metadata stripped from public uploads
+  - id: PRC.CONTENT_CMS_AND_EDITORIAL.EDITORIAL_GOVERNANCE_AND_MEDIA.015
+    text: Malware scanning performed on uploaded assets
+  - id: PRC.CONTENT_CMS_AND_EDITORIAL.EDITORIAL_GOVERNANCE_AND_MEDIA.016
+    text: Broken media references monitored

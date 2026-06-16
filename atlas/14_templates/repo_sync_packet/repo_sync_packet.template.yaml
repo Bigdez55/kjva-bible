@@ -1,5 +1,5 @@
 # Template: repo_sync_packet
-# Replace placeholders. See 26_schemas/repo_sync_packet/ if a schema exists.
+# Replace placeholders. See schemas/repo_sync_packet/ if a schema exists.
 id: "{id}"
 name: "{name}"
 status: draft

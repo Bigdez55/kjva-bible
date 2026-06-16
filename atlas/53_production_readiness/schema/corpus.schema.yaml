@@ -1,0 +1,54 @@
+# corpus.schema.yaml — shape contract for the GENERATED corpus files.
+# Generated artifacts (taxonomy.yaml, categories/PRC-*.yaml, generated/corpus.json)
+# must conform. Hand edits go to the JSX (item text) or overlay.yaml (audit metadata),
+# never to the generated files. Used by validation gates (yaml-parse + this shape check).
+
+schema_version: '1.0'
+
+category_file:
+  required: [schema_version, category_id, name, icon, color, default_severity, coverage_status, skill_refs, capability_status, tool_refs, mcp_refs, command_refs, capability_refs, sections]
+  fields:
+    schema_version: { type: string }
+    category_id:     { type: string, pattern: "^PRC\\.[A-Z0-9_]+$" }
+    name:            { type: string, note: "verbatim category name from the JSX (source of truth)" }
+    icon:            { type: string }
+    color:           { type: string }
+    default_severity: { type: enum, values: [critical, high, medium, low] }
+    # SKILL-KNOWLEDGE axis (does a skill DESCRIBE how):
+    coverage_status:  { type: enum, values: [FULL, PARTIAL, NONE, UNKNOWN] }
+    skill_refs:       { type: list, items: { type: string, pattern: "^SKILL_[A-Z0-9_]+$" } }
+    # EXECUTABLE-CAPABILITY axis (does a tool/MCP/plugin actually DO it, WIRED) — distinct from skill knowledge:
+    capability_status: { type: enum, values: [HAVE, PARTIAL, MISSING, UNKNOWN], note: "HAVE requires probe-verified WIRED; UNKNOWN/MISSING == not-HAVE" }
+    tool_refs:        { type: list, items: { type: string } }
+    mcp_refs:         { type: list, items: { type: string }, note: "MCP tool names that execute this category" }
+    command_refs:     { type: list, items: { type: string }, note: "slash-commands that execute this category" }
+    capability_refs:  { type: list, items: { type: string, pattern: "^CAP_[A-Z0-9_]+$" }, note: "CAP_* ids in capabilities/registry.yaml" }
+    capability_notes: { type: string, optional: true }
+    sections:
+      type: list
+      items:
+        required: [id, name, items]
+        fields:
+          id:    { type: string, pattern: "^PRC\\.[A-Z0-9_]+\\.[A-Z0-9_]+$" }
+          name:  { type: string }
+          items:
+            type: list
+            items:
+              required: [id, text]
+              fields:
+                id:       { type: string, pattern: "^PRC\\.[A-Z0-9_]+\\.[A-Z0-9_]+\\.[0-9]{3}$" }
+                text:     { type: string, note: "VERBATIM from the JSX; never edited here" }
+                severity: { type: enum, values: [critical, high, medium, low], optional: true }
+                tags:     { type: list, optional: true }
+                acceptance:
+                  optional: true
+                  fields:
+                    evidence:        { type: object }   # { paths: [...], command: "..." }
+                    pass_criteria:   { type: list }
+                    blocker_if_missing: { type: list }
+
+taxonomy_file:
+  required: [schema_version, corpus_id, category_count, item_count, categories]
+  invariants:
+    - "item_count == sum(categories[].item_count)"
+    - "item_count == item count extracted from corpus/source/dev-checklist-v2.jsx (zero loss)"

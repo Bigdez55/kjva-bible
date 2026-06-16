@@ -1,0 +1,206 @@
+schema_version: '1.0'
+category_id: PRC.AI_AND_ML_MODELS
+name: AI & ML Models
+icon: ◎
+color: '#8B5CF6'
+default_severity: medium
+coverage_status: FULL
+skill_refs:
+- SKILL_AI_GOVERNANCE_CITADEL_001
+- SKILL_ML_FINE_TUNING_DISTILLATION_001
+- SKILL_MCP_TOOLING_AUTOMATION_001
+- SKILL_EDGE_AI_OPTIMIZER_001
+capability_status: MISSING
+tool_refs: []
+mcp_refs: []
+command_refs: []
+capability_refs: []
+capability_notes: No model-serving/fine-tune executor wired into ATLAS. Build an inference/fine-tune MCP tool or route.
+sections:
+- id: PRC.AI_AND_ML_MODELS.DATA_TRAINING_AND_EVALUATION
+  name: Data, Training & Evaluation
+  items:
+  - id: PRC.AI_AND_ML_MODELS.DATA_TRAINING_AND_EVALUATION.001
+    text: Problem precisely framed as ML task type (classification, regression, ranking, generation)
+  - id: PRC.AI_AND_ML_MODELS.DATA_TRAINING_AND_EVALUATION.002
+    text: Dataset source, license, and provenance documented in model card
+  - id: PRC.AI_AND_ML_MODELS.DATA_TRAINING_AND_EVALUATION.003
+    text: Data lineage tracked from raw source to training artifact
+  - id: PRC.AI_AND_ML_MODELS.DATA_TRAINING_AND_EVALUATION.004
+    text: 'Data quality assessed: duplicates, mislabels, class imbalance, distribution analyzed'
+  - id: PRC.AI_AND_ML_MODELS.DATA_TRAINING_AND_EVALUATION.005
+    text: Train/validation/test split stratified; no data leakage across splits
+  - id: PRC.AI_AND_ML_MODELS.DATA_TRAINING_AND_EVALUATION.006
+    text: Test set never touched until final model evaluation
+  - id: PRC.AI_AND_ML_MODELS.DATA_TRAINING_AND_EVALUATION.007
+    text: 'Experiment tracking tool configured: MLflow, W&B, Comet, or Neptune'
+  - id: PRC.AI_AND_ML_MODELS.DATA_TRAINING_AND_EVALUATION.008
+    text: 'All experiments reproducible: seed, data version, code version pinned'
+  - id: PRC.AI_AND_ML_MODELS.DATA_TRAINING_AND_EVALUATION.009
+    text: Baseline model established before complex models
+  - id: PRC.AI_AND_ML_MODELS.DATA_TRAINING_AND_EVALUATION.010
+    text: Evaluation metrics chosen to match business outcome, not just accuracy
+  - id: PRC.AI_AND_ML_MODELS.DATA_TRAINING_AND_EVALUATION.011
+    text: Offline evaluation metric vs online A/B metric relationship documented
+  - id: PRC.AI_AND_ML_MODELS.DATA_TRAINING_AND_EVALUATION.012
+    text: 'Model card written: training data, intended use, limitations, known biases'
+  - id: PRC.AI_AND_ML_MODELS.DATA_TRAINING_AND_EVALUATION.013
+    text: Fairness metrics measured across demographic subgroups
+  - id: PRC.AI_AND_ML_MODELS.DATA_TRAINING_AND_EVALUATION.014
+    text: 'Model versioned in registry: MLflow, DVC, or SageMaker Model Registry'
+  - id: PRC.AI_AND_ML_MODELS.DATA_TRAINING_AND_EVALUATION.015
+    text: Champion/challenger comparison procedure documented
+  - id: PRC.AI_AND_ML_MODELS.DATA_TRAINING_AND_EVALUATION.016
+    text: Model performance monitored post-deploy on holdout test set
+- id: PRC.AI_AND_ML_MODELS.LLM_AND_FOUNDATION_MODELS
+  name: LLM & Foundation Models
+  items:
+  - id: PRC.AI_AND_ML_MODELS.LLM_AND_FOUNDATION_MODELS.001
+    text: Base model selection documented with vendor lock-in risk evaluated
+  - id: PRC.AI_AND_ML_MODELS.LLM_AND_FOUNDATION_MODELS.002
+    text: Fine-tuning vs RAG vs few-shot prompting decision documented in ADR
+  - id: PRC.AI_AND_ML_MODELS.LLM_AND_FOUNDATION_MODELS.003
+    text: System prompt versioned in source control alongside application code
+  - id: PRC.AI_AND_ML_MODELS.LLM_AND_FOUNDATION_MODELS.004
+    text: 'Prompt injection prevention: input sanitization and instruction hierarchy enforced'
+  - id: PRC.AI_AND_ML_MODELS.LLM_AND_FOUNDATION_MODELS.005
+    text: Jailbreak resistance tested with standard adversarial prompt library
+  - id: PRC.AI_AND_ML_MODELS.LLM_AND_FOUNDATION_MODELS.006
+    text: 'Context window management: chunking, summarization, or dynamic context strategy'
+  - id: PRC.AI_AND_ML_MODELS.LLM_AND_FOUNDATION_MODELS.007
+    text: Token cost monitored per request, per user, per feature
+  - id: PRC.AI_AND_ML_MODELS.LLM_AND_FOUNDATION_MODELS.008
+    text: Per-request token budget enforced; hard limit prevents runaway costs
+  - id: PRC.AI_AND_ML_MODELS.LLM_AND_FOUNDATION_MODELS.009
+    text: Streaming responses implemented for long-form generation
+  - id: PRC.AI_AND_ML_MODELS.LLM_AND_FOUNDATION_MODELS.010
+    text: Structured output / function calling used for all parseable LLM responses
+  - id: PRC.AI_AND_ML_MODELS.LLM_AND_FOUNDATION_MODELS.011
+    text: LLM output validated against expected schema before use
+  - id: PRC.AI_AND_ML_MODELS.LLM_AND_FOUNDATION_MODELS.012
+    text: Fallback model configured for primary model downtime
+  - id: PRC.AI_AND_ML_MODELS.LLM_AND_FOUNDATION_MODELS.013
+    text: Model version pinned; surprise breaking updates prevented
+  - id: PRC.AI_AND_ML_MODELS.LLM_AND_FOUNDATION_MODELS.014
+    text: Hallucination rate measured on golden test set and monitored
+  - id: PRC.AI_AND_ML_MODELS.LLM_AND_FOUNDATION_MODELS.015
+    text: PII detected and redacted before sending to third-party LLM APIs
+  - id: PRC.AI_AND_ML_MODELS.LLM_AND_FOUNDATION_MODELS.016
+    text: Safety filter / content moderation on both input and output
+  - id: PRC.AI_AND_ML_MODELS.LLM_AND_FOUNDATION_MODELS.017
+    text: Per-user rate limiting to prevent abuse and cost overruns
+  - id: PRC.AI_AND_ML_MODELS.LLM_AND_FOUNDATION_MODELS.018
+    text: Semantic caching for identical/similar prompts
+  - id: PRC.AI_AND_ML_MODELS.LLM_AND_FOUNDATION_MODELS.019
+    text: 'Latency SLO defined for LLM calls: p95 < defined threshold'
+- id: PRC.AI_AND_ML_MODELS.RAG_RETRIEVAL_AUGMENTED_GENERATION
+  name: RAG (Retrieval-Augmented Generation)
+  items:
+  - id: PRC.AI_AND_ML_MODELS.RAG_RETRIEVAL_AUGMENTED_GENERATION.001
+    text: Knowledge base sources identified, licensed, and documented
+  - id: PRC.AI_AND_ML_MODELS.RAG_RETRIEVAL_AUGMENTED_GENERATION.002
+    text: Document ingestion pipeline automated and scheduled for freshness
+  - id: PRC.AI_AND_ML_MODELS.RAG_RETRIEVAL_AUGMENTED_GENERATION.003
+    text: 'Chunking strategy: size and overlap tuned per document type'
+  - id: PRC.AI_AND_ML_MODELS.RAG_RETRIEVAL_AUGMENTED_GENERATION.004
+    text: Embedding model selected and version pinned
+  - id: PRC.AI_AND_ML_MODELS.RAG_RETRIEVAL_AUGMENTED_GENERATION.005
+    text: 'Vector store selected and evaluated: Pinecone, pgvector, Weaviate, Qdrant'
+  - id: PRC.AI_AND_ML_MODELS.RAG_RETRIEVAL_AUGMENTED_GENERATION.006
+    text: 'Hybrid search implemented: dense + sparse/BM25 for better recall'
+  - id: PRC.AI_AND_ML_MODELS.RAG_RETRIEVAL_AUGMENTED_GENERATION.007
+    text: 'Relevance score thresholded: low-confidence results not retrieved'
+  - id: PRC.AI_AND_ML_MODELS.RAG_RETRIEVAL_AUGMENTED_GENERATION.008
+    text: Re-ranking model evaluated to improve retrieval precision
+  - id: PRC.AI_AND_ML_MODELS.RAG_RETRIEVAL_AUGMENTED_GENERATION.009
+    text: 'Retrieval evaluation: recall@k and MRR measured on benchmark dataset'
+  - id: PRC.AI_AND_ML_MODELS.RAG_RETRIEVAL_AUGMENTED_GENERATION.010
+    text: 'Document freshness: changed documents re-embedded promptly'
+  - id: PRC.AI_AND_ML_MODELS.RAG_RETRIEVAL_AUGMENTED_GENERATION.011
+    text: Source deduplication applied to retrieved context
+  - id: PRC.AI_AND_ML_MODELS.RAG_RETRIEVAL_AUGMENTED_GENERATION.012
+    text: 'Retrieval tracing: which documents were retrieved per response logged'
+  - id: PRC.AI_AND_ML_MODELS.RAG_RETRIEVAL_AUGMENTED_GENERATION.013
+    text: 'Access control: multi-tenant retrieval filtered by user permissions at query time'
+- id: PRC.AI_AND_ML_MODELS.MLOPS_AND_RESPONSIBLE_AI
+  name: MLOps & Responsible AI
+  items:
+  - id: PRC.AI_AND_ML_MODELS.MLOPS_AND_RESPONSIBLE_AI.001
+    text: 'Training pipeline automated: Kubeflow, Vertex AI Pipelines, or SageMaker'
+  - id: PRC.AI_AND_ML_MODELS.MLOPS_AND_RESPONSIBLE_AI.002
+    text: 'Retraining trigger defined: schedule, data drift, or performance degradation'
+  - id: PRC.AI_AND_ML_MODELS.MLOPS_AND_RESPONSIBLE_AI.003
+    text: 'Data drift detection configured: EvidentlyAI, Alibi Detect, or Fiddler'
+  - id: PRC.AI_AND_ML_MODELS.MLOPS_AND_RESPONSIBLE_AI.004
+    text: Model performance degradation monitoring in production
+  - id: PRC.AI_AND_ML_MODELS.MLOPS_AND_RESPONSIBLE_AI.005
+    text: 'Shadow deployment: new model runs alongside current, results compared offline'
+  - id: PRC.AI_AND_ML_MODELS.MLOPS_AND_RESPONSIBLE_AI.006
+    text: 'Canary rollout: new model serves % of traffic vs control group'
+  - id: PRC.AI_AND_ML_MODELS.MLOPS_AND_RESPONSIBLE_AI.007
+    text: A/B testing framework for model comparison with statistical significance
+  - id: PRC.AI_AND_ML_MODELS.MLOPS_AND_RESPONSIBLE_AI.008
+    text: 'Feature store for consistent train/serve features: Feast, Tecton, or Vertex'
+  - id: PRC.AI_AND_ML_MODELS.MLOPS_AND_RESPONSIBLE_AI.009
+    text: Training-serving skew detected and monitored
+  - id: PRC.AI_AND_ML_MODELS.MLOPS_AND_RESPONSIBLE_AI.010
+    text: 'Inference latency SLO: p50, p95, p99 defined and alerted'
+  - id: PRC.AI_AND_ML_MODELS.MLOPS_AND_RESPONSIBLE_AI.011
+    text: GPU utilization monitored and right-sized
+  - id: PRC.AI_AND_ML_MODELS.MLOPS_AND_RESPONSIBLE_AI.012
+    text: Bias and fairness audit performed across protected characteristics
+  - id: PRC.AI_AND_ML_MODELS.MLOPS_AND_RESPONSIBLE_AI.013
+    text: 'Red teaming performed: adversarial prompts, robustness evaluation'
+  - id: PRC.AI_AND_ML_MODELS.MLOPS_AND_RESPONSIBLE_AI.014
+    text: Human-in-the-loop review for high-risk automated decisions
+  - id: PRC.AI_AND_ML_MODELS.MLOPS_AND_RESPONSIBLE_AI.015
+    text: EU AI Act risk categorization completed for high-risk use cases
+  - id: PRC.AI_AND_ML_MODELS.MLOPS_AND_RESPONSIBLE_AI.016
+    text: Output toxicity and hate speech filtering active
+  - id: PRC.AI_AND_ML_MODELS.MLOPS_AND_RESPONSIBLE_AI.017
+    text: AI incident response plan defined and tested
+  - id: PRC.AI_AND_ML_MODELS.MLOPS_AND_RESPONSIBLE_AI.018
+    text: Right-to-erasure impact on training data documented
+- id: PRC.AI_AND_ML_MODELS.AGENTIC_AI_TOOL_USE_AND_ORCHESTRATION
+  name: Agentic AI, Tool Use & Orchestration
+  items:
+  - id: PRC.AI_AND_ML_MODELS.AGENTIC_AI_TOOL_USE_AND_ORCHESTRATION.001
+    text: Agent scope and allowed actions explicitly bounded (least privilege)
+  - id: PRC.AI_AND_ML_MODELS.AGENTIC_AI_TOOL_USE_AND_ORCHESTRATION.002
+    text: Tool/function definitions validated; tool outputs treated as untrusted input
+  - id: PRC.AI_AND_ML_MODELS.AGENTIC_AI_TOOL_USE_AND_ORCHESTRATION.003
+    text: Tool-call arguments validated against schema before execution
+  - id: PRC.AI_AND_ML_MODELS.AGENTIC_AI_TOOL_USE_AND_ORCHESTRATION.004
+    text: Destructive or high-impact tools require human approval (human-in-the-loop)
+  - id: PRC.AI_AND_ML_MODELS.AGENTIC_AI_TOOL_USE_AND_ORCHESTRATION.005
+    text: 'Agent loop bounded: max steps, max tokens, max wall-clock to prevent runaway'
+  - id: PRC.AI_AND_ML_MODELS.AGENTIC_AI_TOOL_USE_AND_ORCHESTRATION.006
+    text: Infinite-loop and repeated-action detection with circuit breaker
+  - id: PRC.AI_AND_ML_MODELS.AGENTIC_AI_TOOL_USE_AND_ORCHESTRATION.007
+    text: Per-run and per-user cost budget enforced for agent executions
+  - id: PRC.AI_AND_ML_MODELS.AGENTIC_AI_TOOL_USE_AND_ORCHESTRATION.008
+    text: Prompt injection via tool results and retrieved content mitigated
+  - id: PRC.AI_AND_ML_MODELS.AGENTIC_AI_TOOL_USE_AND_ORCHESTRATION.009
+    text: Agent cannot escalate its own permissions or call out-of-scope tools
+  - id: PRC.AI_AND_ML_MODELS.AGENTIC_AI_TOOL_USE_AND_ORCHESTRATION.010
+    text: Sandbox isolation for code-execution and shell tools
+  - id: PRC.AI_AND_ML_MODELS.AGENTIC_AI_TOOL_USE_AND_ORCHESTRATION.011
+    text: 'Agent actions logged with full trace: reasoning, tool calls, results'
+  - id: PRC.AI_AND_ML_MODELS.AGENTIC_AI_TOOL_USE_AND_ORCHESTRATION.012
+    text: 'Agent observability: step latency, tool error rate, success rate per task'
+  - id: PRC.AI_AND_ML_MODELS.AGENTIC_AI_TOOL_USE_AND_ORCHESTRATION.013
+    text: Multi-agent coordination and handoff patterns defined where used
+  - id: PRC.AI_AND_ML_MODELS.AGENTIC_AI_TOOL_USE_AND_ORCHESTRATION.014
+    text: Memory and state management bounded and privacy-safe
+  - id: PRC.AI_AND_ML_MODELS.AGENTIC_AI_TOOL_USE_AND_ORCHESTRATION.015
+    text: Fallback and graceful failure when a tool or step fails
+  - id: PRC.AI_AND_ML_MODELS.AGENTIC_AI_TOOL_USE_AND_ORCHESTRATION.016
+    text: Evaluation harness for agent task success on a benchmark suite
+  - id: PRC.AI_AND_ML_MODELS.AGENTIC_AI_TOOL_USE_AND_ORCHESTRATION.017
+    text: Guardrails on agent outputs (safety, PII, policy) before they take effect
+  - id: PRC.AI_AND_ML_MODELS.AGENTIC_AI_TOOL_USE_AND_ORCHESTRATION.018
+    text: Replayability and debuggability of agent runs for incident analysis
+  - id: PRC.AI_AND_ML_MODELS.AGENTIC_AI_TOOL_USE_AND_ORCHESTRATION.019
+    text: Rate limiting on agent-initiated external calls
+  - id: PRC.AI_AND_ML_MODELS.AGENTIC_AI_TOOL_USE_AND_ORCHESTRATION.020
+    text: Idempotency for agent actions that mutate state

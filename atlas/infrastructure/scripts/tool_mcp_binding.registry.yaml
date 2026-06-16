@@ -1,0 +1,52 @@
+schema_version: '1.0'
+registry_id: TOOL_MCP_BINDING_001
+path_note: spinal-cord spec said 25_automation/; that dir was relocated to infrastructure/scripts/
+  (see audit). Placed here.
+bindings:
+- binding_id: BIND-ATLAS-MCP-READ
+  requirement_categories:
+  - Backend
+  - Integrations
+  tool_type: mcp_tools
+  provider: atlas
+  operations:
+  - atlas_graph_query
+  - atlas_skill_get
+  - atlas_skill_list
+  - atlas_knowledge_search
+  - atlas_context_compile
+  - atlas_trigger_route
+  status: WIRED
+  source: apps/backend/mcp/src/server-factory.ts
+- binding_id: BIND-GITHUB-REPO-WRITE
+  requirement_categories:
+  - Integrations
+  tool_type: mcp_tool+api_route
+  provider: github/git
+  operations:
+  - commit
+  - push
+  gated_by: ATLAS_API_KEY
+  status: WIRED
+  source: atlas_repo_commit_push + POST /api/repos/[id]/commit
+- binding_id: BIND-FILESYSTEM-REPO-AUDIT
+  requirement_categories:
+  - Repository Organization
+  tool_type: service
+  provider: git/filesystem
+  operations:
+  - log
+  - status
+  - rev-parse
+  status: WIRED
+  source: lib/live/localAtlas.ts
+- binding_id: BIND-GITHUB-BRANCH-PROTECTION
+  requirement_categories:
+  - Repository Organization
+  tool_type: mcp_api
+  provider: github
+  operations:
+  - read_branch_protection
+  - verify_required_checks
+  status: MISSING
+  note: PROPOSED — no GitHub admin-API binding exists yet

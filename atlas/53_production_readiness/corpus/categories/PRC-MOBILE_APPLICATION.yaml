@@ -1,0 +1,141 @@
+schema_version: '1.0'
+category_id: PRC.MOBILE_APPLICATION
+name: Mobile Application
+icon: ⬡
+color: '#F43F5E'
+default_severity: medium
+coverage_status: FULL
+skill_refs:
+- SKILL_MOBILE_APP_PRODUCTION_001
+capability_status: MISSING
+tool_refs: []
+mcp_refs: []
+command_refs: []
+capability_refs: []
+capability_notes: No mobile build/release executor. Build a mobile CI/build + store-deploy pipeline if in scope.
+sections:
+- id: PRC.MOBILE_APPLICATION.IOS_PRODUCTION_READINESS
+  name: iOS Production Readiness
+  items:
+  - id: PRC.MOBILE_APPLICATION.IOS_PRODUCTION_READINESS.001
+    text: Bundle ID and team correctly configured in Xcode project
+  - id: PRC.MOBILE_APPLICATION.IOS_PRODUCTION_READINESS.002
+    text: 'Info.plist: all required usage description strings for every requested permission'
+  - id: PRC.MOBILE_APPLICATION.IOS_PRODUCTION_READINESS.003
+    text: Privacy Manifest (PrivacyInfo.xcprivacy) submitted for App Store review
+  - id: PRC.MOBILE_APPLICATION.IOS_PRODUCTION_READINESS.004
+    text: 'Minimum iOS version defined: target iOS 16+ for 2024+ releases'
+  - id: PRC.MOBILE_APPLICATION.IOS_PRODUCTION_READINESS.005
+    text: Universal layout tested on iPhone and iPad
+  - id: PRC.MOBILE_APPLICATION.IOS_PRODUCTION_READINESS.006
+    text: Notch, Dynamic Island, Safe Area Insets handled correctly
+  - id: PRC.MOBILE_APPLICATION.IOS_PRODUCTION_READINESS.007
+    text: Dark mode and light mode both tested
+  - id: PRC.MOBILE_APPLICATION.IOS_PRODUCTION_READINESS.008
+    text: App Transport Security enforced; no NSAllowsArbitraryLoads in production
+  - id: PRC.MOBILE_APPLICATION.IOS_PRODUCTION_READINESS.009
+    text: 'Keychain used for all sensitive data: tokens, passwords, cryptographic keys'
+  - id: PRC.MOBILE_APPLICATION.IOS_PRODUCTION_READINESS.010
+    text: Background modes declared only for required functionality
+  - id: PRC.MOBILE_APPLICATION.IOS_PRODUCTION_READINESS.011
+    text: APNs certificate or auth key configured for push notifications
+  - id: PRC.MOBILE_APPLICATION.IOS_PRODUCTION_READINESS.012
+    text: App signed with distribution certificate and provisioning profile
+  - id: PRC.MOBILE_APPLICATION.IOS_PRODUCTION_READINESS.013
+    text: 'Universal Links configured: AASA file at /.well-known/apple-app-site-association'
+  - id: PRC.MOBILE_APPLICATION.IOS_PRODUCTION_READINESS.014
+    text: TestFlight used for beta distribution before App Store submission
+  - id: PRC.MOBILE_APPLICATION.IOS_PRODUCTION_READINESS.015
+    text: 'App Store listing: screenshots, description, privacy policy URL complete'
+  - id: PRC.MOBILE_APPLICATION.IOS_PRODUCTION_READINESS.016
+    text: App Store privacy questionnaire completed accurately
+  - id: PRC.MOBILE_APPLICATION.IOS_PRODUCTION_READINESS.017
+    text: In-app purchase receipt validation server-side (never client-side only)
+  - id: PRC.MOBILE_APPLICATION.IOS_PRODUCTION_READINESS.018
+    text: Symbols uploaded to Crashlytics/Sentry for crash symbolication
+  - id: PRC.MOBILE_APPLICATION.IOS_PRODUCTION_READINESS.019
+    text: 'Accessibility: Dynamic Type and VoiceOver tested'
+- id: PRC.MOBILE_APPLICATION.ANDROID_PRODUCTION_READINESS
+  name: Android Production Readiness
+  items:
+  - id: PRC.MOBILE_APPLICATION.ANDROID_PRODUCTION_READINESS.001
+    text: applicationId, versionCode, versionName configured correctly
+  - id: PRC.MOBILE_APPLICATION.ANDROID_PRODUCTION_READINESS.002
+    text: minSdk and targetSdk set to current recommended values
+  - id: PRC.MOBILE_APPLICATION.ANDROID_PRODUCTION_READINESS.003
+    text: Adaptive icons configured for all launcher versions
+  - id: PRC.MOBILE_APPLICATION.ANDROID_PRODUCTION_READINESS.004
+    text: 'Multiple screen densities: mdpi, hdpi, xhdpi, xxhdpi, xxxhdpi'
+  - id: PRC.MOBILE_APPLICATION.ANDROID_PRODUCTION_READINESS.005
+    text: Edge-to-edge display and window insets handled
+  - id: PRC.MOBILE_APPLICATION.ANDROID_PRODUCTION_READINESS.006
+    text: Dark theme and light theme both tested
+  - id: PRC.MOBILE_APPLICATION.ANDROID_PRODUCTION_READINESS.007
+    text: Sensitive data stored in Android Keystore (not SharedPreferences plaintext)
+  - id: PRC.MOBILE_APPLICATION.ANDROID_PRODUCTION_READINESS.008
+    text: android:allowBackup=false or backup rules restrict sensitive data
+  - id: PRC.MOBILE_APPLICATION.ANDROID_PRODUCTION_READINESS.009
+    text: ProGuard/R8 minification configured with tuned rules
+  - id: PRC.MOBILE_APPLICATION.ANDROID_PRODUCTION_READINESS.010
+    text: 'Network security config: cleartext traffic disabled in production'
+  - id: PRC.MOBILE_APPLICATION.ANDROID_PRODUCTION_READINESS.011
+    text: Runtime permissions requested with rationale dialog before system prompt
+  - id: PRC.MOBILE_APPLICATION.ANDROID_PRODUCTION_READINESS.012
+    text: FCM push notifications configured and tested end-to-end
+  - id: PRC.MOBILE_APPLICATION.ANDROID_PRODUCTION_READINESS.013
+    text: App Signing by Google Play enrolled
+  - id: PRC.MOBILE_APPLICATION.ANDROID_PRODUCTION_READINESS.014
+    text: AAB (Android App Bundle) format used (not APK)
+  - id: PRC.MOBILE_APPLICATION.ANDROID_PRODUCTION_READINESS.015
+    text: App Links (Digital Asset Links) configured and tested
+  - id: PRC.MOBILE_APPLICATION.ANDROID_PRODUCTION_READINESS.016
+    text: In-app purchase verified server-side via Google Play Developer API
+  - id: PRC.MOBILE_APPLICATION.ANDROID_PRODUCTION_READINESS.017
+    text: Google Play Data Safety section completed accurately
+  - id: PRC.MOBILE_APPLICATION.ANDROID_PRODUCTION_READINESS.018
+    text: Symbols uploaded for crash symbolication
+  - id: PRC.MOBILE_APPLICATION.ANDROID_PRODUCTION_READINESS.019
+    text: 'Accessibility: TalkBack and font scaling tested'
+  - id: PRC.MOBILE_APPLICATION.ANDROID_PRODUCTION_READINESS.020
+    text: 'Battery: background tasks use WorkManager'
+- id: PRC.MOBILE_APPLICATION.CROSS_PLATFORM_AND_SECURITY
+  name: Cross-Platform & Security
+  items:
+  - id: PRC.MOBILE_APPLICATION.CROSS_PLATFORM_AND_SECURITY.001
+    text: Framework version pinned with defined upgrade path
+  - id: PRC.MOBILE_APPLICATION.CROSS_PLATFORM_AND_SECURITY.002
+    text: 'OTA update policy defined: Expo Updates or CodePush with signed updates'
+  - id: PRC.MOBILE_APPLICATION.CROSS_PLATFORM_AND_SECURITY.003
+    text: OTA updates signed and signature verified before applying
+  - id: PRC.MOBILE_APPLICATION.CROSS_PLATFORM_AND_SECURITY.004
+    text: Deep links tested on both iOS and Android
+  - id: PRC.MOBILE_APPLICATION.CROSS_PLATFORM_AND_SECURITY.005
+    text: Certificate pinning for all API calls; pin renewed before expiry
+  - id: PRC.MOBILE_APPLICATION.CROSS_PLATFORM_AND_SECURITY.006
+    text: Sensitive data not in logs, temp files, or screenshots
+  - id: PRC.MOBILE_APPLICATION.CROSS_PLATFORM_AND_SECURITY.007
+    text: App does not capture screenshots of sensitive data screens
+  - id: PRC.MOBILE_APPLICATION.CROSS_PLATFORM_AND_SECURITY.008
+    text: Clipboard cleared of sensitive data after defined timeout
+  - id: PRC.MOBILE_APPLICATION.CROSS_PLATFORM_AND_SECURITY.009
+    text: Biometric authentication (Face ID, fingerprint) integrated
+  - id: PRC.MOBILE_APPLICATION.CROSS_PLATFORM_AND_SECURITY.010
+    text: Session timeout after inactivity period
+  - id: PRC.MOBILE_APPLICATION.CROSS_PLATFORM_AND_SECURITY.011
+    text: API keys never hardcoded in client; backend proxy used
+  - id: PRC.MOBILE_APPLICATION.CROSS_PLATFORM_AND_SECURITY.012
+    text: All network calls use HTTPS; certificate validation enabled and not disabled
+  - id: PRC.MOBILE_APPLICATION.CROSS_PLATFORM_AND_SECURITY.013
+    text: Mobile OWASP Top 10 reviewed and all applicable risks mitigated
+  - id: PRC.MOBILE_APPLICATION.CROSS_PLATFORM_AND_SECURITY.014
+    text: 'App startup time: < 2s cold start target'
+  - id: PRC.MOBILE_APPLICATION.CROSS_PLATFORM_AND_SECURITY.015
+    text: 'Frame rate: 60fps maintained during animations'
+  - id: PRC.MOBILE_APPLICATION.CROSS_PLATFORM_AND_SECURITY.016
+    text: 'Memory: no leaks on screen transitions (profiled)'
+  - id: PRC.MOBILE_APPLICATION.CROSS_PLATFORM_AND_SECURITY.017
+    text: 'Offline: core features usable without internet connection'
+  - id: PRC.MOBILE_APPLICATION.CROSS_PLATFORM_AND_SECURITY.018
+    text: 'App size: < 50MB download where possible'
+  - id: PRC.MOBILE_APPLICATION.CROSS_PLATFORM_AND_SECURITY.019
+    text: Crash reporting analytics configured

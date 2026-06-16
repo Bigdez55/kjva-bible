@@ -1,0 +1,46 @@
+id: SKILL_CLOUD_SYNCED_BUILD_RESILIENCE_001
+name: Cloud-Synced Build Resilience
+version: 1.0.0
+status: active
+purpose: '** Building a JS/TS app whose repo lives on a cloud-synced filesystem (OneDrive
+  CloudStorage, iCloud, Dropbox) has failure modes a normal build lacks. Prefer turbopack
+  over webpack (webpack hangs at 0% CPU over sync-on-access FS; turbopack builds clean);
+  a killed `next build` WIPES prior output (breaks the dependent service) so stop the
+  service first and never kill carelessly; monitor builds by OUTPUT/file-growth not CPU
+  (workers are separate procs → CPU-only watchers false-positive STALLED); pin LTS node;
+  give heap; rule out OOM/dehydration/cache/node-version empirically before a workaround.
+  Triggers: "build is stuck/stalled/never finishes", 0% CPU frozen-log build, repo under
+  CloudStorage/OneDrive/iCloud, app won''t start after an interrupted build.'
+inputs:
+- build command + bundler
+- repo filesystem (cloud-synced?)
+- node version
+outputs:
+- a build that completes + produces real OUTPUT (server.js / dist + BUILD_ID)
+- turbopack-default build pipeline (webpack fallback retained)
+- output-based (not CPU-based) build progress monitoring
+known_failure_modes:
+- webpack hangs at 0% CPU over cloud-synced FS (turbopack builds clean)
+- killed/interrupted build wipes prior output → dependent service breaks on restart
+- CPU-only stall detector false-kills a progressing (worker-process) build
+- bleeding-edge node breaks the bundler/toolchain
+- treating 0% CPU as stalled without the FS/read/heap/node/bundler differential
+validation_tests: []
+improvement_history:
+- version: 1.0.0
+  reason: Initial authoring. Anchor — ATLAS Next-16 `next build --webpack` hung at init
+    at 0% CPU for 15+ min twice (wiping .next each time), while `next build --turbopack`
+    on node@22 built clean in ~2 min; CPU-only watcher false-flagged progressing builds
+    as stalled. package.json build switched to turbopack (webpack fallback kept).
+title: Cloud-Synced Build Resilience
+layer: ci_cd
+domains:
+- ci_cd
+- build_systems
+- frontend
+playbook: 13_skills/active/SKILL_CLOUD_SYNCED_BUILD_RESILIENCE_001.playbook.md
+source: incident_distillation
+tier: active
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0

@@ -1,0 +1,94 @@
+id: SKILL_MOBILE_APP_PRODUCTION_001
+name: mobile-app-production-readiness
+title: Mobile Application Production Readiness
+purpose: >-
+  Production-readiness discipline for iOS, Android, and cross-platform mobile apps.
+  Teaches how to satisfy every item in the "Mobile Application" production-readiness
+  corpus category (3 sections, 58 items): store submission, signing, crash/perf
+  telemetry, secure secret storage, privacy manifests/data-safety, network security,
+  certificate pinning, accessibility, deep links, and OTA updates.
+version: 1.0.0
+layer: mobile
+domains:
+  - mobile
+  - ios
+  - android
+  - production-readiness
+  - app-security
+  - release-engineering
+tier: active
+status: active
+source: native
+aliases:
+  - mobile-app-production-readiness
+  - mobile-production-readiness
+  - mobile-launch-checklist
+  - ios-android-go-live
+  - app-store-readiness
+playbook: 13_skills/active/SKILL_MOBILE_APP_PRODUCTION_001.playbook.md
+ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_MOBILE_APP_PRODUCTION_001.ledger.yaml
+runtime_projection: true
+runtime_projection_targets:
+  - claude
+  - codex
+  - gemini
+corpus_category: Mobile Application
+trigger_conditions:
+  - mobile app production readiness or launch review requested
+  - before submitting a build to the App Store or Google Play
+  - iOS or Android release candidate being prepared for go-live
+  - mobile code signing, provisioning, or store metadata work
+  - mobile secret storage, network security, or certificate pinning review
+  - mobile crash/performance telemetry or privacy manifest / data-safety work
+  - cross-platform (React Native, Flutter, Expo) release hardening or OTA update policy
+hard_constraints:
+  - 'iOS PrivacyInfo.xcprivacy is submitted for App Store review (PRC.MOBILE_APPLICATION.IOS_PRODUCTION_READINESS.003), and the App Store privacy questionnaire (IOS.016) and Google Play Data Safety section (ANDROID.017) are completed accurately'
+  - 'secrets, tokens, passwords, and cryptographic keys are stored in the iOS Keychain (IOS.009) and Android Keystore, never in SharedPreferences plaintext (ANDROID.007)'
+  - 'API keys are never hardcoded in the client; a backend proxy is used (CROSS_PLATFORM_AND_SECURITY.011)'
+  - 'App Transport Security is enforced with no NSAllowsArbitraryLoads in production (IOS.008) and Android cleartext traffic is disabled via network security config (ANDROID.010)'
+  - 'all network calls use HTTPS with certificate validation enabled and never disabled (CROSS.012); certificate pinning is configured for all API calls and the pin is renewed before expiry (CROSS.005)'
+  - 'in-app purchase receipts are validated server-side, never client-side only (IOS.017), and verified via the Google Play Developer API (ANDROID.016)'
+  - 'OTA update policy is defined and updates are signed with the signature verified before applying (CROSS.002, CROSS.003)'
+  - 'symbols are uploaded to Crashlytics/Sentry so crashes are symbolicated (IOS.018, ANDROID.018) and crash reporting analytics is configured (CROSS.019)'
+  - 'the app is signed with a distribution certificate and provisioning profile (IOS.012); App Signing by Google Play is enrolled (ANDROID.013) and the artifact is an Android App Bundle, not an APK (ANDROID.014)'
+  - 'sensitive data is kept out of logs, temp files, and screenshots (CROSS.006), sensitive-data screens are not captured in screenshots (CROSS.007), and the clipboard is cleared of sensitive data after a defined timeout (CROSS.008)'
+  - 'accessibility is verified: Dynamic Type and VoiceOver on iOS (IOS.019), TalkBack and font scaling on Android (ANDROID.019)'
+  - 'the Mobile OWASP Top 10 is reviewed and all applicable risks are mitigated (CROSS.013) before submission'
+known_failure_modes:
+  - 'store rejection: missing privacy manifest, inaccurate privacy questionnaire / Data Safety, or incomplete listing discovered at submission instead of before (IOS.003, IOS.015, IOS.016, ANDROID.017)'
+  - 'signing drift: expired distribution certificate / provisioning profile, or shipping a raw APK instead of an AAB, blocks the release (IOS.012, ANDROID.013, ANDROID.014)'
+  - 'plaintext secrets: tokens left in SharedPreferences or hardcoded API keys in the client bundle, extractable from the shipped app (IOS.009, ANDROID.007, CROSS.011)'
+  - 'symbolication gap: crash reports arrive unsymbolicated because dSYMs / mapping files were not uploaded (IOS.018, ANDROID.018)'
+  - 'silent pin expiry: a pinned certificate expires with no rotation, bricking the app for all users (CROSS.005)'
+  - 'cleartext leak: NSAllowsArbitraryLoads left on or Android cleartext traffic enabled, exposing traffic in production (IOS.008, ANDROID.010, CROSS.012)'
+  - 'client-trusted purchases: IAP receipts validated only on-device, allowing trivial entitlement bypass (IOS.017, ANDROID.016)'
+  - 'accessibility theater: VoiceOver/TalkBack and Dynamic Type / font scaling never exercised, leaving unlabeled controls (IOS.019, ANDROID.019)'
+validation_tests:
+  - 'a fresh checkout produces a signed, store-uploadable artifact — .ipa to TestFlight (IOS.012, IOS.014) and an .aab via Play App Signing (ANDROID.013, ANDROID.014) — without manual cert wrangling'
+  - 'a forced test crash appears symbolicated in the crash dashboard within minutes, proving symbol upload works (IOS.018, ANDROID.018, CROSS.019)'
+  - 'static scan plus an on-device dump confirm no secret in plaintext and no hardcoded API key; secrets resolve only from Keychain/Keystore (IOS.009, ANDROID.007, CROSS.011)'
+  - 'PrivacyInfo.xcprivacy is present and the Google Play Data Safety form matches actual SDK behavior (IOS.003, ANDROID.017)'
+  - 'a proxy capture confirms all traffic is HTTPS with validation on, NSAllowsArbitraryLoads absent, and Android cleartext disabled (IOS.008, ANDROID.010, CROSS.012)'
+  - 'the pinned certificate/public-key set has a documented expiry and a rotation date earlier than the cert expiry, with a backup pin present (CROSS.005)'
+  - 'an IAP is rejected when the server-side receipt check fails, proving validation is not client-only (IOS.017, ANDROID.016)'
+  - 'VoiceOver and TalkBack complete the primary user flow with Dynamic Type / font scaling enabled and all controls labeled (IOS.019, ANDROID.019)'
+improvement_history:
+  - version: 1.0.0
+    date: '2026-05-31'
+    change: Initial skill creation - fills the "Mobile Application" zero-coverage gap in the production-readiness corpus.
+    trigger: The "Mobile Application" corpus category (PRC.MOBILE_APPLICATION, coverage_status NONE, 3 sections / 58 items) had no dedicated skill teaching how to satisfy its items; the category file already names SKILL_MOBILE_APP_PRODUCTION_001 as the intended fix.
+related_skills:
+  - SKILL_PRODUCTION_READINESS_AUDIT_001
+  - SKILL_SECURITY_AUDIT_001
+  - SKILL_OBSERVABILITY_001
+  - SKILL_DESKTOP_UI_ACCESSIBILITY_001
+  - SKILL_RELEASE_GATE_CI_001
+  - SKILL_CI_PIPELINE_001
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0
+  last_correction: null
+  corrections_per_100_uses: null
+  last_refinement: '2026-05-31'
+  refinement_count: 0
+  tier_promotion_history: []

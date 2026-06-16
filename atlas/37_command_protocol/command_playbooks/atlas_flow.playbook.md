@@ -11,7 +11,7 @@ atlas_flow
 - Optional `--require-gates` to enforce blocker checks.
 
 ## Required Outputs
-- `23_evidence/atlas_platform/flows/atlas_flow_<run_id>.json`
+- `23_evidence/platform/flows/atlas_flow_<run_id>.json`
 
 ## Validation Gates
 - Flow should emit blockers for every failed step and status `pass/fail`.

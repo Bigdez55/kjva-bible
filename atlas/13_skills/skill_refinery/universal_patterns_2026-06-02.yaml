@@ -1,0 +1,7 @@
+generated: '2026-06-02'
+total_correction_events_analyzed: 0
+unique_patterns: 0
+min_skills_threshold: 3
+universal_patterns: []
+proposal_action: For each universal pattern, propose updating TAXONOMY.md or universal_skill_invocation_policy.md
+  with a new global rule. Open one PR per pattern with evidence (distinct_skills list).

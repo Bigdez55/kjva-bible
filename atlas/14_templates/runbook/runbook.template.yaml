@@ -1,5 +1,5 @@
 # Template: runbook
-# Replace placeholders. See 26_schemas/runbook/ if a schema exists.
+# Replace placeholders. See schemas/runbook/ if a schema exists.
 id: "{id}"
 name: "{name}"
 status: draft

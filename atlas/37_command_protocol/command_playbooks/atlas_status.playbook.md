@@ -10,8 +10,8 @@ atlas_status
 - None beyond repo-local execution context.
 
 ## Required Outputs
-- `23_evidence/atlas_platform/status/atlas_status.json`
-- `23_evidence/atlas_platform/status/atlas_status.md`
+- `23_evidence/platform/status/atlas_status.json`
+- `23_evidence/platform/status/atlas_status.md`
 
 ## Validation Gates
 - Read-only by policy; no mutation expected unless `--apply` pointer updates are introduced.

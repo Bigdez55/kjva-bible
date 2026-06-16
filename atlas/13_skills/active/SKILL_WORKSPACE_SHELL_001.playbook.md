@@ -36,7 +36,7 @@ Port and maintain the ATLAS workspace shell as the uniform platform chrome for a
 - Keep the shell reusable and route-agnostic.
 
 ### Act
-- Update `apps/atlas/src/components/atlas-workbench.tsx`.
+- Update `apps/frontend/shell/src/components/atlas-workbench.tsx`.
 - Add or update App Router pages for missing destinations.
 - Update global ATLAS tokens in `globals.css`.
 - Run Next.js validation and route smoke tests.

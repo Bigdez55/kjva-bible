@@ -1,12 +1,16 @@
-# GitHub OAuth Wiring for Next.js + Electron Apps
+# GitHub OAuth Wiring for the ATLAS Web Service (Next.js)
 
-> Promoted from ATLAS production readiness audit 2026-05-29. Canonical skill.
+> Promoted from ATLAS production readiness audit 2026-05-29. Reframed 2026-06-03
+> for the always-on web service. Canonical skill.
 
 ## Purpose
 
-Wire real OAuth authentication into a Next.js + Electron desktop app using the
-loopback callback pattern (RFC 8252), jose-signed JWT sessions, and OS keychain
-for refresh token storage. Replaces the broken bearer-token model.
+Wire real OAuth authentication into the **ATLAS web service** (Next.js, served at
+`http://127.0.0.1:4317`) using the 127.0.0.1 loopback callback pattern (RFC 8252),
+jose-signed JWT sessions, and OS keychain for refresh token storage. Replaces the
+broken bearer-token model. The same flow is reused by the **LEGACY** packaged
+desktop shell — the loopback callback was chosen so both can share one codebase —
+but the canonical target is the resident web service, not Electron.
 
 ## The Pattern
 
@@ -22,14 +26,16 @@ for refresh token storage. Replaces the broken bearer-token model.
 
 Verify pickup by running `npm run build` — output must show `ƒ Proxy (Middleware)` or `ƒ Middleware`.
 
-### 2. Loopback OAuth callback (Electron-compatible)
+### 2. Loopback OAuth callback (web-service canonical; desktop-compatible)
 
-GitHub OAuth app configuration:
-- Homepage URL: `http://127.0.0.1:3100`
-- Authorization callback URL: `http://127.0.0.1:3100/api/auth/callback/github`
+GitHub OAuth app configuration (the always-on ATLAS web service):
+- Homepage URL: `http://127.0.0.1:4317`
+- Authorization callback URL: `http://127.0.0.1:4317/api/auth/callback/github`
 
-RFC 8252 permits `127.0.0.1` (and `localhost`) for native app OAuth flows.
-Custom URL schemes (`atlas://`) require OS-level registration and add no v1 value.
+RFC 8252 permits `127.0.0.1` (and `localhost`) for loopback OAuth flows. Using the
+loopback host for the web service means the SAME callback works unchanged for the
+LEGACY packaged desktop shell — no per-runtime OAuth app. Custom URL schemes
+(`atlas://`) require OS-level registration and add no value.
 
 ### 3. Session JWT with jose
 

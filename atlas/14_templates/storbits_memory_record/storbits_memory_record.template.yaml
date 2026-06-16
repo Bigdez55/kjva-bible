@@ -1,5 +1,5 @@
 # Template: storbits_memory_record
-# Replace placeholders. See 26_schemas/storbits_memory_record/ if a schema exists.
+# Replace placeholders. See schemas/storbits_memory_record/ if a schema exists.
 id: "{id}"
 name: "{name}"
 status: draft

@@ -1,0 +1,305 @@
+{
+  "generated_by": "scripts/corpus/fetch_sources.py",
+  "entries": [
+    {
+      "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/master/formats/json/KJV.json",
+      "path": "data/corpus/external/scrollmapper/KJV.json",
+      "bytes": 8395929,
+      "sha256": "42f438d6210ee64a84382873272c28cb4a7d2ffd45bb19207a517dba3a2a86cb",
+      "status": "fetched"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/master/formats/json/KJVA.json",
+      "path": "data/corpus/external/scrollmapper/KJVA.json",
+      "bytes": 9928298,
+      "sha256": "73b9d79c56f6a04c1019b13077bfa73a0da882d32aebcd62f9e285ed9f11df15",
+      "status": "fetched"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/master/formats/json/KJVPCE.json",
+      "path": "data/corpus/external/scrollmapper/KJVPCE.json",
+      "bytes": 8434064,
+      "sha256": "51560c0d5aa5fac2985b732764150b8f9374baa24624e63fb72f95c6726b89f6",
+      "status": "fetched"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/master/formats/json/AKJV.json",
+      "path": "data/corpus/external/scrollmapper/AKJV.json",
+      "bytes": 8404466,
+      "sha256": "20deaef432a8a7e9b6621cbff31029902c859ffb3447f5e9afb1ac334811f1b6",
+      "status": "fetched"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/master/formats/json/UKJV.json",
+      "path": "data/corpus/external/scrollmapper/UKJV.json",
+      "bytes": 8444980,
+      "sha256": "e52bfc8a9bbf053b184e512d64b2de213dedbe19b39bc1e4d6cb3dc2e4480eff",
+      "status": "fetched"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/master/formats/json/RNKJV.json",
+      "path": "data/corpus/external/scrollmapper/RNKJV.json",
+      "bytes": 8447049,
+      "sha256": "86c54523cff7d5dca51008e5a18009811f26cc8fa8a0f4916276c012796f7bf7",
+      "status": "fetched"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/master/formats/json/MKJV.json",
+      "path": "data/corpus/external/scrollmapper/MKJV.json",
+      "bytes": 8293991,
+      "sha256": "5cd7106ae5762127303f1b9394467e942f98e33532aea61b16e5b8a6cbf10de9",
+      "status": "fetched"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/master/formats/json/Webster.json",
+      "path": "data/corpus/external/scrollmapper/Webster.json",
+      "bytes": 8404591,
+      "sha256": "85a3da7c00230a8fd4d828d174db8609c6d0960f9085cdeb1c1ff45cd7b0d45c",
+      "status": "fetched"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/master/formats/json/RWebster.json",
+      "path": "data/corpus/external/scrollmapper/RWebster.json",
+      "bytes": 8395868,
+      "sha256": "6426569f7c23e41994b709f9c767549b8ff02c858b70867604245de02801d823",
+      "status": "fetched"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/master/formats/json/Geneva1599.json",
+      "path": "data/corpus/external/scrollmapper/Geneva1599.json",
+      "bytes": 8437536,
+      "sha256": "dab3f93f6ec4ade87974db02e8a2678f01178673e74f040572220815d2f287fa",
+      "status": "fetched"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/master/formats/json/Tyndale.json",
+      "path": "data/corpus/external/scrollmapper/Tyndale.json",
+      "bytes": 5221003,
+      "sha256": "43f72ec934be9262e74c3046f40f65de1ccd74122f386177e2ac829ab8bc12b3",
+      "status": "fetched"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/master/formats/json/Wycliffe.json",
+      "path": "data/corpus/external/scrollmapper/Wycliffe.json",
+      "bytes": 9952283,
+      "sha256": "e2b74eea4573f84d8cdbc8c4aa36beaac609f1494cd11e8cdefb1f40441258be",
+      "status": "fetched"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/master/formats/json/JPS.json",
+      "path": "data/corpus/external/scrollmapper/JPS.json",
+      "bytes": 6397355,
+      "sha256": "aed58f78e6a39af6d95c32f4c8b2d4919775eebcc38e319cf8b6c0200401d997",
+      "status": "fetched"
+    },
+    {
+      "url": "https://ebible.org/Scriptures/engwebster_vpl.zip",
+      "path": "data/corpus/external/ebible/engwebster_vpl.zip",
+      "bytes": 4342202,
+      "sha256": "812f57edeb14ac2b94bc35d6fe7808527e37f96586cd4ad7ee85119c714ed7e8",
+      "status": "fetched"
+    },
+    {
+      "url": "https://ebible.org/Scriptures/enggnv_vpl.zip",
+      "path": "data/corpus/external/ebible/enggnv_vpl.zip",
+      "bytes": 4402210,
+      "sha256": "cde84397d6144de3d70235fc883e20c4a21391560f305a63765a5f0892e582d9",
+      "status": "fetched"
+    },
+    {
+      "url": "https://ebible.org/Scriptures/engDRA_vpl.zip",
+      "path": "data/corpus/external/ebible/engDRA_vpl.zip",
+      "bytes": 4996558,
+      "sha256": "b3501f6a8cd918728903b0d56cda061e8dd48741b4552707d8cdf5eac61c15c7",
+      "status": "fetched"
+    },
+    {
+      "url": "https://ebible.org/Scriptures/engjps_vpl.zip",
+      "path": "data/corpus/external/ebible/engjps_vpl.zip",
+      "bytes": 3305826,
+      "sha256": "89bf3939315dc085359720772bd4aac37471e12293fa63a1bc63c7316acc9028",
+      "status": "fetched"
+    },
+    {
+      "url": "https://wesley.nnu.edu/sermons-essays-books/noncanonical-literature/noncanonical-literature-ot-pseudepigrapha/book-of-enoch/",
+      "path": "data/corpus/external/wesley_nnu/1-enoch.html",
+      "bytes": 210343,
+      "sha256": "dd4072e8c154056f417f59d34bc5a312413c425c7a9d983bfdf8a69939bef14f",
+      "status": "fetched"
+    },
+    {
+      "url": "https://wesley.nnu.edu/sermons-essays-books/noncanonical-literature/noncanonical-literature-ot-pseudepigrapha/the-first-book-of-enoch/",
+      "path": "data/corpus/external/wesley_nnu/1-enoch-alt.html",
+      "bytes": 13640,
+      "sha256": "0a9f9c8b7458d54bc9bd4c3ae16fb33671a7455a3d6f7c8298bd1c7ae04ce307",
+      "status": "fetched"
+    },
+    {
+      "url": "https://wesley.nnu.edu/sermons-essays-books/noncanonical-literature/noncanonical-literature-ot-pseudepigrapha/2-enoch/",
+      "path": "data/corpus/external/wesley_nnu/2-enoch.html",
+      "bytes": 11581,
+      "sha256": "9149b7d29c44f6c88b236a40123c03793ddca384412fb04c38a856ec37803095",
+      "status": "fetched"
+    },
+    {
+      "url": "https://wesley.nnu.edu/sermons-essays-books/noncanonical-literature/noncanonical-literature-ot-pseudepigrapha/jubilees/",
+      "path": "data/corpus/external/wesley_nnu/jubilees-alt.html",
+      "bytes": 11584,
+      "sha256": "395bcceaf75d9ebaf80dec214cd2688c180d143d60d3a192d847104113c200dd",
+      "status": "fetched"
+    },
+    {
+      "url": "https://wesley.nnu.edu/sermons-essays-books/noncanonical-literature/noncanonical-literature-ot-pseudepigrapha/the-book-of-jubilees/",
+      "path": "data/corpus/external/wesley_nnu/jubilees.html",
+      "bytes": 331570,
+      "sha256": "c1a9936f243e11c6c3f58c98d6dd2cfb1b250e9489a7ef25e1b57473b9d420e4",
+      "status": "fetched"
+    },
+    {
+      "url": "https://wesley.nnu.edu/sermons-essays-books/noncanonical-literature/noncanonical-literature-ot-pseudepigrapha/2-baruch/",
+      "path": "data/corpus/external/wesley_nnu/2-baruch-alt.html",
+      "bytes": 12121,
+      "sha256": "ec02f00ed922b84d422f343cb1b38ea46de2b81f3ad4d173cb04951f2f58d3c1",
+      "status": "fetched"
+    },
+    {
+      "url": "https://wesley.nnu.edu/sermons-essays-books/noncanonical-literature/noncanonical-literature-ot-pseudepigrapha/the-book-of-the-apocalypse-of-baruch-the-son-of-neriah-or-2-baruch/",
+      "path": "data/corpus/external/wesley_nnu/2-baruch.html",
+      "bytes": 154673,
+      "sha256": "62da7f35b0c205935a1d41d15430ec22270eb0a0d25fb27d7d947729b62e68f3",
+      "status": "fetched"
+    },
+    {
+      "url": "https://wesley.nnu.edu/sermons-essays-books/noncanonical-literature/noncanonical-literature-ot-pseudepigrapha/3-baruch/",
+      "path": "data/corpus/external/wesley_nnu/3-baruch-alt.html",
+      "bytes": 11661,
+      "sha256": "5fcdbbddbaa6cf0e15dd350f59a5b97ffc7a0d2a7df368658574febc335a3603",
+      "status": "fetched"
+    },
+    {
+      "url": "https://wesley.nnu.edu/sermons-essays-books/noncanonical-literature/noncanonical-literature-ot-pseudepigrapha/the-greek-apocalypse-of-baruch-or-3-baruch/",
+      "path": "data/corpus/external/wesley_nnu/3-baruch.html",
+      "bytes": 32843,
+      "sha256": "95391aaaa37d32e65d62ade8a338ff758b487b91b28399a1bb7264f0a1eb31d4",
+      "status": "fetched"
+    },
+    {
+      "url": "https://wesley.nnu.edu/sermons-essays-books/noncanonical-literature/noncanonical-literature-ot-pseudepigrapha/4-baruch-paraleipomena-jeremiou/",
+      "path": "data/corpus/external/wesley_nnu/4-baruch.html",
+      "bytes": 12280,
+      "sha256": "f40dcd18106f86c46cdbec846485720516eac17e8b333e2405abce3ecec19a6f",
+      "status": "fetched"
+    },
+    {
+      "url": "https://wesley.nnu.edu/sermons-essays-books/noncanonical-literature/noncanonical-literature-ot-pseudepigrapha/apocalypse-of-abraham/",
+      "path": "data/corpus/external/wesley_nnu/apocalypse-of-abraham.html",
+      "bytes": 11437,
+      "sha256": "0c67dcb9bb18a373071795638a3bc6514e356f987ebd9dbef17dc500dfb262d6",
+      "status": "fetched"
+    },
+    {
+      "url": "https://wesley.nnu.edu/sermons-essays-books/noncanonical-literature/noncanonical-literature-ot-pseudepigrapha/testaments-of-the-twelve-patriarchs/",
+      "path": "data/corpus/external/wesley_nnu/testaments-twelve-patriarchs.html",
+      "bytes": 11918,
+      "sha256": "27917ff5872a09f68bd5c59b9be46161098ccbdd019dc2362f5e541b10b63046",
+      "status": "fetched"
+    },
+    {
+      "url": "https://wesley.nnu.edu/sermons-essays-books/noncanonical-literature/noncanonical-literature-ot-pseudepigrapha/testament-of-abraham/",
+      "path": "data/corpus/external/wesley_nnu/testament-of-abraham.html",
+      "bytes": 11821,
+      "sha256": "2f675050ca8c405910da42c49bce107abb7bafdd228d8a44e9a1b7d8feff7ee7",
+      "status": "fetched"
+    },
+    {
+      "url": "https://wesley.nnu.edu/sermons-essays-books/noncanonical-literature/noncanonical-literature-ot-pseudepigrapha/testament-of-job/",
+      "path": "data/corpus/external/wesley_nnu/testament-of-job.html",
+      "bytes": 59309,
+      "sha256": "d158c33a2c201f5331fb3ac86123f9c274c87f6a03f0efadccf604537305baad",
+      "status": "fetched"
+    },
+    {
+      "url": "https://wesley.nnu.edu/sermons-essays-books/noncanonical-literature/noncanonical-literature-ot-pseudepigrapha/testament-of-solomon/",
+      "path": "data/corpus/external/wesley_nnu/testament-of-solomon.html",
+      "bytes": 11264,
+      "sha256": "0bf2caf8a96913ea9479340bf1c2b3d99f01fda47a348919e77210d777cd23cb",
+      "status": "fetched"
+    },
+    {
+      "url": "https://wesley.nnu.edu/sermons-essays-books/noncanonical-literature/noncanonical-literature-ot-pseudepigrapha/the-letter-of-aristeas/",
+      "path": "data/corpus/external/wesley_nnu/letter-of-aristeas.html",
+      "bytes": 118841,
+      "sha256": "0d85e7a3f8f06d77ee3322d4f380c71554f0848741836a31d476513da2fb946d",
+      "status": "fetched"
+    },
+    {
+      "url": "https://wesley.nnu.edu/sermons-essays-books/noncanonical-literature/noncanonical-literature-ot-pseudepigrapha/the-life-of-adam-and-eve/",
+      "path": "data/corpus/external/wesley_nnu/life-of-adam-and-eve.html",
+      "bytes": 12396,
+      "sha256": "92bad3c9f242d6bc9219d3c77f22c5a1bbf236d9dc48540b0110992dade27e3f",
+      "status": "fetched"
+    },
+    {
+      "url": "https://wesley.nnu.edu/sermons-essays-books/noncanonical-literature/noncanonical-literature-ot-pseudepigrapha/the-books-of-adam-and-eve/",
+      "path": "data/corpus/external/wesley_nnu/books-of-adam-and-eve.html",
+      "bytes": 37328,
+      "sha256": "7c633a2410e21f02021eaeeef68b4cba1a5f6256aea49683d6d95b5276ec3b46",
+      "status": "fetched"
+    },
+    {
+      "url": "https://wesley.nnu.edu/sermons-essays-books/noncanonical-literature/noncanonical-literature-ot-pseudepigrapha/slavanic-life-of-adam-and-eve/",
+      "path": "data/corpus/external/wesley_nnu/slavonic-adam-and-eve.html",
+      "bytes": 14514,
+      "sha256": "f709d58de6142eef03b43891f0220fa18b318da96845f36f09c217fbef3200ec",
+      "status": "fetched"
+    },
+    {
+      "url": "https://wesley.nnu.edu/sermons-essays-books/noncanonical-literature/noncanonical-literature-ot-pseudepigrapha/the-apocalypse-of-moses/",
+      "path": "data/corpus/external/wesley_nnu/apocalypse-of-moses.html",
+      "bytes": 37193,
+      "sha256": "65ebbc7f688881899205ce13cf2ea1df99846e7386d8f433b1753484d75bf32a",
+      "status": "fetched"
+    },
+    {
+      "url": "https://wesley.nnu.edu/sermons-essays-books/noncanonical-literature/noncanonical-literature-ot-pseudepigrapha/the-martyrdom-of-isaiah/",
+      "path": "data/corpus/external/wesley_nnu/martyrdom-of-isaiah.html",
+      "bytes": 12231,
+      "sha256": "3e6eae76d25b506cae8dc359c55c42b028eb17be0730df9ed85c7ee9702b6010",
+      "status": "fetched"
+    },
+    {
+      "url": "https://wesley.nnu.edu/sermons-essays-books/noncanonical-literature/noncanonical-literature-ot-pseudepigrapha/the-psalms-of-solomon/",
+      "path": "data/corpus/external/wesley_nnu/psalms-of-solomon.html",
+      "bytes": 71700,
+      "sha256": "423937faccae7a5433c572a47df2ea3ba2a983e688bf7d9f342797c11fb54150",
+      "status": "fetched"
+    },
+    {
+      "url": "https://wesley.nnu.edu/sermons-essays-books/noncanonical-literature/noncanonical-literature-ot-pseudepigrapha/joseph-and-aseneth/",
+      "path": "data/corpus/external/wesley_nnu/joseph-and-aseneth.html",
+      "bytes": 12070,
+      "sha256": "aa3ea8a8170cd7def147f3bf847e70de88b15a0be2657f7ceca8afca07fa09cb",
+      "status": "fetched"
+    },
+    {
+      "url": "https://wesley.nnu.edu/sermons-essays-books/noncanonical-literature/noncanonical-literature-ot-pseudepigrapha/pseudo-phocylides/",
+      "path": "data/corpus/external/wesley_nnu/pseudo-phocylides.html",
+      "bytes": 11754,
+      "sha256": "07088c8c93fb7fb1fb18a22962af3d7a052f8a7052b09c78c288a17383e6a760",
+      "status": "fetched"
+    },
+    {
+      "url": "https://wesley.nnu.edu/sermons-essays-books/noncanonical-literature/noncanonical-literature-ot-pseudepigrapha/word-and-revelation-of-esdras/",
+      "path": "data/corpus/external/wesley_nnu/word-revelation-esdras.html",
+      "bytes": 26480,
+      "sha256": "4e3691abc0471168bb7b979ec9675cafe0c077966a69730f1853b8bf5eab90e0",
+      "status": "fetched"
+    }
+  ],
+  "errors": [
+    {
+      "url": "https://ebible.org/Scriptures/hboWLC_vpl.zip",
+      "error": "The read operation timed out"
+    }
+  ]
+}

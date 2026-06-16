@@ -26,7 +26,7 @@ Route natural language to the correct Apex skill bundle without requiring users 
 - Use `13_skills/skill_refinery/trigger_router.yaml` as the canonical catalog and `37_command_protocol/trigger_router.yaml` as the compiled runtime copy.
 - Treat `/atlas:*` commands as aliases into the Atlas noun/target branch.
 - Use proprietary names: Atlas Graph Engine and Atlas Knowledge Vault.
-- Do not use external graph/vault product names as SUPER C Atlas subsystem names.
+- Do not use external graph/vault product names as ATLAS subsystem names.
 - Route `.claude`, agent-surface, and thread-refinery requests to their dedicated active skills.
 - Treat `invoke all skills`, `use all skills`, `run all skills`, `activate all skills`, `all skills`, `all skills and agents`, `full skill stack`, and `universal skills` as universal skill invocation.
 - Universal skill invocation activates portable capability coverage, not every imported project-specific skill or agent.

@@ -1,0 +1,998 @@
+schema_version: '1.0'
+map_id: CHECKLIST_TO_SKILL_MAP_001
+granularity: category (item-level mapping not yet built — 0/3378)
+skill_state_enum:
+- NO_SKILL
+- SKILL_SPEC_ONLY
+- SKILL_DRAFTED
+- SKILL_ROUTED
+- SKILL_EXECUTABLE
+- SKILL_WIRED
+- SKILL_TESTED
+- SKILL_DEPRECATED
+- NOT_APPLICABLE
+summary:
+  SKILL_WIRED: 5
+  SKILL_DRAFTED: 10
+  SKILL_SPEC_ONLY: 29
+  NO_SKILL: 12
+  NOT_APPLICABLE: 12
+categories:
+- category: Accessibility Engineering
+  category_id: PRC.ACCESSIBILITY_ENGINEERING
+  item_count: 76
+  declared_coverage: FULL
+  verified_skill_match: WEAK
+  atlas_applicability: CORE
+  skill_refs:
+  - SKILL_DESKTOP_UI_ACCESSIBILITY_001
+  - SKILL_BEACON_001
+  skill_state: NO_SKILL
+  coverage: NONE
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/76 items)
+- category: Admin Console & Internal Ops
+  category_id: PRC.ADMIN_CONSOLE_AND_INTERNAL_OPS
+  item_count: 34
+  declared_coverage: FULL
+  verified_skill_match: STRONG
+  atlas_applicability: APPLICABLE
+  skill_refs:
+  - SKILL_ADMIN_CONSOLE_TENANT_OPS_001
+  - SKILL_OPERATIONAL_WORKSPACE_001
+  - SKILL_PROVISIONING_ONBOARDING_LIFECYCLE_001
+  skill_state: SKILL_DRAFTED
+  coverage: PARTIAL
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/34 items)
+- category: AI & ML Models
+  category_id: PRC.AI_AND_ML_MODELS
+  item_count: 86
+  declared_coverage: FULL
+  verified_skill_match: TOPICAL
+  atlas_applicability: PARTIAL
+  skill_refs:
+  - SKILL_AI_GOVERNANCE_CITADEL_001
+  - SKILL_ML_FINE_TUNING_DISTILLATION_001
+  - SKILL_MCP_TOOLING_AUTOMATION_001
+  - SKILL_EDGE_AI_OPTIMIZER_001
+  skill_state: SKILL_SPEC_ONLY
+  coverage: PARTIAL
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/86 items)
+- category: Analytics Instrumentation & Telemetry
+  category_id: PRC.ANALYTICS_INSTRUMENTATION_AND_TELEMETRY
+  item_count: 58
+  declared_coverage: FULL
+  verified_skill_match: WEAK
+  atlas_applicability: PARTIAL
+  skill_refs:
+  - SKILL_APPINSIGHTS_INSTRUMENTATION_001
+  - SKILL_AZURE_OBSERVABILITY_001
+  - SKILL_OBSERVABILITY_NEXUS_001
+  skill_state: NO_SKILL
+  coverage: NONE
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/58 items)
+- category: API Gateway & Service Mesh
+  category_id: PRC.API_GATEWAY_AND_SERVICE_MESH
+  item_count: 46
+  declared_coverage: FULL
+  verified_skill_match: TOPICAL
+  atlas_applicability: PARTIAL
+  skill_refs:
+  - SKILL_API_GATEWAY_SERVICE_MESH_001
+  skill_state: SKILL_SPEC_ONLY
+  coverage: PARTIAL
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/46 items)
+- category: Application Core
+  category_id: PRC.APPLICATION_CORE
+  item_count: 84
+  declared_coverage: PARTIAL
+  verified_skill_match: WEAK
+  atlas_applicability: CORE
+  skill_refs:
+  - SKILL_ARCHITECTURE_ATLAS_001
+  - SKILL_NEW_PLATFORM_SERVICE_001
+  skill_state: NO_SKILL
+  coverage: NONE
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/84 items)
+- category: Architecture Patterns
+  category_id: PRC.ARCHITECTURE_PATTERNS
+  item_count: 42
+  declared_coverage: FULL
+  verified_skill_match: TOPICAL
+  atlas_applicability: PARTIAL
+  skill_refs:
+  - SKILL_ARCHITECTURE_ATLAS_001
+  - SKILL_API_CONTRACT_001
+  - SKILL_DESIGN_SYSTEMS_FORGE_001
+  skill_state: SKILL_SPEC_ONLY
+  coverage: PARTIAL
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/42 items)
+- category: Audit Logging, Forensics & eDiscovery
+  category_id: PRC.AUDIT_LOGGING_FORENSICS_AND_EDISCOVERY
+  item_count: 48
+  declared_coverage: FULL
+  verified_skill_match: STRONG
+  atlas_applicability: APPLICABLE
+  skill_refs:
+  - SKILL_AUDIT_LOG_IMMUTABLE_001
+  - SKILL_PROOF_MATRIX_001
+  - SKILL_AUDIT_ASSESS_ANALYZE_001
+  skill_state: SKILL_WIRED
+  coverage: FULL
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/48 items)
+- category: Backend
+  category_id: PRC.BACKEND
+  item_count: 55
+  declared_coverage: FULL
+  verified_skill_match: TOPICAL
+  atlas_applicability: CORE
+  skill_refs:
+  - SKILL_NEW_PLATFORM_SERVICE_001
+  - SKILL_FRONTEND_BACKEND_DATAFLOW_001
+  - SKILL_API_GATEWAY_SERVICE_MESH_001
+  skill_state: SKILL_WIRED
+  coverage: FULL
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/55 items)
+- category: Browser Extension
+  category_id: PRC.BROWSER_EXTENSION
+  item_count: 30
+  declared_coverage: FULL
+  verified_skill_match: STRONG
+  atlas_applicability: NOT_APPLICABLE
+  skill_refs:
+  - SKILL_BROWSER_EXTENSION_001
+  skill_state: NOT_APPLICABLE
+  coverage: N/A
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/30 items)
+- category: Caching & CDN Strategy
+  category_id: PRC.CACHING_AND_CDN_STRATEGY
+  item_count: 60
+  declared_coverage: PARTIAL
+  verified_skill_match: WEAK
+  atlas_applicability: PARTIAL
+  skill_refs:
+  - SKILL_BACK_LINK_REUSE_OVER_CACHE_001
+  skill_state: NO_SKILL
+  coverage: NONE
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/60 items)
+- category: CLI, SDK & Developer Platform
+  category_id: PRC.CLI_SDK_AND_DEVELOPER_PLATFORM
+  item_count: 36
+  declared_coverage: FULL
+  verified_skill_match: TOPICAL
+  atlas_applicability: PARTIAL
+  skill_refs:
+  - SKILL_MCP_TOOLING_AUTOMATION_001
+  - SKILL_MCP_001
+  - SKILL_EXPORT_SUITE_001
+  skill_state: SKILL_SPEC_ONLY
+  coverage: PARTIAL
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/36 items)
+- category: Cloud Platform
+  category_id: PRC.CLOUD_PLATFORM
+  item_count: 72
+  declared_coverage: FULL
+  verified_skill_match: TOPICAL
+  atlas_applicability: NOT_APPLICABLE
+  skill_refs:
+  - SKILL_AZURE_PREPARE_001
+  - SKILL_AZURE_DEPLOY_001
+  - SKILL_AZURE_VALIDATE_001
+  - SKILL_AZURE_COST_OPTIMIZATION_001
+  skill_state: NOT_APPLICABLE
+  coverage: N/A
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/72 items)
+- category: Content, CMS & Editorial
+  category_id: PRC.CONTENT_CMS_AND_EDITORIAL
+  item_count: 28
+  declared_coverage: FULL
+  verified_skill_match: STRONG
+  atlas_applicability: PARTIAL
+  skill_refs:
+  - SKILL_CMS_CONTENT_EDITORIAL_001
+  skill_state: SKILL_DRAFTED
+  coverage: PARTIAL
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/28 items)
+- category: Corporate IT & Endpoint Security
+  category_id: PRC.CORPORATE_IT_AND_ENDPOINT_SECURITY
+  item_count: 29
+  declared_coverage: PARTIAL
+  verified_skill_match: TOPICAL
+  atlas_applicability: NOT_APPLICABLE
+  skill_refs:
+  - SKILL_ENTRA_APP_REGISTRATION_001
+  - SKILL_IDENTITY_AUTH_RBAC_ABAC_001
+  skill_state: NOT_APPLICABLE
+  coverage: N/A
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/29 items)
+- category: Customer Support & Success
+  category_id: PRC.CUSTOMER_SUPPORT_AND_SUCCESS
+  item_count: 34
+  declared_coverage: PARTIAL
+  verified_skill_match: WEAK
+  atlas_applicability: NOT_APPLICABLE
+  skill_refs:
+  - SKILL_PRODUCT_EXPERIENCE_ENGINEER_001
+  skill_state: NOT_APPLICABLE
+  coverage: N/A
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/34 items)
+- category: Database
+  category_id: PRC.DATABASE
+  item_count: 114
+  declared_coverage: FULL
+  verified_skill_match: TOPICAL
+  atlas_applicability: CORE
+  skill_refs:
+  - SKILL_AZURE_POSTGRES_001
+  - SKILL_DATA_ISOLATION_STORAGE_001
+  - SKILL_AZURE_STORAGE_001
+  - SKILL_ELSON_SCHEMA_CHECK_001
+  skill_state: SKILL_SPEC_ONLY
+  coverage: PARTIAL
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/114 items)
+- category: Data & Privacy Compliance
+  category_id: PRC.DATA_AND_PRIVACY_COMPLIANCE
+  item_count: 52
+  declared_coverage: FULL
+  verified_skill_match: TOPICAL
+  atlas_applicability: APPLICABLE
+  skill_refs:
+  - SKILL_DATA_ISOLATION_STORAGE_001
+  - SKILL_COMPLIANCE_CHECK_001
+  - SKILL_SECURITY_COMPLIANCE_GOVERNANCE_001
+  skill_state: SKILL_SPEC_ONLY
+  coverage: PARTIAL
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/52 items)
+- category: Data Engineering & Analytics
+  category_id: PRC.DATA_ENGINEERING_AND_ANALYTICS
+  item_count: 32
+  declared_coverage: FULL
+  verified_skill_match: TOPICAL
+  atlas_applicability: PARTIAL
+  skill_refs:
+  - SKILL_DATA_PIPELINE_001
+  - SKILL_DATA_INFRASTRUCTURE_LEAD_001
+  - SKILL_DATA_INFRA_ENGINEER_001
+  skill_state: SKILL_SPEC_ONLY
+  coverage: PARTIAL
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/32 items)
+- category: Data Migration & Cutover
+  category_id: PRC.DATA_MIGRATION_AND_CUTOVER
+  item_count: 35
+  declared_coverage: PARTIAL
+  verified_skill_match: TOPICAL
+  atlas_applicability: APPLICABLE
+  skill_refs:
+  - SKILL_ELSON_MIGRATE_001
+  - SKILL_DATA_ISOLATION_STORAGE_001
+  skill_state: SKILL_SPEC_ONLY
+  coverage: PARTIAL
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/35 items)
+- category: Desktop Application
+  category_id: PRC.DESKTOP_APPLICATION
+  item_count: 57
+  declared_coverage: FULL
+  verified_skill_match: TOPICAL
+  atlas_applicability: PARTIAL
+  skill_refs:
+  - SKILL_FULLSTACK_REACT_ELECTRON_THREEJS_001
+  - SKILL_ELECTRON_SINGLE_INSTANCE_DISCIPLINE_001
+  - SKILL_DESKTOP_UI_ACCESSIBILITY_001
+  skill_state: SKILL_SPEC_ONLY
+  coverage: PARTIAL
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/57 items)
+- category: Developer Experience
+  category_id: PRC.DEVELOPER_EXPERIENCE
+  item_count: 32
+  declared_coverage: FULL
+  verified_skill_match: TOPICAL
+  atlas_applicability: APPLICABLE
+  skill_refs:
+  - SKILL_DEVELOPER_EXPERIENCE_LEAD_001
+  - SKILL_DEVEX_CI_CD_IAC_001
+  - SKILL_SKILL_CONTINUOUS_IMPROVEMENT_LOOP_001
+  skill_state: SKILL_SPEC_ONLY
+  coverage: PARTIAL
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/32 items)
+- category: Disaster Recovery & BCP
+  category_id: PRC.DISASTER_RECOVERY_AND_BCP
+  item_count: 40
+  declared_coverage: PARTIAL
+  verified_skill_match: TOPICAL
+  atlas_applicability: PARTIAL
+  skill_refs:
+  - SKILL_SCALABILITY_RESILIENCE_DR_001
+  - SKILL_RELIABILITY_SECURITY_SENTINEL_001
+  skill_state: SKILL_SPEC_ONLY
+  coverage: PARTIAL
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/40 items)
+- category: Documentation
+  category_id: PRC.DOCUMENTATION
+  item_count: 52
+  declared_coverage: FULL
+  verified_skill_match: TOPICAL
+  atlas_applicability: CORE
+  skill_refs:
+  - SKILL_ADR_AUTHORING_001
+  - SKILL_DOCS_SYNC_001
+  - SKILL_README_001
+  - SKILL_TUTORIAL_AUTHORING_DISCIPLINE_001
+  skill_state: SKILL_WIRED
+  coverage: FULL
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/52 items)
+- category: Email & Notification Infrastructure
+  category_id: PRC.EMAIL_AND_NOTIFICATION_INFRASTRUCTURE
+  item_count: 37
+  declared_coverage: PARTIAL
+  verified_skill_match: WEAK
+  atlas_applicability: PARTIAL
+  skill_refs:
+  - SKILL_ALERT_SYSTEM_001
+  skill_state: NO_SKILL
+  coverage: NONE
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/37 items)
+- category: Encryption & Cryptography
+  category_id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY
+  item_count: 50
+  declared_coverage: PARTIAL
+  verified_skill_match: TOPICAL
+  atlas_applicability: APPLICABLE
+  skill_refs:
+  - SKILL_SECURITY_CRYPTO_ENGINEERING_001
+  skill_state: SKILL_SPEC_ONLY
+  coverage: PARTIAL
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/50 items)
+- category: Enterprise Readiness
+  category_id: PRC.ENTERPRISE_READINESS
+  item_count: 36
+  declared_coverage: FULL
+  verified_skill_match: TOPICAL
+  atlas_applicability: PARTIAL
+  skill_refs:
+  - SKILL_AZURE_COMPLIANCE_001
+  - SKILL_SECURITY_COMPLIANCE_GOVERNANCE_001
+  - SKILL_AZURE_RBAC_001
+  skill_state: SKILL_SPEC_ONLY
+  coverage: PARTIAL
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/36 items)
+- category: Feature Management
+  category_id: PRC.FEATURE_MANAGEMENT
+  item_count: 29
+  declared_coverage: FULL
+  verified_skill_match: WEAK
+  atlas_applicability: APPLICABLE
+  skill_refs:
+  - SKILL_SLICE_PLANNING_001
+  - SKILL_FAILURE_MODE_FIRST_AUTHORING_001
+  - SKILL_NO_SURPRISE_PLANNING_001
+  skill_state: NO_SKILL
+  coverage: NONE
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/29 items)
+- category: File Upload & Media Processing
+  category_id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING
+  item_count: 48
+  declared_coverage: FULL
+  verified_skill_match: STRONG
+  atlas_applicability: PARTIAL
+  skill_refs:
+  - SKILL_FILE_UPLOAD_MEDIA_001
+  skill_state: SKILL_DRAFTED
+  coverage: PARTIAL
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/48 items)
+- category: Fraud & Abuse Prevention
+  category_id: PRC.FRAUD_AND_ABUSE_PREVENTION
+  item_count: 60
+  declared_coverage: FULL
+  verified_skill_match: STRONG
+  atlas_applicability: PARTIAL
+  skill_refs:
+  - SKILL_FRAUD_ABUSE_PREVENTION_001
+  skill_state: SKILL_DRAFTED
+  coverage: PARTIAL
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/60 items)
+- category: Frontend
+  category_id: PRC.FRONTEND
+  item_count: 76
+  declared_coverage: FULL
+  verified_skill_match: TOPICAL
+  atlas_applicability: CORE
+  skill_refs:
+  - SKILL_DASHBOARD_SCAFFOLD_001
+  - SKILL_CHART_BUILDER_001
+  - SKILL_UI_INTERACTION_WIRING_001
+  - SKILL_RESPONSIVE_LAYOUT_001
+  skill_state: SKILL_SPEC_ONLY
+  coverage: PARTIAL
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/76 items)
+- category: Go-To-Market & Growth
+  category_id: PRC.GO_TO_MARKET_AND_GROWTH
+  item_count: 35
+  declared_coverage: FULL
+  verified_skill_match: STRONG
+  atlas_applicability: NOT_APPLICABLE
+  skill_refs:
+  - SKILL_GTM_GROWTH_001
+  skill_state: NOT_APPLICABLE
+  coverage: N/A
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/35 items)
+- category: GRC & Audit Evidence
+  category_id: PRC.GRC_AND_AUDIT_EVIDENCE
+  item_count: 29
+  declared_coverage: FULL
+  verified_skill_match: TOPICAL
+  atlas_applicability: APPLICABLE
+  skill_refs:
+  - SKILL_PROOF_MATRIX_001
+  - SKILL_TRUTH_STATE_CHECK_001
+  - SKILL_AUDIT_ASSESS_ANALYZE_001
+  - SKILL_E2E_AUDIT_DISPATCH_001
+  skill_state: SKILL_SPEC_ONLY
+  coverage: PARTIAL
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/29 items)
+- category: Hardware, IoT & Edge
+  category_id: PRC.HARDWARE_IOT_AND_EDGE
+  item_count: 34
+  declared_coverage: FULL
+  verified_skill_match: NONE
+  atlas_applicability: NOT_APPLICABLE
+  skill_refs:
+  - SKILL_HARDWARE_INTEGRATION_ENGINEER_001
+  - SKILL_HW_DRIVER_VERIFY_001
+  - SKILL_EDGE_AI_OPTIMIZER_001
+  skill_state: NOT_APPLICABLE
+  coverage: N/A
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/34 items)
+- category: Identity Verification & KYC/AML
+  category_id: PRC.IDENTITY_VERIFICATION_AND_KYC_AML
+  item_count: 58
+  declared_coverage: PARTIAL
+  verified_skill_match: WEAK
+  atlas_applicability: NOT_APPLICABLE
+  skill_refs:
+  - SKILL_IDENTITY_AUTH_RBAC_ABAC_001
+  - SKILL_ORBITAL_IDENTITY_001
+  skill_state: NOT_APPLICABLE
+  coverage: N/A
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/58 items)
+- category: Incident Management
+  category_id: PRC.INCIDENT_MANAGEMENT
+  item_count: 35
+  declared_coverage: FULL
+  verified_skill_match: TOPICAL
+  atlas_applicability: PARTIAL
+  skill_refs:
+  - SKILL_OBSERVABILITY_SRE_INCIDENT_RESPONSE_001
+  - SKILL_CASCADE_ROOT_TRIAGE_001
+  - SKILL_RELIABILITY_SECURITY_SENTINEL_001
+  skill_state: SKILL_SPEC_ONLY
+  coverage: PARTIAL
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/35 items)
+- category: Infrastructure & DevOps
+  category_id: PRC.INFRASTRUCTURE_AND_DEVOPS
+  item_count: 59
+  declared_coverage: FULL
+  verified_skill_match: TOPICAL
+  atlas_applicability: APPLICABLE
+  skill_refs:
+  - SKILL_CI_PIPELINE_001
+  - SKILL_DEPLOY_PIPELINE_001
+  - SKILL_DEVOPS_CATALYST_001
+  - SKILL_DEVEX_CI_CD_IAC_001
+  skill_state: SKILL_SPEC_ONLY
+  coverage: PARTIAL
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/59 items)
+- category: Integrations
+  category_id: PRC.INTEGRATIONS
+  item_count: 49
+  declared_coverage: FULL
+  verified_skill_match: WEAK
+  atlas_applicability: APPLICABLE
+  skill_refs:
+  - SKILL_API_GATEWAY_SERVICE_MESH_001
+  - SKILL_NOTION_SPEC_TO_IMPLEMENTATION_001
+  skill_state: SKILL_WIRED
+  coverage: FULL
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/49 items)
+- category: Internationalization & L10n
+  category_id: PRC.INTERNATIONALIZATION_AND_L10N
+  item_count: 39
+  declared_coverage: FULL
+  verified_skill_match: STRONG
+  atlas_applicability: APPLICABLE
+  skill_refs:
+  - SKILL_I18N_L10N_001
+  skill_state: SKILL_DRAFTED
+  coverage: PARTIAL
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/39 items)
+- category: Legal & Regulatory Compliance
+  category_id: PRC.LEGAL_AND_REGULATORY_COMPLIANCE
+  item_count: 72
+  declared_coverage: FULL
+  verified_skill_match: WEAK
+  atlas_applicability: PARTIAL
+  skill_refs:
+  - SKILL_COMPLIANCE_CHECK_001
+  - SKILL_SECURITY_COMPLIANCE_GOVERNANCE_001
+  skill_state: NO_SKILL
+  coverage: NONE
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/72 items)
+- category: Mobile Application
+  category_id: PRC.MOBILE_APPLICATION
+  item_count: 58
+  declared_coverage: FULL
+  verified_skill_match: STRONG
+  atlas_applicability: NOT_APPLICABLE
+  skill_refs:
+  - SKILL_MOBILE_APP_PRODUCTION_001
+  skill_state: NOT_APPLICABLE
+  coverage: N/A
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/58 items)
+- category: Multi-Tenancy & SaaS Architecture
+  category_id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE
+  item_count: 60
+  declared_coverage: FULL
+  verified_skill_match: STRONG
+  atlas_applicability: CORE
+  skill_refs:
+  - SKILL_MULTI_TENANT_PLATFORM_ARCHITECT_001
+  - SKILL_MULTI_TENANT_ISOLATION_001
+  - SKILL_TENANT_MODEL_BOUNDARY_DESIGN_001
+  - SKILL_BILLING_METERING_QUOTAS_001
+  skill_state: SKILL_DRAFTED
+  coverage: PARTIAL
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/60 items)
+- category: Network
+  category_id: PRC.NETWORK
+  item_count: 39
+  declared_coverage: FULL
+  verified_skill_match: WEAK
+  atlas_applicability: PARTIAL
+  skill_refs:
+  - SKILL_API_GATEWAY_SERVICE_MESH_001
+  - SKILL_NETWORK_CONNECTIVITY_DISCIPLINE_001
+  skill_state: NO_SKILL
+  coverage: NONE
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/39 items)
+- category: Open Source & Licensing
+  category_id: PRC.OPEN_SOURCE_AND_LICENSING
+  item_count: 34
+  declared_coverage: FULL
+  verified_skill_match: STRONG
+  atlas_applicability: APPLICABLE
+  skill_refs:
+  - SKILL_OSS_LICENSING_COMPLIANCE_001
+  skill_state: SKILL_DRAFTED
+  coverage: PARTIAL
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/34 items)
+- category: Operating Systems
+  category_id: PRC.OPERATING_SYSTEMS
+  item_count: 59
+  declared_coverage: FULL
+  verified_skill_match: NONE
+  atlas_applicability: NOT_APPLICABLE
+  skill_refs:
+  - SKILL_FREESTANDING_C_KERNEL_001
+  - SKILL_ISO_BUILD_001
+  - SKILL_KERNEL_DEBUG_001
+  skill_state: NOT_APPLICABLE
+  coverage: N/A
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/59 items)
+- category: Payments & Financial Systems
+  category_id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS
+  item_count: 47
+  declared_coverage: FULL
+  verified_skill_match: WEAK
+  atlas_applicability: NOT_APPLICABLE
+  skill_refs:
+  - SKILL_BILLING_METERING_QUOTAS_001
+  skill_state: NOT_APPLICABLE
+  coverage: N/A
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/47 items)
+- category: Performance Engineering
+  category_id: PRC.PERFORMANCE_ENGINEERING
+  item_count: 39
+  declared_coverage: FULL
+  verified_skill_match: TOPICAL
+  atlas_applicability: APPLICABLE
+  skill_refs:
+  - SKILL_PERFORMANCE_FORGE_001
+  - SKILL_PERF_PROFILER_001
+  skill_state: SKILL_SPEC_ONLY
+  coverage: PARTIAL
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/39 items)
+- category: Product Strategy & Requirements
+  category_id: PRC.PRODUCT_STRATEGY_AND_REQUIREMENTS
+  item_count: 42
+  declared_coverage: FULL
+  verified_skill_match: TOPICAL
+  atlas_applicability: APPLICABLE
+  skill_refs:
+  - SKILL_PRODUCT_EXPERIENCE_ENGINEER_001
+  - SKILL_SPEC_AUTHORING_001
+  skill_state: SKILL_SPEC_ONLY
+  coverage: PARTIAL
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/42 items)
+- category: Programming Language
+  category_id: PRC.PROGRAMMING_LANGUAGE
+  item_count: 51
+  declared_coverage: FULL
+  verified_skill_match: WEAK
+  atlas_applicability: APPLICABLE
+  skill_refs:
+  - SKILL_COMPILER_DISCIPLINE_001
+  - SKILL_BUILD_TOOLCHAIN_CI_001
+  - SKILL_LANGUAGE_GATE_001
+  skill_state: NO_SKILL
+  coverage: NONE
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/51 items)
+- category: Project Management & Governance
+  category_id: PRC.PROJECT_MANAGEMENT_AND_GOVERNANCE
+  item_count: 34
+  declared_coverage: FULL
+  verified_skill_match: WEAK
+  atlas_applicability: PARTIAL
+  skill_refs:
+  - SKILL_SPRINT_KICKOFF_001
+  - SKILL_SPRINT_RETRO_001
+  - SKILL_NO_SURPRISE_PLANNING_001
+  skill_state: NO_SKILL
+  coverage: NONE
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/34 items)
+- category: Rate Limiting, Quotas & Traffic Shaping
+  category_id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING
+  item_count: 60
+  declared_coverage: FULL
+  verified_skill_match: STRONG
+  atlas_applicability: APPLICABLE
+  skill_refs:
+  - SKILL_RATE_LIMIT_TENANT_SCOPED_001
+  - SKILL_BILLING_METERING_QUOTAS_001
+  skill_state: SKILL_WIRED
+  coverage: FULL
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/60 items)
+- category: Real-Time, Streaming & Collaboration
+  category_id: PRC.REAL_TIME_STREAMING_AND_COLLABORATION
+  item_count: 58
+  declared_coverage: PARTIAL
+  verified_skill_match: WEAK
+  atlas_applicability: NOT_APPLICABLE
+  skill_refs:
+  - SKILL_AZURE_MESSAGING_001
+  skill_state: NOT_APPLICABLE
+  coverage: N/A
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/58 items)
+- category: Release & Change Management
+  category_id: PRC.RELEASE_AND_CHANGE_MANAGEMENT
+  item_count: 33
+  declared_coverage: FULL
+  verified_skill_match: TOPICAL
+  atlas_applicability: APPLICABLE
+  skill_refs:
+  - SKILL_RELEASE_PREP_001
+  - SKILL_PUBLIC_RELEASE_AUTH_RATE_AUDIT_GATE_001
+  - SKILL_MILESTONE_GATE_DESIGN_001
+  skill_state: SKILL_SPEC_ONLY
+  coverage: PARTIAL
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/33 items)
+- category: Repository Organization
+  category_id: PRC.REPOSITORY_ORGANIZATION
+  item_count: 42
+  declared_coverage: FULL
+  verified_skill_match: TOPICAL
+  atlas_applicability: APPLICABLE
+  skill_refs:
+  - SKILL_REPO_ONBOARDING_001
+  - SKILL_DIRECTORY_DISCIPLINE_001
+  - SKILL_FIND_BEFORE_CREATE_001
+  - SKILL_GIT_REMOTE_DISCIPLINE_001
+  skill_state: SKILL_SPEC_ONLY
+  coverage: PARTIAL
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/42 items)
+- category: Search Infrastructure
+  category_id: PRC.SEARCH_INFRASTRUCTURE
+  item_count: 31
+  declared_coverage: FULL
+  verified_skill_match: STRONG
+  atlas_applicability: CORE
+  skill_refs:
+  - SKILL_SEARCH_INFRASTRUCTURE_001
+  skill_state: SKILL_DRAFTED
+  coverage: PARTIAL
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/31 items)
+- category: Security & Authentication
+  category_id: PRC.SECURITY_AND_AUTHENTICATION
+  item_count: 88
+  declared_coverage: FULL
+  verified_skill_match: STRONG
+  atlas_applicability: CORE
+  skill_refs:
+  - SKILL_SECURITY_CRYPTO_ENGINEERING_001
+  - SKILL_IDENTITY_AUTH_RBAC_ABAC_001
+  - SKILL_AUTH_GUARD_001
+  - SKILL_SECURITY_AUDIT_001
+  skill_state: SKILL_DRAFTED
+  coverage: PARTIAL
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/88 items)
+- category: Service Level Management
+  category_id: PRC.SERVICE_LEVEL_MANAGEMENT
+  item_count: 26
+  declared_coverage: FULL
+  verified_skill_match: TOPICAL
+  atlas_applicability: APPLICABLE
+  skill_refs:
+  - SKILL_OBSERVABILITY_NEXUS_001
+  - SKILL_OBSERVABILITY_SRE_INCIDENT_RESPONSE_001
+  skill_state: SKILL_SPEC_ONLY
+  coverage: PARTIAL
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/26 items)
+- category: Settings
+  category_id: PRC.SETTINGS
+  item_count: 40
+  declared_coverage: PARTIAL
+  verified_skill_match: TOPICAL
+  atlas_applicability: APPLICABLE
+  skill_refs:
+  - SKILL_ADMIN_CONSOLE_TENANT_OPS_001
+  - SKILL_OPERATIONAL_WORKSPACE_001
+  skill_state: SKILL_SPEC_ONLY
+  coverage: PARTIAL
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/40 items)
+- category: Sustainability & Green Software
+  category_id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE
+  item_count: 44
+  declared_coverage: FULL
+  verified_skill_match: STRONG
+  atlas_applicability: PARTIAL
+  skill_refs:
+  - SKILL_SUSTAINABILITY_GREEN_SOFTWARE_001
+  skill_state: SKILL_DRAFTED
+  coverage: PARTIAL
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/44 items)
+- category: System Design & Processes
+  category_id: PRC.SYSTEM_DESIGN_AND_PROCESSES
+  item_count: 59
+  declared_coverage: FULL
+  verified_skill_match: WEAK
+  atlas_applicability: PARTIAL
+  skill_refs:
+  - SKILL_ARCHITECTURE_ATLAS_001
+  - SKILL_ADR_AUTHORING_001
+  - SKILL_APEX_SYSTEMS_ARCHITECT_001
+  skill_state: NO_SKILL
+  coverage: NONE
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/59 items)
+- category: Testing & Quality Assurance
+  category_id: PRC.TESTING_AND_QUALITY_ASSURANCE
+  item_count: 56
+  declared_coverage: FULL
+  verified_skill_match: TOPICAL
+  atlas_applicability: CORE
+  skill_refs:
+  - SKILL_TEST_FORGE_001
+  - SKILL_FULL_TEST_MATRIX_001
+  - SKILL_AUTOMATED_REGRESSION_TESTING_001
+  - SKILL_RUNTIME_REGRESSION_VERIFY_001
+  skill_state: SKILL_SPEC_ONLY
+  coverage: PARTIAL
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/56 items)
+- category: Threat Modeling & Zero Trust
+  category_id: PRC.THREAT_MODELING_AND_ZERO_TRUST
+  item_count: 47
+  declared_coverage: FULL
+  verified_skill_match: TOPICAL
+  atlas_applicability: APPLICABLE
+  skill_refs:
+  - SKILL_RED_TEAM_PREFLIGHT_001
+  - SKILL_SECURITY_AUDIT_001
+  - SKILL_RELIABILITY_SECURITY_SENTINEL_001
+  skill_state: SKILL_SPEC_ONLY
+  coverage: PARTIAL
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/47 items)
+- category: Trust & Safety / Content Moderation
+  category_id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION
+  item_count: 60
+  declared_coverage: FULL
+  verified_skill_match: STRONG
+  atlas_applicability: NOT_APPLICABLE
+  skill_refs:
+  - SKILL_TRUST_SAFETY_MODERATION_001
+  skill_state: NOT_APPLICABLE
+  coverage: N/A
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/60 items)
+- category: User Interface & Accounts
+  category_id: PRC.USER_INTERFACE_AND_ACCOUNTS
+  item_count: 48
+  declared_coverage: FULL
+  verified_skill_match: TOPICAL
+  atlas_applicability: CORE
+  skill_refs:
+  - SKILL_IDENTITY_AUTH_RBAC_ABAC_001
+  - SKILL_AUTH_GUARD_001
+  - SKILL_ADMIN_CONSOLE_TENANT_OPS_001
+  skill_state: SKILL_SPEC_ONLY
+  coverage: PARTIAL
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/48 items)
+- category: UX Research & Product Design
+  category_id: PRC.UX_RESEARCH_AND_PRODUCT_DESIGN
+  item_count: 36
+  declared_coverage: FULL
+  verified_skill_match: TOPICAL
+  atlas_applicability: APPLICABLE
+  skill_refs:
+  - SKILL_PRODUCT_EXPERIENCE_ENGINEER_001
+  - SKILL_DESIGN_SYSTEMS_FORGE_001
+  skill_state: SKILL_SPEC_ONLY
+  coverage: PARTIAL
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/36 items)
+- category: Vendor & Third-Party Risk
+  category_id: PRC.VENDOR_AND_THIRD_PARTY_RISK
+  item_count: 33
+  declared_coverage: PARTIAL
+  verified_skill_match: WEAK
+  atlas_applicability: PARTIAL
+  skill_refs:
+  - SKILL_SECURITY_AUDIT_001
+  - SKILL_COMPLIANCE_CHECK_001
+  skill_state: NO_SKILL
+  coverage: NONE
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/33 items)
+- category: Website
+  category_id: PRC.WEBSITE
+  item_count: 128
+  declared_coverage: FULL
+  verified_skill_match: TOPICAL
+  atlas_applicability: APPLICABLE
+  skill_refs:
+  - SKILL_CANVAS_001
+  - SKILL_RESPONSIVE_LAYOUT_001
+  - SKILL_PERFORMANCE_FORGE_001
+  skill_state: SKILL_SPEC_ONLY
+  coverage: PARTIAL
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/128 items)
+- category: Workflow Orchestration & Durable Execution
+  category_id: PRC.WORKFLOW_ORCHESTRATION_AND_DURABLE_EXECUTION
+  item_count: 48
+  declared_coverage: PARTIAL
+  verified_skill_match: TOPICAL
+  atlas_applicability: PARTIAL
+  skill_refs:
+  - SKILL_XORCHESTRA_SOVEREIGN_ORCHESTRATION_001
+  - SKILL_RUNTIME_ORCHESTRATION_001
+  skill_state: SKILL_SPEC_ONLY
+  coverage: PARTIAL
+  item_level_mapped: 0
+  missing:
+  - item-level skill mapping (0/48 items)

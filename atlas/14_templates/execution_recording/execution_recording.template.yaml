@@ -1,5 +1,5 @@
 # Template: execution_recording
-# Replace placeholders. See 26_schemas/execution_recording/ if a schema exists.
+# Replace placeholders. See schemas/execution_recording/ if a schema exists.
 id: "{id}"
 name: "{name}"
 status: draft

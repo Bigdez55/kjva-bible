@@ -1,0 +1,37 @@
+schema_version: '1.0'
+skill_id: SKILL_PRODUCTION_READINESS_AUDIT_001
+skill_name: Production-Readiness Audit
+skill_card_path: 13_skills/active/SKILL_PRODUCTION_READINESS_AUDIT_001.yaml
+playbook_path: 13_skills/active/SKILL_PRODUCTION_READINESS_AUDIT_001.playbook.md
+current_version: 1.1.0
+tier: active
+hard_constraints:
+- No item passes without evidence; HTTP 200 + green build is not done.
+- Corpus item text is verbatim; never paraphrase or invent items.
+- N/A must be justified by the active profile; unknown is honest, never recorded as pass.
+- Every failed category links a fixing skill or raises a NO-SKILL GAP.
+- The tier is computed by tools/score_audit.py; never hand-wave it.
+- Declare audit scope honestly; no mass-audit theater.
+immutable_facts:
+- Backed by the Production-Readiness Corpus at platform/systems/53_production_readiness/ (68 categories / 3,378 items).
+- Source of truth for items is corpus/source/dev-checklist-v2.jsx; everything else is generated.
+- 11 categories were zero-coverage at creation; each maps to a new SKILL_* gap-filler in overlay.yaml.
+correction_history:
+- date: '2026-05-31'
+  type: creation
+  severity: n/a
+  summary: 'Created the audit skill that turns the Platinum Dev Checklist corpus into a scoped, scored, evidence-backed audit. Encoded evidence-before-pass, verbatim corpus, honest-scope (no mass-audit theater), and the gap engine (link skill or NO-SKILL GAP). Composes audit-assess-analyze + existing-repo-audit + proof-matrix.
+
+    '
+- date: '2026-06-02'
+  type: refinement
+  severity: n/a
+  summary: Added the capability axis (skill-coverage vs executable-capability) + linked the enforced Definition-of-Done gate and Capability Creation skills. Audit now grades 'can we DO it' (probe-verified WIRED) separately from 'do we have a write-up'.
+regression_test_ids: []
+promotion_criteria:
+  to_tier: hardened
+  requirements:
+  - Three real audits run end-to-end with deterministic tiers and evidence packets.
+  - No category passed on build-success alone (verify-before-done honored each time).
+  - Honest-scope respected: no run presents unknown as pass.
+last_updated: '2026-06-02'

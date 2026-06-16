@@ -150,7 +150,7 @@ style E4 fill:#FFD700
 
 Path: `<output_dir>/page_feature_map_<page>.yaml`
 
-Must validate against `26_schemas/feature_map/feature_map.schema.json`.
+Must validate against `schemas/feature_map/feature_map.schema.json`.
 
 Required fields per element: `name`, `type`, `status`. Optional: `wiring`, `notes`.
 Recommended fields per interactive element: `expected_outcome`, `persistence`, `proof`.
@@ -185,7 +185,7 @@ After all pages: write `<output_dir>/feature_map_<repo>.mmd` showing all pages a
 
 `<output_dir>/system_map_<repo>.yaml` — all pages, element counts per page, overall health score (% WORKS).
 
-Must validate against `26_schemas/system_map/system_map.schema.json`.
+Must validate against `schemas/system_map/system_map.schema.json`.
 
 Example structure:
 ```yaml
@@ -281,5 +281,5 @@ See `08_verification/skill_tests/TEST_SKILL_UI_FEATURE_AUDIT_001_001.yaml`.
 - `/apex:feature_map` — invokes this playbook
 - `DIAGRAM_TAXONOMY.md` Layer 2 — Feature layer diagram kinds
 - `SKILL_REPO_ONBOARDING_001.playbook.md` T1 step 2 — where page_feature_maps are first produced
-- `26_schemas/feature_map/feature_map.schema.json` — per-page element schema
-- `26_schemas/system_map/system_map.schema.json` — cross-page system map schema
+- `schemas/feature_map/feature_map.schema.json` — per-page element schema
+- `schemas/system_map/system_map.schema.json` — cross-page system map schema

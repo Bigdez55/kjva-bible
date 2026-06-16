@@ -1,17 +1,6 @@
-last_updated: '2026-05-27'
+last_updated: '2026-06-04'
 scan_dir: platform/sdlc/13_skills/active
-total: 331
-taxonomy_version: 1.0.0
-taxonomy_authority: platform/sdlc/13_skills/TAXONOMY.md
-lifecycle_version: 1.0.0
-lifecycle_authority: platform/sdlc/13_skills/LIFECYCLE.md
-tiered_schema_version: 1.0.0
-tiered_schema_authority: schemas/skill/skill.tiered.schema.yaml
-refinement_engine_version: 0.0.0
-validators:
-- infrastructure/scripts/validate_skill_router_integration.py
-- infrastructure/scripts/skill_validators/validate_tiered_schema.py
-- infrastructure/scripts/skill_validators/validate_taxonomy.py
+total: 374
 skills:
 - name: SKILL_ADMIN_CONSOLE_TENANT_OPS_001
   path: platform/sdlc/13_skills/active/SKILL_ADMIN_CONSOLE_TENANT_OPS_001.yaml
@@ -27,6 +16,8 @@ skills:
   path: platform/sdlc/13_skills/active/SKILL_AGENT_SURFACE_NORMALIZATION_001.yaml
 - name: SKILL_AGENT_WORKTREE_DISCIPLINE_001
   path: platform/sdlc/13_skills/active/SKILL_AGENT_WORKTREE_DISCIPLINE_001.yaml
+- name: SKILL_AGENT_WORKTREE_ISOLATION_001
+  path: platform/sdlc/13_skills/active/SKILL_AGENT_WORKTREE_ISOLATION_001.yaml
 - name: SKILL_AGGREGATOR_PARALLELIZATION_AUDIT_001
   path: platform/sdlc/13_skills/active/SKILL_AGGREGATOR_PARALLELIZATION_AUDIT_001.yaml
 - name: SKILL_AI_GOVERNANCE_CITADEL_001
@@ -37,6 +28,8 @@ skills:
   path: platform/sdlc/13_skills/active/SKILL_AI_NATIVE_TENANT_AUTOMATION_001.yaml
 - name: SKILL_ALERT_SYSTEM_001
   path: platform/sdlc/13_skills/active/SKILL_ALERT_SYSTEM_001.yaml
+- name: SKILL_ALWAYS_ON_SERVICE_RESOURCE_DISCIPLINE_001
+  path: platform/sdlc/13_skills/active/SKILL_ALWAYS_ON_SERVICE_RESOURCE_DISCIPLINE_001.yaml
 - name: SKILL_APEX_COORDINATOR_001
   path: platform/sdlc/13_skills/active/SKILL_APEX_COORDINATOR_001.yaml
 - name: SKILL_APEX_SYSTEMS_ARCHITECT_001
@@ -49,8 +42,14 @@ skills:
   path: platform/sdlc/13_skills/active/SKILL_APPINSIGHTS_INSTRUMENTATION_001.yaml
 - name: SKILL_ARCHITECTURE_ATLAS_001
   path: platform/sdlc/13_skills/active/SKILL_ARCHITECTURE_ATLAS_001.yaml
+- name: SKILL_ARCHITECTURE_HONESTY_001
+  path: platform/sdlc/13_skills/active/SKILL_ARCHITECTURE_HONESTY_001.yaml
+- name: SKILL_ATLAS_OAUTH_WIRING_001
+  path: platform/sdlc/13_skills/active/SKILL_ATLAS_OAUTH_WIRING_001.yaml
 - name: SKILL_AUDIT_ASSESS_ANALYZE_001
   path: platform/sdlc/13_skills/active/SKILL_AUDIT_ASSESS_ANALYZE_001.yaml
+- name: SKILL_AUDIT_LOG_IMMUTABLE_001
+  path: platform/sdlc/13_skills/active/SKILL_AUDIT_LOG_IMMUTABLE_001.yaml
 - name: SKILL_AUTH_GUARD_001
   path: platform/sdlc/13_skills/active/SKILL_AUTH_GUARD_001.yaml
 - name: SKILL_AUTOMATED_REGRESSION_TESTING_001
@@ -93,10 +92,14 @@ skills:
   path: platform/sdlc/13_skills/active/SKILL_BEACON_001.yaml
 - name: SKILL_BILLING_METERING_QUOTAS_001
   path: platform/sdlc/13_skills/active/SKILL_BILLING_METERING_QUOTAS_001.yaml
+- name: SKILL_BROWSER_EXTENSION_001
+  path: platform/sdlc/13_skills/active/SKILL_BROWSER_EXTENSION_001.yaml
 - name: SKILL_BUILD_TOOLCHAIN_CI_001
   path: platform/sdlc/13_skills/active/SKILL_BUILD_TOOLCHAIN_CI_001.yaml
 - name: SKILL_CANVAS_001
   path: platform/sdlc/13_skills/active/SKILL_CANVAS_001.yaml
+- name: SKILL_CAPABILITY_CREATION_001
+  path: platform/sdlc/13_skills/active/SKILL_CAPABILITY_CREATION_001.yaml
 - name: SKILL_CARVEOUT_DEF_ID_DISCIPLINE_001
   path: platform/sdlc/13_skills/active/SKILL_CARVEOUT_DEF_ID_DISCIPLINE_001.yaml
 - name: SKILL_CASCADE_ROOT_TRIAGE_001
@@ -107,6 +110,10 @@ skills:
   path: platform/sdlc/13_skills/active/SKILL_CI_PIPELINE_001.yaml
 - name: SKILL_CI_PREFLIGHT_001
   path: platform/sdlc/13_skills/active/SKILL_CI_PREFLIGHT_001.yaml
+- name: SKILL_CLOUD_SYNCED_BUILD_RESILIENCE_001
+  path: platform/sdlc/13_skills/active/SKILL_CLOUD_SYNCED_BUILD_RESILIENCE_001.yaml
+- name: SKILL_CMS_CONTENT_EDITORIAL_001
+  path: platform/sdlc/13_skills/active/SKILL_CMS_CONTENT_EDITORIAL_001.yaml
 - name: SKILL_CODEX_GEMINI_REPOSITORY_ACQUISITION_001
   path: platform/sdlc/13_skills/active/SKILL_CODEX_GEMINI_REPOSITORY_ACQUISITION_001.yaml
 - name: SKILL_COMPILER_DISCIPLINE_001
@@ -133,6 +140,8 @@ skills:
   path: platform/sdlc/13_skills/active/SKILL_DATA_ISOLATION_STORAGE_001.yaml
 - name: SKILL_DATA_PIPELINE_001
   path: platform/sdlc/13_skills/active/SKILL_DATA_PIPELINE_001.yaml
+- name: SKILL_DEFINITION_OF_DONE_GATE_001
+  path: platform/sdlc/13_skills/active/SKILL_DEFINITION_OF_DONE_GATE_001.yaml
 - name: SKILL_DEPENDENCY_SOVEREIGNTY_001
   path: platform/sdlc/13_skills/active/SKILL_DEPENDENCY_SOVEREIGNTY_001.yaml
 - name: SKILL_DEPLOY_PIPELINE_001
@@ -157,12 +166,24 @@ skills:
   path: platform/sdlc/13_skills/active/SKILL_DOCS_SYNC_001.yaml
 - name: SKILL_DRIFT_DETECTION_001
   path: platform/sdlc/13_skills/active/SKILL_DRIFT_DETECTION_001.yaml
+- name: SKILL_DURABLE_STORAGE_MIGRATION_001
+  path: platform/sdlc/13_skills/active/SKILL_DURABLE_STORAGE_MIGRATION_001.yaml
 - name: SKILL_DYNAMIC_RULE_LEDGER_001
   path: platform/sdlc/13_skills/active/SKILL_DYNAMIC_RULE_LEDGER_001.yaml
 - name: SKILL_E2E_AUDIT_DISPATCH_001
   path: platform/sdlc/13_skills/active/SKILL_E2E_AUDIT_DISPATCH_001.yaml
 - name: SKILL_EDGE_AI_OPTIMIZER_001
   path: platform/sdlc/13_skills/active/SKILL_EDGE_AI_OPTIMIZER_001.yaml
+- name: SKILL_ELECTRON_EMBEDDED_DAEMON_BOOTSTRAP_001
+  path: platform/sdlc/13_skills/active/SKILL_ELECTRON_EMBEDDED_DAEMON_BOOTSTRAP_001.yaml
+- name: SKILL_ELECTRON_MACOS_DOCK_ICON_DISCIPLINE_001
+  path: platform/sdlc/13_skills/active/SKILL_ELECTRON_MACOS_DOCK_ICON_DISCIPLINE_001.yaml
+- name: SKILL_ELECTRON_MACOS_PACKAGE_SIGN_001
+  path: platform/sdlc/13_skills/active/SKILL_ELECTRON_MACOS_PACKAGE_SIGN_001.yaml
+- name: SKILL_ELECTRON_SINGLE_INSTANCE_DISCIPLINE_001
+  path: platform/sdlc/13_skills/active/SKILL_ELECTRON_SINGLE_INSTANCE_DISCIPLINE_001.yaml
+- name: SKILL_ELECTRON_VSCODE_ENV_ISOLATION_001
+  path: platform/sdlc/13_skills/active/SKILL_ELECTRON_VSCODE_ENV_ISOLATION_001.yaml
 - name: SKILL_ELSON_AUDIT_001
   path: platform/sdlc/13_skills/active/SKILL_ELSON_AUDIT_001.yaml
 - name: SKILL_ELSON_BOT_STATUS_001
@@ -231,10 +252,14 @@ skills:
   path: platform/sdlc/13_skills/active/SKILL_FAILURE_MODE_FIRST_AUTHORING_001.yaml
 - name: SKILL_FIELD_LOWERING_DISCIPLINE_001
   path: platform/sdlc/13_skills/active/SKILL_FIELD_LOWERING_DISCIPLINE_001.yaml
+- name: SKILL_FILE_UPLOAD_MEDIA_001
+  path: platform/sdlc/13_skills/active/SKILL_FILE_UPLOAD_MEDIA_001.yaml
 - name: SKILL_FIND_BEFORE_CREATE_001
   path: platform/sdlc/13_skills/active/SKILL_FIND_BEFORE_CREATE_001.yaml
 - name: SKILL_FORTRESS_001
   path: platform/sdlc/13_skills/active/SKILL_FORTRESS_001.yaml
+- name: SKILL_FRAUD_ABUSE_PREVENTION_001
+  path: platform/sdlc/13_skills/active/SKILL_FRAUD_ABUSE_PREVENTION_001.yaml
 - name: SKILL_FREESTANDING_C_KERNEL_001
   path: platform/sdlc/13_skills/active/SKILL_FREESTANDING_C_KERNEL_001.yaml
 - name: SKILL_FRONTEND_BACKEND_DATAFLOW_001
@@ -253,6 +278,8 @@ skills:
   path: platform/sdlc/13_skills/active/SKILL_GATE_DUMP_VS_RUNTIME_001.yaml
 - name: SKILL_GATE_HARNESS_PROCESS_ISOLATION_001
   path: platform/sdlc/13_skills/active/SKILL_GATE_HARNESS_PROCESS_ISOLATION_001.yaml
+- name: SKILL_GATE_SWEEP_BUDGETING_DISCIPLINE_001
+  path: platform/sdlc/13_skills/active/SKILL_GATE_SWEEP_BUDGETING_DISCIPLINE_001.yaml
 - name: SKILL_GENOS_ADR_001
   path: platform/sdlc/13_skills/active/SKILL_GENOS_ADR_001.yaml
 - name: SKILL_GENOS_AGENT_DISPATCH_001
@@ -317,6 +344,10 @@ skills:
   path: platform/sdlc/13_skills/active/SKILL_GENOS_XKABI_CAPABILITY_001.yaml
 - name: SKILL_GENOS_XMIND_TEST_001
   path: platform/sdlc/13_skills/active/SKILL_GENOS_XMIND_TEST_001.yaml
+- name: SKILL_GH_ADDRESS_COMMENTS_001
+  path: platform/sdlc/13_skills/active/SKILL_GH_ADDRESS_COMMENTS_001.yaml
+- name: SKILL_GH_FIX_CI_001
+  path: platform/sdlc/13_skills/active/SKILL_GH_FIX_CI_001.yaml
 - name: SKILL_GITOPS_LOOP_001
   path: platform/sdlc/13_skills/active/SKILL_GITOPS_LOOP_001.yaml
 - name: SKILL_GIT_REMOTE_DISCIPLINE_001
@@ -325,12 +356,16 @@ skills:
   path: platform/sdlc/13_skills/active/SKILL_GLOBAL_CLAUDE_REPOSITORY_ACQUISITION_001.yaml
 - name: SKILL_GRAPH_ENGINE_001
   path: platform/sdlc/13_skills/active/SKILL_GRAPH_ENGINE_001.yaml
+- name: SKILL_GTM_GROWTH_001
+  path: platform/sdlc/13_skills/active/SKILL_GTM_GROWTH_001.yaml
 - name: SKILL_GUARDIAN_SENTINEL_001
   path: platform/sdlc/13_skills/active/SKILL_GUARDIAN_SENTINEL_001.yaml
 - name: SKILL_HARDWARE_INTEGRATION_ENGINEER_001
   path: platform/sdlc/13_skills/active/SKILL_HARDWARE_INTEGRATION_ENGINEER_001.yaml
 - name: SKILL_HW_DRIVER_VERIFY_001
   path: platform/sdlc/13_skills/active/SKILL_HW_DRIVER_VERIFY_001.yaml
+- name: SKILL_I18N_L10N_001
+  path: platform/sdlc/13_skills/active/SKILL_I18N_L10N_001.yaml
 - name: SKILL_IDENTITY_AUTH_RBAC_ABAC_001
   path: platform/sdlc/13_skills/active/SKILL_IDENTITY_AUTH_RBAC_ABAC_001.yaml
 - name: SKILL_IMPROVEMENT_LOOP_001
@@ -445,16 +480,22 @@ skills:
   path: platform/sdlc/13_skills/active/SKILL_MILESTONE_GATE_DESIGN_001.yaml
 - name: SKILL_ML_FINE_TUNING_DISTILLATION_001
   path: platform/sdlc/13_skills/active/SKILL_ML_FINE_TUNING_DISTILLATION_001.yaml
+- name: SKILL_MOBILE_APP_PRODUCTION_001
+  path: platform/sdlc/13_skills/active/SKILL_MOBILE_APP_PRODUCTION_001.yaml
 - name: SKILL_MOSAIC_001
   path: platform/sdlc/13_skills/active/SKILL_MOSAIC_001.yaml
 - name: SKILL_MULTI_REGION_CONSENSUS_REPLICATION_001
   path: platform/sdlc/13_skills/active/SKILL_MULTI_REGION_CONSENSUS_REPLICATION_001.yaml
 - name: SKILL_MULTI_TENANT_CONTINUOUS_IMPROVEMENT_001
   path: platform/sdlc/13_skills/active/SKILL_MULTI_TENANT_CONTINUOUS_IMPROVEMENT_001.yaml
+- name: SKILL_MULTI_TENANT_ISOLATION_001
+  path: platform/sdlc/13_skills/active/SKILL_MULTI_TENANT_ISOLATION_001.yaml
 - name: SKILL_MULTI_TENANT_PLATFORM_ARCHITECT_001
   path: platform/sdlc/13_skills/active/SKILL_MULTI_TENANT_PLATFORM_ARCHITECT_001.yaml
 - name: SKILL_MULTI_WAVE_AUDIT_CADENCE_001
   path: platform/sdlc/13_skills/active/SKILL_MULTI_WAVE_AUDIT_CADENCE_001.yaml
+- name: SKILL_NETWORK_CONNECTIVITY_DISCIPLINE_001
+  path: platform/sdlc/13_skills/active/SKILL_NETWORK_CONNECTIVITY_DISCIPLINE_001.yaml
 - name: SKILL_NEW_GENSD_SERVICE_001
   path: platform/sdlc/13_skills/active/SKILL_NEW_GENSD_SERVICE_001.yaml
 - name: SKILL_NEW_KERNEL_MODULE_001
@@ -463,12 +504,26 @@ skills:
   path: platform/sdlc/13_skills/active/SKILL_NEW_PLATFORM_SERVICE_001.yaml
 - name: SKILL_NEW_XFRAME_WIDGET_001
   path: platform/sdlc/13_skills/active/SKILL_NEW_XFRAME_WIDGET_001.yaml
+- name: SKILL_NEXTJS_16_NATIVE_DEPS_BUNDLE_001
+  path: platform/sdlc/13_skills/active/SKILL_NEXTJS_16_NATIVE_DEPS_BUNDLE_001.yaml
+- name: SKILL_NEXTJS_CSP_HYDRATION_TRAP_001
+  path: platform/sdlc/13_skills/active/SKILL_NEXTJS_CSP_HYDRATION_TRAP_001.yaml
+- name: SKILL_NOTION_KNOWLEDGE_CAPTURE_001
+  path: platform/sdlc/13_skills/active/SKILL_NOTION_KNOWLEDGE_CAPTURE_001.yaml
+- name: SKILL_NOTION_MEETING_INTELLIGENCE_001
+  path: platform/sdlc/13_skills/active/SKILL_NOTION_MEETING_INTELLIGENCE_001.yaml
+- name: SKILL_NOTION_RESEARCH_DOCUMENTATION_001
+  path: platform/sdlc/13_skills/active/SKILL_NOTION_RESEARCH_DOCUMENTATION_001.yaml
+- name: SKILL_NOTION_SPEC_TO_IMPLEMENTATION_001
+  path: platform/sdlc/13_skills/active/SKILL_NOTION_SPEC_TO_IMPLEMENTATION_001.yaml
 - name: SKILL_NO_SURPRISE_PLANNING_001
   path: platform/sdlc/13_skills/active/SKILL_NO_SURPRISE_PLANNING_001.yaml
 - name: SKILL_OBSERVABILITY_NEXUS_001
   path: platform/sdlc/13_skills/active/SKILL_OBSERVABILITY_NEXUS_001.yaml
 - name: SKILL_OBSERVABILITY_SRE_INCIDENT_RESPONSE_001
   path: platform/sdlc/13_skills/active/SKILL_OBSERVABILITY_SRE_INCIDENT_RESPONSE_001.yaml
+- name: SKILL_ONEDRIVE_GIT_HAZARD_DISCIPLINE_001
+  path: platform/sdlc/13_skills/active/SKILL_ONEDRIVE_GIT_HAZARD_DISCIPLINE_001.yaml
 - name: SKILL_ONE_SHOT_EXECUTION_PLANNING_001
   path: platform/sdlc/13_skills/active/SKILL_ONE_SHOT_EXECUTION_PLANNING_001.yaml
 - name: SKILL_OPERATIONAL_WORKSPACE_001
@@ -477,6 +532,8 @@ skills:
   path: platform/sdlc/13_skills/active/SKILL_ORACLE_001.yaml
 - name: SKILL_ORBITAL_IDENTITY_001
   path: platform/sdlc/13_skills/active/SKILL_ORBITAL_IDENTITY_001.yaml
+- name: SKILL_OSS_LICENSING_COMPLIANCE_001
+  path: platform/sdlc/13_skills/active/SKILL_OSS_LICENSING_COMPLIANCE_001.yaml
 - name: SKILL_OUTER_HARNESS_RC_DISCIPLINE_001
   path: platform/sdlc/13_skills/active/SKILL_OUTER_HARNESS_RC_DISCIPLINE_001.yaml
 - name: SKILL_PARALLEL_DEPLOY_001
@@ -505,6 +562,8 @@ skills:
   path: platform/sdlc/13_skills/active/SKILL_PRISM_001.yaml
 - name: SKILL_PROCESS_GROUP_KILL_DISCIPLINE_001
   path: platform/sdlc/13_skills/active/SKILL_PROCESS_GROUP_KILL_DISCIPLINE_001.yaml
+- name: SKILL_PRODUCTION_READINESS_AUDIT_001
+  path: platform/sdlc/13_skills/active/SKILL_PRODUCTION_READINESS_AUDIT_001.yaml
 - name: SKILL_PRODUCT_EXPERIENCE_ENGINEER_001
   path: platform/sdlc/13_skills/active/SKILL_PRODUCT_EXPERIENCE_ENGINEER_001.yaml
 - name: SKILL_PROMOTION_RULES_001
@@ -519,6 +578,8 @@ skills:
   path: platform/sdlc/13_skills/active/SKILL_PULSE_001.yaml
 - name: SKILL_QEMU_BOOT_TEST_001
   path: platform/sdlc/13_skills/active/SKILL_QEMU_BOOT_TEST_001.yaml
+- name: SKILL_RATE_LIMIT_TENANT_SCOPED_001
+  path: platform/sdlc/13_skills/active/SKILL_RATE_LIMIT_TENANT_SCOPED_001.yaml
 - name: SKILL_README_001
   path: platform/sdlc/13_skills/active/SKILL_README_001.yaml
 - name: SKILL_RED_TEAM_PREFLIGHT_001
@@ -527,6 +588,8 @@ skills:
   path: platform/sdlc/13_skills/active/SKILL_REFACTOR_PLANNING_001.yaml
 - name: SKILL_REGISTRY_SYNC_001
   path: platform/sdlc/13_skills/active/SKILL_REGISTRY_SYNC_001.yaml
+- name: SKILL_RELEASE_GATE_CI_001
+  path: platform/sdlc/13_skills/active/SKILL_RELEASE_GATE_CI_001.yaml
 - name: SKILL_RELEASE_PREP_001
   path: platform/sdlc/13_skills/active/SKILL_RELEASE_PREP_001.yaml
 - name: SKILL_RELIABILITY_SECURITY_SENTINEL_001
@@ -553,6 +616,8 @@ skills:
   path: platform/sdlc/13_skills/active/SKILL_SCALABILITY_RESILIENCE_DR_001.yaml
 - name: SKILL_SEAL_RECONCILIATION_DISCIPLINE_001
   path: platform/sdlc/13_skills/active/SKILL_SEAL_RECONCILIATION_DISCIPLINE_001.yaml
+- name: SKILL_SEARCH_INFRASTRUCTURE_001
+  path: platform/sdlc/13_skills/active/SKILL_SEARCH_INFRASTRUCTURE_001.yaml
 - name: SKILL_SECTION_REFACTOR_EXECUTION_001
   path: platform/sdlc/13_skills/active/SKILL_SECTION_REFACTOR_EXECUTION_001.yaml
 - name: SKILL_SECURITY_AUDIT_001
@@ -563,6 +628,8 @@ skills:
   path: platform/sdlc/13_skills/active/SKILL_SECURITY_CRYPTO_ENGINEERING_001.yaml
 - name: SKILL_SENTINEL_001
   path: platform/sdlc/13_skills/active/SKILL_SENTINEL_001.yaml
+- name: SKILL_SINGLE_FRONTEND_SOURCE_OF_TRUTH_001
+  path: platform/sdlc/13_skills/active/SKILL_SINGLE_FRONTEND_SOURCE_OF_TRUTH_001.yaml
 - name: SKILL_SKILL_001
   path: platform/sdlc/13_skills/active/SKILL_SKILL_001.yaml
 - name: SKILL_SKILL_CONTINUOUS_IMPROVEMENT_LOOP_001
@@ -613,6 +680,8 @@ skills:
   path: platform/sdlc/13_skills/active/SKILL_SUPER_C_TUTORIAL_AUTHORING_DISCIPLINE_001.yaml
 - name: SKILL_SUPER_C_XISC_CLOUD_TOOLCHAIN_001
   path: platform/sdlc/13_skills/active/SKILL_SUPER_C_XISC_CLOUD_TOOLCHAIN_001.yaml
+- name: SKILL_SUSTAINABILITY_GREEN_SOFTWARE_001
+  path: platform/sdlc/13_skills/active/SKILL_SUSTAINABILITY_GREEN_SOFTWARE_001.yaml
 - name: SKILL_SYSTEM_SIGNAL_ENGINE_001
   path: platform/sdlc/13_skills/active/SKILL_SYSTEM_SIGNAL_ENGINE_001.yaml
 - name: SKILL_TABLE_MASTER_001
@@ -633,6 +702,8 @@ skills:
   path: platform/sdlc/13_skills/active/SKILL_THREAD_TO_SKILL_REFINERY_CLOSURE_001.yaml
 - name: SKILL_TRIGGER_ROUTER_001
   path: platform/sdlc/13_skills/active/SKILL_TRIGGER_ROUTER_001.yaml
+- name: SKILL_TRUST_SAFETY_MODERATION_001
+  path: platform/sdlc/13_skills/active/SKILL_TRUST_SAFETY_MODERATION_001.yaml
 - name: SKILL_TRUTH_STATE_CHECK_001
   path: platform/sdlc/13_skills/active/SKILL_TRUTH_STATE_CHECK_001.yaml
 - name: SKILL_TURBO_001
@@ -643,6 +714,8 @@ skills:
   path: platform/sdlc/13_skills/active/SKILL_UI_FEATURE_AUDIT_001.yaml
 - name: SKILL_UI_INTERACTION_WIRING_001
   path: platform/sdlc/13_skills/active/SKILL_UI_INTERACTION_WIRING_001.yaml
+- name: SKILL_UI_LIVE_VERIFICATION_BEFORE_DONE_001
+  path: platform/sdlc/13_skills/active/SKILL_UI_LIVE_VERIFICATION_BEFORE_DONE_001.yaml
 - name: SKILL_UI_UX_BUILDOUT_001
   path: platform/sdlc/13_skills/active/SKILL_UI_UX_BUILDOUT_001.yaml
 - name: SKILL_VANGUARD_DISRUPTIVE_ALCHEMIST_001
@@ -665,6 +738,8 @@ skills:
   path: platform/sdlc/13_skills/active/SKILL_WALL_CLOCK_BASELINE_DISCIPLINE_001.yaml
 - name: SKILL_WAL_DEBUG_001
   path: platform/sdlc/13_skills/active/SKILL_WAL_DEBUG_001.yaml
+- name: SKILL_WIRED_NOT_DEFINED_001
+  path: platform/sdlc/13_skills/active/SKILL_WIRED_NOT_DEFINED_001.yaml
 - name: SKILL_WORKSPACE_SHELL_001
   path: platform/sdlc/13_skills/active/SKILL_WORKSPACE_SHELL_001.yaml
 - name: SKILL_XISC_CLOUD_TOOLCHAIN_001

@@ -1,6 +1,6 @@
 id: SKILL_VERIFY_VALIDATE_001
 title: verify-validate
-version: 1.0.0
+version: 1.5.0
 layer: governance
 domains:
 - validation

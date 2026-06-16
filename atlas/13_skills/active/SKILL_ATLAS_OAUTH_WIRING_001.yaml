@@ -1,27 +1,31 @@
 id: SKILL_ATLAS_OAUTH_WIRING_001
-title: GitHub OAuth Wiring for Next.js + Electron Apps
-version: 1.0.0
+title: GitHub OAuth Wiring for the ATLAS Web Service (Next.js)
+version: 1.1.0
 layer: application
 domains:
 - frontend
 - auth
 - security
+- web
 - desktop
-- electron
 playbook: 13_skills/active/SKILL_ATLAS_OAUTH_WIRING_001.playbook.md
 ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_ATLAS_OAUTH_WIRING_001.ledger.yaml
 status: active
 tier: active
 source: incident_promotion
+runtime_projection: true
+runtime_projection_targets:
+- claude
+- codex
+- gemini
 
 trigger_conditions:
-- Next.js application requires OAuth authentication (GitHub, Google, or other).
-- Electron desktop app needs identity beyond local-only mode.
+- The ATLAS web service (Next.js, served at http://127.0.0.1:4317) requires OAuth authentication (GitHub, Google, or other).
 - Existing "bearer token" or "local-loopback" auth model needs replacement.
-- App must run both as hosted web service and packaged desktop app from same codebase.
+- App must run both as the always-on hosted web service and (LEGACY) a packaged desktop shell from the same codebase.
 
 hard_constraints:
-- OAuth callback URL MUST use 127.0.0.1 loopback for Electron (per RFC 8252), not custom URL schemes.
+- OAuth callback URL MUST use the 127.0.0.1 loopback host (per RFC 8252) — canonical for the web service at :4317 and reused by the LEGACY desktop shell — not custom URL schemes.
 - Session JWT MUST be signed with jose (Edge-Runtime compatible), NOT Auth.js v5 (Next 16 compat unverified).
 - Session cookie MUST be HttpOnly + Secure + SameSite=Strict; never persist tokens in localStorage.
 - Refresh tokens MUST be stored in OS keychain (macOS Keychain via keytar, Windows Credential Manager, Linux Secret Service).
@@ -58,6 +62,15 @@ improvement_history:
     production-readiness.ts claiming "Loopback-or-bearer proxy exists for local
     API protection only". jose + GitHub OAuth + Keychain refresh tokens + local-identity
     fallback pattern is now the canonical reference for all Next.js + Electron apps.
+- version: 1.1.0
+  date: '2026-06-03'
+  reason: >
+    Reframed off the Electron-first framing toward the always-on web service. The
+    canonical OAuth target is the ATLAS web service (Next.js) at http://127.0.0.1:4317;
+    the 127.0.0.1 loopback callback (RFC 8252) is canonical for the web service and
+    merely reused by the LEGACY desktop shell. Updated callback/homepage URLs from the
+    old dev port (3100) to :4317. Declared runtime_projection: true (claude/codex/gemini)
+    so this auth-wiring skill projects into runtime.
 
 related_skills:
 - SKILL_MULTI_TENANT_ISOLATION_001
@@ -73,5 +86,5 @@ improvement_metrics:
   invocation_count: 1
   correction_count: 0
   last_correction: null
-  last_refinement: '2026-05-29'
-  refinement_count: 0
+  last_refinement: '2026-06-03'
+  refinement_count: 1

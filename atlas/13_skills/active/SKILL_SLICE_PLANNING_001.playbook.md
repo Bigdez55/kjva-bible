@@ -36,7 +36,7 @@ Where `<state>` is `planned` for a newly authored slice.
 
 ## Schema Reference
 
-`atlas/26_schemas/vertical_slice/vertical_slice.schema.json`
+`atlas/schemas/vertical_slice/vertical_slice.schema.json`
 
 Required fields: `id`, `title`, `status`, `intent_brief`, `spec_ids`, `intake_packet_id`,
 `proof_requirements`, `preview_deploy`, `created`, `updated`.
@@ -233,7 +233,7 @@ satisfy the proof_requirements for its own scope.
 See `08_verification/skill_tests/TEST_SKILL_SLICE_PLANNING_001_001.yaml`.
 
 The test asserts:
-- Output YAML passes `26_schemas/vertical_slice/vertical_slice.schema.json` validation.
+- Output YAML passes `schemas/vertical_slice/vertical_slice.schema.json` validation.
 - `id` matches the `SLICE-NNNN` pattern and is unique across all state directories.
 - All `spec_ids` resolve to existing files.
 - `proof_requirements.tests_must_pass` is non-empty.

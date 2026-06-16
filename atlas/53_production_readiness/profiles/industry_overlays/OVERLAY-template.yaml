@@ -1,0 +1,11 @@
+overlay_id: OVERLAY_TEMPLATE
+industry: "<industry name>"
+applies_on: ["*"]                      # base archetypes this layers onto, or [*] for any
+add_required_categories:              # categories this industry makes mandatory regardless of base profile
+- "<Corpus Category Name>"
+severity_bumps:                       # raise severity for compliance-critical categories
+  "<Corpus Category Name>": high
+min_tier_override: gold               # raise the required tier for this domain (optional)
+rationale: >
+  Why this industry needs these categories elevated (regulation, risk, contractual obligation).
+  Copy this file to OVERLAY-<industry>.yaml and fill in. Category names must match the corpus verbatim.

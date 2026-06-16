@@ -12,12 +12,12 @@ The router uses the proprietary Atlas naming rule:
 
 - Semantic graph layer: Atlas Graph Engine.
 - Human-readable linked knowledge layer: Atlas Knowledge Vault.
-- Graph folder: `43_atlas_graph_engine/`.
-- Knowledge folder: `44_atlas_knowledge_vault/`.
+- Graph folder: `43_graph_engine/`.
+- Knowledge folder: `44_knowledge_vault/`.
 - Graph skill: `36-atlas-graph-engine`.
 - Knowledge skill: `37-atlas-knowledge-vault`.
 
-External product or tool names must not be used as subsystem names inside SUPER C Atlas.
+External product or tool names must not be used as subsystem names inside ATLAS.
 
 ## Supersession Order
 
@@ -67,7 +67,7 @@ Behavioral protocols apply globally. Corrective triggers override the active rou
 - Human-readable source: `13_skills/skill_refinery/trigger_router.md`
 - Machine-readable source: `13_skills/skill_refinery/trigger_router.yaml`
 - Runtime catalog: `37_command_protocol/trigger_router.yaml`
-- Schema mirror: `26_schemas/trigger_router/trigger_router.schema.yaml`
+- Schema mirror: `schemas/trigger_router/trigger_router.schema.yaml`
 - Prompt guidance: `24_prompt_library/reusable_prompts/trigger_router_instructions.md`
-- Knowledge index: `44_atlas_knowledge_vault/07_skills/Trigger_Router.md`
-- Graph artifact: `43_atlas_graph_engine/graphs/trigger_skill.graph.json`
+- Knowledge index: `44_knowledge_vault/07_skills/Trigger_Router.md`
+- Graph artifact: `43_graph_engine/graphs/trigger_skill.graph.json`

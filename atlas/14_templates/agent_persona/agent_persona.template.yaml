@@ -1,5 +1,5 @@
 # Template: agent_persona
-# Replace placeholders. See 26_schemas/agent_persona/ if a schema exists.
+# Replace placeholders. See schemas/agent_persona/ if a schema exists.
 id: "{id}"
 name: "{name}"
 status: draft

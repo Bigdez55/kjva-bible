@@ -1,7 +1,20 @@
+"""
+/api/complete — corpus-locked scripture retrieval, with governed generation only
+for genuine free-text.
+
+Doctrine (owner-set): the CORPUS is the scripture database; the model is the scribe.
+- A reference-shaped input is CORPUS-LOCKED: exact retrieved text, or ABSTAIN. It must
+  NEVER fall through to raw generation just because the parser failed to resolve it.
+- Exact / range / prefix retrieval invokes NO generation and NO covenant harm scoring.
+- Only genuine free-text (not a reference, no exact corpus match) reaches the model, and
+  that fallback remains governed (keyword-floor covenant; no fabricated scripture).
+- Every response is a structured payload with a `status` so the UI never renders an error
+  object as "[object Object]".
+"""
 import re
 from typing import Any, Optional
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter
 from pydantic import BaseModel, Field
 
 from corpus import get_index
@@ -18,99 +31,110 @@ class CompleteRequest(BaseModel):
 
 
 class CompleteResponse(BaseModel):
+    # status: FOUND | NOT_FOUND | INVALID | AMBIGUOUS | GENERATED | BLOCKED
+    status: str = "FOUND"
     prompt: str
-    completion: str
-    model: str = "kjva-xmind"
+    completion: str = ""
+    model: str = "kjva-retrieval"
     retrieved: bool = False
+    generation_invoked: bool = False
+    references: list[str] = []
     verse_ref: Optional[str] = None
+    reason: str = ""
+    reason_code: str = ""
     cognitive_metadata: Optional[dict[str, Any]] = None
+
+
+def _retrieval_response(prompt: str, results: list[dict]) -> CompleteResponse:
+    if len(results) == 1:
+        completion = results[0]["text"]
+        verse_ref = results[0]["ref"]
+    else:
+        completion = "\n".join(f"{v['ref']}  {v['text']}" for v in results)
+        verse_ref = f"{results[0]['ref']}-{results[-1]['ref'].split(':')[1]}"
+    return CompleteResponse(
+        status="FOUND",
+        prompt=prompt,
+        completion=completion,
+        model="kjva-retrieval",
+        retrieved=True,
+        generation_invoked=False,
+        references=[v["ref"] for v in results],
+        verse_ref=verse_ref,
+    )
 
 
 @router.post("/complete", response_model=CompleteResponse)
 async def complete(req: CompleteRequest):
-    # Retrieval branches do NOT require AI weights. Per ADR-0003, we resolve
-    # ref/prefix matches first so the endpoint stays useful in deployments
-    # without weights (CI, linux/amd64 containers, retrieval-only mode).
     index = get_index()
+    text = req.prompt.strip()
 
-    # --- Option A: retrieval-first ---
-    # Try range/single reference first (e.g. "Numbers 15:37-41", "John 3:16", "Prov 31")
-    ref_matches = index.lookup_ref_range(req.prompt.strip())
-    if ref_matches:
-        if len(ref_matches) == 1:
-            completion = ref_matches[0]["text"]
-            verse_ref = ref_matches[0]["ref"]
-        else:
-            # Multi-verse range — label each line with its ref
-            completion = "\n".join(
-                f"{v['ref']}  {v['text']}" for v in ref_matches
-            )
-            first, last = ref_matches[0]["ref"], ref_matches[-1]["ref"]
-            # "NUM 15:37 – NUM 15:41" → "NUM 15:37-41"
-            verse_ref = f"{first}-{last.split(':')[1]}"
-        cognitive = await _persist_retrieval(req.prompt, completion, verse_ref)
+    # 1) Reference-shaped input -> CORPUS-LOCKED. FOUND returns exact text; any failure
+    #    (INVALID / NOT_FOUND / AMBIGUOUS) ABSTAINS. Never generation. Never [object Object].
+    parsed = index.parse_reference(text)
+    if parsed["is_reference_attempt"]:
+        if parsed["status"] == "FOUND":
+            return _retrieval_response(req.prompt, parsed["results"])
         return CompleteResponse(
+            status=parsed["status"],          # NOT_FOUND | INVALID | AMBIGUOUS
             prompt=req.prompt,
-            completion=completion,
-            model="kjva-retrieval",
-            retrieved=True,
-            verse_ref=verse_ref,
-            cognitive_metadata=cognitive,
+            completion="",
+            model="corpus-locked",
+            retrieved=False,
+            generation_invoked=False,
+            references=[],
+            reason=parsed["reason"] or "Reference could not be resolved; abstaining (no generation).",
         )
 
-    text_match = index.search_prefix(req.prompt)
-    if text_match:
-        # Prompt is the opening of a known verse — return the rest of it.
-        verse_text = text_match["text"]
-        prompt_clean = req.prompt.strip().rstrip(".,;:!? ")
+    # 2) Not reference-shaped -> try exact prefix/keyword retrieval (still corpus-locked).
+    prefix = index.search_prefix(text)
+    if prefix:
+        verse_text = prefix["text"]
+        prompt_clean = text.rstrip(".,;:!? ")
         m = re.search(re.escape(prompt_clean), verse_text, re.IGNORECASE)
         completion = verse_text[m.end():].lstrip() if m else verse_text
-        cognitive = await _persist_retrieval(req.prompt, completion, text_match["ref"])
         return CompleteResponse(
+            status="FOUND",
             prompt=req.prompt,
             completion=completion,
             model="kjva-retrieval",
             retrieved=True,
-            verse_ref=text_match["ref"],
-            cognitive_metadata=cognitive,
+            generation_invoked=False,
+            references=[prefix["ref"]],
+            verse_ref=prefix["ref"],
         )
 
-    # --- Option B: corpus-format RAG augmentation + constitutional XMIND path ---
-    # Only use search_text for meaningful prose phrases, not reference-style queries.
-    # (short alphanumeric tokens like "prov 31" produce irrelevant substring matches).
-    augmented = req.prompt
-    looks_like_ref = bool(re.match(r"^[a-zA-Z0-9 ]+\s+\d+", req.prompt.strip()))
-    if not looks_like_ref:
-        candidates = index.search_text(req.prompt, limit=3)
-        if candidates:
-            augmented = index.build_corpus_context(candidates[0], req.prompt)
-
+    # 3) Genuine free-text -> GOVERNED generation (keyword-floor covenant; no fabricated
+    #    scripture). The model is labelled ai-generated and is never presented as canon.
     try:
         result = await get_runtime().complete(
-            augmented,
+            text,
             max_new_tokens=req.max_new_tokens,
             temperature=req.temperature,
             top_p=req.top_p,
         )
     except KJVARuntimeError as exc:
-        raise HTTPException(exc.status_code, detail=exc.outcome.to_dict()) from exc
+        # Governed block/error -> structured payload (status + readable reason + the
+        # governance reason_code), NOT a 4xx body the UI would render as "[object Object]".
+        outcome = getattr(exc, "outcome", None)
+        reason = getattr(outcome, "detail", "") or "Request was not permitted."
+        return CompleteResponse(
+            status="BLOCKED",
+            prompt=req.prompt,
+            completion="",
+            model="kjva-xmind",
+            retrieved=False,
+            generation_invoked=False,
+            reason=reason,
+            reason_code=getattr(outcome, "reason_code", ""),
+        )
 
     return CompleteResponse(
+        status="GENERATED",
         prompt=req.prompt,
         completion=result.text,
         model="kjva-xmind",
         retrieved=False,
+        generation_invoked=True,
         cognitive_metadata=result.metadata,
     )
-
-
-async def _persist_retrieval(prompt: str, completion: str, verse_ref: str) -> dict[str, Any]:
-    try:
-        result = await get_runtime().persist_retrieval(
-            prompt=prompt,
-            response=completion,
-            metadata={"verse_ref": verse_ref, "retrieved": True},
-        )
-    except KJVARuntimeError as exc:
-        raise HTTPException(exc.status_code, detail=exc.outcome.to_dict()) from exc
-    return result.metadata

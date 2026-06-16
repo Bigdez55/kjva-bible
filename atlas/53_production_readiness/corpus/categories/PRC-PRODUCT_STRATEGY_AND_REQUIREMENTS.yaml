@@ -1,0 +1,110 @@
+schema_version: '1.0'
+category_id: PRC.PRODUCT_STRATEGY_AND_REQUIREMENTS
+name: Product Strategy & Requirements
+icon: ◆
+color: '#FACC15'
+default_severity: low
+coverage_status: FULL
+skill_refs:
+- SKILL_PRODUCT_EXPERIENCE_ENGINEER_001
+- SKILL_SPEC_AUTHORING_001
+capability_status: MISSING
+tool_refs: []
+mcp_refs: []
+command_refs: []
+capability_refs: []
+capability_notes: Knowledge-only. Build a spec-authoring/requirements route if execution is in scope.
+sections:
+- id: PRC.PRODUCT_STRATEGY_AND_REQUIREMENTS.DISCOVERY_AND_BUSINESS_CASE
+  name: Discovery & Business Case
+  items:
+  - id: PRC.PRODUCT_STRATEGY_AND_REQUIREMENTS.DISCOVERY_AND_BUSINESS_CASE.001
+    text: 'Problem statement written: who has the problem, what hurts, why now'
+  - id: PRC.PRODUCT_STRATEGY_AND_REQUIREMENTS.DISCOVERY_AND_BUSINESS_CASE.002
+    text: Target user personas defined with needs, motivations, and constraints
+  - id: PRC.PRODUCT_STRATEGY_AND_REQUIREMENTS.DISCOVERY_AND_BUSINESS_CASE.003
+    text: Jobs-to-be-Done documented for each primary user segment
+  - id: PRC.PRODUCT_STRATEGY_AND_REQUIREMENTS.DISCOVERY_AND_BUSINESS_CASE.004
+    text: 'Business objective tied to measurable outcome: revenue, retention, cost, or risk'
+  - id: PRC.PRODUCT_STRATEGY_AND_REQUIREMENTS.DISCOVERY_AND_BUSINESS_CASE.005
+    text: Success metrics defined before build begins
+  - id: PRC.PRODUCT_STRATEGY_AND_REQUIREMENTS.DISCOVERY_AND_BUSINESS_CASE.006
+    text: Primary and secondary KPIs documented with baseline values
+  - id: PRC.PRODUCT_STRATEGY_AND_REQUIREMENTS.DISCOVERY_AND_BUSINESS_CASE.007
+    text: Market and competitor analysis completed
+  - id: PRC.PRODUCT_STRATEGY_AND_REQUIREMENTS.DISCOVERY_AND_BUSINESS_CASE.008
+    text: Customer interview notes summarized and linked to requirements
+  - id: PRC.PRODUCT_STRATEGY_AND_REQUIREMENTS.DISCOVERY_AND_BUSINESS_CASE.009
+    text: Assumptions identified and ranked by risk
+  - id: PRC.PRODUCT_STRATEGY_AND_REQUIREMENTS.DISCOVERY_AND_BUSINESS_CASE.010
+    text: Highest-risk assumptions validated before major engineering investment
+  - id: PRC.PRODUCT_STRATEGY_AND_REQUIREMENTS.DISCOVERY_AND_BUSINESS_CASE.011
+    text: MVP, V1, V2, and future-state scope clearly separated
+  - id: PRC.PRODUCT_STRATEGY_AND_REQUIREMENTS.DISCOVERY_AND_BUSINESS_CASE.012
+    text: Non-goals documented to prevent scope creep
+  - id: PRC.PRODUCT_STRATEGY_AND_REQUIREMENTS.DISCOVERY_AND_BUSINESS_CASE.013
+    text: Pricing and monetization assumptions documented for revenue-facing features
+  - id: PRC.PRODUCT_STRATEGY_AND_REQUIREMENTS.DISCOVERY_AND_BUSINESS_CASE.014
+    text: Business case includes estimated cost, benefit, timeline, and opportunity cost
+- id: PRC.PRODUCT_STRATEGY_AND_REQUIREMENTS.REQUIREMENTS_AND_SCOPE_CONTROL
+  name: Requirements & Scope Control
+  items:
+  - id: PRC.PRODUCT_STRATEGY_AND_REQUIREMENTS.REQUIREMENTS_AND_SCOPE_CONTROL.001
+    text: Product Requirements Document approved by product, engineering, design, security, and business owner
+  - id: PRC.PRODUCT_STRATEGY_AND_REQUIREMENTS.REQUIREMENTS_AND_SCOPE_CONTROL.002
+    text: Functional requirements written as clear user stories or use cases
+  - id: PRC.PRODUCT_STRATEGY_AND_REQUIREMENTS.REQUIREMENTS_AND_SCOPE_CONTROL.003
+    text: 'Non-functional requirements documented: performance, security, privacy, accessibility, reliability'
+  - id: PRC.PRODUCT_STRATEGY_AND_REQUIREMENTS.REQUIREMENTS_AND_SCOPE_CONTROL.004
+    text: Acceptance criteria defined for every user story
+  - id: PRC.PRODUCT_STRATEGY_AND_REQUIREMENTS.REQUIREMENTS_AND_SCOPE_CONTROL.005
+    text: Edge cases documented for every critical flow
+  - id: PRC.PRODUCT_STRATEGY_AND_REQUIREMENTS.REQUIREMENTS_AND_SCOPE_CONTROL.006
+    text: Error states and empty states included in requirements
+  - id: PRC.PRODUCT_STRATEGY_AND_REQUIREMENTS.REQUIREMENTS_AND_SCOPE_CONTROL.007
+    text: Supported platforms, browsers, devices, and OS versions explicitly listed
+  - id: PRC.PRODUCT_STRATEGY_AND_REQUIREMENTS.REQUIREMENTS_AND_SCOPE_CONTROL.008
+    text: 'Data requirements: fields, ownership, retention, sensitivity, source of truth'
+  - id: PRC.PRODUCT_STRATEGY_AND_REQUIREMENTS.REQUIREMENTS_AND_SCOPE_CONTROL.009
+    text: Reporting and analytics requirements documented before implementation
+  - id: PRC.PRODUCT_STRATEGY_AND_REQUIREMENTS.REQUIREMENTS_AND_SCOPE_CONTROL.010
+    text: Dependencies and blockers tracked with owner and due date
+  - id: PRC.PRODUCT_STRATEGY_AND_REQUIREMENTS.REQUIREMENTS_AND_SCOPE_CONTROL.011
+    text: 'Requirement traceability matrix: business goals → requirements → tests'
+  - id: PRC.PRODUCT_STRATEGY_AND_REQUIREMENTS.REQUIREMENTS_AND_SCOPE_CONTROL.012
+    text: 'Scope change process defined: who approves, impact analysis required'
+  - id: PRC.PRODUCT_STRATEGY_AND_REQUIREMENTS.REQUIREMENTS_AND_SCOPE_CONTROL.013
+    text: Out-of-scope requests captured in backlog, not silently accepted
+  - id: PRC.PRODUCT_STRATEGY_AND_REQUIREMENTS.REQUIREMENTS_AND_SCOPE_CONTROL.014
+    text: Regulatory, legal, and compliance requirements reviewed before build
+- id: PRC.PRODUCT_STRATEGY_AND_REQUIREMENTS.ACCEPTANCE_UAT_AND_LAUNCH_CRITERIA
+  name: Acceptance, UAT & Launch Criteria
+  items:
+  - id: PRC.PRODUCT_STRATEGY_AND_REQUIREMENTS.ACCEPTANCE_UAT_AND_LAUNCH_CRITERIA.001
+    text: Definition of Ready agreed before engineering starts
+  - id: PRC.PRODUCT_STRATEGY_AND_REQUIREMENTS.ACCEPTANCE_UAT_AND_LAUNCH_CRITERIA.002
+    text: Definition of Done includes tests, docs, observability, security, and support readiness
+  - id: PRC.PRODUCT_STRATEGY_AND_REQUIREMENTS.ACCEPTANCE_UAT_AND_LAUNCH_CRITERIA.003
+    text: User Acceptance Testing plan written with realistic user scenarios
+  - id: PRC.PRODUCT_STRATEGY_AND_REQUIREMENTS.ACCEPTANCE_UAT_AND_LAUNCH_CRITERIA.004
+    text: UAT testers identified and scheduled before release week
+  - id: PRC.PRODUCT_STRATEGY_AND_REQUIREMENTS.ACCEPTANCE_UAT_AND_LAUNCH_CRITERIA.005
+    text: UAT scripts cover happy path, edge cases, and permission boundaries
+  - id: PRC.PRODUCT_STRATEGY_AND_REQUIREMENTS.ACCEPTANCE_UAT_AND_LAUNCH_CRITERIA.006
+    text: Beta release criteria defined and measurable
+  - id: PRC.PRODUCT_STRATEGY_AND_REQUIREMENTS.ACCEPTANCE_UAT_AND_LAUNCH_CRITERIA.007
+    text: Launch go/no-go checklist created with named owner
+  - id: PRC.PRODUCT_STRATEGY_AND_REQUIREMENTS.ACCEPTANCE_UAT_AND_LAUNCH_CRITERIA.008
+    text: 'Launch blockers categorized: must-fix, should-fix, acceptable risk'
+  - id: PRC.PRODUCT_STRATEGY_AND_REQUIREMENTS.ACCEPTANCE_UAT_AND_LAUNCH_CRITERIA.009
+    text: Business owner signs off on final scope and known limitations
+  - id: PRC.PRODUCT_STRATEGY_AND_REQUIREMENTS.ACCEPTANCE_UAT_AND_LAUNCH_CRITERIA.010
+    text: Analytics events verified firing correctly before launch
+  - id: PRC.PRODUCT_STRATEGY_AND_REQUIREMENTS.ACCEPTANCE_UAT_AND_LAUNCH_CRITERIA.011
+    text: Support team trained before launch
+  - id: PRC.PRODUCT_STRATEGY_AND_REQUIREMENTS.ACCEPTANCE_UAT_AND_LAUNCH_CRITERIA.012
+    text: Sales and customer-facing teams receive enablement material before launch
+  - id: PRC.PRODUCT_STRATEGY_AND_REQUIREMENTS.ACCEPTANCE_UAT_AND_LAUNCH_CRITERIA.013
+    text: Rollback criteria defined before launch window opens
+  - id: PRC.PRODUCT_STRATEGY_AND_REQUIREMENTS.ACCEPTANCE_UAT_AND_LAUNCH_CRITERIA.014
+    text: Post-launch success review scheduled within 7–14 days

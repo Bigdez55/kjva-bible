@@ -5,7 +5,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
 TRACE = yaml.safe_load((ROOT/"platform/systems/18_registry/traceability.yaml").read_text()).get("links",[])
-OUT = ROOT/"platform/systems/36_proof_matrix/proof_matrix.generated.yaml"
+OUT = ROOT/"platform/systems/36_proof_matrix"/"proof_matrix.generated.yaml"
 OUT.parent.mkdir(parents=True, exist_ok=True)
 rows = []
 for link in TRACE:

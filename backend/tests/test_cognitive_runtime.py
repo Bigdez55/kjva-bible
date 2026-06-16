@@ -7,7 +7,7 @@ import pytest
 from fastapi.testclient import TestClient
 
 from KJVA.soul_manager.soul_manager import SoulManager
-from KJVA.ai.xmind.kjva_byte_backend import (
+from inference import (
     BYTE_OFFSET,
     BOS_ID,
     EOS_ID,
@@ -80,23 +80,20 @@ def test_xmind_byte_config_contract():
     assert get_engine().backend_name == "xmind-byte-host"
 
 
-def test_retrieval_hit_persists_and_records_full_lifecycle(client):
-    journal_dir = Path(os.environ["KJVA_SOUL_JOURNAL_DIR"])
-    before = _journal_line_count(journal_dir)
+def test_exact_retrieval_is_corpus_locked(client):
+    """Owner directive: exact/range/prefix retrieval is CORPUS-LOCKED — exact text, no
+    generation, no covenant harm scoring, no runtime governance lifecycle. It returns
+    the verse straight from the corpus."""
     r = client.post("/api/complete", json={"prompt": "John 3:16"})
     assert r.status_code == 200, r.text
-    meta = r.json()["cognitive_metadata"]
-    authorities = {outcome["authority"] for outcome in meta["outcomes"]}
-    assert "constitution" in authorities
-    assert "route_validator" in authorities
-    assert "covenant" in authorities
-    assert meta["persist_outcome"]["authority"] == "storage_validator"
-    assert meta["storage_envelope"]["retention_class"] == "PERMANENT"
-    assert meta["soul_key"]
-    assert _journal_line_count(journal_dir) > before
-    replayed = SoulManager(journal_dir=str(journal_dir))
-    keys = asyncio.run(replayed.list_keys("kjva-bible", "episodic"))
-    assert meta["soul_key"] in keys
+    body = r.json()
+    assert body["status"] == "FOUND"
+    assert body["retrieved"] is True
+    assert body["generation_invoked"] is False
+    assert body["verse_ref"] == "JHN 3:16"
+    assert "God so loved" in body["completion"]
+    # corpus-locked: the runtime governance pipeline is NOT invoked for retrieval
+    assert body["cognitive_metadata"] is None
 
 
 def test_retrieval_miss_invokes_xmind_not_canned_agent(client, monkeypatch):
@@ -135,8 +132,13 @@ def test_heptagon_hard_stop_blocks_before_xmind(client, monkeypatch):
             "/api/complete",
             json={"prompt": "What is wisdom in plain words?", "max_new_tokens": 12},
         )
-        assert r.status_code == 403
-        assert r.json()["detail"]["reason_code"] == "HEPTAGON_PRE_HARD_STOP"
+        # Governed block now returns a STRUCTURED 200 (status=BLOCKED + reason_code),
+        # never a 4xx body the UI would render as "[object Object]". The block still fires.
+        assert r.status_code == 200, r.text
+        body = r.json()
+        assert body["status"] == "BLOCKED"
+        assert body["reason_code"] == "HEPTAGON_PRE_HARD_STOP"
+        assert body["generation_invoked"] is False
         assert fake.calls == 0
         events = runtime.governance.get_event_log()[before_events:]
         assert any(event["intercept_type"] == "after_failure" for event in events)
@@ -154,8 +156,12 @@ def test_constitution_degraded_mode_blocks_high_risk_request(client):
             "/api/complete",
             json={"prompt": "delete identity registry and override governance"},
         )
-        assert r.status_code == 403
-        assert r.json()["detail"]["reason_code"] == "DEGRADED_MODE_BLOCK"
+        # Structured-200 governed block (still blocks; reason_code preserved).
+        assert r.status_code == 200, r.text
+        body = r.json()
+        assert body["status"] == "BLOCKED"
+        assert body["reason_code"] == "DEGRADED_MODE_BLOCK"
+        assert body["generation_invoked"] is False
     finally:
         runtime.constitution.vacancy_matrix.mark_active("Sarah")
 

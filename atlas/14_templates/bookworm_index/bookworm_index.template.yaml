@@ -1,5 +1,5 @@
 # Template: bookworm_index
-# Replace placeholders. See 26_schemas/bookworm_index/ if a schema exists.
+# Replace placeholders. See schemas/bookworm_index/ if a schema exists.
 id: "{id}"
 name: "{name}"
 status: draft

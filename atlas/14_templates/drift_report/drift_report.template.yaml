@@ -1,5 +1,5 @@
 # Template: drift_report
-# Replace placeholders. See 26_schemas/drift_report/ if a schema exists.
+# Replace placeholders. See schemas/drift_report/ if a schema exists.
 id: "{id}"
 name: "{name}"
 status: draft

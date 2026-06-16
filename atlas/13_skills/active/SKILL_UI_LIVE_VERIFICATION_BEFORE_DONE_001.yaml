@@ -1,23 +1,28 @@
 id: SKILL_UI_LIVE_VERIFICATION_BEFORE_DONE_001
 title: Live UI Verification Before "Done"
-version: 1.1.0
+version: 1.2.0
 layer: process
 domains:
 - frontend
 - ui
 - qa
-- electron
 - web
 - mobile
 - desktop
+- electron
 playbook: 13_skills/active/SKILL_UI_LIVE_VERIFICATION_BEFORE_DONE_001.playbook.md
 ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_UI_LIVE_VERIFICATION_BEFORE_DONE_001.ledger.yaml
 status: active
 tier: active
 source: incident_promotion
+runtime_projection: true
+runtime_projection_targets:
+- claude
+- codex
+- gemini
 
 trigger_conditions:
-- Any user-facing surface (Electron window, web page, mobile screen, CLI TUI) is implemented or modified.
+- Any user-facing surface (web page at http://127.0.0.1:4317, mobile screen, CLI TUI, or LEGACY Electron window) is implemented or modified.
 - A migration replaces a legacy UI with a new version.
 - Before any "done", "ready", "shipped", or "complete" claim about a UI deliverable.
 - Before deleting the legacy version of any UI being migrated.
@@ -27,6 +32,7 @@ hard_constraints:
 - HTTP 200 + npm run build + lint + typecheck = NECESSARY but NEVER SUFFICIENT to declare UI work done.
 - The actual rendered surface MUST be loaded in the target runtime AND visually inspected OR user-confirmed before "done".
 - The golden path (primary CTA, form submit, main navigation) MUST be walked interactively at least once.
+- The always-on ATLAS web service at http://127.0.0.1:4317 is the CANONICAL verification surface (curl the route + Playwright screenshot/console capture against :4317; MCP surface at http://127.0.0.1:4318). The LEGACY Electron window is deprecated as the verification target — use it only when explicitly testing the desktop shell.
 - Playwright (or equivalent headless-browser screenshot) is the canonical verification tool when the user is not present.
 - Browser console errors AND pageerror events MUST be captured during verification — many bugs (CSP violations, hydration mismatch, missing chunks) are invisible to server-side checks.
 - For migrations from a legacy surface, BOTH legacy and new MUST be observed side-by-side before deleting legacy assets.
@@ -42,10 +48,10 @@ known_failure_modes:
 - Hiding behind sub-agent isolation — "the agent said it built" — when the parent owes the visual check.
 
 validation_tests:
-- Playwright capture per modified route, save to /tmp/<app>-verify-<route>.png, count visible buttons + inputs + visible text length.
+- Playwright capture per modified route against http://127.0.0.1:4317, save to /tmp/<app>-verify-<route>.png, count visible buttons + inputs + visible text length.
 - During Playwright run, register console error + pageerror listeners; fail the verification if any console errors are present.
 - Compare against legacy baseline (if migration) — flag any route where new visible text < 60% of legacy.
-- For Electron: launch via `npm run electron:dev`, take a window screencap, confirm window content matches expected.
+- LEGACY (Electron desktop shell only): launch via `npm run electron:dev`, take a window screencap, confirm window content matches expected. Not the canonical surface — the web service at :4317 is.
 - For migrations: refuse to delete legacy until at least one user-confirmed walkthrough of the new version succeeds. Hybrid serving (path-scoped redirect/CSP) bridges the transition.
 
 improvement_history:
@@ -67,6 +73,16 @@ improvement_history:
     The 3 console errors per page were the only visible signal — extracted only
     by Playwright's page.on('console') / page.on('pageerror') listeners.
     Promoted Playwright capture from "suggested" to "canonical" tool.
+- version: 1.2.0
+  date: '2026-06-03'
+  reason: >
+    Reframed for the always-on web-service deployment. The canonical verification
+    surface is now the resident ATLAS web service at http://127.0.0.1:4317 (MCP at
+    :4318) — curl + Playwright against :4317, not the Electron window. The Electron
+    desktop shell is retained but labeled LEGACY/deprecated as a verification target.
+    Updated the verification port from the old dev port (3100) to :4317. Declared
+    runtime_projection: true (claude/codex/gemini) so this anti-false-completion
+    governance skill projects into runtime and can fire on a "done" claim.
 
 related_skills:
 - SKILL_NEXTJS_CSP_HYDRATION_TRAP_001
@@ -84,5 +100,5 @@ improvement_metrics:
   invocation_count: 2
   correction_count: 0
   last_correction: null
-  last_refinement: '2026-05-30'
-  refinement_count: 1
+  last_refinement: '2026-06-03'
+  refinement_count: 2

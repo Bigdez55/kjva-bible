@@ -1,0 +1,119 @@
+schema_version: '1.0'
+category_id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS
+name: Payments & Financial Systems
+icon: ⊝
+color: '#86EFAC'
+default_severity: high
+coverage_status: FULL
+skill_refs:
+- SKILL_BILLING_METERING_QUOTAS_001
+capability_status: MISSING
+tool_refs: []
+mcp_refs: []
+command_refs: []
+capability_refs: []
+capability_notes: No payments executor. Build a billing/checkout MCP tool or route (Stripe integration).
+sections:
+- id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.PCI_COMPLIANCE_AND_PAYMENT_METHODS
+  name: PCI Compliance & Payment Methods
+  items:
+  - id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.PCI_COMPLIANCE_AND_PAYMENT_METHODS.001
+    text: PCI-DSS scope defined and minimized via hosted fields/iFrames
+  - id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.PCI_COMPLIANCE_AND_PAYMENT_METHODS.002
+    text: 'Card data never passes through servers: Stripe.js or Braintree.js tokenization'
+  - id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.PCI_COMPLIANCE_AND_PAYMENT_METHODS.003
+    text: 'If cards handled server-side: PCI-DSS SAQ C-VT or QSA assessment'
+  - id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.PCI_COMPLIANCE_AND_PAYMENT_METHODS.004
+    text: Payment processor API keys in secrets manager; dashboard access restricted
+  - id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.PCI_COMPLIANCE_AND_PAYMENT_METHODS.005
+    text: Test mode and live mode API keys never cross-used
+  - id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.PCI_COMPLIANCE_AND_PAYMENT_METHODS.006
+    text: No logging of card numbers, CVV, or expiry dates anywhere
+  - id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.PCI_COMPLIANCE_AND_PAYMENT_METHODS.007
+    text: Webhook signature verification on all payment provider webhooks
+  - id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.PCI_COMPLIANCE_AND_PAYMENT_METHODS.008
+    text: PCI-DSS SAQ completed annually
+  - id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.PCI_COMPLIANCE_AND_PAYMENT_METHODS.009
+    text: Penetration test scope includes payment flows
+  - id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.PCI_COMPLIANCE_AND_PAYMENT_METHODS.010
+    text: All payment code reviewed by security engineer
+  - id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.PCI_COMPLIANCE_AND_PAYMENT_METHODS.011
+    text: 'Credit/debit cards: Visa, Mastercard, Amex, Discover supported'
+  - id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.PCI_COMPLIANCE_AND_PAYMENT_METHODS.012
+    text: 'Local payment methods for target markets: SEPA, iDEAL, ACH, UPI, PIX as applicable'
+  - id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.PCI_COMPLIANCE_AND_PAYMENT_METHODS.013
+    text: 'Digital wallets: Apple Pay and Google Pay supported'
+  - id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.PCI_COMPLIANCE_AND_PAYMENT_METHODS.014
+    text: 'BNPL: Klarna, Afterpay evaluated for primary market'
+  - id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.PCI_COMPLIANCE_AND_PAYMENT_METHODS.015
+    text: 3DS2/SCA implemented for EU users
+  - id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.PCI_COMPLIANCE_AND_PAYMENT_METHODS.016
+    text: 'Checkout: minimal steps, no forced account creation, address autocomplete'
+  - id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.PCI_COMPLIANCE_AND_PAYMENT_METHODS.017
+    text: 'Checkout: payment error messages specific and actionable'
+  - id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.PCI_COMPLIANCE_AND_PAYMENT_METHODS.018
+    text: Order confirmation email sent immediately after successful payment
+- id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.BILLING_SUBSCRIPTIONS_AND_INVOICING
+  name: Billing, Subscriptions & Invoicing
+  items:
+  - id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.BILLING_SUBSCRIPTIONS_AND_INVOICING.001
+    text: 'Subscription management: Stripe Billing, Chargebee, Recurly, or Lago'
+  - id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.BILLING_SUBSCRIPTIONS_AND_INVOICING.002
+    text: 'Subscription tiers defined: features, limits, pricing'
+  - id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.BILLING_SUBSCRIPTIONS_AND_INVOICING.003
+    text: Proration on upgrade and downgrade mid-cycle handled correctly
+  - id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.BILLING_SUBSCRIPTIONS_AND_INVOICING.004
+    text: Free trial end date visible; reminder email 3 days before trial ends
+  - id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.BILLING_SUBSCRIPTIONS_AND_INVOICING.005
+    text: 'Dunning management: retry failed payments (Day 1, 3, 7 retry schedule)'
+  - id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.BILLING_SUBSCRIPTIONS_AND_INVOICING.006
+    text: Dunning emails notify customer with payment update link
+  - id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.BILLING_SUBSCRIPTIONS_AND_INVOICING.007
+    text: 'Subscription pause: halt billing without deleting account'
+  - id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.BILLING_SUBSCRIPTIONS_AND_INVOICING.008
+    text: 'Cancellation: effective at end of period; cancellation survey before confirm'
+  - id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.BILLING_SUBSCRIPTIONS_AND_INVOICING.009
+    text: Reactivation before period end supported
+  - id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.BILLING_SUBSCRIPTIONS_AND_INVOICING.010
+    text: 'Invoice generated for every charge: itemized, branded, downloadable PDF'
+  - id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.BILLING_SUBSCRIPTIONS_AND_INVOICING.011
+    text: Invoice numbering sequential and globally unique
+  - id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.BILLING_SUBSCRIPTIONS_AND_INVOICING.012
+    text: 'Tax calculation: Stripe Tax, Avalara, or TaxJar integrated'
+  - id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.BILLING_SUBSCRIPTIONS_AND_INVOICING.013
+    text: Tax ID (VAT number, EIN) collected for B2B customers
+  - id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.BILLING_SUBSCRIPTIONS_AND_INVOICING.014
+    text: 'Multi-currency: display and charge in local currency'
+- id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.FRAUD_REFUNDS_AND_REPORTING
+  name: Fraud, Refunds & Reporting
+  items:
+  - id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.FRAUD_REFUNDS_AND_REPORTING.001
+    text: 'Fraud detection: Stripe Radar, Signifyd, or Kount configured'
+  - id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.FRAUD_REFUNDS_AND_REPORTING.002
+    text: High-risk order manual review queue defined
+  - id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.FRAUD_REFUNDS_AND_REPORTING.003
+    text: 'Velocity checks: alert on unusual purchase volume from single account or IP'
+  - id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.FRAUD_REFUNDS_AND_REPORTING.004
+    text: 'Card testing detection: block pattern of small test charges'
+  - id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.FRAUD_REFUNDS_AND_REPORTING.005
+    text: 3DS2 enrolled to shift chargeback liability to issuer
+  - id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.FRAUD_REFUNDS_AND_REPORTING.006
+    text: 'Chargeback response process documented: evidence collection template ready'
+  - id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.FRAUD_REFUNDS_AND_REPORTING.007
+    text: 'Dispute rate monitored: target < 0.1% of transactions'
+  - id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.FRAUD_REFUNDS_AND_REPORTING.008
+    text: Refund policy documented at checkout
+  - id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.FRAUD_REFUNDS_AND_REPORTING.009
+    text: Full and partial refund supported via admin UI
+  - id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.FRAUD_REFUNDS_AND_REPORTING.010
+    text: Refund confirmation email sent automatically
+  - id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.FRAUD_REFUNDS_AND_REPORTING.011
+    text: Revenue recognition policy defined and documented
+  - id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.FRAUD_REFUNDS_AND_REPORTING.012
+    text: MRR, ARR, and churn calculated and dashboarded
+  - id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.FRAUD_REFUNDS_AND_REPORTING.013
+    text: 'Revenue reconciliation: processor payouts match accounting records'
+  - id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.FRAUD_REFUNDS_AND_REPORTING.014
+    text: Financial audit trail for all payment events
+  - id: PRC.PAYMENTS_AND_FINANCIAL_SYSTEMS.FRAUD_REFUNDS_AND_REPORTING.015
+    text: Payment data retention per PCI-DSS and tax law requirements

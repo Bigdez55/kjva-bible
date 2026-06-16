@@ -1,0 +1,111 @@
+schema_version: '1.0'
+category_id: PRC.ARCHITECTURE_PATTERNS
+name: Architecture Patterns
+icon: ◻
+color: '#14B8A6'
+default_severity: medium
+coverage_status: FULL
+skill_refs:
+- SKILL_ARCHITECTURE_ATLAS_001
+- SKILL_API_CONTRACT_001
+- SKILL_DESIGN_SYSTEMS_FORGE_001
+capability_status: MISSING
+tool_refs: []
+mcp_refs: []
+command_refs: []
+capability_refs: []
+capability_notes: Knowledge-only. Build a diagram-render / api-contract generation tool to make it executable.
+sections:
+- id: PRC.ARCHITECTURE_PATTERNS.ARCHITECTURE_DECISION_RECORDS_ADRS
+  name: Architecture Decision Records (ADRs)
+  items:
+  - id: PRC.ARCHITECTURE_PATTERNS.ARCHITECTURE_DECISION_RECORDS_ADRS.001
+    text: 'ADR template defined: status, context, decision, consequences, alternatives'
+  - id: PRC.ARCHITECTURE_PATTERNS.ARCHITECTURE_DECISION_RECORDS_ADRS.002
+    text: 'ADR for: language and runtime choice with justification'
+  - id: PRC.ARCHITECTURE_PATTERNS.ARCHITECTURE_DECISION_RECORDS_ADRS.003
+    text: 'ADR for: framework selection with trade-offs'
+  - id: PRC.ARCHITECTURE_PATTERNS.ARCHITECTURE_DECISION_RECORDS_ADRS.004
+    text: 'ADR for: database technology and data model approach'
+  - id: PRC.ARCHITECTURE_PATTERNS.ARCHITECTURE_DECISION_RECORDS_ADRS.005
+    text: 'ADR for: monolith vs microservices vs modular monolith'
+  - id: PRC.ARCHITECTURE_PATTERNS.ARCHITECTURE_DECISION_RECORDS_ADRS.006
+    text: 'ADR for: synchronous vs asynchronous inter-service communication'
+  - id: PRC.ARCHITECTURE_PATTERNS.ARCHITECTURE_DECISION_RECORDS_ADRS.007
+    text: 'ADR for: authentication and authorization approach'
+  - id: PRC.ARCHITECTURE_PATTERNS.ARCHITECTURE_DECISION_RECORDS_ADRS.008
+    text: 'ADR for: cloud provider and multi-region strategy'
+  - id: PRC.ARCHITECTURE_PATTERNS.ARCHITECTURE_DECISION_RECORDS_ADRS.009
+    text: 'ADR for: caching strategy and cache invalidation approach'
+  - id: PRC.ARCHITECTURE_PATTERNS.ARCHITECTURE_DECISION_RECORDS_ADRS.010
+    text: 'ADR for: event streaming platform selection'
+  - id: PRC.ARCHITECTURE_PATTERNS.ARCHITECTURE_DECISION_RECORDS_ADRS.011
+    text: 'ADR for: CI/CD platform and deployment strategy'
+  - id: PRC.ARCHITECTURE_PATTERNS.ARCHITECTURE_DECISION_RECORDS_ADRS.012
+    text: ADRs stored in /docs/adr, numbered sequentially, never renumbered
+  - id: PRC.ARCHITECTURE_PATTERNS.ARCHITECTURE_DECISION_RECORDS_ADRS.013
+    text: Superseded ADRs marked as such with link to replacement ADR
+  - id: PRC.ARCHITECTURE_PATTERNS.ARCHITECTURE_DECISION_RECORDS_ADRS.014
+    text: New engineers read all ADRs as part of onboarding checklist
+- id: PRC.ARCHITECTURE_PATTERNS.APPLICATION_AND_SERVICE_ARCHITECTURE
+  name: Application & Service Architecture
+  items:
+  - id: PRC.ARCHITECTURE_PATTERNS.APPLICATION_AND_SERVICE_ARCHITECTURE.001
+    text: Bounded contexts defined using Domain-Driven Design principles
+  - id: PRC.ARCHITECTURE_PATTERNS.APPLICATION_AND_SERVICE_ARCHITECTURE.002
+    text: 'Each service: single responsibility, owns its own data store'
+  - id: PRC.ARCHITECTURE_PATTERNS.APPLICATION_AND_SERVICE_ARCHITECTURE.003
+    text: Services communicate via well-defined API contracts or events, never shared DB
+  - id: PRC.ARCHITECTURE_PATTERNS.APPLICATION_AND_SERVICE_ARCHITECTURE.004
+    text: Synchronous call chains no deeper than 3 hops to prevent cascading failures
+  - id: PRC.ARCHITECTURE_PATTERNS.APPLICATION_AND_SERVICE_ARCHITECTURE.005
+    text: BFF (Backend for Frontend) used if mobile and web have divergent API needs
+  - id: PRC.ARCHITECTURE_PATTERNS.APPLICATION_AND_SERVICE_ARCHITECTURE.006
+    text: 'API gateway handles cross-cutting: auth, rate limiting, logging, routing'
+  - id: PRC.ARCHITECTURE_PATTERNS.APPLICATION_AND_SERVICE_ARCHITECTURE.007
+    text: No business logic in the API gateway layer
+  - id: PRC.ARCHITECTURE_PATTERNS.APPLICATION_AND_SERVICE_ARCHITECTURE.008
+    text: 'Hexagonal/ports-and-adapters: domain logic isolated from frameworks and infra'
+  - id: PRC.ARCHITECTURE_PATTERNS.APPLICATION_AND_SERVICE_ARCHITECTURE.009
+    text: Domain events emitted from aggregate roots only
+  - id: PRC.ARCHITECTURE_PATTERNS.APPLICATION_AND_SERVICE_ARCHITECTURE.010
+    text: Anti-corruption layer in place for all legacy and third-party integrations
+  - id: PRC.ARCHITECTURE_PATTERNS.APPLICATION_AND_SERVICE_ARCHITECTURE.011
+    text: 'Layered architecture enforced: presentation → business → data; no skip-layers'
+  - id: PRC.ARCHITECTURE_PATTERNS.APPLICATION_AND_SERVICE_ARCHITECTURE.012
+    text: CQRS applied where read and write models diverge significantly
+  - id: PRC.ARCHITECTURE_PATTERNS.APPLICATION_AND_SERVICE_ARCHITECTURE.013
+    text: Event Sourcing adopted where full audit trail is a hard requirement
+  - id: PRC.ARCHITECTURE_PATTERNS.APPLICATION_AND_SERVICE_ARCHITECTURE.014
+    text: 'Saga pattern for distributed transactions: choreography vs orchestration documented'
+  - id: PRC.ARCHITECTURE_PATTERNS.APPLICATION_AND_SERVICE_ARCHITECTURE.015
+    text: Strangler Fig pattern in use for any active legacy migration
+- id: PRC.ARCHITECTURE_PATTERNS.INFRASTRUCTURE_AND_PLATFORM_ARCHITECTURE
+  name: Infrastructure & Platform Architecture
+  items:
+  - id: PRC.ARCHITECTURE_PATTERNS.INFRASTRUCTURE_AND_PLATFORM_ARCHITECTURE.001
+    text: '100% Infrastructure-as-Code: Terraform, Pulumi, CDK, or Bicep'
+  - id: PRC.ARCHITECTURE_PATTERNS.INFRASTRUCTURE_AND_PLATFORM_ARCHITECTURE.002
+    text: IaC modules reusable, versioned, and published to internal module registry
+  - id: PRC.ARCHITECTURE_PATTERNS.INFRASTRUCTURE_AND_PLATFORM_ARCHITECTURE.003
+    text: 'IaC plan reviewed in CI before apply: Atlantis, Spacelift, or Terraform Cloud'
+  - id: PRC.ARCHITECTURE_PATTERNS.INFRASTRUCTURE_AND_PLATFORM_ARCHITECTURE.004
+    text: 'IaC remote state with locking: Terraform Cloud or S3 backend with DynamoDB'
+  - id: PRC.ARCHITECTURE_PATTERNS.INFRASTRUCTURE_AND_PLATFORM_ARCHITECTURE.005
+    text: 'Drift detection: IaC state compared to actual infra on a schedule'
+  - id: PRC.ARCHITECTURE_PATTERNS.INFRASTRUCTURE_AND_PLATFORM_ARCHITECTURE.006
+    text: 'Immutable infrastructure: no in-place modifications to running servers'
+  - id: PRC.ARCHITECTURE_PATTERNS.INFRASTRUCTURE_AND_PLATFORM_ARCHITECTURE.007
+    text: 'GitOps: all Kubernetes config in git, deployed by ArgoCD or Flux'
+  - id: PRC.ARCHITECTURE_PATTERNS.INFRASTRUCTURE_AND_PLATFORM_ARCHITECTURE.008
+    text: 'Environment parity enforced: dev ≈ staging ≈ production in composition'
+  - id: PRC.ARCHITECTURE_PATTERNS.INFRASTRUCTURE_AND_PLATFORM_ARCHITECTURE.009
+    text: Golden path templates for new service scaffolding
+  - id: PRC.ARCHITECTURE_PATTERNS.INFRASTRUCTURE_AND_PLATFORM_ARCHITECTURE.010
+    text: 'Service catalog maintained: what runs, who owns it, SLO, on-call, docs link'
+  - id: PRC.ARCHITECTURE_PATTERNS.INFRASTRUCTURE_AND_PLATFORM_ARCHITECTURE.011
+    text: 'Architecture fitness functions: automated constraints validated in CI'
+  - id: PRC.ARCHITECTURE_PATTERNS.INFRASTRUCTURE_AND_PLATFORM_ARCHITECTURE.012
+    text: Architecture diagram auto-generated or manually updated monthly
+  - id: PRC.ARCHITECTURE_PATTERNS.INFRASTRUCTURE_AND_PLATFORM_ARCHITECTURE.013
+    text: 'Platform engineering: Internal Developer Platform (IDP) evaluated for DX'

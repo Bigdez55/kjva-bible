@@ -1,0 +1,82 @@
+schema_version: '1.0'
+category_id: PRC.FEATURE_MANAGEMENT
+name: Feature Management
+icon: ◫
+color: '#C4B5FD'
+default_severity: medium
+coverage_status: FULL
+skill_refs:
+- SKILL_SLICE_PLANNING_001
+- SKILL_FAILURE_MODE_FIRST_AUTHORING_001
+- SKILL_NO_SURPRISE_PLANNING_001
+capability_status: MISSING
+tool_refs: []
+mcp_refs: []
+command_refs: []
+capability_refs: []
+capability_notes: No flag-evaluation executor. Build a feature-flag service+route, tenant-scoped.
+sections:
+- id: PRC.FEATURE_MANAGEMENT.FEATURE_FLAGS_AND_KILL_SWITCHES
+  name: Feature Flags & Kill Switches
+  items:
+  - id: PRC.FEATURE_MANAGEMENT.FEATURE_FLAGS_AND_KILL_SWITCHES.001
+    text: 'Feature flag system selected: LaunchDarkly, Flagsmith, GrowthBook, or Unleash'
+  - id: PRC.FEATURE_MANAGEMENT.FEATURE_FLAGS_AND_KILL_SWITCHES.002
+    text: 'SDK integrated in all services: backend, frontend, and mobile'
+  - id: PRC.FEATURE_MANAGEMENT.FEATURE_FLAGS_AND_KILL_SWITCHES.003
+    text: Fallback behavior defined when flag system is unavailable
+  - id: PRC.FEATURE_MANAGEMENT.FEATURE_FLAGS_AND_KILL_SWITCHES.004
+    text: Every major feature release gated behind a feature flag
+  - id: PRC.FEATURE_MANAGEMENT.FEATURE_FLAGS_AND_KILL_SWITCHES.005
+    text: Kill switch for every revenue-critical feature (payments, auth, core functionality)
+  - id: PRC.FEATURE_MANAGEMENT.FEATURE_FLAGS_AND_KILL_SWITCHES.006
+    text: Kill switch activatable in < 1 minute without any code deploy
+  - id: PRC.FEATURE_MANAGEMENT.FEATURE_FLAGS_AND_KILL_SWITCHES.007
+    text: 'Flag types documented: release flags, kill switches, ops flags, experiment flags'
+  - id: PRC.FEATURE_MANAGEMENT.FEATURE_FLAGS_AND_KILL_SWITCHES.008
+    text: 'Flag naming convention: team_feature_purpose'
+  - id: PRC.FEATURE_MANAGEMENT.FEATURE_FLAGS_AND_KILL_SWITCHES.009
+    text: Every flag has an owner team assigned
+  - id: PRC.FEATURE_MANAGEMENT.FEATURE_FLAGS_AND_KILL_SWITCHES.010
+    text: 'Flag cleanup: removed within 2 weeks after 100% rollout'
+  - id: PRC.FEATURE_MANAGEMENT.FEATURE_FLAGS_AND_KILL_SWITCHES.011
+    text: Stale flag debt tracked in engineering backlog
+  - id: PRC.FEATURE_MANAGEMENT.FEATURE_FLAGS_AND_KILL_SWITCHES.012
+    text: All flag changes logged in audit trail with actor and timestamp
+  - id: PRC.FEATURE_MANAGEMENT.FEATURE_FLAGS_AND_KILL_SWITCHES.013
+    text: Stale flags (not evaluated in 30 days) flagged automatically for review
+- id: PRC.FEATURE_MANAGEMENT.ROLLOUT_AND_EXPERIMENTATION
+  name: Rollout & Experimentation
+  items:
+  - id: PRC.FEATURE_MANAGEMENT.ROLLOUT_AND_EXPERIMENTATION.001
+    text: 'Canary deployment: 1% → 5% → 10% → 25% → 50% → 100% rollout'
+  - id: PRC.FEATURE_MANAGEMENT.ROLLOUT_AND_EXPERIMENTATION.002
+    text: Canary auto-advance only if error rate < threshold and latency SLO met
+  - id: PRC.FEATURE_MANAGEMENT.ROLLOUT_AND_EXPERIMENTATION.003
+    text: 'Rollback: single action returns to 0% if issue detected'
+  - id: PRC.FEATURE_MANAGEMENT.ROLLOUT_AND_EXPERIMENTATION.004
+    text: 'User-sticky rollout: users get consistent variant (not randomly reassigned)'
+  - id: PRC.FEATURE_MANAGEMENT.ROLLOUT_AND_EXPERIMENTATION.005
+    text: Percentage rollout per user ID for consistency across sessions
+  - id: PRC.FEATURE_MANAGEMENT.ROLLOUT_AND_EXPERIMENTATION.006
+    text: Organization/account-level targeting for B2B features
+  - id: PRC.FEATURE_MANAGEMENT.ROLLOUT_AND_EXPERIMENTATION.007
+    text: Employee-only variant for internal dogfooding before external users
+  - id: PRC.FEATURE_MANAGEMENT.ROLLOUT_AND_EXPERIMENTATION.008
+    text: 'Geographic rollout: release to one region before global'
+  - id: PRC.FEATURE_MANAGEMENT.ROLLOUT_AND_EXPERIMENTATION.009
+    text: 'Dark launch: feature runs silently to test performance before UI shown'
+  - id: PRC.FEATURE_MANAGEMENT.ROLLOUT_AND_EXPERIMENTATION.010
+    text: 'Experimentation platform: Statsig, Optimizely, Split.io, or GrowthBook'
+  - id: PRC.FEATURE_MANAGEMENT.ROLLOUT_AND_EXPERIMENTATION.011
+    text: 'Experiment design: hypothesis, primary metric, guardrail metrics, sample size'
+  - id: PRC.FEATURE_MANAGEMENT.ROLLOUT_AND_EXPERIMENTATION.012
+    text: 'Sample size calculated before starting: min detectable effect, power ≥ 80%'
+  - id: PRC.FEATURE_MANAGEMENT.ROLLOUT_AND_EXPERIMENTATION.013
+    text: 'Experiment duration: ≥ 2 business cycles before reading results'
+  - id: PRC.FEATURE_MANAGEMENT.ROLLOUT_AND_EXPERIMENTATION.014
+    text: No early stopping based on interim results (peeking problem)
+  - id: PRC.FEATURE_MANAGEMENT.ROLLOUT_AND_EXPERIMENTATION.015
+    text: Experiment results archived for institutional knowledge
+  - id: PRC.FEATURE_MANAGEMENT.ROLLOUT_AND_EXPERIMENTATION.016
+    text: Winning variant implemented and flag removed within 2 weeks

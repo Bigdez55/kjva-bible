@@ -1,0 +1,41 @@
+schema_version: '1.0'
+skill_id: SKILL_TRUST_SAFETY_MODERATION_001
+skill_name: Trust and Safety / Content Moderation
+skill_card_path: 13_skills/active/SKILL_TRUST_SAFETY_MODERATION_001.yaml
+playbook_path: 13_skills/active/SKILL_TRUST_SAFETY_MODERATION_001.playbook.md
+current_version: 1.0.0
+tier: active
+
+hard_constraints:
+- "Any platform hosting user-uploaded media MUST integrate CSAM detection (PhotoDNA, Google CSAI Match, or Thorn Safer); legal blocker, never waived."
+- "A NCMEC CyberTipline reporting process MUST be established, with detected CSAM preserved per legal requirement, access restricted, and authorities notified."
+- "A content policy MUST be published and a human-review queue MUST exist for borderline and appealed content."
+- "An in-product reporting flow MUST exist for every content type, with tiered enforcement and immutable decision logs."
+- "An appeals process MUST exist (DSA requirement in EU) and the appeal MUST be reviewed by a different reviewer than the original decision."
+- "A report-review SLA MUST be defined by severity tier; prevalence of violating content MUST be measured, not just volume removed."
+
+immutable_facts:
+- "Fills the Trust & Safety / Content Moderation zero-coverage gap; owned by the Production-Readiness Corpus (53_production_readiness)."
+- "Authored from 60 hand-authored corpus items across five sections: Content Moderation Pipeline, Illegal Content & CSAM, Abuse / Harassment & Spam, Reporting / Appeals & Enforcement, and T&S Operations & Transparency."
+- "CSAM detection plus NCMEC reporting is a legal blocker and is never waived."
+
+correction_history:
+- date: '2026-05-31'
+  type: creation
+  version: 1.0.0
+  summary: >
+    Initial skill creation. Authored the skill card, playbook, and ledger directly
+    from the Production-Readiness Corpus category "Trust & Safety / Content
+    Moderation" (coverage_status NONE), grounding every hard constraint and practice
+    in the real corpus items (PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.*).
+
+regression_test_ids: []
+
+promotion_criteria:
+  to_tier: hardened
+  requirements:
+  - "10+ successful applications without a correction logged in this ledger."
+  - "At least 2 independent verifications that CSAM/NCMEC and DSA appeals coverage match the live corpus items."
+  - "A real launch/audit run scores this category against tools/score_audit.py with evidence-backed verdicts."
+
+last_updated: '2026-05-31'

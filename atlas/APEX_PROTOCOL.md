@@ -1,8 +1,8 @@
-# Apex ATLAS Protocol v2.1
+# Apex Protocol v2.1 — ATLAS SDLC
 
 ## Purpose
 
-The Apex ATLAS Protocol converts raw ideas into production ready software through structured intent, specs, architecture, diagrams, vertical slices, proof, deployment, and feedback.
+The Apex Protocol is ATLAS's software development lifecycle governance. It converts raw ideas into production ready software through structured intent, specs, architecture, diagrams, vertical slices, proof, deployment, and feedback.
 
 ## System doctrine
 

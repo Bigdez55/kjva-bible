@@ -1,0 +1,41 @@
+schema_version: '1.0'
+skill_id: SKILL_BROWSER_EXTENSION_001
+skill_name: Browser Extension Production Readiness
+skill_card_path: 13_skills/active/SKILL_BROWSER_EXTENSION_001.yaml
+playbook_path: 13_skills/active/SKILL_BROWSER_EXTENSION_001.playbook.md
+current_version: 1.0.0
+tier: active
+
+hard_constraints:
+- Manifest V3 is used for all Chrome-family extensions; manifest_version 2 is not submitted to the Chrome Web Store.
+- Requested permissions are minimal and justified; host_permissions are pinned to exact required domains, and "<all_urls>" / "*://*/*" is forbidden without a documented core-feature need.
+- No secrets, API keys, or private keys are embedded in the extension bundle, and no remote code execution (eval, new Function, remote scripts) is shipped.
+- Message passing validates sender id, origin, and payload schema before acting; content scripts never trust page globals.
+- Content Security Policy is kept tight (no unsafe-eval, no unsafe-inline, no wildcard script-src) and the background service worker is treated as ephemeral with state persisted.
+- Injected/popup/options UI fits a small viewport, is keyboard accessible, does not break host-page layout, and the user can disable or disconnect the extension cleanly.
+
+immutable_facts:
+- "Fills the Browser Extension zero-coverage gap; owned by the Production-Readiness Corpus (53_production_readiness)."
+- "Corpus category id is PRC.BROWSER_EXTENSION with three sections: Manifest/Store/Permissions, Extension Security, UX/Compatibility (30 items)."
+- "Manifest V3 prohibits remotely-hosted code; all executable code must ship inside the package."
+
+correction_history:
+- version: 1.0.0
+  date: '2026-05-31'
+  type: creation
+  summary: >
+    Created the canonical Browser Extension Production Readiness skill triplet (card,
+    playbook, ledger) to fill the coverage_status NONE gap for the PRC.BROWSER_EXTENSION
+    category. Hard constraints, failure modes, and validation tests derived directly from
+    the 30 hand-authored corpus items.
+
+regression_test_ids: []
+
+promotion_criteria:
+  to_tier: hardened
+  requirements:
+  - At least 5 invocations on real browser-extension projects with zero correctness corrections logged.
+  - A worked example exists proving an extension passed the PRC.BROWSER_EXTENSION audit at Silver or above using this skill.
+  - Validation tests are wired into a runnable check (static eval/CSP scan + secret scan + permission-justification lint) with reproducible output.
+
+last_updated: '2026-05-31'

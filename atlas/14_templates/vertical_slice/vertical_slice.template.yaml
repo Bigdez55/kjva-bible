@@ -1,5 +1,5 @@
 # Template: vertical_slice
-# Replace placeholders. See 26_schemas/vertical_slice/ if a schema exists.
+# Replace placeholders. See schemas/vertical_slice/ if a schema exists.
 id: "{id}"
 name: "{name}"
 status: draft

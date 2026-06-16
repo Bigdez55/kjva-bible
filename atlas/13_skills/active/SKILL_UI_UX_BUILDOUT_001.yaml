@@ -15,9 +15,9 @@ validation_tests: []
 status: active
 skill_number: 141
 source_documents:
-- 01_vision/SUPER_C_ATLAS_MASTER_SPEC.md
-- 03_specs/product_requirements/SPEC-SUPER-C-ATLAS-PROD-0001.yaml
-- apps/atlas/README.md
+- 01_vision/ATLAS_MASTER_SPEC.md
+- 03_specs/product_requirements/SPEC-ATLAS-PROD-0001.yaml
+- apps/frontend/shell/README.md
 - 13_skills/skill_refinery/trigger_router.yaml
 trigger_conditions:
 - User asks to build out ATLAS UI/UX.

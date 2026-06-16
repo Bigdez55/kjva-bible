@@ -1,0 +1,28 @@
+archetype: ml_training
+directories:
+- 00_intake
+- 01_vision
+- 02_discovery
+- 03_specs
+- 04_architecture
+- 05_workflows
+- 06_planning
+- 07_build
+- 08_verification
+- 09_release
+starter_skills:
+- SKILL_INTENT_COMPILATION_001
+- SKILL_REGISTRY_SYNC_001
+production_readiness_profile:
+  required_tier: gold
+  na_categories:
+  - Mobile Application
+  - Desktop Application
+  - Browser Extension
+  - Content, CMS & Editorial
+  - Payments & Financial Systems
+  - Identity Verification & KYC/AML
+  - Email & Notification Infrastructure
+  - Go-To-Market & Growth
+  - Trust & Safety / Content Moderation
+  notes: ML training/model project. AI & ML Models category central.

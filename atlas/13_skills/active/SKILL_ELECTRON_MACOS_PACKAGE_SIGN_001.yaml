@@ -30,18 +30,18 @@ hard_constraints:
 - Remove com.apple.quarantine xattr from the app after moving it to Desktop or any non-/Applications location to prevent App Translocation.
 
 known_failure_modes:
-- electron-builder leaves the Electron stub "linker-signed" (flags=0x20002, Identifier=Electron, no Info.plist binding). spctl rejects it. Fix: run codesign --force --sign - on the full bundle after build.
-- signing the outer app bundle before signing inner helpers/frameworks produces partial seal errors. Fix: sign Contents/Frameworks/* first, then the app bundle.
-- empty electronFuses:{} still invokes @electron/fuses which patches the Electron Framework binary and invalidates the original linker signature. Fix: always re-sign after any electronFuses config, even an empty one.
-- App Translocation: macOS quarantine bit on apps opened from non-/Applications paths causes the OS to run the app from a random temp path. The app itself functions but resourcesPath changes every launch. Fix: xattr -r -d com.apple.quarantine <app>.
-- enableEmbeddedAsarIntegrityValidation:true with an ad-hoc signed (not notarized) build causes launch-time ASAR integrity failures. Fix: set to false for local/dev builds.
+- "electron-builder leaves the Electron stub \"linker-signed\" (flags=0x20002, Identifier=Electron, no Info.plist binding). spctl rejects it. Fix: run codesign --force --sign - on the full bundle after build."
+- "signing the outer app bundle before signing inner helpers/frameworks produces partial seal errors. Fix: sign Contents/Frameworks/* first, then the app bundle."
+- "empty electronFuses:{} still invokes @electron/fuses which patches the Electron Framework binary and invalidates the original linker signature. Fix: always re-sign after any electronFuses config, even an empty one."
+- "App Translocation: macOS quarantine bit on apps opened from non-/Applications paths causes the OS to run the app from a random temp path. The app itself functions but resourcesPath changes every launch. Fix: xattr -r -d com.apple.quarantine <app>."
+- "enableEmbeddedAsarIntegrityValidation:true with an ad-hoc signed (not notarized) build causes launch-time ASAR integrity failures. Fix: set to false for local/dev builds."
 
 validation_tests:
-- After npm run pack, run: codesign -dvv dist/mac-arm64/Storbits.app 2>&1 | grep -E "Identifier|Sealed|Signature|flags"
-- Pass criteria: Identifier=<com.appId>, Sealed Resources version=2, Signature=adhoc, flags=0x2(adhoc) — NOT 0x20002(adhoc,linker-signed).
-- Verify no quarantine: xattr -l <app> | grep quarantine — should be absent.
-- Verify fuses: npx @electron/fuses read --app dist/mac-arm64/<App>.app | grep RunAsNode — must show "Disabled".
-- Launch test: open dist/mac-arm64/<App>.app — app should open its window, NOT silently exit.
+- "After npm run pack, run: codesign -dvv dist/mac-arm64/Storbits.app 2>&1 | grep -E \"Identifier|Sealed|Signature|flags\""
+- "Pass criteria: Identifier=<com.appId>, Sealed Resources version=2, Signature=adhoc, flags=0x2(adhoc) — NOT 0x20002(adhoc,linker-signed)."
+- "Verify no quarantine: xattr -l <app> | grep quarantine — should be absent."
+- "Verify fuses: npx @electron/fuses read --app dist/mac-arm64/<App>.app | grep RunAsNode — must show \"Disabled\"."
+- "Launch test: open dist/mac-arm64/<App>.app — app should open its window, NOT silently exit."
 
 improvement_history:
 - version: 1.0.0

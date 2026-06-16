@@ -1,6 +1,6 @@
 {
-  "generated": "2026-05-27",
-  "total": 331,
+  "generated": "2026-06-11",
+  "total": 374,
   "skills": [
     {
       "id": "SKILL_ADMIN_CONSOLE_TENANT_OPS_001",
@@ -206,20 +206,44 @@
       "playbook_path": "platform/sdlc/13_skills/active/SKILL_AGENT_WORKTREE_DISCIPLINE_001.playbook.md"
     },
     {
-      "id": "SKILL_AGGREGATOR_PARALLELIZATION_AUDIT_001",
-      "title": "aggregator parallelization audit",
+      "id": "SKILL_AGENT_WORKTREE_ISOLATION_001",
+      "title": "Parallel Multi-Agent Execution via Git Worktree Isolation",
       "version": "1.0.0",
-      "tier": "starter",
-      "layer": "application",
+      "tier": "active",
+      "layer": "process",
       "status": "active",
-      "source": "migrated_user",
-      "skill_number": 545,
+      "source": "incident_promotion",
+      "skill_number": null,
       "domains": [
-        "skills"
+        "orchestration",
+        "ci_cd",
+        "multi_agent"
       ],
-      "aliases": [
-        "aggregator-parallelization-audit"
+      "aliases": [],
+      "runtime_projection": true,
+      "runtime_projection_targets": [
+        "claude",
+        "codex",
+        "gemini"
       ],
+      "kebab": "agent-worktree-isolation",
+      "perfection_score": 1.0,
+      "playbook_path": "13_skills/active/SKILL_AGENT_WORKTREE_ISOLATION_001.playbook.md"
+    },
+    {
+      "id": "SKILL_AGGREGATOR_PARALLELIZATION_AUDIT_001",
+      "title": "Aggregator Parallelization Audit",
+      "version": "1.0.0",
+      "tier": "active",
+      "layer": "quality",
+      "status": "active",
+      "source": "native_cli_promotion",
+      "skill_number": null,
+      "domains": [
+        "quality",
+        "debugging"
+      ],
+      "aliases": [],
       "runtime_projection": true,
       "runtime_projection_targets": [
         "claude",
@@ -228,7 +252,7 @@
       ],
       "kebab": "aggregator-parallelization-audit",
       "perfection_score": null,
-      "playbook_path": "platform/sdlc/13_skills/active/SKILL_AGGREGATOR_PARALLELIZATION_AUDIT_001.playbook.md"
+      "playbook_path": "13_skills/active/SKILL_AGGREGATOR_PARALLELIZATION_AUDIT_001.playbook.md"
     },
     {
       "id": "SKILL_AI_GOVERNANCE_CITADEL_001",
@@ -350,6 +374,31 @@
       "kebab": "alert-system",
       "perfection_score": null,
       "playbook_path": "platform/sdlc/13_skills/active/SKILL_ALERT_SYSTEM_001.playbook.md"
+    },
+    {
+      "id": "SKILL_ALWAYS_ON_SERVICE_RESOURCE_DISCIPLINE_001",
+      "title": "Always-On Service Resource Discipline",
+      "version": "1.0.0",
+      "tier": "active",
+      "layer": "infrastructure",
+      "status": "active",
+      "source": "incident_distillation",
+      "skill_number": null,
+      "domains": [
+        "infrastructure",
+        "reliability",
+        "ops"
+      ],
+      "aliases": [],
+      "runtime_projection": true,
+      "runtime_projection_targets": [
+        "claude",
+        "codex",
+        "gemini"
+      ],
+      "kebab": "always-on-service-resource-discipline",
+      "perfection_score": null,
+      "playbook_path": "13_skills/active/SKILL_ALWAYS_ON_SERVICE_RESOURCE_DISCIPLINE_001.playbook.md"
     },
     {
       "id": "SKILL_APEX_COORDINATOR_001",
@@ -522,6 +571,62 @@
       "playbook_path": "13_skills/active/SKILL_ARCHITECTURE_ATLAS_001.playbook.md"
     },
     {
+      "id": "SKILL_ARCHITECTURE_HONESTY_001",
+      "title": "architecture-honesty",
+      "version": "1.0.0",
+      "tier": "active",
+      "layer": "governance",
+      "status": "active",
+      "source": "promoted_external",
+      "skill_number": 1093,
+      "domains": [
+        "verification",
+        "validation",
+        "skills",
+        "meta",
+        "documentation"
+      ],
+      "aliases": [
+        "architecture-honesty"
+      ],
+      "runtime_projection": true,
+      "runtime_projection_targets": [
+        "claude",
+        "codex",
+        "gemini"
+      ],
+      "kebab": "architecture-honesty",
+      "perfection_score": null,
+      "playbook_path": "platform/sdlc/13_skills/active/SKILL_ARCHITECTURE_HONESTY_001.playbook.md"
+    },
+    {
+      "id": "SKILL_ATLAS_OAUTH_WIRING_001",
+      "title": "GitHub OAuth Wiring for the ATLAS Web Service (Next.js)",
+      "version": "1.1.0",
+      "tier": "active",
+      "layer": "application",
+      "status": "active",
+      "source": "incident_promotion",
+      "skill_number": null,
+      "domains": [
+        "frontend",
+        "auth",
+        "security",
+        "web",
+        "desktop"
+      ],
+      "aliases": [],
+      "runtime_projection": true,
+      "runtime_projection_targets": [
+        "claude",
+        "codex",
+        "gemini"
+      ],
+      "kebab": "atlas-oauth-wiring",
+      "perfection_score": 1.0,
+      "playbook_path": "13_skills/active/SKILL_ATLAS_OAUTH_WIRING_001.playbook.md"
+    },
+    {
       "id": "SKILL_AUDIT_ASSESS_ANALYZE_001",
       "title": "audit-assess-analyze",
       "version": "1.0.0",
@@ -547,6 +652,32 @@
       "kebab": "audit-assess-analyze",
       "perfection_score": null,
       "playbook_path": "platform/sdlc/13_skills/active/SKILL_AUDIT_ASSESS_ANALYZE_001.playbook.md"
+    },
+    {
+      "id": "SKILL_AUDIT_LOG_IMMUTABLE_001",
+      "title": "Immutable Audit Log with SHA-256 Hash Chain",
+      "version": "1.0.0",
+      "tier": "active",
+      "layer": "data",
+      "status": "active",
+      "source": "incident_promotion",
+      "skill_number": null,
+      "domains": [
+        "backend",
+        "security",
+        "audit",
+        "compliance"
+      ],
+      "aliases": [],
+      "runtime_projection": true,
+      "runtime_projection_targets": [
+        "claude",
+        "codex",
+        "gemini"
+      ],
+      "kebab": "audit-log-immutable",
+      "perfection_score": 1.0,
+      "playbook_path": "13_skills/active/SKILL_AUDIT_LOG_IMMUTABLE_001.playbook.md"
     },
     {
       "id": "SKILL_AUTH_GUARD_001",
@@ -1036,19 +1167,18 @@
     },
     {
       "id": "SKILL_BACK_LINK_REUSE_OVER_CACHE_001",
-      "title": "back link reuse over cache",
+      "title": "Back Link Reuse Over Cache",
       "version": "1.0.0",
-      "tier": "starter",
-      "layer": "application",
+      "tier": "active",
+      "layer": "compiler",
       "status": "active",
-      "source": "migrated_user",
-      "skill_number": 546,
+      "source": "native_cli_promotion",
+      "skill_number": null,
       "domains": [
-        "skills"
+        "compiler",
+        "build_systems"
       ],
-      "aliases": [
-        "back-link-reuse-over-cache"
-      ],
+      "aliases": [],
       "runtime_projection": true,
       "runtime_projection_targets": [
         "claude",
@@ -1057,7 +1187,7 @@
       ],
       "kebab": "back-link-reuse-over-cache",
       "perfection_score": null,
-      "playbook_path": "platform/sdlc/13_skills/active/SKILL_BACK_LINK_REUSE_OVER_CACHE_001.playbook.md"
+      "playbook_path": "13_skills/active/SKILL_BACK_LINK_REUSE_OVER_CACHE_001.playbook.md"
     },
     {
       "id": "SKILL_BEACON_001",
@@ -1128,6 +1258,41 @@
       "playbook_path": "13_skills/active/SKILL_BILLING_METERING_QUOTAS_001.playbook.md"
     },
     {
+      "id": "SKILL_BROWSER_EXTENSION_001",
+      "title": "Browser Extension Production Readiness",
+      "version": "1.0.0",
+      "tier": "active",
+      "layer": "frontend",
+      "status": "active",
+      "source": "native",
+      "skill_number": null,
+      "domains": [
+        "frontend",
+        "browser_extension",
+        "security",
+        "production_readiness",
+        "web_platform",
+        "ux"
+      ],
+      "aliases": [
+        "browser-extension-production-readiness",
+        "browser-extension",
+        "chrome-extension",
+        "webextension",
+        "manifest-v3",
+        "extension-store-readiness"
+      ],
+      "runtime_projection": true,
+      "runtime_projection_targets": [
+        "claude",
+        "codex",
+        "gemini"
+      ],
+      "kebab": "browser-extension-production-readiness",
+      "perfection_score": null,
+      "playbook_path": "platform/sdlc/13_skills/active/SKILL_BROWSER_EXTENSION_001.playbook.md"
+    },
+    {
       "id": "SKILL_BUILD_TOOLCHAIN_CI_001",
       "title": "Build Toolchain Ci",
       "version": "1.0.0",
@@ -1182,20 +1347,49 @@
       "playbook_path": "platform/sdlc/13_skills/active/SKILL_CANVAS_001.playbook.md"
     },
     {
-      "id": "SKILL_CARVEOUT_DEF_ID_DISCIPLINE_001",
-      "title": "carveout def id discipline",
+      "id": "SKILL_CAPABILITY_CREATION_001",
+      "title": "Capability Creation \u2014 build/refine the skill, tool, MCP, or plugin a checklist item needs",
       "version": "1.0.0",
-      "tier": "starter",
-      "layer": "application",
+      "tier": "active",
+      "layer": "governance",
       "status": "active",
-      "source": "migrated_user",
-      "skill_number": 547,
+      "source": "native",
+      "skill_number": null,
       "domains": [
-        "skills"
+        "capability_engineering",
+        "governance",
+        "mcp",
+        "tooling",
+        "continuous_improvement"
       ],
       "aliases": [
-        "carveout-def-id-discipline"
+        "capability-creation",
+        "build-the-missing-capability"
       ],
+      "runtime_projection": true,
+      "runtime_projection_targets": [
+        "claude",
+        "codex",
+        "gemini"
+      ],
+      "kebab": "capability-creation",
+      "perfection_score": null,
+      "playbook_path": "platform/sdlc/13_skills/active/SKILL_CAPABILITY_CREATION_001.playbook.md"
+    },
+    {
+      "id": "SKILL_CARVEOUT_DEF_ID_DISCIPLINE_001",
+      "title": "Carveout Def Id Discipline",
+      "version": "1.0.0",
+      "tier": "active",
+      "layer": "compiler",
+      "status": "active",
+      "source": "native_cli_promotion",
+      "skill_number": null,
+      "domains": [
+        "compiler",
+        "build_systems"
+      ],
+      "aliases": [],
       "runtime_projection": true,
       "runtime_projection_targets": [
         "claude",
@@ -1204,23 +1398,22 @@
       ],
       "kebab": "carveout-def-id-discipline",
       "perfection_score": null,
-      "playbook_path": "platform/sdlc/13_skills/active/SKILL_CARVEOUT_DEF_ID_DISCIPLINE_001.playbook.md"
+      "playbook_path": "13_skills/active/SKILL_CARVEOUT_DEF_ID_DISCIPLINE_001.playbook.md"
     },
     {
       "id": "SKILL_CASCADE_ROOT_TRIAGE_001",
-      "title": "cascade root triage",
+      "title": "Cascade Root Triage",
       "version": "1.0.0",
-      "tier": "starter",
-      "layer": "application",
+      "tier": "active",
+      "layer": "quality",
       "status": "active",
-      "source": "migrated_user",
-      "skill_number": 548,
+      "source": "native_cli_promotion",
+      "skill_number": null,
       "domains": [
-        "skills"
+        "quality",
+        "debugging"
       ],
-      "aliases": [
-        "cascade-root-triage"
-      ],
+      "aliases": [],
       "runtime_projection": true,
       "runtime_projection_targets": [
         "claude",
@@ -1229,7 +1422,7 @@
       ],
       "kebab": "cascade-root-triage",
       "perfection_score": null,
-      "playbook_path": "platform/sdlc/13_skills/active/SKILL_CASCADE_ROOT_TRIAGE_001.playbook.md"
+      "playbook_path": "13_skills/active/SKILL_CASCADE_ROOT_TRIAGE_001.playbook.md"
     },
     {
       "id": "SKILL_CHART_BUILDER_001",
@@ -1311,6 +1504,66 @@
       "kebab": "ci-preflight",
       "perfection_score": null,
       "playbook_path": "platform/sdlc/13_skills/active/SKILL_CI_PREFLIGHT_001.playbook.md"
+    },
+    {
+      "id": "SKILL_CLOUD_SYNCED_BUILD_RESILIENCE_001",
+      "title": "Cloud-Synced Build Resilience",
+      "version": "1.0.0",
+      "tier": "active",
+      "layer": "ci_cd",
+      "status": "active",
+      "source": "incident_distillation",
+      "skill_number": null,
+      "domains": [
+        "ci_cd",
+        "build_systems",
+        "frontend"
+      ],
+      "aliases": [],
+      "runtime_projection": true,
+      "runtime_projection_targets": [
+        "claude",
+        "codex",
+        "gemini"
+      ],
+      "kebab": "cloud-synced-build-resilience",
+      "perfection_score": null,
+      "playbook_path": "13_skills/active/SKILL_CLOUD_SYNCED_BUILD_RESILIENCE_001.playbook.md"
+    },
+    {
+      "id": "SKILL_CMS_CONTENT_EDITORIAL_001",
+      "title": "Content, CMS and Editorial Production Readiness",
+      "version": "1.0.0",
+      "tier": "active",
+      "layer": "content",
+      "status": "active",
+      "source": "native",
+      "skill_number": null,
+      "domains": [
+        "content_management",
+        "editorial_governance",
+        "digital_asset_management",
+        "accessibility",
+        "seo",
+        "localization"
+      ],
+      "aliases": [
+        "cms-content-editorial",
+        "content-cms",
+        "editorial-governance",
+        "cms-readiness",
+        "content-publishing-workflow",
+        "digital-asset-management"
+      ],
+      "runtime_projection": true,
+      "runtime_projection_targets": [
+        "claude",
+        "codex",
+        "gemini"
+      ],
+      "kebab": "cms-content-editorial",
+      "perfection_score": null,
+      "playbook_path": "platform/sdlc/13_skills/active/SKILL_CMS_CONTENT_EDITORIAL_001.playbook.md"
     },
     {
       "id": "SKILL_CODEX_GEMINI_REPOSITORY_ACQUISITION_001",
@@ -1405,20 +1658,18 @@
     },
     {
       "id": "SKILL_COMPILE_OUTPUT_SIZE_DIFF_PROBE_001",
-      "title": "compile output size diff probe",
+      "title": "Compile Output Size Diff Probe",
       "version": "1.0.0",
-      "tier": "starter",
-      "layer": "verification",
+      "tier": "active",
+      "layer": "compiler",
       "status": "active",
-      "source": "migrated_user",
-      "skill_number": 549,
+      "source": "native_cli_promotion",
+      "skill_number": null,
       "domains": [
-        "verification",
-        "release"
+        "compiler",
+        "build_systems"
       ],
-      "aliases": [
-        "compile-output-size-diff-probe"
-      ],
+      "aliases": [],
       "runtime_projection": true,
       "runtime_projection_targets": [
         "claude",
@@ -1427,7 +1678,7 @@
       ],
       "kebab": "compile-output-size-diff-probe",
       "perfection_score": null,
-      "playbook_path": "platform/sdlc/13_skills/active/SKILL_COMPILE_OUTPUT_SIZE_DIFF_PROBE_001.playbook.md"
+      "playbook_path": "13_skills/active/SKILL_COMPILE_OUTPUT_SIZE_DIFF_PROBE_001.playbook.md"
     },
     {
       "id": "SKILL_COMPLIANCE_CHECK_001",
@@ -1673,6 +1924,36 @@
       "kebab": "data-pipeline",
       "perfection_score": null,
       "playbook_path": "platform/sdlc/13_skills/active/SKILL_DATA_PIPELINE_001.playbook.md"
+    },
+    {
+      "id": "SKILL_DEFINITION_OF_DONE_GATE_001",
+      "title": "Enforced Definition-of-Done Gate (probes write verdicts, not the agent)",
+      "version": "1.0.0",
+      "tier": "active",
+      "layer": "verification",
+      "status": "active",
+      "source": "native",
+      "skill_number": null,
+      "domains": [
+        "verification",
+        "governance",
+        "definition_of_done",
+        "anti_false_completion"
+      ],
+      "aliases": [
+        "definition-of-done-gate",
+        "dod-gate",
+        "probes-write-verdicts"
+      ],
+      "runtime_projection": true,
+      "runtime_projection_targets": [
+        "claude",
+        "codex",
+        "gemini"
+      ],
+      "kebab": "definition-of-done-gate",
+      "perfection_score": null,
+      "playbook_path": "platform/sdlc/13_skills/active/SKILL_DEFINITION_OF_DONE_GATE_001.playbook.md"
     },
     {
       "id": "SKILL_DEPENDENCY_SOVEREIGNTY_001",
@@ -1999,6 +2280,33 @@
       "playbook_path": "13_skills/active/SKILL_DRIFT_DETECTION_001.playbook.md"
     },
     {
+      "id": "SKILL_DURABLE_STORAGE_MIGRATION_001",
+      "title": "Drizzle Dual-Driver Storage (Desktop SQLite + Hosted Postgres)",
+      "version": "1.0.0",
+      "tier": "active",
+      "layer": "data",
+      "status": "active",
+      "source": "incident_promotion",
+      "skill_number": null,
+      "domains": [
+        "backend",
+        "data",
+        "storage",
+        "desktop",
+        "migration"
+      ],
+      "aliases": [],
+      "runtime_projection": true,
+      "runtime_projection_targets": [
+        "claude",
+        "codex",
+        "gemini"
+      ],
+      "kebab": "durable-storage-migration",
+      "perfection_score": 1.0,
+      "playbook_path": "13_skills/active/SKILL_DURABLE_STORAGE_MIGRATION_001.playbook.md"
+    },
+    {
       "id": "SKILL_DYNAMIC_RULE_LEDGER_001",
       "title": "Dynamic Rule Ledger",
       "version": "1.0.0",
@@ -2076,6 +2384,136 @@
       "kebab": "edge-ai-optimizer",
       "perfection_score": null,
       "playbook_path": "platform/sdlc/13_skills/active/SKILL_EDGE_AI_OPTIMIZER_001.playbook.md"
+    },
+    {
+      "id": "SKILL_ELECTRON_EMBEDDED_DAEMON_BOOTSTRAP_001",
+      "title": "Electron Embedded Daemon Bootstrap",
+      "version": "1.0.0",
+      "tier": "active",
+      "layer": "architecture",
+      "status": "active",
+      "source": "incident_promotion",
+      "skill_number": null,
+      "domains": [
+        "desktop",
+        "electron",
+        "daemon",
+        "python",
+        "local_first"
+      ],
+      "aliases": [],
+      "runtime_projection": true,
+      "runtime_projection_targets": [
+        "claude",
+        "codex",
+        "gemini"
+      ],
+      "kebab": "electron-embedded-daemon-bootstrap",
+      "perfection_score": 1.0,
+      "playbook_path": "13_skills/active/SKILL_ELECTRON_EMBEDDED_DAEMON_BOOTSTRAP_001.playbook.md"
+    },
+    {
+      "id": "SKILL_ELECTRON_MACOS_DOCK_ICON_DISCIPLINE_001",
+      "title": "Electron macOS Dock Icon Discipline (Squircle + Single Entry + Visible Logging)",
+      "version": "1.0.0",
+      "tier": "active",
+      "layer": "ci_cd",
+      "status": "active",
+      "source": "incident_promotion",
+      "skill_number": null,
+      "domains": [
+        "desktop",
+        "electron",
+        "macos",
+        "branding"
+      ],
+      "aliases": [],
+      "runtime_projection": true,
+      "runtime_projection_targets": [
+        "claude",
+        "codex",
+        "gemini"
+      ],
+      "kebab": "electron-macos-dock-icon-discipline",
+      "perfection_score": 1.0,
+      "playbook_path": "13_skills/active/SKILL_ELECTRON_MACOS_DOCK_ICON_DISCIPLINE_001.playbook.md"
+    },
+    {
+      "id": "SKILL_ELECTRON_MACOS_PACKAGE_SIGN_001",
+      "title": "Electron macOS Packaging and Ad-Hoc Signing",
+      "version": "1.0.0",
+      "tier": "active",
+      "layer": "ci_cd",
+      "status": "active",
+      "source": "incident_promotion",
+      "skill_number": null,
+      "domains": [
+        "desktop",
+        "electron",
+        "build_systems",
+        "macos"
+      ],
+      "aliases": [],
+      "runtime_projection": true,
+      "runtime_projection_targets": [
+        "claude",
+        "codex",
+        "gemini"
+      ],
+      "kebab": "electron-macos-package-sign",
+      "perfection_score": 1.0,
+      "playbook_path": "13_skills/active/SKILL_ELECTRON_MACOS_PACKAGE_SIGN_001.playbook.md"
+    },
+    {
+      "id": "SKILL_ELECTRON_SINGLE_INSTANCE_DISCIPLINE_001",
+      "title": "Electron Single-Instance Discipline",
+      "version": "1.0.0",
+      "tier": "active",
+      "layer": "ci_cd",
+      "status": "active",
+      "source": "incident_promotion",
+      "skill_number": null,
+      "domains": [
+        "desktop",
+        "electron",
+        "build_systems"
+      ],
+      "aliases": [],
+      "runtime_projection": true,
+      "runtime_projection_targets": [
+        "claude",
+        "codex",
+        "gemini"
+      ],
+      "kebab": "electron-single-instance-discipline",
+      "perfection_score": 1.0,
+      "playbook_path": "13_skills/active/SKILL_ELECTRON_SINGLE_INSTANCE_DISCIPLINE_001.playbook.md"
+    },
+    {
+      "id": "SKILL_ELECTRON_VSCODE_ENV_ISOLATION_001",
+      "title": "Electron VS Code Environment Isolation",
+      "version": "1.0.0",
+      "tier": "active",
+      "layer": "ci_cd",
+      "status": "active",
+      "source": "incident_promotion",
+      "skill_number": null,
+      "domains": [
+        "desktop",
+        "electron",
+        "developer_experience",
+        "macos"
+      ],
+      "aliases": [],
+      "runtime_projection": true,
+      "runtime_projection_targets": [
+        "claude",
+        "codex",
+        "gemini"
+      ],
+      "kebab": "electron-vscode-env-isolation",
+      "perfection_score": 1.0,
+      "playbook_path": "13_skills/active/SKILL_ELECTRON_VSCODE_ENV_ISOLATION_001.playbook.md"
     },
     {
       "id": "SKILL_ELSON_AUDIT_001",
@@ -3043,19 +3481,18 @@
     },
     {
       "id": "SKILL_FAILURE_MODE_FIRST_AUTHORING_001",
-      "title": "failure mode first authoring",
+      "title": "Failure Mode First Authoring",
       "version": "1.0.0",
-      "tier": "starter",
-      "layer": "application",
+      "tier": "active",
+      "layer": "quality",
       "status": "active",
-      "source": "migrated_user",
-      "skill_number": 550,
+      "source": "native_cli_promotion",
+      "skill_number": null,
       "domains": [
-        "skills"
+        "quality",
+        "debugging"
       ],
-      "aliases": [
-        "failure-mode-first-authoring"
-      ],
+      "aliases": [],
       "runtime_projection": true,
       "runtime_projection_targets": [
         "claude",
@@ -3064,7 +3501,7 @@
       ],
       "kebab": "failure-mode-first-authoring",
       "perfection_score": null,
-      "playbook_path": "platform/sdlc/13_skills/active/SKILL_FAILURE_MODE_FIRST_AUTHORING_001.playbook.md"
+      "playbook_path": "13_skills/active/SKILL_FAILURE_MODE_FIRST_AUTHORING_001.playbook.md"
     },
     {
       "id": "SKILL_FIELD_LOWERING_DISCIPLINE_001",
@@ -3091,6 +3528,40 @@
       "kebab": "sc-field-lowering-discipline",
       "perfection_score": null,
       "playbook_path": "platform/sdlc/13_skills/active/SKILL_FIELD_LOWERING_DISCIPLINE_001.playbook.md"
+    },
+    {
+      "id": "SKILL_FILE_UPLOAD_MEDIA_001",
+      "title": "File Upload and Media Processing",
+      "version": "1.0.0",
+      "tier": "active",
+      "layer": "backend",
+      "status": "active",
+      "source": "native",
+      "skill_number": null,
+      "domains": [
+        "file_upload_security",
+        "media_processing",
+        "object_storage",
+        "content_scanning",
+        "abuse_prevention",
+        "data_privacy"
+      ],
+      "aliases": [
+        "file-upload-media",
+        "upload-security",
+        "media-pipeline",
+        "attachment-handling",
+        "presigned-upload"
+      ],
+      "runtime_projection": true,
+      "runtime_projection_targets": [
+        "claude",
+        "codex",
+        "gemini"
+      ],
+      "kebab": "file-upload-media",
+      "perfection_score": null,
+      "playbook_path": "platform/sdlc/13_skills/active/SKILL_FILE_UPLOAD_MEDIA_001.playbook.md"
     },
     {
       "id": "SKILL_FIND_BEFORE_CREATE_001",
@@ -3141,6 +3612,41 @@
       "kebab": "fortress",
       "perfection_score": null,
       "playbook_path": "platform/sdlc/13_skills/active/SKILL_FORTRESS_001.playbook.md"
+    },
+    {
+      "id": "SKILL_FRAUD_ABUSE_PREVENTION_001",
+      "title": "Fraud & Abuse Prevention \u2014 Production-Readiness Launch Gate",
+      "version": "1.0.0",
+      "tier": "active",
+      "layer": "security",
+      "status": "active",
+      "source": "native",
+      "skill_number": null,
+      "domains": [
+        "fraud-prevention",
+        "abuse-mitigation",
+        "trust-and-safety",
+        "account-security",
+        "bot-defense",
+        "production-readiness"
+      ],
+      "aliases": [
+        "fraud-abuse-prevention",
+        "fraud-prevention",
+        "abuse-prevention",
+        "anti-fraud",
+        "anti-abuse",
+        "bot-defense"
+      ],
+      "runtime_projection": true,
+      "runtime_projection_targets": [
+        "claude",
+        "codex",
+        "gemini"
+      ],
+      "kebab": "fraud-abuse-prevention",
+      "perfection_score": null,
+      "playbook_path": "platform/sdlc/13_skills/active/SKILL_FRAUD_ABUSE_PREVENTION_001.playbook.md"
     },
     {
       "id": "SKILL_FREESTANDING_C_KERNEL_001",
@@ -3222,7 +3728,7 @@
         "gemini"
       ],
       "kebab": "28-fullstack-react-electron-threejs",
-      "perfection_score": null,
+      "perfection_score": 1.0,
       "playbook_path": "13_skills/active/SKILL_FULLSTACK_REACT_ELECTRON_THREEJS_001.playbook.md"
     },
     {
@@ -3280,22 +3786,18 @@
     },
     {
       "id": "SKILL_GATE_AUTO_BOOTSTRAP_DISCIPLINE_001",
-      "title": "gate auto bootstrap discipline",
+      "title": "Gate Auto Bootstrap Discipline",
       "version": "1.0.0",
-      "tier": "starter",
-      "layer": "governance",
+      "tier": "active",
+      "layer": "ci_cd",
       "status": "active",
-      "source": "migrated_user",
-      "skill_number": 551,
+      "source": "native_cli_promotion",
+      "skill_number": null,
       "domains": [
-        "gating",
-        "validation",
-        "bootstrap",
-        "seal-integrity"
+        "ci_cd",
+        "build_systems"
       ],
-      "aliases": [
-        "gate-auto-bootstrap-discipline"
-      ],
+      "aliases": [],
       "runtime_projection": true,
       "runtime_projection_targets": [
         "claude",
@@ -3304,7 +3806,7 @@
       ],
       "kebab": "gate-auto-bootstrap-discipline",
       "perfection_score": null,
-      "playbook_path": "platform/sdlc/13_skills/active/SKILL_GATE_AUTO_BOOTSTRAP_DISCIPLINE_001.playbook.md"
+      "playbook_path": "13_skills/active/SKILL_GATE_AUTO_BOOTSTRAP_DISCIPLINE_001.playbook.md"
     },
     {
       "id": "SKILL_GATE_CONTENTION_ISOLATION_001",
@@ -3334,20 +3836,18 @@
     },
     {
       "id": "SKILL_GATE_DUMP_VS_RUNTIME_001",
-      "title": "gate dump vs runtime",
+      "title": "Gate Dump Vs Runtime",
       "version": "1.0.0",
-      "tier": "starter",
-      "layer": "verification",
+      "tier": "active",
+      "layer": "ci_cd",
       "status": "active",
-      "source": "migrated_user",
-      "skill_number": 552,
+      "source": "native_cli_promotion",
+      "skill_number": null,
       "domains": [
-        "verification",
-        "release"
+        "ci_cd",
+        "build_systems"
       ],
-      "aliases": [
-        "gate-dump-vs-runtime"
-      ],
+      "aliases": [],
       "runtime_projection": true,
       "runtime_projection_targets": [
         "claude",
@@ -3356,7 +3856,7 @@
       ],
       "kebab": "gate-dump-vs-runtime",
       "perfection_score": null,
-      "playbook_path": "platform/sdlc/13_skills/active/SKILL_GATE_DUMP_VS_RUNTIME_001.playbook.md"
+      "playbook_path": "13_skills/active/SKILL_GATE_DUMP_VS_RUNTIME_001.playbook.md"
     },
     {
       "id": "SKILL_GATE_HARNESS_PROCESS_ISOLATION_001",
@@ -3383,6 +3883,31 @@
       "kebab": "gate-harness-process-isolation",
       "perfection_score": null,
       "playbook_path": "platform/sdlc/13_skills/active/SKILL_GATE_HARNESS_PROCESS_ISOLATION_001.playbook.md"
+    },
+    {
+      "id": "SKILL_GATE_SWEEP_BUDGETING_DISCIPLINE_001",
+      "title": "Gate Sweep Budgeting Discipline",
+      "version": "1.0.0",
+      "tier": "active",
+      "layer": "ci_cd",
+      "status": "active",
+      "source": "codex_plugin_promotion",
+      "skill_number": null,
+      "domains": [
+        "ci_cd",
+        "build_systems",
+        "compiler"
+      ],
+      "aliases": [],
+      "runtime_projection": true,
+      "runtime_projection_targets": [
+        "claude",
+        "codex",
+        "gemini"
+      ],
+      "kebab": "gate-sweep-budgeting-discipline",
+      "perfection_score": null,
+      "playbook_path": "13_skills/active/SKILL_GATE_SWEEP_BUDGETING_DISCIPLINE_001.playbook.md"
     },
     {
       "id": "SKILL_GENOS_ADR_001",
@@ -4333,6 +4858,56 @@
       "playbook_path": "13_skills/active/SKILL_GENOS_XMIND_TEST_001.playbook.md"
     },
     {
+      "id": "SKILL_GH_ADDRESS_COMMENTS_001",
+      "title": "Gh Address Comments",
+      "version": "1.0.0",
+      "tier": "active",
+      "layer": "devops",
+      "status": "active",
+      "source": "codex_plugin_promotion",
+      "skill_number": null,
+      "domains": [
+        "devops",
+        "github",
+        "code_review"
+      ],
+      "aliases": [],
+      "runtime_projection": true,
+      "runtime_projection_targets": [
+        "claude",
+        "codex",
+        "gemini"
+      ],
+      "kebab": "gh-address-comments",
+      "perfection_score": null,
+      "playbook_path": "13_skills/active/SKILL_GH_ADDRESS_COMMENTS_001.playbook.md"
+    },
+    {
+      "id": "SKILL_GH_FIX_CI_001",
+      "title": "Gh Fix Ci",
+      "version": "1.0.0",
+      "tier": "active",
+      "layer": "ci_cd",
+      "status": "active",
+      "source": "codex_plugin_promotion",
+      "skill_number": null,
+      "domains": [
+        "ci_cd",
+        "github",
+        "devops"
+      ],
+      "aliases": [],
+      "runtime_projection": true,
+      "runtime_projection_targets": [
+        "claude",
+        "codex",
+        "gemini"
+      ],
+      "kebab": "gh-fix-ci",
+      "perfection_score": null,
+      "playbook_path": "13_skills/active/SKILL_GH_FIX_CI_001.playbook.md"
+    },
+    {
       "id": "SKILL_GITOPS_LOOP_001",
       "title": "GitOps Apex Loop",
       "version": "1.0.0",
@@ -4363,7 +4938,7 @@
     {
       "id": "SKILL_GIT_REMOTE_DISCIPLINE_001",
       "title": "git-remote-discipline",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "tier": "active",
       "layer": "governance",
       "status": "active",
@@ -4459,6 +5034,40 @@
       "playbook_path": "13_skills/active/SKILL_GRAPH_ENGINE_001.playbook.md"
     },
     {
+      "id": "SKILL_GTM_GROWTH_001",
+      "title": "Go-To-Market and Growth",
+      "version": "1.0.0",
+      "tier": "active",
+      "layer": "product",
+      "status": "active",
+      "source": "native",
+      "skill_number": null,
+      "domains": [
+        "go-to-market",
+        "growth",
+        "launch-strategy",
+        "growth-analytics",
+        "lifecycle-and-retention",
+        "product-analytics"
+      ],
+      "aliases": [
+        "gtm-growth",
+        "go-to-market",
+        "growth-readiness",
+        "launch-strategy",
+        "lifecycle-retention"
+      ],
+      "runtime_projection": true,
+      "runtime_projection_targets": [
+        "claude",
+        "codex",
+        "gemini"
+      ],
+      "kebab": "gtm-growth",
+      "perfection_score": null,
+      "playbook_path": "SKILL_GTM_GROWTH_001.playbook.md"
+    },
+    {
       "id": "SKILL_GUARDIAN_SENTINEL_001",
       "title": "guardian sentinel",
       "version": "1.0.0",
@@ -4535,6 +5144,40 @@
       "kebab": "hw-driver-verify",
       "perfection_score": null,
       "playbook_path": "platform/sdlc/13_skills/active/SKILL_HW_DRIVER_VERIFY_001.playbook.md"
+    },
+    {
+      "id": "SKILL_I18N_L10N_001",
+      "title": "Internationalization and Localization",
+      "version": "1.0.0",
+      "tier": "active",
+      "layer": "frontend",
+      "status": "active",
+      "source": "native",
+      "skill_number": null,
+      "domains": [
+        "internationalization",
+        "localization",
+        "frontend",
+        "accessibility",
+        "release_engineering"
+      ],
+      "aliases": [
+        "i18n-l10n",
+        "i18n",
+        "l10n",
+        "internationalization",
+        "localization",
+        "locale-readiness"
+      ],
+      "runtime_projection": true,
+      "runtime_projection_targets": [
+        "claude",
+        "codex",
+        "gemini"
+      ],
+      "kebab": "i18n-l10n",
+      "perfection_score": null,
+      "playbook_path": "SKILL_I18N_L10N_001.playbook.md"
     },
     {
       "id": "SKILL_IDENTITY_AUTH_RBAC_ABAC_001",
@@ -6269,6 +6912,40 @@
       "playbook_path": "13_skills/active/SKILL_ML_FINE_TUNING_DISTILLATION_001.playbook.md"
     },
     {
+      "id": "SKILL_MOBILE_APP_PRODUCTION_001",
+      "title": "Mobile Application Production Readiness",
+      "version": "1.0.0",
+      "tier": "active",
+      "layer": "mobile",
+      "status": "active",
+      "source": "native",
+      "skill_number": null,
+      "domains": [
+        "mobile",
+        "ios",
+        "android",
+        "production-readiness",
+        "app-security",
+        "release-engineering"
+      ],
+      "aliases": [
+        "mobile-app-production-readiness",
+        "mobile-production-readiness",
+        "mobile-launch-checklist",
+        "ios-android-go-live",
+        "app-store-readiness"
+      ],
+      "runtime_projection": true,
+      "runtime_projection_targets": [
+        "claude",
+        "codex",
+        "gemini"
+      ],
+      "kebab": "mobile-app-production-readiness",
+      "perfection_score": null,
+      "playbook_path": "13_skills/active/SKILL_MOBILE_APP_PRODUCTION_001.playbook.md"
+    },
+    {
       "id": "SKILL_MOSAIC_001",
       "title": "mosaic",
       "version": "1.0.0",
@@ -6373,6 +7050,32 @@
       "playbook_path": "13_skills/active/SKILL_MULTI_TENANT_CONTINUOUS_IMPROVEMENT_001.playbook.md"
     },
     {
+      "id": "SKILL_MULTI_TENANT_ISOLATION_001",
+      "title": "Multi-Tenant Isolation via Scoped Query + Existence-Leak Prevention",
+      "version": "1.0.0",
+      "tier": "active",
+      "layer": "application",
+      "status": "active",
+      "source": "incident_promotion",
+      "skill_number": null,
+      "domains": [
+        "backend",
+        "security",
+        "multi_tenancy",
+        "api"
+      ],
+      "aliases": [],
+      "runtime_projection": true,
+      "runtime_projection_targets": [
+        "claude",
+        "codex",
+        "gemini"
+      ],
+      "kebab": "multi-tenant-isolation",
+      "perfection_score": 1.0,
+      "playbook_path": "13_skills/active/SKILL_MULTI_TENANT_ISOLATION_001.playbook.md"
+    },
+    {
       "id": "SKILL_MULTI_TENANT_PLATFORM_ARCHITECT_001",
       "title": "Multi-Tenant Platform Architect",
       "version": "1.0.0",
@@ -6417,19 +7120,18 @@
     },
     {
       "id": "SKILL_MULTI_WAVE_AUDIT_CADENCE_001",
-      "title": "multi wave audit cadence",
+      "title": "Multi Wave Audit Cadence",
       "version": "1.0.0",
-      "tier": "starter",
-      "layer": "application",
+      "tier": "active",
+      "layer": "quality",
       "status": "active",
-      "source": "migrated_user",
-      "skill_number": 553,
+      "source": "native_cli_promotion",
+      "skill_number": null,
       "domains": [
-        "skills"
+        "quality",
+        "debugging"
       ],
-      "aliases": [
-        "multi-wave-audit-cadence"
-      ],
+      "aliases": [],
       "runtime_projection": true,
       "runtime_projection_targets": [
         "claude",
@@ -6438,7 +7140,35 @@
       ],
       "kebab": "multi-wave-audit-cadence",
       "perfection_score": null,
-      "playbook_path": "platform/sdlc/13_skills/active/SKILL_MULTI_WAVE_AUDIT_CADENCE_001.playbook.md"
+      "playbook_path": "13_skills/active/SKILL_MULTI_WAVE_AUDIT_CADENCE_001.playbook.md"
+    },
+    {
+      "id": "SKILL_NETWORK_CONNECTIVITY_DISCIPLINE_001",
+      "title": "Network Connectivity Triage Discipline",
+      "version": "1.0.0",
+      "tier": "active",
+      "layer": "infrastructure",
+      "status": "active",
+      "source": "incident_promotion",
+      "skill_number": null,
+      "domains": [
+        "infrastructure",
+        "networking",
+        "git",
+        "ci_cd"
+      ],
+      "aliases": [
+        "network-connectivity-discipline"
+      ],
+      "runtime_projection": true,
+      "runtime_projection_targets": [
+        "claude",
+        "codex",
+        "gemini"
+      ],
+      "kebab": "network-connectivity-discipline",
+      "perfection_score": null,
+      "playbook_path": "platform/sdlc/13_skills/active/SKILL_NETWORK_CONNECTIVITY_DISCIPLINE_001.playbook.md"
     },
     {
       "id": "SKILL_NEW_GENSD_SERVICE_001",
@@ -6549,6 +7279,158 @@
       "playbook_path": "platform/sdlc/13_skills/active/SKILL_NEW_XFRAME_WIDGET_001.playbook.md"
     },
     {
+      "id": "SKILL_NEXTJS_16_NATIVE_DEPS_BUNDLE_001",
+      "title": "Next.js 16 Native Dependencies + Proxy Filename Convention",
+      "version": "1.0.0",
+      "tier": "active",
+      "layer": "ci_cd",
+      "status": "active",
+      "source": "incident_promotion",
+      "skill_number": null,
+      "domains": [
+        "frontend",
+        "nextjs",
+        "build_systems",
+        "desktop"
+      ],
+      "aliases": [],
+      "runtime_projection": true,
+      "runtime_projection_targets": [
+        "claude",
+        "codex",
+        "gemini"
+      ],
+      "kebab": "nextjs-16-native-deps-bundle",
+      "perfection_score": 1.0,
+      "playbook_path": "13_skills/active/SKILL_NEXTJS_16_NATIVE_DEPS_BUNDLE_001.playbook.md"
+    },
+    {
+      "id": "SKILL_NEXTJS_CSP_HYDRATION_TRAP_001",
+      "title": "Next.js CSP Nonce + strict-dynamic Hydration Trap",
+      "version": "1.0.0",
+      "tier": "active",
+      "layer": "ci_cd",
+      "status": "active",
+      "source": "incident_promotion",
+      "skill_number": null,
+      "domains": [
+        "frontend",
+        "nextjs",
+        "security",
+        "csp"
+      ],
+      "aliases": [],
+      "runtime_projection": true,
+      "runtime_projection_targets": [
+        "claude",
+        "codex",
+        "gemini"
+      ],
+      "kebab": "nextjs-csp-hydration-trap",
+      "perfection_score": 1.0,
+      "playbook_path": "13_skills/active/SKILL_NEXTJS_CSP_HYDRATION_TRAP_001.playbook.md"
+    },
+    {
+      "id": "SKILL_NOTION_KNOWLEDGE_CAPTURE_001",
+      "title": "Notion Knowledge Capture",
+      "version": "1.0.0",
+      "tier": "active",
+      "layer": "knowledge",
+      "status": "active",
+      "source": "codex_plugin_promotion",
+      "skill_number": null,
+      "domains": [
+        "knowledge_management",
+        "notion",
+        "documentation"
+      ],
+      "aliases": [],
+      "runtime_projection": true,
+      "runtime_projection_targets": [
+        "claude",
+        "codex",
+        "gemini"
+      ],
+      "kebab": "notion-knowledge-capture",
+      "perfection_score": null,
+      "playbook_path": "13_skills/active/SKILL_NOTION_KNOWLEDGE_CAPTURE_001.playbook.md"
+    },
+    {
+      "id": "SKILL_NOTION_MEETING_INTELLIGENCE_001",
+      "title": "Notion Meeting Intelligence",
+      "version": "1.0.0",
+      "tier": "active",
+      "layer": "knowledge",
+      "status": "active",
+      "source": "codex_plugin_promotion",
+      "skill_number": null,
+      "domains": [
+        "knowledge_management",
+        "notion",
+        "meetings"
+      ],
+      "aliases": [],
+      "runtime_projection": true,
+      "runtime_projection_targets": [
+        "claude",
+        "codex",
+        "gemini"
+      ],
+      "kebab": "notion-meeting-intelligence",
+      "perfection_score": null,
+      "playbook_path": "13_skills/active/SKILL_NOTION_MEETING_INTELLIGENCE_001.playbook.md"
+    },
+    {
+      "id": "SKILL_NOTION_RESEARCH_DOCUMENTATION_001",
+      "title": "Notion Research Documentation",
+      "version": "1.0.0",
+      "tier": "active",
+      "layer": "knowledge",
+      "status": "active",
+      "source": "codex_plugin_promotion",
+      "skill_number": null,
+      "domains": [
+        "knowledge_management",
+        "notion",
+        "research"
+      ],
+      "aliases": [],
+      "runtime_projection": true,
+      "runtime_projection_targets": [
+        "claude",
+        "codex",
+        "gemini"
+      ],
+      "kebab": "notion-research-documentation",
+      "perfection_score": null,
+      "playbook_path": "13_skills/active/SKILL_NOTION_RESEARCH_DOCUMENTATION_001.playbook.md"
+    },
+    {
+      "id": "SKILL_NOTION_SPEC_TO_IMPLEMENTATION_001",
+      "title": "Notion Spec To Implementation",
+      "version": "1.0.0",
+      "tier": "active",
+      "layer": "knowledge",
+      "status": "active",
+      "source": "codex_plugin_promotion",
+      "skill_number": null,
+      "domains": [
+        "knowledge_management",
+        "notion",
+        "specification"
+      ],
+      "aliases": [],
+      "runtime_projection": true,
+      "runtime_projection_targets": [
+        "claude",
+        "codex",
+        "gemini"
+      ],
+      "kebab": "notion-spec-to-implementation",
+      "perfection_score": null,
+      "playbook_path": "13_skills/active/SKILL_NOTION_SPEC_TO_IMPLEMENTATION_001.playbook.md"
+    },
+    {
       "id": "SKILL_NO_SURPRISE_PLANNING_001",
       "title": "SUPER C No-Surprise Planning",
       "version": "1.0.0",
@@ -6642,6 +7524,33 @@
       "kebab": "observability",
       "perfection_score": null,
       "playbook_path": "13_skills/active/SKILL_OBSERVABILITY_SRE_INCIDENT_RESPONSE_001.playbook.md"
+    },
+    {
+      "id": "SKILL_ONEDRIVE_GIT_HAZARD_DISCIPLINE_001",
+      "title": "OneDrive + .git Hazard Discipline",
+      "version": "1.0.0",
+      "tier": "active",
+      "layer": "infrastructure",
+      "status": "active",
+      "source": "incident_promotion",
+      "skill_number": null,
+      "domains": [
+        "infrastructure",
+        "git",
+        "version_control"
+      ],
+      "aliases": [
+        "onedrive-git-hazard"
+      ],
+      "runtime_projection": true,
+      "runtime_projection_targets": [
+        "claude",
+        "codex",
+        "gemini"
+      ],
+      "kebab": "onedrive-git-hazard",
+      "perfection_score": null,
+      "playbook_path": "platform/sdlc/13_skills/active/SKILL_ONEDRIVE_GIT_HAZARD_DISCIPLINE_001.playbook.md"
     },
     {
       "id": "SKILL_ONE_SHOT_EXECUTION_PLANNING_001",
@@ -6767,20 +7676,53 @@
       "playbook_path": "13_skills/active/SKILL_ORBITAL_IDENTITY_001.playbook.md"
     },
     {
-      "id": "SKILL_OUTER_HARNESS_RC_DISCIPLINE_001",
-      "title": "outer harness rc discipline",
+      "id": "SKILL_OSS_LICENSING_COMPLIANCE_001",
+      "title": "Open Source and Licensing Compliance",
       "version": "1.0.0",
-      "tier": "starter",
-      "layer": "application",
+      "tier": "active",
+      "layer": "governance",
       "status": "active",
-      "source": "migrated_user",
-      "skill_number": 554,
+      "source": "native",
+      "skill_number": null,
       "domains": [
-        "skills"
+        "governance",
+        "open_source",
+        "licensing",
+        "supply_chain",
+        "compliance",
+        "release_engineering"
       ],
       "aliases": [
-        "outer-harness-rc-discipline"
+        "oss-licensing-compliance",
+        "license-compliance",
+        "open-source-compliance",
+        "sbom-license-governance",
+        "package-provenance"
       ],
+      "runtime_projection": true,
+      "runtime_projection_targets": [
+        "claude",
+        "codex",
+        "gemini"
+      ],
+      "kebab": "oss-licensing-compliance",
+      "perfection_score": null,
+      "playbook_path": "platform/sdlc/13_skills/active/SKILL_OSS_LICENSING_COMPLIANCE_001.playbook.md"
+    },
+    {
+      "id": "SKILL_OUTER_HARNESS_RC_DISCIPLINE_001",
+      "title": "Outer Harness Rc Discipline",
+      "version": "1.0.0",
+      "tier": "active",
+      "layer": "ci_cd",
+      "status": "active",
+      "source": "native_cli_promotion",
+      "skill_number": null,
+      "domains": [
+        "ci_cd",
+        "build_systems"
+      ],
+      "aliases": [],
       "runtime_projection": true,
       "runtime_projection_targets": [
         "claude",
@@ -6789,7 +7731,7 @@
       ],
       "kebab": "outer-harness-rc-discipline",
       "perfection_score": null,
-      "playbook_path": "platform/sdlc/13_skills/active/SKILL_OUTER_HARNESS_RC_DISCIPLINE_001.playbook.md"
+      "playbook_path": "13_skills/active/SKILL_OUTER_HARNESS_RC_DISCIPLINE_001.playbook.md"
     },
     {
       "id": "SKILL_PARALLEL_DEPLOY_001",
@@ -7118,22 +8060,18 @@
     },
     {
       "id": "SKILL_PROCESS_GROUP_KILL_DISCIPLINE_001",
-      "title": "process group kill discipline",
+      "title": "Process Group Kill Discipline",
       "version": "1.0.0",
-      "tier": "starter",
-      "layer": "governance",
+      "tier": "active",
+      "layer": "ci_cd",
       "status": "active",
-      "source": "migrated_user",
-      "skill_number": 555,
+      "source": "native_cli_promotion",
+      "skill_number": null,
       "domains": [
-        "gating",
-        "harness",
-        "process-isolation",
-        "reliability"
+        "ci_cd",
+        "build_systems"
       ],
-      "aliases": [
-        "process-group-kill-discipline"
-      ],
+      "aliases": [],
       "runtime_projection": true,
       "runtime_projection_targets": [
         "claude",
@@ -7142,7 +8080,39 @@
       ],
       "kebab": "process-group-kill-discipline",
       "perfection_score": null,
-      "playbook_path": "platform/sdlc/13_skills/active/SKILL_PROCESS_GROUP_KILL_DISCIPLINE_001.playbook.md"
+      "playbook_path": "13_skills/active/SKILL_PROCESS_GROUP_KILL_DISCIPLINE_001.playbook.md"
+    },
+    {
+      "id": "SKILL_PRODUCTION_READINESS_AUDIT_001",
+      "title": "Production-Readiness Audit",
+      "version": "1.1.0",
+      "tier": "active",
+      "layer": "verification",
+      "status": "active",
+      "source": "native",
+      "skill_number": null,
+      "domains": [
+        "production_readiness",
+        "audit",
+        "verification",
+        "governance",
+        "consulting"
+      ],
+      "aliases": [
+        "production-readiness-audit",
+        "platinum-audit",
+        "prc-audit",
+        "production_audit"
+      ],
+      "runtime_projection": true,
+      "runtime_projection_targets": [
+        "claude",
+        "codex",
+        "gemini"
+      ],
+      "kebab": "production-readiness-audit",
+      "perfection_score": null,
+      "playbook_path": "platform/sdlc/13_skills/active/SKILL_PRODUCTION_READINESS_AUDIT_001.playbook.md"
     },
     {
       "id": "SKILL_PRODUCT_EXPERIENCE_ENGINEER_001",
@@ -7361,6 +8331,31 @@
       "playbook_path": "platform/sdlc/13_skills/active/SKILL_QEMU_BOOT_TEST_001.playbook.md"
     },
     {
+      "id": "SKILL_RATE_LIMIT_TENANT_SCOPED_001",
+      "title": "Per-Tenant Per-User Per-Route Rate Limiting (Token Bucket in DB)",
+      "version": "1.0.0",
+      "tier": "active",
+      "layer": "application",
+      "status": "active",
+      "source": "incident_promotion",
+      "skill_number": null,
+      "domains": [
+        "backend",
+        "security",
+        "rate_limiting"
+      ],
+      "aliases": [],
+      "runtime_projection": true,
+      "runtime_projection_targets": [
+        "claude",
+        "codex",
+        "gemini"
+      ],
+      "kebab": "rate-limit-tenant-scoped",
+      "perfection_score": 1.0,
+      "playbook_path": "13_skills/active/SKILL_RATE_LIMIT_TENANT_SCOPED_001.playbook.md"
+    },
+    {
       "id": "SKILL_README_001",
       "title": "Readme",
       "version": "1.0.0",
@@ -7461,6 +8456,31 @@
       "kebab": "registry-sync",
       "perfection_score": null,
       "playbook_path": "13_skills/active/SKILL_REGISTRY_SYNC_001.playbook.md"
+    },
+    {
+      "id": "SKILL_RELEASE_GATE_CI_001",
+      "title": "Release Gate CI (Assert Every Gate Proven Before Merge)",
+      "version": "1.0.0",
+      "tier": "active",
+      "layer": "ci_cd",
+      "status": "active",
+      "source": "incident_promotion",
+      "skill_number": null,
+      "domains": [
+        "ci_cd",
+        "release_engineering",
+        "compliance"
+      ],
+      "aliases": [],
+      "runtime_projection": true,
+      "runtime_projection_targets": [
+        "claude",
+        "codex",
+        "gemini"
+      ],
+      "kebab": "release-gate-ci",
+      "perfection_score": 1.0,
+      "playbook_path": "13_skills/active/SKILL_RELEASE_GATE_CI_001.playbook.md"
     },
     {
       "id": "SKILL_RELEASE_PREP_001",
@@ -7597,20 +8617,18 @@
     },
     {
       "id": "SKILL_REPRODUCIBLE_BUILD_DISCIPLINE_001",
-      "title": "reproducible build discipline",
+      "title": "Reproducible Build Discipline",
       "version": "1.0.0",
-      "tier": "starter",
-      "layer": "application",
+      "tier": "active",
+      "layer": "compiler",
       "status": "active",
-      "source": "migrated_user",
-      "skill_number": 556,
+      "source": "native_cli_promotion",
+      "skill_number": null,
       "domains": [
-        "ui_ux",
-        "product"
+        "compiler",
+        "build_systems"
       ],
-      "aliases": [
-        "reproducible-build-discipline"
-      ],
+      "aliases": [],
       "runtime_projection": true,
       "runtime_projection_targets": [
         "claude",
@@ -7619,7 +8637,7 @@
       ],
       "kebab": "reproducible-build-discipline",
       "perfection_score": null,
-      "playbook_path": "platform/sdlc/13_skills/active/SKILL_REPRODUCIBLE_BUILD_DISCIPLINE_001.playbook.md"
+      "playbook_path": "13_skills/active/SKILL_REPRODUCIBLE_BUILD_DISCIPLINE_001.playbook.md"
     },
     {
       "id": "SKILL_RESILIENCE_ARCHITECT_001",
@@ -7813,22 +8831,18 @@
     },
     {
       "id": "SKILL_SEAL_RECONCILIATION_DISCIPLINE_001",
-      "title": "seal reconciliation discipline",
+      "title": "Seal Reconciliation Discipline",
       "version": "1.0.0",
-      "tier": "starter",
-      "layer": "governance",
+      "tier": "active",
+      "layer": "compiler",
       "status": "active",
-      "source": "migrated_user",
-      "skill_number": 557,
+      "source": "native_cli_promotion",
+      "skill_number": null,
       "domains": [
-        "audit",
-        "seal-integrity",
-        "multi-agent-reconciliation",
-        "reproduction-discipline"
+        "compiler",
+        "build_systems"
       ],
-      "aliases": [
-        "seal-reconciliation-discipline"
-      ],
+      "aliases": [],
       "runtime_projection": true,
       "runtime_projection_targets": [
         "claude",
@@ -7837,7 +8851,42 @@
       ],
       "kebab": "seal-reconciliation-discipline",
       "perfection_score": null,
-      "playbook_path": "platform/sdlc/13_skills/active/SKILL_SEAL_RECONCILIATION_DISCIPLINE_001.playbook.md"
+      "playbook_path": "13_skills/active/SKILL_SEAL_RECONCILIATION_DISCIPLINE_001.playbook.md"
+    },
+    {
+      "id": "SKILL_SEARCH_INFRASTRUCTURE_001",
+      "title": "Search Infrastructure: Production-Ready Indexing, Relevance, and Query Serving",
+      "version": "1.0.0",
+      "tier": "active",
+      "layer": "data",
+      "status": "active",
+      "source": "native",
+      "skill_number": null,
+      "domains": [
+        "search",
+        "data-infrastructure",
+        "relevance-engineering",
+        "observability",
+        "reliability",
+        "security"
+      ],
+      "aliases": [
+        "search-infrastructure",
+        "full-text-search",
+        "elasticsearch-opensearch",
+        "vector-search",
+        "search-relevance",
+        "query-latency"
+      ],
+      "runtime_projection": true,
+      "runtime_projection_targets": [
+        "claude",
+        "codex",
+        "gemini"
+      ],
+      "kebab": "search-infrastructure",
+      "perfection_score": null,
+      "playbook_path": "platform/sdlc/13_skills/active/SKILL_SEARCH_INFRASTRUCTURE_001.playbook.md"
     },
     {
       "id": "SKILL_SECTION_REFACTOR_EXECUTION_001",
@@ -7988,6 +9037,31 @@
       "kebab": "sentinel",
       "perfection_score": null,
       "playbook_path": "platform/sdlc/13_skills/active/SKILL_SENTINEL_001.playbook.md"
+    },
+    {
+      "id": "SKILL_SINGLE_FRONTEND_SOURCE_OF_TRUTH_001",
+      "title": "Single Front-End Source of Truth",
+      "version": "1.0.0",
+      "tier": "active",
+      "layer": "frontend",
+      "status": "active",
+      "source": "incident_distillation",
+      "skill_number": null,
+      "domains": [
+        "frontend",
+        "architecture",
+        "reliability"
+      ],
+      "aliases": [],
+      "runtime_projection": true,
+      "runtime_projection_targets": [
+        "claude",
+        "codex",
+        "gemini"
+      ],
+      "kebab": "single-frontend-source-of-truth",
+      "perfection_score": null,
+      "playbook_path": "13_skills/active/SKILL_SINGLE_FRONTEND_SOURCE_OF_TRUTH_001.playbook.md"
     },
     {
       "id": "SKILL_SKILL_001",
@@ -8678,6 +9752,41 @@
       "playbook_path": "13_skills/active/SKILL_SUPER_C_XISC_CLOUD_TOOLCHAIN_001.playbook.md"
     },
     {
+      "id": "SKILL_SUSTAINABILITY_GREEN_SOFTWARE_001",
+      "title": "Sustainability and Green Software",
+      "version": "1.0.0",
+      "tier": "active",
+      "layer": "operations",
+      "status": "active",
+      "source": "native",
+      "skill_number": null,
+      "domains": [
+        "sustainability",
+        "green-software",
+        "carbon-aware-computing",
+        "cloud-efficiency",
+        "finops",
+        "operational-excellence"
+      ],
+      "aliases": [
+        "sustainability-green-software",
+        "green-software",
+        "carbon-aware-computing",
+        "green-ops",
+        "sustainable-engineering",
+        "energy-efficiency"
+      ],
+      "runtime_projection": true,
+      "runtime_projection_targets": [
+        "claude",
+        "codex",
+        "gemini"
+      ],
+      "kebab": "sustainability-green-software",
+      "perfection_score": null,
+      "playbook_path": "platform/sdlc/13_skills/active/SKILL_SUSTAINABILITY_GREEN_SOFTWARE_001.playbook.md"
+    },
+    {
       "id": "SKILL_SYSTEM_SIGNAL_ENGINE_001",
       "title": "system signal engine",
       "version": "1.0.0",
@@ -8972,6 +10081,40 @@
       "playbook_path": "13_skills/active/SKILL_TRIGGER_ROUTER_001.playbook.md"
     },
     {
+      "id": "SKILL_TRUST_SAFETY_MODERATION_001",
+      "title": "Trust & Safety / Content Moderation",
+      "version": "1.0.0",
+      "tier": "active",
+      "layer": "governance",
+      "status": "active",
+      "source": "native",
+      "skill_number": null,
+      "domains": [
+        "trust_and_safety",
+        "content_moderation",
+        "abuse_prevention",
+        "governance",
+        "compliance"
+      ],
+      "aliases": [
+        "trust-and-safety",
+        "content-moderation",
+        "t-and-s",
+        "csam-handling",
+        "abuse-and-harassment",
+        "moderation-pipeline"
+      ],
+      "runtime_projection": true,
+      "runtime_projection_targets": [
+        "claude",
+        "codex",
+        "gemini"
+      ],
+      "kebab": "trust-and-safety",
+      "perfection_score": null,
+      "playbook_path": "platform/sdlc/13_skills/active/SKILL_TRUST_SAFETY_MODERATION_001.playbook.md"
+    },
+    {
       "id": "SKILL_TRUTH_STATE_CHECK_001",
       "title": "Truth State Source Ranking Check",
       "version": "1.0.0",
@@ -9104,6 +10247,35 @@
       "kebab": "35-ui-interaction-and-feature-wiring",
       "perfection_score": null,
       "playbook_path": "13_skills/active/SKILL_UI_INTERACTION_WIRING_001.playbook.md"
+    },
+    {
+      "id": "SKILL_UI_LIVE_VERIFICATION_BEFORE_DONE_001",
+      "title": "Live UI Verification Before \"Done\"",
+      "version": "1.2.0",
+      "tier": "active",
+      "layer": "process",
+      "status": "active",
+      "source": "incident_promotion",
+      "skill_number": null,
+      "domains": [
+        "frontend",
+        "ui",
+        "qa",
+        "web",
+        "mobile",
+        "desktop",
+        "electron"
+      ],
+      "aliases": [],
+      "runtime_projection": true,
+      "runtime_projection_targets": [
+        "claude",
+        "codex",
+        "gemini"
+      ],
+      "kebab": "ui-live-verification-before-done",
+      "perfection_score": 1.0,
+      "playbook_path": "13_skills/active/SKILL_UI_LIVE_VERIFICATION_BEFORE_DONE_001.playbook.md"
     },
     {
       "id": "SKILL_UI_UX_BUILDOUT_001",
@@ -9319,7 +10491,7 @@
     {
       "id": "SKILL_VERIFY_VALIDATE_001",
       "title": "verify-validate",
-      "version": "1.0.0",
+      "version": "1.5.0",
       "tier": "hardened",
       "layer": "governance",
       "status": "active",
@@ -9390,22 +10562,18 @@
     },
     {
       "id": "SKILL_WALL_CLOCK_BASELINE_DISCIPLINE_001",
-      "title": "wall clock baseline discipline",
+      "title": "Wall Clock Baseline Discipline",
       "version": "1.0.0",
-      "tier": "starter",
-      "layer": "governance",
+      "tier": "active",
+      "layer": "ci_cd",
       "status": "active",
-      "source": "migrated_user",
-      "skill_number": 558,
+      "source": "native_cli_promotion",
+      "skill_number": null,
       "domains": [
-        "gating",
-        "performance",
-        "harness",
-        "optimization"
+        "ci_cd",
+        "build_systems"
       ],
-      "aliases": [
-        "wall-clock-baseline-discipline"
-      ],
+      "aliases": [],
       "runtime_projection": true,
       "runtime_projection_targets": [
         "claude",
@@ -9414,7 +10582,7 @@
       ],
       "kebab": "wall-clock-baseline-discipline",
       "perfection_score": null,
-      "playbook_path": "platform/sdlc/13_skills/active/SKILL_WALL_CLOCK_BASELINE_DISCIPLINE_001.playbook.md"
+      "playbook_path": "13_skills/active/SKILL_WALL_CLOCK_BASELINE_DISCIPLINE_001.playbook.md"
     },
     {
       "id": "SKILL_WAL_DEBUG_001",
@@ -9442,6 +10610,34 @@
       "kebab": "wal-debug",
       "perfection_score": null,
       "playbook_path": "platform/sdlc/13_skills/active/SKILL_WAL_DEBUG_001.playbook.md"
+    },
+    {
+      "id": "SKILL_WIRED_NOT_DEFINED_001",
+      "title": "wired-not-defined",
+      "version": "1.0.0",
+      "tier": "active",
+      "layer": "governance",
+      "status": "active",
+      "source": "promoted_external",
+      "skill_number": 1092,
+      "domains": [
+        "verification",
+        "validation",
+        "skills",
+        "meta"
+      ],
+      "aliases": [
+        "wired-not-defined"
+      ],
+      "runtime_projection": true,
+      "runtime_projection_targets": [
+        "claude",
+        "codex",
+        "gemini"
+      ],
+      "kebab": "wired-not-defined",
+      "perfection_score": null,
+      "playbook_path": "platform/sdlc/13_skills/active/SKILL_WIRED_NOT_DEFINED_001.playbook.md"
     },
     {
       "id": "SKILL_WORKSPACE_SHELL_001",

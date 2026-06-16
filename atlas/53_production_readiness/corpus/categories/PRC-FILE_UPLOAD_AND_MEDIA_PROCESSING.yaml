@@ -1,0 +1,124 @@
+schema_version: '1.0'
+category_id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING
+name: File Upload & Media Processing
+icon: ◰
+color: '#76E4F7'
+default_severity: medium
+coverage_status: FULL
+skill_refs:
+- SKILL_FILE_UPLOAD_MEDIA_001
+capability_status: MISSING
+tool_refs: []
+mcp_refs: []
+command_refs: []
+capability_refs: []
+capability_notes: No upload/transcode executor. Build a file-upload + media-processing route (blob storage integration).
+sections:
+- id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.UPLOAD_SECURITY_AND_VALIDATION
+  name: Upload Security & Validation
+  items:
+  - id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.UPLOAD_SECURITY_AND_VALIDATION.001
+    text: File size limits enforced server-side, not only client-side
+  - id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.UPLOAD_SECURITY_AND_VALIDATION.002
+    text: Allowed file types validated by content (magic bytes), not just extension or MIME header
+  - id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.UPLOAD_SECURITY_AND_VALIDATION.003
+    text: Filename sanitized to prevent path traversal and injection
+  - id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.UPLOAD_SECURITY_AND_VALIDATION.004
+    text: Uploaded files stored outside the web root or in object storage
+  - id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.UPLOAD_SECURITY_AND_VALIDATION.005
+    text: Files served with safe Content-Type and Content-Disposition headers
+  - id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.UPLOAD_SECURITY_AND_VALIDATION.006
+    text: Executable and script uploads blocked or neutralized
+  - id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.UPLOAD_SECURITY_AND_VALIDATION.007
+    text: Image and document parsing hardened against malicious payloads (e.g., decompression bombs)
+  - id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.UPLOAD_SECURITY_AND_VALIDATION.008
+    text: SVG sanitized to strip embedded scripts
+  - id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.UPLOAD_SECURITY_AND_VALIDATION.009
+    text: Upload endpoints authenticated and authorized
+  - id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.UPLOAD_SECURITY_AND_VALIDATION.010
+    text: Direct-to-storage uploads use scoped, short-lived presigned URLs
+  - id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.UPLOAD_SECURITY_AND_VALIDATION.011
+    text: Upload rate limiting and quota per user/tenant
+  - id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.UPLOAD_SECURITY_AND_VALIDATION.012
+    text: Metadata stored separately from file content with integrity checks
+- id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.MALWARE_AND_CONTENT_SCANNING
+  name: Malware & Content Scanning
+  items:
+  - id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.MALWARE_AND_CONTENT_SCANNING.001
+    text: Malware scanning on all uploaded files (ClamAV, vendor AV, cloud scanning)
+  - id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.MALWARE_AND_CONTENT_SCANNING.002
+    text: Files quarantined until scan completes before being served
+  - id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.MALWARE_AND_CONTENT_SCANNING.003
+    text: Content moderation scanning for images/video where user-facing (see T&S category)
+  - id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.MALWARE_AND_CONTENT_SCANNING.004
+    text: CSAM scanning where applicable (see Trust & Safety category)
+  - id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.MALWARE_AND_CONTENT_SCANNING.005
+    text: Decompression bomb and nested-archive limits enforced
+  - id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.MALWARE_AND_CONTENT_SCANNING.006
+    text: Polyglot file detection (file valid as multiple types)
+  - id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.MALWARE_AND_CONTENT_SCANNING.007
+    text: EXIF and sensitive metadata stripped from public images
+  - id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.MALWARE_AND_CONTENT_SCANNING.008
+    text: PDF and Office documents scanned for active content / macros
+  - id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.MALWARE_AND_CONTENT_SCANNING.009
+    text: Scan failures fail closed (file not served) with alerting
+  - id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.MALWARE_AND_CONTENT_SCANNING.010
+    text: Re-scan capability when signatures update
+  - id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.MALWARE_AND_CONTENT_SCANNING.011
+    text: Scan results logged and auditable
+  - id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.MALWARE_AND_CONTENT_SCANNING.012
+    text: Quarantine and remediation workflow defined
+- id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.MEDIA_PROCESSING_PIPELINE
+  name: Media Processing Pipeline
+  items:
+  - id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.MEDIA_PROCESSING_PIPELINE.001
+    text: Image processing (resize, crop, format) via robust library or service
+  - id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.MEDIA_PROCESSING_PIPELINE.002
+    text: Responsive image variants generated (multiple sizes and WebP/AVIF)
+  - id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.MEDIA_PROCESSING_PIPELINE.003
+    text: Video transcoding pipeline for adaptive bitrate (HLS/DASH)
+  - id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.MEDIA_PROCESSING_PIPELINE.004
+    text: Thumbnail and preview generation
+  - id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.MEDIA_PROCESSING_PIPELINE.005
+    text: Processing runs asynchronously off the request path
+  - id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.MEDIA_PROCESSING_PIPELINE.006
+    text: Processing jobs idempotent and retryable
+  - id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.MEDIA_PROCESSING_PIPELINE.007
+    text: Processing failures handled with dead-letter and alerting
+  - id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.MEDIA_PROCESSING_PIPELINE.008
+    text: Large-file and long-running transcode timeouts handled
+  - id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.MEDIA_PROCESSING_PIPELINE.009
+    text: Processing pipeline autoscales with upload volume
+  - id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.MEDIA_PROCESSING_PIPELINE.010
+    text: Original retained or re-derivable; derivatives regenerable
+  - id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.MEDIA_PROCESSING_PIPELINE.011
+    text: Watermarking applied where required
+  - id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.MEDIA_PROCESSING_PIPELINE.012
+    text: Processing cost (CPU/GPU) modeled and monitored
+- id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.STORAGE_DELIVERY_AND_RESILIENCE
+  name: Storage, Delivery & Resilience
+  items:
+  - id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.STORAGE_DELIVERY_AND_RESILIENCE.001
+    text: Media stored in object storage with versioning where needed
+  - id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.STORAGE_DELIVERY_AND_RESILIENCE.002
+    text: CDN delivery for all public media
+  - id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.STORAGE_DELIVERY_AND_RESILIENCE.003
+    text: Signed URLs for private media with appropriate expiry
+  - id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.STORAGE_DELIVERY_AND_RESILIENCE.004
+    text: Storage lifecycle policies for cold and obsolete media
+  - id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.STORAGE_DELIVERY_AND_RESILIENCE.005
+    text: Streaming for large media (range requests supported)
+  - id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.STORAGE_DELIVERY_AND_RESILIENCE.006
+    text: Cross-region replication for critical media (DR)
+  - id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.STORAGE_DELIVERY_AND_RESILIENCE.007
+    text: Storage access logging for sensitive media
+  - id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.STORAGE_DELIVERY_AND_RESILIENCE.008
+    text: Orphaned file cleanup (uploaded but never attached)
+  - id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.STORAGE_DELIVERY_AND_RESILIENCE.009
+    text: Bandwidth and egress cost monitored
+  - id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.STORAGE_DELIVERY_AND_RESILIENCE.010
+    text: Broken media reference detection and monitoring
+  - id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.STORAGE_DELIVERY_AND_RESILIENCE.011
+    text: Backup and restore tested for media storage
+  - id: PRC.FILE_UPLOAD_AND_MEDIA_PROCESSING.STORAGE_DELIVERY_AND_RESILIENCE.012
+    text: Media deletion propagates to CDN and all replicas

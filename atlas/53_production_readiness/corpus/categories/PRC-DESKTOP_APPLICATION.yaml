@@ -1,0 +1,145 @@
+schema_version: '1.0'
+category_id: PRC.DESKTOP_APPLICATION
+name: Desktop Application
+icon: ▣
+color: '#F59E0B'
+default_severity: medium
+coverage_status: FULL
+skill_refs:
+- SKILL_FULLSTACK_REACT_ELECTRON_THREEJS_001
+- SKILL_ELECTRON_SINGLE_INSTANCE_DISCIPLINE_001
+- SKILL_DESKTOP_UI_ACCESSIBILITY_001
+capability_status: MISSING
+tool_refs: []
+mcp_refs: []
+command_refs: []
+capability_refs:
+- CAP_DESKTOP_INSTALL
+capability_notes: 'User requirement: installed live Mac app. .dmg built in dist/ but NOT installed in /Applications; electron loads localhost dev server. Must build CAP_DESKTOP_INSTALL (electron-builder install).'
+sections:
+- id: PRC.DESKTOP_APPLICATION.PLATFORM_TARGETS_AND_PACKAGING
+  name: Platform Targets & Packaging
+  items:
+  - id: PRC.DESKTOP_APPLICATION.PLATFORM_TARGETS_AND_PACKAGING.001
+    text: Windows x64 build tested on Windows 10 and Windows 11
+  - id: PRC.DESKTOP_APPLICATION.PLATFORM_TARGETS_AND_PACKAGING.002
+    text: Windows ARM64 build tested on ARM hardware
+  - id: PRC.DESKTOP_APPLICATION.PLATFORM_TARGETS_AND_PACKAGING.003
+    text: macOS Intel (x86_64) build tested
+  - id: PRC.DESKTOP_APPLICATION.PLATFORM_TARGETS_AND_PACKAGING.004
+    text: macOS Apple Silicon (arm64) build tested
+  - id: PRC.DESKTOP_APPLICATION.PLATFORM_TARGETS_AND_PACKAGING.005
+    text: macOS Universal Binary (fat binary lipo'd) created for single distributable
+  - id: PRC.DESKTOP_APPLICATION.PLATFORM_TARGETS_AND_PACKAGING.006
+    text: Linux .deb, .rpm, AppImage, and Flatpak builds
+  - id: PRC.DESKTOP_APPLICATION.PLATFORM_TARGETS_AND_PACKAGING.007
+    text: Cross-compilation pipeline runs in CI on every release tag
+  - id: PRC.DESKTOP_APPLICATION.PLATFORM_TARGETS_AND_PACKAGING.008
+    text: OS minimum version requirements defined and enforced in installer
+  - id: PRC.DESKTOP_APPLICATION.PLATFORM_TARGETS_AND_PACKAGING.009
+    text: Installer tested on clean OS installation with no dev tools
+  - id: PRC.DESKTOP_APPLICATION.PLATFORM_TARGETS_AND_PACKAGING.010
+    text: Silent install mode for enterprise MDM deployment
+  - id: PRC.DESKTOP_APPLICATION.PLATFORM_TARGETS_AND_PACKAGING.011
+    text: Uninstaller removes all application files, registry entries, and preferences cleanly
+  - id: PRC.DESKTOP_APPLICATION.PLATFORM_TARGETS_AND_PACKAGING.012
+    text: Portable/zip distribution for environments where installer is not allowed
+- id: PRC.DESKTOP_APPLICATION.CODE_SIGNING_AND_DISTRIBUTION
+  name: Code Signing & Distribution
+  items:
+  - id: PRC.DESKTOP_APPLICATION.CODE_SIGNING_AND_DISTRIBUTION.001
+    text: Windows EV or OV code signing certificate obtained and in CI secrets
+  - id: PRC.DESKTOP_APPLICATION.CODE_SIGNING_AND_DISTRIBUTION.002
+    text: Windows binary signed with Authenticode before distribution
+  - id: PRC.DESKTOP_APPLICATION.CODE_SIGNING_AND_DISTRIBUTION.003
+    text: macOS Developer ID Application certificate obtained and active
+  - id: PRC.DESKTOP_APPLICATION.CODE_SIGNING_AND_DISTRIBUTION.004
+    text: macOS binary signed and notarized via Apple Notary Service
+  - id: PRC.DESKTOP_APPLICATION.CODE_SIGNING_AND_DISTRIBUTION.005
+    text: macOS Gatekeeper test passing on clean macOS machine
+  - id: PRC.DESKTOP_APPLICATION.CODE_SIGNING_AND_DISTRIBUTION.006
+    text: Linux packages GPG-signed; signature verified on install
+  - id: PRC.DESKTOP_APPLICATION.CODE_SIGNING_AND_DISTRIBUTION.007
+    text: 'Auto-updater implemented: Electron Updater, Squirrel.Windows, or Sparkle'
+  - id: PRC.DESKTOP_APPLICATION.CODE_SIGNING_AND_DISTRIBUTION.008
+    text: Update packages signed; signature verified before applying
+  - id: PRC.DESKTOP_APPLICATION.CODE_SIGNING_AND_DISTRIBUTION.009
+    text: Delta updates implemented to minimize download bandwidth
+  - id: PRC.DESKTOP_APPLICATION.CODE_SIGNING_AND_DISTRIBUTION.010
+    text: Background update check on app launch with non-intrusive notification
+  - id: PRC.DESKTOP_APPLICATION.CODE_SIGNING_AND_DISTRIBUTION.011
+    text: 'Update channel strategy: stable, beta, alpha with user opt-in for non-stable'
+  - id: PRC.DESKTOP_APPLICATION.CODE_SIGNING_AND_DISTRIBUTION.012
+    text: Update server or S3 bucket for enterprise air-gapped environments
+  - id: PRC.DESKTOP_APPLICATION.CODE_SIGNING_AND_DISTRIBUTION.013
+    text: App Store distribution evaluated for consumer-facing apps
+- id: PRC.DESKTOP_APPLICATION.NATIVE_OS_INTEGRATION
+  name: Native OS Integration
+  items:
+  - id: PRC.DESKTOP_APPLICATION.NATIVE_OS_INTEGRATION.001
+    text: System tray / menubar icon with context menu
+  - id: PRC.DESKTOP_APPLICATION.NATIVE_OS_INTEGRATION.002
+    text: Native OS notifications working on all target platforms
+  - id: PRC.DESKTOP_APPLICATION.NATIVE_OS_INTEGRATION.003
+    text: File associations registered; app opens .ext files from OS file manager
+  - id: PRC.DESKTOP_APPLICATION.NATIVE_OS_INTEGRATION.004
+    text: Custom URL protocol handler registered (myapp:// deep links)
+  - id: PRC.DESKTOP_APPLICATION.NATIVE_OS_INTEGRATION.005
+    text: Drag and drop from OS file explorer into app
+  - id: PRC.DESKTOP_APPLICATION.NATIVE_OS_INTEGRATION.006
+    text: 'Single instance enforcement: second launch focuses existing window'
+  - id: PRC.DESKTOP_APPLICATION.NATIVE_OS_INTEGRATION.007
+    text: OS theme (dark/light/system) detected and live-switched
+  - id: PRC.DESKTOP_APPLICATION.NATIVE_OS_INTEGRATION.008
+    text: Global keyboard shortcuts registered with conflict detection
+  - id: PRC.DESKTOP_APPLICATION.NATIVE_OS_INTEGRATION.009
+    text: App listed in OS task switcher and mission control
+  - id: PRC.DESKTOP_APPLICATION.NATIVE_OS_INTEGRATION.010
+    text: 'macOS Dock integration: badge, progress bar, right-click menu'
+  - id: PRC.DESKTOP_APPLICATION.NATIVE_OS_INTEGRATION.011
+    text: 'Windows taskbar integration: progress indicator, jump list'
+  - id: PRC.DESKTOP_APPLICATION.NATIVE_OS_INTEGRATION.012
+    text: Multiple monitor support with window position persistence across sessions
+  - id: PRC.DESKTOP_APPLICATION.NATIVE_OS_INTEGRATION.013
+    text: 'HiDPI/Retina display tested: all assets crisp at 2x and 3x density'
+  - id: PRC.DESKTOP_APPLICATION.NATIVE_OS_INTEGRATION.014
+    text: Print support tested on major platforms
+  - id: PRC.DESKTOP_APPLICATION.NATIVE_OS_INTEGRATION.015
+    text: 'OS accessibility APIs integrated: MSAA, NSAccessibility, AT-SPI'
+- id: PRC.DESKTOP_APPLICATION.PERFORMANCE_SECURITY_AND_DATA
+  name: Performance, Security & Data
+  items:
+  - id: PRC.DESKTOP_APPLICATION.PERFORMANCE_SECURITY_AND_DATA.001
+    text: 'Cold start time measured: target < 2 seconds'
+  - id: PRC.DESKTOP_APPLICATION.PERFORMANCE_SECURITY_AND_DATA.002
+    text: 'Startup optimized: window appears first, data loads asynchronously'
+  - id: PRC.DESKTOP_APPLICATION.PERFORMANCE_SECURITY_AND_DATA.003
+    text: Bundle size analyzed; no unnecessary node_modules bundled
+  - id: PRC.DESKTOP_APPLICATION.PERFORMANCE_SECURITY_AND_DATA.004
+    text: 'Memory usage profiled: no unbounded heap growth over extended use'
+  - id: PRC.DESKTOP_APPLICATION.PERFORMANCE_SECURITY_AND_DATA.005
+    text: Background threads for all I/O and CPU-heavy operations
+  - id: PRC.DESKTOP_APPLICATION.PERFORMANCE_SECURITY_AND_DATA.006
+    text: Idle CPU < 1% when app is backgrounded and user is not interacting
+  - id: PRC.DESKTOP_APPLICATION.PERFORMANCE_SECURITY_AND_DATA.007
+    text: App does not prevent OS sleep when idle
+  - id: PRC.DESKTOP_APPLICATION.PERFORMANCE_SECURITY_AND_DATA.008
+    text: 'Crash reporting configured: Sentry, BugSplat, or Breakpad'
+  - id: PRC.DESKTOP_APPLICATION.PERFORMANCE_SECURITY_AND_DATA.009
+    text: Crash symbols uploaded for production symbolication
+  - id: PRC.DESKTOP_APPLICATION.PERFORMANCE_SECURITY_AND_DATA.010
+    text: Local sensitive data stored in OS keychain (Credential Store, Keychain, libsecret)
+  - id: PRC.DESKTOP_APPLICATION.PERFORMANCE_SECURITY_AND_DATA.011
+    text: Local database encrypted at rest (SQLCipher, OS encryption)
+  - id: PRC.DESKTOP_APPLICATION.PERFORMANCE_SECURITY_AND_DATA.012
+    text: No IPC nodeIntegration in renderer; contextIsolation enabled (Electron)
+  - id: PRC.DESKTOP_APPLICATION.PERFORMANCE_SECURITY_AND_DATA.013
+    text: Content Security Policy applied to web content in webviews
+  - id: PRC.DESKTOP_APPLICATION.PERFORMANCE_SECURITY_AND_DATA.014
+    text: Data migration applied cleanly on version upgrade; no corruption
+  - id: PRC.DESKTOP_APPLICATION.PERFORMANCE_SECURITY_AND_DATA.015
+    text: User data backup/export feature; account data deletion on logout if required
+  - id: PRC.DESKTOP_APPLICATION.PERFORMANCE_SECURITY_AND_DATA.016
+    text: All user-visible strings externalized for localization
+  - id: PRC.DESKTOP_APPLICATION.PERFORMANCE_SECURITY_AND_DATA.017
+    text: RTL layout tested if serving Arabic, Hebrew, or Farsi users

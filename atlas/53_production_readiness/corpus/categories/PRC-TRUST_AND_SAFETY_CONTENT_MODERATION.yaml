@@ -1,0 +1,151 @@
+schema_version: '1.0'
+category_id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION
+name: Trust & Safety / Content Moderation
+icon: ⊘
+color: '#FF5470'
+default_severity: high
+coverage_status: FULL
+skill_refs:
+- SKILL_TRUST_SAFETY_MODERATION_001
+capability_status: MISSING
+tool_refs: []
+mcp_refs: []
+command_refs: []
+capability_refs: []
+capability_notes: No moderation executor. Build a content-moderation MCP tool or route (classifier integration).
+sections:
+- id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.CONTENT_MODERATION_PIPELINE
+  name: Content Moderation Pipeline
+  items:
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.CONTENT_MODERATION_PIPELINE.001
+    text: Content policy defined and published (community guidelines, acceptable use)
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.CONTENT_MODERATION_PIPELINE.002
+    text: 'Moderation strategy chosen: pre-moderation, post-moderation, reactive, or hybrid'
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.CONTENT_MODERATION_PIPELINE.003
+    text: 'Automated classification for text, image, video, and audio (ML or vendor: Hive, Sift, Rekognition)'
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.CONTENT_MODERATION_PIPELINE.004
+    text: Human review queue for borderline and appealed content
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.CONTENT_MODERATION_PIPELINE.005
+    text: 'Content states modeled: pending, approved, rejected, quarantined, removed'
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.CONTENT_MODERATION_PIPELINE.006
+    text: 'Severity tiers defined: benign, sensitive, harmful, illegal'
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.CONTENT_MODERATION_PIPELINE.007
+    text: Real-time moderation path for live content (streams, chat, comments)
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.CONTENT_MODERATION_PIPELINE.008
+    text: Moderation latency SLO defined so legitimate content is not over-delayed
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.CONTENT_MODERATION_PIPELINE.009
+    text: Re-moderation triggered on policy change or newly surfaced signals
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.CONTENT_MODERATION_PIPELINE.010
+    text: 'Classifier accuracy measured: precision, recall, and false-positive rate'
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.CONTENT_MODERATION_PIPELINE.011
+    text: Moderation decisions logged immutably with reason and reviewer
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.CONTENT_MODERATION_PIPELINE.012
+    text: 'Context preserved for moderators: thread, history, and prior violations'
+- id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.ILLEGAL_CONTENT_AND_CSAM
+  name: Illegal Content & CSAM
+  items:
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.ILLEGAL_CONTENT_AND_CSAM.001
+    text: CSAM detection integrated (PhotoDNA, Google CSAI Match, or Thorn Safer)
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.ILLEGAL_CONTENT_AND_CSAM.002
+    text: NCMEC CyberTipline reporting process established (US legal requirement)
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.ILLEGAL_CONTENT_AND_CSAM.003
+    text: Mandatory reporting obligations identified per operating jurisdiction
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.ILLEGAL_CONTENT_AND_CSAM.004
+    text: Detected CSAM preserved per legal requirement, access tightly restricted, authorities notified
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.ILLEGAL_CONTENT_AND_CSAM.005
+    text: Staff who handle CSAM have trauma support and strict access controls
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.ILLEGAL_CONTENT_AND_CSAM.006
+    text: Terrorist and violent extremist content detection (GIFCT hash sharing)
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.ILLEGAL_CONTENT_AND_CSAM.007
+    text: Non-consensual intimate imagery detection and takedown (StopNCII integration)
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.ILLEGAL_CONTENT_AND_CSAM.008
+    text: Illegal goods detection (controlled substances, weapons)
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.ILLEGAL_CONTENT_AND_CSAM.009
+    text: EU Digital Services Act notice-and-action process for illegal content
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.ILLEGAL_CONTENT_AND_CSAM.010
+    text: Legal escalation path for illegal content defined and tested
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.ILLEGAL_CONTENT_AND_CSAM.011
+    text: Evidence preservation and chain of custody for law enforcement requests
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.ILLEGAL_CONTENT_AND_CSAM.012
+    text: Hash-matching against known illegal-content databases
+- id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.ABUSE_HARASSMENT_AND_SPAM
+  name: Abuse, Harassment & Spam
+  items:
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.ABUSE_HARASSMENT_AND_SPAM.001
+    text: Spam detection combining content and behavioral signals
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.ABUSE_HARASSMENT_AND_SPAM.002
+    text: Harassment and bullying detection with easy reporting
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.ABUSE_HARASSMENT_AND_SPAM.003
+    text: Hate speech classification aligned to published policy
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.ABUSE_HARASSMENT_AND_SPAM.004
+    text: Self-harm and suicide content detection surfaces crisis resources
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.ABUSE_HARASSMENT_AND_SPAM.005
+    text: Coordinated inauthentic behavior detection
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.ABUSE_HARASSMENT_AND_SPAM.006
+    text: Doxxing and PII-exposure detection
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.ABUSE_HARASSMENT_AND_SPAM.007
+    text: Impersonation detection and verified-identity options
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.ABUSE_HARASSMENT_AND_SPAM.008
+    text: Toxicity scoring on user-generated text (Perspective API or equivalent)
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.ABUSE_HARASSMENT_AND_SPAM.009
+    text: Repeat-offender tracking across accounts and devices
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.ABUSE_HARASSMENT_AND_SPAM.010
+    text: Mass-report and brigading abuse detection
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.ABUSE_HARASSMENT_AND_SPAM.011
+    text: Fake review and review-spam detection
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.ABUSE_HARASSMENT_AND_SPAM.012
+    text: Link, file, and malware scanning within user-generated content
+- id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.REPORTING_APPEALS_AND_ENFORCEMENT
+  name: Reporting, Appeals & Enforcement
+  items:
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.REPORTING_APPEALS_AND_ENFORCEMENT.001
+    text: In-product reporting flow available for every content type
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.REPORTING_APPEALS_AND_ENFORCEMENT.002
+    text: Report categories aligned to published policy
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.REPORTING_APPEALS_AND_ENFORCEMENT.003
+    text: Reporter receives acknowledgment and status updates
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.REPORTING_APPEALS_AND_ENFORCEMENT.004
+    text: 'Enforcement tiered: warning, content removal, feature limit, suspension, ban'
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.REPORTING_APPEALS_AND_ENFORCEMENT.005
+    text: Strike and penalty system documented and applied consistently
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.REPORTING_APPEALS_AND_ENFORCEMENT.006
+    text: Appeals process available for enforcement actions (DSA requirement in EU)
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.REPORTING_APPEALS_AND_ENFORCEMENT.007
+    text: Appeal reviewed by a different reviewer than the original decision
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.REPORTING_APPEALS_AND_ENFORCEMENT.008
+    text: Enforcement decisions logged immutably with rationale
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.REPORTING_APPEALS_AND_ENFORCEMENT.009
+    text: User notified of action and reason where legally permitted
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.REPORTING_APPEALS_AND_ENFORCEMENT.010
+    text: Ban-evasion and re-registration detection
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.REPORTING_APPEALS_AND_ENFORCEMENT.011
+    text: Graduated response with rehabilitation path where appropriate
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.REPORTING_APPEALS_AND_ENFORCEMENT.012
+    text: Report-review SLA defined by severity tier
+- id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.T_AND_S_OPERATIONS_AND_TRANSPARENCY
+  name: T&S Operations & Transparency
+  items:
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.T_AND_S_OPERATIONS_AND_TRANSPARENCY.001
+    text: 'Moderator tooling: efficient review UI, bulk actions, context, decision history'
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.T_AND_S_OPERATIONS_AND_TRANSPARENCY.002
+    text: Moderator training and calibration program
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.T_AND_S_OPERATIONS_AND_TRANSPARENCY.003
+    text: Moderator wellness program for exposure to harmful content
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.T_AND_S_OPERATIONS_AND_TRANSPARENCY.004
+    text: 'Quality assurance: decision audits and inter-rater reliability measured'
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.T_AND_S_OPERATIONS_AND_TRANSPARENCY.005
+    text: Escalation path from moderator to policy and legal teams
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.T_AND_S_OPERATIONS_AND_TRANSPARENCY.006
+    text: 'Transparency report published: volumes, actions, and appeal outcomes'
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.T_AND_S_OPERATIONS_AND_TRANSPARENCY.007
+    text: Government and legal takedown requests logged and legally reviewed
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.T_AND_S_OPERATIONS_AND_TRANSPARENCY.008
+    text: Trusted flagger program supported (DSA)
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.T_AND_S_OPERATIONS_AND_TRANSPARENCY.009
+    text: Policy review cadence with legal and safety input
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.T_AND_S_OPERATIONS_AND_TRANSPARENCY.010
+    text: Crisis protocol for viral harmful content or coordinated attacks
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.T_AND_S_OPERATIONS_AND_TRANSPARENCY.011
+    text: Prevalence of violating content measured, not just volume removed
+  - id: PRC.TRUST_AND_SAFETY_CONTENT_MODERATION.T_AND_S_OPERATIONS_AND_TRANSPARENCY.012
+    text: 'Metrics: report volume, time-to-action, reversal rate, prevalence'

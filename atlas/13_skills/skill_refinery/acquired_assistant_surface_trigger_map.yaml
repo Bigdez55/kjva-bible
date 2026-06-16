@@ -58,5 +58,5 @@ promotion_policy:
   codex_universal: Treat as generated mirror until rewritten into Codex-native paths.
   gemini: Treat as absent unless a repo-local .gemini directory is found in future scans.
 validation:
-  command: python3 25_automation/sync_scripts/validate_assistant_surface_acquisition.py
+  command: python3 infrastructure/scripts/sync_scripts/validate_assistant_surface_acquisition.py
   test_case: 13_skills/skill_refinery/validation_tests/TEST_ASSISTANT_SURFACE_ACQUISITION_001.yaml

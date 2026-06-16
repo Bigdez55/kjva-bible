@@ -1,0 +1,88 @@
+schema_version: '1.0'
+category_id: PRC.DEVELOPER_EXPERIENCE
+name: Developer Experience
+icon: ⌘
+color: '#67E8F9'
+default_severity: low
+coverage_status: FULL
+skill_refs:
+- SKILL_DEVELOPER_EXPERIENCE_LEAD_001
+- SKILL_DEVEX_CI_CD_IAC_001
+- SKILL_SKILL_CONTINUOUS_IMPROVEMENT_LOOP_001
+capability_status: MISSING
+tool_refs: []
+mcp_refs: []
+command_refs: []
+capability_refs: []
+capability_notes: No DX automation executor beyond skills. Build scaffolding/codegen MCP tools.
+sections:
+- id: PRC.DEVELOPER_EXPERIENCE.LOCAL_DEVELOPMENT_AND_TOOLING
+  name: Local Development & Tooling
+  items:
+  - id: PRC.DEVELOPER_EXPERIENCE.LOCAL_DEVELOPMENT_AND_TOOLING.001
+    text: New developer can clone → running locally in < 30 minutes with documented steps
+  - id: PRC.DEVELOPER_EXPERIENCE.LOCAL_DEVELOPMENT_AND_TOOLING.002
+    text: 'One-command setup script: make setup or ./scripts/bootstrap.sh'
+  - id: PRC.DEVELOPER_EXPERIENCE.LOCAL_DEVELOPMENT_AND_TOOLING.003
+    text: 'Docker Compose for all dependent services: DB, cache, queue, mail catcher'
+  - id: PRC.DEVELOPER_EXPERIENCE.LOCAL_DEVELOPMENT_AND_TOOLING.004
+    text: Hot reload / watch mode for fast inner feedback loop
+  - id: PRC.DEVELOPER_EXPERIENCE.LOCAL_DEVELOPMENT_AND_TOOLING.005
+    text: Database seeded with realistic development data automatically
+  - id: PRC.DEVELOPER_EXPERIENCE.LOCAL_DEVELOPMENT_AND_TOOLING.006
+    text: Local email preview (MailHog, Mailpit) captures emails without sending
+  - id: PRC.DEVELOPER_EXPERIENCE.LOCAL_DEVELOPMENT_AND_TOOLING.007
+    text: 'Feature flag overrides: developer enables/disables any flag locally'
+  - id: PRC.DEVELOPER_EXPERIENCE.LOCAL_DEVELOPMENT_AND_TOOLING.008
+    text: .env.example committed with every required variable explained
+  - id: PRC.DEVELOPER_EXPERIENCE.LOCAL_DEVELOPMENT_AND_TOOLING.009
+    text: Local HTTPS with mkcert if app requires HTTPS-specific browser features
+  - id: PRC.DEVELOPER_EXPERIENCE.LOCAL_DEVELOPMENT_AND_TOOLING.010
+    text: VS Code devcontainer or Dev Container spec available
+  - id: PRC.DEVELOPER_EXPERIENCE.LOCAL_DEVELOPMENT_AND_TOOLING.011
+    text: Codespace/Gitpod config for zero-setup cloud dev environment
+  - id: PRC.DEVELOPER_EXPERIENCE.LOCAL_DEVELOPMENT_AND_TOOLING.012
+    text: IDE extension recommendations committed (.vscode/extensions.json)
+  - id: PRC.DEVELOPER_EXPERIENCE.LOCAL_DEVELOPMENT_AND_TOOLING.013
+    text: Debugger launch configuration committed to repo
+  - id: PRC.DEVELOPER_EXPERIENCE.LOCAL_DEVELOPMENT_AND_TOOLING.014
+    text: Makefile or Taskfile with all common dev tasks documented
+  - id: PRC.DEVELOPER_EXPERIENCE.LOCAL_DEVELOPMENT_AND_TOOLING.015
+    text: Code generation scripts for service, migration, and endpoint boilerplate
+  - id: PRC.DEVELOPER_EXPERIENCE.LOCAL_DEVELOPMENT_AND_TOOLING.016
+    text: 'API testing collection committed: Postman, Bruno, or Insomnia'
+  - id: PRC.DEVELOPER_EXPERIENCE.LOCAL_DEVELOPMENT_AND_TOOLING.017
+    text: Slow query logger enabled in development mode
+  - id: PRC.DEVELOPER_EXPERIENCE.LOCAL_DEVELOPMENT_AND_TOOLING.018
+    text: Mock external services in development (stripe-mock, fakeSMTP)
+  - id: PRC.DEVELOPER_EXPERIENCE.LOCAL_DEVELOPMENT_AND_TOOLING.019
+    text: Development startup time < 60s; hot reload < 5s
+- id: PRC.DEVELOPER_EXPERIENCE.ONBOARDING_AND_KNOWLEDGE_SHARING
+  name: Onboarding & Knowledge Sharing
+  items:
+  - id: PRC.DEVELOPER_EXPERIENCE.ONBOARDING_AND_KNOWLEDGE_SHARING.001
+    text: 'Onboarding guide: tools, access, first PR target, team norms'
+  - id: PRC.DEVELOPER_EXPERIENCE.ONBOARDING_AND_KNOWLEDGE_SHARING.002
+    text: 'Buddy system: senior engineer paired with new hire for first 2 weeks'
+  - id: PRC.DEVELOPER_EXPERIENCE.ONBOARDING_AND_KNOWLEDGE_SHARING.003
+    text: 'Access provisioning checklist: all tools granted on day 1'
+  - id: PRC.DEVELOPER_EXPERIENCE.ONBOARDING_AND_KNOWLEDGE_SHARING.004
+    text: Architecture deep-dives recorded and accessible
+  - id: PRC.DEVELOPER_EXPERIENCE.ONBOARDING_AND_KNOWLEDGE_SHARING.005
+    text: Domain knowledge sessions scheduled for new engineers
+  - id: PRC.DEVELOPER_EXPERIENCE.ONBOARDING_AND_KNOWLEDGE_SHARING.006
+    text: Glossary of domain-specific terms maintained
+  - id: PRC.DEVELOPER_EXPERIENCE.ONBOARDING_AND_KNOWLEDGE_SHARING.007
+    text: 'Team norms documented: meetings, async communication, review expectations'
+  - id: PRC.DEVELOPER_EXPERIENCE.ONBOARDING_AND_KNOWLEDGE_SHARING.008
+    text: Post-incident reviews open to all engineers, not just on-call
+  - id: PRC.DEVELOPER_EXPERIENCE.ONBOARDING_AND_KNOWLEDGE_SHARING.009
+    text: Internal tech talks and demo days scheduled regularly
+  - id: PRC.DEVELOPER_EXPERIENCE.ONBOARDING_AND_KNOWLEDGE_SHARING.010
+    text: Learning budget and dedicated time for professional development
+  - id: PRC.DEVELOPER_EXPERIENCE.ONBOARDING_AND_KNOWLEDGE_SHARING.011
+    text: 'Code review culture: constructive, educational, blameless feedback'
+  - id: PRC.DEVELOPER_EXPERIENCE.ONBOARDING_AND_KNOWLEDGE_SHARING.012
+    text: Pair programming sessions available for complex or unfamiliar areas
+  - id: PRC.DEVELOPER_EXPERIENCE.ONBOARDING_AND_KNOWLEDGE_SHARING.013
+    text: 'Tech radar maintained: adopt, trial, assess, hold decisions tracked'

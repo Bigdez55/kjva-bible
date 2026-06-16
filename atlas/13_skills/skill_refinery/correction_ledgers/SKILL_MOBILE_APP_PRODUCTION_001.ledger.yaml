@@ -1,0 +1,34 @@
+schema_version: '1.0'
+skill_id: SKILL_MOBILE_APP_PRODUCTION_001
+skill_name: mobile-app-production-readiness
+skill_card_path: 13_skills/active/SKILL_MOBILE_APP_PRODUCTION_001.yaml
+playbook_path: 13_skills/active/SKILL_MOBILE_APP_PRODUCTION_001.playbook.md
+current_version: 1.0.0
+tier: active
+hard_constraints:
+  - 'iOS PrivacyInfo.xcprivacy is submitted and the App Store privacy questionnaire and Google Play Data Safety section are accurate (IOS.003, IOS.016, ANDROID.017)'
+  - 'secrets and keys live only in the iOS Keychain / Android Keystore; never plaintext SharedPreferences and never hardcoded API keys in the client (IOS.009, ANDROID.007, CROSS.011)'
+  - 'all network calls are HTTPS with validation never disabled, ATS enforced, cleartext disabled, and certificate pins renewed before expiry (IOS.008, ANDROID.010, CROSS.005, CROSS.012)'
+  - 'in-app purchases are validated server-side, never client-side only (IOS.017, ANDROID.016)'
+  - 'crash symbols are uploaded so reports are symbolicated, and crash reporting analytics is configured (IOS.018, ANDROID.018, CROSS.019)'
+  - 'releases are signed with a distribution certificate/provisioning profile and Play App Signing, shipping an Android App Bundle rather than an APK (IOS.012, ANDROID.013, ANDROID.014)'
+immutable_facts:
+  - 'Fills the Mobile Application zero-coverage gap; owned by the Production-Readiness Corpus (53_production_readiness).'
+  - 'Corpus category PRC.MOBILE_APPLICATION has coverage_status NONE and already names SKILL_MOBILE_APP_PRODUCTION_001 in its skill_refs as the intended fix.'
+  - 'The category has three sections — IOS_PRODUCTION_READINESS (19 items), ANDROID_PRODUCTION_READINESS (20 items), CROSS_PLATFORM_AND_SECURITY (19 items) — for 58 items total.'
+  - 'The category default_severity is medium; the corpus defines no per-item severity field, so no item may be labeled critical/high/low against the source.'
+  - 'This skill is a category specialist under SKILL_PRODUCTION_READINESS_AUDIT_001, which renders the cross-category go/no-go; every PASS requires reproducible evidence cited to the item ID.'
+correction_history:
+  - version: 1.0.0
+    date: '2026-05-31'
+    what_changed: Initial ledger and skill creation
+    why: The "Mobile Application" production-readiness corpus category (coverage_status NONE) had no dedicated skill teaching how to satisfy its items.
+    evidence: Skill card, playbook, and ledger authored directly from the verbatim item text of PRC.MOBILE_APPLICATION (IOS/ANDROID/CROSS_PLATFORM_AND_SECURITY sections, 58 items).
+regression_test_ids: []
+promotion_criteria:
+  to_tier: hardened
+  requirements:
+    - 3+ real mobile releases reviewed with this skill, each producing reproducible per-item evidence cited to PRC.MOBILE_APPLICATION item IDs
+    - at least one NO-GO correctly blocked a release on a security item (e.g. plaintext secret IOS.009/ANDROID.007, hardcoded key CROSS.011, expired pin CROSS.005)
+    - zero false-green incidents across the Mobile Application category (e.g. an unsymbolicated crash path or client-only IAP validation slipping past)
+last_updated: '2026-05-31'

@@ -28,8 +28,8 @@ Call every runtime-registered Skill tool.
 When the user says `invoke all skills`, `use all skills`, `all skills now`, `activate all skills`, or `all skills and agents`, the agent must:
 
 1. Run or follow `infrastructure/scripts/route_intent.py` for the phrase.
-2. Use `platform/sdlc/13_skills/skill_refinery/universal_skill_invocation_policy.md` as the governing policy.
-3. Treat `platform/sdlc/13_skills/active/SKILL_*.yaml` and matching `.playbook.md` files as repository-native disciplines, even if the runtime cannot call them through a Skill tool.
+2. Use `13_skills/skill_refinery/universal_skill_invocation_policy.md` as the governing policy.
+3. Treat `13_skills/active/SKILL_*.yaml` and matching `.playbook.md` files as repository-native disciplines, even if the runtime cannot call them through a Skill tool.
 4. Report `tool_called_skills` separately from `playbook_applied_disciplines`.
 5. Suppress project-specific skills unless the request contains a binding target such as `IPOS`, `Elson`, `Bookworm`, `ATLAS`, `compiler`, or another explicit domain.
 6. Do not run destructive, setup, background, or config-writing tools unless the user explicitly requested that specific tool action.
@@ -61,6 +61,7 @@ The registered runtime Skill tool list is only one execution surface. It is not 
 - `.codex/commands/invoke-all-skills.md`
 - `AGENTS.md`
 - `CLAUDE.md`
-- `platform/sdlc/13_skills/skill_refinery/universal_skill_invocation_policy.md`
-- `platform/sdlc/13_skills/skill_refinery/deterministic_trigger_operating_contract.md`
+- `13_skills/skill_refinery/universal_skill_invocation_policy.md`
+- `13_skills/skill_refinery/deterministic_trigger_operating_contract.md`
 - `infrastructure/scripts/validate_trigger_determinism.py`
+

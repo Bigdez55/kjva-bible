@@ -31,6 +31,15 @@ frontend/         React + Vite
 
 data/
   verses.jsonl    36,822 structured verse records (gittracked)
+  corpus/external/  raw multi-version downloads (GITIGNORED; sha256 in fetch_manifest.json)
+  corpus_v2/        multi-version training corpus — 45 translations, 535k verses
+                    (KJV lineage, Apocrypha, Pseudepigrapha, JPS Tanakh, Hebrew WLC).
+                    Bulk files GITIGNORED; manifest.json + validation_report.json +
+                    SOURCES.md tracked. NKJV excluded (copyright) — see SOURCES.md.
+                    Rebuild: scripts/corpus/ pipeline (SPEC-KJVA-FUNC-0002, SLICE-0002)
+
+scripts/corpus/   fetch_sources.py, normalize_sources.py, extract_fbe.py,
+                  build_corpus_v2.py, ingest_licensed.py (licensed NKJV path)
 
 models/kjva/
   weights.safetensors   GITIGNORED — copy from Tokenless Models

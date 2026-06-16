@@ -1,0 +1,430 @@
+schema_version: '1.0'
+source: docs/ATLAS ARCHITECTURE MAP.html
+content:
+  api_routes:
+  - method: GETPOST
+    route: /api/auth/session
+    auth: —
+    desc: Read/set active session
+  - method: GET
+    route: /api/auth/github
+    auth: —
+    desc: Initiate GitHub OAuth flow
+  - method: GET
+    route: /api/auth/callback/github
+    auth: —
+    desc: GitHub OAuth callback
+  - method: POST
+    route: /api/auth/local-identity
+    auth: —
+    desc: Local dev auth (ATLAS_LOCAL_TENANT_ID)
+  - method: POST
+    route: /api/auth/logout
+    auth: —
+    desc: Clear session
+  - method: GET
+    route: /api/graph
+    auth: ✓ session+tenant
+    desc: Live graph engine — buildLiveGraph() → nodes/edges/layouts
+  - method: GET
+    route: /api/skills
+    auth: ✓ session+tenant
+    desc: Skill registry — MASTER_INDEX.json (374 skills)
+  - method: POST
+    route: /api/trigger-route
+    auth: ✓ session+tenant
+    desc: Canonical intent router (W-01 FIXED — uses canonicalRouter)
+  - method: GET
+    route: /api/knowledge
+    auth: ✓ session+tenant
+    desc: Knowledge notes search
+  - method: GET
+    route: /api/workspace
+    auth: ✓ session+tenant
+    desc: Workspace overview
+  - method: GET
+    route: /api/agent-context
+    auth: ✓ session+tenant
+    desc: Agent context packet export
+  - method: GET
+    route: /api/repos
+    auth: ✓ session+tenant
+    desc: Live repo list (30 repos from durable DB)
+  - method: GET
+    route: /api/repos/[id]/assessment
+    auth: ✓ session+tenant
+    desc: Per-repo production assessment
+  - method: POST
+    route: /api/repos/[id]/commit
+    auth: ✓ session+tenant
+    desc: Trigger repo git commit
+  - method: GET
+    route: /api/repos/[id]/files
+    auth: ✓ session+tenant
+    desc: Repo file tree
+  - method: GETPOST
+    route: /api/bookworm
+    auth: ✓ session+tenant
+    desc: Bookworm query/index
+  - method: GET
+    route: /api/bookworm/health
+    auth: ✓ session+tenant
+    desc: Bookworm subsystem health
+  - method: GET
+    route: /api/live-atlas
+    auth: ✓ session+tenant
+    desc: Live ATLAS data payload
+  - method: GET
+    route: /api/planning-trace
+    auth: ✓ session+tenant
+    desc: Planning trace artifacts
+  - method: GET
+    route: /api/health
+    auth: —
+    desc: Service health check
+  - method: GET
+    route: /api/ready
+    auth: —
+    desc: Readiness probe
+  - method: GET
+    route: /api/metrics
+    auth: ✓ session+tenant
+    desc: Platform metrics
+  - method: GET
+    route: /api/production-readiness
+    auth: ✓ session+tenant
+    desc: DoD corpus status (68 cat / 3,378 items)
+  - method: GET
+    route: /api/proof
+    auth: ✓ session+tenant
+    desc: Proof matrix claims
+  - method: POST
+    route: /api/ingest/repo-event
+    auth: ✓ session+tenant
+    desc: Ingest incoming repo event
+  - method: GETPOST
+    route: /api/settings
+    auth: ✓ session+tenant
+    desc: Tenant settings R/W
+  - method: GET
+    route: /api/tenant
+    auth: ✓ session+tenant
+    desc: Tenant identity
+  - method: GET
+    route: /api/use-cases
+    auth: ✓ session+tenant
+    desc: Registered use-cases
+  mcp_tools:
+  - tool: atlas_trigger_route
+    type: READ
+    impl: inline core.ts
+    desc: Routes a plain-text intent through route_intent.py
+  - tool: atlas_graph_query
+    type: READ
+    impl: inline core.ts
+    desc: Query the ATLAS knowledge graph (nodes/edges)
+  - tool: atlas_skill_list
+    type: READ
+    impl: inline core.ts
+    desc: List skills from MASTER_INDEX.json
+  - tool: atlas_skill_get
+    type: READ
+    impl: inline core.ts
+    desc: Fetch a specific SKILL_*.yaml by ID
+  - tool: atlas_knowledge_search
+    type: READ
+    impl: inline core.ts + knowledge-note-search.ts
+    desc: Full-text search across knowledge notes
+  - tool: atlas_context_compile
+    type: READ
+    impl: inline core.ts
+    desc: Compile an agent context packet for a skill/intent
+  - tool: atlas_checklist_verdict_write
+    type: WRITE
+    impl: checklist-verdict-write.ts
+    desc: Persist a DoD checklist verdict to SQLite
+  - tool: atlas_knowledge_note_write
+    type: WRITE
+    impl: knowledge-note-write.ts
+    desc: Write a new knowledge note to SQLite
+  - tool: atlas_repo_file_write
+    type: WRITE
+    impl: repo-file-write.ts
+    desc: Write a file into a connected repo
+  - tool: atlas_repo_git_writeback
+    type: WRITE
+    impl: repo-git-writeback.ts
+    desc: Commit and push changes to a connected repo
+  capability_registry:
+  - cap: CAP_MCP_READ_TOOLS
+    status: WIRED
+    category: (read) Backend
+    via: 6 read-only MCP tools (graph/skill/knowledge/context/route)
+  - cap: CAP_REPO_AUDIT_READ
+    status: WIRED
+    category: (read) Repo discovery
+    via: localAtlas.ts git scan → /api/repos
+  - cap: CAP_REPO_GIT_WRITEBACK
+    status: WIRED
+    category: Integrations
+    via: atlas_repo_commit_push + POST /api/repos/[id]/commit
+  - cap: CAP_REPO_FILE_WRITE
+    status: WIRED
+    category: Backend
+    via: atlas_repo_file_write (gated)
+  - cap: CAP_KNOWLEDGE_NOTE_WRITE
+    status: WIRED
+    category: Documentation
+    via: atlas_knowledge_note_write + /api/knowledge
+  - cap: CAP_REPO_INGEST
+    status: WIRED
+    category: Backend
+    via: ingestRepoConnectors() boot ingest
+  - cap: CAP_CHECKLIST_VERDICT_WRITE
+    status: WIRED
+    category: Documentation
+    via: atlas_checklist_verdict_write + assessment route
+  - cap: CAP_RATE_LIMIT
+    status: WIRED
+    category: Rate Limiting, Quotas & Traffic Shaping
+    via: guards.ts enforceRateLimit() (fail-open)
+  - cap: CAP_AUDIT_LOG
+    status: WIRED
+    category: Audit Logging, Forensics & eDiscovery
+    via: guards.ts auditRequest() fire-and-forget
+  - cap: CAP_SERVICE_DEPLOYED
+    status: WIRED
+    category: Deployment
+    via: 'atlas-service.sh launchd (NOTE: service not installed → F-01)'
+  - cap: CAP_SETTINGS_WRITE
+    status: WIRED
+    category: Configuration
+    via: /api/settings → tenant_settings
+  - cap: CAP_METRICS_INSTRUMENTED
+    status: WIRED
+    category: Observability
+    via: /api/metrics (5 counters; no scraper — S-06/S-07)
+  - cap: CAP_DESKTOP_INSTALL
+    status: NA
+    category: Desktop Application
+    via: excluded from capability-HAVE floor (not-applicable)
+  integration_components:
+  - component: Atlas HTTP API (28 routes)
+    status: EXISTS
+    evidence: apps/frontend/shell/src/app/api/
+  - component: MCP server (10 tools, :4318)
+    status: EXISTS
+    evidence: apps/backend/mcp/src/server-factory.ts
+  - component: Always-on service (:4317/:4318)
+    status: EXISTS
+    evidence: atlas-service.sh (install gates F-01)
+  - component: Repo intelligence tables
+    status: EXISTS
+    evidence: repo_connectors, agent_handoffs, audit_events, ingest_runs, checklist_verdicts
+  - component: Git read / write-back / boot ingest / bookworm bridge / pre-commit
+      gate
+    status: EXISTS
+    evidence: localAtlas.ts · /api/repos/[id]/commit · ingestRepoConnectors() · /api/bookworm
+      · .pre-commit-config.yaml
+  - component: Event ingestion endpoint
+    status: PARTIAL
+    evidence: /api/ingest/repo-event — 1 of 6 handlers; commit/diff/validation/sync/agent_report
+      return 501
+  - component: Agent records
+    status: PARTIAL
+    evidence: agent_handoffs table + /api/agent-context exist; agent_report ingestion
+      501
+  - component: Git lifecycle hooks
+    status: PARTIAL
+    evidence: only pre-commit; post-commit/merge/checkout/pre-push proposed
+  - component: Process governance ("neutral process governor")
+    status: PARTIAL
+    evidence: atlas-service.sh has throttle/memcap/orphan-reap for its own agents;
+      a general governed-exec wrapper does NOT exist (prompt presupposed it — it's
+      PROPOSED)
+  - component: Idempotent ingestion
+    status: PARTIAL
+    evidence: not enforced on ingest/repo-event yet
+  - component: Local Atlas adapter (CLI/daemon/bridge)
+    status: PROPOSED
+    evidence: none beside the dev env
+  - component: VS Code extension
+    status: PROPOSED
+    evidence: none (Electron remnant deprecated)
+  - component: GitHub webhook receiver
+    status: PROPOSED
+    evidence: no /api/webhooks/github
+  - component: Atlas→local event stream (SSE/WS/MCP)
+    status: PROPOSED
+    evidence: none
+  - component: Offline durable queue · pending-changes queue · sync ledger
+    status: PROPOSED
+    evidence: no client-side journal; ingest_runs is nearest seed
+  - component: File watcher · conflict-resolution engine
+    status: PROPOSED
+    evidence: none
+  - component: Per-repo integration manifest
+    status: PROPOSED
+    evidence: schema defined (root atlas.manifest.yaml validates against it — superset,
+      no fork); not yet consumed
+  - component: Webhook signature verify + secret redaction
+    status: PROPOSED
+    evidence: —
+  doc_capture:
+  - component: Policy + 3 schemas (change_record, doc_impact, agent_run_record) +
+      templates + ledgers
+    status: EXISTS
+    evidence: 11_documentation/change_capture/ · schemas/ · 12_agents/agent_activity/
+  - component: Validator (real, runnable — reports honestly)
+    status: EXECUTABLE
+    evidence: 'validate_documentation_capture.py — ran advisory: WARN, 27 prior-commit
+      files flagged undocumented (honest; ledger didn''t exist then)'
+  - component: Dogfood record (this turn)
+    status: EXISTS
+    evidence: first real agent_run_record + change_record on real data
+  - component: 8 documentation gates
+    status: DEFINED
+    evidence: validation_gate.registry.yaml (NOT_TESTED) — gates 14→22
+  - component: Pre-commit --strict wiring + VS Code/git-hook/GitHub-sync capture
+    status: PROPOSED
+    evidence: not wired — a hard gate on a fresh ledger would block every commit;
+      wire after a populate-on-commit hook exists
+  drift_classes:
+  - cls: BUILD DRIFT
+    findings: W-05, W-11, S-04, W-07
+    example: 'W-11: repos page claims live projects, serves static lib/mvp-data fixture;
+      S-04: spec requires 6 ingest types, build implements 1'
+  - cls: DOC DRIFT
+    findings: O-db-tables-13, O-durable-tables-stale, S-08
+    example: 'O-db-tables-13: build has 13 DB tables; 3 separate artifacts still say
+      "10"; S-08: build hosts runtime, vision lists it as a non-goal'
+  - cls: IMPL GAP
+    findings: S-01, S-05, S-12, 2,698 items
+    example: 'S-05: Vercel preview required by spec, neither plan nor build exists;
+      2,698 corpus items have no executor and no skill mapping'
+  roadmap_top5:
+  - n: '1'
+    category: Accessibility Engineering
+    capability: CAP_A11Y_SCAN
+    why: The only category that satisfies all three criteria perfectly (CORE applicability
+      + capability MISSING + WEAK skill) on a surface ATLAS actually ships (the served
+      :4317 UI). 'Covered' only by BEACON (
+  - n: '2'
+    category: Application Core
+    capability: CAP_RUNTIME_HEALTH_PROBE
+    why: Tied with Accessibility on the strict 3/3 profile (CORE + MISSING + WEAK)
+      yet the source clusters left it with NO proposed capability — a completeness
+      gap I am correcting. Both skill_refs are mismatch
+  - n: '3'
+    category: User Interface & Accounts
+    capability: CAP_ACCOUNT_LIFECYCLE
+    why: CORE + MISSING (skill TOPICAL). Auth skills (IDENTITY_AUTH_RBAC_ABAC, ADMIN_CONSOLE_TENANT_OPS)
+      cover policy/RBAC, not the account-lifecycle UX the corpus demands (registration,
+      2FA/passkey UI, sessio
+  - n: '4'
+    category: Testing & Quality Assurance
+    capability: CAP_TEST_RUNNER
+    why: CORE + MISSING; skill_match_quality is labeled TOPICAL but is effectively
+      weak — the two headline skills are a 38-line GEN.OS persona bridge (TEST_FORGE)
+      and an invocation_count-0 imported starter (FU
+  - n: '5'
+    category: Search Infrastructure
+    capability: CAP_SEARCH_INDEX_QUERY
+    why: CORE + MISSING. Unlike the four above, its skill (SKILL_SEARCH_INFRASTRUCTURE_001)
+      is already STRONG/corpus-purpose-built, so it ranks 5th under the weak-skill
+      criterion — but it is included because t
+  roadmap_clusters:
+  - cluster: Client Surfaces
+    capability: CAP_A11Y_SCAN
+    closes: Accessibility Engineering
+    target: WIRED
+  - cluster: Core Engineering
+    capability: CAP_LANG_TOOLCHAIN_GATE
+    closes: Programming Language
+    target: WIRED
+  - cluster: Data & Storage
+    capability: CAP_SEARCH_INDEX_QUERY
+    closes: Search Infrastructure
+    target: WIRED
+  - cluster: Security & Trust
+    capability: CAP_SECURITY_SCAN_CI
+    closes: Security & Authentication (SDLC Security & Secrets) — and simultaneously
+      advances Threat Modeling & Zero Trust (Vulnerability & Posture Management)
+    target: WIRED
+  - cluster: Infra & Platform Substrate
+    capability: CAP_PERF_BUDGET_GATE
+    closes: Performance Engineering
+    target: WIRED
+  - cluster: Reliability & Runtime Ops
+    capability: CAP_BACKUP_RESTORE_VERIFIED
+    closes: Disaster Recovery & BCP
+    target: WIRED
+  - cluster: Compliance & Governance
+    capability: CAP_SBOM_LICENSE_GATE
+    closes: Open Source & Licensing
+    target: WIRED
+  - cluster: Product & GTM
+    capability: CAP_FEATURE_FLAG_EVAL
+    closes: Feature Management
+    target: WIRED
+  - cluster: Platform & SaaS
+    capability: CAP_TENANT_LIFECYCLE_OPS
+    closes: Admin Console & Internal Ops
+    target: WIRED
+  - cluster: Delivery & Sustaining
+    capability: CAP_TEST_RUNNER
+    closes: Testing & Quality Assurance
+    target: WIRED
+  spec_vs_build:
+  - category: Runtime language
+    spec: Python CLI modules
+    build: Next.js 16 + MCP
+    verdict: MISMATCH
+  - category: Ingest event types
+    spec: 6 types
+    build: 1 type (append_note)
+    verdict: MISMATCH
+  - category: Deployment
+    spec: Vercel preview
+    build: launchd service
+    verdict: MISMATCH
+  - category: Architecture snapshot
+    spec: Populated YAML
+    build: 'Empty (components: [])'
+    verdict: MISMATCH
+  - category: Release
+    spec: 2.2.0 shipped
+    build: Never cut
+    verdict: FAIL
+  - category: CI gate verdict
+    spec: All green
+    build: 'overall_verdict: fail'
+    verdict: FAIL
+  - category: SLOs
+    spec: Measured latency/availability
+    build: 2 definition-only SLOs
+    verdict: PARTIAL
+  - category: 'Skills: runtime-callable'
+    spec: 374 skills
+    build: 8 MCP tools / 13 CAP_* executors
+    verdict: PARTIAL
+  - category: 'Checklist: skill coverage'
+    spec: every category covered
+    build: 55/68 FULL *declared*; 0/3,378 items mapped
+    verdict: MISMATCH
+  - category: 'Checklist: executable capability'
+    spec: every category executable
+    build: 5/68 HAVE; 57 MISSING; 2,698 items no executor
+    verdict: MISMATCH
+  - category: 'Checklist: probe-verified'
+    spec: 90% floor (CERT_FLOOR)
+    build: ≈0.4% (~14/3,378) — floor FAILS
+    verdict: FAIL
+  - category: Platform systems "built"
+    spec: 53 populated
+    build: Dir exists ≠ runtime
+    verdict: MISMATCH
+  - category: 'Vision: non-goals'
+    spec: '"No hosted runtime code"'
+    build: apps/ IS runtime code
+    verdict: MISMATCH

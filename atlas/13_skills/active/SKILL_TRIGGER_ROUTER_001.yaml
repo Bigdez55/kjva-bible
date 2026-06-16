@@ -33,7 +33,7 @@ hard_constraints:
 - Treat /atlas:* commands as alias inputs that resolve through the canonical Atlas
   branch.
 - Use Atlas Graph Engine and Atlas Knowledge Vault as proprietary subsystem names.
-- Do not use external graph/vault product names as SUPER C Atlas subsystem names.
+- Do not use external graph/vault product names as ATLAS subsystem names.
 - Route `.claude`, agent-surface, and thread-refinery requests to their dedicated
   active skills.
 - Treat all-skills invocation as a portable universal coverage matrix, not a literal

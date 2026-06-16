@@ -1,7 +1,7 @@
 # ATLAS Vercel Release Checklist
 
 ## Project
-- Vercel project root: `apps/atlas`
+- Vercel project root: `apps/frontend/shell`
 - Framework: Next.js
 - Product name: ATLAS
 
@@ -9,8 +9,8 @@
 - `npm install`
 - `npm run lint`
 - `npm run build`
-- `python3 25_automation/atlas_core/atlas.py tenants --check`
-- `python3 25_automation/atlas_core/atlas.py repo-event --repo ATLAS --event-type commit --check`
+- `python3 infrastructure/scripts/core/atlas.py tenants --check`
+- `python3 infrastructure/scripts/core/atlas.py repo-event --repo ATLAS --event-type commit --check`
 - Confirm no secrets are committed.
 - Confirm `NEXT_PUBLIC_APP_URL` is optional or configured.
 

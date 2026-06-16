@@ -1,0 +1,164 @@
+{
+  "schema_version": "1.0",
+  "target": "ATLAS",
+  "overall": "fail",
+  "summary": {
+    "pass": 10,
+    "fail": 1,
+    "unknown": 0
+  },
+  "results": [
+    {
+      "id": "probe_mcp_bootable",
+      "target": "ATLAS",
+      "verdict": "pass",
+      "evidence": "WIRED (runtime verify): verify_mcp_boot.mjs: rc=0 \u2192 VERIFY_OK mcp-boot: server constructs, 10 tools listed, handleTool reachable",
+      "capability": "CAP_MCP_SERVER_BOOT",
+      "category": "Backend"
+    },
+    {
+      "id": "probe_git_writeback",
+      "target": "ATLAS",
+      "verdict": "pass",
+      "evidence": "WIRED (runtime verify): verify_git_writeback.mjs: rc=0 \u2192 VERIFY_OK 65433ce77d13eee67ab8c8622daa3d139bf66750",
+      "capability": "CAP_REPO_GIT_WRITEBACK",
+      "category": "Integrations"
+    },
+    {
+      "id": "probe_repo_editable",
+      "target": "ATLAS",
+      "verdict": "pass",
+      "evidence": "WIRED (runtime verify): file-write[verify_repo_file_write.mjs: rc=0 \u2192 VERIFY_OK] + knowledge-write[verify_knowledge_write.mjs: rc=0 \u2192 (Use `node --trace-warnings ...` to show where the warning was created)] + 7 mutating HTTP handlers",
+      "capability": "CAP_REPO_FILE_WRITE",
+      "category": "Backend"
+    },
+    {
+      "id": "probe_desktop_install",
+      "target": "ATLAS",
+      "verdict": "fail",
+      "evidence": "ATLAS.app NOT in /Applications. no built .dmg either",
+      "capability": "CAP_DESKTOP_INSTALL",
+      "category": "Desktop Application"
+    },
+    {
+      "id": "probe_route_is_live",
+      "target": "ATLAS",
+      "verdict": "pass",
+      "evidence": "/api/repos SELECTs durable repo_connectors from the DB (scopedSelect+getDb); buildLocalAtlasPayload remains only as the hosted fallback",
+      "capability": null,
+      "category": "Backend"
+    },
+    {
+      "id": "probe_page_is_live",
+      "target": "ATLAS",
+      "verdict": "pass",
+      "evidence": "repos page renders DB-backed data from the API (no mvp-data import)",
+      "capability": null,
+      "category": "Frontend"
+    },
+    {
+      "id": "probe_checklist_page_is_live",
+      "target": "ATLAS",
+      "verdict": "pass",
+      "evidence": "/checklist renders the DB-backed fleet rollup from /api/production-readiness (no mvp-data import)",
+      "capability": null,
+      "category": "Frontend"
+    },
+    {
+      "id": "probe_rate_limit_wired",
+      "target": "ATLAS",
+      "verdict": "pass",
+      "evidence": "WIRED: 6 routes call enforceRateLimit + runtime verify [verify_rate_limit.mjs: rc=0 \u2192 VERIFY_OK rate-limit: durable bucket row written, allowed=true (route=POST /api/]",
+      "capability": "CAP_RATE_LIMIT",
+      "category": "Rate Limiting"
+    },
+    {
+      "id": "probe_audit_wired",
+      "target": "ATLAS",
+      "verdict": "pass",
+      "evidence": "WIRED: 6 routes call auditRequest + runtime verify [verify_audit_log.mjs: rc=0 \u2192 VERIFY_OK audit-log: hash-chained row appended (prev->row linked) [prev=901131d8]",
+      "capability": "CAP_AUDIT_LOG",
+      "category": "Audit Logging"
+    },
+    {
+      "id": "probe_claim_backed",
+      "target": "ATLAS",
+      "verdict": "pass",
+      "evidence": "apps/frontend/shell/src/lib/production-readiness.ts carries no public-release READY claim (derived state governs; 7 legacy per-gate markers tolerated while derived=BLOCK).",
+      "capability": null,
+      "category": null
+    },
+    {
+      "id": "probe_capability_executable",
+      "target": "ATLAS",
+      "verdict": "pass",
+      "evidence": {
+        "capabilities": [
+          {
+            "cap": "CAP_MCP_READ_TOOLS",
+            "declared": "WIRED",
+            "probe_actual": "WIRED",
+            "match": true
+          },
+          {
+            "cap": "CAP_REPO_AUDIT_READ",
+            "declared": "WIRED",
+            "probe_actual": "WIRED",
+            "match": true
+          },
+          {
+            "cap": "CAP_REPO_GIT_WRITEBACK",
+            "declared": "WIRED",
+            "probe_actual": "WIRED",
+            "match": true
+          },
+          {
+            "cap": "CAP_REPO_FILE_WRITE",
+            "declared": "WIRED",
+            "probe_actual": "WIRED",
+            "match": true
+          },
+          {
+            "cap": "CAP_KNOWLEDGE_NOTE_WRITE",
+            "declared": "WIRED",
+            "probe_actual": "WIRED",
+            "match": true
+          },
+          {
+            "cap": "CAP_REPO_INGEST",
+            "declared": "WIRED",
+            "probe_actual": "WIRED",
+            "match": true
+          },
+          {
+            "cap": "CAP_CHECKLIST_VERDICT_WRITE",
+            "declared": "WIRED",
+            "probe_actual": "WIRED",
+            "match": true
+          },
+          {
+            "cap": "CAP_RATE_LIMIT",
+            "declared": "WIRED",
+            "probe_actual": "WIRED",
+            "match": true
+          },
+          {
+            "cap": "CAP_AUDIT_LOG",
+            "declared": "WIRED",
+            "probe_actual": "WIRED",
+            "match": true
+          },
+          {
+            "cap": "CAP_DESKTOP_INSTALL",
+            "declared": "MISSING",
+            "probe_actual": "MISSING",
+            "match": true
+          }
+        ],
+        "mismatches": []
+      },
+      "capability": null,
+      "category": null
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+schema_version: '1.0'
+category_id: PRC.NETWORK
+name: Network
+icon: ⊕
+color: '#EC4899'
+default_severity: medium
+coverage_status: FULL
+skill_refs:
+- SKILL_API_GATEWAY_SERVICE_MESH_001
+- SKILL_NETWORK_CONNECTIVITY_DISCIPLINE_001
+capability_status: MISSING
+tool_refs: []
+mcp_refs: []
+command_refs: []
+capability_refs: []
+capability_notes: No executor. Build a network/connectivity diagnostic or routing service if in scope.
+sections:
+- id: PRC.NETWORK.ARCHITECTURE_AND_TRAFFIC_MANAGEMENT
+  name: Architecture & Traffic Management
+  items:
+  - id: PRC.NETWORK.ARCHITECTURE_AND_TRAFFIC_MANAGEMENT.001
+    text: Network topology fully documented as diagram in version control
+  - id: PRC.NETWORK.ARCHITECTURE_AND_TRAFFIC_MANAGEMENT.002
+    text: IP addressing scheme per RFC 1918, documented, no overlaps
+  - id: PRC.NETWORK.ARCHITECTURE_AND_TRAFFIC_MANAGEMENT.003
+    text: 'VLAN segmentation: prod, dev, management workloads on separate VLANs'
+  - id: PRC.NETWORK.ARCHITECTURE_AND_TRAFFIC_MANAGEMENT.004
+    text: 'Network segmentation: DMZ for public-facing, isolated zone for app/DB'
+  - id: PRC.NETWORK.ARCHITECTURE_AND_TRAFFIC_MANAGEMENT.005
+    text: East-west service traffic controlled; not open by default
+  - id: PRC.NETWORK.ARCHITECTURE_AND_TRAFFIC_MANAGEMENT.006
+    text: Redundant network paths (ECMP, HA pairs) on all critical links
+  - id: PRC.NETWORK.ARCHITECTURE_AND_TRAFFIC_MANAGEMENT.007
+    text: Single point of failure analysis completed and mitigated
+  - id: PRC.NETWORK.ARCHITECTURE_AND_TRAFFIC_MANAGEMENT.008
+    text: 'Bandwidth capacity planning: 2x peak headroom on all critical links'
+  - id: PRC.NETWORK.ARCHITECTURE_AND_TRAFFIC_MANAGEMENT.009
+    text: 'L7 load balancer: host-based and path-based routing rules configured'
+  - id: PRC.NETWORK.ARCHITECTURE_AND_TRAFFIC_MANAGEMENT.010
+    text: Health check interval and thresholds tuned per service
+  - id: PRC.NETWORK.ARCHITECTURE_AND_TRAFFIC_MANAGEMENT.011
+    text: Connection draining delay configured on instance deregistration
+  - id: PRC.NETWORK.ARCHITECTURE_AND_TRAFFIC_MANAGEMENT.012
+    text: WebSocket / SSE connections tested through all proxies and load balancers
+  - id: PRC.NETWORK.ARCHITECTURE_AND_TRAFFIC_MANAGEMENT.013
+    text: Long-lived connections (> 60s) tested through all intermediaries
+  - id: PRC.NETWORK.ARCHITECTURE_AND_TRAFFIC_MANAGEMENT.014
+    text: mTLS enforced between all internal services
+  - id: PRC.NETWORK.ARCHITECTURE_AND_TRAFFIC_MANAGEMENT.015
+    text: gRPC load balancing configured with L7 load balancer or sidecar proxy
+  - id: PRC.NETWORK.ARCHITECTURE_AND_TRAFFIC_MANAGEMENT.016
+    text: Service mesh evaluated for deployments with > 10 microservices
+  - id: PRC.NETWORK.ARCHITECTURE_AND_TRAFFIC_MANAGEMENT.017
+    text: CDN edge locations cover all primary user geographies
+  - id: PRC.NETWORK.ARCHITECTURE_AND_TRAFFIC_MANAGEMENT.018
+    text: CDN cache hit rate > 90% for static assets
+  - id: PRC.NETWORK.ARCHITECTURE_AND_TRAFFIC_MANAGEMENT.019
+    text: CDN custom error pages for 403, 404, 503
+- id: PRC.NETWORK.SECURITY_AND_MONITORING
+  name: Security & Monitoring
+  items:
+  - id: PRC.NETWORK.SECURITY_AND_MONITORING.001
+    text: 'Firewall rules: deny-all default, allow-specific per service pair'
+  - id: PRC.NETWORK.SECURITY_AND_MONITORING.002
+    text: No inbound 0.0.0.0/0 except ports 80/443 on edge load balancers
+  - id: PRC.NETWORK.SECURITY_AND_MONITORING.003
+    text: DB layer only accepts connections from app layer security group
+  - id: PRC.NETWORK.SECURITY_AND_MONITORING.004
+    text: 'IDS/IPS deployed and tuned: Suricata, Snort, or cloud-native IDS'
+  - id: PRC.NETWORK.SECURITY_AND_MONITORING.005
+    text: VPC Flow Logs / NetFlow sent to SIEM
+  - id: PRC.NETWORK.SECURITY_AND_MONITORING.006
+    text: DNS query logging enabled
+  - id: PRC.NETWORK.SECURITY_AND_MONITORING.007
+    text: 'DDoS protection: volumetric, protocol, and application layer'
+  - id: PRC.NETWORK.SECURITY_AND_MONITORING.008
+    text: TLS 1.3 preferred everywhere; TLS 1.2 minimum; older versions disabled
+  - id: PRC.NETWORK.SECURITY_AND_MONITORING.009
+    text: 'Rate limiting at network edge: WAF, API Gateway, nginx rate limit zones'
+  - id: PRC.NETWORK.SECURITY_AND_MONITORING.010
+    text: IP allowlisting for all admin and ops interfaces
+  - id: PRC.NETWORK.SECURITY_AND_MONITORING.011
+    text: Geo-blocking for regions with no legitimate users
+  - id: PRC.NETWORK.SECURITY_AND_MONITORING.012
+    text: 'SSH: key-based only, PermitRootLogin no, via bastion or SSM Session Manager'
+  - id: PRC.NETWORK.SECURITY_AND_MONITORING.013
+    text: fail2ban or equivalent on all internet-facing SSH endpoints
+  - id: PRC.NETWORK.SECURITY_AND_MONITORING.014
+    text: Network latency between all critical service pairs monitored
+  - id: PRC.NETWORK.SECURITY_AND_MONITORING.015
+    text: Packet loss monitored; alert at > 0.1%
+  - id: PRC.NETWORK.SECURITY_AND_MONITORING.016
+    text: Bandwidth utilization alerts at 70% and critical at 90%
+  - id: PRC.NETWORK.SECURITY_AND_MONITORING.017
+    text: CDN hit/miss rate and origin error rate monitored
+  - id: PRC.NETWORK.SECURITY_AND_MONITORING.018
+    text: TCP retransmission rate monitored
+  - id: PRC.NETWORK.SECURITY_AND_MONITORING.019
+    text: Certificate expiry monitoring for all network endpoints
+  - id: PRC.NETWORK.SECURITY_AND_MONITORING.020
+    text: NAT gateway port exhaustion monitored

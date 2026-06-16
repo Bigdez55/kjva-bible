@@ -63,7 +63,7 @@ Use `46_mergeable_context_engine/bookworm_context_packets/context_packet.templat
 ## Validation
 
 ```bash
-python3 25_automation/validate_skill_router_integration.py
+python3 infrastructure/scripts/validate_skill_router_integration.py
 ```
 
 Must pass 179/179/179 (or current total) after this skill is registered and routed.

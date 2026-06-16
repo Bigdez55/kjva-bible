@@ -1,0 +1,232 @@
+# Capability Registry — the canonical list of EXECUTABLE capabilities.
+#
+# This is the missing "tools that execute" registry, distinct from skills.registry.yaml
+# (which lists skills that DESCRIBE). A skill is knowledge; a CAP_* is a real
+# tool / MCP tool / slash-command / service that DOES the thing.
+#
+# Maturity ladder (status): each CAP_* must climb it; HAVE is the top.
+#   DESCRIBED  — only a skill exists (knowledge, no executor)
+#   ROUTED     — skill wired to a slash-command (still no executor code)
+#   EXECUTABLE — an MCP tool / command / service is implemented
+#   WIRED      — probe-verified CALLED at runtime (wired_audit.py shows CALLED, not just DEFINED)
+#   TESTED     — WIRED + has a regression test + evidence
+# capability_status in the corpus is HAVE only when a CAP_* is WIRED or TESTED.
+# Anything below WIRED is PARTIAL; no executor at all is MISSING.
+#
+# A CAP_* is verified by probe_capability_executable (probes/), which runs wired_audit.
+# Status here is the DECLARED state; the probe is the source of truth at audit time.
+
+schema_version: '1.0'
+last_updated: '2026-06-02'
+registry_id: CAP_REGISTRY_001
+
+capabilities:
+
+  # ---- READ capabilities that genuinely exist + are wired today --------------
+  - id: CAP_MCP_READ_TOOLS
+    title: ATLAS MCP read tools (graph/skill/knowledge/context/route)
+    type: mcp_tools
+    status: WIRED
+    owning_skill: SKILL_MCP_001
+    executes_via: [atlas_graph_query, atlas_skill_get, atlas_skill_list, atlas_knowledge_search, atlas_context_compile, atlas_trigger_route]
+    source: apps/backend/mcp/src/server-factory.ts
+    verb: read
+    probe: probe_mcp_bootable
+    notes: 6 read-only MCP tools, real and called via the MCP server. Read-only — does not satisfy any write/execute requirement.
+
+  - id: CAP_REPO_AUDIT_READ
+    title: Read-only repo discovery + audit
+    type: service
+    status: WIRED
+    owning_skill: SKILL_EXISTING_REPO_AUDIT_001
+    executes_via: [/apex:repo_audit, /apex:check_path]
+    source: apps/frontend/shell/src/lib/live/localAtlas.ts
+    verb: read
+    probe: probe_route_is_live
+    notes: localAtlas runs git log/status/rev-parse (read), surfaced via the live /api/repos route. No write-back.
+
+  # ---- WRITE capabilities the user NAMED — BUILT + probe-verified WIRED -------
+  - id: CAP_REPO_GIT_WRITEBACK
+    title: Commit + push to a GitHub repo from the platform
+    type: mcp_tool+api_route
+    status: WIRED
+    owning_skill: SKILL_GIT_REMOTE_DISCIPLINE_001
+    executes_via: [atlas_repo_commit_push, "POST /api/repos/[id]/commit"]
+    target_source:
+      - apps/backend/mcp/src/tools/repo-git-writeback.ts
+      - apps/frontend/shell/src/app/api/repos/[id]/commit/route.ts
+    verb: write
+    satisfies_corpus_category: Integrations
+    user_requirement: "push to my GitHub repositories from it"
+    build_via: SKILL_MCP_TOOLING_AUTOMATION_001
+    probe: probe_git_writeback
+    notes: BUILT + probe-verified WIRED (verify_git_writeback.mjs prints VERIFY_OK with a real commit SHA). execFile git; push only on push:true.
+
+  - id: CAP_REPO_FILE_WRITE
+    title: Write/edit a file in a repo from the app
+    type: mcp_tool+api_route
+    status: WIRED
+    owning_skill: SKILL_UI_INTERACTION_WIRING_001
+    executes_via: [atlas_repo_file_write, "POST /api/repos/[id]/files"]
+    target_source:
+      - apps/backend/mcp/src/tools/repo-file-write.ts
+      - apps/frontend/shell/src/app/api/repos/[id]/files/route.ts
+    verb: write
+    satisfies_corpus_category: Backend
+    user_requirement: "make changes to my repo from it"
+    build_via: SKILL_MCP_TOOLING_AUTOMATION_001
+    probe: probe_repo_editable
+    notes: BUILT + probe-verified WIRED (verify_repo_file_write.mjs; path-confined, traversal rejected). atlas_repo_file_write + POST /api/repos/[id]/files.
+
+  - id: CAP_KNOWLEDGE_NOTE_WRITE
+    title: Create / edit / link knowledge notes (real wiki)
+    type: mcp_tool+api_route
+    status: WIRED
+    owning_skill: SKILL_KNOWLEDGE_DEPOT_001
+    executes_via: [atlas_knowledge_note_write, "POST /api/knowledge", "PUT /api/knowledge/[id]"]
+    target_source:
+      - apps/backend/mcp/src/tools/knowledge-note-write.ts
+      - apps/frontend/shell/src/app/api/knowledge/route.ts
+    verb: write
+    satisfies_corpus_category: Documentation
+    user_requirement: "operate the way that a knowledge wiki would"
+    build_via: SKILL_MCP_TOOLING_AUTOMATION_001
+    probe: probe_repo_editable
+    notes: BUILT + probe-verified WIRED (verify_knowledge_write.mjs; tenant-scoped create/update through SQLite). atlas_knowledge_note_write + POST/PUT /api/knowledge.
+
+  - id: CAP_REPO_INGEST
+    title: Ingest repos into durable, tenant-scoped repo_connectors (the keystone)
+    type: lib+api_route
+    status: WIRED
+    owning_skill: SKILL_REPO_TWIN_INGEST_001
+    executes_via: ["GET /api/repos", "POST /api/repos", "instrumentation boot ingest"]
+    target_source:
+      - apps/frontend/shell/src/lib/live/ingestRepos.ts
+      - apps/frontend/shell/src/app/api/repos/route.ts
+    verb: write
+    satisfies_corpus_category: Backend
+    user_requirement: "infrastructure for repos ... to be held against the checklist"
+    build_via: SKILL_MCP_TOOLING_AUTOMATION_001
+    probe: probe_repo_ingest_wired
+    notes: BUILT + probe-verified WIRED (verify_repo_ingest.mjs VERIFY_OK incl. cross-tenant isolation; live GET /api/repos source:db). Build-item B. Tenant-namespaced connectorId; ensureTenant self-heals the FK target.
+
+  - id: CAP_CHECKLIST_VERDICT_WRITE
+    title: Hold a project against the corpus — write scored assessments + verdicts
+    type: mcp_tool+api_route
+    status: WIRED
+    owning_skill: SKILL_PRODUCTION_READINESS_AUDIT_001
+    executes_via: [atlas_checklist_verdict_write, "POST /api/repos/[id]/assessment", "GET /api/production-readiness (fleet rollup)"]
+    target_source:
+      - apps/backend/mcp/src/tools/checklist-verdict-write.ts
+      - apps/frontend/shell/src/app/api/repos/[id]/assessment/route.ts
+      - apps/frontend/shell/src/lib/checklist/scoring.ts
+    verb: write
+    satisfies_corpus_category: Documentation
+    user_requirement: "infrastructure for ... projects to be held against the checklist"
+    build_via: SKILL_MCP_TOOLING_AUTOMATION_001
+    probe: probe_checklist_verdict_wired
+    notes: BUILT + probe-verified WIRED (verify_checklist_verdict.mjs + verify_probe_assessment.mjs VERIFY_OK; live POST/GET + DB-backed fleet rollup; /checklist Playwright-rendered). Build-items C+D. Counts/tier DERIVED by the ONE canonical scorer (mirrors scoring_rubric.yaml); client score never trusted.
+
+  - id: CAP_RATE_LIMIT
+    title: Per-route, tenant-scoped rate limiting on mutating API surfaces
+    type: lib+api_route
+    status: WIRED
+    owning_skill: SKILL_RATE_LIMIT_TENANT_SCOPED_001
+    executes_via: ["enforceRateLimit() guard on POST/PUT /api/repos|knowledge|ingest"]
+    target_source:
+      - apps/frontend/shell/src/lib/middleware/rate-limit.ts
+      - apps/frontend/shell/src/lib/rate-limit/token-bucket.ts
+      - apps/frontend/shell/src/lib/middleware/guards.ts
+    verb: enforce
+    satisfies_corpus_category: "Rate Limiting, Quotas & Traffic Shaping"
+    user_requirement: "rate limit / quota / traffic shaping before public release"
+    build_via: SKILL_RATE_LIMIT_TENANT_SCOPED_001
+    probe: probe_rate_limit_wired
+    notes: "BUILT + probe-verified WIRED (probe_rate_limit_wired → verify_rate_limit.mjs VERIFY_OK; durable rate_limit_buckets row written, fixed-window counter). guards.enforceRateLimit adapts the engine into the 6 mutating routes; fails open on engine error."
+
+  - id: CAP_AUDIT_LOG
+    title: Immutable hash-chained audit log on mutating API surfaces
+    type: lib+api_route
+    status: WIRED
+    owning_skill: SKILL_AUDIT_LOG_IMMUTABLE_001
+    executes_via: ["auditRequest() guard on POST/PUT /api/repos|knowledge|ingest"]
+    target_source:
+      - apps/frontend/shell/src/lib/middleware/audit-log.ts
+      - apps/frontend/shell/src/lib/audit/audit-logger.ts
+      - apps/frontend/shell/src/lib/middleware/guards.ts
+    verb: write
+    satisfies_corpus_category: "Audit Logging, Forensics & eDiscovery"
+    user_requirement: "tamper-evident audit trail / forensics before public release"
+    build_via: SKILL_AUDIT_LOG_IMMUTABLE_001
+    probe: probe_audit_wired
+    notes: "BUILT + probe-verified WIRED (probe_audit_wired → verify_audit_log.mjs VERIFY_OK; SHA-256 hash-chained row appended, prev_hash links to prior row_hash). guards.auditRequest primes the audit DB then appends a row out of band; swallows errors so it never breaks the route."
+
+  # ---- DEPRECATED surface — Electron desktop install is NO LONGER the deployment model ----
+  - id: CAP_DESKTOP_INSTALL
+    title: Installed standalone Mac .app (DEPRECATED — superseded by the always-on service)
+    type: packaging
+    status: NA
+    owning_skill: SKILL_ELECTRON_MACOS_PACKAGE_SIGN_001
+    executes_via: ["electron-builder dmg", "install to /Applications"]
+    target_source: apps/frontend/shell/electron-builder.yml
+    verb: deploy
+    satisfies_corpus_category: Desktop Application
+    deprecated: true
+    superseded_by: CAP_SERVICE_DEPLOYED
+    probe: probe_service_deployed
+    notes: "DEPRECATED 2026-06-03. ATLAS ships as an always-on launchd service (web :4317 + MCP :4318)
+      + tunnel, NOT an Electron .app. The release gate must NOT be blocked on a deprecated surface —
+      probe_desktop_install was RETIRED; the honest blockers are the HERMETIC coverage/capability floors.
+      status: NA (not-applicable) so it is excluded from the capability-HAVE floor and cap-exec."
+
+  # ---- DEPLOYMENT — the always-on service (replaces the desktop-install capability) ----
+  - id: CAP_SERVICE_DEPLOYED
+    title: Always-on service deployed (launchd web :4317 + MCP :4318 + tunnel)
+    type: service
+    status: WIRED
+    owning_skill: SKILL_UI_LIVE_VERIFICATION_BEFORE_DONE_001
+    executes_via: ["infrastructure/service/atlas-service.sh install", "launchctl com.atlas.{web,mcp,bookworm}"]
+    target_source:
+      - infrastructure/service/atlas-service.sh
+      - infrastructure/service/REMOTE_ACCESS.md
+    verb: deploy
+    satisfies_corpus_category: Deployment
+    user_requirement: "downloadable and living on the desktop ... always available"
+    probe: probe_service_deployed
+    notes: "BUILT + probe-verified WIRED on host (probe_service_deployed: com.atlas.{web,mcp} launchd-loaded
+      + :4317/api/health 200). HOST-ONLY signal: off-host (CI/Linux) it returns unknown (not-assessed),
+      and it is RUNTIME-tier so it never governs the committed gate state — service-up does NOT imply
+      public-release-ready (still auth-disabled / single-tenant locally)."
+
+  # ---- WRITE — settings (the shipped Settings UI's backend; audit #21) ----
+  - id: CAP_SETTINGS_WRITE
+    title: Read/write tenant settings from the app
+    type: api_route
+    status: WIRED
+    owning_skill: SKILL_UI_INTERACTION_WIRING_001
+    executes_via: ["GET /api/settings", "PUT /api/settings"]
+    target_source:
+      - apps/frontend/shell/src/app/api/settings/route.ts
+      - apps/frontend/shell/src/lib/db/schema.ts
+    verb: write
+    satisfies_corpus_category: Configuration
+    probe: probe_settings_write
+    notes: "BUILT + probe-verified WIRED (verify_settings_write.mjs VERIFY_OK; tenant_settings table,
+      upsert+scopedSelect round-trip, IDOR-safe). Closes the Settings-UI-without-backend theater."
+
+  # ---- OBSERVABILITY — custom prom-client counters actually incremented (audit #9) ----
+  - id: CAP_METRICS_INSTRUMENTED
+    title: Custom atlas_* metrics incremented at runtime (not just defined)
+    type: lib
+    status: WIRED
+    owning_skill: SKILL_RUNTIME_REGRESSION_VERIFY_001
+    executes_via: ["proxy.ts requestsTotal.inc", "guards.ts rateLimitHits.inc", "errors.ts authFailures.inc"]
+    target_source:
+      - apps/frontend/shell/src/lib/logging/metrics-registry.ts
+      - apps/frontend/shell/src/proxy.ts
+    verb: observe
+    satisfies_corpus_category: Observability
+    probe: probe_metrics_wired
+    notes: "BUILT + probe-verified WIRED (verify_metrics_wired.mjs VERIFY_OK; a route hit produces a
+      non-zero atlas_requests_total sample). Closes the telemetry-theater gap — counters were defined
+      but never incremented."

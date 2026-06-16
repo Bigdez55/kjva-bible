@@ -1,0 +1,93 @@
+schema_version: '1.0'
+category_id: PRC.OPEN_SOURCE_AND_LICENSING
+name: Open Source & Licensing
+icon: ☍
+color: '#22D3EE'
+default_severity: medium
+coverage_status: FULL
+skill_refs:
+- SKILL_OSS_LICENSING_COMPLIANCE_001
+capability_status: MISSING
+tool_refs: []
+mcp_refs: []
+command_refs: []
+capability_refs: []
+capability_notes: No license-scan executor. Build an OSS license/SBOM compliance MCP tool or CI gate.
+sections:
+- id: PRC.OPEN_SOURCE_AND_LICENSING.DEPENDENCY_LICENSE_CONTROLS
+  name: Dependency License Controls
+  items:
+  - id: PRC.OPEN_SOURCE_AND_LICENSING.DEPENDENCY_LICENSE_CONTROLS.001
+    text: Allowed and prohibited license list defined by legal or leadership
+  - id: PRC.OPEN_SOURCE_AND_LICENSING.DEPENDENCY_LICENSE_CONTROLS.002
+    text: Dependency license scan runs on every PR
+  - id: PRC.OPEN_SOURCE_AND_LICENSING.DEPENDENCY_LICENSE_CONTROLS.003
+    text: Transitive dependency licenses reviewed, not only direct dependencies
+  - id: PRC.OPEN_SOURCE_AND_LICENSING.DEPENDENCY_LICENSE_CONTROLS.004
+    text: Copyleft licenses reviewed before inclusion in distributed products
+  - id: PRC.OPEN_SOURCE_AND_LICENSING.DEPENDENCY_LICENSE_CONTROLS.005
+    text: NOTICE and attribution files generated where required
+  - id: PRC.OPEN_SOURCE_AND_LICENSING.DEPENDENCY_LICENSE_CONTROLS.006
+    text: Commercial use restrictions checked for all dependencies
+  - id: PRC.OPEN_SOURCE_AND_LICENSING.DEPENDENCY_LICENSE_CONTROLS.007
+    text: License exceptions documented and approved
+  - id: PRC.OPEN_SOURCE_AND_LICENSING.DEPENDENCY_LICENSE_CONTROLS.008
+    text: Dependency provenance verified for high-risk packages
+  - id: PRC.OPEN_SOURCE_AND_LICENSING.DEPENDENCY_LICENSE_CONTROLS.009
+    text: Abandoned packages identified and replaced
+  - id: PRC.OPEN_SOURCE_AND_LICENSING.DEPENDENCY_LICENSE_CONTROLS.010
+    text: Forked dependencies tracked with owner and update policy
+  - id: PRC.OPEN_SOURCE_AND_LICENSING.DEPENDENCY_LICENSE_CONTROLS.011
+    text: SBOM includes license metadata for every dependency
+- id: PRC.OPEN_SOURCE_AND_LICENSING.OPEN_SOURCE_PROJECT_READINESS
+  name: Open Source Project Readiness
+  items:
+  - id: PRC.OPEN_SOURCE_AND_LICENSING.OPEN_SOURCE_PROJECT_READINESS.001
+    text: 'README: purpose, install, usage, and support expectations clearly documented'
+  - id: PRC.OPEN_SOURCE_AND_LICENSING.OPEN_SOURCE_PROJECT_READINESS.002
+    text: LICENSE file included and correct
+  - id: PRC.OPEN_SOURCE_AND_LICENSING.OPEN_SOURCE_PROJECT_READINESS.003
+    text: CONTRIBUTING.md explains contribution workflow
+  - id: PRC.OPEN_SOURCE_AND_LICENSING.OPEN_SOURCE_PROJECT_READINESS.004
+    text: CODE_OF_CONDUCT.md published
+  - id: PRC.OPEN_SOURCE_AND_LICENSING.OPEN_SOURCE_PROJECT_READINESS.005
+    text: SECURITY.md explains vulnerability reporting process
+  - id: PRC.OPEN_SOURCE_AND_LICENSING.OPEN_SOURCE_PROJECT_READINESS.006
+    text: Issue templates and PR templates configured
+  - id: PRC.OPEN_SOURCE_AND_LICENSING.OPEN_SOURCE_PROJECT_READINESS.007
+    text: Maintainer roles and approval rules documented
+  - id: PRC.OPEN_SOURCE_AND_LICENSING.OPEN_SOURCE_PROJECT_READINESS.008
+    text: Release process documented and repeatable
+  - id: PRC.OPEN_SOURCE_AND_LICENSING.OPEN_SOURCE_PROJECT_READINESS.009
+    text: Public roadmap or project status documented if community-facing
+  - id: PRC.OPEN_SOURCE_AND_LICENSING.OPEN_SOURCE_PROJECT_READINESS.010
+    text: 'Community support boundaries defined: free vs paid support'
+  - id: PRC.OPEN_SOURCE_AND_LICENSING.OPEN_SOURCE_PROJECT_READINESS.011
+    text: CLA or DCO process configured if needed
+  - id: PRC.OPEN_SOURCE_AND_LICENSING.OPEN_SOURCE_PROJECT_READINESS.012
+    text: Examples and sample projects included for common use cases
+- id: PRC.OPEN_SOURCE_AND_LICENSING.PACKAGE_PUBLISHING_AND_PROVENANCE
+  name: Package Publishing & Provenance
+  items:
+  - id: PRC.OPEN_SOURCE_AND_LICENSING.PACKAGE_PUBLISHING_AND_PROVENANCE.001
+    text: Package namespace owned by organization, not individual employee
+  - id: PRC.OPEN_SOURCE_AND_LICENSING.PACKAGE_PUBLISHING_AND_PROVENANCE.002
+    text: Package registry accounts protected with MFA
+  - id: PRC.OPEN_SOURCE_AND_LICENSING.PACKAGE_PUBLISHING_AND_PROVENANCE.003
+    text: Release publishing happens from CI, not local developer machines (SLSA)
+  - id: PRC.OPEN_SOURCE_AND_LICENSING.PACKAGE_PUBLISHING_AND_PROVENANCE.004
+    text: Build provenance generated and attached to releases
+  - id: PRC.OPEN_SOURCE_AND_LICENSING.PACKAGE_PUBLISHING_AND_PROVENANCE.005
+    text: Packages signed where ecosystem supports it
+  - id: PRC.OPEN_SOURCE_AND_LICENSING.PACKAGE_PUBLISHING_AND_PROVENANCE.006
+    text: Version tags immutable after release
+  - id: PRC.OPEN_SOURCE_AND_LICENSING.PACKAGE_PUBLISHING_AND_PROVENANCE.007
+    text: Deprecated versions marked with migration guidance
+  - id: PRC.OPEN_SOURCE_AND_LICENSING.PACKAGE_PUBLISHING_AND_PROVENANCE.008
+    text: Breaking changes require major version bump
+  - id: PRC.OPEN_SOURCE_AND_LICENSING.PACKAGE_PUBLISHING_AND_PROVENANCE.009
+    text: 'Pre-release channels available: alpha, beta, rc'
+  - id: PRC.OPEN_SOURCE_AND_LICENSING.PACKAGE_PUBLISHING_AND_PROVENANCE.010
+    text: Release artifacts checksummed
+  - id: PRC.OPEN_SOURCE_AND_LICENSING.PACKAGE_PUBLISHING_AND_PROVENANCE.011
+    text: Package ownership reviewed when maintainers leave organization

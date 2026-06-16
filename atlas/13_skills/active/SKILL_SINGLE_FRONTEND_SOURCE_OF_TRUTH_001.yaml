@@ -1,0 +1,45 @@
+id: SKILL_SINGLE_FRONTEND_SOURCE_OF_TRUTH_001
+name: Single Front-End Source of Truth
+version: 1.0.0
+status: active
+purpose: '** An app has exactly ONE rendered front-end; the API/data layer is separate
+  (a server framework can be API-only). Never build/leave a second parallel UI for the
+  same product. Every shipped surface must be live-data-backed (no fixtures/Math.random
+  as theater). Scope data to the user''s REAL entities, not a blind vacuum. Resolve a
+  two-front-end split by reconciling EVERY feature first (inventory -> keep/merge/drop),
+  never by deleting one on inference. Triggers: "this is not the app", "the front-end
+  is actually here", "two UIs", "make it look like X not Y", fixtures rendered as real.'
+inputs:
+- the app''s UI surfaces (both front-ends if split)
+- the API/data layer each consumes
+- the user''s real entity set
+outputs:
+- single canonical front-end (one surface per concept)
+- per-surface reconciliation decision matrix (keep/merge/drop)
+- live-data wiring (no fixtures) + honest empty states
+- routing cutover + retired duplicate UI (no dead links)
+known_failure_modes:
+- two UIs for one product (drift, wrong-one-served, split features)
+- fixtures/sample/random data shown as real (theater)
+- data set is a blind vacuum, not the user''s real entities
+- collapsing a split by deleting one UI before inventorying its features
+- homepage rewritten to a surface not verified to render live data
+validation_tests: []
+improvement_history:
+- version: 1.0.0
+  reason: 'Initial authoring. Anchor — ATLAS two-front-end consolidation (2026-06-03):
+    static atlas-ui (rich look, fixture-backed) + parallel React page tree (live data,
+    real features) collapsed to ONE live atlas-ui; fixtures deleted; repo set scoped to
+    the user''s GitHub repos; React UI retired (Next.js -> API-only).'
+title: Single Front-End Source of Truth
+layer: frontend
+domains:
+- frontend
+- architecture
+- reliability
+playbook: 13_skills/active/SKILL_SINGLE_FRONTEND_SOURCE_OF_TRUTH_001.playbook.md
+source: incident_distillation
+tier: active
+improvement_metrics:
+  invocation_count: 0
+  correction_count: 0

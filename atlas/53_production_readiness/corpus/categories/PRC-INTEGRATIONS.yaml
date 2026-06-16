@@ -1,0 +1,127 @@
+schema_version: '1.0'
+category_id: PRC.INTEGRATIONS
+name: Integrations
+icon: ⊞
+color: '#F59E0B'
+default_severity: medium
+coverage_status: FULL
+skill_refs:
+- SKILL_API_GATEWAY_SERVICE_MESH_001
+- SKILL_NOTION_SPEC_TO_IMPLEMENTATION_001
+capability_status: HAVE
+tool_refs: []
+mcp_refs:
+- atlas_repo_commit_push
+command_refs:
+- POST /api/repos/[id]/commit
+capability_refs:
+- CAP_REPO_GIT_WRITEBACK
+capability_notes: 'BUILT + probe-verified WIRED (probe_git_writeback → verify_git_writeback.mjs VERIFY_OK, real commit SHA). Push to GitHub from the platform: atlas_repo_commit_push MCP tool + POST /api/repos/[id]/commit; push only on push:true.'
+sections:
+- id: PRC.INTEGRATIONS.INTEGRATION_ARCHITECTURE
+  name: Integration Architecture
+  items:
+  - id: PRC.INTEGRATIONS.INTEGRATION_ARCHITECTURE.001
+    text: 'OAuth 2.0 provider: users authorize integrations with scoped access tokens'
+  - id: PRC.INTEGRATIONS.INTEGRATION_ARCHITECTURE.002
+    text: OAuth authorization code flow with PKCE for native and mobile apps
+  - id: PRC.INTEGRATIONS.INTEGRATION_ARCHITECTURE.003
+    text: OAuth refresh token rotation configured
+  - id: PRC.INTEGRATIONS.INTEGRATION_ARCHITECTURE.004
+    text: 'Webhook delivery: reliable delivery with exponential retry and DLQ'
+  - id: PRC.INTEGRATIONS.INTEGRATION_ARCHITECTURE.005
+    text: Webhook HMAC-SHA256 signature on all outbound payloads
+  - id: PRC.INTEGRATIONS.INTEGRATION_ARCHITECTURE.006
+    text: Inbound webhook signature verified before any processing
+  - id: PRC.INTEGRATIONS.INTEGRATION_ARCHITECTURE.007
+    text: REST API documented for all integration use cases
+  - id: PRC.INTEGRATIONS.INTEGRATION_ARCHITECTURE.008
+    text: Rate limiting per integration/API key with headers returned
+  - id: PRC.INTEGRATIONS.INTEGRATION_ARCHITECTURE.009
+    text: Integration health endpoint showing connected integration status
+  - id: PRC.INTEGRATIONS.INTEGRATION_ARCHITECTURE.010
+    text: Retry logic with backoff on all integration call failures
+  - id: PRC.INTEGRATIONS.INTEGRATION_ARCHITECTURE.011
+    text: Idempotent inbound event processing
+  - id: PRC.INTEGRATIONS.INTEGRATION_ARCHITECTURE.012
+    text: Sandbox environment for integration testing before go-live
+  - id: PRC.INTEGRATIONS.INTEGRATION_ARCHITECTURE.013
+    text: API versioning for stable long-term integration contracts
+  - id: PRC.INTEGRATIONS.INTEGRATION_ARCHITECTURE.014
+    text: Breaking change notification sent to all active integration owners
+  - id: PRC.INTEGRATIONS.INTEGRATION_ARCHITECTURE.015
+    text: Integration marketplace or catalog with one-click connect flow
+- id: PRC.INTEGRATIONS.KEY_PLATFORM_INTEGRATIONS
+  name: Key Platform Integrations
+  items:
+  - id: PRC.INTEGRATIONS.KEY_PLATFORM_INTEGRATIONS.001
+    text: 'Transactional email: SendGrid, Postmark, AWS SES, or Mailgun'
+  - id: PRC.INTEGRATIONS.KEY_PLATFORM_INTEGRATIONS.002
+    text: 'SMS/messaging: Twilio, AWS SNS, or MessageBird'
+  - id: PRC.INTEGRATIONS.KEY_PLATFORM_INTEGRATIONS.003
+    text: 'Push notifications: FCM (Android), APNS (iOS), OneSignal'
+  - id: PRC.INTEGRATIONS.KEY_PLATFORM_INTEGRATIONS.004
+    text: 'Payment processing: Stripe, Braintree, or Adyen'
+  - id: PRC.INTEGRATIONS.KEY_PLATFORM_INTEGRATIONS.005
+    text: 'Identity/SSO: Okta, Auth0, Azure AD, or Google Workspace'
+  - id: PRC.INTEGRATIONS.KEY_PLATFORM_INTEGRATIONS.006
+    text: 'CRM: Salesforce, HubSpot, or Pipedrive'
+  - id: PRC.INTEGRATIONS.KEY_PLATFORM_INTEGRATIONS.007
+    text: 'Help desk: Zendesk, Intercom, or Freshdesk'
+  - id: PRC.INTEGRATIONS.KEY_PLATFORM_INTEGRATIONS.008
+    text: 'Analytics/CDP: Segment, Mixpanel, Amplitude, or Rudderstack'
+  - id: PRC.INTEGRATIONS.KEY_PLATFORM_INTEGRATIONS.009
+    text: 'Error tracking: Sentry, Bugsnag, or Rollbar'
+  - id: PRC.INTEGRATIONS.KEY_PLATFORM_INTEGRATIONS.010
+    text: 'Storage: AWS S3, Google Drive, Dropbox, or Box'
+  - id: PRC.INTEGRATIONS.KEY_PLATFORM_INTEGRATIONS.011
+    text: 'Calendar: Google Calendar or Microsoft Outlook/Exchange'
+  - id: PRC.INTEGRATIONS.KEY_PLATFORM_INTEGRATIONS.012
+    text: 'Chat notifications: Slack or Microsoft Teams'
+  - id: PRC.INTEGRATIONS.KEY_PLATFORM_INTEGRATIONS.013
+    text: 'Task management: Jira, Linear, Asana, or Monday.com'
+  - id: PRC.INTEGRATIONS.KEY_PLATFORM_INTEGRATIONS.014
+    text: 'Version control: GitHub, GitLab, or Bitbucket'
+  - id: PRC.INTEGRATIONS.KEY_PLATFORM_INTEGRATIONS.015
+    text: 'AI/LLM: OpenAI, Anthropic, Cohere, or Google Gemini'
+  - id: PRC.INTEGRATIONS.KEY_PLATFORM_INTEGRATIONS.016
+    text: 'Maps/geo: Google Maps, Mapbox, or HERE'
+  - id: PRC.INTEGRATIONS.KEY_PLATFORM_INTEGRATIONS.017
+    text: 'Search: Algolia, Elasticsearch, or Typesense'
+  - id: PRC.INTEGRATIONS.KEY_PLATFORM_INTEGRATIONS.018
+    text: 'Accounting: QuickBooks, Xero, or NetSuite'
+  - id: PRC.INTEGRATIONS.KEY_PLATFORM_INTEGRATIONS.019
+    text: 'E-signature: DocuSign, HelloSign, or Adobe Sign'
+  - id: PRC.INTEGRATIONS.KEY_PLATFORM_INTEGRATIONS.020
+    text: 'Data warehouse: Snowflake, BigQuery, or Redshift'
+- id: PRC.INTEGRATIONS.INTEGRATION_QUALITY
+  name: Integration Quality
+  items:
+  - id: PRC.INTEGRATIONS.INTEGRATION_QUALITY.001
+    text: OAuth token refresh handled gracefully on expiry without silent failures
+  - id: PRC.INTEGRATIONS.INTEGRATION_QUALITY.002
+    text: Credential validation on initial connection; invalid credentials not saved
+  - id: PRC.INTEGRATIONS.INTEGRATION_QUALITY.003
+    text: Clear, actionable error message when integration fails
+  - id: PRC.INTEGRATIONS.INTEGRATION_QUALITY.004
+    text: Re-authorization flow triggered automatically on authentication error
+  - id: PRC.INTEGRATIONS.INTEGRATION_QUALITY.005
+    text: Disconnect/revoke cleans up stored tokens and halts all future calls
+  - id: PRC.INTEGRATIONS.INTEGRATION_QUALITY.006
+    text: 'Data sync conflict resolution strategy defined: last-write wins vs manual review'
+  - id: PRC.INTEGRATIONS.INTEGRATION_QUALITY.007
+    text: 'Partial failure handling: one item failure does not fail entire sync batch'
+  - id: PRC.INTEGRATIONS.INTEGRATION_QUALITY.008
+    text: 'Sync history log: what synced, when, result, errors per record'
+  - id: PRC.INTEGRATIONS.INTEGRATION_QUALITY.009
+    text: 'Integration status indicator in UI: connected, error, syncing'
+  - id: PRC.INTEGRATIONS.INTEGRATION_QUALITY.010
+    text: Third-party API version pinned; tested before upgrade
+  - id: PRC.INTEGRATIONS.INTEGRATION_QUALITY.011
+    text: Third-party API rate limits respected with backoff strategy
+  - id: PRC.INTEGRATIONS.INTEGRATION_QUALITY.012
+    text: 'Third-party outage handled gracefully: queue and retry, status shown to user'
+  - id: PRC.INTEGRATIONS.INTEGRATION_QUALITY.013
+    text: Integration tests with mocked API responses (VCR cassettes, WireMock, Mockoon)
+  - id: PRC.INTEGRATIONS.INTEGRATION_QUALITY.014
+    text: Contract tests (Pact) to verify integration compatibility before deploy

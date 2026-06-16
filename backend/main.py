@@ -20,6 +20,7 @@ from corpus import get_index
 from routes.verse import router as verse_router
 from routes.complete import router as complete_router
 from routes.stubs import router as stubs_router
+from routes.study import router as study_router
 
 FRONTEND_DIST = Path(__file__).parent.parent / "frontend" / "dist"
 
@@ -50,6 +51,7 @@ app.add_middleware(
 app.include_router(verse_router)
 app.include_router(complete_router)
 app.include_router(stubs_router)
+app.include_router(study_router)
 
 
 @app.get("/api/health")

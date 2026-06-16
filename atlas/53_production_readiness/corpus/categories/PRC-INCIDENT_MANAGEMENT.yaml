@@ -1,0 +1,94 @@
+schema_version: '1.0'
+category_id: PRC.INCIDENT_MANAGEMENT
+name: Incident Management
+icon: ⚠
+color: '#FCA5A5'
+default_severity: high
+coverage_status: FULL
+skill_refs:
+- SKILL_OBSERVABILITY_SRE_INCIDENT_RESPONSE_001
+- SKILL_CASCADE_ROOT_TRIAGE_001
+- SKILL_RELIABILITY_SECURITY_SENTINEL_001
+capability_status: MISSING
+tool_refs: []
+mcp_refs: []
+command_refs: []
+capability_refs: []
+capability_notes: No incident-orchestration executor. Build an incident create/triage route+service (alert integration).
+sections:
+- id: PRC.INCIDENT_MANAGEMENT.DETECTION_AND_RESPONSE
+  name: Detection & Response
+  items:
+  - id: PRC.INCIDENT_MANAGEMENT.DETECTION_AND_RESPONSE.001
+    text: All P1 alerts page on-call immediately via PagerDuty or OpsGenie
+  - id: PRC.INCIDENT_MANAGEMENT.DETECTION_AND_RESPONSE.002
+    text: 'Alert grouping: related alerts consolidated to reduce noise'
+  - id: PRC.INCIDENT_MANAGEMENT.DETECTION_AND_RESPONSE.003
+    text: 'Alert severity correctly calibrated: not everything is P1'
+  - id: PRC.INCIDENT_MANAGEMENT.DETECTION_AND_RESPONSE.004
+    text: 'MTTD (Mean Time to Detect): target < 5 minutes for Tier 1 services'
+  - id: PRC.INCIDENT_MANAGEMENT.DETECTION_AND_RESPONSE.005
+    text: Synthetic monitoring detects user-visible failures before on-call fires
+  - id: PRC.INCIDENT_MANAGEMENT.DETECTION_AND_RESPONSE.006
+    text: 'Incident declaration criteria: clear definition of P1, P2, P3'
+  - id: PRC.INCIDENT_MANAGEMENT.DETECTION_AND_RESPONSE.007
+    text: Incident commander assigned immediately on P1 declaration
+  - id: PRC.INCIDENT_MANAGEMENT.DETECTION_AND_RESPONSE.008
+    text: 'War room created: dedicated Slack channel per incident'
+  - id: PRC.INCIDENT_MANAGEMENT.DETECTION_AND_RESPONSE.009
+    text: Customer-facing status page updated within 15 minutes
+  - id: PRC.INCIDENT_MANAGEMENT.DETECTION_AND_RESPONSE.010
+    text: Stakeholder notification within 15 minutes of P1 declaration
+  - id: PRC.INCIDENT_MANAGEMENT.DETECTION_AND_RESPONSE.011
+    text: 'Escalation path: who to call if on-call does not respond within 5 minutes'
+  - id: PRC.INCIDENT_MANAGEMENT.DETECTION_AND_RESPONSE.012
+    text: Incident timeline maintained in real-time during active incident
+  - id: PRC.INCIDENT_MANAGEMENT.DETECTION_AND_RESPONSE.013
+    text: 'External communication: plain language, no technical jargon'
+  - id: PRC.INCIDENT_MANAGEMENT.DETECTION_AND_RESPONSE.014
+    text: Status page updates every 30 minutes during active P1
+  - id: PRC.INCIDENT_MANAGEMENT.DETECTION_AND_RESPONSE.015
+    text: Customer communication templates pre-written for common scenarios
+  - id: PRC.INCIDENT_MANAGEMENT.DETECTION_AND_RESPONSE.016
+    text: Rollback attempted before fix if recent deploy correlates with incident
+  - id: PRC.INCIDENT_MANAGEMENT.DETECTION_AND_RESPONSE.017
+    text: MTTR tracked and compared to SLO; trend dashboarded
+  - id: PRC.INCIDENT_MANAGEMENT.DETECTION_AND_RESPONSE.018
+    text: 'Resolution verified: smoke tests confirm service restored'
+  - id: PRC.INCIDENT_MANAGEMENT.DETECTION_AND_RESPONSE.019
+    text: All-clear communicated to all stakeholders and status page updated
+  - id: PRC.INCIDENT_MANAGEMENT.DETECTION_AND_RESPONSE.020
+    text: 'Post-incident monitoring period: heightened alertness for 2 hours after resolution'
+- id: PRC.INCIDENT_MANAGEMENT.POSTMORTEM_AND_LEARNING
+  name: Postmortem & Learning
+  items:
+  - id: PRC.INCIDENT_MANAGEMENT.POSTMORTEM_AND_LEARNING.001
+    text: 'Blameless postmortem culture: focus on systems and processes, not people'
+  - id: PRC.INCIDENT_MANAGEMENT.POSTMORTEM_AND_LEARNING.002
+    text: Postmortem required for all P1 incidents; optional for P2
+  - id: PRC.INCIDENT_MANAGEMENT.POSTMORTEM_AND_LEARNING.003
+    text: Postmortem document started within 24 hours of resolution
+  - id: PRC.INCIDENT_MANAGEMENT.POSTMORTEM_AND_LEARNING.004
+    text: 'Postmortem template: timeline, impact, root cause, contributing factors, action items'
+  - id: PRC.INCIDENT_MANAGEMENT.POSTMORTEM_AND_LEARNING.005
+    text: Five Whys analysis applied to identify root cause
+  - id: PRC.INCIDENT_MANAGEMENT.POSTMORTEM_AND_LEARNING.006
+    text: Contributing factors (not just root cause) fully identified
+  - id: PRC.INCIDENT_MANAGEMENT.POSTMORTEM_AND_LEARNING.007
+    text: 'Action items: specific, assigned to owner, deadline within 30 days'
+  - id: PRC.INCIDENT_MANAGEMENT.POSTMORTEM_AND_LEARNING.008
+    text: Action items tracked to completion in sprint backlog
+  - id: PRC.INCIDENT_MANAGEMENT.POSTMORTEM_AND_LEARNING.009
+    text: Postmortem review meeting within 72 hours of resolution
+  - id: PRC.INCIDENT_MANAGEMENT.POSTMORTEM_AND_LEARNING.010
+    text: Postmortem shared with broader engineering organization
+  - id: PRC.INCIDENT_MANAGEMENT.POSTMORTEM_AND_LEARNING.011
+    text: 'Postmortem archive: all past postmortems searchable; linked from alert runbooks'
+  - id: PRC.INCIDENT_MANAGEMENT.POSTMORTEM_AND_LEARNING.012
+    text: 'Recurring incident pattern detection: trends analyzed quarterly'
+  - id: PRC.INCIDENT_MANAGEMENT.POSTMORTEM_AND_LEARNING.013
+    text: Runbooks updated based on postmortem findings
+  - id: PRC.INCIDENT_MANAGEMENT.POSTMORTEM_AND_LEARNING.014
+    text: Chaos engineering scenarios derived from real incidents
+  - id: PRC.INCIDENT_MANAGEMENT.POSTMORTEM_AND_LEARNING.015
+    text: 'On-call fatigue monitored: toil, false alarm rate, MTTR trending reviewed monthly'

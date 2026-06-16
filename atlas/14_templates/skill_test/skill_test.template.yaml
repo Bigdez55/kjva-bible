@@ -1,5 +1,5 @@
 # Template: skill_test
-# Replace placeholders. See 26_schemas/skill_test/ if a schema exists.
+# Replace placeholders. See schemas/skill_test/ if a schema exists.
 id: "{id}"
 name: "{name}"
 status: draft

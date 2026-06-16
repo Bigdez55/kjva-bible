@@ -11,9 +11,9 @@ atlas_knowledge_vault
 - Current status snapshot when available.
 
 ## Required Outputs
-- `44_atlas_knowledge_vault/reports/atlas_knowledge_vault_<run_id>.md`
-- `44_atlas_knowledge_vault/notes/<run_id>/*.md`
-- `44_atlas_knowledge_vault/knowledge_vault.manifest.yaml`
+- `44_knowledge_vault/reports/atlas_knowledge_vault_<run_id>.md`
+- `44_knowledge_vault/notes/<run_id>/*.md`
+- `44_knowledge_vault/knowledge_vault.manifest.yaml`
 
 ## Validation Gates
 - Prefer `--require-gates --apply` for merge-safe exports.

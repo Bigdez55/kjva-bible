@@ -1,0 +1,134 @@
+schema_version: '1.0'
+category_id: PRC.DATA_AND_PRIVACY_COMPLIANCE
+name: Data & Privacy Compliance
+icon: ⬤
+color: '#A3E635'
+default_severity: high
+coverage_status: FULL
+skill_refs:
+- SKILL_DATA_ISOLATION_STORAGE_001
+- SKILL_COMPLIANCE_CHECK_001
+- SKILL_SECURITY_COMPLIANCE_GOVERNANCE_001
+capability_status: MISSING
+tool_refs: []
+mcp_refs: []
+command_refs: []
+capability_refs: []
+capability_notes: No DSAR/erasure executor. Build a privacy-request (export/delete) route+service, tenant-scoped.
+sections:
+- id: PRC.DATA_AND_PRIVACY_COMPLIANCE.DATA_CLASSIFICATION_AND_GOVERNANCE
+  name: Data Classification & Governance
+  items:
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.DATA_CLASSIFICATION_AND_GOVERNANCE.001
+    text: 'Data classification policy defined: Public, Internal, Confidential, Restricted'
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.DATA_CLASSIFICATION_AND_GOVERNANCE.002
+    text: All data stores classified per policy
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.DATA_CLASSIFICATION_AND_GOVERNANCE.003
+    text: Data owner assigned to every dataset
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.DATA_CLASSIFICATION_AND_GOVERNANCE.004
+    text: 'PII inventory: all PII fields identified across all tables, services, and logs'
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.DATA_CLASSIFICATION_AND_GOVERNANCE.005
+    text: Sensitive field tags applied in schema and application code
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.DATA_CLASSIFICATION_AND_GOVERNANCE.006
+    text: 'Data lineage documented: source → transforms → final store for all PII'
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.DATA_CLASSIFICATION_AND_GOVERNANCE.007
+    text: 'Data minimization enforced: only data needed for stated purpose collected'
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.DATA_CLASSIFICATION_AND_GOVERNANCE.008
+    text: Third-party data sharing agreements documented
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.DATA_CLASSIFICATION_AND_GOVERNANCE.009
+    text: Data Processing Agreements (DPAs) signed with all data processors
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.DATA_CLASSIFICATION_AND_GOVERNANCE.010
+    text: Sub-processor list maintained and published in privacy policy
+- id: PRC.DATA_AND_PRIVACY_COMPLIANCE.GDPR_COMPLIANCE
+  name: GDPR Compliance
+  items:
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.GDPR_COMPLIANCE.001
+    text: Lawful basis for processing documented per PII type (consent, contract, legitimate interest)
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.GDPR_COMPLIANCE.002
+    text: 'Privacy by design: privacy requirements in every feature specification'
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.GDPR_COMPLIANCE.003
+    text: DPIA (Data Protection Impact Assessment) for high-risk processing activities
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.GDPR_COMPLIANCE.004
+    text: 'Consent: explicit opt-in, granular, documented, revocable at any time'
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.GDPR_COMPLIANCE.005
+    text: 'Consent records stored: who, when, what, via which mechanism'
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.GDPR_COMPLIANCE.006
+    text: 'Right to access: user can request all data held within 30 days (Art. 15)'
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.GDPR_COMPLIANCE.007
+    text: 'Right to erasure: account and all associated data deletable (Art. 17)'
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.GDPR_COMPLIANCE.008
+    text: 'Erasure tested: deletion cascades through all services within retention period'
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.GDPR_COMPLIANCE.009
+    text: 'Right to portability: export in machine-readable JSON/CSV (Art. 20)'
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.GDPR_COMPLIANCE.010
+    text: 'Right to rectification: user can correct inaccurate data (Art. 16)'
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.GDPR_COMPLIANCE.011
+    text: 'Right to object: user can opt out of marketing processing'
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.GDPR_COMPLIANCE.012
+    text: Automated decision making disclosure if Article 22 applies
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.GDPR_COMPLIANCE.013
+    text: 'Data breach notification plan: 72h notification to supervisory authority'
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.GDPR_COMPLIANCE.014
+    text: 'Cross-border transfer: legal mechanism in place (SCCs or adequacy decision)'
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.GDPR_COMPLIANCE.015
+    text: 'Privacy policy: plain language, complete, accessible from every page'
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.GDPR_COMPLIANCE.016
+    text: 'Cookie consent: no non-essential cookies fired before explicit consent'
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.GDPR_COMPLIANCE.017
+    text: Record of Processing Activities (ROPA) maintained and current
+- id: PRC.DATA_AND_PRIVACY_COMPLIANCE.CCPA_HIPAA_PCI_AND_OTHER_REGULATIONS
+  name: CCPA, HIPAA, PCI & Other Regulations
+  items:
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.CCPA_HIPAA_PCI_AND_OTHER_REGULATIONS.001
+    text: 'CCPA: do-not-sell opt-out mechanism for California users'
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.CCPA_HIPAA_PCI_AND_OTHER_REGULATIONS.002
+    text: 'CCPA: categories of personal information collected published'
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.CCPA_HIPAA_PCI_AND_OTHER_REGULATIONS.003
+    text: 'CCPA: consumer rights request process operational'
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.CCPA_HIPAA_PCI_AND_OTHER_REGULATIONS.004
+    text: 'HIPAA: BAAs signed with all vendors handling PHI if applicable'
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.CCPA_HIPAA_PCI_AND_OTHER_REGULATIONS.005
+    text: 'HIPAA: PHI encrypted at rest and in transit'
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.CCPA_HIPAA_PCI_AND_OTHER_REGULATIONS.006
+    text: 'HIPAA: minimum-necessary access to PHI enforced'
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.CCPA_HIPAA_PCI_AND_OTHER_REGULATIONS.007
+    text: 'HIPAA: audit logging of all PHI access'
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.CCPA_HIPAA_PCI_AND_OTHER_REGULATIONS.008
+    text: 'PCI-DSS: cardholder data never passes through servers (hosted tokenization)'
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.CCPA_HIPAA_PCI_AND_OTHER_REGULATIONS.009
+    text: 'PCI-DSS: SAQ completed annually'
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.CCPA_HIPAA_PCI_AND_OTHER_REGULATIONS.010
+    text: 'COPPA: parental consent mechanism if serving users under 13'
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.CCPA_HIPAA_PCI_AND_OTHER_REGULATIONS.011
+    text: SOC 2 Type II audit scheduled if enterprise customers require it
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.CCPA_HIPAA_PCI_AND_OTHER_REGULATIONS.012
+    text: Industry-specific regulations reviewed for your vertical
+- id: PRC.DATA_AND_PRIVACY_COMPLIANCE.DATA_SECURITY_AND_AUDIT
+  name: Data Security & Audit
+  items:
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.DATA_SECURITY_AND_AUDIT.001
+    text: 'PII access logged: who accessed what record, when, from which service'
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.DATA_SECURITY_AND_AUDIT.002
+    text: 'Anomalous PII access detected: unusual volume, off-hours, or pattern alerts'
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.DATA_SECURITY_AND_AUDIT.003
+    text: PII not logged in application logs (scrubbed before write)
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.DATA_SECURITY_AND_AUDIT.004
+    text: PII not in URL parameters (body or session only)
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.DATA_SECURITY_AND_AUDIT.005
+    text: PII not in error messages returned to any client
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.DATA_SECURITY_AND_AUDIT.006
+    text: 'Analytics and data warehouse: PII anonymized or pseudonymized'
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.DATA_SECURITY_AND_AUDIT.007
+    text: PII not in bug tracking or error monitoring in cleartext
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.DATA_SECURITY_AND_AUDIT.008
+    text: Synthetic or anonymized data used in dev/staging; not production copy
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.DATA_SECURITY_AND_AUDIT.009
+    text: Data subject request process tested end-to-end
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.DATA_SECURITY_AND_AUDIT.010
+    text: 'Data retention automation: records deleted after retention period expires'
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.DATA_SECURITY_AND_AUDIT.011
+    text: Deleted data purged from backups within retention cycle
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.DATA_SECURITY_AND_AUDIT.012
+    text: Data breach response team assigned, trained, and drills conducted
+  - id: PRC.DATA_AND_PRIVACY_COMPLIANCE.DATA_SECURITY_AND_AUDIT.013
+    text: Security awareness training covers data handling responsibilities

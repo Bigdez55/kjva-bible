@@ -69,8 +69,8 @@ After completing all 8 steps, summarize findings into an internal "reality model
    - All repos (Layer 11 — Ecosystem): also produce `ecosystem/cross_repo_dependency_<name>.mmd` and `ecosystem/ecosystem_map_<name>.mmd`.
 
    **Stubs are acceptable; blanks are not.** Every mandatory diagram must exist on disk with at minimum a `[DISCOVERY PENDING]` placeholder node. Real content from the discovery protocol must replace placeholders within the same T1 run wherever the data exists.
-3. Run `python3 atlas/25_automation/registry_sync/sync_registries.py --write` inside the target.
-4. Run every script under `atlas/25_automation/drift_checkers/` and write findings into `atlas/23_evidence/evidence_packets/EP-<date>-onboarding-tier1.yaml`.
+3. Run `python3 atlas/infrastructure/scripts/registry_sync/sync_registries.py --write` inside the target.
+4. Run every script under `atlas/infrastructure/scripts/drift_checkers/` and write findings into `atlas/23_evidence/evidence_packets/EP-<date>-onboarding-tier1.yaml`.
 5. Populate the repo's twin in central ATLAS under [39_repo_twins/twins/<NAME>/](../../39_repo_twins/twins/). Replace placeholder `[]` content in `architecture.snapshot.yaml`, `component.graph.yaml`, `dependency.graph.yaml`, and `diagram.registry.yaml` with values derived from the discovery protocol and steps 1–2. Update `last_known_state.md` with a one-paragraph factual summary (no speculation). Flip `sync_status.yaml` from `pending_ingestion` to `synced`. **Do this on a separate branch in central ATLAS, not on `main`.**
 6. Commit and push the target-repo branch (typically `claude/onboarding-tier1`).
 
@@ -135,7 +135,7 @@ Outputs: drift report (per session), mistake ledger entries, promoted skills, re
 | Target is not a git repo | precondition check at start of any tier | Run `git init` (and remote setup if applicable) before retrying. |
 | Working tree on target is dirty | `git status --porcelain` before branch creation | Commit or stash before onboarding to avoid mixing user work with onboarding output. |
 | Twin (T1) skipped | `39_repo_twins/twins/<NAME>/sync_status.yaml` still says `pending_ingestion` | Re-run T1 step 5; verify status flipped to `synced`. |
-| `current.truth.yaml` overwritten by re-sync | sync should exclude it via `PER_ITEM_EXCLUDES` in [25_automation/sync_scripts/sync_to_child_repo.py](../../25_automation/sync_scripts/sync_to_child_repo.py) | Confirm exclusion; if regression, restore from git history and refresh per ADR-0011. |
+| `current.truth.yaml` overwritten by re-sync | sync should exclude it via `PER_ITEM_EXCLUDES` in [infrastructure/scripts/sync_scripts/sync_to_child_repo.py](../../infrastructure/scripts/sync_scripts/sync_to_child_repo.py) | Confirm exclusion; if regression, restore from git history and refresh per ADR-0011. |
 | Mistake repeats without skill update (T4) | mistake ledger shows same root cause ≥ 2 times | Promote via `/apex:improve_skill`; add validation test. |
 
 ## Validation

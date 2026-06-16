@@ -20,8 +20,8 @@ REQUIRED_PATHS = [
     "platform/sdlc/13_skills/skill_refinery/trigger_router.yaml",
     "platform/systems/24_prompt_library/reusable_prompts/trigger_router_instructions.md",
     "schemas/trigger_router/trigger_router.schema.yaml",
-    "platform/systems/43_atlas_graph_engine/graphs/trigger_skill.graph.json",
-    "platform/systems/44_atlas_knowledge_vault/07_skills/Trigger_Router.md",
+    "platform/systems/43_graph_engine/graphs/trigger_skill.graph.json",
+    "platform/systems/44_knowledge_vault/07_skills/Trigger_Router.md",
     "platform/systems/37_command_protocol/atlas_intelligence_routing.yaml",
     "platform/systems/37_command_protocol/platform_build_routing.yaml",
     "platform/systems/37_command_protocol/existing_repo_audit_routing.yaml",
@@ -151,9 +151,7 @@ def main() -> int:
     ]:
         failures.extend(validate_json(ROOT / rel))
 
-    source_index = yaml.safe_load(
-        (ROOT / "platform/sdlc/16_knowledge/external_collateral/skills_stack_2026-05-17/source_index.yaml").read_text()
-    )
+    source_index = yaml.safe_load((ROOT / "platform/sdlc/16_knowledge/external_collateral/skills_stack_2026-05-17/source_index.yaml").read_text())
     if len(source_index.get("sources", []) or []) < 11:
         failures.append("source_index.yaml must list all 11 source files")
 

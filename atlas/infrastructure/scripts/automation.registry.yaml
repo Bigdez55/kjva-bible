@@ -1,69 +1,89 @@
-last_updated: '2026-05-27'
+last_updated: '2026-06-14'
 scan_dir: infrastructure/scripts
-total: 81
+total: 99
 automations:
-- name: __init__
-  path: infrastructure/scripts/atlas_core/__init__.py
-- name: __init__
-  path: infrastructure/scripts/atlas_core/adapters/__init__.py
-- name: agents_adapter
-  path: infrastructure/scripts/atlas_core/adapters/agents_adapter.py
-- name: architecture_adapter
-  path: infrastructure/scripts/atlas_core/adapters/architecture_adapter.py
-- name: bookworm_adapter
-  path: infrastructure/scripts/atlas_core/adapters/bookworm_adapter.py
-- name: context_compiler_adapter
-  path: infrastructure/scripts/atlas_core/adapters/context_compiler_adapter.py
-- name: drift_adapter
-  path: infrastructure/scripts/atlas_core/adapters/drift_adapter.py
-- name: manifest_adapter
-  path: infrastructure/scripts/atlas_core/adapters/manifest_adapter.py
-- name: proof_matrix_adapter
-  path: infrastructure/scripts/atlas_core/adapters/proof_matrix_adapter.py
-- name: registry_adapter
-  path: infrastructure/scripts/atlas_core/adapters/registry_adapter.py
-- name: repo_twins_adapter
-  path: infrastructure/scripts/atlas_core/adapters/repo_twins_adapter.py
-- name: skills_adapter
-  path: infrastructure/scripts/atlas_core/adapters/skills_adapter.py
-- name: truth_state_adapter
-  path: infrastructure/scripts/atlas_core/adapters/truth_state_adapter.py
-- name: atlas
-  path: infrastructure/scripts/atlas_core/atlas.py
-- name: atlas_context
-  path: infrastructure/scripts/atlas_core/atlas_context.py
-- name: atlas_gates
-  path: infrastructure/scripts/atlas_core/atlas_gates.py
-- name: atlas_graph_engine
-  path: infrastructure/scripts/atlas_core/atlas_graph_engine.py
-- name: atlas_ingest
-  path: infrastructure/scripts/atlas_core/atlas_ingest.py
-- name: atlas_inventory
-  path: infrastructure/scripts/atlas_core/atlas_inventory.py
-- name: atlas_knowledge_vault
-  path: infrastructure/scripts/atlas_core/atlas_knowledge_vault.py
-- name: atlas_models
-  path: infrastructure/scripts/atlas_core/atlas_models.py
-- name: atlas_paths
-  path: infrastructure/scripts/atlas_core/atlas_paths.py
-- name: atlas_repo_events
-  path: infrastructure/scripts/atlas_core/atlas_repo_events.py
-- name: atlas_reports
-  path: infrastructure/scripts/atlas_core/atlas_reports.py
-- name: atlas_status
-  path: infrastructure/scripts/atlas_core/atlas_status.py
-- name: atlas_tenants
-  path: infrastructure/scripts/atlas_core/atlas_tenants.py
-- name: test_atlas_commands
-  path: infrastructure/scripts/atlas_core/tests/test_atlas_commands.py
-- name: test_atlas_gates
-  path: infrastructure/scripts/atlas_core/tests/test_atlas_gates.py
-- name: test_atlas_inventory
-  path: infrastructure/scripts/atlas_core/tests/test_atlas_inventory.py
-- name: test_atlas_status
-  path: infrastructure/scripts/atlas_core/tests/test_atlas_status.py
+- name: architecture_map_watcher
+  path: infrastructure/scripts/architecture_map/architecture_map_watcher.py
+- name: compare_spec_build
+  path: infrastructure/scripts/architecture_map/compare_spec_build.py
+- name: derive_proof_status
+  path: infrastructure/scripts/architecture_map/derive_proof_status.py
+- name: derive_repo_diagram
+  path: infrastructure/scripts/architecture_map/derive_repo_diagram.py
+- name: extract_from_html_map
+  path: infrastructure/scripts/architecture_map/extract_from_html_map.py
+- name: generate_map_data
+  path: infrastructure/scripts/architecture_map/generate_map_data.py
+- name: scan_repo_census
+  path: infrastructure/scripts/architecture_map/scan_repo_census.py
+- name: update_action_log
+  path: infrastructure/scripts/architecture_map/update_action_log.py
 - name: audit_skill_router_integration
   path: infrastructure/scripts/audit_skill_router_integration.py
+- name: __init__
+  path: infrastructure/scripts/core/__init__.py
+- name: __init__
+  path: infrastructure/scripts/core/adapters/__init__.py
+- name: agents_adapter
+  path: infrastructure/scripts/core/adapters/agents_adapter.py
+- name: architecture_adapter
+  path: infrastructure/scripts/core/adapters/architecture_adapter.py
+- name: bookworm_adapter
+  path: infrastructure/scripts/core/adapters/bookworm_adapter.py
+- name: context_compiler_adapter
+  path: infrastructure/scripts/core/adapters/context_compiler_adapter.py
+- name: drift_adapter
+  path: infrastructure/scripts/core/adapters/drift_adapter.py
+- name: manifest_adapter
+  path: infrastructure/scripts/core/adapters/manifest_adapter.py
+- name: proof_matrix_adapter
+  path: infrastructure/scripts/core/adapters/proof_matrix_adapter.py
+- name: registry_adapter
+  path: infrastructure/scripts/core/adapters/registry_adapter.py
+- name: repo_twins_adapter
+  path: infrastructure/scripts/core/adapters/repo_twins_adapter.py
+- name: skills_adapter
+  path: infrastructure/scripts/core/adapters/skills_adapter.py
+- name: truth_state_adapter
+  path: infrastructure/scripts/core/adapters/truth_state_adapter.py
+- name: atlas
+  path: infrastructure/scripts/core/atlas.py
+- name: atlas_context
+  path: infrastructure/scripts/core/atlas_context.py
+- name: atlas_gates
+  path: infrastructure/scripts/core/atlas_gates.py
+- name: atlas_graph_engine
+  path: infrastructure/scripts/core/atlas_graph_engine.py
+- name: atlas_ingest
+  path: infrastructure/scripts/core/atlas_ingest.py
+- name: atlas_inventory
+  path: infrastructure/scripts/core/atlas_inventory.py
+- name: atlas_knowledge_vault
+  path: infrastructure/scripts/core/atlas_knowledge_vault.py
+- name: atlas_models
+  path: infrastructure/scripts/core/atlas_models.py
+- name: atlas_paths
+  path: infrastructure/scripts/core/atlas_paths.py
+- name: atlas_repo_events
+  path: infrastructure/scripts/core/atlas_repo_events.py
+- name: atlas_reports
+  path: infrastructure/scripts/core/atlas_reports.py
+- name: atlas_status
+  path: infrastructure/scripts/core/atlas_status.py
+- name: atlas_tenants
+  path: infrastructure/scripts/core/atlas_tenants.py
+- name: audit_export
+  path: infrastructure/scripts/core/audit_export.py
+- name: db_backup
+  path: infrastructure/scripts/core/db_backup.py
+- name: test_atlas_commands
+  path: infrastructure/scripts/core/tests/test_atlas_commands.py
+- name: test_atlas_gates
+  path: infrastructure/scripts/core/tests/test_atlas_gates.py
+- name: test_atlas_inventory
+  path: infrastructure/scripts/core/tests/test_atlas_inventory.py
+- name: test_atlas_status
+  path: infrastructure/scripts/core/tests/test_atlas_status.py
 - name: generate_mermaid_atlas
   path: infrastructure/scripts/diagram_generators/generate_mermaid_atlas.py
 - name: generate_readme_from_manifest
@@ -86,6 +106,10 @@ automations:
   path: infrastructure/scripts/log_miss.py
 - name: onboarding_validate_tiers
   path: infrastructure/scripts/onboarding_validate_tiers.py
+- name: completion_claim_guard
+  path: infrastructure/scripts/production_readiness/completion_claim_guard.py
+- name: derive_gate_state
+  path: infrastructure/scripts/production_readiness/derive_gate_state.py
 - name: build_proof_matrix
   path: infrastructure/scripts/proof_matrix/build_proof_matrix.py
 - name: rebuild_master_ledger
@@ -110,8 +134,6 @@ automations:
   path: infrastructure/scripts/skill_lifecycle/promote_skill.py
 - name: supersede_skill
   path: infrastructure/scripts/skill_lifecycle/supersede_skill.py
-- name: import_local_runtime_skills
-  path: infrastructure/scripts/skill_migration/import_local_runtime_skills.py
 - name: migrate_user_to_canonical
   path: infrastructure/scripts/skill_migration/migrate_user_to_canonical.py
 - name: phase2_backfill
@@ -122,8 +144,6 @@ automations:
   path: infrastructure/scripts/skill_migration/phase5b_strip_prefixes.py
 - name: generate_runtime_shims
   path: infrastructure/scripts/skill_projection/generate_runtime_shims.py
-- name: sync_codex_universal_skills
-  path: infrastructure/scripts/skill_projection/sync_codex_universal_skills.py
 - name: validate_projection_coverage
   path: infrastructure/scripts/skill_projection/validate_projection_coverage.py
 - name: auto_promote_external
@@ -136,6 +156,8 @@ automations:
   path: infrastructure/scripts/skill_refinement/perfection_report.py
 - name: refine_skill
   path: infrastructure/scripts/skill_refinement/refine_skill.py
+- name: skill_drift_detect
+  path: infrastructure/scripts/skill_sync/skill_drift_detect.py
 - name: validate_taxonomy
   path: infrastructure/scripts/skill_validators/validate_taxonomy.py
 - name: validate_tiered_schema
@@ -144,10 +166,18 @@ automations:
   path: infrastructure/scripts/sync_canonical_skills_to_repos.py
 - name: acquire_assistant_surfaces
   path: infrastructure/scripts/sync_scripts/acquire_assistant_surfaces.py
+- name: atlas_run
+  path: infrastructure/scripts/sync_scripts/atlas_run.py
+- name: atlas_sync
+  path: infrastructure/scripts/sync_scripts/atlas_sync.py
 - name: create_repo_twin
   path: infrastructure/scripts/sync_scripts/create_repo_twin.py
+- name: extract_repo_objects
+  path: infrastructure/scripts/sync_scripts/extract_repo_objects.py
 - name: harvest_claude_universal
   path: infrastructure/scripts/sync_scripts/harvest_claude_universal.py
+- name: reconcile_architecture_graph
+  path: infrastructure/scripts/sync_scripts/reconcile_architecture_graph.py
 - name: register_codex_projects
   path: infrastructure/scripts/sync_scripts/register_codex_projects.py
 - name: sync_to_child_repo
@@ -158,9 +188,15 @@ automations:
   path: infrastructure/scripts/sync_scripts/validate_assistant_surface_acquisition.py
 - name: test_route_intent
   path: infrastructure/scripts/tests/test_route_intent.py
+- name: validate_related_skills
+  path: infrastructure/scripts/validate_related_skills.py
 - name: validate_skill_router_integration
   path: infrastructure/scripts/validate_skill_router_integration.py
 - name: validate_skills_stack
   path: infrastructure/scripts/validate_skills_stack.py
 - name: validate_trigger_determinism
   path: infrastructure/scripts/validate_trigger_determinism.py
+- name: validate_documentation_capture
+  path: infrastructure/scripts/validation_scripts/validate_documentation_capture.py
+- name: wired_audit
+  path: infrastructure/scripts/wired_audit/wired_audit.py

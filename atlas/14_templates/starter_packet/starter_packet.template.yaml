@@ -1,5 +1,5 @@
 # Template: starter_packet
-# Replace placeholders. See 26_schemas/starter_packet/ if a schema exists.
+# Replace placeholders. See schemas/starter_packet/ if a schema exists.
 id: "{id}"
 name: "{name}"
 status: draft

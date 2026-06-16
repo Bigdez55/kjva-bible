@@ -20,15 +20,15 @@ trigger_conditions:
 - User needs to compile an ATLAS context payload from the local filesystem.
 - User asks to route a phrase through ATLAS and get the skill + output contract.
 hard_constraints:
-- Always confirm apps/backend/atlas-mcp/node_modules exists before claiming the server
+- Always confirm apps/backend/mcp/node_modules exists before claiming the server
   is runnable.
 - Never assert graph state without calling atlas_graph_query.
 - Never assert skill content without calling atlas_skill_get.
 - "Never auto-run npm install \u2014 surface the command for the user to run."
 - "Core logic lives in src/core.ts \u2014 do not duplicate it in index.ts, api-server.ts,\
   \ or server-factory.ts."
-- "All imports within apps/backend/atlas-mcp/ are local (./core.ts, ./server-factory.ts)\
-  \ \u2014 do not import from apps/frontend/atlas/src/lib/."
+- "All imports within apps/backend/mcp/ are local (./core.ts, ./server-factory.ts)\
+  \ \u2014 do not import from apps/frontend/shell/src/lib/."
 tier: active
 ledger: 13_skills/skill_refinery/correction_ledgers/SKILL_ATLAS_MCP_001.ledger.yaml
 related_skills:
@@ -50,9 +50,9 @@ aliases:
 - atlas graph MCP
 - atlas skill MCP
 required_outputs:
-- apps/backend/atlas-mcp/package.json (with @modelcontextprotocol/sdk dependency)
-- apps/backend/atlas-mcp/tsconfig.json (NodeNext module resolution)
-- apps/backend/atlas-mcp/src/index.ts (stdio MCP server with 5 tools)
+- apps/backend/mcp/package.json (with @modelcontextprotocol/sdk dependency)
+- apps/backend/mcp/tsconfig.json (NodeNext module resolution)
+- apps/backend/mcp/src/index.ts (stdio MCP server with 5 tools)
 - .mcp.json config block for Claude Code
 - Install command for user to run
 mcp_tools:
@@ -67,14 +67,14 @@ mcp_tools:
 - name: atlas_knowledge_search
   description: Keyword search across ATLAS knowledge vault notes
 server:
-  package: apps/backend/atlas-mcp/
+  package: apps/backend/mcp/
   transports:
   - "stdio (Claude Code, Codex, Gemini \u2014 src/index.ts)"
   - "SSE MCP (network MCP clients \u2014 GET /mcp/sse)"
   - "REST API (any HTTP client \u2014 /api/*)"
   entry:
-    stdio: apps/backend/atlas-mcp/src/index.ts
-    api: apps/backend/atlas-mcp/src/api-server.ts
+    stdio: apps/backend/mcp/src/index.ts
+    api: apps/backend/mcp/src/api-server.ts
   runtime: "Node.js via tsx (noEmit tsconfig \u2014 no compiled dist)"
 provenance:
   created_at: '2026-05-25'

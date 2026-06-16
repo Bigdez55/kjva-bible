@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Every active spec must appear in platform/systems/18_registry/traceability.yaml."""
+"""Every active spec must appear in 18_registry/traceability.yaml as a spec_id."""
 import sys, yaml
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]

@@ -1,0 +1,99 @@
+schema_version: '1.0'
+category_id: PRC.ENTERPRISE_READINESS
+name: Enterprise Readiness
+icon: ◲
+color: '#A78BFA'
+default_severity: medium
+coverage_status: FULL
+skill_refs:
+- SKILL_AZURE_COMPLIANCE_001
+- SKILL_SECURITY_COMPLIANCE_GOVERNANCE_001
+- SKILL_AZURE_RBAC_001
+capability_status: MISSING
+tool_refs: []
+mcp_refs: []
+command_refs: []
+capability_refs: []
+capability_notes: No enterprise-controls executor. Build SSO/SCIM/audit-export routes+services.
+sections:
+- id: PRC.ENTERPRISE_READINESS.B2B_ACCOUNT_CONTROLS
+  name: B2B Account Controls
+  items:
+  - id: PRC.ENTERPRISE_READINESS.B2B_ACCOUNT_CONTROLS.001
+    text: Organization and workspace model supports multi-user accounts
+  - id: PRC.ENTERPRISE_READINESS.B2B_ACCOUNT_CONTROLS.002
+    text: Domain claim and verification supported
+  - id: PRC.ENTERPRISE_READINESS.B2B_ACCOUNT_CONTROLS.003
+    text: Enterprise SSO supports SAML 2.0 and/or OIDC
+  - id: PRC.ENTERPRISE_READINESS.B2B_ACCOUNT_CONTROLS.004
+    text: 'SCIM provisioning: create, update, deactivate, and group sync'
+  - id: PRC.ENTERPRISE_READINESS.B2B_ACCOUNT_CONTROLS.005
+    text: Custom roles and granular permissions supported
+  - id: PRC.ENTERPRISE_READINESS.B2B_ACCOUNT_CONTROLS.006
+    text: Enterprise admin can enforce MFA for all members
+  - id: PRC.ENTERPRISE_READINESS.B2B_ACCOUNT_CONTROLS.007
+    text: Enterprise admin can set session timeout policy
+  - id: PRC.ENTERPRISE_READINESS.B2B_ACCOUNT_CONTROLS.008
+    text: Enterprise admin can view and export full audit logs
+  - id: PRC.ENTERPRISE_READINESS.B2B_ACCOUNT_CONTROLS.009
+    text: Data residency option available where required by regulation
+  - id: PRC.ENTERPRISE_READINESS.B2B_ACCOUNT_CONTROLS.010
+    text: Enterprise sandbox or test workspace available
+  - id: PRC.ENTERPRISE_READINESS.B2B_ACCOUNT_CONTROLS.011
+    text: Account ownership transfer supported
+  - id: PRC.ENTERPRISE_READINESS.B2B_ACCOUNT_CONTROLS.012
+    text: Enterprise offboarding removes users, tokens, sessions, and all access
+- id: PRC.ENTERPRISE_READINESS.SECURITY_REVIEW_PACKAGE
+  name: Security Review Package
+  items:
+  - id: PRC.ENTERPRISE_READINESS.SECURITY_REVIEW_PACKAGE.001
+    text: Security overview document prepared for customer security teams
+  - id: PRC.ENTERPRISE_READINESS.SECURITY_REVIEW_PACKAGE.002
+    text: Architecture diagram available for enterprise security review
+  - id: PRC.ENTERPRISE_READINESS.SECURITY_REVIEW_PACKAGE.003
+    text: Data flow diagram showing PII handling and trust boundaries
+  - id: PRC.ENTERPRISE_READINESS.SECURITY_REVIEW_PACKAGE.004
+    text: SOC 2 Type II report available or roadmap documented
+  - id: PRC.ENTERPRISE_READINESS.SECURITY_REVIEW_PACKAGE.005
+    text: ISO 27001 certificate or roadmap documented
+  - id: PRC.ENTERPRISE_READINESS.SECURITY_REVIEW_PACKAGE.006
+    text: Penetration test executive summary available under NDA
+  - id: PRC.ENTERPRISE_READINESS.SECURITY_REVIEW_PACKAGE.007
+    text: Vulnerability disclosure policy published at /.well-known/security.txt
+  - id: PRC.ENTERPRISE_READINESS.SECURITY_REVIEW_PACKAGE.008
+    text: Security questionnaire answers maintained in reusable knowledge base
+  - id: PRC.ENTERPRISE_READINESS.SECURITY_REVIEW_PACKAGE.009
+    text: Subprocessor list published and kept current
+  - id: PRC.ENTERPRISE_READINESS.SECURITY_REVIEW_PACKAGE.010
+    text: Data Processing Agreement available
+  - id: PRC.ENTERPRISE_READINESS.SECURITY_REVIEW_PACKAGE.011
+    text: Business continuity and DR summary available for customer review
+  - id: PRC.ENTERPRISE_READINESS.SECURITY_REVIEW_PACKAGE.012
+    text: Cyber insurance certificate available if required by customers
+  - id: PRC.ENTERPRISE_READINESS.SECURITY_REVIEW_PACKAGE.013
+    text: Accessibility conformance report (VPAT) prepared for government/enterprise
+- id: PRC.ENTERPRISE_READINESS.PROCUREMENT_AND_CONTRACTS
+  name: Procurement & Contracts
+  items:
+  - id: PRC.ENTERPRISE_READINESS.PROCUREMENT_AND_CONTRACTS.001
+    text: Master Services Agreement template prepared and reviewed by legal
+  - id: PRC.ENTERPRISE_READINESS.PROCUREMENT_AND_CONTRACTS.002
+    text: 'Order form template: product, term, pricing, and limits'
+  - id: PRC.ENTERPRISE_READINESS.PROCUREMENT_AND_CONTRACTS.003
+    text: SLA terms defined and reviewed by legal
+  - id: PRC.ENTERPRISE_READINESS.PROCUREMENT_AND_CONTRACTS.004
+    text: Support plan tiers documented
+  - id: PRC.ENTERPRISE_READINESS.PROCUREMENT_AND_CONTRACTS.005
+    text: Service credits policy defined for SLA breaches
+  - id: PRC.ENTERPRISE_READINESS.PROCUREMENT_AND_CONTRACTS.006
+    text: Renewal and cancellation terms clearly documented
+  - id: PRC.ENTERPRISE_READINESS.PROCUREMENT_AND_CONTRACTS.007
+    text: Data retention and deletion obligations in contracts
+  - id: PRC.ENTERPRISE_READINESS.PROCUREMENT_AND_CONTRACTS.008
+    text: Breach notification obligations documented
+  - id: PRC.ENTERPRISE_READINESS.PROCUREMENT_AND_CONTRACTS.009
+    text: Subprocessor change notification process defined
+  - id: PRC.ENTERPRISE_READINESS.PROCUREMENT_AND_CONTRACTS.010
+    text: Vendor onboarding package prepared for procurement teams
+  - id: PRC.ENTERPRISE_READINESS.PROCUREMENT_AND_CONTRACTS.011
+    text: Insurance, tax, and compliance documents available for procurement review

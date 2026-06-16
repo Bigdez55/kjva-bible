@@ -1,0 +1,29 @@
+schema_version: "1.0"
+skill_id: SKILL_I18N_L10N_001
+skill_name: i18n-l10n
+skill_card_path: 13_skills/active/SKILL_I18N_L10N_001.yaml
+playbook_path: 13_skills/active/SKILL_I18N_L10N_001.playbook.md
+current_version: "1.0.0"
+tier: active
+hard_constraints:
+  - "ALWAYS externalize user-facing strings into message catalogs; NEVER hardcode UI text."
+  - "ALWAYS format dates, times, numbers, and currencies via a locale-aware library (Intl/CLDR); NEVER hand-roll, and NEVER float money."
+  - "ALWAYS use CLDR plural categories; NEVER gate plurals on naive n==1 logic, and NEVER concatenate sentences."
+  - "ALWAYS use CSS logical properties for direction safety; ALWAYS define a locale -> region -> default fallback that never shows a raw key."
+  - "ALWAYS run pseudolocalization in CI and gate releases on a per-locale translation-coverage threshold."
+  - "ALWAYS make SSR and client locale resolution agree; NEVER ship a hydration locale mismatch."
+immutable_facts:
+  - "Fills the Internationalization & L10n zero-coverage gap; owned by the Production-Readiness Corpus (53_production_readiness)."
+  - "Canonical catalog format and supported locale set must be explicitly declared and version-controlled."
+correction_history:
+  - date: "2026-05-31"
+    type: creation
+    summary: "Initial ledger created alongside skill v1.0.0 to fill the Internationalization & L10n corpus gap."
+regression_test_ids: []
+promotion_criteria:
+  to_tier: hardened
+  requirements:
+    - "Applied across 10+ localization efforts spanning at least 3 distinct products."
+    - "Zero raw-key-leak or hydration-locale-mismatch regressions in the trailing 10 applications."
+    - "Pseudolocalization and per-locale coverage gates verified live in CI on a shipping product."
+last_updated: "2026-05-31"

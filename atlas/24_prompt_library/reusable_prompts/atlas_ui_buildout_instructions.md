@@ -13,8 +13,8 @@ Rules:
 - Repo commits and changes must enter ATLAS through a tenant-scoped ingestion contract before updating graph, vault, proof, or agent context.
 - Do not create disconnected mockups. Every screen must map to tenant scope, repo connectors, skills, router intents, data/proof sources, interactions, and validation gates.
 - Produce a product surface map, tenant workspace model, repo connector POC map, route/component inventory, interaction contracts, Vercel preview plan, and validation checklist.
-- Validate with npm run lint and npm run build from apps/atlas.
-- Validate tenant wiring with python3 25_automation/atlas_core/atlas.py tenants --check.
+- Validate with npm run lint and npm run build from apps/frontend/shell.
+- Validate tenant wiring with python3 infrastructure/scripts/core/atlas.py tenants --check.
 
 Required sections:
 1. Surface objective

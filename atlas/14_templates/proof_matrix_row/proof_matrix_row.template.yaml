@@ -1,5 +1,5 @@
 # Template: proof_matrix_row
-# Replace placeholders. See 26_schemas/proof_matrix_row/ if a schema exists.
+# Replace placeholders. See schemas/proof_matrix_row/ if a schema exists.
 id: "{id}"
 name: "{name}"
 status: draft

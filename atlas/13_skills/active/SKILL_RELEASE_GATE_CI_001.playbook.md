@@ -44,47 +44,47 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-        with: { node-version: '22.x', cache: npm, cache-dependency-path: apps/frontend/atlas/package-lock.json }
-      - run: cd apps/frontend/atlas && npm ci && npm run lint
+        with: { node-version: '22.x', cache: npm, cache-dependency-path: apps/frontend/shell/package-lock.json }
+      - run: cd apps/frontend/shell && npm ci && npm run lint
 
   frontend-typecheck:
     runs-on: ubuntu-latest
     steps: [...similar...]
-    run: cd apps/frontend/atlas && npm ci && npm run typecheck
+    run: cd apps/frontend/shell && npm ci && npm run typecheck
 
   frontend-test:
     runs-on: ubuntu-latest
     steps: [...similar...]
-    run: cd apps/frontend/atlas && npm ci && npm test
+    run: cd apps/frontend/shell && npm ci && npm test
 
   db-schema-check:
     runs-on: ubuntu-latest
     steps: [...similar...]
-    run: cd apps/frontend/atlas && npm ci && npx drizzle-kit check
+    run: cd apps/frontend/shell && npm ci && npx drizzle-kit check
 
   auth-isolation:
     runs-on: ubuntu-latest
     steps: [...similar...]
-    run: cd apps/frontend/atlas && npm ci && node --experimental-strip-types tests/cross-tenant-isolation.test.ts
+    run: cd apps/frontend/shell && npm ci && node --experimental-strip-types tests/cross-tenant-isolation.test.ts
 
   rate-limit-tests:
-    run: cd apps/frontend/atlas && npm ci && node --experimental-strip-types tests/rate-limits.test.ts
+    run: cd apps/frontend/shell && npm ci && node --experimental-strip-types tests/rate-limits.test.ts
 
   audit-chain-check:
-    run: cd apps/frontend/atlas && npm ci && node --experimental-strip-types tests/audit-chain.test.ts
+    run: cd apps/frontend/shell && npm ci && node --experimental-strip-types tests/audit-chain.test.ts
 
   security-scan:
-    run: cd apps/frontend/atlas && npm ci && npm audit --audit-level=high
+    run: cd apps/frontend/shell && npm ci && npm audit --audit-level=high
 
   frontend-build:
     runs-on: ubuntu-latest
     steps: [...]
-    run: cd apps/frontend/atlas && npm ci && npm run build
+    run: cd apps/frontend/shell && npm ci && npm run build
 
   e2e:
     runs-on: ubuntu-latest
     needs: frontend-build
-    run: cd apps/frontend/atlas && npm ci && npx playwright install --with-deps && npm run e2e
+    run: cd apps/frontend/shell && npm ci && npx playwright install --with-deps && npm run e2e
 
   release-verdict:
     runs-on: ubuntu-latest
@@ -104,7 +104,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: { node-version: '22.x' }
-      - run: cd apps/frontend/atlas && npm ci && node --experimental-strip-types tests/release-gate-assertion.test.ts
+      - run: cd apps/frontend/shell && npm ci && node --experimental-strip-types tests/release-gate-assertion.test.ts
 ```
 
 ## The Assertion Test

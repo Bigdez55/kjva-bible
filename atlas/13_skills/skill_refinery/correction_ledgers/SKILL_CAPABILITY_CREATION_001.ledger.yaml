@@ -1,0 +1,37 @@
+schema_version: '1.0'
+skill_id: SKILL_CAPABILITY_CREATION_001
+skill_name: Capability Creation
+skill_card_path: 13_skills/active/SKILL_CAPABILITY_CREATION_001.yaml
+playbook_path: 13_skills/active/SKILL_CAPABILITY_CREATION_001.playbook.md
+current_version: 1.0.0
+tier: active
+hard_constraints:
+- Build real runtime-callable code; never a stub/demo/TODO.
+- Capability HAVE only when probe-verified WIRED (called at runtime).
+- Register every new capability as a CAP_* in capabilities/registry.yaml.
+- find-before-create before building; refine weak capabilities, don't duplicate.
+- Write capabilities path-confined + tenant-scoped + input-validated; remote/destructive needs explicit confirm.
+immutable_facts:
+- Created from MISS-002 (skill-coverage conflated with executable capability).
+- A skill DESCRIBES; a tool/MCP/plugin DOES. The checklist drives capability creation.
+- The maturity ladder DESCRIBED→ROUTED→EXECUTABLE→WIRED→TESTED gates HAVE at WIRED+.
+correction_history:
+- date: '2026-06-01'
+  type: creation
+  severity: P1
+  summary: >
+    The corpus marked categories FULL on skill-coverage while ATLAS had 367 skills
+    and only ~6 read-only MCP tools — "we have a skill" was read as "we can do it."
+    Created this skill + the capability axis + Capability Registry, and proved the
+    create-the-missing-capability mandate by building the Tier-1 ATLAS write
+    capabilities (git commit/push, repo file-write, knowledge-write) as real
+    probe-verified tools.
+regression_test_ids:
+- probe_capability_executable (declared vs probe-actual must match)
+- each CAP_* has a verify script printing success before capability_status HAVE
+promotion_criteria:
+  to_tier: hardened
+  requirements:
+  - Three distinct missing capabilities created via this skill, each probe-verified WIRED.
+  - No duplicate-capability (find-before-create honored) and no stub-shipped-as-built.
+last_updated: '2026-06-01'

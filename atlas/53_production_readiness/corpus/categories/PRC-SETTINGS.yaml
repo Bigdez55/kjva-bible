@@ -1,0 +1,106 @@
+schema_version: '1.0'
+category_id: PRC.SETTINGS
+name: Settings
+icon: ⚙
+color: '#64748B'
+default_severity: low
+coverage_status: PARTIAL
+skill_refs:
+- SKILL_ADMIN_CONSOLE_TENANT_OPS_001
+- SKILL_OPERATIONAL_WORKSPACE_001
+capability_status: MISSING
+tool_refs: []
+mcp_refs: []
+command_refs: []
+capability_refs: []
+capability_notes: No settings-write executor. Build a tenant/user settings route+store (durable, scoped).
+sections:
+- id: PRC.SETTINGS.USER_AND_APPLICATION_SETTINGS
+  name: User & Application Settings
+  items:
+  - id: PRC.SETTINGS.USER_AND_APPLICATION_SETTINGS.001
+    text: 'General: display name, avatar, timezone, date format, language, locale'
+  - id: PRC.SETTINGS.USER_AND_APPLICATION_SETTINGS.002
+    text: 'Theme: light, dark, system; persisted in user profile across sessions'
+  - id: PRC.SETTINGS.USER_AND_APPLICATION_SETTINGS.003
+    text: 'Accessibility: font size scale, reduced motion, high contrast options'
+  - id: PRC.SETTINGS.USER_AND_APPLICATION_SETTINGS.004
+    text: 'Notification preferences: per channel (email, push, SMS, in-app) and per event type'
+  - id: PRC.SETTINGS.USER_AND_APPLICATION_SETTINGS.005
+    text: 'Email digest: real-time, daily, weekly, or off per notification category'
+  - id: PRC.SETTINGS.USER_AND_APPLICATION_SETTINGS.006
+    text: Keyboard shortcuts list; option to disable global shortcuts
+  - id: PRC.SETTINGS.USER_AND_APPLICATION_SETTINGS.007
+    text: 'Beta features opt-in: clearly labeled experimental features'
+  - id: PRC.SETTINGS.USER_AND_APPLICATION_SETTINGS.008
+    text: Default landing page configurable per user
+  - id: PRC.SETTINGS.USER_AND_APPLICATION_SETTINGS.009
+    text: 'Settings search: all settings discoverable via search'
+  - id: PRC.SETTINGS.USER_AND_APPLICATION_SETTINGS.010
+    text: Destructive settings changes require confirmation
+  - id: PRC.SETTINGS.USER_AND_APPLICATION_SETTINGS.011
+    text: Settings export/import for migration or configuration backup
+  - id: PRC.SETTINGS.USER_AND_APPLICATION_SETTINGS.012
+    text: 'Settings change audit trail: who changed what and when'
+- id: PRC.SETTINGS.TEAM_AND_ORGANIZATION_SETTINGS
+  name: Team & Organization Settings
+  items:
+  - id: PRC.SETTINGS.TEAM_AND_ORGANIZATION_SETTINGS.001
+    text: 'Organization profile: name, logo, description, website, timezone'
+  - id: PRC.SETTINGS.TEAM_AND_ORGANIZATION_SETTINGS.002
+    text: 'Member management: invite, role assignment, deactivate, remove members'
+  - id: PRC.SETTINGS.TEAM_AND_ORGANIZATION_SETTINGS.003
+    text: Default role for newly invited members configurable
+  - id: PRC.SETTINGS.TEAM_AND_ORGANIZATION_SETTINGS.004
+    text: 'Domain verification for auto-join: users with verified domain email auto-added'
+  - id: PRC.SETTINGS.TEAM_AND_ORGANIZATION_SETTINGS.005
+    text: 'Role and permission management: create custom roles, assign granular permissions'
+  - id: PRC.SETTINGS.TEAM_AND_ORGANIZATION_SETTINGS.006
+    text: 'Permission matrix: clear table showing what each role can and cannot do'
+  - id: PRC.SETTINGS.TEAM_AND_ORGANIZATION_SETTINGS.007
+    text: 'Audit log: full activity log for organization-level events, exportable as CSV'
+  - id: PRC.SETTINGS.TEAM_AND_ORGANIZATION_SETTINGS.008
+    text: 'Session security policy: forced MFA, session timeout, trusted device policy'
+  - id: PRC.SETTINGS.TEAM_AND_ORGANIZATION_SETTINGS.009
+    text: IP allowlist for organization access restriction
+  - id: PRC.SETTINGS.TEAM_AND_ORGANIZATION_SETTINGS.010
+    text: 'SSO configuration: SAML/OIDC provider setup with test connection button'
+  - id: PRC.SETTINGS.TEAM_AND_ORGANIZATION_SETTINGS.011
+    text: SCIM provisioning configuration for user sync from identity provider
+  - id: PRC.SETTINGS.TEAM_AND_ORGANIZATION_SETTINGS.012
+    text: 'Data residency: choice of storage region for compliance'
+  - id: PRC.SETTINGS.TEAM_AND_ORGANIZATION_SETTINGS.013
+    text: Organization data export for backup or migration
+  - id: PRC.SETTINGS.TEAM_AND_ORGANIZATION_SETTINGS.014
+    text: 'Danger zone: organization deletion, ownership transfer requiring confirmation'
+- id: PRC.SETTINGS.DEVELOPER_SETTINGS
+  name: Developer Settings
+  items:
+  - id: PRC.SETTINGS.DEVELOPER_SETTINGS.001
+    text: 'API key creation: name, expiry date, permission scope selection'
+  - id: PRC.SETTINGS.DEVELOPER_SETTINGS.002
+    text: 'API key list: name, created date, last used date, scope; secret hidden after creation'
+  - id: PRC.SETTINGS.DEVELOPER_SETTINGS.003
+    text: API key rotation with configurable overlap window
+  - id: PRC.SETTINGS.DEVELOPER_SETTINGS.004
+    text: 'Webhook registration: URL, events to subscribe to, signing secret'
+  - id: PRC.SETTINGS.DEVELOPER_SETTINGS.005
+    text: 'Webhook event catalog: all available event types documented inline'
+  - id: PRC.SETTINGS.DEVELOPER_SETTINGS.006
+    text: 'Webhook test delivery: send test payload to verify endpoint'
+  - id: PRC.SETTINGS.DEVELOPER_SETTINGS.007
+    text: 'Webhook delivery log: status, response code, payload, retries per delivery'
+  - id: PRC.SETTINGS.DEVELOPER_SETTINGS.008
+    text: 'OAuth application management: register, update, delete OAuth apps'
+  - id: PRC.SETTINGS.DEVELOPER_SETTINGS.009
+    text: 'OAuth app: client ID visible, client secret rotatable'
+  - id: PRC.SETTINGS.DEVELOPER_SETTINGS.010
+    text: 'Rate limit visibility: current limits and current usage per endpoint'
+  - id: PRC.SETTINGS.DEVELOPER_SETTINGS.011
+    text: Sandbox/test mode toggle to switch account to test environment
+  - id: PRC.SETTINGS.DEVELOPER_SETTINGS.012
+    text: Developer documentation link accessible from settings
+  - id: PRC.SETTINGS.DEVELOPER_SETTINGS.013
+    text: API changelog accessible from settings
+  - id: PRC.SETTINGS.DEVELOPER_SETTINGS.014
+    text: OpenAPI download link and Postman/Bruno collection available

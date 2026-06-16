@@ -1,5 +1,5 @@
 # Template: adr
-# Replace placeholders. See 26_schemas/adr/ if a schema exists.
+# Replace placeholders. See schemas/adr/ if a schema exists.
 id: "{id}"
 name: "{name}"
 status: draft

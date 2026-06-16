@@ -1,0 +1,154 @@
+schema_version: '1.0'
+category_id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING
+name: Rate Limiting, Quotas & Traffic Shaping
+icon: ⊓
+color: '#5EEAD4'
+default_severity: medium
+coverage_status: FULL
+skill_refs:
+- SKILL_RATE_LIMIT_TENANT_SCOPED_001
+- SKILL_BILLING_METERING_QUOTAS_001
+capability_status: HAVE
+tool_refs: []
+mcp_refs: []
+command_refs:
+- enforceRateLimit() guard on POST/PUT /api/repos|knowledge|ingest
+capability_refs:
+- CAP_RATE_LIMIT
+capability_notes: BUILT + probe-verified WIRED (probe_rate_limit_wired → verify_rate_limit.mjs VERIFY_OK; durable rate_limit_buckets row written, fixed-window counter). guards.enforceRateLimit wires the engine into the 6 mutating routes; fails open.
+sections:
+- id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.ALGORITHMS_AND_IMPLEMENTATION
+  name: Algorithms & Implementation
+  items:
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.ALGORITHMS_AND_IMPLEMENTATION.001
+    text: 'Algorithm chosen and justified: token bucket, sliding window, leaky bucket, fixed window'
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.ALGORITHMS_AND_IMPLEMENTATION.002
+    text: Burst allowance configured intentionally (token bucket capacity)
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.ALGORITHMS_AND_IMPLEMENTATION.003
+    text: 'Rate limit scope defined: per IP, per user, per API key, per endpoint, per tenant'
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.ALGORITHMS_AND_IMPLEMENTATION.004
+    text: Multiple dimensions combined where needed (per-user and per-endpoint)
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.ALGORITHMS_AND_IMPLEMENTATION.005
+    text: Limits configured per route based on cost and abuse risk
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.ALGORITHMS_AND_IMPLEMENTATION.006
+    text: Read vs write operations limited separately
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.ALGORITHMS_AND_IMPLEMENTATION.007
+    text: Expensive endpoints have tighter limits
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.ALGORITHMS_AND_IMPLEMENTATION.008
+    text: Limits tunable without code deploy (config or remote config)
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.ALGORITHMS_AND_IMPLEMENTATION.009
+    text: Clear precedence when multiple limits apply
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.ALGORITHMS_AND_IMPLEMENTATION.010
+    text: Default deny-with-limit for unauthenticated/abusive traffic
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.ALGORITHMS_AND_IMPLEMENTATION.011
+    text: Limit logic unit-tested including edge and reset boundaries
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.ALGORITHMS_AND_IMPLEMENTATION.012
+    text: Limit headers reflect the most restrictive applicable limit
+- id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.DISTRIBUTED_ENFORCEMENT
+  name: Distributed Enforcement
+  items:
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.DISTRIBUTED_ENFORCEMENT.001
+    text: Rate limit state in shared store (Redis) for multi-instance consistency
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.DISTRIBUTED_ENFORCEMENT.002
+    text: Atomic increment/check to avoid race conditions (Lua script or atomic ops)
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.DISTRIBUTED_ENFORCEMENT.003
+    text: Rate limiting at the edge/gateway in addition to application layer
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.DISTRIBUTED_ENFORCEMENT.004
+    text: Limiter store failure mode defined (fail-open vs fail-closed) deliberately
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.DISTRIBUTED_ENFORCEMENT.005
+    text: Limiter store high-availability configured
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.DISTRIBUTED_ENFORCEMENT.006
+    text: Limiter latency minimal so it does not bottleneck requests
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.DISTRIBUTED_ENFORCEMENT.007
+    text: Distributed limit accuracy vs performance trade-off documented
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.DISTRIBUTED_ENFORCEMENT.008
+    text: Sliding-window or token-bucket implemented correctly across nodes
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.DISTRIBUTED_ENFORCEMENT.009
+    text: Limiter store memory and key expiry managed
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.DISTRIBUTED_ENFORCEMENT.010
+    text: Limiter resilient to clock skew across nodes
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.DISTRIBUTED_ENFORCEMENT.011
+    text: 'Limiter metrics: allowed, throttled, near-limit per dimension'
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.DISTRIBUTED_ENFORCEMENT.012
+    text: Limiter behavior verified under load test
+- id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.QUOTA_AND_ENTITLEMENT_MANAGEMENT
+  name: Quota & Entitlement Management
+  items:
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.QUOTA_AND_ENTITLEMENT_MANAGEMENT.001
+    text: Usage quotas defined per plan/tier (API calls, storage, seats, records)
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.QUOTA_AND_ENTITLEMENT_MANAGEMENT.002
+    text: Quota consumption metered accurately and in near-real-time
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.QUOTA_AND_ENTITLEMENT_MANAGEMENT.003
+    text: Quota state consistent and not double-counted
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.QUOTA_AND_ENTITLEMENT_MANAGEMENT.004
+    text: Soft limit (warn) and hard limit (block) thresholds defined
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.QUOTA_AND_ENTITLEMENT_MANAGEMENT.005
+    text: Quota reset cadence defined (per minute, day, month) and correct
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.QUOTA_AND_ENTITLEMENT_MANAGEMENT.006
+    text: 'Overage handling: block, throttle, or bill-for-overage per policy'
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.QUOTA_AND_ENTITLEMENT_MANAGEMENT.007
+    text: 'Quota visibility: users see current usage vs limit'
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.QUOTA_AND_ENTITLEMENT_MANAGEMENT.008
+    text: Quota upgrade and increase path is self-serve where possible
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.QUOTA_AND_ENTITLEMENT_MANAGEMENT.009
+    text: Entitlements drive quota (plan changes update limits immediately)
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.QUOTA_AND_ENTITLEMENT_MANAGEMENT.010
+    text: Quota enforcement tied to billing and entitlement source of truth
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.QUOTA_AND_ENTITLEMENT_MANAGEMENT.011
+    text: Grace period or burst above quota where appropriate
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.QUOTA_AND_ENTITLEMENT_MANAGEMENT.012
+    text: Quota changes audited
+- id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.GRACEFUL_LIMITING_AND_CLIENT_EXPERIENCE
+  name: Graceful Limiting & Client Experience
+  items:
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.GRACEFUL_LIMITING_AND_CLIENT_EXPERIENCE.001
+    text: HTTP 429 returned with Retry-After header on rate limit
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.GRACEFUL_LIMITING_AND_CLIENT_EXPERIENCE.002
+    text: X-RateLimit-Limit, -Remaining, -Reset headers returned
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.GRACEFUL_LIMITING_AND_CLIENT_EXPERIENCE.003
+    text: Error response explains the limit and how to resolve it
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.GRACEFUL_LIMITING_AND_CLIENT_EXPERIENCE.004
+    text: Client SDKs honor Retry-After and back off automatically
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.GRACEFUL_LIMITING_AND_CLIENT_EXPERIENCE.005
+    text: Throttling preferred over hard rejection where UX allows
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.GRACEFUL_LIMITING_AND_CLIENT_EXPERIENCE.006
+    text: Queueing for non-urgent requests instead of rejection where appropriate
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.GRACEFUL_LIMITING_AND_CLIENT_EXPERIENCE.007
+    text: 'Priority lanes: critical traffic protected during overload'
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.GRACEFUL_LIMITING_AND_CLIENT_EXPERIENCE.008
+    text: Backoff guidance documented for API consumers
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.GRACEFUL_LIMITING_AND_CLIENT_EXPERIENCE.009
+    text: Limits documented publicly for API consumers
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.GRACEFUL_LIMITING_AND_CLIENT_EXPERIENCE.010
+    text: Graceful degradation under overload (shed load, not crash)
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.GRACEFUL_LIMITING_AND_CLIENT_EXPERIENCE.011
+    text: User-facing messaging avoids exposing internal limit mechanics
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.GRACEFUL_LIMITING_AND_CLIENT_EXPERIENCE.012
+    text: Allowlist for trusted partners and internal services
+- id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.ABUSE_AND_COST_PROTECTION
+  name: Abuse & Cost Protection
+  items:
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.ABUSE_AND_COST_PROTECTION.001
+    text: Abuse-pattern detection escalates limits or challenges dynamically
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.ABUSE_AND_COST_PROTECTION.002
+    text: Cost-based limiting for expensive operations (LLM calls, exports, compute)
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.ABUSE_AND_COST_PROTECTION.003
+    text: Per-tenant spend caps to prevent runaway cost
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.ABUSE_AND_COST_PROTECTION.004
+    text: Automatic throttling on anomalous spikes
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.ABUSE_AND_COST_PROTECTION.005
+    text: DDoS-layer rate limiting at network edge (see Network category)
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.ABUSE_AND_COST_PROTECTION.006
+    text: Adaptive limits that tighten under attack and relax when safe
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.ABUSE_AND_COST_PROTECTION.007
+    text: Circuit breakers protect downstream dependencies from overload
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.ABUSE_AND_COST_PROTECTION.008
+    text: Load shedding sheds lowest-priority traffic first
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.ABUSE_AND_COST_PROTECTION.009
+    text: Concurrency limits in addition to rate limits
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.ABUSE_AND_COST_PROTECTION.010
+    text: Runaway-loop protection for recursive or self-triggering calls
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.ABUSE_AND_COST_PROTECTION.011
+    text: Cost and abuse alerts routed to on-call and finance where relevant
+  - id: PRC.RATE_LIMITING_QUOTAS_AND_TRAFFIC_SHAPING.ABUSE_AND_COST_PROTECTION.012
+    text: Rate-limit and quota effectiveness reviewed after incidents

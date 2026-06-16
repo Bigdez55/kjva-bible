@@ -66,16 +66,16 @@ commands:
   output: 37_command_protocol/command_outputs/runtime_verify/
 - command: /atlas:ingest
   purpose: Collect Atlas source truth, manifest, and inventory snapshots for deterministic convergence.
-  output: 23_evidence/atlas_platform/ingest/
+  output: 23_evidence/platform/ingest/
 - command: /atlas:graph
   purpose: Build Atlas Graph Engine artifacts from ingest and repo structure.
-  output: 43_atlas_graph_engine/
+  output: 43_graph_engine/
 - command: /atlas:knowledge_vault
   purpose: Command entry that exports Atlas Knowledge Vault notes from Atlas graph and status context through the canonical router.
-  output: 44_atlas_knowledge_vault/
+  output: 44_knowledge_vault/
 - command: /atlas:status
   purpose: Read-only Atlas status and subsystem health signal generation.
-  output: 23_evidence/atlas_platform/status/
+  output: 23_evidence/platform/status/
 - command: /atlas:validate
   purpose: Run Atlas safe-gate validation and return blocker matrix.
   output: 08_verification/gate_results/
@@ -87,4 +87,4 @@ commands:
   output: 09_release/release_evidence/
 - command: /atlas:flow
   purpose: Execute ordered Atlas convergence steps as one deterministic sequence.
-  output: 23_evidence/atlas_platform/flows/
+  output: 23_evidence/platform/flows/

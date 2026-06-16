@@ -1,0 +1,154 @@
+schema_version: '1.0'
+category_id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE
+name: Multi-Tenancy & SaaS Architecture
+icon: ⊟
+color: '#B794F6'
+default_severity: medium
+coverage_status: FULL
+skill_refs:
+- SKILL_MULTI_TENANT_PLATFORM_ARCHITECT_001
+- SKILL_MULTI_TENANT_ISOLATION_001
+- SKILL_TENANT_MODEL_BOUNDARY_DESIGN_001
+- SKILL_BILLING_METERING_QUOTAS_001
+capability_status: PARTIAL
+tool_refs: []
+mcp_refs: []
+command_refs: []
+capability_refs: []
+capability_notes: Tenant scoping is real + wired (scopedSelect/scopedInsert + tenant_id FKs + cross-tenant isolation verified), but no tenant-provisioning/lifecycle/plan executor. Build a tenant-admin/provisioning route+service to reach HAVE.
+sections:
+- id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.TENANT_ISOLATION_MODEL
+  name: Tenant Isolation Model
+  items:
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.TENANT_ISOLATION_MODEL.001
+    text: 'Isolation model chosen and documented: silo (DB-per-tenant), pool (shared), or bridge (hybrid)'
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.TENANT_ISOLATION_MODEL.002
+    text: Tenant identifier propagated through every request and log line
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.TENANT_ISOLATION_MODEL.003
+    text: Tenant context resolved early and immutable for the request lifecycle
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.TENANT_ISOLATION_MODEL.004
+    text: Cross-tenant data access impossible at data, cache, queue, and search layers
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.TENANT_ISOLATION_MODEL.005
+    text: Tenant isolation verified by automated tests (attempt cross-tenant access fails)
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.TENANT_ISOLATION_MODEL.006
+    text: Shared infrastructure components are tenant-aware (cache keys, queues, search indexes)
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.TENANT_ISOLATION_MODEL.007
+    text: 'Tenant routing: subdomain, path, header, or token-based, documented'
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.TENANT_ISOLATION_MODEL.008
+    text: Premium tenants can be promoted to dedicated infrastructure
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.TENANT_ISOLATION_MODEL.009
+    text: Blast radius of a single-tenant incident contained
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.TENANT_ISOLATION_MODEL.010
+    text: Tenant-aware feature flags and entitlements
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.TENANT_ISOLATION_MODEL.011
+    text: Isolation model trade-offs documented (cost vs isolation vs operational complexity)
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.TENANT_ISOLATION_MODEL.012
+    text: Tenant data export and deletion respects isolation boundaries
+- id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.DATA_SEGREGATION_AND_SECURITY
+  name: Data Segregation & Security
+  items:
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.DATA_SEGREGATION_AND_SECURITY.001
+    text: Row-level security or schema separation enforces tenant boundaries at the database
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.DATA_SEGREGATION_AND_SECURITY.002
+    text: Tenant ID required on every tenant-scoped query (enforced, not optional)
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.DATA_SEGREGATION_AND_SECURITY.003
+    text: ORM or data layer injects tenant scope automatically to prevent leaks
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.DATA_SEGREGATION_AND_SECURITY.004
+    text: Encryption keys per tenant available for high-security customers (CMEK)
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.DATA_SEGREGATION_AND_SECURITY.005
+    text: Backups isolatable and restorable per tenant
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.DATA_SEGREGATION_AND_SECURITY.006
+    text: Tenant data residency honored where required (region pinning)
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.DATA_SEGREGATION_AND_SECURITY.007
+    text: Search index isolation per tenant (filter or index-per-tenant)
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.DATA_SEGREGATION_AND_SECURITY.008
+    text: Object storage paths or buckets segregated per tenant
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.DATA_SEGREGATION_AND_SECURITY.009
+    text: Cache keys namespaced by tenant to prevent cross-tenant cache hits
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.DATA_SEGREGATION_AND_SECURITY.010
+    text: Audit log scoped and filterable per tenant
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.DATA_SEGREGATION_AND_SECURITY.011
+    text: Tenant offboarding fully purges data across all stores
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.DATA_SEGREGATION_AND_SECURITY.012
+    text: Penetration test includes cross-tenant access attempts
+- id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.NOISY_NEIGHBOR_AND_RESOURCE_FAIRNESS
+  name: Noisy Neighbor & Resource Fairness
+  items:
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.NOISY_NEIGHBOR_AND_RESOURCE_FAIRNESS.001
+    text: Per-tenant rate limits and quotas prevent one tenant starving others
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.NOISY_NEIGHBOR_AND_RESOURCE_FAIRNESS.002
+    text: Resource consumption metered per tenant (CPU, queries, storage, API calls)
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.NOISY_NEIGHBOR_AND_RESOURCE_FAIRNESS.003
+    text: Fair scheduling for shared queues and worker pools
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.NOISY_NEIGHBOR_AND_RESOURCE_FAIRNESS.004
+    text: Large tenant workloads isolated to dedicated pools or shards
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.NOISY_NEIGHBOR_AND_RESOURCE_FAIRNESS.005
+    text: Query cost limits prevent a single tenant from overloading the database
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.NOISY_NEIGHBOR_AND_RESOURCE_FAIRNESS.006
+    text: Bulk operations by one tenant throttled to protect shared capacity
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.NOISY_NEIGHBOR_AND_RESOURCE_FAIRNESS.007
+    text: Per-tenant circuit breakers prevent cascading impact
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.NOISY_NEIGHBOR_AND_RESOURCE_FAIRNESS.008
+    text: Tenant-level priority tiers for resource allocation
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.NOISY_NEIGHBOR_AND_RESOURCE_FAIRNESS.009
+    text: Noisy-neighbor incidents detectable per tenant in observability
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.NOISY_NEIGHBOR_AND_RESOURCE_FAIRNESS.010
+    text: Capacity planning accounts for largest-tenant growth
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.NOISY_NEIGHBOR_AND_RESOURCE_FAIRNESS.011
+    text: Tenant resource dashboards available to operations
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.NOISY_NEIGHBOR_AND_RESOURCE_FAIRNESS.012
+    text: Autoscaling considers per-tenant load distribution
+- id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.TENANT_LIFECYCLE_MANAGEMENT
+  name: Tenant Lifecycle Management
+  items:
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.TENANT_LIFECYCLE_MANAGEMENT.001
+    text: Tenant provisioning automated and idempotent
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.TENANT_LIFECYCLE_MANAGEMENT.002
+    text: Tenant onboarding seeds defaults, roles, and sample data
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.TENANT_LIFECYCLE_MANAGEMENT.003
+    text: Tenant suspension (non-payment, abuse) halts access without data loss
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.TENANT_LIFECYCLE_MANAGEMENT.004
+    text: Tenant reactivation restores access cleanly
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.TENANT_LIFECYCLE_MANAGEMENT.005
+    text: Tenant data export available in machine-readable format
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.TENANT_LIFECYCLE_MANAGEMENT.006
+    text: Tenant deletion fully removes data across all systems within retention policy
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.TENANT_LIFECYCLE_MANAGEMENT.007
+    text: Tenant migration between shards or tiers supported with minimal downtime
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.TENANT_LIFECYCLE_MANAGEMENT.008
+    text: Tenant merge and split scenarios handled where applicable
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.TENANT_LIFECYCLE_MANAGEMENT.009
+    text: Tenant metadata and configuration version-controlled
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.TENANT_LIFECYCLE_MANAGEMENT.010
+    text: Per-tenant maintenance and migration windows respected
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.TENANT_LIFECYCLE_MANAGEMENT.011
+    text: Tenant lifecycle events emitted for billing and analytics
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.TENANT_LIFECYCLE_MANAGEMENT.012
+    text: Trial-to-paid and downgrade transitions handled gracefully
+- id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.PER_TENANT_CONFIGURATION_AND_LIMITS
+  name: Per-Tenant Configuration & Limits
+  items:
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.PER_TENANT_CONFIGURATION_AND_LIMITS.001
+    text: Per-tenant feature entitlements drive available functionality
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.PER_TENANT_CONFIGURATION_AND_LIMITS.002
+    text: 'Per-tenant limits enforced: seats, storage, API calls, records'
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.PER_TENANT_CONFIGURATION_AND_LIMITS.003
+    text: Per-tenant branding and white-label customization where offered
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.PER_TENANT_CONFIGURATION_AND_LIMITS.004
+    text: Per-tenant SSO and security policy configuration
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.PER_TENANT_CONFIGURATION_AND_LIMITS.005
+    text: Per-tenant data retention and compliance settings
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.PER_TENANT_CONFIGURATION_AND_LIMITS.006
+    text: 'Configuration overrides layered: global default to tenant override'
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.PER_TENANT_CONFIGURATION_AND_LIMITS.007
+    text: Limit-exceeded behavior graceful with clear upgrade path
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.PER_TENANT_CONFIGURATION_AND_LIMITS.008
+    text: Per-tenant custom domains with automated certificate provisioning
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.PER_TENANT_CONFIGURATION_AND_LIMITS.009
+    text: Per-tenant webhook and integration configuration isolated
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.PER_TENANT_CONFIGURATION_AND_LIMITS.010
+    text: Configuration changes audited per tenant
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.PER_TENANT_CONFIGURATION_AND_LIMITS.011
+    text: Tenant admin self-service for in-scope configuration
+  - id: PRC.MULTI_TENANCY_AND_SAAS_ARCHITECTURE.PER_TENANT_CONFIGURATION_AND_LIMITS.012
+    text: Per-tenant usage visible to the tenant and to internal teams

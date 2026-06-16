@@ -49,6 +49,16 @@ Icon?
 
 # Large adapter weights — tracked on disk + provenance JSON, not in git (matches gguf/safetensors policy)
 *.npz
+
+# Corpus v2 bulk data (~460MB) — rebuildable via the scripts/corpus/ pipeline;
+# sha256 provenance tracked in data/corpus/external/fetch_manifest.json and
+# data/corpus_v2/manifest.json. Manifests, validation report, and SOURCES.md ARE tracked.
+data/corpus/external/scrollmapper/
+data/corpus/external/ebible/
+data/corpus/external/wesley_nnu/
+data/corpus/external/archive_org/
+data/corpus_v2/versions/
+data/corpus_v2/corpus.txt
 # KJVA replacement rollback assets — transient, never commit
 KJVA_BACKUP_*/
 KJVA_REPLACED_*/

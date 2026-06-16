@@ -52,7 +52,7 @@ Run **all six** of the following searches and concatenate results:
 | `spec` | `03_specs/<category>/` |
 | `diagram` | `04_architecture/diagrams/source/` |
 | `template` | `14_templates/<class>/` |
-| `schema` | `26_schemas/<class>/` |
+| `schema` | `schemas/<class>/` |
 | `slice` | `22_vertical_slices/` |
 | `evidence` | `23_evidence/evidence_packets/` |
 | `runbook` | `10_operations/runbooks/` |
@@ -122,7 +122,7 @@ Do not author new content here. Open the new path.
 | Agent abandons folder with no redirect | empty directory present + parallel content elsewhere | `git mv` content back or forward; write `MOVED.md` retroactively; flag in mistake ledger. |
 | Search misses case/separator variant | post-hoc grep with collapsed-token comparison | Add the collapsed-token check to the agent's pre-write hook; verify once per session at start. |
 | Search misses OneDrive ghost | next sync recreates the ghost path, causing collision | Materialize ghosts before any session that may create files in the same parent (open the parent dir in Finder, scroll once). Alternatively, mark the parent "Always keep on this device". |
-| `creation_rationale` field missing on artifact created after a non-trivial check | schema validation against [26_schemas/](../../26_schemas/) | Required-field check; reject the artifact at PR review until rationale is added. |
+| `creation_rationale` field missing on artifact created after a non-trivial check | schema validation against [schemas/](../../schemas/) | Required-field check; reject the artifact at PR review until rationale is added. |
 
 ## Hard enforcement
 

@@ -1,0 +1,110 @@
+id: SPEC-KJVA-FUNC-0002-multi-version-corpus-expansion
+title: "Multi-version sacred-text corpus expansion (corpus v2) for KJVA retraining"
+status: active
+date: '2026-06-10'
+creation_rationale: >
+  SKILL_FIND_BEFORE_CREATE_001 check confirmed the only existing corpus is
+  eng_kjv_apocrypha_v1 (KJV 1769 + 14-book Apocrypha, 36,822 verses), already
+  trained on. No local source covers KJV 1611-lineage variants, Pseudepigrapha,
+  or Torah/Tanakh translations; owner directed internet acquisition. All work
+  stays inside kjva-bible (owner directive 2026-06-10: do not touch the
+  Tokenless models workspace).
+
+owner_directives:
+  - "Acquire every obtainable version of the King James lineage, the Apocrypha, the Pseudepigrapha, and the Torah for model training."
+  - "NKJV requested — see licensing_constraints; cannot be scraped."
+  - "All corpus work lives in kjva-bible; the Tokenless models workspace is off-limits."
+
+scope:
+  in:
+    - "KJV-lineage English versions (public domain / freely redistributable), verse-structured"
+    - "KJV Apocrypha (14 books, already held) + Douay-Rheims deuterocanon as an additional witness"
+    - "OT Pseudepigrapha in R.H. Charles-era public-domain translations"
+    - "Torah/Tanakh: JPS 1917 English + Westminster Leningrad Codex Hebrew"
+    - "Unified normalization to the verses.jsonl record schema (superset, with translation_id + corpus_section fields)"
+    - "Training-text build (corpus.txt with source tags) mirroring eng_kjv_apocrypha_v1 conventions"
+  out:
+    - "Model training/retraining itself (separate slice; awaits owner go)"
+    - "Copyrighted modern translations scraped without license (see licensing_constraints)"
+    - "Frontend exposure of new versions (future slice)"
+
+licensing_constraints:
+  nkjv:
+    status: BLOCKED_COPYRIGHT
+    holder: "Thomas Nelson, Inc. (HarperCollins Christian Publishing), 1982"
+    action: "Not scraped or redistributed. scripts/corpus/ingest_licensed.py accepts an owner-supplied licensed digital copy and normalizes it into corpus v2 locally; data/corpus_v2 build excludes it until provided. Licensing inquiry: https://www.harpercollinschristian.com/permissions/"
+  mkjv:
+    status: INCLUDED_WITH_NOTE
+    note: "Modern KJV (Jay P. Green) distributed in scrollmapper/bible_databases as freely redistributable; retained for private training use, flagged in SOURCES.md."
+  all_other_sources: "Public domain (pre-1929 publications or explicit PD dedication)."
+
+verified_sources:
+  scrollmapper_bible_databases:   # github.com/scrollmapper/bible_databases, formats/json/<ID>.json
+    - {id: KJV,        name: "King James Version 1769"}
+    - {id: KJVA,       name: "KJV with Apocrypha (80 books)"}
+    - {id: KJVPCE,     name: "KJV Pure Cambridge Edition"}
+    - {id: AKJV,       name: "American King James Version"}
+    - {id: UKJV,       name: "Updated King James Version"}
+    - {id: RNKJV,      name: "Restored Name King James Version"}
+    - {id: MKJV,       name: "Modern King James Version (Green)"}
+    - {id: Webster,    name: "Webster Bible 1833 (KJV revision)"}
+    - {id: RWebster,   name: "Revised Webster 1995"}
+    - {id: Geneva1599, name: "Geneva Bible 1599 (KJV predecessor)"}
+    - {id: Tyndale,    name: "Tyndale Bible 1525/1530 (partial canon)"}
+    - {id: Wycliffe,   name: "Wycliffe Bible c.1395"}
+    - {id: JPS,        name: "Jewish Publication Society 1917 Tanakh"}
+  ebible_org:                     # ebible.org/Scriptures/<ID>_vpl.zip
+    - {id: engwebster, name: "Webster crosscheck witness"}
+    - {id: enggnv,     name: "Geneva crosscheck witness"}
+    - {id: engDRA,     name: "Douay-Rheims American — full deuterocanon witness"}
+    - {id: engjps,     name: "JPS 1917 crosscheck witness"}
+    - {id: hboWLC,     name: "Westminster Leningrad Codex (Hebrew Tanakh/Torah)"}
+  wesley_nnu:                     # wesley.nnu.edu noncanonical-literature (R.H. Charles-era PD translations)
+    - 1-enoch
+    - 2-enoch
+    - jubilees
+    - 2-baruch
+    - 3-baruch
+    - 4-baruch
+    - apocalypse-of-abraham
+    - testaments-of-the-twelve-patriarchs
+    - testament-of-abraham
+    - testament-of-job
+    - testament-of-solomon
+    - letter-of-aristeas
+    - life-of-adam-and-eve
+    - apocalypse-of-moses
+    - martyrdom-of-isaiah
+    - psalms-of-solomon
+    - joseph-and-aseneth
+    - pseudo-phocylides
+    - word-and-revelation-of-esdras
+  archive_org_fallback:
+    - "R.H. Charles OCR volumes (Jubilees bookofjubileesor00char) — fallback if Wesley page parse fails"
+
+artifacts:
+  raw: "data/corpus/external/<source_id>/  (downloads + per-file sha256 in fetch_manifest.json)"
+  normalized: "data/corpus_v2/versions/<translation_id>.jsonl  (one record per verse, schema below)"
+  training_text: "data/corpus_v2/corpus.txt  (source-tagged blocks per eng_kjv_apocrypha_v1 format)"
+  manifest: "data/corpus_v2/manifest.json  (provenance, counts, sha256 of inputs and outputs)"
+  validation: "data/corpus_v2/validation_report.json"
+  sources_doc: "data/corpus_v2/SOURCES.md  (licensing + provenance, incl. NKJV blocker)"
+
+verse_record_schema:   # superset of v1 verses.jsonl
+  required: [id, ref, book, book_name, chapter, verse, canon_category, text, translation_id, corpus_section, source]
+  canon_category: [old_testament, new_testament, apocrypha, pseudepigrapha, torah, tanakh_writings, tanakh_prophets]
+  corpus_section: [kjv_lineage, apocrypha, pseudepigrapha, tanakh, hebrew]
+  id_format: "<TRANSLATION>.<BOOK>.<chapter>.<verse>  e.g. KJVPCE.GEN.1.1, ENOCH1.ENO.5.8"
+
+validation_gates:
+  - "Every fetched file has a recorded sha256 and byte size in fetch_manifest.json."
+  - "Per-version verse counts within 2% of canonical expectation (KJV-lineage: 31,102 protestant / 36,822 w/ Apocrypha; JPS: ~23,000; partial canons exempt with reason)."
+  - "Anchor verses validate per version: GEN 1:1, PSA 23:1, JHN 3:16 (NT versions), TOB 1:1 (apocrypha witnesses), 1 Enoch 1:1 (pseudepigrapha)."
+  - "Zero empty text fields; zero duplicate ids; UTF-8 clean."
+  - "corpus.txt assembles only from validated jsonl; manifest.validation.pass == true required before any training use."
+
+acceptance:
+  - "data/corpus_v2/versions/ contains >= 12 KJV-lineage translations + JPS + WLC + >= 15 pseudepigrapha books."
+  - "validation_report.json passes all gates."
+  - "SOURCES.md documents license status for every source, including the NKJV copyright blocker and the licensed-ingest path."
+  - "Pipeline is rerunnable: scripts/corpus/fetch_sources.py && normalize_sources.py && build_corpus_v2.py reproduces artifacts deterministically."

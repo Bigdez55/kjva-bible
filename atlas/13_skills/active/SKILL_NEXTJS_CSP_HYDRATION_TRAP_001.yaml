@@ -14,30 +14,30 @@ tier: active
 source: incident_promotion
 
 trigger_conditions:
-- Next.js (any version, observed in Next 16) project sets a `Content-Security-Policy` header from middleware/proxy.
+- "Next.js (any version, observed in Next 16) project sets a `Content-Security-Policy` header from middleware/proxy."
 - App uses Edge proxy / middleware to emit per-request CSP.
 - User reports "blank page", "no interactivity", "forms don't work" despite HTTP 200 + green build.
 - Browser DevTools shows console errors like "Loading the script ... violates Content Security Policy directive 'script-src ... 'nonce-XXX' 'strict-dynamic''".
 - E2E tests pass but interactive tests fail because hooks never fire.
 
 hard_constraints:
-- NEVER combine `'nonce-XXX'` + `'strict-dynamic'` in script-src unless ALL Next.js framework script tags carry that exact nonce attribute.
+- "NEVER combine `'nonce-XXX'` + `'strict-dynamic'` in script-src unless ALL Next.js framework script tags carry that exact nonce attribute."
 - Next.js does NOT automatically attach the per-request nonce to its own webpack chunks (verified Next 16). The proxy-side nonce becomes useless.
-- For Electron desktop apps loading own bundled code, `script-src 'self' 'unsafe-inline'` is acceptable — the third-party-script threat model does not apply.
+- "For Electron desktop apps loading own bundled code, `script-src 'self' 'unsafe-inline'` is acceptable — the third-party-script threat model does not apply."
 - If a strict CSP IS required for a hosted public app, the proxy MUST also inject the nonce into every framework script tag (intercept HTML response body, rewrite), OR adopt Next.js's experimental nonce flag and verify chunk attributes are present.
 - A CSP that blocks framework chunks is invisible from server logs and curl checks — the only signal is browser console errors and dead interactivity.
 
 known_failure_modes:
-- Setting `script-src 'self' 'nonce-X' 'strict-dynamic'` in middleware → strict-dynamic disables 'self', framework chunks have no nonce attr → ALL chunks blocked → no hydration → no useEffect → no fetch → no forms → pages look "thin" or blank.
-- Setting `script-src 'self'` alone → blocks Next.js inline runtime config scripts → page partially renders but features break.
-- Trusting `npm run build` + lint + typecheck as proof the CSP is correct — they do NOT execute the browser → cannot detect runtime CSP violations.
+- "Setting `script-src 'self' 'nonce-X' 'strict-dynamic'` in middleware → strict-dynamic disables 'self', framework chunks have no nonce attr → ALL chunks blocked → no hydration → no useEffect → no fetch → no forms → pages look \"thin\" or blank."
+- "Setting `script-src 'self'` alone → blocks Next.js inline runtime config scripts → page partially renders but features break."
+- "Trusting `npm run build` + lint + typecheck as proof the CSP is correct — they do NOT execute the browser → cannot detect runtime CSP violations."
 - Verifying with curl returning 200 — server is fine; the browser is what's blocked.
 
 validation_tests:
 - Open the rendered page in a browser (or Playwright) and read DevTools console errors.
 - Specifically grep for "violates the following Content Security Policy".
 - For each modified route, click the primary CTA — if nothing happens AND the SSR HTML rendered correctly, suspect CSP.
-- Playwright capture: `page.on("console", m => { if (m.type() === "error") errors.push(m.text()) })` and fail the test if any contain "Content Security Policy".
+- "Playwright capture: `page.on(\"console\", m => { if (m.type() === \"error\") errors.push(m.text()) })` and fail the test if any contain \"Content Security Policy\"."
 
 improvement_history:
 - version: 1.0.0

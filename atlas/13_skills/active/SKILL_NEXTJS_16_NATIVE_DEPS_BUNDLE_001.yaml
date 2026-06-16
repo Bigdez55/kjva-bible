@@ -16,14 +16,14 @@ source: incident_promotion
 trigger_conditions:
 - Next.js 16+ project depends on native modules (keytar, better-sqlite3, sharp, etc.).
 - Project uses Edge middleware / proxy.
-- `npm run build` fails with webpack errors about `.node` files.
+- "`npm run build` fails with webpack errors about `.node` files."
 - Migrating from Next 14/15 to Next 16.
 
 hard_constraints:
 - Native modules (with .node binding) MUST be listed in `serverExternalPackages` in next.config.ts.
 - Next.js 16 uses `src/proxy.ts` as canonical proxy filename (NOT `src/middleware.ts` which Next 15 used).
 - Proxy MUST be a default export.
-- `npm run build` output MUST show `ƒ Proxy (Middleware)` or `ƒ Middleware` to confirm pickup.
+- "`npm run build` output MUST show `ƒ Proxy (Middleware)` or `ƒ Middleware` to confirm pickup."
 - Never bundle native binaries through webpack — they must be loaded at runtime from node_modules.
 
 known_failure_modes:
@@ -33,10 +33,10 @@ known_failure_modes:
 - Static fallback CSP with 'unsafe-inline' → nullifies XSS protection AND per-request nonce in proxy can't take effect.
 
 validation_tests:
-- `grep serverExternalPackages next.config.ts` shows the native deps array.
-- `npm run build` output includes `ƒ Proxy (Middleware)` (Next 16) or `ƒ Middleware` (Next 15).
+- "`grep serverExternalPackages next.config.ts` shows the native deps array."
+- "`npm run build` output includes `ƒ Proxy (Middleware)` (Next 16) or `ƒ Middleware` (Next 15)."
 - File exists at correct path for Next version.
-- `grep "export default" src/proxy.ts` (or middleware.ts) matches.
+- "`grep \"export default\" src/proxy.ts` (or middleware.ts) matches."
 
 improvement_history:
 - version: 1.0.0

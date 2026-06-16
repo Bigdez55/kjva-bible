@@ -1,0 +1,116 @@
+schema_version: '1.0'
+category_id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE
+name: Sustainability & Green Software
+icon: ◴
+color: '#68D391'
+default_severity: low
+coverage_status: FULL
+skill_refs:
+- SKILL_SUSTAINABILITY_GREEN_SOFTWARE_001
+capability_status: MISSING
+tool_refs: []
+mcp_refs: []
+command_refs: []
+capability_refs: []
+capability_notes: No carbon/efficiency-measurement executor. Build a green-software metrics tool if in scope.
+sections:
+- id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE.CARBON_MEASUREMENT_AND_REPORTING
+  name: Carbon Measurement & Reporting
+  items:
+  - id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE.CARBON_MEASUREMENT_AND_REPORTING.001
+    text: Cloud carbon footprint measured (AWS Carbon Footprint, GCP/Azure equivalents, Cloud Carbon Footprint)
+  - id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE.CARBON_MEASUREMENT_AND_REPORTING.002
+    text: Software Carbon Intensity (SCI) baseline established for key services
+  - id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE.CARBON_MEASUREMENT_AND_REPORTING.003
+    text: Scope 2 and Scope 3 emissions from infrastructure understood
+  - id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE.CARBON_MEASUREMENT_AND_REPORTING.004
+    text: Carbon hotspots identified across compute, storage, and network
+  - id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE.CARBON_MEASUREMENT_AND_REPORTING.005
+    text: Carbon metrics trended over time alongside cost
+  - id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE.CARBON_MEASUREMENT_AND_REPORTING.006
+    text: Carbon reporting included in sustainability or ESG disclosures
+  - id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE.CARBON_MEASUREMENT_AND_REPORTING.007
+    text: Energy proportionality of services understood (idle vs load)
+  - id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE.CARBON_MEASUREMENT_AND_REPORTING.008
+    text: Green Software Foundation principles applied where practical
+  - id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE.CARBON_MEASUREMENT_AND_REPORTING.009
+    text: Carbon impact considered in architecture decisions (in ADRs)
+  - id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE.CARBON_MEASUREMENT_AND_REPORTING.010
+    text: Sustainability owner or working group designated
+- id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE.ENERGY_EFFICIENT_ARCHITECTURE
+  name: Energy-Efficient Architecture
+  items:
+  - id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE.ENERGY_EFFICIENT_ARCHITECTURE.001
+    text: Efficient languages and runtimes considered for high-volume workloads
+  - id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE.ENERGY_EFFICIENT_ARCHITECTURE.002
+    text: Algorithmic efficiency prioritized on hot paths (less compute per request)
+  - id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE.ENERGY_EFFICIENT_ARCHITECTURE.003
+    text: Caching reduces redundant computation and data transfer
+  - id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE.ENERGY_EFFICIENT_ARCHITECTURE.004
+    text: Payload sizes minimized to reduce network energy
+  - id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE.ENERGY_EFFICIENT_ARCHITECTURE.005
+    text: Batch and asynchronous processing reduce always-on compute
+  - id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE.ENERGY_EFFICIENT_ARCHITECTURE.006
+    text: Serverless and scale-to-zero used for spiky or low-traffic workloads
+  - id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE.ENERGY_EFFICIENT_ARCHITECTURE.007
+    text: Over-provisioning eliminated through right-sizing
+  - id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE.ENERGY_EFFICIENT_ARCHITECTURE.008
+    text: Data compression reduces storage and transfer energy
+  - id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE.ENERGY_EFFICIENT_ARCHITECTURE.009
+    text: Efficient data formats chosen (columnar, binary where appropriate)
+  - id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE.ENERGY_EFFICIENT_ARCHITECTURE.010
+    text: Unnecessary polling replaced with event-driven patterns
+  - id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE.ENERGY_EFFICIENT_ARCHITECTURE.011
+    text: 'Frontend efficiency: less JS, fewer requests, efficient rendering'
+  - id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE.ENERGY_EFFICIENT_ARCHITECTURE.012
+    text: Machine learning inference optimized (quantization, distillation) for energy
+- id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE.CARBON_AWARE_OPERATIONS
+  name: Carbon-Aware Operations
+  items:
+  - id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE.CARBON_AWARE_OPERATIONS.001
+    text: Carbon-aware scheduling for deferrable workloads (run when grid is cleaner)
+  - id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE.CARBON_AWARE_OPERATIONS.002
+    text: Region selection considers grid carbon intensity, not only cost and latency
+  - id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE.CARBON_AWARE_OPERATIONS.003
+    text: Batch jobs scheduled during low-carbon windows where feasible
+  - id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE.CARBON_AWARE_OPERATIONS.004
+    text: Demand shaping and shifting evaluated for flexible workloads
+  - id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE.CARBON_AWARE_OPERATIONS.005
+    text: Carbon-aware SDK or signals (WattTime, Electricity Maps) integrated where applicable
+  - id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE.CARBON_AWARE_OPERATIONS.006
+    text: Auto-scaling tuned to minimize idle running capacity
+  - id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE.CARBON_AWARE_OPERATIONS.007
+    text: Spot and preemptible capacity used to improve utilization efficiency
+  - id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE.CARBON_AWARE_OPERATIONS.008
+    text: Storage tiering moves cold data to lower-energy tiers
+  - id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE.CARBON_AWARE_OPERATIONS.009
+    text: Cleanup of unused resources reduces wasted energy and cost
+  - id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE.CARBON_AWARE_OPERATIONS.010
+    text: Green region and renewable-energy hosting preferred where available
+- id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE.RESOURCE_EFFICIENCY_AND_LIFECYCLE
+  name: Resource Efficiency & Lifecycle
+  items:
+  - id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE.RESOURCE_EFFICIENCY_AND_LIFECYCLE.001
+    text: Idle dev/test environments shut down outside working hours
+  - id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE.RESOURCE_EFFICIENCY_AND_LIFECYCLE.002
+    text: Unused storage, snapshots, and orphaned resources reclaimed regularly
+  - id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE.RESOURCE_EFFICIENCY_AND_LIFECYCLE.003
+    text: Data retention minimized; obsolete data deleted on schedule
+  - id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE.RESOURCE_EFFICIENCY_AND_LIFECYCLE.004
+    text: Log and telemetry volume optimized (sampling, retention tiers)
+  - id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE.RESOURCE_EFFICIENCY_AND_LIFECYCLE.005
+    text: Container images slim to reduce storage and transfer
+  - id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE.RESOURCE_EFFICIENCY_AND_LIFECYCLE.006
+    text: CDN caching reduces origin compute and repeated transfer
+  - id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE.RESOURCE_EFFICIENCY_AND_LIFECYCLE.007
+    text: Bin-packing and density improve hardware utilization
+  - id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE.RESOURCE_EFFICIENCY_AND_LIFECYCLE.008
+    text: Efficiency metrics (cost and carbon per request/user) tracked
+  - id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE.RESOURCE_EFFICIENCY_AND_LIFECYCLE.009
+    text: Hardware lifecycle extended where performance allows
+  - id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE.RESOURCE_EFFICIENCY_AND_LIFECYCLE.010
+    text: E-waste and responsible disposal policy for owned hardware
+  - id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE.RESOURCE_EFFICIENCY_AND_LIFECYCLE.011
+    text: Vendor sustainability commitments considered in procurement
+  - id: PRC.SUSTAINABILITY_AND_GREEN_SOFTWARE.RESOURCE_EFFICIENCY_AND_LIFECYCLE.012
+    text: Sustainability goals reviewed with engineering leadership

@@ -92,7 +92,9 @@ def test_complete_direct_ref_no_weights(client):
     assert body["model"] == "kjva-retrieval"
     assert body["verse_ref"] == "JHN 3:16"
     assert "God so loved" in body["completion"]
-    assert body["cognitive_metadata"]["storage_envelope"]["retention_class"] == "PERMANENT"
+    # Corpus-locked retrieval: exact text, no generation invoked.
+    assert body["status"] == "FOUND"
+    assert body["generation_invoked"] is False
 
 
 def test_complete_range_ref_no_weights(client):
@@ -124,34 +126,56 @@ def test_complete_validation_empty(client):
     assert r.status_code == 422
 
 
-def test_complete_fallback_without_weights_returns_503(client):
-    """When retrieval misses AND weights absent, structured 503."""
+def test_complete_freetext_is_structured_not_object(client):
+    """Genuine free-text (no ref, no exact match) -> governed generation. Always a
+    STRUCTURED 200 payload (status string), never a 4xx body the UI renders as
+    [object Object]. With weights it GENERATES; without, a non-FOUND structured status."""
     from inference import get_engine
 
-    if get_engine().is_ready():
-        pytest.skip("Weights present — AI fallback would succeed; cannot test 503 path")
     r = client.post(
         "/api/complete",
         json={"prompt": "What is the philosophical implication of quantum entanglement"},
     )
-    assert r.status_code == 503
-    detail = r.json()["detail"]
-    assert detail["reason_code"] == "XMIND_BACKEND_NOT_READY"
-    assert detail["authority"] == "ai/xmind"
+    assert r.status_code == 200, r.text
+    body = r.json()
+    assert isinstance(body.get("status"), str)
+    assert "completion" in body and "generation_invoked" in body
+    if get_engine().is_ready():
+        assert body["status"] == "GENERATED"
+        assert body["generation_invoked"] is True
+    else:
+        assert body["status"] != "FOUND"
+        assert body["generation_invoked"] is False
 
 
-# --- Stub endpoints still 501 ---
+# --- Features now LIVE (corpus-grounded; were 501 stubs) ---
 
-def test_search_stub(client):
-    r = client.post("/api/search", json={"query": "love"})
-    assert r.status_code == 501
+def test_search_live(client):
+    r = client.post("/api/search", json={"query": "shepherd", "limit": 3})
+    assert r.status_code == 200, r.text
+    d = r.json()
+    assert d["status"] == "FOUND"
+    assert len(d["results"]) >= 1
+    for v in d["results"]:          # real verses only
+        assert v["reference"] and v["text"]
 
 
-def test_qa_stub(client):
-    r = client.post("/api/qa", json={"question": "Who was Moses?"})
-    assert r.status_code == 501
+def test_qa_live_grounded(client):
+    r = client.post("/api/qa", json={"question": "What does the Bible say about fear?"})
+    assert r.status_code == 200, r.text
+    d = r.json()
+    assert d["status"] in ("FOUND", "NOT_FOUND")
+    assert d["generation_invoked"] is False
+    for w in d.get("witnesses", []):  # cites real retrieved verses, never invented
+        assert w["reference"] and w["text"]
 
 
-def test_xref_stub(client):
-    r = client.post("/api/xref", json={"ref": "John 3:16"})
-    assert r.status_code == 501
+def test_xref_live(client):
+    r = client.post("/api/xref", json={"ref": "John 3:16", "limit": 3})
+    assert r.status_code == 200, r.text
+    d = r.json()
+    assert d["status"] == "FOUND"
+    assert d["method"] == "lexical/topical"
+    assert len(d["results"]) >= 1
+    for v in d["results"]:
+        assert v["reference"] and v["text"]

@@ -37,7 +37,7 @@ by hyphens.
 
 ## Schema Reference
 
-`atlas/26_schemas/spec/spec.schema.json`
+`atlas/schemas/spec/spec.schema.json`
 
 Required fields: `id`, `category`, `title`, `description`, `acceptance_criteria`,
 `status`, `created`, `updated`.
@@ -256,7 +256,7 @@ Include: field names, types, nullable status, retention period, and PII classifi
 See `08_verification/skill_tests/TEST_SKILL_SPEC_AUTHORING_001_001.yaml`.
 
 The test asserts:
-- Output YAML passes `26_schemas/spec/spec.schema.json` validation.
+- Output YAML passes `schemas/spec/spec.schema.json` validation.
 - `id` matches `SPEC-NNNN` pattern and is unique across all category directories.
 - `acceptance_criteria` list is non-empty.
 - Every acceptance criterion has a `verification_method` field set.

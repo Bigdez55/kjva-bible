@@ -10,13 +10,13 @@ domains:
 - regression_testing
 playbook: 13_skills/active/SKILL_VIEWPORT_RESPONSIVE_CHROME_001.playbook.md
 validation_tests:
-- apps/atlas/tests/e2e/atlas-ui.spec.ts
+- apps/frontend/shell/tests/e2e/atlas-ui.spec.ts
 status: active
 skill_number: 178
 source_documents:
 - user_feedback_2026-05-24_topbar_overlap
-- apps/atlas/public/atlas-ui/atlas-shell.css
-- apps/atlas/tests/e2e/atlas-ui.spec.ts
+- apps/frontend/shell/public/atlas-ui/atlas-shell.css
+- apps/frontend/shell/tests/e2e/atlas-ui.spec.ts
 trigger_conditions:
 - User reports overlapping text, search bars, controls, panels, windows, margins,
   scaling, or convoluted layout.

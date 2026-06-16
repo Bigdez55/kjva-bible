@@ -1,8 +1,18 @@
 # Live UI Verification Before "Done"
 
 > Promoted from ATLAS UI migration failure 2026-05-30. Refined the same day with
-> the Playwright capture pattern that recovered the migration. Canonical rule for
-> ALL user-facing surfaces — web, Electron, mobile, CLI TUI.
+> the Playwright capture pattern that recovered the migration. Reframed 2026-06-03
+> for the always-on web service. Canonical rule for ALL user-facing surfaces — the
+> resident web service (canonical), mobile, CLI TUI, and the LEGACY Electron shell.
+
+## Canonical Verification Surface
+
+The CANONICAL surface to verify is the **always-on ATLAS web service at
+`http://127.0.0.1:4317`** (MCP surface at `http://127.0.0.1:4318`). Verify with
+`curl` against the route plus a Playwright screenshot + console capture against
+`:4317`. The **Electron desktop window is LEGACY/deprecated** as a verification
+target — only verify against Electron when you are explicitly testing the desktop
+shell itself, never as a substitute for verifying the web service.
 
 ## The Rule
 
@@ -12,7 +22,7 @@
 
 ### Step 1 — Playwright screenshot + console capture
 
-For any web/Electron UI, this is the canonical pattern:
+For the web service (and the LEGACY Electron shell when explicitly testing it), this is the canonical pattern:
 
 ```javascript
 // /tmp/verify-ui.mjs (zero-deps if Playwright is in node_modules)
@@ -32,7 +42,7 @@ for (const route of ROUTES) {
   page.on("console", (m) => { if (m.type() === "error") errors.push("console: " + m.text()); });
   page.on("pageerror", (e) => errors.push("pageerror: " + e.message));
 
-  await page.goto(`http://127.0.0.1:3100${route}`, { waitUntil: "domcontentloaded", timeout: 20000 });
+  await page.goto(`http://127.0.0.1:4317${route}`, { waitUntil: "domcontentloaded", timeout: 20000 });
   await page.waitForTimeout(2000);  // give client-side rendering time to settle
 
   await page.screenshot({ path: `/tmp/ui-verify-${route.replace(/\//g, "_")}.png`, fullPage: true });
@@ -68,7 +78,7 @@ For each modified route, perform at least:
 - Click the primary CTA
 - Submit one form (if present) — verify success state
 - Reload the page — verify no hydration error or state loss
-- For Electron: also confirm the dock icon shows the brand (not generic Electron)
+- LEGACY Electron shell only: also confirm the dock icon shows the brand (not generic Electron)
 
 ### Step 4 — For migrations: side-by-side parity
 
@@ -140,7 +150,7 @@ Before any "done" claim on UI work, ALL of these must be true:
 
 | Gate | Pass condition |
 |---|---|
-| Server boot | curl /api/health → 200 |
+| Server boot | curl http://127.0.0.1:4317/api/health → 200 |
 | Build | `npm run build` exits 0 |
 | Lint | `npm run lint` exits 0 (or within agreed warning budget) |
 | Typecheck | `npm run typecheck` exits 0 |

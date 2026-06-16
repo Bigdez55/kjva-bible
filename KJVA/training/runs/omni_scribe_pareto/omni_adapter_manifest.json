@@ -1,0 +1,190 @@
+{
+  "artifact_type": "omni_peft_scribe_adapter",
+  "regimen": "omni_scribe_alignment_v2",
+  "doctrine": "ml-training/peft/OMNI_PEFT_DOCTRINE.md",
+  "target": "Bible+Apocrypha scribe assistant with constitutional governance",
+  "retrieval_delegation": "exact verse text + topical finding served by retrieval index, not adapter weights",
+  "base_checkpoint": "training/runs/byte_clean_v2/ckpt_step_003000.safetensors",
+  "clean_corpus": "training/corpus/eng_kjv_clean_v1/corpus.txt",
+  "programs_dir": "training/corpus/programs",
+  "pool_weights": {
+    "retention": 0.55,
+    "grounding": 0.3,
+    "governance": 0.1,
+    "scribe": 0.05
+  },
+  "pool_stats": {
+    "scripture_lines_total": 36822,
+    "scripture_train_lines": 36412,
+    "heldout_verses": 410,
+    "heldout_section_counts": {
+      "torah": 66,
+      "writings": 86,
+      "prophets": 44,
+      "apocrypha": 63,
+      "gospels": 42,
+      "epistles": 31
+    },
+    "retention_chunks": 56704,
+    "retention_includes_verse_seqs": true,
+    "grounding_rows": 37,
+    "governance_rows": 21,
+    "scribe_rows": 11,
+    "alignment_files": [
+      "alignment_capability_boundaries_v1.jsonl",
+      "alignment_counter_witness_v1.jsonl",
+      "alignment_creator_sovereign_v1.jsonl",
+      "alignment_governance_v1.jsonl",
+      "alignment_scribe_style_v1.jsonl",
+      "alignment_scripture_grounding_v1.jsonl"
+    ],
+    "unmapped_categories": [],
+    "skipped_safety_guard_rows": 21,
+    "safety_guard_categories_disabled": [
+      "false_witness",
+      "harm_prevention",
+      "manipulation",
+      "oppression_or_exploitation",
+      "privacy_violation",
+      "theft_or_fraud"
+    ],
+    "skipped_no_out_span": 2,
+    "seq_len": 256,
+    "heldout_every": 90,
+    "byte_offset": 3,
+    "completion_only_masking": true
+  },
+  "enabled_methods": [
+    "bitfit",
+    "ia3",
+    "prefix_tuning"
+  ],
+  "operator_count": 12,
+  "epochs_planned": 5,
+  "epochs_run": 5,
+  "stopped_early": false,
+  "steps_per_epoch": 1000,
+  "baseline_heldout_bpb": 1.1393,
+  "baseline_section_bpb": {
+    "torah": 0.9476,
+    "prophets": 1.198,
+    "writings": 1.1658,
+    "gospels": 1.2016,
+    "epistles": 1.373,
+    "apocrypha": 1.2687
+  },
+  "post_injection_bpb": 1.1393,
+  "final_heldout_bpb": 1.2085,
+  "best_heldout_bpb": 1.1393,
+  "final_bpb_regress_vs_baseline": 0.0692,
+  "bpb_max_regress_threshold": 0.13,
+  "final_section_bpb": {
+    "torah": 1.0187,
+    "prophets": 1.283,
+    "writings": 1.2294,
+    "gospels": 1.2645,
+    "epistles": 1.4237,
+    "apocrypha": 1.3393
+  },
+  "epoch_log": [
+    {
+      "epoch": 1,
+      "difficulty": "extremely_hard",
+      "steps": 1000,
+      "pool_weights": {
+        "retention": 0.25,
+        "grounding": 0.65,
+        "governance": 0.05,
+        "scribe": 0.05
+      },
+      "bpb_gate": 0.49,
+      "bpb_recovering": false,
+      "avg_loss": 0.9235,
+      "heldout_bpb": 1.3043,
+      "bpb_regress_vs_baseline": 0.165,
+      "checkpoint": "training/runs/omni_scribe_v1/epoch_01/omni_adapter_weights.npz"
+    },
+    {
+      "epoch": 2,
+      "difficulty": "medium",
+      "steps": 1000,
+      "pool_weights": {
+        "retention": 0.55,
+        "grounding": 0.3,
+        "governance": 0.1,
+        "scribe": 0.05
+      },
+      "bpb_gate": 0.06,
+      "bpb_recovering": true,
+      "avg_loss": 0.796,
+      "heldout_bpb": 1.2376,
+      "bpb_regress_vs_baseline": 0.0983,
+      "checkpoint": "training/runs/omni_scribe_v1/epoch_02/omni_adapter_weights.npz"
+    },
+    {
+      "epoch": 3,
+      "difficulty": "hard",
+      "steps": 1000,
+      "pool_weights": {
+        "retention": 0.35,
+        "grounding": 0.55,
+        "governance": 0.05,
+        "scribe": 0.05
+      },
+      "bpb_gate": 0.28,
+      "bpb_recovering": false,
+      "avg_loss": 0.5255,
+      "heldout_bpb": 1.2702,
+      "bpb_regress_vs_baseline": 0.1309,
+      "checkpoint": "training/runs/omni_scribe_v1/epoch_03/omni_adapter_weights.npz"
+    },
+    {
+      "epoch": 4,
+      "difficulty": "easy",
+      "steps": 2000,
+      "pool_weights": {
+        "retention": 0.8,
+        "grounding": 0.12,
+        "governance": 0.05,
+        "scribe": 0.03
+      },
+      "bpb_gate": 0.01,
+      "bpb_recovering": true,
+      "avg_loss": 1.5443,
+      "heldout_bpb": 1.1861,
+      "bpb_regress_vs_baseline": 0.0469,
+      "checkpoint": "training/runs/omni_scribe_v1/epoch_04/omni_adapter_weights.npz"
+    },
+    {
+      "epoch": 5,
+      "difficulty": "mixed",
+      "steps": 1000,
+      "pool_weights": {
+        "retention": 0.55,
+        "grounding": 0.3,
+        "governance": 0.1,
+        "scribe": 0.05
+      },
+      "bpb_gate": 0.13,
+      "bpb_recovering": false,
+      "avg_loss": 0.6185,
+      "heldout_bpb": 1.2085,
+      "bpb_regress_vs_baseline": 0.0692,
+      "checkpoint": "training/runs/omni_scribe_v1/epoch_05/omni_adapter_weights.npz"
+    }
+  ],
+  "final_avg_loss": 0.7346,
+  "is_tournament": false,
+  "tournament_winner": null,
+  "canonical_promoted": false,
+  "pareto_recommendation": {
+    "epoch": 4,
+    "difficulty": "easy",
+    "rationale": "best alignment loss among epochs meeting >=95%% retention floor (BPB <= 1.1993)",
+    "avg_loss": 1.5443,
+    "heldout_bpb": 1.1861,
+    "retention_pct": 96.05,
+    "bpb_regress_vs_baseline": 0.0469,
+    "checkpoint": "training/runs/omni_scribe_v1/epoch_04/omni_adapter_weights.npz"
+  }
+}

@@ -1,0 +1,143 @@
+schema_version: '1.0'
+category_id: PRC.TESTING_AND_QUALITY_ASSURANCE
+name: Testing & Quality Assurance
+icon: ✓
+color: '#34D399'
+default_severity: medium
+coverage_status: FULL
+skill_refs:
+- SKILL_TEST_FORGE_001
+- SKILL_FULL_TEST_MATRIX_001
+- SKILL_AUTOMATED_REGRESSION_TESTING_001
+- SKILL_RUNTIME_REGRESSION_VERIFY_001
+capability_status: MISSING
+tool_refs: []
+mcp_refs: []
+command_refs: []
+capability_refs: []
+capability_notes: Probes/verify scripts exist for self-assessment but no general test-run executor surface. Build a test-runner MCP tool/route.
+sections:
+- id: PRC.TESTING_AND_QUALITY_ASSURANCE.TESTING_STRATEGY_AND_PYRAMID
+  name: Testing Strategy & Pyramid
+  items:
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.TESTING_STRATEGY_AND_PYRAMID.001
+    text: 'Testing pyramid defined: many unit tests, fewer integration, few E2E'
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.TESTING_STRATEGY_AND_PYRAMID.002
+    text: 'Test types mapped to CI stages: unit (every PR), integration (per merge), E2E (per deploy)'
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.TESTING_STRATEGY_AND_PYRAMID.003
+    text: 'Test environment isolated from production: no production data, no production API calls'
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.TESTING_STRATEGY_AND_PYRAMID.004
+    text: 'Test data strategy: factories/fixtures/builders; no hardcoded record IDs'
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.TESTING_STRATEGY_AND_PYRAMID.005
+    text: 'Test coverage thresholds enforced in CI: ≥ 80% line/branch for business logic'
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.TESTING_STRATEGY_AND_PYRAMID.006
+    text: 'Coverage trend monitored: cannot decrease without explicit approval'
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.TESTING_STRATEGY_AND_PYRAMID.007
+    text: 'Flaky test detection: results stored; flaky tests quarantined automatically'
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.TESTING_STRATEGY_AND_PYRAMID.008
+    text: 'Flaky test SLA: quarantined tests fixed or deleted within 2 weeks'
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.TESTING_STRATEGY_AND_PYRAMID.009
+    text: Mutation testing on critical modules to verify test quality (Stryker, Pitest)
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.TESTING_STRATEGY_AND_PYRAMID.010
+    text: Test naming describes behavior, not implementation
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.TESTING_STRATEGY_AND_PYRAMID.011
+    text: 'Tests isolated: no shared mutable state between test cases'
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.TESTING_STRATEGY_AND_PYRAMID.012
+    text: 'Tests reproducible: same result on every run (no timing deps, no unseeded random)'
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.TESTING_STRATEGY_AND_PYRAMID.013
+    text: Test execution parallelized in CI for speed
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.TESTING_STRATEGY_AND_PYRAMID.014
+    text: Test results dashboard and trend visible to team
+- id: PRC.TESTING_AND_QUALITY_ASSURANCE.UNIT_AND_INTEGRATION_TESTING
+  name: Unit & Integration Testing
+  items:
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.UNIT_AND_INTEGRATION_TESTING.001
+    text: Unit tests for all business logic, utility functions, and domain models
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.UNIT_AND_INTEGRATION_TESTING.002
+    text: 'Unit tests mock all external dependencies: DB, network, filesystem, time'
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.UNIT_AND_INTEGRATION_TESTING.003
+    text: Integration tests use real DB in Docker, not mocked
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.UNIT_AND_INTEGRATION_TESTING.004
+    text: Integration tests use real message broker in Docker, not mocked
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.UNIT_AND_INTEGRATION_TESTING.005
+    text: 'API contract tests: every endpoint covered by contract test'
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.UNIT_AND_INTEGRATION_TESTING.006
+    text: Consumer-driven contract testing (Pact) for microservice API compatibility
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.UNIT_AND_INTEGRATION_TESTING.007
+    text: 'Repository tests: CRUD, filtering, pagination verified against real DB'
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.UNIT_AND_INTEGRATION_TESTING.008
+    text: 'Service tests: all business logic paths and error paths covered'
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.UNIT_AND_INTEGRATION_TESTING.009
+    text: 'Authentication tests: login, refresh, logout, expired token all tested'
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.UNIT_AND_INTEGRATION_TESTING.010
+    text: 'Authorization tests: unauthorized access returns 403, not 200 or 500'
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.UNIT_AND_INTEGRATION_TESTING.011
+    text: 'Validation tests: all rules verified with valid and invalid inputs'
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.UNIT_AND_INTEGRATION_TESTING.012
+    text: 'Error handling tests: all error paths produce correct error responses'
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.UNIT_AND_INTEGRATION_TESTING.013
+    text: 'Concurrency tests: race conditions and deadlocks tested'
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.UNIT_AND_INTEGRATION_TESTING.014
+    text: 'Idempotency tests: duplicate requests produce same result as single request'
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.UNIT_AND_INTEGRATION_TESTING.015
+    text: 'DB transaction rollback tested: failure leaves no partial state'
+- id: PRC.TESTING_AND_QUALITY_ASSURANCE.E2E_VISUAL_AND_PERFORMANCE_TESTING
+  name: E2E, Visual & Performance Testing
+  items:
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.E2E_VISUAL_AND_PERFORMANCE_TESTING.001
+    text: 'E2E framework: Playwright (preferred) or Cypress'
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.E2E_VISUAL_AND_PERFORMANCE_TESTING.002
+    text: 'E2E tests cover all critical user journeys: register, login, core feature, checkout'
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.E2E_VISUAL_AND_PERFORMANCE_TESTING.003
+    text: E2E tests run against staging environment before production deploy
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.E2E_VISUAL_AND_PERFORMANCE_TESTING.004
+    text: E2E tests run on Chrome, Firefox, Safari, Edge
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.E2E_VISUAL_AND_PERFORMANCE_TESTING.005
+    text: 'E2E tests run on mobile viewports: iPhone SE, Pixel 5, iPad'
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.E2E_VISUAL_AND_PERFORMANCE_TESTING.006
+    text: 'Visual regression: screenshots captured and compared per PR'
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.E2E_VISUAL_AND_PERFORMANCE_TESTING.007
+    text: Visual regression baseline reviewed and approved on design changes
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.E2E_VISUAL_AND_PERFORMANCE_TESTING.008
+    text: Manual exploratory testing session before major releases
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.E2E_VISUAL_AND_PERFORMANCE_TESTING.009
+    text: 'Load testing tool: k6, Locust, Gatling, or JMeter'
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.E2E_VISUAL_AND_PERFORMANCE_TESTING.010
+    text: 'Baseline load test: throughput and latency at expected peak load'
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.E2E_VISUAL_AND_PERFORMANCE_TESTING.011
+    text: 'Stress test: find at what load degradation begins'
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.E2E_VISUAL_AND_PERFORMANCE_TESTING.012
+    text: 'Soak test: 24h at 70% peak; verify no memory leak or resource exhaustion'
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.E2E_VISUAL_AND_PERFORMANCE_TESTING.013
+    text: 'Load test assertions: p95 latency SLO met, error rate < 0.1%'
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.E2E_VISUAL_AND_PERFORMANCE_TESTING.014
+    text: Load test results compared to baseline before each major release
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.E2E_VISUAL_AND_PERFORMANCE_TESTING.015
+    text: DAST scan with OWASP ZAP or Burp Suite on staging
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.E2E_VISUAL_AND_PERFORMANCE_TESTING.016
+    text: Fuzz testing on all public APIs and input parsers
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.E2E_VISUAL_AND_PERFORMANCE_TESTING.017
+    text: Penetration test annual by external firm; findings tracked to remediation
+- id: PRC.TESTING_AND_QUALITY_ASSURANCE.QA_PROCESS_AND_ENVIRONMENTS
+  name: QA Process & Environments
+  items:
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.QA_PROCESS_AND_ENVIRONMENTS.001
+    text: 'QA environment: dedicated, production-equivalent, always running'
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.QA_PROCESS_AND_ENVIRONMENTS.002
+    text: 'Staging: production mirror, auto-deployed from main branch'
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.QA_PROCESS_AND_ENVIRONMENTS.003
+    text: 'Feature branch previews: ephemeral environments per PR'
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.QA_PROCESS_AND_ENVIRONMENTS.004
+    text: 'Test data management: synthetic data generation, PII anonymized for lower envs'
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.QA_PROCESS_AND_ENVIRONMENTS.005
+    text: Production data never copied to non-production without anonymization
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.QA_PROCESS_AND_ENVIRONMENTS.006
+    text: QA sign-off required before production deploy of major features
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.QA_PROCESS_AND_ENVIRONMENTS.007
+    text: 'Definition of Done: tests written, QA passed, documentation updated'
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.QA_PROCESS_AND_ENVIRONMENTS.008
+    text: 'Bug SLA: P1 same day, P2 within 3 days, P3 in current sprint'
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.QA_PROCESS_AND_ENVIRONMENTS.009
+    text: Regression caused by a fix triggers new test case creation
+  - id: PRC.TESTING_AND_QUALITY_ASSURANCE.QA_PROCESS_AND_ENVIRONMENTS.010
+    text: Test debt tracked in backlog alongside feature and bug work

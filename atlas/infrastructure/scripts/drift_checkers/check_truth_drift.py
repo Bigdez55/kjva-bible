@@ -4,6 +4,10 @@ import hashlib, json, sys, argparse, yaml
 from pathlib import Path
 from datetime import datetime, timezone
 
+# Repo root is parents[3] (infrastructure/scripts/drift_checkers/check_truth_drift.py).
+# parents[2] (=infrastructure/) was a pre-restructure bug that made every WATCH dir hash
+# None and crash the report. WATCH paths are the real canonical locations under platform/.
+# (Fixes ATLAS_MISS_LOG MISS-004 crash + the MISS-003-class ROOT/path drift.)
 ROOT = Path(__file__).resolve().parents[3]
 STATE = ROOT / "platform" / "systems" / "20_drift_detection" / "drift_state.yaml"
 REPORT = ROOT / "platform" / "systems" / "20_drift_detection" / "drift_reports" / "truth_drift_report.json"
@@ -43,7 +47,9 @@ def main():
         cur = hash_dir(w)
         new_hashes[w] = cur
         if w in last and last[w] != cur:
-            findings.append({"path": w, "from": last[w][:12], "to": (cur or "")[:12]})
+            # None-guard: a watched path can have no prior/current hash (newly added or
+            # removed dir) — slicing None crashed here before (MISS-004).
+            findings.append({"path": w, "from": (last[w] or "")[:12], "to": (cur or "")[:12]})
 
     report_payload = {
         "generated_at": datetime.now(timezone.utc).isoformat(),

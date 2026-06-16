@@ -1,0 +1,93 @@
+schema_version: '1.0'
+category_id: PRC.CUSTOMER_SUPPORT_AND_SUCCESS
+name: Customer Support & Success
+icon: ☏
+color: '#4ADE80'
+default_severity: medium
+coverage_status: PARTIAL
+skill_refs:
+- SKILL_PRODUCT_EXPERIENCE_ENGINEER_001
+capability_status: MISSING
+tool_refs: []
+mcp_refs: []
+command_refs: []
+capability_refs: []
+capability_notes: No support executor. Build a ticketing/support integration route.
+sections:
+- id: PRC.CUSTOMER_SUPPORT_AND_SUCCESS.SUPPORT_OPERATIONS
+  name: Support Operations
+  items:
+  - id: PRC.CUSTOMER_SUPPORT_AND_SUCCESS.SUPPORT_OPERATIONS.001
+    text: 'Help desk platform configured: Zendesk, Intercom, Freshdesk, or Help Scout'
+  - id: PRC.CUSTOMER_SUPPORT_AND_SUCCESS.SUPPORT_OPERATIONS.002
+    text: 'Support intake channels defined: email, chat, phone, in-app, enterprise portal'
+  - id: PRC.CUSTOMER_SUPPORT_AND_SUCCESS.SUPPORT_OPERATIONS.003
+    text: Ticket categories and priority levels standardized
+  - id: PRC.CUSTOMER_SUPPORT_AND_SUCCESS.SUPPORT_OPERATIONS.004
+    text: Support SLAs defined by customer tier and issue severity
+  - id: PRC.CUSTOMER_SUPPORT_AND_SUCCESS.SUPPORT_OPERATIONS.005
+    text: Escalation path from support to engineering clearly defined
+  - id: PRC.CUSTOMER_SUPPORT_AND_SUCCESS.SUPPORT_OPERATIONS.006
+    text: 'Engineering bug escalation template: repro steps, impact, logs, screenshots, account ID'
+  - id: PRC.CUSTOMER_SUPPORT_AND_SUCCESS.SUPPORT_OPERATIONS.007
+    text: Support macros/canned responses approved for common issues
+  - id: PRC.CUSTOMER_SUPPORT_AND_SUCCESS.SUPPORT_OPERATIONS.008
+    text: Support agents view required account context without over-exposing PII
+  - id: PRC.CUSTOMER_SUPPORT_AND_SUCCESS.SUPPORT_OPERATIONS.009
+    text: Customer-impacting bugs tagged and trended weekly
+  - id: PRC.CUSTOMER_SUPPORT_AND_SUCCESS.SUPPORT_OPERATIONS.010
+    text: Support volume monitored immediately after every release
+  - id: PRC.CUSTOMER_SUPPORT_AND_SUCCESS.SUPPORT_OPERATIONS.011
+    text: Support satisfaction score tracked and reviewed monthly
+- id: PRC.CUSTOMER_SUPPORT_AND_SUCCESS.KNOWLEDGE_BASE_AND_SELF_SERVICE
+  name: Knowledge Base & Self-Service
+  items:
+  - id: PRC.CUSTOMER_SUPPORT_AND_SUCCESS.KNOWLEDGE_BASE_AND_SELF_SERVICE.001
+    text: Public help center created with full-text search
+  - id: PRC.CUSTOMER_SUPPORT_AND_SUCCESS.KNOWLEDGE_BASE_AND_SELF_SERVICE.002
+    text: Getting started guide written for new users
+  - id: PRC.CUSTOMER_SUPPORT_AND_SUCCESS.KNOWLEDGE_BASE_AND_SELF_SERVICE.003
+    text: FAQ covers setup, billing, account, security, and troubleshooting
+  - id: PRC.CUSTOMER_SUPPORT_AND_SUCCESS.KNOWLEDGE_BASE_AND_SELF_SERVICE.004
+    text: Known issues page maintained during active incidents
+  - id: PRC.CUSTOMER_SUPPORT_AND_SUCCESS.KNOWLEDGE_BASE_AND_SELF_SERVICE.005
+    text: Troubleshooting articles include symptoms, cause, and resolution steps
+  - id: PRC.CUSTOMER_SUPPORT_AND_SUCCESS.KNOWLEDGE_BASE_AND_SELF_SERVICE.006
+    text: Screenshots and videos updated when UI changes
+  - id: PRC.CUSTOMER_SUPPORT_AND_SUCCESS.KNOWLEDGE_BASE_AND_SELF_SERVICE.007
+    text: Docs versioned if product has multiple active versions
+  - id: PRC.CUSTOMER_SUPPORT_AND_SUCCESS.KNOWLEDGE_BASE_AND_SELF_SERVICE.008
+    text: Docs search analytics reviewed to identify content gaps
+  - id: PRC.CUSTOMER_SUPPORT_AND_SUCCESS.KNOWLEDGE_BASE_AND_SELF_SERVICE.009
+    text: 'Article feedback collected: helpful / not helpful'
+  - id: PRC.CUSTOMER_SUPPORT_AND_SUCCESS.KNOWLEDGE_BASE_AND_SELF_SERVICE.010
+    text: Self-service account recovery documented
+  - id: PRC.CUSTOMER_SUPPORT_AND_SUCCESS.KNOWLEDGE_BASE_AND_SELF_SERVICE.011
+    text: Support documentation localized for key markets
+  - id: PRC.CUSTOMER_SUPPORT_AND_SUCCESS.KNOWLEDGE_BASE_AND_SELF_SERVICE.012
+    text: Knowledge base ownership assigned with review cadence
+- id: PRC.CUSTOMER_SUPPORT_AND_SUCCESS.CUSTOMER_COMMUNICATION_AND_SUCCESS
+  name: Customer Communication & Success
+  items:
+  - id: PRC.CUSTOMER_SUPPORT_AND_SUCCESS.CUSTOMER_COMMUNICATION_AND_SUCCESS.001
+    text: Customer onboarding emails or in-app guidance configured
+  - id: PRC.CUSTOMER_SUPPORT_AND_SUCCESS.CUSTOMER_COMMUNICATION_AND_SUCCESS.002
+    text: 'Lifecycle communication mapped: activation, adoption, renewal, reactivation'
+  - id: PRC.CUSTOMER_SUPPORT_AND_SUCCESS.CUSTOMER_COMMUNICATION_AND_SUCCESS.003
+    text: Customer health score defined for B2B accounts
+  - id: PRC.CUSTOMER_SUPPORT_AND_SUCCESS.CUSTOMER_COMMUNICATION_AND_SUCCESS.004
+    text: 'Churn risk signals monitored: inactivity, failed payments, repeated errors, frustration'
+  - id: PRC.CUSTOMER_SUPPORT_AND_SUCCESS.CUSTOMER_COMMUNICATION_AND_SUCCESS.005
+    text: NPS, CSAT, or product satisfaction survey configured
+  - id: PRC.CUSTOMER_SUPPORT_AND_SUCCESS.CUSTOMER_COMMUNICATION_AND_SUCCESS.006
+    text: Cancellation flow collects reason and offers relevant save path
+  - id: PRC.CUSTOMER_SUPPORT_AND_SUCCESS.CUSTOMER_COMMUNICATION_AND_SUCCESS.007
+    text: Customer advisory board or beta group identified for strategic products
+  - id: PRC.CUSTOMER_SUPPORT_AND_SUCCESS.CUSTOMER_COMMUNICATION_AND_SUCCESS.008
+    text: Release announcements segmented by affected customer type
+  - id: PRC.CUSTOMER_SUPPORT_AND_SUCCESS.CUSTOMER_COMMUNICATION_AND_SUCCESS.009
+    text: Incident communication templates prepared before incidents happen
+  - id: PRC.CUSTOMER_SUPPORT_AND_SUCCESS.CUSTOMER_COMMUNICATION_AND_SUCCESS.010
+    text: Enterprise customer success handoff documented after sale closes
+  - id: PRC.CUSTOMER_SUPPORT_AND_SUCCESS.CUSTOMER_COMMUNICATION_AND_SUCCESS.011
+    text: Voice-of-customer feedback reviewed in every product planning cycle

@@ -19,7 +19,7 @@ source_documents:
 - New updates/new ui/DESIGN_SYSTEM.md
 - New updates/new ui/PLATFORM_AUDIT.md
 - New updates/new ui/CLAUDE.md
-- apps/atlas/src/components/atlas-workbench.tsx
+- apps/frontend/shell/src/components/atlas-workbench.tsx
 trigger_conditions:
 - User provides or references the ATLAS static UI prototype.
 - User asks to apply the ATLAS design system, shell, sidebar, topbar, command palette,

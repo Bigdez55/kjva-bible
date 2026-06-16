@@ -1,0 +1,23 @@
+{
+  "omni_peft_version": "1.0.0",
+  "single_training_run": true,
+  "single_optimizer": true,
+  "single_loss": true,
+  "enabled_methods": [
+    "bitfit",
+    "ia3",
+    "prefix_tuning"
+  ],
+  "operator_count": 12,
+  "total_trainable_params": 1975296,
+  "base_model_sha256": "8580e29f8a011035",
+  "training_epochs": 5,
+  "final_avg_loss": 0.7346,
+  "regimen": "omni_scribe_alignment_v2",
+  "pool_weights": {
+    "retention": 0.55,
+    "grounding": 0.3,
+    "governance": 0.1,
+    "scribe": 0.05
+  }
+}

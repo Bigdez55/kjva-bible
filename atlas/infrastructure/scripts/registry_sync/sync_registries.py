@@ -67,7 +67,6 @@ def build(rule):
     items = scan(scan_dir, glob)
     reg_path = ROOT / reg
     last_updated = TODAY
-    old = {}
     if reg_path.exists():
         try:
             old = yaml.safe_load(reg_path.read_text()) or {}
@@ -76,16 +75,12 @@ def build(rule):
                 last_updated = old.get("last_updated", TODAY)
         except Exception:
             pass
-    generated = {
+    return {
         "last_updated": last_updated,
         "scan_dir": scan_dir,
         "total": len(items),
+        f"{key}s": items,
     }
-    for old_key, old_value in old.items():
-        if old_key not in {"last_updated", "scan_dir", "total", f"{key}s"}:
-            generated[old_key] = old_value
-    generated[f"{key}s"] = items
-    return generated
 
 def _safe_yaml(path):
     if not path.exists():
@@ -129,7 +124,6 @@ def build_agents_registry(rule):
 
     reg_path = ROOT / reg
     last_updated = TODAY
-    old = {}
     if reg_path.exists():
         try:
             old = yaml.safe_load(reg_path.read_text()) or {}
@@ -139,22 +133,18 @@ def build_agents_registry(rule):
         except Exception:
             pass
 
-    generated = {
+    return {
         "last_updated": last_updated,
         "scan_dir": f"{scan_dir} + imported Claude agent registries",
         "total": len(items),
+        f"{key}s": items,
+        "import_summary": {
+            "claude_agent_definitions": len(definitions.get("agents", []) or []),
+            "claude_agent_surface_source_files": surfaces.get("total_source_files", 0),
+            "claude_agent_surface_unique_entries": surfaces.get("unique_category_hash_entries", 0),
+            "claude_agent_surface_categories": surfaces.get("unique_counts_by_category", {}) or {},
+        },
     }
-    for old_key, old_value in old.items():
-        if old_key not in {"last_updated", "scan_dir", "total", f"{key}s", "import_summary"}:
-            generated[old_key] = old_value
-    generated[f"{key}s"] = items
-    generated["import_summary"] = {
-        "claude_agent_definitions": len(definitions.get("agents", []) or []),
-        "claude_agent_surface_source_files": surfaces.get("total_source_files", 0),
-        "claude_agent_surface_unique_entries": surfaces.get("unique_category_hash_entries", 0),
-        "claude_agent_surface_categories": surfaces.get("unique_counts_by_category", {}) or {},
-    }
-    return generated
 
 def write_or_check(check_only):
     drift = []

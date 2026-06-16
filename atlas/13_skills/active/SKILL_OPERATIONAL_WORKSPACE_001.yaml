@@ -15,9 +15,9 @@ validation_tests: []
 status: active
 skill_number: 142
 source_documents:
-- apps/atlas/src/app/page.tsx
-- apps/atlas/src/lib/atlas-data.ts
-- apps/atlas/src/app/api/workspace/route.ts
+- apps/frontend/shell/src/app/page.tsx
+- apps/frontend/shell/src/lib/atlas-data.ts
+- apps/frontend/shell/src/app/api/workspace/route.ts
 trigger_conditions:
 - User says ATLAS must operate like a workspace, not a static UI.
 - User compares ATLAS to linked notes, graph exploration, VS Code, or GitHub.

@@ -1,5 +1,5 @@
 # Template: diagram
-# Replace placeholders. See 26_schemas/diagram/ if a schema exists.
+# Replace placeholders. See schemas/diagram/ if a schema exists.
 id: "{id}"
 name: "{name}"
 status: draft

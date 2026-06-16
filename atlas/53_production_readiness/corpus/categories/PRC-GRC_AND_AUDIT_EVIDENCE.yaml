@@ -1,0 +1,86 @@
+schema_version: '1.0'
+category_id: PRC.GRC_AND_AUDIT_EVIDENCE
+name: GRC & Audit Evidence
+icon: ☑
+color: '#E879F9'
+default_severity: high
+coverage_status: FULL
+skill_refs:
+- SKILL_PROOF_MATRIX_001
+- SKILL_TRUTH_STATE_CHECK_001
+- SKILL_AUDIT_ASSESS_ANALYZE_001
+- SKILL_E2E_AUDIT_DISPATCH_001
+capability_status: MISSING
+tool_refs: []
+mcp_refs: []
+command_refs: []
+capability_refs: []
+capability_notes: Probe evidence exists for ATLAS self-assessment; no general GRC evidence-collection executor. Build a proof-matrix/evidence export route.
+sections:
+- id: PRC.GRC_AND_AUDIT_EVIDENCE.CONTROL_FRAMEWORK_AND_OWNERSHIP
+  name: Control Framework & Ownership
+  items:
+  - id: PRC.GRC_AND_AUDIT_EVIDENCE.CONTROL_FRAMEWORK_AND_OWNERSHIP.001
+    text: 'Control framework selected: SOC 2, ISO 27001, NIST CSF, CIS, HIPAA, PCI, or custom'
+  - id: PRC.GRC_AND_AUDIT_EVIDENCE.CONTROL_FRAMEWORK_AND_OWNERSHIP.002
+    text: Controls mapped to systems, teams, and named owners
+  - id: PRC.GRC_AND_AUDIT_EVIDENCE.CONTROL_FRAMEWORK_AND_OWNERSHIP.003
+    text: Each control has evidence type, collection frequency, and accountable owner
+  - id: PRC.GRC_AND_AUDIT_EVIDENCE.CONTROL_FRAMEWORK_AND_OWNERSHIP.004
+    text: 'Policies approved: security, privacy, access control, incident response, vendor risk, BCP'
+  - id: PRC.GRC_AND_AUDIT_EVIDENCE.CONTROL_FRAMEWORK_AND_OWNERSHIP.005
+    text: 'Risk register: likelihood, impact, treatment, owner, and review date maintained'
+  - id: PRC.GRC_AND_AUDIT_EVIDENCE.CONTROL_FRAMEWORK_AND_OWNERSHIP.006
+    text: Control exceptions require documented risk acceptance with expiration date
+  - id: PRC.GRC_AND_AUDIT_EVIDENCE.CONTROL_FRAMEWORK_AND_OWNERSHIP.007
+    text: Compliance calendar tracks audits, renewals, policy reviews, and evidence deadlines
+  - id: PRC.GRC_AND_AUDIT_EVIDENCE.CONTROL_FRAMEWORK_AND_OWNERSHIP.008
+    text: Security and compliance responsibilities included in employee onboarding
+  - id: PRC.GRC_AND_AUDIT_EVIDENCE.CONTROL_FRAMEWORK_AND_OWNERSHIP.009
+    text: Quarterly access reviews mapped to compliance controls
+  - id: PRC.GRC_AND_AUDIT_EVIDENCE.CONTROL_FRAMEWORK_AND_OWNERSHIP.010
+    text: Board or leadership security report produced on defined cadence
+- id: PRC.GRC_AND_AUDIT_EVIDENCE.EVIDENCE_COLLECTION
+  name: Evidence Collection
+  items:
+  - id: PRC.GRC_AND_AUDIT_EVIDENCE.EVIDENCE_COLLECTION.001
+    text: Audit evidence stored in centralized GRC tool or structured repository
+  - id: PRC.GRC_AND_AUDIT_EVIDENCE.EVIDENCE_COLLECTION.002
+    text: Evidence collection automated where possible via integrations
+  - id: PRC.GRC_AND_AUDIT_EVIDENCE.EVIDENCE_COLLECTION.003
+    text: Screenshots and manual evidence include timestamp, source, and reviewer
+  - id: PRC.GRC_AND_AUDIT_EVIDENCE.EVIDENCE_COLLECTION.004
+    text: 'Access review evidence: reviewer, findings, and remediation proof'
+  - id: PRC.GRC_AND_AUDIT_EVIDENCE.EVIDENCE_COLLECTION.005
+    text: 'Change management evidence: PR, approval, test results, deployment linked'
+  - id: PRC.GRC_AND_AUDIT_EVIDENCE.EVIDENCE_COLLECTION.006
+    text: 'Incident response evidence: timeline, impact, root cause, and closure'
+  - id: PRC.GRC_AND_AUDIT_EVIDENCE.EVIDENCE_COLLECTION.007
+    text: 'Vendor review evidence: questionnaire, SOC report, DPA, approval'
+  - id: PRC.GRC_AND_AUDIT_EVIDENCE.EVIDENCE_COLLECTION.008
+    text: 'Backup restore test evidence: date, scope, result, RTO/RPO outcome'
+  - id: PRC.GRC_AND_AUDIT_EVIDENCE.EVIDENCE_COLLECTION.009
+    text: Security training evidence tracks completion and overdue users
+  - id: PRC.GRC_AND_AUDIT_EVIDENCE.EVIDENCE_COLLECTION.010
+    text: Evidence retained according to audit and legal requirements
+- id: PRC.GRC_AND_AUDIT_EVIDENCE.AUDIT_READINESS
+  name: Audit Readiness
+  items:
+  - id: PRC.GRC_AND_AUDIT_EVIDENCE.AUDIT_READINESS.001
+    text: Internal audit or readiness assessment completed before external audit
+  - id: PRC.GRC_AND_AUDIT_EVIDENCE.AUDIT_READINESS.002
+    text: Control gaps tracked with owner and due date
+  - id: PRC.GRC_AND_AUDIT_EVIDENCE.AUDIT_READINESS.003
+    text: Auditor requests triaged through a single owner
+  - id: PRC.GRC_AND_AUDIT_EVIDENCE.AUDIT_READINESS.004
+    text: Evidence naming convention standardized
+  - id: PRC.GRC_AND_AUDIT_EVIDENCE.AUDIT_READINESS.005
+    text: Policies reviewed and reapproved annually
+  - id: PRC.GRC_AND_AUDIT_EVIDENCE.AUDIT_READINESS.006
+    text: System inventory reconciled with audit scope
+  - id: PRC.GRC_AND_AUDIT_EVIDENCE.AUDIT_READINESS.007
+    text: Employee and contractor list reconciled for access testing
+  - id: PRC.GRC_AND_AUDIT_EVIDENCE.AUDIT_READINESS.008
+    text: Audit findings tracked to remediation with proof of closure
+  - id: PRC.GRC_AND_AUDIT_EVIDENCE.AUDIT_READINESS.009
+    text: Lessons learned from audit fed back into control improvements

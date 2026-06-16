@@ -33,7 +33,7 @@ is lost.
 | `08_verification/skill_tests/tests.registry.yaml`    | All `TEST_*.yaml` files in `08_verification/skill_tests/` |
 | `04_architecture/diagrams/source/architecture/diagram.registry.yaml` | All `*.mmd` files under `source/architecture/` |
 | `11_ecosystem/repo_ledger/repos.registry.yaml`       | All `*.yaml` files in `11_ecosystem/repo_ledger/`     |
-| `26_schemas/schemas.registry.yaml`                   | All schema directories under `26_schemas/`            |
+| `schemas/schemas.registry.yaml`                   | All schema directories under `schemas/`            |
 | `23_adr/adr.registry.yaml`                           | All `ADR-*.yaml` files in `23_adr/`                   |
 
 Each registry contains at minimum:
@@ -45,7 +45,7 @@ Each registry contains at minimum:
 
 ## The sync_registries.py Script
 
-**Location:** `atlas/25_automation/registry_sync/sync_registries.py`
+**Location:** `atlas/infrastructure/scripts/registry_sync/sync_registries.py`
 
 **Modes:**
 - `--check` — Scan disk, compare against current registry files, print a drift report.
@@ -64,7 +64,7 @@ Each registry contains at minimum:
 
 ### Step 1: Run --check First (always)
 ```bash
-python3 "atlas/25_automation/registry_sync/sync_registries.py" --check
+python3 "atlas/infrastructure/scripts/registry_sync/sync_registries.py" --check
 ```
 
 Read the output carefully. A clean run prints:
@@ -102,7 +102,7 @@ A drifted run prints one or more entries like:
 
 ### Step 4: Run --write (if safe)
 ```bash
-python3 "atlas/25_automation/registry_sync/sync_registries.py" --write
+python3 "atlas/infrastructure/scripts/registry_sync/sync_registries.py" --write
 ```
 
 The script prints a summary:
@@ -153,7 +153,7 @@ the job and the developer must run `--write` locally and push.
 The `registry-validate` GitHub Actions job runs:
 ```yaml
 - name: Check registries
-  run: python3 "atlas/25_automation/registry_sync/sync_registries.py" --check
+  run: python3 "atlas/infrastructure/scripts/registry_sync/sync_registries.py" --check
 ```
 
 Exit code 1 (drift found) fails the job. The PR cannot merge until drift is resolved.

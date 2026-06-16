@@ -219,6 +219,10 @@ bash my_gate.sh && bash my_gate.sh && bash my_gate.sh
 - `sc-empirical-surface-probe`
 - `gate-auto-bootstrap-discipline` (sister skill - same anchor episode)
 - `seal-reconciliation-discipline`
+- `always-on-service-resource-discipline` — the always-on-service analog: this skill
+  kills a runaway descendant tree of a *gate harness* on timeout; that skill bounds a
+  *long-lived KeepAlive/launchd/systemd service* (throttle + memory cap + orphan reap +
+  opt-in flaky deps + operator OFF switch) so it never crash-loops into a resource runaway.
 
 ## Changelog
 

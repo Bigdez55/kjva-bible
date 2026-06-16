@@ -13,7 +13,7 @@ A decision record stored alongside the artifact (or in [18_registry/change_ledge
 
 ## Preconditions
 - Repo structure check passes ([apex_structure_check.yml](../../.github/workflows/apex_structure_check.yml)).
-- `python3 25_automation/registry_sync/sync_registries.py --check` is green.
+- `python3 infrastructure/scripts/registry_sync/sync_registries.py --check` is green.
 - Caller has read access to `repo_root`.
 
 ## Step-by-step
@@ -46,7 +46,7 @@ Apply the decision rules from the skill playbook step 3.
 - If a duplicate ID was avoided: no registry change needed; the existing artifact stays canonical.
 
 ### 6. Validate
-- After any creation, run [25_automation/drift_checkers/check_registry_drift.py](../../25_automation/drift_checkers/check_registry_drift.py) — the new artifact must not introduce drift in the matching registry.
+- After any creation, run [infrastructure/scripts/drift_checkers/check_registry_drift.py](../../infrastructure/scripts/drift_checkers/check_registry_drift.py) — the new artifact must not introduce drift in the matching registry.
 
 ### 7. Capture evidence (when `REDIRECT_REQUIRED` was applied)
 - Append a row to [23_evidence/evidence_packets/](../../23_evidence/evidence_packets/) referencing both the old and new paths and the change ledger row.

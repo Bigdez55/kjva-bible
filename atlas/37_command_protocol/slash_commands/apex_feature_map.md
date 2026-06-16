@@ -114,12 +114,12 @@ For every `<Link to=`, `navigate(`, `router.push(`, `<a href=` found:
 For each page, write:
 
 1. `<output_dir>/page_feature_map_<page>.mmd` — Mermaid graph with color-coded elements.
-2. `<output_dir>/page_feature_map_<page>.yaml` — YAML validating against `26_schemas/feature_map/feature_map.schema.json`.
+2. `<output_dir>/page_feature_map_<page>.yaml` — YAML validating against `platform/sdlc/14_templates/feature_map.schema.json`.
 
 After all pages, write:
 
 3. `<output_dir>/feature_map_<repo>.mmd` — full system Mermaid diagram (all pages as subgraphs, navigation edges).
-4. `<output_dir>/system_map_<repo>.yaml` — YAML validating against `26_schemas/system_map/system_map.schema.json`.
+4. `<output_dir>/system_map_<repo>.yaml` — YAML validating against `platform/sdlc/14_templates/system_map.schema.json`.
 
 ---
 
@@ -196,4 +196,4 @@ This command is a thin wrapper around:
 - **Skill**: `SKILL_UI_FEATURE_AUDIT_001`
 - **Playbook**: `13_skills/active/SKILL_UI_FEATURE_AUDIT_001.playbook.md`
 - **Test**: `08_verification/skill_tests/TEST_SKILL_UI_FEATURE_AUDIT_001_001.yaml`
-- **Schemas**: `26_schemas/feature_map/feature_map.schema.json`, `26_schemas/system_map/system_map.schema.json`
+- **Schemas**: `platform/sdlc/14_templates/feature_map.schema.json`, `platform/sdlc/14_templates/system_map.schema.json`

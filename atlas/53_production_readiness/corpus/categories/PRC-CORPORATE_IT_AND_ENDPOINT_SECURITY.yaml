@@ -1,0 +1,84 @@
+schema_version: '1.0'
+category_id: PRC.CORPORATE_IT_AND_ENDPOINT_SECURITY
+name: Corporate IT & Endpoint Security
+icon: ⌂
+color: '#94A3B8'
+default_severity: high
+coverage_status: PARTIAL
+skill_refs:
+- SKILL_ENTRA_APP_REGISTRATION_001
+- SKILL_IDENTITY_AUTH_RBAC_ABAC_001
+capability_status: MISSING
+tool_refs: []
+mcp_refs: []
+command_refs: []
+capability_refs: []
+capability_notes: No endpoint-management executor. Build an MDM/Entra integration route if in scope.
+sections:
+- id: PRC.CORPORATE_IT_AND_ENDPOINT_SECURITY.WORKFORCE_IDENTITY_AND_ACCESS
+  name: Workforce Identity & Access
+  items:
+  - id: PRC.CORPORATE_IT_AND_ENDPOINT_SECURITY.WORKFORCE_IDENTITY_AND_ACCESS.001
+    text: Company SSO configured for all major internal tools
+  - id: PRC.CORPORATE_IT_AND_ENDPOINT_SECURITY.WORKFORCE_IDENTITY_AND_ACCESS.002
+    text: MFA enforced for all employees and contractors
+  - id: PRC.CORPORATE_IT_AND_ENDPOINT_SECURITY.WORKFORCE_IDENTITY_AND_ACCESS.003
+    text: Joiner, mover, leaver process documented and automated
+  - id: PRC.CORPORATE_IT_AND_ENDPOINT_SECURITY.WORKFORCE_IDENTITY_AND_ACCESS.004
+    text: Access granted through groups/roles, never one-off direct grants
+  - id: PRC.CORPORATE_IT_AND_ENDPOINT_SECURITY.WORKFORCE_IDENTITY_AND_ACCESS.005
+    text: Quarterly access reviews completed for all critical systems
+  - id: PRC.CORPORATE_IT_AND_ENDPOINT_SECURITY.WORKFORCE_IDENTITY_AND_ACCESS.006
+    text: Contractor access has defined expiration date
+  - id: PRC.CORPORATE_IT_AND_ENDPOINT_SECURITY.WORKFORCE_IDENTITY_AND_ACCESS.007
+    text: Shared accounts prohibited except documented break-glass accounts
+  - id: PRC.CORPORATE_IT_AND_ENDPOINT_SECURITY.WORKFORCE_IDENTITY_AND_ACCESS.008
+    text: Break-glass accounts protected, monitored, and tested
+  - id: PRC.CORPORATE_IT_AND_ENDPOINT_SECURITY.WORKFORCE_IDENTITY_AND_ACCESS.009
+    text: Privileged access requires approval and time-bound elevation
+  - id: PRC.CORPORATE_IT_AND_ENDPOINT_SECURITY.WORKFORCE_IDENTITY_AND_ACCESS.010
+    text: Offboarding removes SSO, VPN, cloud, repo, email, device, and vendor access
+- id: PRC.CORPORATE_IT_AND_ENDPOINT_SECURITY.ENDPOINT_MANAGEMENT
+  name: Endpoint Management
+  items:
+  - id: PRC.CORPORATE_IT_AND_ENDPOINT_SECURITY.ENDPOINT_MANAGEMENT.001
+    text: All company laptops enrolled in MDM (Jamf or Intune)
+  - id: PRC.CORPORATE_IT_AND_ENDPOINT_SECURITY.ENDPOINT_MANAGEMENT.002
+    text: Full disk encryption enforced on all endpoints
+  - id: PRC.CORPORATE_IT_AND_ENDPOINT_SECURITY.ENDPOINT_MANAGEMENT.003
+    text: EDR (Endpoint Detection and Response) installed and monitored
+  - id: PRC.CORPORATE_IT_AND_ENDPOINT_SECURITY.ENDPOINT_MANAGEMENT.004
+    text: OS patch compliance enforced with defined deadlines
+  - id: PRC.CORPORATE_IT_AND_ENDPOINT_SECURITY.ENDPOINT_MANAGEMENT.005
+    text: Local admin rights restricted on all endpoints
+  - id: PRC.CORPORATE_IT_AND_ENDPOINT_SECURITY.ENDPOINT_MANAGEMENT.006
+    text: Screen lock timeout enforced via MDM policy
+  - id: PRC.CORPORATE_IT_AND_ENDPOINT_SECURITY.ENDPOINT_MANAGEMENT.007
+    text: Lost device remote wipe process tested annually
+  - id: PRC.CORPORATE_IT_AND_ENDPOINT_SECURITY.ENDPOINT_MANAGEMENT.008
+    text: Developer machines scanned for secrets and malware
+  - id: PRC.CORPORATE_IT_AND_ENDPOINT_SECURITY.ENDPOINT_MANAGEMENT.009
+    text: Browser security policies managed for company devices
+  - id: PRC.CORPORATE_IT_AND_ENDPOINT_SECURITY.ENDPOINT_MANAGEMENT.010
+    text: Approved software inventory maintained
+- id: PRC.CORPORATE_IT_AND_ENDPOINT_SECURITY.EMPLOYEE_SECURITY_OPERATIONS
+  name: Employee Security Operations
+  items:
+  - id: PRC.CORPORATE_IT_AND_ENDPOINT_SECURITY.EMPLOYEE_SECURITY_OPERATIONS.001
+    text: Security awareness training completed annually by all staff
+  - id: PRC.CORPORATE_IT_AND_ENDPOINT_SECURITY.EMPLOYEE_SECURITY_OPERATIONS.002
+    text: Phishing simulation program active quarterly
+  - id: PRC.CORPORATE_IT_AND_ENDPOINT_SECURITY.EMPLOYEE_SECURITY_OPERATIONS.003
+    text: Security reporting channel easy to find (Slack, email alias, portal)
+  - id: PRC.CORPORATE_IT_AND_ENDPOINT_SECURITY.EMPLOYEE_SECURITY_OPERATIONS.004
+    text: Incident reporting process explained during onboarding
+  - id: PRC.CORPORATE_IT_AND_ENDPOINT_SECURITY.EMPLOYEE_SECURITY_OPERATIONS.005
+    text: Acceptable use policy acknowledged annually
+  - id: PRC.CORPORATE_IT_AND_ENDPOINT_SECURITY.EMPLOYEE_SECURITY_OPERATIONS.006
+    text: Password manager provided and required for all work credentials
+  - id: PRC.CORPORATE_IT_AND_ENDPOINT_SECURITY.EMPLOYEE_SECURITY_OPERATIONS.007
+    text: Remote work security guidance documented
+  - id: PRC.CORPORATE_IT_AND_ENDPOINT_SECURITY.EMPLOYEE_SECURITY_OPERATIONS.008
+    text: Physical office access reviewed periodically
+  - id: PRC.CORPORATE_IT_AND_ENDPOINT_SECURITY.EMPLOYEE_SECURITY_OPERATIONS.009
+    text: Employee security metrics reviewed with leadership quarterly

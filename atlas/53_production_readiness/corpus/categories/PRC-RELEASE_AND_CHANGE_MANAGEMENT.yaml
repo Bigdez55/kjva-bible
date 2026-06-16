@@ -1,0 +1,93 @@
+schema_version: '1.0'
+category_id: PRC.RELEASE_AND_CHANGE_MANAGEMENT
+name: Release & Change Management
+icon: ⇧
+color: '#38BDF8'
+default_severity: medium
+coverage_status: FULL
+skill_refs:
+- SKILL_RELEASE_PREP_001
+- SKILL_PUBLIC_RELEASE_AUTH_RATE_AUDIT_GATE_001
+- SKILL_MILESTONE_GATE_DESIGN_001
+capability_status: MISSING
+tool_refs: []
+mcp_refs: []
+command_refs: []
+capability_refs: []
+capability_notes: DoD gate + derive_gate_state exist for ATLAS itself, but no general release-orchestration executor. Build a release-pipeline route/tool.
+sections:
+- id: PRC.RELEASE_AND_CHANGE_MANAGEMENT.RELEASE_PLANNING
+  name: Release Planning
+  items:
+  - id: PRC.RELEASE_AND_CHANGE_MANAGEMENT.RELEASE_PLANNING.001
+    text: Release calendar maintained with planned windows and freeze periods
+  - id: PRC.RELEASE_AND_CHANGE_MANAGEMENT.RELEASE_PLANNING.002
+    text: Release owner assigned for every production release
+  - id: PRC.RELEASE_AND_CHANGE_MANAGEMENT.RELEASE_PLANNING.003
+    text: Release scope locked before final QA begins
+  - id: PRC.RELEASE_AND_CHANGE_MANAGEMENT.RELEASE_PLANNING.004
+    text: Feature freeze date defined for major releases
+  - id: PRC.RELEASE_AND_CHANGE_MANAGEMENT.RELEASE_PLANNING.005
+    text: Release notes drafted before production deployment
+  - id: PRC.RELEASE_AND_CHANGE_MANAGEMENT.RELEASE_PLANNING.006
+    text: Version assigned per semantic versioning policy
+  - id: PRC.RELEASE_AND_CHANGE_MANAGEMENT.RELEASE_PLANNING.007
+    text: Known issues documented and approved before launch
+  - id: PRC.RELEASE_AND_CHANGE_MANAGEMENT.RELEASE_PLANNING.008
+    text: 'Release risk assessment: data, security, customer impact, rollback complexity'
+  - id: PRC.RELEASE_AND_CHANGE_MANAGEMENT.RELEASE_PLANNING.009
+    text: Cross-functional go/no-go meeting held for major releases
+  - id: PRC.RELEASE_AND_CHANGE_MANAGEMENT.RELEASE_PLANNING.010
+    text: Customer communication plan approved before launch
+  - id: PRC.RELEASE_AND_CHANGE_MANAGEMENT.RELEASE_PLANNING.011
+    text: Support escalation plan active during release window
+- id: PRC.RELEASE_AND_CHANGE_MANAGEMENT.DEPLOYMENT_GATES_AND_CUTOVER
+  name: Deployment Gates & Cutover
+  items:
+  - id: PRC.RELEASE_AND_CHANGE_MANAGEMENT.DEPLOYMENT_GATES_AND_CUTOVER.001
+    text: Pre-deployment checklist completed by release owner
+  - id: PRC.RELEASE_AND_CHANGE_MANAGEMENT.DEPLOYMENT_GATES_AND_CUTOVER.002
+    text: All required CI checks passing on release commit
+  - id: PRC.RELEASE_AND_CHANGE_MANAGEMENT.DEPLOYMENT_GATES_AND_CUTOVER.003
+    text: Security scans pass or accepted exceptions documented
+  - id: PRC.RELEASE_AND_CHANGE_MANAGEMENT.DEPLOYMENT_GATES_AND_CUTOVER.004
+    text: Database migration plan reviewed separately from app deployment
+  - id: PRC.RELEASE_AND_CHANGE_MANAGEMENT.DEPLOYMENT_GATES_AND_CUTOVER.005
+    text: Backward compatibility verified during rolling deploy
+  - id: PRC.RELEASE_AND_CHANGE_MANAGEMENT.DEPLOYMENT_GATES_AND_CUTOVER.006
+    text: Feature flags configured before deploy begins
+  - id: PRC.RELEASE_AND_CHANGE_MANAGEMENT.DEPLOYMENT_GATES_AND_CUTOVER.007
+    text: Monitoring dashboards open and watched during deploy
+  - id: PRC.RELEASE_AND_CHANGE_MANAGEMENT.DEPLOYMENT_GATES_AND_CUTOVER.008
+    text: 'Deployment runbook: exact commands, owners, expected duration, rollback steps'
+  - id: PRC.RELEASE_AND_CHANGE_MANAGEMENT.DEPLOYMENT_GATES_AND_CUTOVER.009
+    text: Rollback tested in staging before production release
+  - id: PRC.RELEASE_AND_CHANGE_MANAGEMENT.DEPLOYMENT_GATES_AND_CUTOVER.010
+    text: Smoke tests run automatically post-deployment
+  - id: PRC.RELEASE_AND_CHANGE_MANAGEMENT.DEPLOYMENT_GATES_AND_CUTOVER.011
+    text: Synthetic user journeys triggered post-deployment
+  - id: PRC.RELEASE_AND_CHANGE_MANAGEMENT.DEPLOYMENT_GATES_AND_CUTOVER.012
+    text: Release auto-blocked if error rate or latency threshold breached
+- id: PRC.RELEASE_AND_CHANGE_MANAGEMENT.POST_RELEASE_HYPERCARE
+  name: Post-Release Hypercare
+  items:
+  - id: PRC.RELEASE_AND_CHANGE_MANAGEMENT.POST_RELEASE_HYPERCARE.001
+    text: Hypercare period defined for major releases
+  - id: PRC.RELEASE_AND_CHANGE_MANAGEMENT.POST_RELEASE_HYPERCARE.002
+    text: Release owner monitors metrics for first 24–72 hours post-deploy
+  - id: PRC.RELEASE_AND_CHANGE_MANAGEMENT.POST_RELEASE_HYPERCARE.003
+    text: Support tickets tagged to release version for trend analysis
+  - id: PRC.RELEASE_AND_CHANGE_MANAGEMENT.POST_RELEASE_HYPERCARE.004
+    text: Bug triage cadence increased during hypercare period
+  - id: PRC.RELEASE_AND_CHANGE_MANAGEMENT.POST_RELEASE_HYPERCARE.005
+    text: Adoption metrics reviewed against launch goals within first week
+  - id: PRC.RELEASE_AND_CHANGE_MANAGEMENT.POST_RELEASE_HYPERCARE.006
+    text: Rollback decision window defined and owned by release owner
+  - id: PRC.RELEASE_AND_CHANGE_MANAGEMENT.POST_RELEASE_HYPERCARE.007
+    text: Post-release defect report created
+  - id: PRC.RELEASE_AND_CHANGE_MANAGEMENT.POST_RELEASE_HYPERCARE.008
+    text: Customer feedback reviewed within one week of launch
+  - id: PRC.RELEASE_AND_CHANGE_MANAGEMENT.POST_RELEASE_HYPERCARE.009
+    text: Release retrospective completed for major releases
+  - id: PRC.RELEASE_AND_CHANGE_MANAGEMENT.POST_RELEASE_HYPERCARE.010
+    text: Action items from release retrospective assigned and tracked

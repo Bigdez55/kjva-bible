@@ -13,8 +13,8 @@ validation_tests: []
 status: active
 skill_number: 143
 source_documents:
-- apps/atlas/src/app/globals.css
-- apps/atlas/src/app/page.tsx
+- apps/frontend/shell/src/app/globals.css
+- apps/frontend/shell/src/app/page.tsx
 trigger_conditions:
 - User provides the ATLAS globe logo reference.
 - User asks for ATLAS UI/UX based on space, nebula, earth, orbital, or constellation

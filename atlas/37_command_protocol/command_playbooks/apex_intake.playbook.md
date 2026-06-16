@@ -9,11 +9,11 @@ Capture raw idea, assumptions, open questions, and initial value statement.
 ## Inputs
 - `target` (string, required): the entity being acted on (repo name, slice id, etc.)
 - Source-of-truth files: see [19_truth_state/source_of_truth_ranking.yaml](../../19_truth_state/source_of_truth_ranking.yaml)
-- Relevant schemas: [26_schemas/](../../26_schemas/)
+- Relevant schemas: [platform/sdlc/14_templates/](../../platform/sdlc/14_templates/)
 
 ## Preconditions
 - Repo structure check passes ([apex_structure_check.yml](../../.github/workflows/apex_structure_check.yml))
-- `python3 25_automation/registry_sync/sync_registries.py --check` is green
+- `python3 infrastructure/scripts/registry_sync/sync_registries.py --check` is green
 - Caller has write access to `00_intake/intake_packets/`
 
 ## Step-by-step
@@ -23,7 +23,7 @@ Compile a context packet via [42_context_compiler/compile_context.py](../../42_c
 
 ### 2. Validate inputs
 - Required input fields present.
-- Input matches the relevant schema in [26_schemas/](../../26_schemas/).
+- Input matches the relevant schema in [platform/sdlc/14_templates/](../../platform/sdlc/14_templates/).
 - No conflicts with existing artifacts in `00_intake/intake_packets/`.
 
 ### 3. Author artifact
@@ -32,7 +32,7 @@ Compile a context packet via [42_context_compiler/compile_context.py](../../42_c
 - Write artifact to `00_intake/intake_packets/` with a deterministic filename.
 
 ### 4. Update registries
-- Run `python3 25_automation/registry_sync/sync_registries.py --write` to refresh the relevant `*.registry.yaml`.
+- Run `python3 infrastructure/scripts/registry_sync/sync_registries.py --write` to refresh the relevant `*.registry.yaml`.
 - Add a row to [18_registry/change_ledger.yaml](../../18_registry/change_ledger.yaml).
 
 ### 5. Update traceability
@@ -40,7 +40,7 @@ Compile a context packet via [42_context_compiler/compile_context.py](../../42_c
 
 ### 6. Validate
 - Schema-validate the new artifact.
-- Run drift checkers under [25_automation/drift_checkers/](../../25_automation/drift_checkers/).
+- Run drift checkers under [infrastructure/scripts/drift_checkers/](../../infrastructure/scripts/drift_checkers/).
 
 ### 7. Capture evidence
 - Append an evidence packet to [23_evidence/evidence_packets/](../../23_evidence/evidence_packets/) referencing the new artifact.
@@ -69,7 +69,7 @@ Compile a context packet via [42_context_compiler/compile_context.py](../../42_c
 Revert the commit that introduced the artifact:
 ```bash
 git revert <sha>
-python3 25_automation/registry_sync/sync_registries.py --write
+python3 infrastructure/scripts/registry_sync/sync_registries.py --write
 ```
 
 ## Example invocation
@@ -82,4 +82,4 @@ python3 25_automation/registry_sync/sync_registries.py --write
 ## See also
 - [APEX_PROTOCOL.md](../../APEX_PROTOCOL.md)
 - [37_command_protocol/commands.registry.yaml](../commands.registry.yaml)
-- [25_automation/](../../25_automation/)
+- [infrastructure/scripts/](../../infrastructure/scripts/)

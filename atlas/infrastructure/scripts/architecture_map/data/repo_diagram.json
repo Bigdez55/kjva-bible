@@ -1,0 +1,718 @@
+{
+  "generated_at": "2026-06-14",
+  "commit": "ab012b74b393",
+  "source": "scan_repo_census.py (structure) + architecture-state sync edge_inventory (edges)",
+  "model": "real-time copy of the repo: every tracked file is a node; bands = top-level areas; drill to files.",
+  "coverage": {
+    "tracked_files": 40250,
+    "tracked_nodes": 40250,
+    "match": true,
+    "untracked_present_dirs": 1,
+    "denominator": "git ls-files (tracked only); untracked/ignored shown separately"
+  },
+  "legend": {
+    "deep": "deep-scanned for objects + dependency edges (apps, infrastructure, schemas, docs, platform)",
+    "shallow": "tracked + counted but NOT in the deep dependency graph (.claude/.codex/.gemini/.github)",
+    "untracked": "present on disk but git-untracked/ignored (.pytest_cache) \u2014 shown, excluded from the 100% gate",
+    "edges": "5247 inventory edges -> 1 cross-area deps (imports/doc-links; 'contains' excluded)",
+    "proof": "area ROLE derived from object-type composition; per-file PROVEN/WIRED status is DEFERRED to the proof engine (no green without proof)."
+  },
+  "layers": [
+    {
+      "name": ".claude",
+      "scope": "shallow",
+      "git": "tracked",
+      "files": 31,
+      "role": "Claude Code config",
+      "nodes": [
+        {
+          "id": ".claude/commands",
+          "label": "commands",
+          "count": 31,
+          "kind": "dir"
+        }
+      ]
+    },
+    {
+      "name": ".codex",
+      "scope": "shallow",
+      "git": "tracked",
+      "files": 647,
+      "role": "Codex config",
+      "nodes": [
+        {
+          "id": ".codex/universal",
+          "label": "universal",
+          "count": 616,
+          "kind": "dir"
+        },
+        {
+          "id": ".codex/commands",
+          "label": "commands",
+          "count": 31,
+          "kind": "dir"
+        }
+      ]
+    },
+    {
+      "name": ".gemini",
+      "scope": "shallow",
+      "git": "tracked",
+      "files": 1,
+      "role": "Gemini config",
+      "nodes": [
+        {
+          "id": ".gemini/commands",
+          "label": "commands",
+          "count": 1,
+          "kind": "dir"
+        }
+      ]
+    },
+    {
+      "name": ".github",
+      "scope": "shallow",
+      "git": "tracked",
+      "files": 5,
+      "role": "GitHub CI / workflows",
+      "nodes": [
+        {
+          "id": ".github/workflows",
+          "label": "workflows",
+          "count": 5,
+          "kind": "dir"
+        }
+      ]
+    },
+    {
+      "name": "apps",
+      "scope": "deep",
+      "git": "tracked",
+      "files": 204,
+      "role": "runtime app",
+      "nodes": [
+        {
+          "id": "apps/frontend",
+          "label": "frontend",
+          "count": 180,
+          "kind": "dir"
+        },
+        {
+          "id": "apps/backend",
+          "label": "backend",
+          "count": 24,
+          "kind": "dir"
+        }
+      ]
+    },
+    {
+      "name": "backups",
+      "scope": "shallow",
+      "git": "tracked",
+      "files": 1,
+      "role": "archive snapshots",
+      "nodes": [
+        {
+          "id": "backups/development_skills_before_bookworm_v2_4_20260508_134154.tar.gz",
+          "label": "development_skills_before_bookworm_v2_4_20260508_134154.tar.gz",
+          "count": 1,
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "name": "docs",
+      "scope": "deep",
+      "git": "tracked",
+      "files": 10,
+      "role": "documentation",
+      "nodes": [
+        {
+          "id": "docs/APEX_PROTOCOL.md",
+          "label": "APEX_PROTOCOL.md",
+          "count": 1,
+          "kind": "file"
+        },
+        {
+          "id": "docs/APEX_VERSION.md",
+          "label": "APEX_VERSION.md",
+          "count": 1,
+          "kind": "file"
+        },
+        {
+          "id": "docs/ATLAS ARCHITECTURE MAP.html",
+          "label": "ATLAS ARCHITECTURE MAP.html",
+          "count": 1,
+          "kind": "file"
+        },
+        {
+          "id": "docs/Atlas Spec vs Build.md",
+          "label": "Atlas Spec vs Build.md",
+          "count": 1,
+          "kind": "file"
+        },
+        {
+          "id": "docs/CHANGELOG.md",
+          "label": "CHANGELOG.md",
+          "count": 1,
+          "kind": "file"
+        },
+        {
+          "id": "docs/CODING_AGENT_HANDOFF.md",
+          "label": "CODING_AGENT_HANDOFF.md",
+          "count": 1,
+          "kind": "file"
+        },
+        {
+          "id": "docs/FILE_MANIFEST.md",
+          "label": "FILE_MANIFEST.md",
+          "count": 1,
+          "kind": "file"
+        },
+        {
+          "id": "docs/INSTALLATION.md",
+          "label": "INSTALLATION.md",
+          "count": 1,
+          "kind": "file"
+        },
+        {
+          "id": "docs/LOCAL_MERGE_AND_PUSH_COMMANDS.md",
+          "label": "LOCAL_MERGE_AND_PUSH_COMMANDS.md",
+          "count": 1,
+          "kind": "file"
+        },
+        {
+          "id": "docs/ROUTER_SIMPLIFICATION_SPEC.md",
+          "label": "ROUTER_SIMPLIFICATION_SPEC.md",
+          "count": 1,
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "name": "infrastructure",
+      "scope": "deep",
+      "git": "tracked",
+      "files": 112,
+      "role": "tooling / automation",
+      "nodes": [
+        {
+          "id": "infrastructure/scripts",
+          "label": "scripts",
+          "count": 106,
+          "kind": "dir"
+        },
+        {
+          "id": "infrastructure/docker",
+          "label": "docker",
+          "count": 2,
+          "kind": "dir"
+        },
+        {
+          "id": "infrastructure/service",
+          "label": "service",
+          "count": 2,
+          "kind": "dir"
+        },
+        {
+          "id": "infrastructure/ci",
+          "label": "ci",
+          "count": 1,
+          "kind": "dir"
+        },
+        {
+          "id": "infrastructure/schemas",
+          "label": "schemas",
+          "count": 1,
+          "kind": "dir"
+        }
+      ]
+    },
+    {
+      "name": "platform",
+      "scope": "deep",
+      "git": "tracked",
+      "files": 39157,
+      "role": "spec & knowledge corpus",
+      "nodes": [
+        {
+          "id": "platform/sdlc",
+          "label": "sdlc",
+          "count": 37781,
+          "kind": "dir"
+        },
+        {
+          "id": "platform/systems",
+          "label": "systems",
+          "count": 1376,
+          "kind": "dir"
+        }
+      ]
+    },
+    {
+      "name": "schemas",
+      "scope": "deep",
+      "git": "tracked",
+      "files": 70,
+      "role": "contracts / schemas",
+      "nodes": [
+        {
+          "id": "schemas/agent_schema",
+          "label": "agent_schema",
+          "count": 2,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/atlas_manifest",
+          "label": "atlas_manifest",
+          "count": 2,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/diagram_schema",
+          "label": "diagram_schema",
+          "count": 2,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/graph_schema",
+          "label": "graph_schema",
+          "count": 2,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/json_schema",
+          "label": "json_schema",
+          "count": 2,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/repo_sync_schema",
+          "label": "repo_sync_schema",
+          "count": 2,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/skill",
+          "label": "skill",
+          "count": 2,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/traceability_schema",
+          "label": "traceability_schema",
+          "count": 2,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/trigger_router",
+          "label": "trigger_router",
+          "count": 2,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/yaml_schema",
+          "label": "yaml_schema",
+          "count": 2,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/adr",
+          "label": "adr",
+          "count": 1,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/agent_persona",
+          "label": "agent_persona",
+          "count": 1,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/agent_run_record",
+          "label": "agent_run_record",
+          "count": 1,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/architecture_delta",
+          "label": "architecture_delta",
+          "count": 1,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/architecture_edge",
+          "label": "architecture_edge",
+          "count": 1,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/bookworm_index",
+          "label": "bookworm_index",
+          "count": 1,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/build_manifest",
+          "label": "build_manifest",
+          "count": 1,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/change_record",
+          "label": "change_record",
+          "count": 1,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/command_playbook",
+          "label": "command_playbook",
+          "count": 1,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/context_packet",
+          "label": "context_packet",
+          "count": 1,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/contract",
+          "label": "contract",
+          "count": 1,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/correction_ledger",
+          "label": "correction_ledger",
+          "count": 1,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/diagram",
+          "label": "diagram",
+          "count": 1,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/doc_impact",
+          "label": "doc_impact",
+          "count": 1,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/drift_report",
+          "label": "drift_report",
+          "count": 1,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/env_passport",
+          "label": "env_passport",
+          "count": 1,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/evidence_packet",
+          "label": "evidence_packet",
+          "count": 1,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/feature_map",
+          "label": "feature_map",
+          "count": 1,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/intake",
+          "label": "intake",
+          "count": 1,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/integration_event",
+          "label": "integration_event",
+          "count": 1,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/intent_packet",
+          "label": "intent_packet",
+          "count": 1,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/knowledge_item",
+          "label": "knowledge_item",
+          "count": 1,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/markdown_schema",
+          "label": "markdown_schema",
+          "count": 1,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/plan",
+          "label": "plan",
+          "count": 1,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/platform_artifact_manifest",
+          "label": "platform_artifact_manifest",
+          "count": 1,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/preview_plan",
+          "label": "preview_plan",
+          "count": 1,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/prompt",
+          "label": "prompt",
+          "count": 1,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/proof_matrix_row",
+          "label": "proof_matrix_row",
+          "count": 1,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/regression_case",
+          "label": "regression_case",
+          "count": 1,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/release",
+          "label": "release",
+          "count": 1,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/repo_ledger",
+          "label": "repo_ledger",
+          "count": 1,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/repo_object",
+          "label": "repo_object",
+          "count": 1,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/repo_sync_packet",
+          "label": "repo_sync_packet",
+          "count": 1,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/repo_twin",
+          "label": "repo_twin",
+          "count": 1,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/retrospective",
+          "label": "retrospective",
+          "count": 1,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/runbook",
+          "label": "runbook",
+          "count": 1,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/schemas.registry.yaml",
+          "label": "schemas.registry.yaml",
+          "count": 1,
+          "kind": "file"
+        },
+        {
+          "id": "schemas/skill_matrix",
+          "label": "skill_matrix",
+          "count": 1,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/skill_schema",
+          "label": "skill_schema",
+          "count": 1,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/skill_test",
+          "label": "skill_test",
+          "count": 1,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/source_import_manifest",
+          "label": "source_import_manifest",
+          "count": 1,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/spec",
+          "label": "spec",
+          "count": 1,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/starter_packet",
+          "label": "starter_packet",
+          "count": 1,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/synth_scenario",
+          "label": "synth_scenario",
+          "count": 1,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/system_map",
+          "label": "system_map",
+          "count": 1,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/traceability_row",
+          "label": "traceability_row",
+          "count": 1,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/twin_snapshot",
+          "label": "twin_snapshot",
+          "count": 1,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/verification_report",
+          "label": "verification_report",
+          "count": 1,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/vertical_slice",
+          "label": "vertical_slice",
+          "count": 1,
+          "kind": "dir"
+        },
+        {
+          "id": "schemas/workflow",
+          "label": "workflow",
+          "count": 1,
+          "kind": "dir"
+        }
+      ]
+    },
+    {
+      "name": "(root files)",
+      "scope": "deep",
+      "git": "tracked",
+      "files": 12,
+      "role": "governance & config",
+      "nodes": [
+        {
+          "id": "(root files)/.gitignore",
+          "label": ".gitignore",
+          "count": 1,
+          "kind": "file"
+        },
+        {
+          "id": "(root files)/.mcp.json",
+          "label": ".mcp.json",
+          "count": 1,
+          "kind": "file"
+        },
+        {
+          "id": "(root files)/.metadata_never_index",
+          "label": ".metadata_never_index",
+          "count": 1,
+          "kind": "file"
+        },
+        {
+          "id": "(root files)/.pre-commit-config.yaml",
+          "label": ".pre-commit-config.yaml",
+          "count": 1,
+          "kind": "file"
+        },
+        {
+          "id": "(root files)/AGENTS.md",
+          "label": "AGENTS.md",
+          "count": 1,
+          "kind": "file"
+        },
+        {
+          "id": "(root files)/ATLAS.code-workspace",
+          "label": "ATLAS.code-workspace",
+          "count": 1,
+          "kind": "file"
+        },
+        {
+          "id": "(root files)/ATLAS_DEEP_AUDIT_REPORT.md",
+          "label": "ATLAS_DEEP_AUDIT_REPORT.md",
+          "count": 1,
+          "kind": "file"
+        },
+        {
+          "id": "(root files)/CLAUDE.md",
+          "label": "CLAUDE.md",
+          "count": 1,
+          "kind": "file"
+        },
+        {
+          "id": "(root files)/CODEX.md",
+          "label": "CODEX.md",
+          "count": 1,
+          "kind": "file"
+        },
+        {
+          "id": "(root files)/README.md",
+          "label": "README.md",
+          "count": 1,
+          "kind": "file"
+        },
+        {
+          "id": "(root files)/atlas.manifest.yaml",
+          "label": "atlas.manifest.yaml",
+          "count": 1,
+          "kind": "file"
+        },
+        {
+          "id": "(root files)/dev-checklist-v2.jsx",
+          "label": "dev-checklist-v2.jsx",
+          "count": 1,
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "name": ".pytest_cache",
+      "scope": "shallow",
+      "git": "untracked/ignored",
+      "files": 5,
+      "role": "present \u2014 not tracked/indexed",
+      "nodes": []
+    }
+  ],
+  "edges": [
+    [
+      "platform",
+      "apps",
+      2
+    ]
+  ]
+}

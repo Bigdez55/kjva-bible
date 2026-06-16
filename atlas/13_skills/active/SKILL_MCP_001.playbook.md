@@ -4,16 +4,16 @@
 
 Use this skill when the user needs ATLAS capabilities exposed to Claude Code or
 Codex via the Model Context Protocol (stdio transport). The MCP server lives at
-`apps/backend/atlas-mcp/` and imports directly from `apps/frontend/atlas/src/lib/` using relative
+`apps/backend/mcp/` and imports directly from `apps/frontend/shell/src/lib/` using relative
 paths — no Next.js dependency, no ATLAS server required to be running.
 
 ## Pre-Gates
 
-1. **Confirm node_modules** — if `apps/backend/atlas-mcp/node_modules/` is missing,
+1. **Confirm node_modules** — if `apps/backend/mcp/node_modules/` is missing,
    surface the install command before claiming the server is runnable.
 2. **Confirm atlas/src/lib is intact** — the MCP server imports
    `localAtlas.ts`, `atlas-data.ts`, and three graph modules. If these files
-   move or are renamed, update the imports in `apps/backend/atlas-mcp/src/index.ts`.
+   move or are renamed, update the imports in `apps/backend/mcp/src/index.ts`.
 3. **Never run npm install automatically** — present the command to the user.
 
 ## Server Start Steps
@@ -50,7 +50,7 @@ Add to `.mcp.json` in the repo root (or `~/.claude.json` for global):
   "mcpServers": {
     "atlas": {
       "command": "npx",
-      "args": ["tsx", "apps/backend/atlas-mcp/src/index.ts"],
+      "args": ["tsx", "apps/backend/mcp/src/index.ts"],
       "env": {}
     }
   }
@@ -64,7 +64,7 @@ Or after `npm run build`:
   "mcpServers": {
     "atlas": {
       "command": "node",
-      "args": ["apps/backend/atlas-mcp/dist/index.js"],
+      "args": ["apps/backend/mcp/dist/index.js"],
       "env": {}
     }
   }
@@ -74,15 +74,15 @@ Or after `npm run build`:
 ## Forbidden Actions
 
 - Do not switch to HTTP/SSE transport without explicit user request.
-- Do not use `@/` path aliases from inside `apps/backend/atlas-mcp/` — use relative paths only.
+- Do not use `@/` path aliases from inside `apps/backend/mcp/` — use relative paths only.
 - Do not assert graph or skill state without calling the appropriate tool.
 - Do not run `npm install` automatically.
 
 ## Required Outputs
 
-1. `apps/backend/atlas-mcp/package.json`
-2. `apps/backend/atlas-mcp/tsconfig.json`
-3. `apps/backend/atlas-mcp/src/index.ts` — stdio MCP server with 5 tools
+1. `apps/backend/mcp/package.json`
+2. `apps/backend/mcp/tsconfig.json`
+3. `apps/backend/mcp/src/index.ts` — stdio MCP server with 5 tools
 4. `SKILL_ATLAS_MCP_001.yaml` + `SKILL_ATLAS_MCP_001.playbook.md`
 5. Registry + router wired (skills.registry.yaml total updated, trigger_router.yaml target + intent added)
 6. `.mcp.json` config block
@@ -92,7 +92,7 @@ Or after `npm run build`:
 
 After wiring registry + router:
 ```bash
-python3 25_automation/validate_skill_router_integration.py
+python3 infrastructure/scripts/validate_skill_router_integration.py
 ```
 
 Expected: `PASS: skill router integration (180 active skills — all registered and routed)`

@@ -56,10 +56,10 @@ EXCLUDED_DIRS = {
 
 EXCLUDED_RELATIVE_PREFIXES = {
     "platform/sdlc/16_knowledge/external_collateral",
-    "28_archive",
+    "platform/systems/28_archive",
     "backups",
-    "apps/frontend/atlas/dist",
-    "apps/frontend/atlas/node_modules",
+    "apps/frontend/shell/dist",
+    "apps/frontend/shell/node_modules",
 }
 
 
@@ -270,7 +270,7 @@ def build_report(
             "",
             "## Operational Rule",
             "",
-            "Raw assistant surfaces remain preserved as evidence. Operational use should go through the normalized registries under `platform/systems/18_registry/agent_skill_imports/` and then through active skill/router promotion.",
+            "Raw assistant surfaces remain preserved as evidence. Operational use should go through the normalized registries under `18_registry/agent_skill_imports/` and then through active skill/router promotion.",
             "",
             "## Output Files",
             "",

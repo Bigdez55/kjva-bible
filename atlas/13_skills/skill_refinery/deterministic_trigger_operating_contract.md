@@ -63,9 +63,9 @@ Generic requests such as `build a platform`, `build dashboard`, `audit security`
 The contract is enforced by:
 
 ```bash
-python3 25_automation/validate_trigger_determinism.py
-python3 25_automation/validate_skills_stack.py
-python3 25_automation/registry_sync/sync_registries.py --check
+python3 infrastructure/scripts/validate_trigger_determinism.py
+python3 infrastructure/scripts/validate_skills_stack.py
+python3 infrastructure/scripts/registry_sync/sync_registries.py --check
 ```
 
 No agent should claim the trigger system is stable if those gates fail.

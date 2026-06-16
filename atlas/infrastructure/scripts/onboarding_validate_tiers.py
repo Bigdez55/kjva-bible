@@ -54,13 +54,31 @@ def resolve_target_repo(target: Path) -> tuple[Path, Path]:
     if (
         target.exists()
         and (target / "atlas.manifest.yaml").exists()
-        and (target / "13_skills").exists()
-        and (target / "19_truth_state").exists()
+        and sysdir(target, "13_skills").exists()
+        and sysdir(target, "19_truth_state").exists()
     ):
         return target, target
     raise FileNotFoundError(
-        f"target must be a repo root with atlas/ or a atlas dir: {target}"
+        f"target must be a repo root with atlas/ or a development_skills dir: {target}"
     )
+
+
+# The numbered domain dirs (NN_*) were reorganized out of the repo root into
+# platform/systems/ and platform/sdlc/. sysdir() resolves a domain dir to its
+# actual home — checking the new parents first, then the legacy root (child
+# repos synced before the move still use the flat layout). This is the single
+# fix for "run tiers 1-4 doesn't work in the repo calls": every tier check
+# below resolves its artifacts through here instead of assuming root NN_*.
+_DOMAIN_PARENTS = ("platform/systems", "platform/sdlc", "")
+
+
+def sysdir(base: Path, name: str) -> Path:
+    for parent in _DOMAIN_PARENTS:
+        cand = base / parent / name if parent else base / name
+        if cand.exists():
+            return cand
+    # Nothing found — point at the canonical new home so messages are accurate.
+    return base / "platform/systems" / name
 
 
 def read_yaml(p: Path):
@@ -107,7 +125,7 @@ def pick_twin_root(repo_name: str, preferred_central: Path, ds: Path) -> Path:
 
     Priority:
     1) Explicit/derived central ATLAS checkout (preferred_central)
-    2) The target repo's local atlas copy (ds)
+    2) The target repo's local development_skills copy (ds)
     """
     roots = [preferred_central, ds]
     for root in roots:
@@ -122,7 +140,7 @@ def normalize_token(raw: str) -> str:
 
 
 def find_twin_dir(root: Path, repo_name: str) -> Path:
-    base = root / "39_repo_twins" / "twins"
+    base = sysdir(root, "39_repo_twins") / "twins"
     exact = base / repo_name
     if exact.exists():
         return exact
@@ -151,10 +169,10 @@ def matches_repo(path: Path, repo_name: str) -> bool:
 def tier1(repo_root: Path, ds: Path, central: Path, repo_name: str) -> list[Check]:
     checks: list[Check] = []
 
-    truth = ds / "19_truth_state" / "current.truth.yaml"
+    truth = sysdir(ds, "19_truth_state") / "current.truth.yaml"
     checks.append(Check("T1.truth_file", truth.exists(), str(truth)))
 
-    diagram_root = ds / "04_architecture" / "diagrams" / "source"
+    diagram_root = sysdir(ds, "04_architecture") / "diagrams" / "source"
     mmd = [p.as_posix().lower() for p in find_files(diagram_root, "*.mmd")]
     required = [
         "system_context",
@@ -175,7 +193,7 @@ def tier1(repo_root: Path, ds: Path, central: Path, repo_name: str) -> list[Chec
     else:
         checks.append(Check("T1.registry_sync_check", False, f"missing {sync_script}"))
 
-    ep_dir = ds / "23_evidence" / "evidence_packets"
+    ep_dir = sysdir(ds, "23_evidence") / "evidence_packets"
     tier1_eps = [p for p in find_files(ep_dir, "*.yaml") if "tier1" in p.name.lower() or "onboarding-tier1" in p.name.lower()]
     checks.append(Check("T1.drift_evidence_packet", len(tier1_eps) > 0, ", ".join(p.name for p in tier1_eps) or "none"))
 
@@ -206,7 +224,7 @@ def tier1(repo_root: Path, ds: Path, central: Path, repo_name: str) -> list[Chec
 def tier2(ds: Path, repo_name: str) -> list[Check]:
     checks: list[Check] = []
 
-    intake_dir = ds / "00_intake" / "intake_packets"
+    intake_dir = sysdir(ds, "00_intake") / "intake_packets"
     intake = [p for p in find_files(intake_dir, "IDEA-*.yaml") if repo_name in p.name.lower()]
     valid_intake = False
     if intake:
@@ -215,23 +233,23 @@ def tier2(ds: Path, repo_name: str) -> list[Check]:
         valid_intake = bool(raw.strip()) and "placeholder" not in raw.lower() and "gitkeep" not in raw.lower()
     checks.append(Check("T2.intake_packet", valid_intake, intake[0].as_posix() if intake else "none"))
 
-    starter_dir = ds / "30_repo_starter" / "starter_packets"
+    starter_dir = sysdir(ds, "30_repo_starter") / "starter_packets"
     starter = [p for p in find_files(starter_dir, "*.yaml") if matches_repo(p, repo_name)]
     checks.append(Check("T2.starter_packet", len(starter) > 0, starter[0].name if starter else "none"))
 
-    slice_dir = ds / "22_vertical_slices"
+    slice_dir = sysdir(ds, "22_vertical_slices")
     slice1 = [p for p in find_files(slice_dir, "SLICE-0001*.yaml")]
     checks.append(Check("T2.first_slice", len(slice1) > 0, slice1[0].name if slice1 else "none"))
 
-    spec_dir = ds / "03_specs" / "functional_requirements"
+    spec_dir = sysdir(ds, "03_specs") / "functional_requirements"
     specs = find_files(spec_dir, "*.md") + find_files(spec_dir, "*.yaml")
     checks.append(Check("T2.functional_specs", len(specs) > 0, f"count={len(specs)}"))
 
-    adr_dir = ds / "04_architecture" / "adrs"
+    adr_dir = sysdir(ds, "04_architecture") / "adrs"
     adrs = find_files(adr_dir, "ADR-*.md")
     checks.append(Check("T2.baseline_adrs", len(adrs) > 0, f"count={len(adrs)}"))
 
-    ep_dir = ds / "23_evidence" / "evidence_packets"
+    ep_dir = sysdir(ds, "23_evidence") / "evidence_packets"
     tier2_eps = [p for p in find_files(ep_dir, "*.yaml") if "tier2" in p.name.lower() or "onboarding-tier2" in p.name.lower()]
     checks.append(Check("T2.evidence_packet", len(tier2_eps) > 0, ", ".join(p.name for p in tier2_eps) or "none"))
 
@@ -240,19 +258,19 @@ def tier2(ds: Path, repo_name: str) -> list[Check]:
 
 def tier3(ds: Path) -> list[Check]:
     checks: list[Check] = []
-    slice_dir = ds / "22_vertical_slices"
+    slice_dir = sysdir(ds, "22_vertical_slices")
     slices = [p for p in find_files(slice_dir, "SLICE-*.yaml") if "SLICE-0001" not in p.name]
     checks.append(Check("T3.slice_beyond_0001", len(slices) > 0, f"count={len(slices)}"))
 
-    ep_dir = ds / "23_evidence" / "evidence_packets"
+    ep_dir = sysdir(ds, "23_evidence") / "evidence_packets"
     eps = [p for p in find_files(ep_dir, "*.yaml") if "slice" in p.name.lower() or "tier3" in p.name.lower()]
     checks.append(Check("T3.slice_evidence", len(eps) > 0, f"count={len(eps)}"))
 
-    drift_dir = ds / "20_drift_detection" / "drift_reports"
+    drift_dir = sysdir(ds, "20_drift_detection") / "drift_reports"
     drifts = find_files(drift_dir, "*.json") + find_files(drift_dir, "*.yaml")
     checks.append(Check("T3.drift_reports", len(drifts) > 0, f"count={len(drifts)}"))
 
-    preview_dir = ds / "33_preview_deployment_factory" / "preview_plans"
+    preview_dir = sysdir(ds, "33_preview_deployment_factory") / "preview_plans"
     previews = find_files(preview_dir, "*.yaml")
     checks.append(Check("T3.preview_plans", len(previews) > 0, f"count={len(previews)}"))
 
@@ -262,15 +280,15 @@ def tier3(ds: Path) -> list[Check]:
 def tier4(ds: Path) -> list[Check]:
     checks: list[Check] = []
 
-    drift_dir = ds / "20_drift_detection" / "drift_reports"
+    drift_dir = sysdir(ds, "20_drift_detection") / "drift_reports"
     drifts = find_files(drift_dir, "*.json") + find_files(drift_dir, "*.yaml")
     checks.append(Check("T4.session_drift_report", len(drifts) > 0, f"count={len(drifts)}"))
 
-    ledger_dir = ds / "platform" / "sdlc" / "13_skills" / "skill_refinery" / "mistake_ledgers"
+    ledger_dir = sysdir(ds, "13_skills") / "skill_refinery" / "mistake_ledgers"
     ledgers = [p for p in find_files(ledger_dir, "*.md") if has_nonempty_markdown(p)]
     checks.append(Check("T4.mistake_ledger_entry", len(ledgers) > 0, f"count={len(ledgers)}"))
 
-    imp_dir = ds / "platform" / "sdlc" / "13_skills" / "skill_refinery" / "improvement_proposals"
+    imp_dir = sysdir(ds, "13_skills") / "skill_refinery" / "improvement_proposals"
     improvements = find_files(imp_dir, "*.yaml")
     checks.append(Check("T4.skill_improvement_proposal", len(improvements) > 0, f"count={len(improvements)}"))
 
@@ -293,7 +311,7 @@ def print_report(tier_checks: dict[int, list[Check]]) -> int:
 
 def main() -> int:
     ap = argparse.ArgumentParser(description="Validate onboarding tiers (T1-T4) for a target repo")
-    ap.add_argument("--target", required=True, help="repo root path or atlas path")
+    ap.add_argument("--target", required=True, help="repo root path or development_skills path")
     ap.add_argument("--tiers", default="1-4", help="tier set: 1,2,3,4 or 1-4 or all")
     ap.add_argument("--central-root", default=None, help="central ATLAS root; default resolves from this script")
     ap.add_argument("--json", dest="json_out", action="store_true", help="emit json report")
@@ -302,8 +320,8 @@ def main() -> int:
     tiers = parse_tiers(args.tiers)
     repo_root, ds = resolve_target_repo(Path(args.target))
 
-    # This script lives at <atlas>/25_automation/onboarding_validate_tiers.py
-    # so the ATLAS root is parents[1].
+    # This script lives at <ATLAS root>/infrastructure/scripts/onboarding_validate_tiers.py
+    # so the ATLAS root is parents[2].
     script_root = Path(__file__).resolve().parents[2]
     central = Path(args.central_root).resolve() if args.central_root else script_root
     repo_name = repo_root.name.lower()

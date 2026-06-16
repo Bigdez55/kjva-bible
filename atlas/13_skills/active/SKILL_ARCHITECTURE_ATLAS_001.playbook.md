@@ -78,7 +78,7 @@ ownership boundaries and cross-module dependencies.
 **Data to extract:**
 - Top-level directory listing of `target/`
 - Any `components:` section in `CLAUDE.md` or equivalent manifest
-- Contract files in `26_schemas/contract/` referencing this repo
+- Contract files in `schemas/contract/` referencing this repo
 
 **Mermaid type:** `graph TD`
 
@@ -198,7 +198,7 @@ services are affected when it changes.
 - CI/CD files: `.github/workflows/`, `Makefile` deploy targets, `vercel.json`,
   `netlify.toml`, `Dockerfile`, `docker-compose.yml`
 - Preview plan referenced in `22_vertical_slices/` if it exists
-- Env passport in `26_schemas/env_passport/` for this repo
+- Env passport in `schemas/env_passport/` for this repo
 
 **Mermaid type:** `graph TD`
 

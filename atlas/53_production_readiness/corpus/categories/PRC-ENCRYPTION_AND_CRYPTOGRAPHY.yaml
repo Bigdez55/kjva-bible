@@ -1,0 +1,125 @@
+schema_version: '1.0'
+category_id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY
+name: Encryption & Cryptography
+icon: ⊗
+color: '#D946EF'
+default_severity: high
+coverage_status: PARTIAL
+skill_refs:
+- SKILL_SECURITY_CRYPTO_ENGINEERING_001
+capability_status: MISSING
+tool_refs: []
+mcp_refs: []
+command_refs: []
+capability_refs: []
+capability_notes: No key-management/crypto executor. Build a KMS/secrets MCP tool or route (Key Vault integration).
+sections:
+- id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.ENCRYPTION_AT_REST_AND_IN_TRANSIT
+  name: Encryption at Rest & In Transit
+  items:
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.ENCRYPTION_AT_REST_AND_IN_TRANSIT.001
+    text: 'Full disk encryption on all servers: LUKS, BitLocker, or FileVault'
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.ENCRYPTION_AT_REST_AND_IN_TRANSIT.002
+    text: 'Database encryption at rest: TDE or encrypted storage volumes (AES-256)'
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.ENCRYPTION_AT_REST_AND_IN_TRANSIT.003
+    text: 'Object storage server-side encryption: SSE-KMS for sensitive data'
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.ENCRYPTION_AT_REST_AND_IN_TRANSIT.004
+    text: 'KMS key rotation enabled: annual minimum, monthly for highest classification'
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.ENCRYPTION_AT_REST_AND_IN_TRANSIT.005
+    text: Customer-managed encryption keys (CMEK) available for enterprise tenants
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.ENCRYPTION_AT_REST_AND_IN_TRANSIT.006
+    text: Backups encrypted with AES-256 or better
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.ENCRYPTION_AT_REST_AND_IN_TRANSIT.007
+    text: 'Developer laptops encrypted via MDM: Jamf or Intune enforced'
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.ENCRYPTION_AT_REST_AND_IN_TRANSIT.008
+    text: 'Encryption key hierarchy: KEK wraps DEK (envelope encryption pattern)'
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.ENCRYPTION_AT_REST_AND_IN_TRANSIT.009
+    text: 'DEK rotation without re-encrypting all data: envelope encryption supports this'
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.ENCRYPTION_AT_REST_AND_IN_TRANSIT.010
+    text: Key material never logged or surfaced in error messages
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.ENCRYPTION_AT_REST_AND_IN_TRANSIT.011
+    text: HSM used for key storage in high-security or regulated environments
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.ENCRYPTION_AT_REST_AND_IN_TRANSIT.012
+    text: TLS 1.3 preferred everywhere, TLS 1.2 minimum, TLS 1.0/1.1 disabled
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.ENCRYPTION_AT_REST_AND_IN_TRANSIT.013
+    text: 'Weak cipher suites disabled: no RC4, 3DES, DES, EXPORT ciphers'
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.ENCRYPTION_AT_REST_AND_IN_TRANSIT.014
+    text: 'Perfect Forward Secrecy: ECDHE key exchange enabled'
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.ENCRYPTION_AT_REST_AND_IN_TRANSIT.015
+    text: HSTS header deployed on all HTTPS endpoints
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.ENCRYPTION_AT_REST_AND_IN_TRANSIT.016
+    text: Internal service-to-service mTLS enforced
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.ENCRYPTION_AT_REST_AND_IN_TRANSIT.017
+    text: Database connections require TLS; reject_plaintext_connections = true
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.ENCRYPTION_AT_REST_AND_IN_TRANSIT.018
+    text: Message broker connections encrypted in transit
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.ENCRYPTION_AT_REST_AND_IN_TRANSIT.019
+    text: Redis/cache connections encrypted via TLS
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.ENCRYPTION_AT_REST_AND_IN_TRANSIT.020
+    text: WebSocket connections only over WSS in production
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.ENCRYPTION_AT_REST_AND_IN_TRANSIT.021
+    text: 'Certificate expiry monitored: alert at 30/14/7/1 days'
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.ENCRYPTION_AT_REST_AND_IN_TRANSIT.022
+    text: Certificate transparency monitored at crt.sh for unexpected issuances
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.ENCRYPTION_AT_REST_AND_IN_TRANSIT.023
+    text: SSL Labs grade A+ on all public HTTPS endpoints
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.ENCRYPTION_AT_REST_AND_IN_TRANSIT.024
+    text: OCSP stapling enabled on all servers
+- id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.APPLICATION_LAYER_ENCRYPTION
+  name: Application-Layer Encryption
+  items:
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.APPLICATION_LAYER_ENCRYPTION.001
+    text: PII fields encrypted at application layer beyond disk/DB-level encryption
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.APPLICATION_LAYER_ENCRYPTION.002
+    text: End-to-end encryption for user messages where privacy is required
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.APPLICATION_LAYER_ENCRYPTION.003
+    text: Field-level encryption using envelope encryption pattern
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.APPLICATION_LAYER_ENCRYPTION.004
+    text: Searchable encrypted fields use deterministic encryption or HMAC index
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.APPLICATION_LAYER_ENCRYPTION.005
+    text: At-rest encryption of locally stored offline data on desktop and mobile
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.APPLICATION_LAYER_ENCRYPTION.006
+    text: Backup data field-level encrypted before leaving application control
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.APPLICATION_LAYER_ENCRYPTION.007
+    text: Exported user data encrypted with user-provided key or ephemeral passphrase
+- id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.CRYPTOGRAPHIC_STANDARDS_AND_KEY_MANAGEMENT
+  name: Cryptographic Standards & Key Management
+  items:
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.CRYPTOGRAPHIC_STANDARDS_AND_KEY_MANAGEMENT.001
+    text: Passwords hashed with argon2id (preferred) or bcrypt (cost ≥ 12)
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.CRYPTOGRAPHIC_STANDARDS_AND_KEY_MANAGEMENT.002
+    text: MD5, SHA-1, and plain SHA-256 never used for password hashing
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.CRYPTOGRAPHIC_STANDARDS_AND_KEY_MANAGEMENT.003
+    text: 'Password hashing work factor tuned: ≥ 300ms target hash duration'
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.CRYPTOGRAPHIC_STANDARDS_AND_KEY_MANAGEMENT.004
+    text: 'Salt: unique per password, generated by CSPRNG, not reused'
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.CRYPTOGRAPHIC_STANDARDS_AND_KEY_MANAGEMENT.005
+    text: 'Random generation: CSPRNG only (os.urandom, crypto.getRandomValues, SecureRandom)'
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.CRYPTOGRAPHIC_STANDARDS_AND_KEY_MANAGEMENT.006
+    text: AES-256-GCM preferred for symmetric encryption (authenticated encryption)
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.CRYPTOGRAPHIC_STANDARDS_AND_KEY_MANAGEMENT.007
+    text: AES-ECB mode never used under any circumstances
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.CRYPTOGRAPHIC_STANDARDS_AND_KEY_MANAGEMENT.008
+    text: IV/nonce unique per encryption operation, CSPRNG-generated, never reused
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.CRYPTOGRAPHIC_STANDARDS_AND_KEY_MANAGEMENT.009
+    text: HMAC-SHA256 minimum for all message authentication codes
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.CRYPTOGRAPHIC_STANDARDS_AND_KEY_MANAGEMENT.010
+    text: 'Digital signatures: RSA-PSS 2048-bit+ or ECDSA P-256 for documents and webhooks'
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.CRYPTOGRAPHIC_STANDARDS_AND_KEY_MANAGEMENT.011
+    text: 'Key agreement: X25519 or ECDH P-256 for ephemeral key exchange'
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.CRYPTOGRAPHIC_STANDARDS_AND_KEY_MANAGEMENT.012
+    text: 'No custom cryptographic algorithms: NIST-approved or IETF-standard only'
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.CRYPTOGRAPHIC_STANDARDS_AND_KEY_MANAGEMENT.013
+    text: Cryptographic code reviewed by security engineer for any custom implementation
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.CRYPTOGRAPHIC_STANDARDS_AND_KEY_MANAGEMENT.014
+    text: 'Post-quantum cryptography roadmap created: CRYSTALS-Kyber, CRYSTALS-Dilithium'
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.CRYPTOGRAPHIC_STANDARDS_AND_KEY_MANAGEMENT.015
+    text: 'Key ceremony documented: how keys are generated, split, and stored'
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.CRYPTOGRAPHIC_STANDARDS_AND_KEY_MANAGEMENT.016
+    text: 'Key escrow policy defined: can keys be recovered for legal or business need'
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.CRYPTOGRAPHIC_STANDARDS_AND_KEY_MANAGEMENT.017
+    text: 'Certificate lifecycle: issuance, renewal, revocation, rotation all documented'
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.CRYPTOGRAPHIC_STANDARDS_AND_KEY_MANAGEMENT.018
+    text: 'PKI hierarchy documented: root CA, intermediate CA, leaf cert chain'
+  - id: PRC.ENCRYPTION_AND_CRYPTOGRAPHY.CRYPTOGRAPHIC_STANDARDS_AND_KEY_MANAGEMENT.019
+    text: Private keys never leave HSM in high-security environments

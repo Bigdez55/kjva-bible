@@ -169,7 +169,7 @@ grep -rn "__dirname" apps/backend/ apps/frontend/ \
 
 **Pass criteria:** All greps return zero matches for your project type.
 
-**ATLAS lesson (2026-05-25):** After moving `25_automation/` two levels
+**ATLAS lesson (2026-05-25):** After moving `infrastructure/scripts/` two levels
 deeper to `infrastructure/scripts/`, `parents[1]` in 15 scripts pointed one level
 short of the repo root. The bulk `sed` substitution fixed quoted-string paths but
 missed path-join syntax (`/ "dir" /`), requiring a second targeted pass. 3C catches
@@ -473,9 +473,49 @@ After every session that surfaces a new error pattern:
 4. Increment the skill version
 
 Current version: 1.4.0
-Last updated: 2026-05-26
+---
+
+### GATE 8 — NO RUNAWAY BACKGROUND PROCESSES LEFT BEHIND
+
+**Trigger:** before closing any task or session, AND any time you started/touched a
+background process, dev server, daemon, or always-on service (launchd/systemd/pm2/
+Docker-restart/KeepAlive), AND before leaving any agent in auto/unattended mode.
+
+**Why:** a green build with 100 leaked processes is a FAILURE, not a success.
+**Agent-green ≠ machine-healthy.** An unattended agent + an unbounded KeepAlive
+service crash-looped overnight into 100+ Node/Python processes and exhausted RAM
+(ATLAS, 2026-06-03) — the operator had to hand-kill everything in a terminal.
+
+**Checks (all must pass):**
+1. **Census.** `ps -axo pid,ppid,rss,etime,command | grep -E '<your procs>'` — no
+   unexpected accumulation; no same-named process piling up.
+2. **No orphans.** No relevant process has **PPID 1** that you did not intend
+   (a child reparented to launchd/init = leaked on a parent crash).
+3. **One per port.** Each service has exactly one listener (`lsof -nP -iTCP:<port> -sTCP:LISTEN`).
+4. **Bounded supervision.** Any KeepAlive/restart you added has a throttle (≥30–60s),
+   a memory cap, and pre-flight orphan reap — see [[always-on-service-resource-discipline]].
+5. **Operator OFF switch.** Any service you stood up has a one-command disable that
+   STAYS off (not a "stop" the supervisor respawns).
+6. **Flat over time.** Process count + free RAM stay flat over several minutes — the
+   proof is the census, not the edited config.
+
+Pass criteria: flat census, zero unintended orphans, one listener per port, every
+supervised process bounded + operator-toggleable. If you cannot confirm, run the
+service's `reap`/`doctor`/`status` and fix before declaring done.
+
+---
+
+Last updated: 2026-06-03
 
 **Changelog:**
+- v1.5.0 (2026-06-03): Added Gate 8 — No runaway background processes left behind.
+  MANDATORY before closing any task/session and before leaving an agent in
+  auto/unattended mode. Census + no-orphans + one-per-port + bounded-supervision +
+  operator-OFF-switch + flat-over-time. Pattern sourced from ATLAS overnight 100+
+  Node/Python process pile-up (unbounded launchd KeepAlive, ThrottleInterval=10, no
+  memory cap, orphaned children, crash-looping legacy daemon). New companion skill
+  [[always-on-service-resource-discipline]] (SKILL_ALWAYS_ON_SERVICE_RESOURCE_DISCIPLINE_001)
+  carries the full five-guardrail recipe. "Agent-green ≠ machine-healthy."
 - v1.4.0 (2026-05-26): Added Gate 7E — Pre-push remote verification. MANDATORY
   before every git push. Run `git remote -v` and cross-check URL against canonical
   map in [[git-remote-discipline]] before pushing. Trigger also added to skill

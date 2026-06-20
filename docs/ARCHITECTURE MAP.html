@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>kjva-bible — ARCHITECTURE MAP</title>
+<style>
+:root{--bg:#0e1116;--panel:#161b22;--panel2:#1c2230;--line:#2a3240;--tx:#d6dde6;--mut:#8b97a7;--acc:#58a6ff;}
+*{box-sizing:border-box}body{margin:0;font:14px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--tx)}
+header{padding:26px 32px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#11161e,#0e1116)}
+header h1{margin:0 0 4px;font-size:23px} header .meta{color:var(--mut);font-size:13px}
+.bigfind{margin:12px 0 0;border-radius:6px;padding:10px 13px;font-size:12.5px;line-height:1.55;max-width:1040px;background:#1a1410;border:1px solid #6b4a1f;border-left:3px solid #e67e22}
+main{padding:24px 32px;max-width:1040px}
+section{margin:0 0 26px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:20px 22px}
+section h2{margin:0 0 10px;font-size:18px} .sub{color:var(--mut);margin:0 0 12px;font-size:13px}
+.diagbox{background:#0c0f14;border:1px solid var(--line);border-radius:8px;padding:14px;overflow:auto;font-family:ui-monospace,Menlo,monospace;font-size:12px;white-space:pre;color:var(--tx);line-height:1.45}
+table{border-collapse:collapse;width:100%;font-size:13px;margin-top:6px}
+td,th{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top} th{background:var(--panel2);color:var(--mut)}
+code{font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--acc);background:#0c0f14;border:1px solid var(--line);border-radius:4px;padding:0 4px}
+.chip{font-size:11px;border:1px solid;border-radius:5px;padding:1px 7px;font-weight:600}
+.ok{background:#2ecc711a;border-color:#2ecc71;color:#2ecc71}.warn{background:#f1c40f1a;border-color:#f1c40f;color:#f1c40f}.gap{background:#e67e221a;border-color:#e67e22;color:#e67e22}.scaf{background:#e67e221a;border-color:#e67e22;color:#e67e22}
+ul{margin:6px 0 0;padding-left:18px} li{margin:0 0 6px;line-height:1.5}
+</style>
+</head>
+<body>
+<header>
+<h1>kjva-bible — ARCHITECTURE MAP</h1>
+<div class="meta">Generated 2026-06-20 · /Users/desmondearly/Developer/kjva-bible · reconnaissance map (read-only; nothing built or executed)</div>
+<div class="bigfind"><strong>Honest headline:</strong> A <strong>real, wired full-stack app</strong> — FastAPI backend + React/Vite frontend over a verified 36,822-verse KJV corpus — that has quietly grown a deeply-imported "<strong>constitutional cognitive runtime</strong>" (<code>KJVA/</code>: governance, heptagon, soul_manager, a compiled <code>libxmind-core</code> C engine, and the full training pipeline). The backend genuinely imports and calls that substrate, so it is <em>wired, not dead</em> — but actual model generation needs <code>canonical.gguf</code> + the native engine + Apple-Silicon MLX, so runtime success is <strong>UNVERIFIED</strong> under read-only recon (it degrades to retrieval-only). The catch is the docs: <code>README.md</code>/<code>AGENTS.md</code> are a stale "Phase 1" snapshot — they describe 5 UI tabs / 2 components that don't exist (the app has 2 tabs), call <code>/api/search|qa|xref</code> "501 stubs" when they're live, undercount tests (29 vs 64), and still forbid "mixing training code here" while a Creator-authorized in-repo training substrate sits in <code>KJVA/</code>. The 3.1&nbsp;GB on disk is overwhelmingly gitignored model binaries, not source (~274 real <code>.py</code> + ~15 <code>.jsx</code>).</div>
+</header>
+<main>
+
+<section>
+<h2>1 · System architecture</h2>
+<p class="sub">Live request paths (verified by import/call reads) solid; PRESENT-BUT-NOT-WIRED routes dashed. <code>atlas/</code> = synced ATLAS SDLC governance bundle (vendored, not app runtime).</p>
+<div class="diagbox">                          kjva-bible  (real-application, full-stack)
+
+  BROWSER (React 18 / Vite)  —  frontend/src/  (2 tabs only)
+  ┌───────────────────────────────────────────────────────────────┐
+  │  App.jsx  ──tabs──►  [ Browse ]            [ Study ]           │
+  │                         │                     │                │
+  │                  VerseBrowser.jsx       StudyPanel.jsx         │
+  └─────────│──────────────────│─────────────────│────────────────┘
+            │ /api/books        │ /api/chapters   │ /api/study
+            │                   │ /api/verses     │ /api/books
+            ▼                   ▼                 ▼
+  FastAPI BACKEND  (backend/, HTTP adapter only)   main.py: routers + lifespan + /api/health
+  ┌───────────────────────────────────────────────────────────────┐
+  │  routes/verse.py    /api/books · /chapters · /verses · /verse  │ ◄═ LIVE, UI-consumed
+  │  routes/study.py    /api/study  ──►  scribe.py (Apex Scribe)   │ ◄═ LIVE, UI-consumed
+  │  routes/complete.py /api/complete ............................ │ ··· live, UI-UNCONSUMED (F-1)
+  │  routes/stubs.py    /api/search · /qa · /xref ................ │ ··· live (no longer 501), UI-UNCONSUMED
+  └───────────┬───────────────────────────────┬───────────────────┘
+              │ corpus.get_index()            │ kjva_runtime.get_runtime()
+              ▼                                ▼
+  corpus.py  VerseIndex                KJVA Constitutional Cognitive Runtime  (WIRED via sys.path)
+   parse_reference / search /          ┌──────────────────────────────────────────────┐
+   cross_reference / qa                │ KJVA/governance/  covenant_enforcer (COV-001..)│
+              │                        │ KJVA/heptagon/    attestation · member_guard   │
+              ▼                        │ KJVA/soul_manager/ continuity + memory         │
+  data/verses.jsonl                    │ ai/tokenless-agent/src/  agent.py · _xmind ────┼─► inference.py
+   36,822 records (VERIFIED)           └──────────────────────────────────────────────┘     │
+   id/ref/book/text/strongs/footnotes                                                        ▼
+                                                          KJVA/ai/xmind/  libxmind-core.dylib  (native C engine)
+                                                          KJVA/training/gguf/canonical.gguf  (gitignored, on disk)
+                                                          → generation UNVERIFIED (read-only); degrades to retrieval
+
+  ─ NOT app runtime ─  atlas/ (ATLAS SDLC bundle · 3,264 tracked) · KJVA/training/ pipeline (103 .py) · .claude/ .codex/</div>
+</section>
+
+<section>
+<h2>2 · Stack &amp; contents</h2>
+<p class="sub">Real source after excluding vendored bulk (<code>.git</code>, <code>atlas/</code>, <code>.claude</code>, <code>.codex</code>, <code>node_modules</code>, caches, gitignored model binaries).</p>
+<table>
+<tr><th>Area</th><th>Tech / path</th><th>Real source</th><th>Notes</th></tr>
+<tr><td>Backend</td><td>Python · FastAPI · <code>backend/</code></td><td>19 .py</td><td>HTTP adapter: 4 routers, <code>corpus.py</code> (verse index), <code>scribe.py</code> (391 LOC orchestrator), <code>kjva_runtime.py</code>, <code>inference.py</code>.</td></tr>
+<tr><td>Frontend</td><td>React 18 · Vite 5 · <code>frontend/src/</code></td><td>4 .jsx</td><td><code>App.jsx</code> + <code>VerseBrowser.jsx</code> + <code>StudyPanel.jsx</code> + <code>main.jsx</code>. 2 tabs. <code>dist/</code> served by FastAPI in prod.</td></tr>
+<tr><td>Data</td><td>JSONL + source corpus · <code>data/</code></td><td>36,822 verses</td><td><code>verses.jsonl</code> (VERIFIED). <code>data/corpus/</code> = tracked eng-kjv source (VPL/HTML/BrowserBible). <code>corpus_v2/versions/</code> 45 jsonl correctly gitignored.</td></tr>
+<tr><td>Cognitive substrate</td><td>Python + C(SuperC) · <code>KJVA/</code></td><td>250 .py</td><td>governance · heptagon · soul_manager · <code>ai/xmind</code> (compiled <code>libxmind-core.dylib</code>) · <code>ai/tokenless-agent</code>. Imported+called by backend.</td></tr>
+<tr><td>Training</td><td>Python · <code>KJVA/training/</code></td><td>103 .py</td><td>byte/PEFT pipeline + <code>gguf/canonical.gguf</code> (gitignored). Drives the in-repo "do not mix training code" contradiction (F-3).</td></tr>
+<tr><td>Governance tooling</td><td><code>atlas/</code> (ATLAS SDLC)</td><td>3,264 tracked</td><td>Specs/ADRs/skills/production-readiness corpus. <strong>Vendored</strong> — not part of app runtime; excluded from source counts.</td></tr>
+<tr><td>CI / container</td><td>GitHub Actions · Docker</td><td>—</td><td><code>.github/workflows/ci.yml</code> (ruff + pytest + docker build). <code>Dockerfile</code> + <code>docker-compose.yml</code> run retrieval-only by default.</td></tr>
+<tr><td>Native libs</td><td>C build artifacts</td><td>—</td><td><code>KJVA/ai/xmind/build/libxmind-core.dylib</code> (+<code>.a</code>), <code>KJVA/ai/tts/build/libtts.dylib</code>; source <code>ai/xmind/superc/xmind_core.sc</code>.</td></tr>
+</table>
+</section>
+
+<section>
+<h2>3 · Spec ↔ Build</h2>
+<p class="sub">README / AGENTS claims vs actual code. Full register in the companion markdown.</p>
+<table>
+<tr><th>Claim</th><th>Reality</th><th>Status</th></tr>
+<tr><td>FastAPI backend + React (Vite) frontend</td><td><code>main.py</code> + <code>frontend/</code> exactly as described</td><td><span class="chip ok">BUILT</span></td></tr>
+<tr><td>Verse browser, 66 books / 36,822 verses, Live</td><td><code>verses.jsonl</code> = 36,822 (verified); verse routes consumed by UI</td><td><span class="chip ok">BUILT</span></td></tr>
+<tr><td>App.jsx tabs: Browse / Completion / Search / Q&amp;A / Xref; <code>CompletionPanel.jsx</code>, <code>StubPanel.jsx</code></td><td>2 tabs only (Browse, Study); both named components MISSING</td><td><span class="chip gap">STALE SPEC</span></td></tr>
+<tr><td><code>/api/search</code>, <code>/api/qa</code>, <code>/api/xref</code> = HTTP 501 stubs (Phase 2-4)</td><td><code>stubs.py</code>: "now LIVE" — corpus-backed retrieval, no adapter</td><td><span class="chip gap">STALE SPEC</span></td></tr>
+<tr><td>"29 tests"</td><td>64 <code>def test_</code> functions across 4 files</td><td><span class="chip warn">STALE COUNT</span></td></tr>
+<tr><td>AGENTS: "do not mix training code into this repo"</td><td><code>KJVA/training/</code> = 103 .py in-tree; Creator-authorized per <code>MIGRATION_FROM_KJVA.md</code></td><td><span class="chip gap">CONTRADICTION — confirm</span></td></tr>
+<tr><td>Simple "retrieval-augmented completion" app</td><td><code>main.py</code> boots a "Constitutional Cognitive Runtime (XMIND)"; <code>/api/study</code> scribe orchestrator</td><td><span class="chip warn">UNDER-DOCUMENTED</span></td></tr>
+<tr><td>AI completion "Live (Apple Silicon)", degrades gracefully</td><td>Wired (<code>inference</code>→<code>_xmind</code>; <code>kjva_runtime</code>); needs <code>canonical.gguf</code>+native+MLX; not executed here</td><td><span class="chip warn">WIRED · UNVERIFIED</span></td></tr>
+<tr><td>"18M params, val_ppl=3.21", vocab 259 / 8L×d384</td><td>Config shape echoed in code; param/ppl are doc assertions, not read-confirmable</td><td><span class="chip warn">UNVERIFIED</span></td></tr>
+<tr><td><code>ml-training/</code> removal listed as pending owner action</td><td><code>KJVA/ml-training/</code> absent on disk, 0 tracked — already done</td><td><span class="chip warn">STALE DOC</span></td></tr>
+<tr><td>Backend port (README :8001 vs main.py/Docker :8000)</td><td>Inconsistent across README / <code>main.py</code> / compose / CORS</td><td><span class="chip warn">MINOR</span></td></tr>
+</table>
+</section>
+
+<section>
+<h2>4 · Findings</h2>
+<p class="sub">Reported, not fixed. F-IDs match the companion markdown.</p>
+<ul>
+<li><strong>F-1 — PRESENT-BUT-NOT-WIRED (frontend↔backend).</strong> <code>/api/complete</code>, <code>/api/search</code>, <code>/api/qa</code>, <code>/api/xref</code> are live backend routes but the UI calls <em>none</em> of them. <code>grep</code> of <code>frontend/src</code>: VerseBrowser → <code>/api/books|chapters|verses</code>; StudyPanel → <code>/api/books|study</code>. The unified <code>/api/study</code> scribe <em>superseded</em> the per-feature endpoints in the app. Reachable by API/tests, dead from the rendered UI. Possibly intentional (API/test surface) — confirm.</li>
+<li><strong>F-2 — Stale frontend spec.</strong> README/AGENTS describe a 5-tab UI with <code>CompletionPanel.jsx</code>/<code>StubPanel.jsx</code>; neither exists, app has 2 tabs (Browse, Study).</li>
+<li><strong>F-3 — "Do not mix training code" vs in-repo substrate.</strong> AGENTS forbids in-repo training; <code>KJVA/training/</code> (103 .py) + the cognitive substrate are in-tree. <code>MIGRATION_FROM_KJVA.md</code> shows a deliberate Creator-authorized whole-dir replacement (2026-06-09), so the gap is in the unupdated rule text. Possibly intentional — confirm / reconcile.</li>
+<li><strong>F-4 — Runtime WIRED but execution UNVERIFIED.</strong> <code>kjva_runtime.py</code> truly imports+calls <code>KJVA.governance.*</code>/<code>heptagon.*</code>/<code>soul_manager.*</code> + the <code>_xmind</code> client; <code>complete.py</code>/<code>main.py</code> call <code>get_runtime()</code>. Real wiring — but generation needs <code>libxmind-core.dylib</code> (present) + <code>canonical.gguf</code> (present, gitignored) + MLX; on fresh/Linux CI it degrades to retrieval-only. Not proven live under read-only recon.</li>
+<li><strong>F-5 — Build is ahead of docs.</strong> <code>/api/study</code>+<code>scribe.py</code>, the now-live search/qa/xref, and the whole cognitive-runtime layer post-date the README's Phase-1 framing. The product is materially larger than its top-level docs say; current truth lives in <code>KJVA/*.md</code> + <code>atlas/</code>.</li>
+<li><strong>F-6 — Test count understated.</strong> Docs say 29; suite has 64 test functions.</li>
+<li><strong>F-7 — Completed cleanup described as pending.</strong> <code>KJVA/ml-training/</code> already removed (0 tracked, absent) yet <code>TRAINING_TREE_RECONCILIATION.md</code> still frames removal as an open owner action.</li>
+<li><strong>F-8 — Port drift.</strong> README :8001 vs <code>main.py</code>/<code>__main__</code>/Docker :8000; CORS allows :8001. No single canonical port stated — onboarding trip-hazard.</li>
+<li><strong>F-9 — Unverifiable model claims.</strong> "18M params" and "val_ppl=3.21" are doc assertions, not read-confirmable. (The 36,822-verse corpus claim <em>was</em> verified.)</li>
+</ul>
+<p class="sub" style="margin-top:14px">Reconnaissance only — observations for the coding agent's checklist + your oversight, not changes. Companion: <code>SPEC_VS_BUILD_DISCREPANCIES.md</code>.</p>
+</section>
+
+</main>
+</body>
+</html>

@@ -1,5 +1,0 @@
-id: PROP-SKILL_DIAGRAM_RENDER_001
-skill_id: SKILL_DIAGRAM_RENDER_001
-date: '2026-05-04'
-proposal: Promote to v1.1 once validation_test runs in CI for 7 days without failure.
-status: open

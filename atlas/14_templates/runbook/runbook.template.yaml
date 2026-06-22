@@ -1,7 +1,0 @@
-# Template: runbook
-# Replace placeholders. See schemas/runbook/ if a schema exists.
-id: "{id}"
-name: "{name}"
-status: draft
-created: "{date}"
-owner: "{owner}"

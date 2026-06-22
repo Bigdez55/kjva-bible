@@ -1,7 +1,0 @@
-# Template: synth_scenario
-# Replace placeholders. See schemas/synth_scenario/ if a schema exists.
-id: "{id}"
-name: "{name}"
-status: draft
-created: "{date}"
-owner: "{owner}"

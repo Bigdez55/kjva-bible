@@ -1,7 +1,0 @@
-# Template: build_manifest
-# Replace placeholders. See schemas/build_manifest/ if a schema exists.
-id: "{id}"
-name: "{name}"
-status: draft
-created: "{date}"
-owner: "{owner}"

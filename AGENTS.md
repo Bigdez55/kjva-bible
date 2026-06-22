@@ -1,111 +1,63 @@
-# KJVA Bible — Agent Instructions
+# ATLAS Thin Tether — Agent Instructions
 
-## Project Identity
+This repo is tethered to ATLAS via `atlas_tether.py`. All skill resolution,
+routing, and context compilation go through the Bookworm ABI at
+`$ATLAS_HOME/infrastructure/scripts/atlas_tether.py` — **in-process, no HTTP**.
 
-Standalone Bible app powered by the KJVA model (18M-param byte-level LM,
-val_ppl=3.21). Training infrastructure lives in the separate **Tokenless Models**
-workspace — do not mix training code into this repo.
+## Thin Tether Contract
 
-**Source of truth priority:** code > test evidence > docs.
+- **ATLAS_HOME**: `/Users/desmondearly/Developer/ATLAS` (see `.atlas/tether.yaml`)
+- **Tether CLI**: `python3 /Users/desmondearly/Developer/ATLAS/infrastructure/scripts/atlas_tether.py <subcommand>`
+- The vendored `atlas/`, `.claude/universal/`, `.codex/universal/` corpus has been
+  purged or was never present. All knowledge is resolved live from ATLAS_HOME.
 
----
+## Skill Resolution
 
-## Architecture
-
-```
-backend/          FastAPI — inference, verse index, API routes
-  model.py        TokenlessLM (inference copy, frozen — do not train here)
-  inference.py    KJVA loader + byte-level completion engine
-  corpus.py       VerseIndex from data/verses.jsonl
-  routes/
-    verse.py      /api/books, /api/chapters, /api/verses, /api/verse
-    complete.py   POST /api/complete  (live; retrieval-first per ADR-0003)
-    stubs.py      POST /api/search, /api/qa, /api/xref  (501 until Phase 2-4)
-  main.py         FastAPI app, CORS, static serving, lifespan startup
-
-frontend/         React + Vite
-  src/App.jsx     Tab navigation (Browse, Completion, Search, Q&A, Xref)
-  src/components/VerseBrowser.jsx    Book/chapter/verse navigation
-  src/components/CompletionPanel.jsx AI text generation UI
-  src/components/StubPanel.jsx       Placeholder for unimplemented features
-
-data/
-  verses.jsonl    36,822 structured verse records (gittracked)
-  corpus/external/  raw multi-version downloads (GITIGNORED; sha256 in fetch_manifest.json)
-  corpus_v2/        multi-version training corpus — 45 translations, 535k verses
-                    (KJV lineage, Apocrypha, Pseudepigrapha, JPS Tanakh, Hebrew WLC).
-                    Bulk files GITIGNORED; manifest.json + validation_report.json +
-                    SOURCES.md tracked. NKJV excluded (copyright) — see SOURCES.md.
-                    Rebuild: scripts/corpus/ pipeline (SPEC-KJVA-FUNC-0002, SLICE-0002)
-
-scripts/corpus/   fetch_sources.py, normalize_sources.py, extract_fbe.py,
-                  build_corpus_v2.py, ingest_licensed.py (licensed NKJV path)
-
-models/kjva/
-  weights.safetensors   GITIGNORED — copy from Tokenless Models
-  model_config.json     Architecture config (gittracked)
-  byte_vocab.json       Byte vocab spec (gittracked)
-  provenance.json       sha256 manifest (gittracked)
-```
-
----
-
-## Critical Constraints
-
-- `models/kjva/weights.safetensors` — **GITIGNORED** — never commit weights
-- All training (pretraining, PEFT, benchmarking) lives in **Tokenless Models** repo
-- MLX rules (from Tokenless Models, apply here too):
-  - No `mx.log_softmax` — use `logits - mx.logsumexp(...)`
-  - Freeze params with `model.freeze()`, not `requires_grad`
-  - Gradients via `nn.value_and_grad` (not `.backward()`)
-  - Weights: `mx.load()` + `model.load_weights(list(weights.items()))`
-- `do_not_import_global_claude_codex_state: true`
-
----
-
-## Development Workflow
-
-Start backend:
 ```bash
-cd backend && uvicorn main:app --reload --port 8001
+python3 /Users/desmondearly/Developer/ATLAS/infrastructure/scripts/atlas_tether.py resolve-skill REFACTOR
+python3 /Users/desmondearly/Developer/ATLAS/infrastructure/scripts/atlas_tether.py resolve-skill ADR --full
 ```
 
-Start frontend (dev):
+## Routing
+
 ```bash
-cd frontend && npm run dev
+python3 /Users/desmondearly/Developer/ATLAS/infrastructure/scripts/atlas_tether.py route "audit the repo"
 ```
 
-Install KJVA weights (one-time):
+## Context Compilation
+
 ```bash
-cp "<Tokenless Models>/KJVA/training/weights.safetensors" models/kjva/weights.safetensors
+python3 /Users/desmondearly/Developer/ATLAS/infrastructure/scripts/atlas_tether.py compile-context --scope full --task "implement feature X"
 ```
 
----
+## Knowledge Search
 
-## Feature Roadmap
+```bash
+python3 /Users/desmondearly/Developer/ATLAS/infrastructure/scripts/atlas_tether.py ask "skill routing strategies"
+```
 
-| Phase | Feature | Requires |
-|---|---|---|
-| 1 (live) | Verse browser + retrieval-augmented completion | None for retrieval; KJVA weights for AI fallback |
-| 2 | Semantic search | Embedding adapter (train in Tokenless Models) |
-| 3 | Q&A / commentary | SFT adapter (train in Tokenless Models) |
-| 4 | Cross-reference | Embedding similarity index |
+## Cross-Runtime Skill Invocation
 
----
+When the user says `invoke all skills`, `use all skills`, or `activate all skills`,
+route through `atlas_tether.py route` which binds the canonical trigger router
+at `$ATLAS_HOME/platform/systems/37_command_protocol/trigger_router.yaml`.
 
-## Stub Endpoints
+Required behavior:
+- Use `atlas_tether.py resolve-skill` for all skill lookups (resolves from ABI)
+- Treat resolved `SKILL_*.yaml` + `.playbook.md` files as applicable disciplines
+- Suppress project-specific skills unless explicitly target-bound
 
-`/api/search`, `/api/qa`, `/api/xref` return HTTP 501 with a structured error
-explaining what adapter/training is required. Do not remove stubs — they allow
-the frontend to render placeholders cleanly.
+Forbidden behavior:
+- Do not reference paths under `atlas/`, `.claude/universal/`, `.codex/universal/`
+  (the vendored corpus has been purged; those paths are dead references)
+- Do not hardcode ATLAS internal paths — use the tether CLI exclusively
 
----
+## Health Check
 
-## Phase 1 Release (SLICE-0001)
+```bash
+python3 /Users/desmondearly/Developer/ATLAS/infrastructure/scripts/atlas_tether.py doctor
+```
 
-See `atlas/22_vertical_slices/SLICE-0001-phase1-release.yaml`.
+## Tether Configuration
 
-- Retrieval-first `/api/complete` (ADR-0003)
-- 29-test pytest suite in `backend/tests/`
-- `Dockerfile` + `docker-compose.yml` for retrieval-only container preview
-- `.github/workflows/ci.yml` runs ruff + pytest + docker build on push
+See `.atlas/tether.yaml` for `atlas_home`, `pinned_ref`, and `abi_version`.

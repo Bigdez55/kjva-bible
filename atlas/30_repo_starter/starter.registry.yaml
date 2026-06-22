@@ -1,8 +1,0 @@
-last_updated: '2026-06-02'
-scan_dir: platform/systems/30_repo_starter/starter_packets
-total: 2
-starters:
-- name: STARTER-DEV_SKILLS
-  path: platform/systems/30_repo_starter/starter_packets/STARTER-DEV_SKILLS.yaml
-- name: STARTER_PACKET_TEMPLATE
-  path: platform/systems/30_repo_starter/starter_packets/STARTER_PACKET_TEMPLATE.yaml

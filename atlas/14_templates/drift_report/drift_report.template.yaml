@@ -1,7 +1,0 @@
-# Template: drift_report
-# Replace placeholders. See schemas/drift_report/ if a schema exists.
-id: "{id}"
-name: "{name}"
-status: draft
-created: "{date}"
-owner: "{owner}"

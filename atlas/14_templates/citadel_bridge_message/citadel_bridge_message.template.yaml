@@ -1,7 +1,0 @@
-# Template: citadel_bridge_message
-# Replace placeholders. See schemas/citadel_bridge_message/ if a schema exists.
-id: "{id}"
-name: "{name}"
-status: draft
-created: "{date}"
-owner: "{owner}"

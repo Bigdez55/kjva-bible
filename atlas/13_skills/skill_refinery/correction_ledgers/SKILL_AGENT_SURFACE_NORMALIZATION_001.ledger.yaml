@@ -1,9 +1,0 @@
-skill_id: SKILL_AGENT_SURFACE_NORMALIZATION_001
-created_from: current_thread_skill_refinery_closure
-entries:
-- date: '2026-05-17'
-  type: creation
-  trigger: User identified that this thread should create, improve, refine, and consolidate
-    skills.
-  change: Created active skill and playbook from repeatable workflow pattern.
-  validation: Pending registry sync and validation stack.

@@ -1,7 +1,0 @@
-skill_id: SKILL_ATLAS_WORKSPACE_SHELL_001
-entries:
-- date: '2026-05-19'
-  event: new_skill_created
-  source: New updates/new ui
-  correction: Captured static ATLAS UI shell and command-palette rules as a reusable live-platform skill.
-  validation: Pending registry sync and full validation stack after implementation.

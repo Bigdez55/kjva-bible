@@ -1,7 +1,0 @@
-# Template: context_packet
-# Replace placeholders. See schemas/context_packet/ if a schema exists.
-id: "{id}"
-name: "{name}"
-status: draft
-created: "{date}"
-owner: "{owner}"

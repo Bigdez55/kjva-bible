@@ -1,7 +1,0 @@
-# Template: knowledge_item
-# Replace placeholders. See schemas/knowledge_item/ if a schema exists.
-id: "{id}"
-name: "{name}"
-status: draft
-created: "{date}"
-owner: "{owner}"

@@ -1,7 +1,0 @@
-# Template: vision
-# Replace placeholders. See schemas/vision/ if a schema exists.
-id: "{id}"
-name: "{name}"
-status: draft
-created: "{date}"
-owner: "{owner}"

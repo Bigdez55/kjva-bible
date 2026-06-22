@@ -1,6 +1,0 @@
-skill_id: SKILL_PUBLIC_RELEASE_AUTH_RATE_AUDIT_GATE_001
-status: active
-entries:
-- date: '2026-05-20'
-  type: import
-  summary: Imported from security updates multi-tenant platform skill pack v1.2.0.

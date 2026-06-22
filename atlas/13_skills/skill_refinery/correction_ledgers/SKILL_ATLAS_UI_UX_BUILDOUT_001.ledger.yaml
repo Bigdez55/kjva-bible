@@ -1,9 +1,0 @@
-skill_id: SKILL_ATLAS_UI_UX_BUILDOUT_001
-entries:
-- date: '2026-05-17'
-  type: buildout_normalization
-  trigger: build out the UI/UX and create infrastructure for skills and processes
-  miss: Initial UI shell did not yet create the durable skill/template/router infrastructure required to normalize future ATLAS buildouts.
-  correction: Added ATLAS multi-tenant UI/UX Buildout Infrastructure skill, templates, router binding, tenant repo connector command, and regression coverage.
-  regression_added: REG-027
-  status: active

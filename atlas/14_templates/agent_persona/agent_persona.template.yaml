@@ -1,7 +1,0 @@
-# Template: agent_persona
-# Replace placeholders. See schemas/agent_persona/ if a schema exists.
-id: "{id}"
-name: "{name}"
-status: draft
-created: "{date}"
-owner: "{owner}"

@@ -64,3 +64,6 @@ KJVA_BACKUP_*/
 KJVA_REPLACED_*/
 KJVA_FAILED_REPLACEMENT_*/
 KJVA_OLD_FILE_INVENTORY_*.txt
+
+# atlas_tether: vendored corpus (replaced by thin tether)
+atlas/

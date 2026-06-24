@@ -38,12 +38,12 @@ import sys
 from pathlib import Path
 
 DS_ROOT = Path(
-    "/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Development_Skills"
+    "/Users/desmondearly/Developer/Development_Skills"
 )
 CANON_ACTIVE = DS_ROOT / "platform/sdlc/13_skills/active"
 QUEUE_DIR = DS_ROOT / "platform/sdlc/13_skills/skill_refinery/inbound_queue"
 
-WORKSPACE = Path("/Users/desmondearly/Library/CloudStorage/OneDrive-Personal")
+WORKSPACE = Path("/Users/desmondearly/Developer")
 CHILD_REPOS = [
     "GENESYS/GENESYS",
     "kjva-bible",

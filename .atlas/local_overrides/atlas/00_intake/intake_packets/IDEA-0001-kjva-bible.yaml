@@ -1,7 +1,7 @@
 id: IDEA-0001
 repo: kjva-bible
 remote: https://github.com/Bigdez55/kjva-bible.git
-local_path: /Users/desmondearly/Library/CloudStorage/OneDrive-Personal/kjva-bible
+local_path: /Users/desmondearly/Developer/kjva-bible
 raw_idea: >
   KJVA Bible is a personal KJV scripture study app powered by a custom
   18M-parameter byte-level AI model. The next outcome is a complete Phase 1

@@ -26,7 +26,7 @@
 {"event": "step", "step": 230, "loss": 1.534461259841919, "grad_norm": 1.1091269254684448, "lr": 0.00029992324982604067, "tok_s": 3598.2, "elapsed_s": 523.6}
 {"event": "step", "step": 240, "loss": 1.5160088539123535, "grad_norm": 1.1449792385101318, "lr": 0.00029986120251238843, "tok_s": 3590.3, "elapsed_s": 547.6}
 {"event": "step", "step": 250, "loss": 1.4904721975326538, "grad_norm": 1.1017045974731445, "lr": 0.000299780919130328, "tok_s": 3582.6, "elapsed_s": 571.7}
-{"event": "checkpoint", "step": 250, "path": "/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/models v7/training/runs/byte_clean_v2/ckpt_step_000250.safetensors", "sha256": "7504a949a2b0bfc324539c151198783651d31c9a5e53a2255b4bba0a05b56ec6"}
+{"event": "checkpoint", "step": 250, "path": "/Users/desmondearly/Developer/Tokenless models/models v7/training/runs/byte_clean_v2/ckpt_step_000250.safetensors", "sha256": "7504a949a2b0bfc324539c151198783651d31c9a5e53a2255b4bba0a05b56ec6"}
 {"event": "step", "step": 260, "loss": 1.4769251346588135, "grad_norm": 1.1632407903671265, "lr": 0.00029968240978645255, "tok_s": 3575.5, "elapsed_s": 595.7}
 {"event": "step", "step": 270, "loss": 1.3800979852676392, "grad_norm": 1.0839885473251343, "lr": 0.0002995656868817577, "tok_s": 3532.1, "elapsed_s": 626.2}
 {"event": "step", "step": 280, "loss": 1.362220048904419, "grad_norm": 1.0629171133041382, "lr": 0.0002994307651100802, "tok_s": 3523.7, "elapsed_s": 651.0}
@@ -53,7 +53,7 @@
 {"event": "step", "step": 480, "loss": 1.0786957740783691, "grad_norm": 0.8550924062728882, "lr": 0.0002929533819078541, "tok_s": 3375.2, "elapsed_s": 1165.0}
 {"event": "step", "step": 490, "loss": 1.1183669567108154, "grad_norm": 0.8042883276939392, "lr": 0.0002924437069625978, "tok_s": 3373.1, "elapsed_s": 1190.0}
 {"event": "step", "step": 500, "loss": 1.1782877445220947, "grad_norm": 0.8242846727371216, "lr": 0.00029191672971141713, "tok_s": 3367.3, "elapsed_s": 1216.4}
-{"event": "checkpoint", "step": 500, "path": "/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/models v7/training/runs/byte_clean_v2/ckpt_step_000500.safetensors", "sha256": "173c4694923368557fdcf8bf5882d891974e0e8f7d8d75cd49c5e85ff0aaca5d"}
+{"event": "checkpoint", "step": 500, "path": "/Users/desmondearly/Developer/Tokenless models/models v7/training/runs/byte_clean_v2/ckpt_step_000500.safetensors", "sha256": "173c4694923368557fdcf8bf5882d891974e0e8f7d8d75cd49c5e85ff0aaca5d"}
 {"event": "step", "step": 510, "loss": 1.1403477191925049, "grad_norm": 0.9205043911933899, "lr": 0.00029137251649362876, "tok_s": 3358.2, "elapsed_s": 1244.1}
 {"event": "step", "step": 520, "loss": 1.0770618915557861, "grad_norm": 0.8961668610572815, "lr": 0.00029081113581832493, "tok_s": 3340.0, "elapsed_s": 1275.4}
 {"event": "step", "step": 530, "loss": 1.113346815109253, "grad_norm": 0.8828792572021484, "lr": 0.00029023265835574863, "tok_s": 3320.9, "elapsed_s": 1307.4}
@@ -80,7 +80,7 @@
 {"event": "step", "step": 730, "loss": 1.0192569494247437, "grad_norm": 0.735342264175415, "lr": 0.0002752003387662888, "tok_s": 3048.5, "elapsed_s": 1961.7}
 {"event": "step", "step": 740, "loss": 1.0235536098480225, "grad_norm": 0.740245521068573, "lr": 0.0002742828751130247, "tok_s": 3046.1, "elapsed_s": 1990.1}
 {"event": "step", "step": 750, "loss": 1.068127155303955, "grad_norm": 0.8241837620735168, "lr": 0.000273350395357224, "tok_s": 3043.0, "elapsed_s": 2019.1}
-{"event": "checkpoint", "step": 750, "path": "/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/models v7/training/runs/byte_clean_v2/ckpt_step_000750.safetensors", "sha256": "7f0ba41875d3fb0b252b35f66f35426da6664a4879e95b41652a17df20369de8"}
+{"event": "checkpoint", "step": 750, "path": "/Users/desmondearly/Developer/Tokenless models/models v7/training/runs/byte_clean_v2/ckpt_step_000750.safetensors", "sha256": "7f0ba41875d3fb0b252b35f66f35426da6664a4879e95b41652a17df20369de8"}
 {"event": "step", "step": 760, "loss": 1.0084861516952515, "grad_norm": 0.7333825826644897, "lr": 0.00027240301688549084, "tok_s": 3022.1, "elapsed_s": 2060.1}
 {"event": "step", "step": 770, "loss": 0.9947680234909058, "grad_norm": 0.6804158687591553, "lr": 0.00027144085895997624, "tok_s": 3001.3, "elapsed_s": 2101.7}
 {"event": "step", "step": 780, "loss": 1.0357091426849365, "grad_norm": 0.8121489882469177, "lr": 0.00027046404270336487, "tok_s": 2987.4, "elapsed_s": 2138.9}
@@ -108,7 +108,7 @@
 {"event": "step", "step": 990, "loss": 1.0420502424240112, "grad_norm": 0.8301587700843811, "lr": 0.00024679825485244097, "tok_s": 2222.8, "elapsed_s": 3648.6}
 {"event": "step", "step": 1000, "loss": 1.007538080215454, "grad_norm": 0.7078505158424377, "lr": 0.0002455331602041977, "tok_s": 2225.5, "elapsed_s": 3681.0}
 {"event": "eval", "step": 1000, "val_loss": 1.1371580600738525, "val_ppl": 3.1178948922401495}
-{"event": "checkpoint", "step": 1000, "path": "/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/models v7/training/runs/byte_clean_v2/ckpt_step_001000.safetensors", "sha256": "98a1ac01b535b8114635f74ea6ba599f86ebf09314ceaddec7c22649c3bd6a03"}
+{"event": "checkpoint", "step": 1000, "path": "/Users/desmondearly/Developer/Tokenless models/models v7/training/runs/byte_clean_v2/ckpt_step_001000.safetensors", "sha256": "98a1ac01b535b8114635f74ea6ba599f86ebf09314ceaddec7c22649c3bd6a03"}
 {"event": "step", "step": 1010, "loss": 0.9974780082702637, "grad_norm": 0.6975495219230652, "lr": 0.0002442566686541335, "tok_s": 2221.4, "elapsed_s": 3724.6}
 {"event": "step", "step": 1020, "loss": 1.011857032775879, "grad_norm": 0.7227283120155334, "lr": 0.0002429689408952899, "tok_s": 2223.4, "elapsed_s": 3758.1}
 {"event": "step", "step": 1030, "loss": 1.0089101791381836, "grad_norm": 0.8191201686859131, "lr": 0.0002416701390351953, "tok_s": 2225.1, "elapsed_s": 3792.0}
@@ -135,7 +135,7 @@
 {"event": "step", "step": 1230, "loss": 0.9352431297302246, "grad_norm": 0.7669129371643066, "lr": 0.000213629821351668, "tok_s": 2254.5, "elapsed_s": 4469.3}
 {"event": "step", "step": 1240, "loss": 0.8860965967178345, "grad_norm": 0.6621904969215393, "lr": 0.000212138191311058, "tok_s": 2257.6, "elapsed_s": 4499.5}
 {"event": "step", "step": 1250, "loss": 0.922522246837616, "grad_norm": 0.6614978909492493, "lr": 0.00021063936834406465, "tok_s": 2259.7, "elapsed_s": 4531.6}
-{"event": "checkpoint", "step": 1250, "path": "/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/models v7/training/runs/byte_clean_v2/ckpt_step_001250.safetensors", "sha256": "c40805fe5a7aeefb674e5d176fec4d5712dc1e98bee95b90a308673704c98b4f"}
+{"event": "checkpoint", "step": 1250, "path": "/Users/desmondearly/Developer/Tokenless models/models v7/training/runs/byte_clean_v2/ckpt_step_001250.safetensors", "sha256": "c40805fe5a7aeefb674e5d176fec4d5712dc1e98bee95b90a308673704c98b4f"}
 {"event": "step", "step": 1260, "loss": 0.931136429309845, "grad_norm": 0.725064754486084, "lr": 0.00020913354113225133, "tok_s": 2259.6, "elapsed_s": 4568.1}
 {"event": "step", "step": 1270, "loss": 0.8756102323532104, "grad_norm": 0.6664072871208191, "lr": 0.00020762089923892125, "tok_s": 2260.1, "elapsed_s": 4603.2}
 {"event": "step", "step": 1280, "loss": 0.9352447986602783, "grad_norm": 0.717993438243866, "lr": 0.0002061016330852538, "tok_s": 2261.3, "elapsed_s": 4637.1}
@@ -162,7 +162,7 @@
 {"event": "step", "step": 1480, "loss": 0.9097270369529724, "grad_norm": 0.7173754572868347, "lr": 0.0001746250284981911, "tok_s": 2287.5, "elapsed_s": 5300.3}
 {"event": "step", "step": 1490, "loss": 0.8186478614807129, "grad_norm": 0.7243657112121582, "lr": 0.00017301190069837625, "tok_s": 2288.0, "elapsed_s": 5334.8}
 {"event": "step", "step": 1500, "loss": 0.8270221948623657, "grad_norm": 0.7261548638343811, "lr": 0.00017139650544359343, "tok_s": 2288.5, "elapsed_s": 5369.5}
-{"event": "checkpoint", "step": 1500, "path": "/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/models v7/training/runs/byte_clean_v2/ckpt_step_001500.safetensors", "sha256": "cd1e057bac77a6b24cdf082b974c7dfe24775a0b90de0c8f8f3cdf3eac317378"}
+{"event": "checkpoint", "step": 1500, "path": "/Users/desmondearly/Developer/Tokenless models/models v7/training/runs/byte_clean_v2/ckpt_step_001500.safetensors", "sha256": "cd1e057bac77a6b24cdf082b974c7dfe24775a0b90de0c8f8f3cdf3eac317378"}
 {"event": "step", "step": 1510, "loss": 0.820520281791687, "grad_norm": 0.6867934465408325, "lr": 0.00016977904609028223, "tok_s": 2289.0, "elapsed_s": 5404.1}
 {"event": "step", "step": 1520, "loss": 0.8463997840881348, "grad_norm": 0.8832155466079712, "lr": 0.00016815972625472433, "tok_s": 2290.6, "elapsed_s": 5436.0}
 {"event": "step", "step": 1530, "loss": 0.8347731828689575, "grad_norm": 0.7786042094230652, "lr": 0.00016653874978741102, "tok_s": 2291.3, "elapsed_s": 5470.3}
@@ -189,7 +189,7 @@
 {"event": "step", "step": 1730, "loss": 0.8201953172683716, "grad_norm": 0.7448480129241943, "lr": 0.00013408623830348814, "tok_s": 2316.4, "elapsed_s": 6118.2}
 {"event": "step", "step": 1740, "loss": 0.8819589614868164, "grad_norm": 0.7746787667274475, "lr": 0.00013247770345339152, "tok_s": 2318.2, "elapsed_s": 6148.7}
 {"event": "step", "step": 1750, "loss": 0.7490801215171814, "grad_norm": 0.7015007734298706, "lr": 0.0001308720038561674, "tok_s": 2320.3, "elapsed_s": 6178.6}
-{"event": "checkpoint", "step": 1750, "path": "/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/models v7/training/runs/byte_clean_v2/ckpt_step_001750.safetensors", "sha256": "c38a6f8a6f9dcec623b1cdcd6a2b76216055dc52adb0d16f4c36cd37345a669b"}
+{"event": "checkpoint", "step": 1750, "path": "/Users/desmondearly/Developer/Tokenless models/models v7/training/runs/byte_clean_v2/ckpt_step_001750.safetensors", "sha256": "c38a6f8a6f9dcec623b1cdcd6a2b76216055dc52adb0d16f4c36cd37345a669b"}
 {"event": "step", "step": 1760, "loss": 0.7782482504844666, "grad_norm": 0.7190574407577515, "lr": 0.000129269341647703, "tok_s": 2320.7, "elapsed_s": 6212.8}
 {"event": "step", "step": 1770, "loss": 0.7803404927253723, "grad_norm": 0.7223814725875854, "lr": 0.0001276699185815194, "tok_s": 2322.0, "elapsed_s": 6244.5}
 {"event": "step", "step": 1780, "loss": 0.7812746167182922, "grad_norm": 0.7713956832885742, "lr": 0.00012607393600337334, "tok_s": 2323.5, "elapsed_s": 6275.9}
@@ -217,7 +217,7 @@
 {"event": "step", "step": 1990, "loss": 0.7855825424194336, "grad_norm": 0.8835517764091492, "lr": 9.370396953838298e-05, "tok_s": 2366.6, "elapsed_s": 6888.3}
 {"event": "step", "step": 2000, "loss": 0.7212994694709778, "grad_norm": 0.8010491728782654, "lr": 9.223347567954002e-05, "tok_s": 2368.7, "elapsed_s": 6916.8}
 {"event": "eval", "step": 2000, "val_loss": 1.0280282199382782, "val_ppl": 2.795548190512725}
-{"event": "checkpoint", "step": 2000, "path": "/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/models v7/training/runs/byte_clean_v2/ckpt_step_002000.safetensors", "sha256": "fcaedcbbfdd423120d5189a3d81c192bdc46bd42c8105a81ab4a2a24dcc18118"}
+{"event": "checkpoint", "step": 2000, "path": "/Users/desmondearly/Developer/Tokenless models/models v7/training/runs/byte_clean_v2/ckpt_step_002000.safetensors", "sha256": "fcaedcbbfdd423120d5189a3d81c192bdc46bd42c8105a81ab4a2a24dcc18118"}
 {"event": "step", "step": 2010, "loss": 0.823326587677002, "grad_norm": 0.8456023335456848, "lr": 9.077088327817077e-05, "tok_s": 2368.6, "elapsed_s": 6951.9}
 {"event": "step", "step": 2020, "loss": 0.7522493600845337, "grad_norm": 0.7936473488807678, "lr": 8.931637645489987e-05, "tok_s": 2370.7, "elapsed_s": 6980.0}
 {"event": "step", "step": 2030, "loss": 0.74813312292099, "grad_norm": 0.7471492886543274, "lr": 8.787013831248688e-05, "tok_s": 2372.7, "elapsed_s": 7008.8}
@@ -244,7 +244,7 @@
 {"event": "step", "step": 2230, "loss": 0.7184507846832275, "grad_norm": 0.7935560345649719, "lr": 6.095380239767159e-05, "tok_s": 2405.8, "elapsed_s": 7593.5}
 {"event": "step", "step": 2240, "loss": 0.7269046902656555, "grad_norm": 0.8303787708282471, "lr": 5.972146167252397e-05, "tok_s": 2407.0, "elapsed_s": 7623.6}
 {"event": "step", "step": 2250, "loss": 0.7116646766662598, "grad_norm": 0.8501666188240051, "lr": 5.8501115228195754e-05, "tok_s": 2409.0, "elapsed_s": 7651.4}
-{"event": "checkpoint", "step": 2250, "path": "/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/models v7/training/runs/byte_clean_v2/ckpt_step_002250.safetensors", "sha256": "53c93ded52a40666227d3ca997d1a5f85dacb5dc95e207b392eb41f164ab2fc3"}
+{"event": "checkpoint", "step": 2250, "path": "/Users/desmondearly/Developer/Tokenless models/models v7/training/runs/byte_clean_v2/ckpt_step_002250.safetensors", "sha256": "53c93ded52a40666227d3ca997d1a5f85dacb5dc95e207b392eb41f164ab2fc3"}
 {"event": "step", "step": 2260, "loss": 0.7867603898048401, "grad_norm": 0.8664870858192444, "lr": 5.729291668981822e-05, "tok_s": 2410.4, "elapsed_s": 7680.9}
 {"event": "step", "step": 2270, "loss": 0.6832948923110962, "grad_norm": 0.8023090958595276, "lr": 5.60970181532652e-05, "tok_s": 2411.6, "elapsed_s": 7711.0}
 {"event": "step", "step": 2280, "loss": 0.6629548072814941, "grad_norm": 0.8489454388618469, "lr": 5.49135701660066e-05, "tok_s": 2412.9, "elapsed_s": 7740.8}
@@ -271,7 +271,7 @@
 {"event": "step", "step": 2480, "loss": 0.6095849275588989, "grad_norm": 0.8876081109046936, "lr": 3.407657958231345e-05, "tok_s": 2443.9, "elapsed_s": 8313.2}
 {"event": "step", "step": 2490, "loss": 0.7784054279327393, "grad_norm": 0.8976859450340271, "lr": 3.318643468465342e-05, "tok_s": 2445.4, "elapsed_s": 8341.4}
 {"event": "step", "step": 2500, "loss": 0.7038353085517883, "grad_norm": 0.8670662641525269, "lr": 3.2311624469238285e-05, "tok_s": 2446.9, "elapsed_s": 8369.8}
-{"event": "checkpoint", "step": 2500, "path": "/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/models v7/training/runs/byte_clean_v2/ckpt_step_002500.safetensors", "sha256": "0d9281c61fb428b1624c62d4e71a0f1263c7c1ce0df7098c2e6e16188bcd14df"}
+{"event": "checkpoint", "step": 2500, "path": "/Users/desmondearly/Developer/Tokenless models/models v7/training/runs/byte_clean_v2/ckpt_step_002500.safetensors", "sha256": "0d9281c61fb428b1624c62d4e71a0f1263c7c1ce0df7098c2e6e16188bcd14df"}
 {"event": "step", "step": 2510, "loss": 0.7834702134132385, "grad_norm": 0.8874775171279907, "lr": 3.145225906285599e-05, "tok_s": 2447.6, "elapsed_s": 8401.0}
 {"event": "step", "step": 2520, "loss": 0.7368192672729492, "grad_norm": 0.8635241985321045, "lr": 3.060844664800172e-05, "tok_s": 2448.4, "elapsed_s": 8431.6}
 {"event": "step", "step": 2530, "loss": 0.7394213676452637, "grad_norm": 0.9391870498657227, "lr": 2.9780293449259036e-05, "tok_s": 2449.0, "elapsed_s": 8463.0}
@@ -298,7 +298,7 @@
 {"event": "step", "step": 2730, "loss": 0.699155867099762, "grad_norm": 0.9550352692604065, "lr": 1.6651378985918918e-05, "tok_s": 2476.0, "elapsed_s": 9032.3}
 {"event": "step", "step": 2740, "loss": 0.7160818576812744, "grad_norm": 0.9414118528366089, "lr": 1.6173008408661428e-05, "tok_s": 2477.2, "elapsed_s": 9061.0}
 {"event": "step", "step": 2750, "loss": 0.6724827289581299, "grad_norm": 0.9650218486785889, "lr": 1.5712114274175783e-05, "tok_s": 2478.6, "elapsed_s": 9089.1}
-{"event": "checkpoint", "step": 2750, "path": "/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/models v7/training/runs/byte_clean_v2/ckpt_step_002750.safetensors", "sha256": "e484cb49e41c78ec7d6db3add469994554489b7d3265b4350f6bc04dd474baef"}
+{"event": "checkpoint", "step": 2750, "path": "/Users/desmondearly/Developer/Tokenless models/models v7/training/runs/byte_clean_v2/ckpt_step_002750.safetensors", "sha256": "e484cb49e41c78ec7d6db3add469994554489b7d3265b4350f6bc04dd474baef"}
 {"event": "step", "step": 2760, "loss": 0.7646799087524414, "grad_norm": 0.9832260012626648, "lr": 1.5268754602807087e-05, "tok_s": 2479.7, "elapsed_s": 9118.1}
 {"event": "step", "step": 2770, "loss": 0.6553105115890503, "grad_norm": 0.892876386642456, "lr": 1.4842985207548445e-05, "tok_s": 2480.9, "elapsed_s": 9146.4}
 {"event": "step", "step": 2780, "loss": 0.6818304061889648, "grad_norm": 0.9137343168258667, "lr": 1.4434859687014845e-05, "tok_s": 2482.1, "elapsed_s": 9175.1}
@@ -326,5 +326,5 @@
 {"event": "step", "step": 2990, "loss": 0.6260422468185425, "grad_norm": 0.8650679588317871, "lr": 1.0011043368058752e-05, "tok_s": 2505.8, "elapsed_s": 9775.0}
 {"event": "step", "step": 3000, "loss": 0.7231431007385254, "grad_norm": 1.007393479347229, "lr": 1.0000091268653573e-05, "tok_s": 2506.9, "elapsed_s": 9803.4}
 {"event": "eval", "step": 3000, "val_loss": 1.005992740392685, "val_ppl": 2.734620694163366}
-{"event": "checkpoint", "step": 3000, "path": "/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/models v7/training/runs/byte_clean_v2/ckpt_step_003000.safetensors", "sha256": "8580e29f8a011035e494959d93611bcc15e4f1ab7ab7b56e75a68dacf16c72e6"}
+{"event": "checkpoint", "step": 3000, "path": "/Users/desmondearly/Developer/Tokenless models/models v7/training/runs/byte_clean_v2/ckpt_step_003000.safetensors", "sha256": "8580e29f8a011035e494959d93611bcc15e4f1ab7ab7b56e75a68dacf16c72e6"}
 {"event": "run_end", "total_time_s": 9809.5, "total_steps": 3000, "total_tokens_seen": 24576000}

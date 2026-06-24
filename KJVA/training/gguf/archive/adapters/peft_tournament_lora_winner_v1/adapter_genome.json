@@ -2,7 +2,7 @@
   "adapter_genome": {
     "name": "lora",
     "version": "1.0.0",
-    "base_model": "/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/models v7/training/runs/byte_clean_v1/soup_best.safetensors",
+    "base_model": "/Users/desmondearly/Developer/Tokenless models/models v7/training/runs/byte_clean_v1/soup_best.safetensors",
     "peft_method": "lora",
     "delta_family": "LOW_RANK",
     "purpose": {
@@ -16,7 +16,7 @@
       ]
     },
     "training": {
-      "corpus": "/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/ml-training/corpus/alignment_governance_v1/corpus.txt",
+      "corpus": "/Users/desmondearly/Developer/Tokenless models/ml-training/corpus/alignment_governance_v1/corpus.txt",
       "rank": 8,
       "alpha": 16.0,
       "epochs": 3,

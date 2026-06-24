@@ -5,7 +5,7 @@
     "artifact_role": "canonical_runtime",
     "runtime_authority": true,
     "promotion_status": "ACTIVE",
-    "gguf_path": "/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/models v7/training/gguf/canonical.gguf"
+    "gguf_path": "/Users/desmondearly/Developer/Tokenless models/models v7/training/gguf/canonical.gguf"
   },
   "runtime_ok": {
     "canonical_runtime": true,
@@ -36,8 +36,8 @@
     "artifact_role": "canonical_runtime",
     "runtime_authority": true,
     "promotion_status": "ACTIVE",
-    "gguf_path": "/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/models v7/training/gguf/canonical.gguf",
-    "model": "/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/models v7/training/gguf/canonical.gguf",
+    "gguf_path": "/Users/desmondearly/Developer/Tokenless models/models v7/training/gguf/canonical.gguf",
+    "model": "/Users/desmondearly/Developer/Tokenless models/models v7/training/gguf/canonical.gguf",
     "model_sha256": "e59c69091a1772a347098efd68d74944",
     "engine_version": "xmind-easy/1.0 consumer-build",
     "engine_init_ms": 615.4,
@@ -285,7 +285,7 @@
     "artifact_role": "canonical_runtime",
     "runtime_authority": true,
     "promotion_status": "ACTIVE",
-    "gguf_path": "/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/models v7/training/gguf/canonical.gguf"
+    "gguf_path": "/Users/desmondearly/Developer/Tokenless models/models v7/training/gguf/canonical.gguf"
   },
   "canonical_bpb_overall": 1.6232,
   "candidate_bpb_by_section": {
@@ -399,7 +399,7 @@
       "artifact_role": "canonical_runtime",
       "runtime_authority": true,
       "promotion_status": "ACTIVE",
-      "gguf_path": "/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/models v7/training/gguf/canonical.gguf"
+      "gguf_path": "/Users/desmondearly/Developer/Tokenless models/models v7/training/gguf/canonical.gguf"
     },
     "candidate_loaded_for": "benchmark_comparison_only",
     "candidate_runtime_authority": false,
@@ -411,7 +411,7 @@
   "quantization_sensitivity": {
     "section": "F. Quantization sensitivity",
     "status": "ERROR",
-    "reason": "cannot import name 'ByteConfig' from 'scripts.train_byte' (/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/ml-training/scripts/train_byte.py)"
+    "reason": "cannot import name 'ByteConfig' from 'scripts.train_byte' (/Users/desmondearly/Developer/Tokenless models/ml-training/scripts/train_byte.py)"
   },
   "verdict": "TRAIN_ALIGNMENT",
   "verdict_description": "Base quality acceptable; alignment data too weak. Build richer alignment dataset.",
@@ -421,6 +421,6 @@
     "Scripture char overlap: 0.522 (byte-LM generates distribution, not lookup)",
     "Archived candidate: byte-identical to canonical runtime on ALL 15 prompts at T=0, seed=0",
     "Candidate does not beat canonical runtime \u2014 Q4_0 quantization erased the candidate's training delta",
-    "Quantization sensitivity: ERROR (cannot import name 'ByteConfig' from 'scripts.train_byte' (/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/ml-training/scripts/train_byte.py))"
+    "Quantization sensitivity: ERROR (cannot import name 'ByteConfig' from 'scripts.train_byte' (/Users/desmondearly/Developer/Tokenless models/ml-training/scripts/train_byte.py))"
   ]
 }

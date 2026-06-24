@@ -20,7 +20,7 @@ historical upstream — it is not where KJVA work continues. KJVA is not merely 
 2026-06-09 (stamp `20260609_233014`)
 
 ## 2. Old path
-`/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/kjva-bible/KJVA` (prior tree)
+`/Users/desmondearly/Developer/kjva-bible/KJVA` (prior tree)
 
 ## 3. Backup paths (rollback assets — do not delete until Creator-accepted)
 ```
@@ -30,7 +30,7 @@ KJVA_OLD_FILE_INVENTORY_20260609_233014.txt
 ```
 
 ## 4. New production path
-`/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/kjva-bible/KJVA`
+`/Users/desmondearly/Developer/kjva-bible/KJVA`
 (now the full models v7 substrate, flat — no nested `models v7/`; the development home going forward)
 
 ## 5. Canonical GGUF SHA
@@ -84,7 +84,7 @@ Not promoted. Not runtime-authoritative. Opt-in via TOKENLESS_ADAPTER/XMIND_ADAP
 ## 14. Rollback instructions
 See `ROLLBACK_PLAN.md`. In brief:
 ```bash
-ROOT="/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/kjva-bible"; STAMP="20260609_233014"
+ROOT="/Users/desmondearly/Developer/kjva-bible"; STAMP="20260609_233014"
 mv "$ROOT/KJVA" "$ROOT/KJVA_FAILED_REPLACEMENT_$STAMP"
 mv "$ROOT/KJVA_REPLACED_$STAMP" "$ROOT/KJVA"
 ```

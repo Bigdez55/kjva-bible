@@ -11,7 +11,7 @@
     "val_ppl": 3.8169038929003136
   },
   "validation_perplexity": 3.8169038929003136,
-  "checkpoint": "/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/models v7/training/runs/byte_clean_v2/ckpt_step_000500.safetensors",
+  "checkpoint": "/Users/desmondearly/Developer/Tokenless models/models v7/training/runs/byte_clean_v2/ckpt_step_000500.safetensors",
   "checkpoint_sha256": "173c4694923368557fdcf8bf5882d891974e0e8f7d8d75cd49c5e85ff0aaca5d",
   "model_config": {
     "vocab_size": 259,

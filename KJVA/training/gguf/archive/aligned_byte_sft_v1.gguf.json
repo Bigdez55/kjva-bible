@@ -1,6 +1,6 @@
 {
-  "source_bundle": "/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/ml-training/runs/byte_sft_v1",
-  "gguf_path": "/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/models v7/training/gguf/archive/aligned_byte_sft_v1.gguf",
+  "source_bundle": "/Users/desmondearly/Developer/Tokenless models/ml-training/runs/byte_sft_v1",
+  "gguf_path": "/Users/desmondearly/Developer/Tokenless models/models v7/training/gguf/archive/aligned_byte_sft_v1.gguf",
   "sha256": "b84ffc4838d0c907c646954857af658924c74a41075ea594e047edb858d8da09",
   "dtype": "q4_0",
   "mixed_precision": "token_emb+output_norm=f32; attn/ffn weight matrices=q4_0; 1-D norms=f32",

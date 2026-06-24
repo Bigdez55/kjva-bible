@@ -1,7 +1,7 @@
 # FINAL KJVA Active-Home Verification
 
 **Date:** 2026-06-10
-**Run from (only):** `/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/kjva-bible/KJVA`
+**Run from (only):** `/Users/desmondearly/Developer/kjva-bible/KJVA`
 **Not run from:** `models v7` / `Tokenless models`
 **Purpose:** prove KJVA is now the active source of truth and working home for all future KJVA work, with executable gates (not just applied disciplines), before Creator production-use approval.
 

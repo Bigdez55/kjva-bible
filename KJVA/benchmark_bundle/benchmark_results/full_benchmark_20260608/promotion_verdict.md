@@ -27,7 +27,7 @@ archive/aligned_byte_sft_v1.gguf                 = ARCHIVED CANDIDATE — benchm
 - Scripture char overlap: 0.522 (byte-LM generates distribution, not lookup)
 - Archived candidate: byte-identical to canonical runtime on ALL 15 prompts at T=0, seed=0
 - Candidate does not beat canonical runtime — Q4_0 quantization erased the candidate's training delta
-- Quantization sensitivity: ERROR (cannot import name 'ByteConfig' from 'scripts.train_byte' (/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/ml-training/scripts/train_byte.py))
+- Quantization sensitivity: ERROR (cannot import name 'ByteConfig' from 'scripts.train_byte' (/Users/desmondearly/Developer/Tokenless models/ml-training/scripts/train_byte.py))
 
 ## Promotion gates
 

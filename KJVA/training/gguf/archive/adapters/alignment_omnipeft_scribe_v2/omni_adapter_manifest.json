@@ -5,8 +5,8 @@
   "target": "Bible+Apocrypha scribe assistant with constitutional governance",
   "retrieval_delegation": "exact verse text + topical finding served by retrieval index, not adapter weights",
   "base_checkpoint": "../kjva-bible/KJVA/training/weights.safetensors",
-  "clean_corpus": "/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/models v7/training/corpus/eng_kjv_clean_v1/corpus.txt",
-  "programs_dir": "/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/models v7/training/corpus/programs",
+  "clean_corpus": "/Users/desmondearly/Developer/Tokenless models/models v7/training/corpus/eng_kjv_clean_v1/corpus.txt",
+  "programs_dir": "/Users/desmondearly/Developer/Tokenless models/models v7/training/corpus/programs",
   "pool_weights": {
     "retention": 0.45,
     "grounding": 0.25,

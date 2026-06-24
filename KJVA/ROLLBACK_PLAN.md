@@ -27,7 +27,7 @@ Roll back if ANY post-replacement gate fails (Phase 5), or on Creator instructio
 ## Procedure A — revert the directory swap (primary)
 
 ```bash
-ROOT="/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/kjva-bible"
+ROOT="/Users/desmondearly/Developer/kjva-bible"
 OLD="$ROOT/KJVA"
 STAMP="<the stamp used during replacement>"
 

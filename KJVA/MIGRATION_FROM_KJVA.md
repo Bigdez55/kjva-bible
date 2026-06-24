@@ -2,7 +2,7 @@
 
 **Date:** 2026-06-09
 **Source commit:** 1c35db7 (`release/kjva1-xmind1-production-candidate`)
-**Replacement target:** `/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/kjva-bible/KJVA`
+**Replacement target:** `/Users/desmondearly/Developer/kjva-bible/KJVA`
 **Mode:** whole-directory replacement (Creator-authorized), backup + staging + gates + reversible.
 
 > **Recon correction (load-bearing).** The prior `kjva-bible/KJVA` is **not** an obsolete

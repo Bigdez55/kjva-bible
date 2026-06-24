@@ -1,6 +1,6 @@
 {
-  "source_bundle": "/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/ml-training/exports/kjv_byte_bringup",
-  "gguf_path": "/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/ml-training/gguf/kjv_byte.gguf",
+  "source_bundle": "/Users/desmondearly/Developer/Tokenless models/ml-training/exports/kjv_byte_bringup",
+  "gguf_path": "/Users/desmondearly/Developer/Tokenless models/ml-training/gguf/kjv_byte.gguf",
   "dtype": "f32",
   "config": {
     "vocab_size": 259,

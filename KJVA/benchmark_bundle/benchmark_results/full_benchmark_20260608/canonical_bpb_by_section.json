@@ -54,5 +54,5 @@
   "artifact_role": "canonical_runtime",
   "runtime_authority": true,
   "promotion_status": "ACTIVE",
-  "gguf_path": "/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/models v7/training/gguf/canonical.gguf"
+  "gguf_path": "/Users/desmondearly/Developer/Tokenless models/models v7/training/gguf/canonical.gguf"
 }

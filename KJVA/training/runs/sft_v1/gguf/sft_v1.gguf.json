@@ -1,6 +1,6 @@
 {
-  "source_bundle": "/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/ml-training/runs/sft_v1",
-  "gguf_path": "/Users/desmondearly/Library/CloudStorage/OneDrive-Personal/Tokenless models/ml-training/runs/sft_v1/gguf/sft_v1.gguf",
+  "source_bundle": "/Users/desmondearly/Developer/Tokenless models/ml-training/runs/sft_v1",
+  "gguf_path": "/Users/desmondearly/Developer/Tokenless models/ml-training/runs/sft_v1/gguf/sft_v1.gguf",
   "dtype": "f16",
   "config": {
     "vocab_size": 16000,

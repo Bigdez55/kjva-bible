@@ -1,6 +1,0 @@
-required:
-  - id
-  - name
-  - type
-  - source_model
-  - outputs

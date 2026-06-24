@@ -1,5 +1,0 @@
-required:
-  - repo_name
-  - repo_url
-  - sends_to_central
-  - receives_from_central

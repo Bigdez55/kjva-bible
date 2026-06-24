@@ -1,7 +1,0 @@
-required:
-  - id
-  - name
-  - purpose
-  - inputs
-  - outputs
-  - depends_on

@@ -70,10 +70,10 @@ atlas/
 
 # Agent Relay — local runtime state (vendored package lives under vendor/agent-relay/)
 # Agent Relay — keep the vendored seal fully tracked despite broad ignore rules
-!vendor/agent-relay/0.1.0/dist/
-!vendor/agent-relay/0.1.0/dist/*.whl
-!vendor/agent-relay/0.1.0/evidence/*.log
-!vendor/agent-relay/0.1.0/evidence/*.csv
+!vendor/agent-relay/0.2.0/dist/
+!vendor/agent-relay/0.2.0/dist/*.whl
+!vendor/agent-relay/0.2.0/evidence/*.log
+!vendor/agent-relay/0.2.0/evidence/*.csv
 .relay/
 relay.sock
 owner.key

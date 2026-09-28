@@ -1,0 +1,25 @@
+{
+  "runtime_files": 15,
+  "runtime_lines": 2235,
+  "test_files": 7,
+  "test_lines": 1098,
+  "runtime_paths": [
+    "src/agent_relay/__init__.py",
+    "src/agent_relay/__main__.py",
+    "src/agent_relay/cli.py",
+    "src/agent_relay/codec.py",
+    "src/agent_relay/controller.py",
+    "src/agent_relay/dispatch.py",
+    "src/agent_relay/errors.py",
+    "src/agent_relay/execution.py",
+    "src/agent_relay/schema.sql",
+    "src/agent_relay/selftest.py",
+    "src/agent_relay/service.py",
+    "src/agent_relay/store.py",
+    "src/agent_relay/verification.py",
+    "src/agent_relay/verifier_worker.py",
+    "src/agent_relay/workspace.py"
+  ],
+  "no_runtime_dependencies": true,
+  "installable_wheel_bytes": 46293
+}

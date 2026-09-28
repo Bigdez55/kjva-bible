@@ -1,0 +1,170 @@
+{
+  "ok": true,
+  "started_at": "2026-09-28T10:38:33.096761+00:00",
+  "requested_workload_s": 60.0,
+  "observed_workload_s": 60.31954717099961,
+  "workers": 8,
+  "client_processes": 8,
+  "service_processes": 1,
+  "completed_requests": 47255,
+  "acknowledged_writes": 40204,
+  "event_count_delta": 40204,
+  "write_event_accounting_matches": true,
+  "latency_ms": {
+    "attempt.heartbeat": {
+      "count": 35240,
+      "p50": 3.016814500142573,
+      "p95": 36.4172771500307,
+      "p99": 106.9737410100379,
+      "max": 1131.2501190000148
+    },
+    "attempt.release": {
+      "count": 8,
+      "p50": 4.059900000129346,
+      "p95": 4.903734950039507,
+      "p99": 4.970812590017886,
+      "max": 4.98758200001248
+    },
+    "context.hydrate": {
+      "count": 1421,
+      "p50": 3.4456079997653433,
+      "p95": 37.327266999909625,
+      "p99": 107.14825900013237,
+      "max": 232.68339200012633
+    },
+    "get": {
+      "count": 7051,
+      "p50": 0.988397000128316,
+      "p95": 2.304506999962541,
+      "p99": 4.286678499966001,
+      "max": 13.561910999669635
+    },
+    "memory.add": {
+      "count": 3527,
+      "p50": 2.7463679998618318,
+      "p95": 35.69143710010393,
+      "p99": 107.31216422033863,
+      "max": 531.0896860000867
+    },
+    "task.claim": {
+      "count": 8,
+      "p50": 10.961491499983822,
+      "p95": 95.71007195011128,
+      "p99": 127.4870207901449,
+      "max": 135.43125800015332
+    }
+  },
+  "sampled_service_RSS_max_bytes": 25604096,
+  "RSS_method": "/proc sample at 0.2 second intervals when available; not exact peak",
+  "environment": {
+    "python": "3.13.5 (main, Jun 25 2025, 18:55:22) [GCC 14.2.0]",
+    "sqlite": "3.46.1",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+    "module": "/mnt/data/relay-installed-0.1.0/lib/python3.13/site-packages/agent_relay/__init__.py"
+  },
+  "before": {
+    "blob_stored_bytes": 32,
+    "blobs": 1,
+    "chain_head": "3b3fba08faa2ab72bb171f4b0acf605d3d653076fb17302789c7a02dd8395ccc",
+    "database_bytes": 86016,
+    "events": 19,
+    "foreign_keys": 1,
+    "full_scrub": "PASS",
+    "journal_logical_bytes": 12710,
+    "journal_mode": "delete",
+    "journal_quota_bytes": 268435456,
+    "mode": "ACTIVE",
+    "objects": 19,
+    "schema": 1,
+    "scrub_scheduling": "full scrub is explicit; schedule periodic relayctl doctor --scrub",
+    "sqlite": "3.46.1",
+    "sqlite_source_id": "2024-08-13 09:16:08 c9c2ab54ba1f5f46360f1b4f35d849cd3f080e6fc2b6c60e91b16c63f69aalt1",
+    "synchronous": 3,
+    "wal_bytes": 0,
+    "wal_fix_version_recognized": false
+  },
+  "after": {
+    "blob_stored_bytes": 1253823,
+    "blobs": 1888,
+    "chain_head": "a67e63434d5e26ae03041f0f4eef7211e0c81c6a1ccfc6cafcb969b6f09101b5",
+    "database_bytes": 87552000,
+    "events": 40223,
+    "foreign_keys": 1,
+    "full_scrub": "PASS",
+    "journal_logical_bytes": 44583709,
+    "journal_mode": "delete",
+    "journal_quota_bytes": 268435456,
+    "mode": "ACTIVE",
+    "objects": 4983,
+    "schema": 1,
+    "scrub_scheduling": "full scrub is explicit; schedule periodic relayctl doctor --scrub",
+    "sqlite": "3.46.1",
+    "sqlite_source_id": "2024-08-13 09:16:08 c9c2ab54ba1f5f46360f1b4f35d849cd3f080e6fc2b6c60e91b16c63f69aalt1",
+    "synchronous": 3,
+    "wal_bytes": 0,
+    "wal_fix_version_recognized": false
+  },
+  "database_file_bytes": {
+    "relay.sqlite3": 87552000
+  },
+  "errors": [],
+  "worker_counts": [
+    {
+      "worker": 0,
+      "requests": 6238,
+      "writes": 5307,
+      "exit_code": 0
+    },
+    {
+      "worker": 1,
+      "requests": 5631,
+      "writes": 4791,
+      "exit_code": 0
+    },
+    {
+      "worker": 2,
+      "requests": 6003,
+      "writes": 5107,
+      "exit_code": 0
+    },
+    {
+      "worker": 3,
+      "requests": 5430,
+      "writes": 4620,
+      "exit_code": 0
+    },
+    {
+      "worker": 4,
+      "requests": 6125,
+      "writes": 5211,
+      "exit_code": 0
+    },
+    {
+      "worker": 5,
+      "requests": 6078,
+      "writes": 5171,
+      "exit_code": 0
+    },
+    {
+      "worker": 6,
+      "requests": 5583,
+      "writes": 4750,
+      "exit_code": 0
+    },
+    {
+      "worker": 7,
+      "requests": 6167,
+      "writes": 5247,
+      "exit_code": 0
+    }
+  ],
+  "timing_excludes": "initialization, grant/task setup and before/after full scrubs",
+  "live_workspace_opened": false,
+  "not_exercised": [
+    "physical power loss",
+    "multi-host",
+    "real model/provider",
+    "one-hour or 24-hour soak",
+    "production deployment"
+  ]
+}

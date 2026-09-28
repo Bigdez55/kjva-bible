@@ -1,0 +1,29 @@
+{
+  "status": "INTERRUPTED_RUN_NOT_A_BENCHMARK_PASS",
+  "reason": "The execution-tool call reported timeout before the requested workload completed; incomplete client reports were not counted as successful stress evidence.",
+  "last_event_time_minus_first_s": 34.94794034957886,
+  "committed_events_after_interruption": 23779,
+  "post_interruption_full_scrub": {
+    "schema": 1,
+    "sqlite": "3.46.1",
+    "sqlite_source_id": "2024-08-13 09:16:08 c9c2ab54ba1f5f46360f1b4f35d849cd3f080e6fc2b6c60e91b16c63f69aalt1",
+    "wal_fix_version_recognized": false,
+    "journal_mode": "delete",
+    "synchronous": 3,
+    "foreign_keys": 1,
+    "mode": "ACTIVE",
+    "events": 23779,
+    "blobs": 1130,
+    "objects": 2966,
+    "blob_stored_bytes": 743584,
+    "journal_logical_bytes": 26334427,
+    "journal_quota_bytes": 268435456,
+    "scrub_scheduling": "full scrub is explicit; schedule periodic relayctl doctor --scrub",
+    "chain_head": "f868444527c130927c12ff95efd5267a8c1f7c562fd8a210f8e7e9915b79e66e",
+    "full_scrub": "PASS",
+    "database_bytes": 51765248,
+    "wal_bytes": 0
+  },
+  "live_workspace_opened": false,
+  "replacement_completed_benchmark": "stress.json"
+}

@@ -1,0 +1,86 @@
+{
+  "ok": true,
+  "checks": [
+    {
+      "check": "installed_client_example_real_workflow_acceptance",
+      "status": "PASS",
+      "application_tests": 3,
+      "candidate_hash": "cffd3cff0fed41425691a40568028748112bae4ac3a3e25c96cf6aeaf9755cfb"
+    },
+    {
+      "check": "offline_doctor",
+      "status": "PASS",
+      "result": {
+        "schema": 1,
+        "sqlite": "3.46.1",
+        "sqlite_source_id": "2024-08-13 09:16:08 c9c2ab54ba1f5f46360f1b4f35d849cd3f080e6fc2b6c60e91b16c63f69aalt1",
+        "wal_fix_version_recognized": false,
+        "journal_mode": "delete",
+        "synchronous": 3,
+        "foreign_keys": 1,
+        "mode": "ACTIVE",
+        "events": 14,
+        "blobs": 5,
+        "objects": 13,
+        "blob_stored_bytes": 2402,
+        "journal_logical_bytes": 19867,
+        "journal_quota_bytes": 268435456,
+        "scrub_scheduling": "full scrub is explicit; schedule periodic relayctl doctor --scrub",
+        "chain_head": "167e37b31e0f7430724ce271067f6a2b7fa822e34fb061f6c7d605e56f1a65fc",
+        "full_scrub": "PASS",
+        "database_bytes": 106496,
+        "wal_bytes": 0
+      }
+    },
+    {
+      "check": "offline_backup",
+      "status": "PASS",
+      "result": {
+        "schema": 1,
+        "database_sha256": "b0f0af29935c6d048a5a9a6d19fe8cc560872f0acfc152174fa7bc9661f31d40",
+        "source_authority": "4ce4e1f40682895a5dcd3dc6620bf345",
+        "source_journal": "delete",
+        "created_at": 1790592036.4780393,
+        "secret_keys_included": false,
+        "trust": "local integrity only; unsigned export"
+      }
+    },
+    {
+      "check": "separate_recovery_held_restore",
+      "status": "PASS",
+      "result": {
+        "restored": "/tmp/rly-install-6opkim60/restored",
+        "mode": "RECOVERY_ONLY",
+        "old_credentials_valid": false
+      }
+    },
+    {
+      "check": "restored_doctor",
+      "status": "PASS",
+      "result": {
+        "schema": 1,
+        "sqlite": "3.46.1",
+        "sqlite_source_id": "2024-08-13 09:16:08 c9c2ab54ba1f5f46360f1b4f35d849cd3f080e6fc2b6c60e91b16c63f69aalt1",
+        "wal_fix_version_recognized": false,
+        "journal_mode": "delete",
+        "synchronous": 3,
+        "foreign_keys": 1,
+        "mode": "RECOVERY_ONLY",
+        "events": 14,
+        "blobs": 5,
+        "objects": 13,
+        "blob_stored_bytes": 2402,
+        "journal_logical_bytes": 19867,
+        "journal_quota_bytes": 268435456,
+        "scrub_scheduling": "full scrub is explicit; schedule periodic relayctl doctor --scrub",
+        "chain_head": "167e37b31e0f7430724ce271067f6a2b7fa822e34fb061f6c7d605e56f1a65fc",
+        "full_scrub": "PASS",
+        "database_bytes": 106496,
+        "wal_bytes": 0
+      }
+    }
+  ],
+  "elapsed_s": 0.6518948230000206,
+  "installed_interpreter": "/mnt/data/relay-installed-0.1.0/bin/python",
+  "live_workspace_opened": false
+}

@@ -1,0 +1,9 @@
+Processing /tmp/relay-package/Agent_Relay_0.1.0
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: agent-relay
+  Building wheel for agent-relay (pyproject.toml): started
+  Building wheel for agent-relay (pyproject.toml): finished with status 'done'
+  Created wheel for agent-relay: filename=agent_relay-0.1.0-py3-none-any.whl size=46236 sha256=a5ab6b0bc67f6d281b877b930d66a13e009d524f02d081d66fe55755f171186c
+  Stored in directory: /tmp/pip-ephem-wheel-cache-2j9ocykt/wheels/db/52/87/995a869af6fa8379c31da2ab3abd01fd7a69d82ece1fff18f1
+Successfully built agent-relay

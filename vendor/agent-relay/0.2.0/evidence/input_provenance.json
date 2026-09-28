@@ -1,0 +1,9 @@
+{
+  "original_zip_sha256": "5c81ae0d347d7a53859e907b09326520ab7140bf4795c03c2b45448d61084b41",
+  "original_runtime_sha256": "9eb210529eb946167bd6bc357fd6cae810d3fab314f156cfb959409dc1abeecf",
+  "reproduced_installed_baseline": {
+    "tests": 111,
+    "pass": 111
+  },
+  "development_runner_issue": "Original --source flag did not propagate its import path to subprocesses; fixed in v0.2.0. Installed baseline passed."
+}

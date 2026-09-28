@@ -1,0 +1,8 @@
+{
+  "ok": true,
+  "elapsed_s": 62.16415271799997,
+  "workers": 8,
+  "requests": 31124,
+  "acknowledged_mutations": 29769,
+  "journal_event_delta": 29769
+}

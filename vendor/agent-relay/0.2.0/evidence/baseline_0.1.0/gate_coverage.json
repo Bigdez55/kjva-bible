@@ -1,0 +1,677 @@
+{
+  "generated_from": "verification.json",
+  "original_contract_sha256": "2ea1fed9a64466730682fd41aab9e988685e4c675b871e02fe0082b3fa4e533f",
+  "runtime_sha256": "9eb210529eb946167bd6bc357fd6cae810d3fab314f156cfb959409dc1abeecf",
+  "local_gate_counts": {
+    "PASS": 43,
+    "NOT_RUN": 3
+  },
+  "all_original_contracts_certified": false,
+  "gates": [
+    {
+      "id": "G01",
+      "title": "Canonical path safety",
+      "required_behavior": "Equivalent path aliases and normalized duplicates are rejected or stored consistently; a failed candidate never poisons the store.",
+      "local_test_status": "PASS",
+      "executed_test_count": 9,
+      "test_ids": [
+        "test_effects.EffectTests.test_canonical_paths_reject_traversal_and_aliases",
+        "test_effects.EffectTests.test_existing_executable_mode_is_preserved",
+        "test_effects.EffectTests.test_failed_preparation_does_not_leave_blobs_or_events",
+        "test_effects.EffectTests.test_filesystem_resource_locks_are_casefolded",
+        "test_effects.EffectTests.test_hardlink_cannot_alias_unmanaged_file",
+        "test_effects.EffectTests.test_symlink_cannot_redirect_managed_write",
+        "test_verification.VerificationTests.test_case_alias_candidate_is_rejected",
+        "test_verification.VerificationTests.test_duplicate_registered_worktree_cannot_bypass_lock_namespace",
+        "test_verification.VerificationTests.test_secret_path_capture_is_rejected_not_exported"
+      ],
+      "original_contract_disposition": "PARTIAL_EVIDENCE_NOT_FULL_CERTIFICATION",
+      "remaining_boundary": "Local POSIX path/capture tests; macOS case-insensitive filesystem execution is not certified."
+    },
+    {
+      "id": "G02",
+      "title": "Preserve original protections",
+      "required_behavior": "Original relevant rollback, fencing, stale draft, artifact integrity and export protections remain passing; intentional interface changes have reviewed equivalents.",
+      "local_test_status": "PASS",
+      "executed_test_count": 4,
+      "test_ids": [
+        "test_authority.AuthorityTests.test_stale_revision_rolls_back",
+        "test_store.StoreTests.test_closed_connection_normal_and_exception_paths",
+        "test_store.StoreTests.test_event_table_rejects_mutation",
+        "test_store.StoreTests.test_initialization_never_overwrites_existing_home"
+      ],
+      "original_contract_disposition": "BLOCKED_MISSING_ORIGINAL_SOURCE",
+      "remaining_boundary": "Original audited v1 source and 48-test suite were not available; compatibility equivalence is unproven."
+    },
+    {
+      "id": "G03",
+      "title": "Intent revision authority",
+      "required_behavior": "Attempt unauthorized objective/mission/source changes with unchanged revision; reject and preserve prior obligations.",
+      "local_test_status": "PASS",
+      "executed_test_count": 3,
+      "test_ids": [
+        "test_authority.AuthorityTests.test_owner_revision_is_explicit_and_history_retained",
+        "test_authority.AuthorityTests.test_stale_revision_rolls_back",
+        "test_authority.AuthorityTests.test_worker_cannot_revise_intent"
+      ],
+      "original_contract_disposition": "PARTIAL_EVIDENCE_NOT_FULL_CERTIFICATION",
+      "remaining_boundary": "Authority-revision tests cover this runtime API, not hidden provider state or same-UID administrator tampering."
+    },
+    {
+      "id": "G04",
+      "title": "Requirement preservation",
+      "required_behavior": "Removing, cancelling or superseding a live requirement requires a valid decision; descendants remain traceable.",
+      "local_test_status": "PASS",
+      "executed_test_count": 2,
+      "test_ids": [
+        "test_authority.AuthorityTests.test_requirement_cancellation_requires_scoped_decision",
+        "test_authority.AuthorityTests.test_requirement_cannot_disappear_from_task_payload"
+      ],
+      "original_contract_disposition": "PARTIAL_EVIDENCE_NOT_FULL_CERTIFICATION",
+      "remaining_boundary": "Explicit requirement preservation/disposition is tested; legacy requirement migration is not."
+    },
+    {
+      "id": "G05",
+      "title": "Reopen scope",
+      "required_behavior": "Reusing an unrelated/expired decision cannot authorize later accepted-task changes.",
+      "local_test_status": "PASS",
+      "executed_test_count": 3,
+      "test_ids": [
+        "test_authority.AuthorityTests.test_expired_decision_is_not_authority",
+        "test_authority.AuthorityTests.test_unrelated_decision_is_rejected",
+        "test_verification.VerificationTests.test_reopen_requires_exact_accepted_task_decision"
+      ],
+      "original_contract_disposition": "PARTIAL_EVIDENCE_NOT_FULL_CERTIFICATION",
+      "remaining_boundary": "Scoped, expiring, consumed decisions are tested through this runtime."
+    },
+    {
+      "id": "G06",
+      "title": "Typed domain records",
+      "required_behavior": "Booleans/nulls/arbitrary strings in domain object lists and invalid references are rejected.",
+      "local_test_status": "PASS",
+      "executed_test_count": 7,
+      "test_ids": [
+        "test_authority.AuthorityTests.test_bool_is_not_integer_revision",
+        "test_authority.AuthorityTests.test_domain_lists_reject_boolean_null_and_string",
+        "test_authority.AuthorityTests.test_extra_fields_are_not_silently_ignored",
+        "test_authority.AuthorityTests.test_missing_references_rollback",
+        "test_authority.AuthorityTests.test_nonfinite_json_and_duplicate_keys_rejected",
+        "test_installed_paths.ServiceTests.test_rpc_rejects_invalid_api_version",
+        "test_installed_paths.ServiceTests.test_rpc_rejects_oversized_envelope"
+      ],
+      "original_contract_disposition": "PARTIAL_EVIDENCE_NOT_FULL_CERTIFICATION",
+      "remaining_boundary": "Strict domain/RPC validation is tested for supplied public commands."
+    },
+    {
+      "id": "G07",
+      "title": "Completion gate consistency",
+      "required_behavior": "A task requiring a failed/missing integration or unexecuted verifier cannot become accepted completion.",
+      "local_test_status": "PASS",
+      "executed_test_count": 4,
+      "test_ids": [
+        "test_authority.AuthorityTests.test_empty_workflow_cannot_complete",
+        "test_verification.VerificationTests.test_missing_evidence_never_accepts_candidate",
+        "test_verification.VerificationTests.test_real_application_can_be_accepted_only_after_executed_oracle",
+        "test_verification.VerificationTests.test_worker_cannot_register_oracle_or_report_fake_pass"
+      ],
+      "original_contract_disposition": "PARTIAL_EVIDENCE_NOT_FULL_CERTIFICATION",
+      "remaining_boundary": "Derived acceptance rejects missing/failed verification; actual user application deployment is not tested."
+    },
+    {
+      "id": "G08",
+      "title": "Evidence candidate binding",
+      "required_behavior": "Change tested code, contract, config or dependency; historical PASS survives but cannot silently prove new candidate.",
+      "local_test_status": "PASS",
+      "executed_test_count": 5,
+      "test_ids": [
+        "test_effects.EffectTests.test_changed_approved_tool_script_is_rejected",
+        "test_verification.VerificationTests.test_cold_client_can_read_persisted_verifier_report_and_run",
+        "test_verification.VerificationTests.test_edit_after_pass_keeps_historical_pass_but_rejects_acceptance",
+        "test_verification.VerificationTests.test_real_application_can_be_accepted_only_after_executed_oracle",
+        "test_verification.VerificationTests.test_untracked_input_after_capture_changes_candidate"
+      ],
+      "original_contract_disposition": "PARTIAL_EVIDENCE_NOT_FULL_CERTIFICATION",
+      "remaining_boundary": "Source/contract/repository/oracle binding is tested locally; external services are not reproducible candidate inputs."
+    },
+    {
+      "id": "G09",
+      "title": "Admission dependencies",
+      "required_behavior": "Execution effects cannot start while required dependency is unmet; explicitly permitted planning remains possible.",
+      "local_test_status": "PASS",
+      "executed_test_count": 1,
+      "test_ids": [
+        "test_verification.VerificationTests.test_unaccepted_dependency_prevents_admission"
+      ],
+      "original_contract_disposition": "PARTIAL_EVIDENCE_NOT_FULL_CERTIFICATION",
+      "remaining_boundary": "Task dependency admission is exercised in this runtime."
+    },
+    {
+      "id": "G10",
+      "title": "Context mandatory coverage",
+      "required_behavior": "Required intent, ADR, layout, contract, unresolved effects and evidence pointers arrive in scoped context; missing coverage blocks affected action.",
+      "local_test_status": "PASS",
+      "executed_test_count": 3,
+      "test_ids": [
+        "test_authority.AuthorityTests.test_context_contains_original_intent_sources_requirements",
+        "test_authority.AuthorityTests.test_mandatory_context_over_budget_is_not_truncated",
+        "test_store.StoreTests.test_lossless_snapshot_keeps_obligations_and_unknown_actions"
+      ],
+      "original_contract_disposition": "PARTIAL_EVIDENCE_NOT_FULL_CERTIFICATION",
+      "remaining_boundary": "Mandatory source/intent/obligation inclusion and budget failure are tested; actual model ingestion is not observable."
+    },
+    {
+      "id": "G11",
+      "title": "Superseded-memory adversary",
+      "required_behavior": "Inject a highly similar old layout/ADR memory; current approved source remains controlling and old source stays labeled historical.",
+      "local_test_status": "PASS",
+      "executed_test_count": 1,
+      "test_ids": [
+        "test_authority.AuthorityTests.test_old_memory_cannot_replace_approved_source"
+      ],
+      "original_contract_disposition": "PARTIAL_EVIDENCE_NOT_FULL_CERTIFICATION",
+      "remaining_boundary": "Untrusted memory cannot replace approved sources; semantic retrieval/provider injection is not implemented."
+    },
+    {
+      "id": "G12",
+      "title": "Forced context reset",
+      "required_behavior": "Delete session context after durable task admission; fresh agent resumes correct task, source versions and exact obligations without owner re-brief.",
+      "local_test_status": "PASS",
+      "executed_test_count": 2,
+      "test_ids": [
+        "test_installed_paths.ServiceTests.test_real_socket_daemon_crash_recovery_vertical_slice",
+        "test_verification.VerificationTests.test_cold_client_can_read_persisted_verifier_report_and_run"
+      ],
+      "original_contract_disposition": "PARTIAL_EVIDENCE_NOT_FULL_CERTIFICATION",
+      "remaining_boundary": "Real daemon reset with cold manual-client continuation; not actual model-session or compaction certification."
+    },
+    {
+      "id": "G13",
+      "title": "Effect write-ahead",
+      "required_behavior": "Kill executor before/after dispatch and before receipt; every effect has durable intent and uncertain results reconcile without blind replay.",
+      "local_test_status": "PASS",
+      "executed_test_count": 6,
+      "test_ids": [
+        "test_effects.EffectTests.test_approved_fixed_command_executes_and_records_process",
+        "test_effects.EffectTests.test_compare_and_set_does_not_overwrite_unexpected_state",
+        "test_effects.EffectTests.test_lost_ack_reconciles_without_rewrite",
+        "test_effects.EffectTests.test_managed_effect_reads_back_actual_file",
+        "test_effects.EffectTests.test_prepare_atomically_records_intent_outbox_and_blob_before_effect",
+        "test_installed_paths.ServiceTests.test_real_socket_daemon_crash_recovery_vertical_slice"
+      ],
+      "original_contract_disposition": "PARTIAL_EVIDENCE_NOT_FULL_CERTIFICATION",
+      "remaining_boundary": "Several real/deterministic crash boundaries exercised; not physical power loss or every external adapter."
+    },
+    {
+      "id": "G14",
+      "title": "Command idempotency",
+      "required_behavior": "Duplicate request with same ID/hash returns prior result; same ID/different payload is rejected.",
+      "local_test_status": "PASS",
+      "executed_test_count": 5,
+      "test_ids": [
+        "test_authority.AuthorityTests.test_authentication_precedes_cached_result",
+        "test_authority.AuthorityTests.test_identical_command_returns_original_result_no_extra_event",
+        "test_authority.AuthorityTests.test_same_id_different_payload_is_conflict",
+        "test_effects.EffectTests.test_duplicate_dispatch_does_not_reexecute",
+        "test_verification.VerificationTests.test_verification_request_deduplication_does_not_run_twice"
+      ],
+      "original_contract_disposition": "PARTIAL_EVIDENCE_NOT_FULL_CERTIFICATION",
+      "remaining_boundary": "Transactional per-actor request ID and exact-payload deduplication are tested."
+    },
+    {
+      "id": "G15",
+      "title": "Functional vertical slice",
+      "required_behavior": "Real user action reaches actual application behavior and durable store, persists over reload/restart and is visible to successor.",
+      "local_test_status": "PASS",
+      "executed_test_count": 3,
+      "test_ids": [
+        "test_effects.EffectTests.test_managed_effect_reads_back_actual_file",
+        "test_installed_paths.ServiceTests.test_real_socket_daemon_crash_recovery_vertical_slice",
+        "test_verification.VerificationTests.test_real_application_can_be_accepted_only_after_executed_oracle"
+      ],
+      "original_contract_disposition": "PARTIAL_EVIDENCE_NOT_FULL_CERTIFICATION",
+      "remaining_boundary": "Real fixture application and durable SQLite readback/restart; no user browser/UI deployment."
+    },
+    {
+      "id": "G16",
+      "title": "Informational impostor",
+      "required_behavior": "Replace functional page with approved-looking static prose; required behavior tests fail.",
+      "local_test_status": "PASS",
+      "executed_test_count": 1,
+      "test_ids": [
+        "test_verification.VerificationTests.test_static_prose_impostor_fails_required_behavior"
+      ],
+      "original_contract_disposition": "PARTIAL_EVIDENCE_NOT_FULL_CERTIFICATION",
+      "remaining_boundary": "A prose-only Python application impostor fails; no browser-page adapter tested."
+    },
+    {
+      "id": "G17",
+      "title": "Fake-success and backend loss",
+      "required_behavior": "Hard-coded success or backend failure cannot pass integrated readiness; truthful error and persistence checks distinguish them.",
+      "local_test_status": "PASS",
+      "executed_test_count": 2,
+      "test_ids": [
+        "test_verification.VerificationTests.test_backend_write_failure_is_not_success",
+        "test_verification.VerificationTests.test_hardcoded_success_cannot_fake_durable_state"
+      ],
+      "original_contract_disposition": "PARTIAL_EVIDENCE_NOT_FULL_CERTIFICATION",
+      "remaining_boundary": "Hardcoded success and backend loss fail the real fixture oracle; not the user production application."
+    },
+    {
+      "id": "G18",
+      "title": "Independent concurrency",
+      "required_behavior": "Two authorized disjoint workflow tasks progress and commit without overwriting each other or global-lease starvation.",
+      "local_test_status": "PASS",
+      "executed_test_count": 6,
+      "test_ids": [
+        "test_concurrency.ConcurrencyTests.test_eight_independent_tasks_make_concurrent_progress",
+        "test_concurrency.ConcurrencyTests.test_four_real_processes_append_without_lost_commits",
+        "test_concurrency.ConcurrencyTests.test_provider_release_keeps_task_identity_and_allows_successor",
+        "test_concurrency.ConcurrencyTests.test_ready_queue_prioritizes_not_yet_attempted_work",
+        "test_effects.EffectTests.test_unknown_effect_blocks_only_conflicting_resources",
+        "test_installed_paths.ServiceTests.test_real_socket_daemon_crash_recovery_vertical_slice"
+      ],
+      "original_contract_disposition": "PARTIAL_EVIDENCE_NOT_FULL_CERTIFICATION",
+      "remaining_boundary": "Independent local threads/processes/socket clients commit; not distributed controllers."
+    },
+    {
+      "id": "G19",
+      "title": "Conflicting resource writes",
+      "required_behavior": "Conflicting file/interface/migration/environment acquisitions have one accepted authority; stale fence fails promotion.",
+      "local_test_status": "PASS",
+      "executed_test_count": 8,
+      "test_ids": [
+        "test_authority.AuthorityTests.test_clock_rollback_holds_writes",
+        "test_concurrency.ConcurrencyTests.test_competing_parent_child_resource_claims_have_one_winner",
+        "test_concurrency.ConcurrencyTests.test_stale_lease_holder_cannot_heartbeat_after_replacement",
+        "test_effects.EffectTests.test_filesystem_resource_locks_are_casefolded",
+        "test_effects.EffectTests.test_unknown_effect_blocks_only_conflicting_resources",
+        "test_installed_paths.ServiceTests.test_real_socket_daemon_crash_recovery_vertical_slice",
+        "test_verification.VerificationTests.test_duplicate_registered_worktree_cannot_bypass_lock_namespace",
+        "test_verification.VerificationTests.test_old_attempt_cannot_promote_old_candidate_after_takeover"
+      ],
+      "original_contract_disposition": "PARTIAL_EVIDENCE_NOT_FULL_CERTIFICATION",
+      "remaining_boundary": "Local hierarchical resource fences and stale acceptance rejection; no enforced Git/deployment publisher."
+    },
+    {
+      "id": "G20",
+      "title": "Concurrent source invalidation",
+      "required_behavior": "Change a source dependency while worker executes; its stale context/evidence is held at affected effect or promotion boundary.",
+      "local_test_status": "PASS",
+      "executed_test_count": 2,
+      "test_ids": [
+        "test_authority.AuthorityTests.test_source_revision_invalidates_prepared_context",
+        "test_verification.VerificationTests.test_source_change_invalidates_pass_without_deleting_it"
+      ],
+      "original_contract_disposition": "PARTIAL_EVIDENCE_NOT_FULL_CERTIFICATION",
+      "remaining_boundary": "Registered sources/revisions and live candidate freshness are checked; no background filesystem watcher."
+    },
+    {
+      "id": "G21",
+      "title": "Cross-repository observation",
+      "required_behavior": "Changing a registered producer revision invalidates affected consumer/integration readiness; unrelated work continues.",
+      "local_test_status": "PASS",
+      "executed_test_count": 1,
+      "test_ids": [
+        "test_verification.VerificationTests.test_registered_upstream_revision_invalidates_candidate"
+      ],
+      "original_contract_disposition": "PARTIAL_EVIDENCE_NOT_FULL_CERTIFICATION",
+      "remaining_boundary": "Explicit producer revision invalidates candidate; no live cross-repository event-fabric integration."
+    },
+    {
+      "id": "G22",
+      "title": "Cross-repository candidate vector",
+      "required_behavior": "Integration evidence identifies all assembled candidate revisions and actual contracts; mismatched vectors cannot close.",
+      "local_test_status": "PASS",
+      "executed_test_count": 1,
+      "test_ids": [
+        "test_verification.VerificationTests.test_cross_repository_vector_contains_all_declared_inputs"
+      ],
+      "original_contract_disposition": "PARTIAL_EVIDENCE_NOT_FULL_CERTIFICATION",
+      "remaining_boundary": "Multiple repository inputs captured in one vector; not an assembled deployed multi-repo application."
+    },
+    {
+      "id": "G23",
+      "title": "Partial integration recovery",
+      "required_behavior": "Interrupt between repository publication/deployment steps; state reflects partial result and authorized reconciliation, not whole-change success.",
+      "local_test_status": "PASS",
+      "executed_test_count": 1,
+      "test_ids": [
+        "test_effects.EffectTests.test_partial_two_resource_delivery_is_not_whole_job_success"
+      ],
+      "original_contract_disposition": "PARTIAL_EVIDENCE_NOT_FULL_CERTIFICATION",
+      "remaining_boundary": "Partial two-resource effect recovery tested, not interrupted Git publication/deployment across repos."
+    },
+    {
+      "id": "G24",
+      "title": "Provider discovery and lifecycle",
+      "required_behavior": "Each enabled installed adapter proves identity entry, hydration, tool interception, actual compaction behavior where supported and enforced/cooperative classification.",
+      "local_test_status": "NOT_RUN",
+      "executed_test_count": 0,
+      "test_ids": [],
+      "original_contract_disposition": "NO_ENABLED_NATIVE_ADAPTER",
+      "remaining_boundary": "No native installed provider lifecycle, hook, tool-interception or compaction adapter is enabled."
+    },
+    {
+      "id": "G25",
+      "title": "Rate-limit handoff",
+      "required_behavior": "Exercise authorized provider interruption/rotation without deleting workflow identity or repeating uncertain effects; no reliance on final message.",
+      "local_test_status": "PASS",
+      "executed_test_count": 1,
+      "test_ids": [
+        "test_concurrency.ConcurrencyTests.test_provider_release_keeps_task_identity_and_allows_successor"
+      ],
+      "original_contract_disposition": "PARTIAL_EVIDENCE_NOT_FULL_CERTIFICATION",
+      "remaining_boundary": "Manual worker rotation/release preserves job; no real provider rate-limit exercise."
+    },
+    {
+      "id": "G26",
+      "title": "Process and stale worker recovery",
+      "required_behavior": "Expired lease does not imply process death; record process identity, reconcile result and reject stale shared promotion.",
+      "local_test_status": "PASS",
+      "executed_test_count": 8,
+      "test_ids": [
+        "test_authority.AuthorityTests.test_clock_rollback_holds_writes",
+        "test_concurrency.ConcurrencyTests.test_old_release_does_not_release_new_lease",
+        "test_concurrency.ConcurrencyTests.test_second_service_or_maintenance_owner_is_rejected",
+        "test_concurrency.ConcurrencyTests.test_stale_lease_holder_cannot_heartbeat_after_replacement",
+        "test_effects.EffectTests.test_subprocess_timeout_is_bounded",
+        "test_installed_paths.ServiceTests.test_real_socket_daemon_crash_recovery_vertical_slice",
+        "test_store.StoreTests.test_sigkill_uncommitted_transaction_rolls_back",
+        "test_verification.VerificationTests.test_old_attempt_cannot_promote_old_candidate_after_takeover"
+      ],
+      "original_contract_disposition": "PARTIAL_EVIDENCE_NOT_FULL_CERTIFICATION",
+      "remaining_boundary": "Real SIGKILL plus stale ownership/process observations; no hostile surviving same-UID writer containment."
+    },
+    {
+      "id": "G27",
+      "title": "Partition discipline",
+      "required_behavior": "When multi-host is enabled, lose connectivity and reconnect old worker; no split-brain promotion or independent writable-authority divergence.",
+      "local_test_status": "NOT_RUN",
+      "executed_test_count": 0,
+      "test_ids": [],
+      "original_contract_disposition": "OUT_OF_PROFILE",
+      "remaining_boundary": "Multi-host mode is not implemented or enabled; Unix-domain socket/local service only."
+    },
+    {
+      "id": "G28",
+      "title": "Privacy and export restore",
+      "required_behavior": "Scoped transfers do not leak credentials or unrelated memory; restore preserves evidence, lineage and one-authority rules.",
+      "local_test_status": "PASS",
+      "executed_test_count": 8,
+      "test_ids": [
+        "test_authority.AuthorityTests.test_authentication_precedes_cached_result",
+        "test_authority.AuthorityTests.test_tokens_are_absent_from_database_journal",
+        "test_authority.AuthorityTests.test_worker_cannot_read_another_workflow",
+        "test_effects.EffectTests.test_subprocess_does_not_inherit_relay_token",
+        "test_installed_paths.ServiceTests.test_rpc_rejects_oversized_envelope",
+        "test_store.StoreTests.test_backup_excludes_keys_restore_rotates_credentials_and_holds_actions",
+        "test_store.StoreTests.test_insecure_control_permissions_are_rejected",
+        "test_verification.VerificationTests.test_secret_path_capture_is_rejected_not_exported"
+      ],
+      "original_contract_disposition": "PARTIAL_EVIDENCE_NOT_FULL_CERTIFICATION",
+      "remaining_boundary": "Scope checks, secret rejection and key-free backup tested; external one-authority enforcement needs operator fencing."
+    },
+    {
+      "id": "G29",
+      "title": "Bounded hot-path performance",
+      "required_behavior": "Measure representative long histories and many workflows; heartbeat/commit validation stays incremental without losing integrity checks.",
+      "local_test_status": "PASS",
+      "executed_test_count": 4,
+      "test_ids": [
+        "test_concurrency.ConcurrencyTests.test_four_real_processes_append_without_lost_commits",
+        "test_effects.EffectTests.test_output_flood_is_bounded",
+        "test_store.StoreTests.test_journal_capacity_holds_new_work_without_deleting_history",
+        "test_store.StoreTests.test_late_receipt_has_reserved_journal_capacity"
+      ],
+      "original_contract_disposition": "PARTIAL_EVIDENCE_NOT_FULL_CERTIFICATION",
+      "remaining_boundary": "Incremental hot-path tests and bounded contention samples; not huge-history or 24-hour endurance certification."
+    },
+    {
+      "id": "G30",
+      "title": "Migration and final acceptance",
+      "required_behavior": "Versioned migration preserves original evidence and supports controlled rollback; all required behavioral gates have candidate-bound evidence and reviewed exceptions.",
+      "local_test_status": "NOT_RUN",
+      "executed_test_count": 0,
+      "test_ids": [],
+      "original_contract_disposition": "BLOCKED_MISSING_ORIGINAL_SOURCE",
+      "remaining_boundary": "No legacy schema migration or original-source rollback equivalence implementation."
+    },
+    {
+      "id": "G31",
+      "title": "Exact source and diagnostic provenance",
+      "required_behavior": "Source and harness identities are checked before import or execution. The actual installed target is distinguished from the standalone audit subject.",
+      "local_test_status": "PASS",
+      "executed_test_count": 2,
+      "test_ids": [
+        "test_installed_paths.ServiceTests.test_cli_initialization_uses_explicit_new_home",
+        "test_store.StoreTests.test_initialization_never_overwrites_existing_home"
+      ],
+      "original_contract_disposition": "PARTIAL_EVIDENCE_NOT_FULL_CERTIFICATION",
+      "remaining_boundary": "Package manifest preflight and installed module/source identity recorded; unsigned integrity is not publisher authentication."
+    },
+    {
+      "id": "G32",
+      "title": "Patched storage and explicit durability preflight",
+      "required_behavior": "The linked SQLite library has a verified WAL-race fix; requested WAL, synchronous and foreign-key settings are read back.",
+      "local_test_status": "PASS",
+      "executed_test_count": 3,
+      "test_ids": [
+        "test_store.StoreTests.test_auto_journal_is_safe_for_actual_linked_sqlite",
+        "test_store.StoreTests.test_wal_fix_version_rules_include_backports_not_other_old_branches",
+        "test_store.StoreTests.test_wal_rejects_known_unpatched_library"
+      ],
+      "original_contract_disposition": "PARTIAL_EVIDENCE_NOT_FULL_CERTIFICATION",
+      "remaining_boundary": "Known unpatched WAL rejected; actual run uses rollback fallback. Patched WAL library was not installed/exercised here."
+    },
+    {
+      "id": "G33",
+      "title": "Connection lifecycle under failure",
+      "required_behavior": "Connections close on normal, rollback and initialization-failure paths without unbounded resource growth.",
+      "local_test_status": "PASS",
+      "executed_test_count": 1,
+      "test_ids": [
+        "test_store.StoreTests.test_closed_connection_normal_and_exception_paths"
+      ],
+      "original_contract_disposition": "PARTIAL_EVIDENCE_NOT_FULL_CERTIFICATION",
+      "remaining_boundary": "Connections close on tested success/failure/rollback paths with ResourceWarnings promoted to errors; no long soak."
+    },
+    {
+      "id": "G34",
+      "title": "Atomic preparation and artifact publication",
+      "required_behavior": "Domain event, projection updates and outbox are committed together; acknowledged artifact references resolve to durable bytes.",
+      "local_test_status": "PASS",
+      "executed_test_count": 8,
+      "test_ids": [
+        "test_effects.EffectTests.test_failed_preparation_does_not_leave_blobs_or_events",
+        "test_effects.EffectTests.test_prepare_atomically_records_intent_outbox_and_blob_before_effect",
+        "test_installed_paths.ServiceTests.test_real_socket_daemon_crash_recovery_vertical_slice",
+        "test_store.StoreTests.test_blob_quota_failure_preserves_old_store",
+        "test_store.StoreTests.test_conditional_lossless_compression_and_deduplication",
+        "test_store.StoreTests.test_decompression_bomb_is_length_bounded",
+        "test_store.StoreTests.test_journal_capacity_holds_new_work_without_deleting_history",
+        "test_store.StoreTests.test_sigkill_uncommitted_transaction_rolls_back"
+      ],
+      "original_contract_disposition": "PARTIAL_EVIDENCE_NOT_FULL_CERTIFICATION",
+      "remaining_boundary": "Preparation/projections/outbox/blob references atomic in tested local transactions."
+    },
+    {
+      "id": "G35",
+      "title": "Out-of-order and late authenticated receipts",
+      "required_behavior": "Receipts are deduplicated, cannot regress settled outcomes and remain observable after an old worker loses write authority.",
+      "local_test_status": "PASS",
+      "executed_test_count": 5,
+      "test_ids": [
+        "test_effects.EffectTests.test_conflicting_receipt_is_quarantined_not_regressed",
+        "test_effects.EffectTests.test_duplicate_receipt_retains_one_observation",
+        "test_effects.EffectTests.test_late_receipt_accepted_after_attempt_expiry",
+        "test_effects.EffectTests.test_old_unknown_receipt_cannot_regress_settled_outcome",
+        "test_store.StoreTests.test_late_receipt_has_reserved_journal_capacity"
+      ],
+      "original_contract_disposition": "PARTIAL_EVIDENCE_NOT_FULL_CERTIFICATION",
+      "remaining_boundary": "Duplicate/conflicting/late receipts handled with API authority; no external signed receipt adapter."
+    },
+    {
+      "id": "G36",
+      "title": "Cancellation and authorization-change race",
+      "required_behavior": "Cancellation stops unsent work and reconciles sent work; it never claims that cancellation itself undid an external effect.",
+      "local_test_status": "PASS",
+      "executed_test_count": 3,
+      "test_ids": [
+        "test_authority.AuthorityTests.test_revoked_worker_cannot_be_dispatched_by_owner",
+        "test_effects.EffectTests.test_cancel_after_send_waits_for_outcome",
+        "test_effects.EffectTests.test_cancel_before_send_cancels_outbox"
+      ],
+      "original_contract_disposition": "PARTIAL_EVIDENCE_NOT_FULL_CERTIFICATION",
+      "remaining_boundary": "Prepared-vs-sent cancellation and revocation tested; external operations cannot be retroactively undone."
+    },
+    {
+      "id": "G37",
+      "title": "Deduplication expiry and ambiguous absence",
+      "required_behavior": "Retry is bounded by destination semantics, request hash and deduplication lifetime; eventual-consistency absence is not treated as proof.",
+      "local_test_status": "PASS",
+      "executed_test_count": 3,
+      "test_ids": [
+        "test_effects.EffectTests.test_absence_is_not_proof_of_failed_effect",
+        "test_effects.EffectTests.test_generic_command_unknown_is_not_retried",
+        "test_effects.EffectTests.test_lost_ack_reconciles_without_rewrite"
+      ],
+      "original_contract_disposition": "PARTIAL_EVIDENCE_NOT_FULL_CERTIFICATION",
+      "remaining_boundary": "Ambiguous file absence and unknown commands hold safely; no destination idempotency-TTL adapter."
+    },
+    {
+      "id": "G38",
+      "title": "Event replay and schema evolution",
+      "required_behavior": "Replay deterministically rebuilds projections without reexecuting model calls or effects; old event bytes remain immutable.",
+      "local_test_status": "PASS",
+      "executed_test_count": 4,
+      "test_ids": [
+        "test_store.StoreTests.test_corrupt_event_fails_integrity_not_silently_rehashed",
+        "test_store.StoreTests.test_lossless_snapshot_keeps_obligations_and_unknown_actions",
+        "test_store.StoreTests.test_replay_rebuilds_projections_and_command_dedup_without_effects",
+        "test_store.StoreTests.test_unknown_database_schema_is_rejected"
+      ],
+      "original_contract_disposition": "PARTIAL_EVIDENCE_NOT_FULL_CERTIFICATION",
+      "remaining_boundary": "Deterministic projection replay and unknown-schema rejection; no cross-version upcaster/migration."
+    },
+    {
+      "id": "G39",
+      "title": "Backup restore cannot resurrect authority",
+      "required_behavior": "Restored authority starts recovery-only; a new nonrollback generation or trust key invalidates prior tickets at enforcing boundaries.",
+      "local_test_status": "PASS",
+      "executed_test_count": 3,
+      "test_ids": [
+        "test_store.StoreTests.test_backup_excludes_keys_restore_rotates_credentials_and_holds_actions",
+        "test_store.StoreTests.test_restore_release_requires_explicit_original_fence_attestation",
+        "test_store.StoreTests.test_restore_unknown_action_prevents_operator_release"
+      ],
+      "original_contract_disposition": "PARTIAL_EVIDENCE_NOT_FULL_CERTIFICATION",
+      "remaining_boundary": "Restore new local key/generation + recovery hold; external original-authority fencing is an operator attestation."
+    },
+    {
+      "id": "G40",
+      "title": "Action-context freshness and actual delivery",
+      "required_behavior": "Preparation binds current dependencies and the actual input supplied for this invocation, not a reused acknowledgment.",
+      "local_test_status": "PASS",
+      "executed_test_count": 3,
+      "test_ids": [
+        "test_authority.AuthorityTests.test_another_attempt_context_receipt_cannot_be_reused",
+        "test_authority.AuthorityTests.test_context_contains_original_intent_sources_requirements",
+        "test_authority.AuthorityTests.test_source_revision_invalidates_prepared_context"
+      ],
+      "original_contract_disposition": "PARTIAL_EVIDENCE_NOT_FULL_CERTIFICATION",
+      "remaining_boundary": "Actual serialized RPC context body is bound; hidden model prompts/compaction remain outside observation."
+    },
+    {
+      "id": "G41",
+      "title": "Capability and information-boundary bypass",
+      "required_behavior": "Worker cannot bypass the declared gateway or elevation policy; sensitive reads and provider transfers are scoped effects.",
+      "local_test_status": "PASS",
+      "executed_test_count": 6,
+      "test_ids": [
+        "test_authority.AuthorityTests.test_revoked_worker_cannot_be_dispatched_by_owner",
+        "test_authority.AuthorityTests.test_worker_cannot_read_another_workflow",
+        "test_effects.EffectTests.test_approved_fixed_command_executes_and_records_process",
+        "test_effects.EffectTests.test_subprocess_does_not_inherit_relay_token",
+        "test_effects.EffectTests.test_tool_registration_rejects_loader_injection_environment",
+        "test_effects.EffectTests.test_worker_cannot_supply_forged_action_receipt"
+      ],
+      "original_contract_disposition": "PARTIAL_EVIDENCE_NOT_FULL_CERTIFICATION",
+      "remaining_boundary": "API scope checks only; same-UID code, filesystem/network and provider transfers are not sandboxed."
+    },
+    {
+      "id": "G42",
+      "title": "Acceptance oracle and verifier integrity",
+      "required_behavior": "Execution receipts come from a protected runner; skipped, zero-collected, timed-out and weakened required tests cannot establish acceptance.",
+      "local_test_status": "PASS",
+      "executed_test_count": 8,
+      "test_ids": [
+        "test_effects.EffectTests.test_changed_approved_tool_script_is_rejected",
+        "test_verification.VerificationTests.test_cold_client_can_read_persisted_verifier_report_and_run",
+        "test_verification.VerificationTests.test_expected_failure_is_not_acceptance",
+        "test_verification.VerificationTests.test_registered_oracle_is_immutable_not_reread_from_mutable_source",
+        "test_verification.VerificationTests.test_skipped_required_test_fails",
+        "test_verification.VerificationTests.test_verification_request_deduplication_does_not_run_twice",
+        "test_verification.VerificationTests.test_worker_cannot_register_oracle_or_report_fake_pass",
+        "test_verification.VerificationTests.test_zero_collected_tests_fails"
+      ],
+      "original_contract_disposition": "PARTIAL_EVIDENCE_NOT_FULL_CERTIFICATION",
+      "remaining_boundary": "Immutable registered real oracle rejects skips/zero/fail/timeouts; malicious same-UID code can bypass OS-level isolation."
+    },
+    {
+      "id": "G43",
+      "title": "Fairness and bounded recovery scheduling",
+      "required_behavior": "Independent eligible work progresses under bounded resources while one task or provider is repeatedly blocked.",
+      "local_test_status": "PASS",
+      "executed_test_count": 4,
+      "test_ids": [
+        "test_concurrency.ConcurrencyTests.test_provider_release_keeps_task_identity_and_allows_successor",
+        "test_concurrency.ConcurrencyTests.test_ready_queue_prioritizes_not_yet_attempted_work",
+        "test_effects.EffectTests.test_output_flood_is_bounded",
+        "test_effects.EffectTests.test_subprocess_timeout_is_bounded"
+      ],
+      "original_contract_disposition": "PARTIAL_EVIDENCE_NOT_FULL_CERTIFICATION",
+      "remaining_boundary": "Local least-attempted queue fairness/independent progress tested; no sustained provider budget SLA."
+    },
+    {
+      "id": "G44",
+      "title": "Uninstrumented performance and scrub contract",
+      "required_behavior": "Timing samples exclude deliberately added history scans; optimization preserves declared corruption-detection bounds.",
+      "local_test_status": "PASS",
+      "executed_test_count": 1,
+      "test_ids": [
+        "test_store.StoreTests.test_cold_blob_corruption_detected_by_explicit_scrub"
+      ],
+      "original_contract_disposition": "PARTIAL_EVIDENCE_NOT_FULL_CERTIFICATION",
+      "remaining_boundary": "Raw benchmark intervals avoid full scrub; startup/manual scrub exists, periodic enforcement is operational."
+    },
+    {
+      "id": "G45",
+      "title": "Capture race and candidate completeness",
+      "required_behavior": "Candidate manifests describe actual immutable tested inputs, including required dirty/untracked/generated/environment data.",
+      "local_test_status": "PASS",
+      "executed_test_count": 5,
+      "test_ids": [
+        "test_verification.VerificationTests.test_capture_contains_untracked_and_binary_inputs",
+        "test_verification.VerificationTests.test_capture_race_between_passes_is_rejected",
+        "test_verification.VerificationTests.test_case_alias_candidate_is_rejected",
+        "test_verification.VerificationTests.test_edit_after_pass_keeps_historical_pass_but_rejects_acceptance",
+        "test_verification.VerificationTests.test_untracked_input_after_capture_changes_candidate"
+      ],
+      "original_contract_disposition": "PARTIAL_EVIDENCE_NOT_FULL_CERTIFICATION",
+      "remaining_boundary": "Two stable full-source passes plus dirty/untracked/mode capture; not an atomic filesystem snapshot."
+    },
+    {
+      "id": "G46",
+      "title": "Historical evidence and signed trust boundary",
+      "required_behavior": "Consistent hashes, historical tests, reference prototypes and installed-runtime proof remain distinct evidence classes.",
+      "local_test_status": "PASS",
+      "executed_test_count": 2,
+      "test_ids": [
+        "test_store.StoreTests.test_corrupt_event_fails_integrity_not_silently_rehashed",
+        "test_store.StoreTests.test_event_table_rejects_mutation"
+      ],
+      "original_contract_disposition": "PARTIAL_EVIDENCE_NOT_FULL_CERTIFICATION",
+      "remaining_boundary": "Installed/source/historical evidence separated with hashes; no external publisher signature/attestation."
+    }
+  ]
+}

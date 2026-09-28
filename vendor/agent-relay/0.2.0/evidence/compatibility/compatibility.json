@@ -1,0 +1,457 @@
+{
+  "ok": true,
+  "tests_run": 111,
+  "records": [
+    {
+      "test": "test_authority.AuthorityTests.test_another_attempt_context_receipt_cannot_be_reused",
+      "status": "PASS"
+    },
+    {
+      "test": "test_authority.AuthorityTests.test_authentication_precedes_cached_result",
+      "status": "PASS"
+    },
+    {
+      "test": "test_authority.AuthorityTests.test_bool_is_not_integer_revision",
+      "status": "PASS"
+    },
+    {
+      "test": "test_authority.AuthorityTests.test_clock_rollback_holds_writes",
+      "status": "PASS"
+    },
+    {
+      "test": "test_authority.AuthorityTests.test_context_contains_original_intent_sources_requirements",
+      "status": "PASS"
+    },
+    {
+      "test": "test_authority.AuthorityTests.test_domain_lists_reject_boolean_null_and_string",
+      "status": "PASS"
+    },
+    {
+      "test": "test_authority.AuthorityTests.test_empty_workflow_cannot_complete",
+      "status": "PASS"
+    },
+    {
+      "test": "test_authority.AuthorityTests.test_expired_decision_is_not_authority",
+      "status": "PASS"
+    },
+    {
+      "test": "test_authority.AuthorityTests.test_extra_fields_are_not_silently_ignored",
+      "status": "PASS"
+    },
+    {
+      "test": "test_authority.AuthorityTests.test_identical_command_returns_original_result_no_extra_event",
+      "status": "PASS"
+    },
+    {
+      "test": "test_authority.AuthorityTests.test_mandatory_context_over_budget_is_not_truncated",
+      "status": "PASS"
+    },
+    {
+      "test": "test_authority.AuthorityTests.test_missing_references_rollback",
+      "status": "PASS"
+    },
+    {
+      "test": "test_authority.AuthorityTests.test_nonfinite_json_and_duplicate_keys_rejected",
+      "status": "PASS"
+    },
+    {
+      "test": "test_authority.AuthorityTests.test_old_memory_cannot_replace_approved_source",
+      "status": "PASS"
+    },
+    {
+      "test": "test_authority.AuthorityTests.test_owner_revision_is_explicit_and_history_retained",
+      "status": "PASS"
+    },
+    {
+      "test": "test_authority.AuthorityTests.test_requirement_cancellation_requires_scoped_decision",
+      "status": "PASS"
+    },
+    {
+      "test": "test_authority.AuthorityTests.test_requirement_cannot_disappear_from_task_payload",
+      "status": "PASS"
+    },
+    {
+      "test": "test_authority.AuthorityTests.test_revoked_worker_cannot_be_dispatched_by_owner",
+      "status": "PASS"
+    },
+    {
+      "test": "test_authority.AuthorityTests.test_same_id_different_payload_is_conflict",
+      "status": "PASS"
+    },
+    {
+      "test": "test_authority.AuthorityTests.test_source_revision_invalidates_prepared_context",
+      "status": "PASS"
+    },
+    {
+      "test": "test_authority.AuthorityTests.test_stale_revision_rolls_back",
+      "status": "PASS"
+    },
+    {
+      "test": "test_authority.AuthorityTests.test_tokens_are_absent_from_database_journal",
+      "status": "PASS"
+    },
+    {
+      "test": "test_authority.AuthorityTests.test_unrelated_decision_is_rejected",
+      "status": "PASS"
+    },
+    {
+      "test": "test_authority.AuthorityTests.test_worker_cannot_read_another_workflow",
+      "status": "PASS"
+    },
+    {
+      "test": "test_authority.AuthorityTests.test_worker_cannot_revise_intent",
+      "status": "PASS"
+    },
+    {
+      "test": "test_concurrency.ConcurrencyTests.test_competing_parent_child_resource_claims_have_one_winner",
+      "status": "PASS"
+    },
+    {
+      "test": "test_concurrency.ConcurrencyTests.test_eight_independent_tasks_make_concurrent_progress",
+      "status": "PASS"
+    },
+    {
+      "test": "test_concurrency.ConcurrencyTests.test_four_real_processes_append_without_lost_commits",
+      "status": "PASS"
+    },
+    {
+      "test": "test_concurrency.ConcurrencyTests.test_old_release_does_not_release_new_lease",
+      "status": "PASS"
+    },
+    {
+      "test": "test_concurrency.ConcurrencyTests.test_provider_release_keeps_task_identity_and_allows_successor",
+      "status": "PASS"
+    },
+    {
+      "test": "test_concurrency.ConcurrencyTests.test_ready_queue_prioritizes_not_yet_attempted_work",
+      "status": "PASS"
+    },
+    {
+      "test": "test_concurrency.ConcurrencyTests.test_second_service_or_maintenance_owner_is_rejected",
+      "status": "PASS"
+    },
+    {
+      "test": "test_concurrency.ConcurrencyTests.test_stale_lease_holder_cannot_heartbeat_after_replacement",
+      "status": "PASS"
+    },
+    {
+      "test": "test_effects.EffectTests.test_absence_is_not_proof_of_failed_effect",
+      "status": "PASS"
+    },
+    {
+      "test": "test_effects.EffectTests.test_approved_fixed_command_executes_and_records_process",
+      "status": "PASS"
+    },
+    {
+      "test": "test_effects.EffectTests.test_cancel_after_send_waits_for_outcome",
+      "status": "PASS"
+    },
+    {
+      "test": "test_effects.EffectTests.test_cancel_before_send_cancels_outbox",
+      "status": "PASS"
+    },
+    {
+      "test": "test_effects.EffectTests.test_canonical_paths_reject_traversal_and_aliases",
+      "status": "PASS"
+    },
+    {
+      "test": "test_effects.EffectTests.test_changed_approved_tool_script_is_rejected",
+      "status": "PASS"
+    },
+    {
+      "test": "test_effects.EffectTests.test_compare_and_set_does_not_overwrite_unexpected_state",
+      "status": "PASS"
+    },
+    {
+      "test": "test_effects.EffectTests.test_conflicting_receipt_is_quarantined_not_regressed",
+      "status": "PASS"
+    },
+    {
+      "test": "test_effects.EffectTests.test_duplicate_dispatch_does_not_reexecute",
+      "status": "PASS"
+    },
+    {
+      "test": "test_effects.EffectTests.test_duplicate_receipt_retains_one_observation",
+      "status": "PASS"
+    },
+    {
+      "test": "test_effects.EffectTests.test_existing_executable_mode_is_preserved",
+      "status": "PASS"
+    },
+    {
+      "test": "test_effects.EffectTests.test_failed_preparation_does_not_leave_blobs_or_events",
+      "status": "PASS"
+    },
+    {
+      "test": "test_effects.EffectTests.test_filesystem_resource_locks_are_casefolded",
+      "status": "PASS"
+    },
+    {
+      "test": "test_effects.EffectTests.test_generic_command_unknown_is_not_retried",
+      "status": "PASS"
+    },
+    {
+      "test": "test_effects.EffectTests.test_hardlink_cannot_alias_unmanaged_file",
+      "status": "PASS"
+    },
+    {
+      "test": "test_effects.EffectTests.test_late_receipt_accepted_after_attempt_expiry",
+      "status": "PASS"
+    },
+    {
+      "test": "test_effects.EffectTests.test_lost_ack_reconciles_without_rewrite",
+      "status": "PASS"
+    },
+    {
+      "test": "test_effects.EffectTests.test_managed_effect_reads_back_actual_file",
+      "status": "PASS"
+    },
+    {
+      "test": "test_effects.EffectTests.test_old_unknown_receipt_cannot_regress_settled_outcome",
+      "status": "PASS"
+    },
+    {
+      "test": "test_effects.EffectTests.test_output_flood_is_bounded",
+      "status": "PASS"
+    },
+    {
+      "test": "test_effects.EffectTests.test_partial_two_resource_delivery_is_not_whole_job_success",
+      "status": "PASS"
+    },
+    {
+      "test": "test_effects.EffectTests.test_prepare_atomically_records_intent_outbox_and_blob_before_effect",
+      "status": "PASS"
+    },
+    {
+      "test": "test_effects.EffectTests.test_subprocess_does_not_inherit_relay_token",
+      "status": "PASS"
+    },
+    {
+      "test": "test_effects.EffectTests.test_subprocess_timeout_is_bounded",
+      "status": "PASS"
+    },
+    {
+      "test": "test_effects.EffectTests.test_symlink_cannot_redirect_managed_write",
+      "status": "PASS"
+    },
+    {
+      "test": "test_effects.EffectTests.test_tool_registration_rejects_loader_injection_environment",
+      "status": "PASS"
+    },
+    {
+      "test": "test_effects.EffectTests.test_unknown_effect_blocks_only_conflicting_resources",
+      "status": "PASS"
+    },
+    {
+      "test": "test_effects.EffectTests.test_worker_cannot_supply_forged_action_receipt",
+      "status": "PASS"
+    },
+    {
+      "test": "test_installed_paths.ServiceTests.test_cli_initialization_uses_explicit_new_home",
+      "status": "PASS"
+    },
+    {
+      "test": "test_installed_paths.ServiceTests.test_real_socket_daemon_crash_recovery_vertical_slice",
+      "status": "PASS"
+    },
+    {
+      "test": "test_installed_paths.ServiceTests.test_rpc_rejects_invalid_api_version",
+      "status": "PASS"
+    },
+    {
+      "test": "test_installed_paths.ServiceTests.test_rpc_rejects_oversized_envelope",
+      "status": "PASS"
+    },
+    {
+      "test": "test_store.StoreTests.test_auto_journal_is_safe_for_actual_linked_sqlite",
+      "status": "PASS"
+    },
+    {
+      "test": "test_store.StoreTests.test_backup_excludes_keys_restore_rotates_credentials_and_holds_actions",
+      "status": "PASS"
+    },
+    {
+      "test": "test_store.StoreTests.test_blob_quota_failure_preserves_old_store",
+      "status": "PASS"
+    },
+    {
+      "test": "test_store.StoreTests.test_closed_connection_normal_and_exception_paths",
+      "status": "PASS"
+    },
+    {
+      "test": "test_store.StoreTests.test_cold_blob_corruption_detected_by_explicit_scrub",
+      "status": "PASS"
+    },
+    {
+      "test": "test_store.StoreTests.test_conditional_lossless_compression_and_deduplication",
+      "status": "PASS"
+    },
+    {
+      "test": "test_store.StoreTests.test_corrupt_event_fails_integrity_not_silently_rehashed",
+      "status": "PASS"
+    },
+    {
+      "test": "test_store.StoreTests.test_decompression_bomb_is_length_bounded",
+      "status": "PASS"
+    },
+    {
+      "test": "test_store.StoreTests.test_event_table_rejects_mutation",
+      "status": "PASS"
+    },
+    {
+      "test": "test_store.StoreTests.test_initialization_never_overwrites_existing_home",
+      "status": "PASS"
+    },
+    {
+      "test": "test_store.StoreTests.test_insecure_control_permissions_are_rejected",
+      "status": "PASS"
+    },
+    {
+      "test": "test_store.StoreTests.test_journal_capacity_holds_new_work_without_deleting_history",
+      "status": "PASS"
+    },
+    {
+      "test": "test_store.StoreTests.test_late_receipt_has_reserved_journal_capacity",
+      "status": "PASS"
+    },
+    {
+      "test": "test_store.StoreTests.test_lossless_snapshot_keeps_obligations_and_unknown_actions",
+      "status": "PASS"
+    },
+    {
+      "test": "test_store.StoreTests.test_replay_rebuilds_projections_and_command_dedup_without_effects",
+      "status": "PASS"
+    },
+    {
+      "test": "test_store.StoreTests.test_restore_release_requires_explicit_original_fence_attestation",
+      "status": "PASS"
+    },
+    {
+      "test": "test_store.StoreTests.test_restore_unknown_action_prevents_operator_release",
+      "status": "PASS"
+    },
+    {
+      "test": "test_store.StoreTests.test_sigkill_uncommitted_transaction_rolls_back",
+      "status": "PASS"
+    },
+    {
+      "test": "test_store.StoreTests.test_unknown_database_schema_is_rejected",
+      "status": "PASS"
+    },
+    {
+      "test": "test_store.StoreTests.test_wal_fix_version_rules_include_backports_not_other_old_branches",
+      "status": "PASS"
+    },
+    {
+      "test": "test_store.StoreTests.test_wal_rejects_known_unpatched_library",
+      "status": "PASS"
+    },
+    {
+      "test": "test_verification.VerificationTests.test_backend_write_failure_is_not_success",
+      "status": "PASS"
+    },
+    {
+      "test": "test_verification.VerificationTests.test_capture_contains_untracked_and_binary_inputs",
+      "status": "PASS"
+    },
+    {
+      "test": "test_verification.VerificationTests.test_capture_race_between_passes_is_rejected",
+      "status": "PASS"
+    },
+    {
+      "test": "test_verification.VerificationTests.test_case_alias_candidate_is_rejected",
+      "status": "PASS"
+    },
+    {
+      "test": "test_verification.VerificationTests.test_cold_client_can_read_persisted_verifier_report_and_run",
+      "status": "PASS"
+    },
+    {
+      "test": "test_verification.VerificationTests.test_cross_repository_vector_contains_all_declared_inputs",
+      "status": "PASS"
+    },
+    {
+      "test": "test_verification.VerificationTests.test_duplicate_registered_worktree_cannot_bypass_lock_namespace",
+      "status": "PASS"
+    },
+    {
+      "test": "test_verification.VerificationTests.test_edit_after_pass_keeps_historical_pass_but_rejects_acceptance",
+      "status": "PASS"
+    },
+    {
+      "test": "test_verification.VerificationTests.test_expected_failure_is_not_acceptance",
+      "status": "PASS"
+    },
+    {
+      "test": "test_verification.VerificationTests.test_hardcoded_success_cannot_fake_durable_state",
+      "status": "PASS"
+    },
+    {
+      "test": "test_verification.VerificationTests.test_missing_evidence_never_accepts_candidate",
+      "status": "PASS"
+    },
+    {
+      "test": "test_verification.VerificationTests.test_old_attempt_cannot_promote_old_candidate_after_takeover",
+      "status": "PASS"
+    },
+    {
+      "test": "test_verification.VerificationTests.test_real_application_can_be_accepted_only_after_executed_oracle",
+      "status": "PASS"
+    },
+    {
+      "test": "test_verification.VerificationTests.test_registered_oracle_is_immutable_not_reread_from_mutable_source",
+      "status": "PASS"
+    },
+    {
+      "test": "test_verification.VerificationTests.test_registered_upstream_revision_invalidates_candidate",
+      "status": "PASS"
+    },
+    {
+      "test": "test_verification.VerificationTests.test_reopen_requires_exact_accepted_task_decision",
+      "status": "PASS"
+    },
+    {
+      "test": "test_verification.VerificationTests.test_secret_path_capture_is_rejected_not_exported",
+      "status": "PASS"
+    },
+    {
+      "test": "test_verification.VerificationTests.test_skipped_required_test_fails",
+      "status": "PASS"
+    },
+    {
+      "test": "test_verification.VerificationTests.test_source_change_invalidates_pass_without_deleting_it",
+      "status": "PASS"
+    },
+    {
+      "test": "test_verification.VerificationTests.test_static_prose_impostor_fails_required_behavior",
+      "status": "PASS"
+    },
+    {
+      "test": "test_verification.VerificationTests.test_unaccepted_dependency_prevents_admission",
+      "status": "PASS"
+    },
+    {
+      "test": "test_verification.VerificationTests.test_untracked_input_after_capture_changes_candidate",
+      "status": "PASS"
+    },
+    {
+      "test": "test_verification.VerificationTests.test_verification_request_deduplication_does_not_run_twice",
+      "status": "PASS"
+    },
+    {
+      "test": "test_verification.VerificationTests.test_worker_cannot_register_oracle_or_report_fake_pass",
+      "status": "PASS"
+    },
+    {
+      "test": "test_verification.VerificationTests.test_zero_collected_tests_fails",
+      "status": "PASS"
+    }
+  ],
+  "elapsed_s": 4.550723378000384,
+  "runtime_sha256": "54eb245203e922561f8b8fd1cf8c078367f8794c752739ec67d8b4f5c63411d1",
+  "runtime_after_sha256": "54eb245203e922561f8b8fd1cf8c078367f8794c752739ec67d8b4f5c63411d1",
+  "installed_version": "0.2.0",
+  "module_path": "/mnt/data/relay_v020_venv/lib/python3.13/site-packages/agent_relay/__init__.py",
+  "test_source": "EXACT_ARCHIVED_0.1.0_TEST_BYTES",
+  "pre_0_1_audit_equivalence_claimed": false
+}

@@ -5,7 +5,7 @@
   "verify_command": "python3 vendor/agent-relay/0.2.0/tools/verify_package.py",
   "wheel_sha256": "28c68ded5edaea8beb98adcb456a89129b0d30dbb4c93cb140ec9163aa71c994",
   "manifest_sha256": "88a55cc1d40db4ca102f033ce8b221b1cda95980987aba2c16e57fa2a6960ebc",
-  "upgraded_at": "2026-09-28T18:36:46Z",
+  "upgraded_at": "2026-09-28T18:39:22Z",
   "renamed_from": "ess-agent-relay",
   "renamed_at": "2026-09-28T14:52:27Z",
   "install_handoff": "vendor/agent-relay/0.2.0/INSTALL_FOR_CODING_AGENT.md"

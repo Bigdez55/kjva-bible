@@ -1,0 +1,12 @@
+{
+  "distribution": "agent-relay",
+  "version": "0.1.0",
+  "package_root": "vendor/agent-relay/0.1.0",
+  "verify_command": "python3 vendor/agent-relay/0.1.0/tools/verify_package.py",
+  "wheel_sha256": "a5ab6b0bc67f6d281b877b930d66a13e009d524f02d081d66fe55755f171186c",
+  "manifest_sha256": "8161b0eb3c6395b54d3bf738c267f59586e6160ae8b48c896901f288c07b72fd",
+  "upgraded_at": "2026-09-28T14:24:49Z",
+  "renamed_from": "ess-agent-relay",
+  "renamed_at": "2026-09-28T14:52:27Z",
+  "install_handoff": "vendor/agent-relay/0.1.0/INSTALL_FOR_CODING_AGENT.md"
+}

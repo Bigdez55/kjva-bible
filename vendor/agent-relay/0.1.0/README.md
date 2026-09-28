@@ -1,4 +1,4 @@
-# ESS Agent Relay 0.1.0
+# Agent Relay 0.1.0
 
 **Installable, provider-neutral single-host execution-continuity runtime.**
 
@@ -13,7 +13,7 @@ Read `INSTALL_FOR_CODING_AGENT.md`. From the extracted package directory:
 
 ```sh
 python3 tools/verify_package.py
-python3 tools/install.py --prefix "$HOME/.local/share/ess-agent-relay/0.1.0"
+python3 tools/install.py --prefix "$HOME/.local/share/agent-relay/0.1.0"
 ```
 
 The installer creates a NEW virtual environment, installs the included wheel without network
@@ -24,8 +24,8 @@ change Git branches, migrate a database, or touch any previous Relay installatio
 To initialize a new, separate operator-controlled store and run it in the foreground:
 
 ```sh
-R="$HOME/.local/share/ess-agent-relay/0.1.0/bin/relayctl"
-H="$HOME/.local/share/ess-agent-relay/control"
+R="$HOME/.local/share/agent-relay/0.1.0/bin/relayctl"
+H="$HOME/.local/share/agent-relay/control"
 "$R" --home "$H" init
 "$R" --home "$H" serve
 ```

@@ -1,7 +1,7 @@
 {
   "format": 1,
-  "release": "ess-agent-relay 0.1.0",
-  "created_at": "2026-09-28T10:41:25.082933+00:00",
+  "release": "agent-relay 0.1.0",
+  "created_at": "2026-09-28T14:51:36.693801+00:00",
   "assurance": "unsigned integrity manifest; not publisher attestation",
   "file_count": 58,
   "files": [
@@ -27,13 +27,13 @@
     },
     {
       "path": "INSTALL_FOR_CODING_AGENT.md",
-      "bytes": 6216,
-      "sha256": "c1d0d0278893593d0607bc7232216c39c0dcd20e587ac7d7ae9002106daa687a"
+      "bytes": 6192,
+      "sha256": "df16ee24b073564fbab4da31c0e7ec1533f0219543e8427ca7db38e9019b6f58"
     },
     {
       "path": "README.md",
-      "bytes": 5636,
-      "sha256": "ae38de83bd5cb6017a2fdc869b36eecca2bc237282d79dca45cbf233264bbb63"
+      "bytes": 5620,
+      "sha256": "792f9f657fff5558f81a6e5b6d59ad4bd430195ba5d321a8084b8d948595982c"
     },
     {
       "path": "contracts/ORIGINAL_G01_G46.json",
@@ -41,9 +41,9 @@
       "sha256": "2ea1fed9a64466730682fd41aab9e988685e4c675b871e02fe0082b3fa4e533f"
     },
     {
-      "path": "dist/ess_agent_relay-0.1.0-py3-none-any.whl",
-      "bytes": 46293,
-      "sha256": "8bce0915a5ef3ebc8be0cf7ebf2b7c1483ea1c82e790bafaafcb03315b48a4bf"
+      "path": "dist/agent_relay-0.1.0-py3-none-any.whl",
+      "bytes": 46236,
+      "sha256": "a5ab6b0bc67f6d281b877b930d66a13e009d524f02d081d66fe55755f171186c"
     },
     {
       "path": "docs/API.md",
@@ -78,12 +78,12 @@
     {
       "path": "evidence/CODE_INVENTORY.json",
       "bytes": 713,
-      "sha256": "d89d8977028f9d33d816cae74f6572b79ff4c771869b57d7d3de251704553815"
+      "sha256": "c08f5fda5199b26b5f712a32cab410cd19450b859c0cd1778ba9f5a5e6dd6efb"
     },
     {
       "path": "evidence/RELEASE_VERIFICATION.json",
-      "bytes": 2121,
-      "sha256": "6d329987a7db88144a7a7e4c262a46c7b1e0d479101f2b0aa144c07d853577f8"
+      "bytes": 2399,
+      "sha256": "3b3b75abdee8a37f477bc593ccd2045173d144dfb2d4b0be65d36ba54c93a268"
     },
     {
       "path": "evidence/gate_coverage.json",
@@ -97,8 +97,8 @@
     },
     {
       "path": "evidence/installation.json",
-      "bytes": 4705,
-      "sha256": "e644627ce0e0b4cbaabdf2561bd47e86eacbae73a37189518d0f5f16f2d5331f"
+      "bytes": 4979,
+      "sha256": "2391da01bbf18c6c341de907a188a0e3455d65ee1ba6f0edcb9b811820d69ed9"
     },
     {
       "path": "evidence/installed_examples.json",
@@ -142,8 +142,8 @@
     },
     {
       "path": "evidence/wheel-build.log",
-      "bytes": 967,
-      "sha256": "d9e15a97a3821cb1c939255374b01a85dbde4cfb1b5987918d1255d1feaf0138"
+      "bytes": 669,
+      "sha256": "47d8f9f46df568f67e322890f10a9163ab9eac625be760cd8e73d7b7b5eca6fb"
     },
     {
       "path": "examples/bootstrap_application.py",
@@ -157,13 +157,13 @@
     },
     {
       "path": "pyproject.toml",
-      "bytes": 721,
-      "sha256": "cc52a577fef1f525a8647a7b3de9c84c0390818e0d4fc50a0557d44fc47949ce"
+      "bytes": 717,
+      "sha256": "51d077a08ff8c28b4b61e3c3cf700c8fb553abcac9fd4b3d4513d497b0a85581"
     },
     {
       "path": "src/agent_relay/__init__.py",
-      "bytes": 104,
-      "sha256": "ec59a4c6faa97cad18d130779011550857049b1c738208e77b1a395164268367"
+      "bytes": 100,
+      "sha256": "7174cac140d113af1c8d95b9cadc67e3da5c8b5f31e7ebdc23b159f35ef09441"
     },
     {
       "path": "src/agent_relay/__main__.py",
@@ -172,8 +172,8 @@
     },
     {
       "path": "src/agent_relay/cli.py",
-      "bytes": 6530,
-      "sha256": "c15cdaacf63d17d093ebb1a35f7eaf30701fb956b67d2d48a81c2e98663804d8"
+      "bytes": 6522,
+      "sha256": "1b4268a9a98fb703fa354a3e9a16c29bd913127abda73448c6fb40fddbef3e8c"
     },
     {
       "path": "src/agent_relay/codec.py",
@@ -272,8 +272,8 @@
     },
     {
       "path": "tools/install.py",
-      "bytes": 3768,
-      "sha256": "366d45a9b4f74abedb971b4b2bfe5e743b278ff28af038e01a9043c3d7786647"
+      "bytes": 3760,
+      "sha256": "94ce6042e0da40c39021242d2f917cbe57fb4ef1e26cd882c10fe4892a3d3195"
     },
     {
       "path": "tools/run_checks.py",
@@ -282,8 +282,8 @@
     },
     {
       "path": "tools/seal_package.py",
-      "bytes": 1317,
-      "sha256": "aa90de331e82cbeddb5bb14f1b9828f6744f98a79cffba45e29d71cd88a068a5"
+      "bytes": 1313,
+      "sha256": "8d014a45dc832a97bbd50ad2fd926798b6389ff232e3307f75e7bf4a6607aa67"
     },
     {
       "path": "tools/stress.py",

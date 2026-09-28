@@ -12,11 +12,11 @@ from .errors import RelayError,require
 from .service import call,serve
 from .store import Store,private_write
 
-DEFAULT_HOME=Path.home()/".local/share/ess-agent-relay/control"
+DEFAULT_HOME=Path.home()/".local/share/agent-relay/control"
 
 
 def parser():
-    p=argparse.ArgumentParser(prog="relayctl",description="ESS Agent Relay: explicit local authority; no implicit legacy migration")
+    p=argparse.ArgumentParser(prog="relayctl",description="Agent Relay: explicit local authority; no implicit legacy migration")
     p.add_argument("--home",type=Path,default=DEFAULT_HOME)
     p.add_argument("--token-file",type=Path,help="worker token; never pass tokens on the command line")
     p.add_argument("--version",action="version",version=__version__)

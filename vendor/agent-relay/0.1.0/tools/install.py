@@ -20,13 +20,13 @@ def run(argv:list[str],env:dict[str,str],timeout:int=120)->subprocess.CompletedP
 
 def main()->int:
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--prefix',type=Path,default=Path.home()/'.local/share/ess-agent-relay/0.1.0')
+    parser.add_argument('--prefix',type=Path,default=Path.home()/'.local/share/agent-relay/0.1.0')
     args=parser.parse_args();prefix=args.prefix.expanduser().absolute()
     if sys.version_info<(3,11):raise RuntimeError('Python 3.11+ required; select the intended interpreter explicitly')
     if os.name!='posix':raise RuntimeError('This release requires POSIX and Unix-domain sockets')
     manifest=verify()
     if prefix.exists() or prefix.is_symlink():raise RuntimeError('Refusing existing prefix: '+str(prefix))
-    wheel=ROOT/'dist/ess_agent_relay-0.1.0-py3-none-any.whl'
+    wheel=ROOT/'dist/agent_relay-0.1.0-py3-none-any.whl'
     if not wheel.is_file():raise RuntimeError('Expected packaged wheel not present')
     old=os.umask(0o077)
     try:venv.EnvBuilder(with_pip=True,clear=False,symlinks=False).create(prefix)

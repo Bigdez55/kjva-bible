@@ -21,5 +21,5 @@
     "src/agent_relay/workspace.py"
   ],
   "no_runtime_dependencies": true,
-  "installable_wheel_bytes": 46293
+  "installable_wheel_bytes": 46236
 }

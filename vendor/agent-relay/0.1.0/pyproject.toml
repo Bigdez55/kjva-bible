@@ -3,7 +3,7 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "ess-agent-relay"
+name = "agent-relay"
 version = "0.1.0"
 description = "Provider-neutral, single-host durable execution continuity controller"
 requires-python = ">=3.11"

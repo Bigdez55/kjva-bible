@@ -68,7 +68,7 @@ KJVA_OLD_FILE_INVENTORY_*.txt
 # atlas_tether: vendored corpus (replaced by thin tether)
 atlas/
 
-# ESS Agent Relay — local runtime state (vendored package lives under vendor/ess-agent-relay/)
+# Agent Relay — local runtime state (vendored package lives under vendor/agent-relay/)
 .relay/
 relay.sock
 owner.key

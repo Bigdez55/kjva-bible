@@ -8,7 +8,7 @@
     "manifest_sha256": "e5af796d4a185d94670d4210115b05e6b23fa1ac1cd29a271c2204ce03c64c2d",
     "assurance": "hash consistency, not publisher signature/authenticity"
   },
-  "wheel_sha256": "8bce0915a5ef3ebc8be0cf7ebf2b7c1483ea1c82e790bafaafcb03315b48a4bf",
+  "wheel_sha256": "a5ab6b0bc67f6d281b877b930d66a13e009d524f02d081d66fe55755f171186c",
   "identity": {
     "prefix": "/mnt/data/relay-installed-0.1.0",
     "module": "/mnt/data/relay-installed-0.1.0/lib/python3.13/site-packages/agent_relay/__init__.py",
@@ -112,8 +112,9 @@
     "scope": "installed local socket runtime, disposable files, process SIGKILL",
     "version": "0.1.0"
   },
-  "pip_output": "Processing /mnt/data/Agent_Relay_Install_Package_2026-09-28/dist/ess_agent_relay-0.1.0-py3-none-any.whl\nInstalling collected packages: ess-agent-relay\nSuccessfully installed ess-agent-relay-0.1.0\n",
+  "pip_output": "Processing /mnt/data/Agent_Relay_Install_Package_2026-09-28/dist/agent_relay-0.1.0-py3-none-any.whl\nInstalling collected packages: agent-relay\nSuccessfully installed agent-relay-0.1.0\n",
   "live_store_opened": false,
   "legacy_migration_performed": false,
-  "service_installed_or_started": false
+  "service_installed_or_started": false,
+  "rename_note": "Renamed 2026-09-28 from upstream distribution name ess-agent-relay to agent-relay (display name Agent Relay). Wheel rebuilt from renamed source; manifest resealed. Historical run transcripts retained; 111/111 source-mode tests re-verified green on the renamed tree."
 }

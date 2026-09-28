@@ -1,10 +1,10 @@
-# Coding-agent installation handoff — ESS Agent Relay 0.1.0
+# Coding-agent installation handoff — Agent Relay 0.1.0
 
 ## Required outcome
 
 Install and validate the supplied executable package without replacing, downgrading or mutating
 any existing Relay, agent, repository, branch, worktree, identity file or live state store.
-The installed distribution is `ess-agent-relay`; the import namespace is `agent_relay`; the CLI is
+The installed distribution is `agent-relay`; the import namespace is `agent_relay`; the CLI is
 `relayctl`. This is a separate runtime, not an in-place repair or schema migration of an
 unidentified earlier `relay.py` or `relay.db`.
 
@@ -32,7 +32,7 @@ Read `evidence/verification.json`, `evidence/installed_selftest.json`,
 
 ```sh
 python3 --version
-python3 tools/install.py --prefix "$HOME/.local/share/ess-agent-relay/0.1.0"
+python3 tools/install.py --prefix "$HOME/.local/share/agent-relay/0.1.0"
 ```
 
 Use Python 3.11 or newer with `venv`, `ensurepip`, and SQLite enabled. The installer uses only the
@@ -48,7 +48,7 @@ written to `<prefix>/installation.json` and `<prefix>/installed-selftest.json`.
 ## 3. Validate from the installed package
 
 ```sh
-P="$HOME/.local/share/ess-agent-relay/0.1.0"
+P="$HOME/.local/share/agent-relay/0.1.0"
 "$P/bin/relayctl" --version
 "$P/bin/relayctl" selftest --output /tmp/relay-installed-check.json
 "$P/bin/python" tools/run_checks.py --expect-installed --out /tmp/relay-acceptance
@@ -62,8 +62,8 @@ Do not substitute counts from a different commit, interpreter, environment or bi
 ## 4. Initialize only an explicitly selected NEW control directory
 
 ```sh
-P="$HOME/.local/share/ess-agent-relay/0.1.0"
-H="$HOME/.local/share/ess-agent-relay/control"
+P="$HOME/.local/share/agent-relay/0.1.0"
+H="$HOME/.local/share/agent-relay/control"
 "$P/bin/relayctl" --home "$H" init
 "$P/bin/relayctl" --home "$H" doctor --scrub
 "$P/bin/relayctl" --home "$H" serve

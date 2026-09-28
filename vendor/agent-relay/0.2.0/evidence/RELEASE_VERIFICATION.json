@@ -1,0 +1,109 @@
+{
+  "release": "ess-agent-relay",
+  "version": "0.2.0",
+  "generated_at": "2026-09-28T16:35:28.535015+00:00",
+  "outcome": "INSTALLABLE_TESTED_UPDATE_WITH_EXPLICIT_DEPLOYMENT_REVIEW_HOLDS",
+  "runtime_sha256": "54eb245203e922561f8b8fd1cf8c078367f8794c752739ec67d8b4f5c63411d1",
+  "source_sha256": "54eb245203e922561f8b8fd1cf8c078367f8794c752739ec67d8b4f5c63411d1",
+  "tests_sha256": "52ab3ccde8deae3ec209e44d0cd3bc587c4c31d2842796da50fb742917cd8c11",
+  "runner_sha256": "2fdcc55abfd91c58feee161d9e6a80a55f45754f41b7090ed56fbd58b8f1c389",
+  "wheel_sha256": "e404ec6b8f9ce5c0c9b1e9ebd6160e04acb104399322be9fb00928c9b70ce062",
+  "candidate_manifest_sha256": "942b1f411621d5ecf5ed0443be5516143d7dc6d2242f106f995706b848d40b0e",
+  "original_contract_sha256": "2ea1fed9a64466730682fd41aab9e988685e4c675b871e02fe0082b3fa4e533f",
+  "policy_sha256": "c8d07a8950051899bd67bbb8d04e5e75ac32e23b9a1cd23490d88d2dd246f173",
+  "implemented_gaps": {
+    "G24": "durable MCP stdio adapter lifecycle and enforced own-tool/context boundary",
+    "G27": "optional mutual-TLS worker transport with one authority and real lost-reply/reconnect tests",
+    "G30": "actual 0.1.0 migration/rollback and candidate-bound acceptance with explicit reviewer exceptions"
+  },
+  "installed_tests": {
+    "ok": true,
+    "tests": 167,
+    "pass": 167,
+    "skip": 0,
+    "elapsed_s": 10.911772910999844,
+    "report": "verification.json",
+    "all_46_ids_locally_exercised": true,
+    "cleanup_unraisable_errors": []
+  },
+  "baseline_0_1_tests": {
+    "tests": 111,
+    "pass": 111,
+    "report": "baseline_0.1.0/verification.json",
+    "scope": "original installed baseline, historical not current candidate"
+  },
+  "unchanged_0_1_regressions_against_0_2": {
+    "tests": 111,
+    "pass": 111,
+    "elapsed_s": 4.550723378000384,
+    "report": "compatibility/compatibility.json",
+    "note": "Same original regression tests, not 111 additional distinct new tests."
+  },
+  "installed_process_crash_and_application_recovery": {
+    "checks": 6,
+    "pass": 6,
+    "report": "installed_selftest.json"
+  },
+  "installed_cli_migration_and_acceptance": {
+    "checks": 7,
+    "pass": 7,
+    "report": "release_integration.json",
+    "owner_deployment_approvals": 0,
+    "fixture_review_keys_destroyed": true,
+    "signed_fixture_decisions_shipped": false
+  },
+  "tls_contention": {
+    "ok": true,
+    "elapsed_s": 62.16415271799997,
+    "workers": 8,
+    "requests": 31124,
+    "acknowledged_mutations": 29769,
+    "journal_event_delta": 29769,
+    "latency_ms": {
+      "p50": 7.034538999960205,
+      "p95": 39.720139000110066,
+      "p99": 110.66503700021713
+    },
+    "scope": "bounded one-host loopback multi-process load; NOT physical multi-host or endurance certification"
+  },
+  "tls_contention_report": "tls_stress.json",
+  "integrity_after_tls_contention": "PASS",
+  "deployment_acceptance": {
+    "locally_passing_contract_ids": 46,
+    "pass_in_declared_profile": 24,
+    "needs_explicit_boundary_review": 22,
+    "reviewed_exception_count": 0,
+    "ready": false,
+    "full_original_certification": false,
+    "report": "acceptance_evaluation.json"
+  },
+  "environment": {
+    "python": "3.13.5 (main, Jun 25 2025, 18:55:22) [GCC 14.2.0]",
+    "executable": "/mnt/data/relay_v020_venv/bin/python",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+    "sqlite": "3.46.1",
+    "module_path": "/mnt/data/relay_v020_venv/lib/python3.13/site-packages/agent_relay",
+    "installed_mode": true,
+    "openssl_cli": "OpenSSL 3.5.5 27 Jan 2026 (Library: OpenSSL 3.5.5 27 Jan 2026)",
+    "native_codex_executable": null,
+    "native_claude_executable": null,
+    "sqlite_journal_mode_used": "delete",
+    "sqlite_synchronous_used": 3,
+    "patched_wal_certification": false
+  },
+  "not_claimed": [
+    "native Codex/Claude client lifecycle certification",
+    "physical two-host partition certification",
+    "active-active controllers or network-filesystem SQLite",
+    "physical power-loss durability",
+    "long-duration endurance or production observation",
+    "macOS execution",
+    "migration of unidentified pre-0.1.0 standalone stores",
+    "hostile same-UID sandbox isolation",
+    "owner approval of remaining deployment boundaries"
+  ],
+  "live_user_store_opened": false,
+  "user_repository_branch_modified": false,
+  "installation_migration_or_autostart_implicit": false,
+  "evidence_construction": "All current reports reference the same installed runtime digest. Executable inputs were sealed and checked before runtime import. Final all-file delivery manifest is sealed after generated evidence to avoid circular hashes. A final extracted-ZIP installation may have a separate delivery-check report."
+}

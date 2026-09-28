@@ -1,0 +1,1658 @@
+{
+  "ok": true,
+  "started_at": "2026-09-28T16:31:04.323415+00:00",
+  "elapsed_s": 10.911772910999844,
+  "tests_run": 167,
+  "counts": {
+    "PASS": 167
+  },
+  "package_integrity": {
+    "sealed": false,
+    "mode": "final delivery manifest pending; executable candidate inputs verified separately"
+  },
+  "candidate_input_integrity": {
+    "verified": true,
+    "manifest_sha256": "942b1f411621d5ecf5ed0443be5516143d7dc6d2242f106f995706b848d40b0e",
+    "input_count": 55,
+    "scope": "exact source, tests, tools, wheel, compatibility archive, contracts and agent instructions; excludes generated evidence to avoid a hash cycle"
+  },
+  "environment": {
+    "python": "3.13.5 (main, Jun 25 2025, 18:55:22) [GCC 14.2.0]",
+    "executable": "/mnt/data/relay_v020_venv/bin/python",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+    "sqlite": "3.46.1",
+    "module_path": "/mnt/data/relay_v020_venv/lib/python3.13/site-packages/agent_relay",
+    "installed_mode": true
+  },
+  "runtime_sha256": "54eb245203e922561f8b8fd1cf8c078367f8794c752739ec67d8b4f5c63411d1",
+  "runtime_after_sha256": "54eb245203e922561f8b8fd1cf8c078367f8794c752739ec67d8b4f5c63411d1",
+  "tests_sha256": "52ab3ccde8deae3ec209e44d0cd3bc587c4c31d2842796da50fb742917cd8c11",
+  "tests_after_sha256": "52ab3ccde8deae3ec209e44d0cd3bc587c4c31d2842796da50fb742917cd8c11",
+  "source_sha256": "54eb245203e922561f8b8fd1cf8c078367f8794c752739ec67d8b4f5c63411d1",
+  "unraisable_errors": [],
+  "runtime_files": [
+    {
+      "path": "__init__.py",
+      "sha256": "d8eba65d49a1e3ab1029d35e4441bab55c6909aeb421d2e4b9d06899c71ab1a6"
+    },
+    {
+      "path": "__main__.py",
+      "sha256": "79ee6f134c5c5193377cf9b189cbdcc3e2095e49ba9cec310114441c15a917c4"
+    },
+    {
+      "path": "adapters.py",
+      "sha256": "2d4354f737fa2bf940d6f43c65c54407aa8baafca55ede7db8d5c12948e8624c"
+    },
+    {
+      "path": "certification.py",
+      "sha256": "c0fff761e0edad6342b57df8dcd668d557f2040d429049306db3c0ff32959885"
+    },
+    {
+      "path": "cli.py",
+      "sha256": "630a3d4a7c58e53a60b9b6a4d7ea8a55fee46894a09b5b6af4d6aece17044a3f"
+    },
+    {
+      "path": "codec.py",
+      "sha256": "3a736f2d32cc982ae5d6722d405219c4a364935b50b216470a9d84bbd982702b"
+    },
+    {
+      "path": "controller.py",
+      "sha256": "d1a19e990210b1eb3a4e5795cc6ce581157c52c9e5c123bffa1de8c9ad4588b6"
+    },
+    {
+      "path": "data/gate_policy.json",
+      "sha256": "c8d07a8950051899bd67bbb8d04e5e75ac32e23b9a1cd23490d88d2dd246f173"
+    },
+    {
+      "path": "data/original_gates.json",
+      "sha256": "2ea1fed9a64466730682fd41aab9e988685e4c675b871e02fe0082b3fa4e533f"
+    },
+    {
+      "path": "dispatch.py",
+      "sha256": "401db659521cb2b6450a5996c40844f4440ed394c9e91f5acd80fb65c1acd9f1"
+    },
+    {
+      "path": "errors.py",
+      "sha256": "f1e540365e3ffae5583e168bb115dcb3d85c1b8ede9c7b3b88a8847fe5865eb0"
+    },
+    {
+      "path": "execution.py",
+      "sha256": "81f088e9a26840ba949527eb8683e6493fb84b1295bc4dbad31fe0f4fb950bd8"
+    },
+    {
+      "path": "mcp.py",
+      "sha256": "64e34c892b5880ea850acb5a373dd2c250cc9e2b26e955de72269d74b85ccf08"
+    },
+    {
+      "path": "migration.py",
+      "sha256": "be776644a1fbfd979b2e96ca091853a13ee15dc8be793b4815333e4ceeeb913b"
+    },
+    {
+      "path": "network.py",
+      "sha256": "4fcaa31f282de99e7fb50de0eb301ca0696a9523fb04347d45327759e1b346a3"
+    },
+    {
+      "path": "schema.sql",
+      "sha256": "da45636669c8bc0121b89537d91b780dd9b2a59646d4ab222e60ee51c7499195"
+    },
+    {
+      "path": "selftest.py",
+      "sha256": "03336cd1d34a6eac574de3ffb441ffa43f8a5e1fb1048458e8d4baa447486cd3"
+    },
+    {
+      "path": "service.py",
+      "sha256": "e01cc4780ac6d558e5cb3446fd859df30def358b1eceea49d8b0e6782d3430f7"
+    },
+    {
+      "path": "store.py",
+      "sha256": "14c01017707d17283d799ba8a92ff6e71250f42c8cf6d8a8c6209126978fae52"
+    },
+    {
+      "path": "verification.py",
+      "sha256": "d7767923b53ab5a6a41ffb4d3d25fed068caf6ea6117a928a093e816126f4382"
+    },
+    {
+      "path": "verifier_worker.py",
+      "sha256": "c81bb7e7c3be2362b8bc4c45ba2e042eb1e211d785416713dc339b5ad4dcf319"
+    },
+    {
+      "path": "workspace.py",
+      "sha256": "a11642b3f62d0c2e8b54059238b59185c37ad2d3438bde849628780ae91104ec"
+    }
+  ],
+  "test_files": [
+    {
+      "path": "integration_support.py",
+      "sha256": "820f913e4c6ddc7d9bfaedb9d8d54c74a2939997bb05eceeeda4ace7c7b7ba02"
+    },
+    {
+      "path": "legacy_support.py",
+      "sha256": "e41dc8c6485f2130eddfc8e50bffad9df16d95fae5a1d4773bbd5887bfe8d19f"
+    },
+    {
+      "path": "support.py",
+      "sha256": "c17c488728ae61c6eac7252ce1109cf881b76fc25bc290c644ba41c33855b697"
+    },
+    {
+      "path": "test_adapters.py",
+      "sha256": "32470a821781e38874731d270b9465b64428a5bb770a31004e87c97e3983e054"
+    },
+    {
+      "path": "test_authority.py",
+      "sha256": "535f61985f4e6a853fcaf94e4d687a5d6b6ebfe035a15cd4a96be2bc5e5971d5"
+    },
+    {
+      "path": "test_certification.py",
+      "sha256": "da8ed02b8a2ffb161962c74ae7fc1505d0c8cc978d332b7ba7a8ed0d28ed5379"
+    },
+    {
+      "path": "test_concurrency.py",
+      "sha256": "7bab0f282e81bb51c9d7bfa15d8ee0a4c9c3ffc0b78563e38b0e882256dc6ba7"
+    },
+    {
+      "path": "test_effects.py",
+      "sha256": "a668c24ab6c748476b05092e6843a6925298a71fdb26a0a6fa4f932a10323c6b"
+    },
+    {
+      "path": "test_installed_paths.py",
+      "sha256": "1a854d6f086619326cdcd799ae67c059339fd0755aeec0cefc6d83c7ad8fb864"
+    },
+    {
+      "path": "test_migration.py",
+      "sha256": "a0d18086d010809b66dd9c3842a83a0310d3c8e93e870d7ebcd8af26cd4b12f4"
+    },
+    {
+      "path": "test_network.py",
+      "sha256": "8b13260957a715444537bf98e1cad94679db9afbc8e0dcfaa1e0b6a0264c9071"
+    },
+    {
+      "path": "test_release_tools.py",
+      "sha256": "dc5fc8c88bd5c89f8d9a3261991ce53e44c958de569460ea4bce1d3687e3d445"
+    },
+    {
+      "path": "test_store.py",
+      "sha256": "c5c4cc57e036f4b03402242104a069e0287e9424d62719b76fe5677fa6e556f4"
+    },
+    {
+      "path": "test_verification.py",
+      "sha256": "6cc043b827a4ce625a59d3e3f18a55b8ccac8d6cee4d13d548b402f7f41e20f7"
+    }
+  ],
+  "invocation": [
+    "tools/run_checks.py",
+    "--expect-installed",
+    "--development-unsealed",
+    "--out",
+    "/mnt/data/relay_v020_finaltest"
+  ],
+  "resource_warning_policy": "error",
+  "runner_sha256": "2fdcc55abfd91c58feee161d9e6a80a55f45754f41b7090ed56fbd58b8f1c389",
+  "runner_after_sha256": "2fdcc55abfd91c58feee161d9e6a80a55f45754f41b7090ed56fbd58b8f1c389",
+  "records": [
+    {
+      "test": "test_adapters.AdapterTests.test_adapter_does_not_expose_owner_tools",
+      "gate_ids": [
+        "G24",
+        "G41"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.012200386000131402
+    },
+    {
+      "test": "test_adapters.AdapterTests.test_adapter_tool_duplicate_command_does_not_double_claim",
+      "gate_ids": [
+        "G24",
+        "G14"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.009213576000092871
+    },
+    {
+      "test": "test_adapters.AdapterTests.test_close_releases_leases_but_does_not_discard_unknown_action",
+      "gate_ids": [
+        "G24",
+        "G13",
+        "G25"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.01685526099981871
+    },
+    {
+      "test": "test_adapters.AdapterTests.test_consequential_tool_requires_actual_context_hash_acknowledgment",
+      "gate_ids": [
+        "G24",
+        "G40"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.01621099999965736
+    },
+    {
+      "test": "test_adapters.AdapterTests.test_context_reset_invalidates_acknowledgment_even_via_raw_api",
+      "gate_ids": [
+        "G24",
+        "G12",
+        "G40"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.019251439000072423
+    },
+    {
+      "test": "test_adapters.AdapterTests.test_disabled_adapter_fences_old_attempts",
+      "gate_ids": [
+        "G24",
+        "G26"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.013875901000119484
+    },
+    {
+      "test": "test_adapters.AdapterTests.test_identity_entry_must_be_real_owner_registered_agent_source",
+      "gate_ids": [
+        "G24",
+        "G10"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.00817394100022284
+    },
+    {
+      "test": "test_adapters.AdapterTests.test_native_tools_and_hidden_compaction_are_explicitly_not_claimed",
+      "gate_ids": [
+        "G24",
+        "G41"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.007747350000045117
+    },
+    {
+      "test": "test_adapters.AdapterTests.test_only_shipped_adapter_can_be_enabled",
+      "gate_ids": [
+        "G24",
+        "G31"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.0053710719998889545
+    },
+    {
+      "test": "test_adapters.AdapterTests.test_other_worker_cannot_reuse_session",
+      "gate_ids": [
+        "G24",
+        "G41"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.008468965999782085
+    },
+    {
+      "test": "test_adapters.AdapterTests.test_owner_key_is_not_allowed_in_provider_adapter",
+      "gate_ids": [
+        "G24",
+        "G41"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.006150252000225009
+    },
+    {
+      "test": "test_adapters.AdapterTests.test_source_change_requires_fresh_hydration_before_ack",
+      "gate_ids": [
+        "G24",
+        "G20",
+        "G40"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.017060775000118156
+    },
+    {
+      "test": "test_adapters.MCPWireTests.test_protocol_requires_initialize_and_initialized_notification",
+      "gate_ids": [
+        "G24"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.2641511349997927
+    },
+    {
+      "test": "test_adapters.MCPWireTests.test_real_mcp_process_kill_and_cold_successor_preserve_original_job",
+      "gate_ids": [
+        "G24",
+        "G12",
+        "G25",
+        "G26"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.4014749570001186
+    },
+    {
+      "test": "test_adapters.MCPWireTests.test_real_stdio_handshake_identity_tools_hydration_ack_and_interception",
+      "gate_ids": [
+        "G24",
+        "G10",
+        "G40"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.28874870399977226
+    },
+    {
+      "test": "test_adapters.MCPWireTests.test_stdio_rejects_malformed_and_oversized_frames",
+      "gate_ids": [
+        "G24",
+        "G41"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.014828277000106027
+    },
+    {
+      "test": "test_authority.AuthorityTests.test_another_attempt_context_receipt_cannot_be_reused",
+      "gate_ids": [
+        "G40"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.01251045500021064
+    },
+    {
+      "test": "test_authority.AuthorityTests.test_authentication_precedes_cached_result",
+      "gate_ids": [
+        "G14",
+        "G28"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.00664394200020979
+    },
+    {
+      "test": "test_authority.AuthorityTests.test_bool_is_not_integer_revision",
+      "gate_ids": [
+        "G06"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.005102265000004991
+    },
+    {
+      "test": "test_authority.AuthorityTests.test_clock_rollback_holds_writes",
+      "gate_ids": [
+        "G19",
+        "G26"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.007353680000051099
+    },
+    {
+      "test": "test_authority.AuthorityTests.test_context_contains_original_intent_sources_requirements",
+      "gate_ids": [
+        "G10",
+        "G40"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.006655729000158317
+    },
+    {
+      "test": "test_authority.AuthorityTests.test_domain_lists_reject_boolean_null_and_string",
+      "gate_ids": [
+        "G06"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.007220973000130471
+    },
+    {
+      "test": "test_authority.AuthorityTests.test_empty_workflow_cannot_complete",
+      "gate_ids": [
+        "G07"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.005273517999739852
+    },
+    {
+      "test": "test_authority.AuthorityTests.test_expired_decision_is_not_authority",
+      "gate_ids": [
+        "G05"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.00543283299975883
+    },
+    {
+      "test": "test_authority.AuthorityTests.test_extra_fields_are_not_silently_ignored",
+      "gate_ids": [
+        "G06"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.003978625000399916
+    },
+    {
+      "test": "test_authority.AuthorityTests.test_identical_command_returns_original_result_no_extra_event",
+      "gate_ids": [
+        "G14"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.0062879850001991144
+    },
+    {
+      "test": "test_authority.AuthorityTests.test_mandatory_context_over_budget_is_not_truncated",
+      "gate_ids": [
+        "G10"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.009720183999888832
+    },
+    {
+      "test": "test_authority.AuthorityTests.test_missing_references_rollback",
+      "gate_ids": [
+        "G06"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.005468465999911132
+    },
+    {
+      "test": "test_authority.AuthorityTests.test_nonfinite_json_and_duplicate_keys_rejected",
+      "gate_ids": [
+        "G06"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.004138982000313263
+    },
+    {
+      "test": "test_authority.AuthorityTests.test_old_memory_cannot_replace_approved_source",
+      "gate_ids": [
+        "G11"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.009272022999994078
+    },
+    {
+      "test": "test_authority.AuthorityTests.test_owner_revision_is_explicit_and_history_retained",
+      "gate_ids": [
+        "G03"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.005145938999703503
+    },
+    {
+      "test": "test_authority.AuthorityTests.test_requirement_cancellation_requires_scoped_decision",
+      "gate_ids": [
+        "G04"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.006953658999918844
+    },
+    {
+      "test": "test_authority.AuthorityTests.test_requirement_cannot_disappear_from_task_payload",
+      "gate_ids": [
+        "G04"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.005363850999856368
+    },
+    {
+      "test": "test_authority.AuthorityTests.test_revoked_worker_cannot_be_dispatched_by_owner",
+      "gate_ids": [
+        "G36",
+        "G41"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.010174114999699668
+    },
+    {
+      "test": "test_authority.AuthorityTests.test_same_id_different_payload_is_conflict",
+      "gate_ids": [
+        "G14"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.005398682000304689
+    },
+    {
+      "test": "test_authority.AuthorityTests.test_source_revision_invalidates_prepared_context",
+      "gate_ids": [
+        "G20",
+        "G40"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.009442475000014383
+    },
+    {
+      "test": "test_authority.AuthorityTests.test_stale_revision_rolls_back",
+      "gate_ids": [
+        "G03",
+        "G02"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.005421766999916144
+    },
+    {
+      "test": "test_authority.AuthorityTests.test_tokens_are_absent_from_database_journal",
+      "gate_ids": [
+        "G28"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.005800496000119892
+    },
+    {
+      "test": "test_authority.AuthorityTests.test_unrelated_decision_is_rejected",
+      "gate_ids": [
+        "G05"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.007012556000063341
+    },
+    {
+      "test": "test_authority.AuthorityTests.test_worker_cannot_read_another_workflow",
+      "gate_ids": [
+        "G28",
+        "G41"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.0065818000002764165
+    },
+    {
+      "test": "test_authority.AuthorityTests.test_worker_cannot_revise_intent",
+      "gate_ids": [
+        "G03"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.006145836000087002
+    },
+    {
+      "test": "test_certification.CertificationTests.test_duplicate_tests_or_gate_ids_and_omitted_gate_rejected",
+      "gate_ids": [
+        "G30",
+        "G06"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.005602363999969384
+    },
+    {
+      "test": "test_certification.CertificationTests.test_expired_or_forged_review_is_rejected",
+      "gate_ids": [
+        "G30",
+        "G05"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.009239034000074753
+    },
+    {
+      "test": "test_certification.CertificationTests.test_missing_and_failed_required_tests_cannot_be_waived",
+      "gate_ids": [
+        "G30",
+        "G42"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.019979956000042876
+    },
+    {
+      "test": "test_certification.CertificationTests.test_original_contract_hash_cannot_be_changed",
+      "gate_ids": [
+        "G30",
+        "G31"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.00304099100003441
+    },
+    {
+      "test": "test_certification.CertificationTests.test_passing_tests_do_not_silently_approve_remaining_boundaries",
+      "gate_ids": [
+        "G30",
+        "G46"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.003653075000329409
+    },
+    {
+      "test": "test_certification.CertificationTests.test_policy_cannot_be_replaced_with_easier_tests_or_empty_boundaries",
+      "gate_ids": [
+        "G30",
+        "G42"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.003276938999988488
+    },
+    {
+      "test": "test_certification.CertificationTests.test_review_is_bound_to_exact_evidence_not_reusable_on_another_run",
+      "gate_ids": [
+        "G30",
+        "G05"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.00580193700034215
+    },
+    {
+      "test": "test_certification.CertificationTests.test_reviewed_exceptions_remain_exceptions_not_pass_or_global_certification",
+      "gate_ids": [
+        "G30",
+        "G46"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.005149695000000065
+    },
+    {
+      "test": "test_certification.CertificationTests.test_source_mode_cannot_certify_installed_candidate",
+      "gate_ids": [
+        "G30",
+        "G31"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.0035247249998064945
+    },
+    {
+      "test": "test_certification.CertificationTests.test_stale_runtime_and_changed_verifier_rejected",
+      "gate_ids": [
+        "G30",
+        "G31",
+        "G46"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.014703202999953646
+    },
+    {
+      "test": "test_certification.CertificationTests.test_unraisable_cleanup_error_blocks_acceptance_even_when_tests_claim_pass",
+      "gate_ids": [
+        "G30",
+        "G33",
+        "G42"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.005759585999840056
+    },
+    {
+      "test": "test_certification.CertificationTests.test_unsigned_template_is_not_an_approval_and_placeholder_reason_cannot_sign",
+      "gate_ids": [
+        "G30",
+        "G05"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.0032011170001169376
+    },
+    {
+      "test": "test_concurrency.ConcurrencyTests.test_competing_parent_child_resource_claims_have_one_winner",
+      "gate_ids": [
+        "G19"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.011678314999699069
+    },
+    {
+      "test": "test_concurrency.ConcurrencyTests.test_eight_independent_tasks_make_concurrent_progress",
+      "gate_ids": [
+        "G18"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.23021734999974797
+    },
+    {
+      "test": "test_concurrency.ConcurrencyTests.test_four_real_processes_append_without_lost_commits",
+      "gate_ids": [
+        "G18",
+        "G29"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.17001847899973654
+    },
+    {
+      "test": "test_concurrency.ConcurrencyTests.test_old_release_does_not_release_new_lease",
+      "gate_ids": [
+        "G26"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.013063432999842917
+    },
+    {
+      "test": "test_concurrency.ConcurrencyTests.test_provider_release_keeps_task_identity_and_allows_successor",
+      "gate_ids": [
+        "G18",
+        "G25",
+        "G43"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.012762037999891618
+    },
+    {
+      "test": "test_concurrency.ConcurrencyTests.test_ready_queue_prioritizes_not_yet_attempted_work",
+      "gate_ids": [
+        "G18",
+        "G43"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.010293241999988822
+    },
+    {
+      "test": "test_concurrency.ConcurrencyTests.test_second_service_or_maintenance_owner_is_rejected",
+      "gate_ids": [
+        "G26"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.005215413000314584
+    },
+    {
+      "test": "test_concurrency.ConcurrencyTests.test_stale_lease_holder_cannot_heartbeat_after_replacement",
+      "gate_ids": [
+        "G19",
+        "G26"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.011526502999913646
+    },
+    {
+      "test": "test_effects.EffectTests.test_absence_is_not_proof_of_failed_effect",
+      "gate_ids": [
+        "G37"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.012661849000323855
+    },
+    {
+      "test": "test_effects.EffectTests.test_approved_fixed_command_executes_and_records_process",
+      "gate_ids": [
+        "G13",
+        "G41"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.05063159600013023
+    },
+    {
+      "test": "test_effects.EffectTests.test_cancel_after_send_waits_for_outcome",
+      "gate_ids": [
+        "G36"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.014031030999831273
+    },
+    {
+      "test": "test_effects.EffectTests.test_cancel_before_send_cancels_outbox",
+      "gate_ids": [
+        "G36"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.011329300999932457
+    },
+    {
+      "test": "test_effects.EffectTests.test_canonical_paths_reject_traversal_and_aliases",
+      "gate_ids": [
+        "G01"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.004586584000207949
+    },
+    {
+      "test": "test_effects.EffectTests.test_changed_approved_tool_script_is_rejected",
+      "gate_ids": [
+        "G08",
+        "G42"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.0182582449997426
+    },
+    {
+      "test": "test_effects.EffectTests.test_compare_and_set_does_not_overwrite_unexpected_state",
+      "gate_ids": [
+        "G13"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.011610677000135183
+    },
+    {
+      "test": "test_effects.EffectTests.test_conflicting_receipt_is_quarantined_not_regressed",
+      "gate_ids": [
+        "G35"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.011281740999947942
+    },
+    {
+      "test": "test_effects.EffectTests.test_duplicate_dispatch_does_not_reexecute",
+      "gate_ids": [
+        "G14"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.012392441999963921
+    },
+    {
+      "test": "test_effects.EffectTests.test_duplicate_receipt_retains_one_observation",
+      "gate_ids": [
+        "G35"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.013300543000241305
+    },
+    {
+      "test": "test_effects.EffectTests.test_existing_executable_mode_is_preserved",
+      "gate_ids": [
+        "G01"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.005782620999980281
+    },
+    {
+      "test": "test_effects.EffectTests.test_failed_preparation_does_not_leave_blobs_or_events",
+      "gate_ids": [
+        "G01",
+        "G34"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.009919930000251043
+    },
+    {
+      "test": "test_effects.EffectTests.test_filesystem_resource_locks_are_casefolded",
+      "gate_ids": [
+        "G01",
+        "G19"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.004380248999950709
+    },
+    {
+      "test": "test_effects.EffectTests.test_generic_command_unknown_is_not_retried",
+      "gate_ids": [
+        "G37"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.03342912099969908
+    },
+    {
+      "test": "test_effects.EffectTests.test_hardlink_cannot_alias_unmanaged_file",
+      "gate_ids": [
+        "G01"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.010924683999746776
+    },
+    {
+      "test": "test_effects.EffectTests.test_late_receipt_accepted_after_attempt_expiry",
+      "gate_ids": [
+        "G35"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.010927108000032604
+    },
+    {
+      "test": "test_effects.EffectTests.test_lost_ack_reconciles_without_rewrite",
+      "gate_ids": [
+        "G13",
+        "G37"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.010564661999978853
+    },
+    {
+      "test": "test_effects.EffectTests.test_managed_effect_reads_back_actual_file",
+      "gate_ids": [
+        "G13",
+        "G15"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.013213433999681001
+    },
+    {
+      "test": "test_effects.EffectTests.test_old_unknown_receipt_cannot_regress_settled_outcome",
+      "gate_ids": [
+        "G35"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.010434269999677781
+    },
+    {
+      "test": "test_effects.EffectTests.test_output_flood_is_bounded",
+      "gate_ids": [
+        "G29",
+        "G43"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.013856262999979663
+    },
+    {
+      "test": "test_effects.EffectTests.test_partial_two_resource_delivery_is_not_whole_job_success",
+      "gate_ids": [
+        "G23"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.014251367999804643
+    },
+    {
+      "test": "test_effects.EffectTests.test_prepare_atomically_records_intent_outbox_and_blob_before_effect",
+      "gate_ids": [
+        "G13",
+        "G34"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.0098895259998244
+    },
+    {
+      "test": "test_effects.EffectTests.test_subprocess_does_not_inherit_relay_token",
+      "gate_ids": [
+        "G28",
+        "G41"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.01608390399997006
+    },
+    {
+      "test": "test_effects.EffectTests.test_subprocess_timeout_is_bounded",
+      "gate_ids": [
+        "G26",
+        "G43"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.1262591279996741
+    },
+    {
+      "test": "test_effects.EffectTests.test_symlink_cannot_redirect_managed_write",
+      "gate_ids": [
+        "G01"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.01489391599989176
+    },
+    {
+      "test": "test_effects.EffectTests.test_tool_registration_rejects_loader_injection_environment",
+      "gate_ids": [
+        "G41"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.010640944999977364
+    },
+    {
+      "test": "test_effects.EffectTests.test_unknown_effect_blocks_only_conflicting_resources",
+      "gate_ids": [
+        "G18",
+        "G19"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.012040451999837387
+    },
+    {
+      "test": "test_effects.EffectTests.test_worker_cannot_supply_forged_action_receipt",
+      "gate_ids": [
+        "G41"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.011064211000302748
+    },
+    {
+      "test": "test_installed_paths.ServiceTests.test_cli_initialization_uses_explicit_new_home",
+      "gate_ids": [
+        "G31"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.1354492309997113
+    },
+    {
+      "test": "test_installed_paths.ServiceTests.test_real_socket_daemon_crash_recovery_vertical_slice",
+      "gate_ids": [
+        "G12",
+        "G13",
+        "G15",
+        "G18",
+        "G19",
+        "G26",
+        "G34"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.8102195259998553
+    },
+    {
+      "test": "test_installed_paths.ServiceTests.test_rpc_rejects_invalid_api_version",
+      "gate_ids": [
+        "G06"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.16940256499992756
+    },
+    {
+      "test": "test_installed_paths.ServiceTests.test_rpc_rejects_oversized_envelope",
+      "gate_ids": [
+        "G06",
+        "G28"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.00010702800000217394
+    },
+    {
+      "test": "test_migration.MigrationTests.test_acceptance_mismatch_cannot_activate_migrated_store",
+      "gate_ids": [
+        "G30",
+        "G31"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.08874253600015436
+    },
+    {
+      "test": "test_migration.MigrationTests.test_controlled_preactivation_rollback_reopens_original_binary_in_recovery_only",
+      "gate_ids": [
+        "G30",
+        "G02",
+        "G39"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.16120101799970143
+    },
+    {
+      "test": "test_migration.MigrationTests.test_corrupt_legacy_projection_rejected_before_source_fence",
+      "gate_ids": [
+        "G30",
+        "G38"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.084722088000035
+    },
+    {
+      "test": "test_migration.MigrationTests.test_existing_destination_and_nested_target_leave_source_unmodified",
+      "gate_ids": [
+        "G30",
+        "G01"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.11365515099987533
+    },
+    {
+      "test": "test_migration.MigrationTests.test_historical_real_application_test_pass_is_preserved_not_upgraded",
+      "gate_ids": [
+        "G30",
+        "G08",
+        "G46"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.20583115999988877
+    },
+    {
+      "test": "test_migration.MigrationTests.test_interrupted_migration_at_each_boundary_can_rollback_without_lost_history",
+      "gate_ids": [
+        "G30",
+        "G34",
+        "G39"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.7697953159999997
+    },
+    {
+      "test": "test_migration.MigrationTests.test_migrated_projection_rebuild_keeps_historical_hashes",
+      "gate_ids": [
+        "G30",
+        "G38"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.10979680499985989
+    },
+    {
+      "test": "test_migration.MigrationTests.test_migration_preserves_exact_original_event_bytes_blobs_and_requirements",
+      "gate_ids": [
+        "G30",
+        "G02",
+        "G04",
+        "G38"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.16320038000003478
+    },
+    {
+      "test": "test_migration.MigrationTests.test_migration_refuses_store_held_by_another_service_lock",
+      "gate_ids": [
+        "G30",
+        "G19"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.08232476900002439
+    },
+    {
+      "test": "test_migration.MigrationTests.test_parent_symlink_alias_cannot_place_migration_inside_source",
+      "gate_ids": [
+        "G30",
+        "G01"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.08609691399988151
+    },
+    {
+      "test": "test_migration.MigrationTests.test_plan_uses_actual_legacy_runtime_and_changes_no_database_bytes",
+      "gate_ids": [
+        "G30",
+        "G31"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.0814887279998402
+    },
+    {
+      "test": "test_migration.MigrationTests.test_real_process_death_during_migration_leaves_fenced_recoverable_state",
+      "gate_ids": [
+        "G30",
+        "G13",
+        "G39"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.5456601820001197
+    },
+    {
+      "test": "test_migration.MigrationTests.test_rollback_rejects_late_receipt_after_unfinalized_copy_marker",
+      "gate_ids": [
+        "G30",
+        "G35"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.1645778050001354
+    },
+    {
+      "test": "test_migration.MigrationTests.test_unknown_original_effect_blocks_activation_until_independent_readback",
+      "gate_ids": [
+        "G30",
+        "G35",
+        "G39"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.19234783699994296
+    },
+    {
+      "test": "test_migration.MigrationTests.test_unrecognized_schema_is_not_heuristically_imported",
+      "gate_ids": [
+        "G30",
+        "G06"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.0032500800002708274
+    },
+    {
+      "test": "test_network.NetworkTests.test_lost_response_after_real_commit_replays_once_with_same_command_id",
+      "gate_ids": [
+        "G27",
+        "G14",
+        "G35"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.258524306000254
+    },
+    {
+      "test": "test_network.NetworkTests.test_missing_client_certificate_and_wrong_server_identity_rejected",
+      "gate_ids": [
+        "G27",
+        "G41"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.24675310700013142
+    },
+    {
+      "test": "test_network.NetworkTests.test_mutating_remote_call_requires_stable_id_and_unavailable_never_writes_offline",
+      "gate_ids": [
+        "G27",
+        "G14"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.34985429300013493
+    },
+    {
+      "test": "test_network.NetworkTests.test_owner_key_rejected_even_in_handcrafted_tls_request",
+      "gate_ids": [
+        "G27",
+        "G41"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.24093054300010408
+    },
+    {
+      "test": "test_network.NetworkTests.test_partition_expiry_old_worker_reconnect_cannot_renew_promote_or_prepare",
+      "gate_ids": [
+        "G27",
+        "G19",
+        "G26",
+        "G43"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.3410269910000352
+    },
+    {
+      "test": "test_network.NetworkTests.test_real_mcp_stdio_adapter_uses_remote_tls_without_local_store_access",
+      "gate_ids": [
+        "G27",
+        "G24",
+        "G40"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.45013916600009907
+    },
+    {
+      "test": "test_network.NetworkTests.test_real_mtls_worker_connects_to_same_single_authority",
+      "gate_ids": [
+        "G27",
+        "G18",
+        "G28"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.2645652979999795
+    },
+    {
+      "test": "test_network.NetworkTests.test_remote_worker_cannot_enable_a_second_authority_or_owner_tools",
+      "gate_ids": [
+        "G27",
+        "G41"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.34760090099962326
+    },
+    {
+      "test": "test_network.NetworkTests.test_revocation_is_checked_even_for_previously_committed_replay",
+      "gate_ids": [
+        "G27",
+        "G36",
+        "G41"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.25505439200014735
+    },
+    {
+      "test": "test_network.NetworkTests.test_tls_certificate_must_match_registered_worker_grant",
+      "gate_ids": [
+        "G27",
+        "G28",
+        "G41"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.29202475100009906
+    },
+    {
+      "test": "test_release_tools.CandidatePreflightTests.test_candidate_preflight_checks_bytes_without_importing_target",
+      "gate_ids": [
+        "G31",
+        "G46"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.0007792910000716802
+    },
+    {
+      "test": "test_release_tools.CandidatePreflightTests.test_modified_input_is_rejected_before_import",
+      "gate_ids": [
+        "G31",
+        "G42"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.0007429869997395144
+    },
+    {
+      "test": "test_release_tools.CandidatePreflightTests.test_unlisted_executable_input_is_rejected",
+      "gate_ids": [
+        "G31",
+        "G42"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.0006563500000993372
+    },
+    {
+      "test": "test_store.StoreTests.test_auto_journal_is_safe_for_actual_linked_sqlite",
+      "gate_ids": [
+        "G32"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.005723081999803981
+    },
+    {
+      "test": "test_store.StoreTests.test_backup_excludes_keys_restore_rotates_credentials_and_holds_actions",
+      "gate_ids": [
+        "G28",
+        "G39"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.01517506099980892
+    },
+    {
+      "test": "test_store.StoreTests.test_blob_quota_failure_preserves_old_store",
+      "gate_ids": [
+        "G34"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.006919419000041671
+    },
+    {
+      "test": "test_store.StoreTests.test_closed_connection_normal_and_exception_paths",
+      "gate_ids": [
+        "G02",
+        "G33"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.004968177999671752
+    },
+    {
+      "test": "test_store.StoreTests.test_cold_blob_corruption_detected_by_explicit_scrub",
+      "gate_ids": [
+        "G44"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.010542209000050207
+    },
+    {
+      "test": "test_store.StoreTests.test_conditional_lossless_compression_and_deduplication",
+      "gate_ids": [
+        "G34"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.0075827179998668726
+    },
+    {
+      "test": "test_store.StoreTests.test_corrupt_event_fails_integrity_not_silently_rehashed",
+      "gate_ids": [
+        "G38",
+        "G46"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.005533561999982339
+    },
+    {
+      "test": "test_store.StoreTests.test_decompression_bomb_is_length_bounded",
+      "gate_ids": [
+        "G34"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.004494407000038336
+    },
+    {
+      "test": "test_store.StoreTests.test_event_table_rejects_mutation",
+      "gate_ids": [
+        "G02",
+        "G46"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.005595834999894578
+    },
+    {
+      "test": "test_store.StoreTests.test_initialization_never_overwrites_existing_home",
+      "gate_ids": [
+        "G02",
+        "G31"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.0047165460000542225
+    },
+    {
+      "test": "test_store.StoreTests.test_insecure_control_permissions_are_rejected",
+      "gate_ids": [
+        "G28"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.005450299999665731
+    },
+    {
+      "test": "test_store.StoreTests.test_journal_capacity_holds_new_work_without_deleting_history",
+      "gate_ids": [
+        "G29",
+        "G34"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.00888166699996873
+    },
+    {
+      "test": "test_store.StoreTests.test_late_receipt_has_reserved_journal_capacity",
+      "gate_ids": [
+        "G29",
+        "G35"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.013331999000001815
+    },
+    {
+      "test": "test_store.StoreTests.test_lossless_snapshot_keeps_obligations_and_unknown_actions",
+      "gate_ids": [
+        "G10",
+        "G38"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.011210315999960585
+    },
+    {
+      "test": "test_store.StoreTests.test_replay_rebuilds_projections_and_command_dedup_without_effects",
+      "gate_ids": [
+        "G38"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.015437339000072825
+    },
+    {
+      "test": "test_store.StoreTests.test_restore_release_requires_explicit_original_fence_attestation",
+      "gate_ids": [
+        "G39"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.011048596999899019
+    },
+    {
+      "test": "test_store.StoreTests.test_restore_unknown_action_prevents_operator_release",
+      "gate_ids": [
+        "G39"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.01512342499972874
+    },
+    {
+      "test": "test_store.StoreTests.test_sigkill_uncommitted_transaction_rolls_back",
+      "gate_ids": [
+        "G26",
+        "G34"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.024117181000292476
+    },
+    {
+      "test": "test_store.StoreTests.test_unknown_database_schema_is_rejected",
+      "gate_ids": [
+        "G38"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.005567290999806573
+    },
+    {
+      "test": "test_store.StoreTests.test_wal_fix_version_rules_include_backports_not_other_old_branches",
+      "gate_ids": [
+        "G32"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.00927033100015251
+    },
+    {
+      "test": "test_store.StoreTests.test_wal_rejects_known_unpatched_library",
+      "gate_ids": [
+        "G32"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.007906279000053473
+    },
+    {
+      "test": "test_verification.VerificationTests.test_backend_write_failure_is_not_success",
+      "gate_ids": [
+        "G17"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.07397951599978114
+    },
+    {
+      "test": "test_verification.VerificationTests.test_capture_contains_untracked_and_binary_inputs",
+      "gate_ids": [
+        "G45"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.016838564999943628
+    },
+    {
+      "test": "test_verification.VerificationTests.test_capture_race_between_passes_is_rejected",
+      "gate_ids": [
+        "G45"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.005216612000367604
+    },
+    {
+      "test": "test_verification.VerificationTests.test_case_alias_candidate_is_rejected",
+      "gate_ids": [
+        "G01",
+        "G45"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.0044865229997412825
+    },
+    {
+      "test": "test_verification.VerificationTests.test_cold_client_can_read_persisted_verifier_report_and_run",
+      "gate_ids": [
+        "G08",
+        "G12",
+        "G42"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.08978903999968679
+    },
+    {
+      "test": "test_verification.VerificationTests.test_cross_repository_vector_contains_all_declared_inputs",
+      "gate_ids": [
+        "G22"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.009915799999816954
+    },
+    {
+      "test": "test_verification.VerificationTests.test_duplicate_registered_worktree_cannot_bypass_lock_namespace",
+      "gate_ids": [
+        "G01",
+        "G19"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.005143424999914714
+    },
+    {
+      "test": "test_verification.VerificationTests.test_edit_after_pass_keeps_historical_pass_but_rejects_acceptance",
+      "gate_ids": [
+        "G08",
+        "G45"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.0950038199998744
+    },
+    {
+      "test": "test_verification.VerificationTests.test_expected_failure_is_not_acceptance",
+      "gate_ids": [
+        "G42"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.06319433099997696
+    },
+    {
+      "test": "test_verification.VerificationTests.test_hardcoded_success_cannot_fake_durable_state",
+      "gate_ids": [
+        "G17"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.09189653600014935
+    },
+    {
+      "test": "test_verification.VerificationTests.test_missing_evidence_never_accepts_candidate",
+      "gate_ids": [
+        "G07"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.016603247000148258
+    },
+    {
+      "test": "test_verification.VerificationTests.test_old_attempt_cannot_promote_old_candidate_after_takeover",
+      "gate_ids": [
+        "G19",
+        "G26"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.09823098099968774
+    },
+    {
+      "test": "test_verification.VerificationTests.test_real_application_can_be_accepted_only_after_executed_oracle",
+      "gate_ids": [
+        "G07",
+        "G08",
+        "G15"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.09240695000016785
+    },
+    {
+      "test": "test_verification.VerificationTests.test_registered_oracle_is_immutable_not_reread_from_mutable_source",
+      "gate_ids": [
+        "G42"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.08095771399985097
+    },
+    {
+      "test": "test_verification.VerificationTests.test_registered_upstream_revision_invalidates_candidate",
+      "gate_ids": [
+        "G21"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.08410687900004632
+    },
+    {
+      "test": "test_verification.VerificationTests.test_reopen_requires_exact_accepted_task_decision",
+      "gate_ids": [
+        "G05"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.09174172699977134
+    },
+    {
+      "test": "test_verification.VerificationTests.test_secret_path_capture_is_rejected_not_exported",
+      "gate_ids": [
+        "G01",
+        "G28"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.006815155999902345
+    },
+    {
+      "test": "test_verification.VerificationTests.test_skipped_required_test_fails",
+      "gate_ids": [
+        "G42"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.06227032500009955
+    },
+    {
+      "test": "test_verification.VerificationTests.test_source_change_invalidates_pass_without_deleting_it",
+      "gate_ids": [
+        "G20"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.09743717700030174
+    },
+    {
+      "test": "test_verification.VerificationTests.test_static_prose_impostor_fails_required_behavior",
+      "gate_ids": [
+        "G16"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.07192542999973739
+    },
+    {
+      "test": "test_verification.VerificationTests.test_unaccepted_dependency_prevents_admission",
+      "gate_ids": [
+        "G09"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.007109481000043161
+    },
+    {
+      "test": "test_verification.VerificationTests.test_untracked_input_after_capture_changes_candidate",
+      "gate_ids": [
+        "G08",
+        "G45"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.02217104000010295
+    },
+    {
+      "test": "test_verification.VerificationTests.test_verification_request_deduplication_does_not_run_twice",
+      "gate_ids": [
+        "G14",
+        "G42"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.09330355600013718
+    },
+    {
+      "test": "test_verification.VerificationTests.test_worker_cannot_register_oracle_or_report_fake_pass",
+      "gate_ids": [
+        "G07",
+        "G42"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.017351374000099895
+    },
+    {
+      "test": "test_verification.VerificationTests.test_zero_collected_tests_fails",
+      "gate_ids": [
+        "G42"
+      ],
+      "status": "PASS",
+      "elapsed_s": 0.06064833600021302
+    }
+  ],
+  "scope": "one authority, trusted local/remote workers; loopback TLS, MCP subprocess and staged migration tests; no claim of complete original G01-G46 certification"
+}

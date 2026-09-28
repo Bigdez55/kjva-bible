@@ -1,0 +1,33 @@
+{
+  "archive_sha256": "f41d5a5bd99a2aaf4ea11e1d3911e985625a4578722e5b22d0d6903cfd820c2d",
+  "files": [
+    {
+      "path": "tests/support.py",
+      "sha256": "0ed586862b44c375f2b6b44d99323c910d355e846f1188367cd18df56a92c6eb"
+    },
+    {
+      "path": "tests/test_authority.py",
+      "sha256": "535f61985f4e6a853fcaf94e4d687a5d6b6ebfe035a15cd4a96be2bc5e5971d5"
+    },
+    {
+      "path": "tests/test_concurrency.py",
+      "sha256": "7bab0f282e81bb51c9d7bfa15d8ee0a4c9c3ffc0b78563e38b0e882256dc6ba7"
+    },
+    {
+      "path": "tests/test_effects.py",
+      "sha256": "a668c24ab6c748476b05092e6843a6925298a71fdb26a0a6fa4f932a10323c6b"
+    },
+    {
+      "path": "tests/test_installed_paths.py",
+      "sha256": "1a854d6f086619326cdcd799ae67c059339fd0755aeec0cefc6d83c7ad8fb864"
+    },
+    {
+      "path": "tests/test_store.py",
+      "sha256": "c5c4cc57e036f4b03402242104a069e0287e9424d62719b76fe5677fa6e556f4"
+    },
+    {
+      "path": "tests/test_verification.py",
+      "sha256": "6cc043b827a4ce625a59d3e3f18a55b8ccac8d6cee4d13d548b402f7f41e20f7"
+    }
+  ]
+}

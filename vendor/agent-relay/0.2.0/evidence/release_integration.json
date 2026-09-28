@@ -1,0 +1,65 @@
+{
+  "ok": true,
+  "started_at": "2026-09-28T16:33:41.579584+00:00",
+  "runtime_sha256": "54eb245203e922561f8b8fd1cf8c078367f8794c752739ec67d8b4f5c63411d1",
+  "installed_module": "/mnt/data/relay_v020_venv/lib/python3.13/site-packages/agent_relay/__init__.py",
+  "checks": [
+    {
+      "check": "actual_0_1_cli_staged_migration",
+      "status": "PASS",
+      "original_event_count": 11,
+      "exact_original_event_bytes_sha256": "046c2e4919a352956ae823fa8ef178eb500a8858f4efa3ecb36ae168b5c6b2ad"
+    },
+    {
+      "check": "real_current_candidate_held_without_reviews",
+      "status": "PASS"
+    },
+    {
+      "check": "actual_cli_reviews_bind_current_evidence_and_remain_exceptions",
+      "status": "PASS",
+      "fixture_exception_count": 22,
+      "owner_deployment_approvals": 0
+    },
+    {
+      "check": "reviewed_candidate_cannot_override_unknown_effect_hold",
+      "status": "PASS"
+    },
+    {
+      "check": "actual_migrated_effect_independent_readback",
+      "status": "PASS"
+    },
+    {
+      "check": "one_active_authority_after_evaluated_cli_activation",
+      "status": "PASS"
+    },
+    {
+      "check": "postactivation_rollback_rejected",
+      "status": "PASS"
+    }
+  ],
+  "final_disposable_store_integrity": {
+    "schema": 2,
+    "sqlite": "3.46.1",
+    "sqlite_source_id": "2024-08-13 09:16:08 c9c2ab54ba1f5f46360f1b4f35d849cd3f080e6fc2b6c60e91b16c63f69aalt1",
+    "wal_fix_version_recognized": false,
+    "journal_mode": "delete",
+    "synchronous": 3,
+    "foreign_keys": 1,
+    "mode": "ACTIVE",
+    "events": 14,
+    "blobs": 4,
+    "objects": 15,
+    "blob_stored_bytes": 861,
+    "journal_logical_bytes": 17914,
+    "journal_quota_bytes": 268435456,
+    "scrub_scheduling": "full scrub is explicit; schedule periodic relayctl doctor --scrub",
+    "chain_head": "d6d36a1cef6679e8240cbfabb271dd2852d8d003a9465808b01518c4e59290e8",
+    "full_scrub": "PASS",
+    "database_bytes": 98304,
+    "wal_bytes": 0
+  },
+  "review_keys_destroyed": true,
+  "signed_fixture_decisions_shipped": false,
+  "owner_deployment_approvals": 0,
+  "scope": "Installed CLI integration; real current test report and prior runtime; disposable reviewer fixture only"
+}
